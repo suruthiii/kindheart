@@ -1,7 +1,12 @@
-<?php require APPROOT.'/views/inc/header.php'; ?>
-    <!--  TOP NAVIGATION  -->
-    <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
+<html>
+    <head>
+        <title><?php echo SITENAME ?></title>
 
+        <!-- External CSS -->
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/registerLanding.css">
+    </head>
+    <body>
+        
     <div class="form-container">
         <h1>Login</h1>
         <?php if (!empty($data['err'])) { ?>
