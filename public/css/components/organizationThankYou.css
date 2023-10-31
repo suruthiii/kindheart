@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  /* overflow: hidden; */
+}
+
+.donor-registration {
+    display: flex;
+    justify-content: center;
+    /* align-items: center;
+    height: 100vh;
+    width: 1280px;
+    height: 720px; */
+}
+
+.image {
+    width: 50%;
+    height: 100vh;
+  }
+  
+  #welcome{
+      width: 100%;
+      height: 100%;
+      max-width: 650px;
+  }
+
+.formc {
+    padding-left: 50px;
+    padding-top: 200px;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+  }
+
+#logo{
+    height: 150px;
+    width: 150px;
+}
+
+p {
+  font-size: 17px;
+}
+
+label {
+  font-size: 18px;
+}
