@@ -1,9 +1,76 @@
 /* --------------- Components Styles --------------- */
+@import url('components/sidenavbar.css');
 @import url('components/topnavbar.css');
 
-
-/* ------------------ Form Styles ------------------ */
-@import url('components/formStyles.css');
+/* ------------------ External Styles ------------------ */
+@import url('admin.css');
 
 
 /* ----------------- General Styles ---------------- */
+
+
+/* ----------------- Font Styles ---------------- */
+@font-face {
+    font-family: Inter-Regular;
+    src: url(fonts/Inter-Regular.ttf);
+}
+
+body {
+    margin: 0;
+    font-family: Inter-Regular;
+    font-size: small;
+    text-align: left;
+}
+
+a{
+    text-decoration: none;
+}
+
+.page-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    margin-top: 50px;
+}
+
+.page-container .section{
+    margin: 1vh 2vw;
+}
+
+.page-container .section .container{
+    transition: 0.5s;
+    margin-left: 340px;
+}
+
+@media screen and (max-width: 720px){
+    .page-container .section .container{
+        margin-left: 20px;
+        transition: left 0.5s ease-in;
+    }
+}
+
+.page-container .section .container h3{
+    /* text-align: center; */
+    margin-left: 10px;
+    margin-top: 50px;
+    font-size: 30px;
+}
+
+.container .error-img{
+    width: 50px
+}
+
+.container .error-btn{
+    text-decoration: none;
+    border: 2px solid rgb(255,167,41);
+    border-radius: 20px;
+    padding: 10px;
+    color: black;
+    transition: 0.5s;
+}
+
+.container .error-btn:hover{
+    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.20);
+    scale: 1.1;
+}

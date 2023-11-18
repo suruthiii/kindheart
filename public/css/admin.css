@@ -1,0 +1,42 @@
+ .page-container .section .container .cards{
+    margin-top: 80px;
+    margin-right: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
+.page-container .section .container .cards .card-link {
+    text-decoration: none;
+    color: black;
+}
+
+.page-container .section .container .cards .card-link .card{
+    text-decoration: none;
+    margin-top: 10px;
+    background-color: #8e0000;
+    width: 160px;
+    height: 85px;
+    border-radius: 10px;
+    color: white;
+    transition: .2s;
+    margin: 10px;
+}
+
+.page-container .section .container .cards .card-link .card:hover{
+    scale: 1.05;
+    box-shadow: 0px 0px 15px 0.1px rgba(252, 213, 38, 0.452);
+}
+
+.page-container .section .container .cards .card-link .card .title{
+    padding-top: 20px;
+    padding-left: 20px;
+    font-weight: 1000;
+}
+
+.page-container .section .container .cards .card-link .card .value{
+    padding-top: 8px;
+    padding-left: 20px;
+    font-weight: 1000;
+    font-size: large;
+}
+
