@@ -11,7 +11,6 @@
     <section class="section" id="main">
         <div class="container">
             <h3>Admin Dashboard</h3>
-
             <div class="cards">
                 <!-- Card 3 -->
                 <a class="card-link" href="">
@@ -92,7 +91,6 @@
                         <div class="value">Rs. 58,977.00</div>
                     </div>
                 </a>
-
             </div>
         </div>
     </section>

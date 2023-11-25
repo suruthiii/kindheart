@@ -50,27 +50,85 @@ a{
     }
 }
 
-.page-container .section .container h3{
-    /* text-align: center; */
+.page-container .section .container h3 {
     margin-left: 10px;
     margin-top: 50px;
-    font-size: 30px;
+    font-size: 25px;
 }
 
-.container .error-img{
-    width: 50px
+.page-container .section .container p {
+    color: rgba(0, 0, 0, 0.471);
+    margin-left: 10px;
 }
 
-.container .error-btn{
-    text-decoration: none;
-    border: 2px solid rgb(255,167,41);
-    border-radius: 20px;
+.page-container .section .container .list {
+    margin-right: 500px;
+}
+
+.page-container .section .container .list .list-title {
+    padding: 5px 0 0 0;
+    font-weight: 700;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.471);
+}
+
+.page-container .section .container .list .list-items {
     padding: 10px;
-    color: black;
-    transition: 0.5s;
+    /* background-color: #8e0000; */
 }
 
-.container .error-btn:hover{
-    box-shadow: 0 0 10px 0.1px rgba(0, 0, 0, 0.20);
-    scale: 1.1;
+.page-container .section .container .list .list-items .item-link {
+    text-decoration: none;
+    color: black;
 }
+
+.page-container .section .container .list .list-items .list-item {
+    text-decoration: none;
+    width: 790px;
+    height: 30px;
+    border: 1px solid rgba(0, 0, 0, 0.604);
+    border-radius: 10px;
+    /* transition: .2s; */
+    /* margin: 10px; */
+    /* padding-top: 5px;
+    padding-bottom: 5px; */
+}
+
+.page-container .section .container .right-content {
+    top: 100px;
+    position: fixed;
+    right: 0;
+    background-color: #ffffff;
+    width: 20vw;
+    height: 85vh;
+    margin-top: 0;
+    margin-right: 3vw;
+    margin-bottom: 7vw;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0.1px #00000041;
+}
+
+.page-container .section .container .right-content .right-cards {
+    padding: 20px;
+}
+
+.page-container .section .container .right-content .right-cards .right-card {
+    margin: 20px;
+    padding: 15px;
+    background-color: #8e0000;
+    border-radius: 10px;
+    color: white;
+    font-weight: 1000;
+}
+
+.page-container .section .container .right-content .right-cards .right-card .title {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.page-container .section .container .right-content .right-cards .right-card .value {
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
