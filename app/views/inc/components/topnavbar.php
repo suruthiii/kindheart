@@ -11,7 +11,6 @@
                 </div>
                 <div class="notify">
                     <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt="">
-                    <div class="ico-content">Notifications</div>
                 </div>
             </div>
         </div>

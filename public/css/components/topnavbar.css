@@ -83,7 +83,7 @@
 }
 
 .topnav .items .content .notify{
-    padding: 10px 20px 10px 20px;
+    padding: 10px 10px 10px 10px;
     border-radius: 10px;
     border: none;
     box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.2);
@@ -95,11 +95,6 @@
 
 .topnav .items .content .notify .ico{
     width: 16px;
-}
-
-.topnav .items .content .notify .ico-content{
-    padding-top: 1px;
-    padding-left: 6px;
 }
 
 .topnav .items .content .notify:hover{

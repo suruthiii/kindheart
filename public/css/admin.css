@@ -1,5 +1,5 @@
  .page-container .section .container .cards{
-    margin-top: 80px;
+    margin-top: 60px;
     margin-right: 30px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -12,7 +12,6 @@
 
 .page-container .section .container .cards .card-link .card{
     text-decoration: none;
-    margin-top: 10px;
     background-color: #8e0000;
     width: 160px;
     height: 85px;
@@ -22,9 +21,8 @@
     margin: 10px;
 }
 
-.page-container .section .container .cards .card-link .card:hover{
+.page-container .section .container .cards .card-link .card:hover {
     scale: 1.05;
-    box-shadow: 0px 0px 15px 0.1px rgba(252, 213, 38, 0.452);
 }
 
 .page-container .section .container .cards .card-link .card .title{
@@ -39,4 +37,38 @@
     font-weight: 1000;
     font-size: large;
 }
+
+.page-container .section .container .user-types {
+    margin-top: 20px;
+    margin-left: 150px;
+    margin-right: 550px;
+}
+
+.page-container .section .container .user-types .user-link {
+    text-decoration: none;
+    color: black;
+}
+
+.page-container .section .container .user-types .user-link .user {
+    text-decoration: none;
+    background-color: #8e0000;
+    width: 400px;
+    height: 100px;
+    border-radius: 10px;
+    color: white;
+    transition: .2s;
+    margin: 50px 30px 50px 80px;
+}
+
+.page-container .section .container .user-types .user-link .user:hover {
+    scale: 1.05;
+}
+
+.page-container .section .container .user-types .user-link .user .title {
+    padding: 40px;
+    text-align: center;
+    font-size: large;
+    font-weight: 800;
+}
+
 
