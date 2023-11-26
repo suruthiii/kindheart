@@ -14,24 +14,28 @@
             <p>Last 30 days</p>
             <div class="list">
                 <div class="list-title">
-                    <p>Pending</p>
+                    <h4>Pending</h4>
                 </div>
-                <div class="list-items">
+                <!-- <div class="list-items">
                     <a class="item-link" href="">
-                        <div class="list-item">
-                            <div class="list-icon">
-                                <!-- <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt=""> -->
-                            </div>
-                            <div class="title-desc">
-                                <div class="title"></div>
-                                <div class="desc"></div>
-                            </div>
-                            <div class="crud-icons">
-
-                            </div>
-                        </div>
+                        <table>
+                            <tr>
+                                <td class="item-icon" >
+                                    <img class="icon" src="<?php echo URLROOT ?>/img/back-arrow.png" alt="">
+                                </td>
+                                <td class="title-desc">
+                                    Hii<br/>Hiii
+                                </td>
+                                <td class="amount-quantity" >
+                                    <p>Rs. 24,565</p>
+                                </td>
+                                <td class="del-icon" >
+                                    <img class="icon" src="<?php echo URLROOT ?>/img/back-arrow.png" alt="">
+                                </td>
+                            </tr>
+                        </table>
                     </a>
-                </div>
+                </div> -->
               
             </div>
             <div class="right-content">
@@ -39,16 +43,27 @@
 
                     <!-- Card 1 -->
                     <div class="right-card">
-                        <div class="title">Monthly Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
+                        <div class="title">Posted Necessities</div>
+                        <div class="value">58,977</div>
                     </div>
 
                     <!-- Card 2 -->
                     <div class="right-card">
-                        <div class="title">Total Donations</div>
+                        <div class="title">Fulfilled Necessities</div>
+                        <div class="value">58,977</div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="right-card">
+                        <div class="title">Monthly Donations</div>
                         <div class="value">Rs. 58,977.00</div>
                     </div>
 
+                    <!-- Card 4 -->
+                    <div class="right-card">
+                        <div class="title">Total Donations</div>
+                        <div class="value">Rs. 58,977.00</div>
+                    </div>
                 </div>
             </div>
             
