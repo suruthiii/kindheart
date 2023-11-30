@@ -1,7 +1,7 @@
 <div class="topnav">
     <div class="container">
         <div class="items">
-            <a class="item logo" onclick="navToggle()"><img style="width: 20px" src="<?php echo URLROOT ?>/img/menu.svg" alt=""></i></a>
+            <a class="item menu" onclick="navToggle()"><img style="width: 20px" src="<?php echo URLROOT ?>/img/menu.svg" alt=""></i></a>
             <div class="content">
                 <div class="search">
                     <input class="search-bar"  type="search" placeholder="Search...">
