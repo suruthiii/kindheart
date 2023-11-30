@@ -58,7 +58,7 @@ a{
 
 .page-container .section .container p {
     color: rgba(0, 0, 0, 0.471);
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 
@@ -102,3 +102,69 @@ a{
     font-size: 18px;
 }
 
+
+.page-container .section .container .list .card-list .card{
+   width: 100%;
+   height: 70px;
+   border-radius: 20px;
+   border: 1px solid white;
+   transition: 0.2s;
+   margin-top: 10px;
+   padding-top: 3px;
+}
+
+.page-container .section .container .list .card-list .card:hover{
+    /* border: 1px solid rgba(127, 127, 127, 0.2); */
+    /* scale: 1.02; */
+    background-color: rgba(0, 0, 0, 0.03);
+ }
+
+.page-container .section .container .list .card-list .card table{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 0 10px;
+ }
+
+.page-container .section .container .list .card-list .card table tr{
+    width: 100%;
+    height: 100%;
+}
+
+.page-container .section .container .list .card-list .card table tr .content h4{
+    margin-top: 10px;
+    color: black;
+}
+
+.page-container .section .container .list .card-list .card table tr .content p{
+    color: rgb(170, 169, 169);
+    margin-top: -10px;
+}
+
+.page-container .section .container .list .card-list .card table tr .amount{
+    font-weight: 1000;
+    color: black;
+}
+
+
+.page-container .section .container .list .card-list .card table tr td img{
+    width: 65%;
+}
+
+.page-container .section .container .list .card-list .card table tr .option{
+    display: grid;
+    width: 70%;
+    justify-content: right;
+    padding-top: 20px;
+}
+
+.page-container .section .container .list .card-list .card table tr .option .delete-form .delete{
+    background-color: #8e000000;
+    border: none;
+    width: 35px;
+    transition: 0.2s;
+}
+
+.page-container .section .container .list .card-list .card table tr .option .delete-form .delete:hover{
+    cursor: pointer;
+    scale: 1.05;
+}

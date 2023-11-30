@@ -4,6 +4,7 @@
     position: absolute;
     top: 20px;
     left: 0;
+    z-index: 1;
 }
 
 .topnav .items .item{
@@ -17,13 +18,13 @@
     margin-right: 1vw;
 }
 
-.topnav .items .logo{
+.topnav .items .menu{
     float: left;
     transition: 0.5s;
     margin-left: 1vw;
 }
 
-.topnav .items .logo:hover{
+.topnav .items .menu:hover{
     scale: 1.1;
 }
 
@@ -76,6 +77,7 @@
 
 .topnav .items .content .search .filter:hover{
     scale: 1.05;
+    cursor: pointer;
 }
 
 .topnav .items .content .search .filter .filter-ico {
@@ -100,6 +102,7 @@
 .topnav .items .content .notify:hover{
     box-shadow: 0 0 8px 0.1px rgba(0, 0, 0, 0.2);
     scale: 1.05;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 720px){
