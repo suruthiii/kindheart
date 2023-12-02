@@ -20,6 +20,7 @@ body {
     font-family: Inter-Regular;
     font-size: small;
     text-align: left;
+    overflow: hidden;
 }
 
 a{
@@ -53,7 +54,7 @@ a{
 .page-container .section .container h3 {
     margin-left: 10px;
     margin-top: 65px;
-    font-size: 25px;
+    font-size: 17px;
 }
 
 .page-container .section .container p {
@@ -61,47 +62,37 @@ a{
     /* margin-left: 10px; */
 }
 
+/* ---------------------Necessity and Project lists---------------------*/
 
-
-.page-container .section .container .right-content {
-    top: 220px;
-    position: fixed;
-    right: 0;
-    background-color: #ffffff;
-    width: 20vw;
-    height: 60vh;
-    margin-top: 0;
-    margin-right: 3vw;
-    margin-bottom: 7vw;
-    border-radius: 20px;
-    box-shadow: 0 0 20px 0.1px #00000041;
+/* width and height of the scrollbar track */
+::-webkit-scrollbar {
+    width: 4px;
 }
-
-.page-container .section .container .right-content .right-cards {
-    padding: 20px;
-}
-
-.page-container .section .container .right-content .right-cards .right-card {
-    margin: 25px;
-    padding: 15px;
-    background-color: #8e0000;
+  
+/* color of the scrollbar handle */
+::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
     border-radius: 10px;
-    color: white;
-    font-weight: 1000;
+}
+  
+.page-container .section .container .list {
+    margin-right: 500px;
+    margin-top: -10px;
 }
 
-.page-container .section .container .right-content .right-cards .right-card .title {
-    padding-bottom: 5px;
-    padding-left: 5px;
+.page-container .section .container .list .list-title {
+    padding: 5px 0 0 10px;
     font-size: 15px;
+    font-weight: 700;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.257);
 }
 
-.page-container .section .container .right-content .right-cards .right-card .value {
-    padding-left: 5px;
-    padding-top: 5px;
-    font-size: 18px;
+.page-container .section .container .list .card-list {
+    overflow: scroll;
+    height: 160px;
+    margin-top: 4px;
+    padding: 5px;
 }
-
 
 .page-container .section .container .list .card-list .card{
    width: 100%;
@@ -109,7 +100,7 @@ a{
    border-radius: 20px;
    border: 1px solid white;
    transition: 0.2s;
-   margin-top: 10px;
+   /* margin-top: 5px; */
    padding-top: 3px;
 }
 
@@ -168,3 +159,47 @@ a{
     cursor: pointer;
     scale: 1.05;
 }
+
+
+.page-container .section .container .right-content {
+    top: 180px;
+    position: fixed;
+    right: 0;
+    background-color: #ffffff;
+    width: 20vw;
+    height: 65vh;
+    margin-top: 0;
+    margin-right: 3vw;
+    margin-bottom: 7vw;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0.1px #00000041;
+}
+
+.page-container .section .container .right-content .right-cards {
+    padding: 20px;
+}
+
+.page-container .section .container .right-content .right-cards .right-card {
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+    padding: 15px;
+    background-color: #8e0000;
+    border-radius: 10px;
+    color: white;
+    font-weight: 1000;
+}
+
+.page-container .section .container .right-content .right-cards .right-card .title {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.page-container .section .container .right-content .right-cards .right-card .value {
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+

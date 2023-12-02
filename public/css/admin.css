@@ -75,39 +75,6 @@
     font-weight: 800;
 }
 
-/* ---------------------Necessity and Project lists---------------------*/
-.page-container .section .container .list {
-    margin-right: 500px;
-}
-
-.page-container .section .container .list .list-title {
-    padding: 5px 0 0 10px;
-    font-size: 15px;
-    font-weight: 700;
-    border-bottom: 0.5px solid rgba(0, 0, 0, 0.257);
-}
-
-.page-container .section .container .list .list-items {
-    padding: 10px;
-    /* background-color: #8e0000; */
-}
-
-.page-container .section .container .list .list-items .item-link {
-    text-decoration: none;
-    color: black;
-}
-
-.page-container .section .container .list .list-items .list-item {
-    text-decoration: none;
-    width: 790px;
-    height: 30px;
-    border: 1px solid rgba(0, 0, 0, 0.604);
-    border-radius: 10px;
-    /* transition: .2s; */
-    /* margin: 10px; */
-    /* padding-top: 5px;
-    padding-bottom: 5px; */
-}
 
 /* -----------------Request List----------------------- */
 .page-container .section .container .req-list {
@@ -150,4 +117,10 @@
     border-radius: 8px;
     border: 1px solid #8e0000;
     cursor: pointer;
+    transition: 0.2s;
 }
+
+.page-container .section .container .req-list .list-items .btn .rev-btn:hover {
+    scale: 1.05;
+}
+

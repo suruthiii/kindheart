@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <h3>View Requests</h3>
-            <p>View the list of requests</p>
+            <p style="margin-left: 10px">View the list of requests</p>
             <div class="req-list">
                 <div class="list-title">
                     <h4>User name</h4>
