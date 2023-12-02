@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <h3>Users</h3>
-            <p>Select a user type</p>
+            <p style="margin-left: 10px">Select a user type</p>
             <div class="user-types">
 
                 <!-- User 1 -->
