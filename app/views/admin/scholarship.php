@@ -452,7 +452,7 @@
 
                     <!-- Card 2 -->
                     <div class="right-card">
-                        <div class="title">Scholarship Requests</div>
+                        <div class="title">Scholarship Applications</div>
                         <div class="value">58,977</div>
                     </div>
 
