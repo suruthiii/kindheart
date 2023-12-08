@@ -247,10 +247,6 @@ a{
     /* background-color: #8e0000; */
 }
 
-.page-container .section .container .story-cards .story-card .profile .profile-content .name  {
-
-}
-
 .page-container .section .container .story-cards .story-card .profile .profile-content .date {
     transform: translateY(-13px);
     font-size: 12px;
@@ -303,3 +299,4 @@ a{
 .page-container .section .container .story-cards .story-card .story-btn-container .del-btn:hover {
     scale: 1.05;
 }
+
