@@ -10,9 +10,7 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>Posted Projects</h3>
-
-            
+            <h3>Log Out</h3>     
         </div>
     </section>
 </main>

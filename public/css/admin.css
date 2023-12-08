@@ -114,8 +114,8 @@
     color: white;
     text-align: center;
     font-weight: 500;
-    border-radius: 8px;
-    border: 1px solid #8e0000;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
     transition: 0.2s;
 }
