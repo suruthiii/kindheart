@@ -28,7 +28,7 @@
 
             <div class="necessity-donation-info">
                 <table>
-                    <tr class="donation-details">
+                    <tr class="donation-details-heading">
                         <th>Donor Name</th>
                         <th>Amount</th>
                     </tr>
