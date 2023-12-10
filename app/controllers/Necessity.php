@@ -13,5 +13,11 @@ class Necessity extends Controller {
         $this->view('necessity/viewAdminNecessity', $data);
     }
 
-    
+    public function viewAdminNecessityDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('necessity/viewAdminNecessityDonation', $data);
+    }
+
 }

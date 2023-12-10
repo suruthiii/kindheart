@@ -54,7 +54,8 @@ a{
 .page-container .section .container h3 {
     margin-left: 10px;
     margin-top: 65px;
-    font-size: 17px;
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 .page-container .section .container p {
