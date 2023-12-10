@@ -18,7 +18,7 @@
                 </div>
                 
                 <div class="card-list">
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/necessity/viewAdminNecessity">
                         <div class="card">
                             <table>
                                 <tr>
@@ -41,7 +41,9 @@
                         </div>
                     </a>
 
-                    <a href="">
+
+
+                    <!-- <a href="">
                         <div class="card">
                             <table>
                                 <tr>
@@ -131,7 +133,7 @@
                                 </tr>
                             </table>
                         </div>
-                    </a>
+                    </a> -->
                 </div>
             </div>
 
