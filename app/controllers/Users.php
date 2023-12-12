@@ -55,6 +55,11 @@ class Users extends Controller{
     public function studentOrganizationCreatingProfile2(){
         $this->view('users/studentOrganizationCreatingProfile2');
     }
+
+    public function studentCreatingProfile3(){
+        $this->view('users/studentCreatingProfile3');
+    }
+    
     
 
     // public function register(){

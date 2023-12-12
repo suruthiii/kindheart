@@ -4,16 +4,16 @@
     <title>Student Profile Creation</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="registerAndLogin.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
 </head>
 <body>
     <div class="container">
         <div class="image">
-            <img src="images/setps.jpg" alt="Set Password" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/setps.jpg" alt="Set Password" id="registerAndLogin">
         </div>
-        <div class="studentProfile3-formc  shared-formc">
-            <div class="studentProfile3-formce">
-                <img src="images/logo.png" alt="Logo_Image" id="logo">
+        <div class="studentProfile3-formc shared-formc">
+            <div class="studentProfile3-formce shared-formce">
+                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Privacy Preferences</h1>
                 <span style="color: rgb(146, 141, 141);">Select the details you want to show in your profile</span>     
