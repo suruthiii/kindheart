@@ -20,7 +20,8 @@ body {
     font-family: Inter-Regular;
     font-size: small;
     text-align: left;
-    overflow: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 a{

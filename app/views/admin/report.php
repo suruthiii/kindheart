@@ -26,19 +26,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -57,19 +57,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -78,8 +78,8 @@
                         </div>
                     </a>
 
-                    <!-- Card 3 -->
-                    <a href="">
+                     <!-- Card 3 -->
+                     <a href="">
                         <div class="report-card">
                             <table>
                                 <tr>
@@ -88,19 +88,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -119,19 +119,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -140,8 +140,8 @@
                         </div>
                     </a>
 
-                    <!-- Card 5 -->
-                    <a href="">
+                     <!-- Card 5 -->
+                     <a href="">
                         <div class="report-card">
                             <table>
                                 <tr>
@@ -150,19 +150,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -181,19 +181,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -201,7 +201,7 @@
                             </table>
                         </div>
                     </a>
-
+                    
                     <!-- Card 7 -->
                     <a href="">
                         <div class="report-card">
@@ -212,19 +212,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -243,81 +243,19 @@
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="download-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
+                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
                                             </button>
                                         </form>
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <!-- Card 9 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <!-- Card 10 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                View
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                Download
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                Delete
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>
                                     </td>
@@ -329,9 +267,31 @@
                 </div>
             </div>
             
-            <div class="add-report-btn-container">
-                <button class="add-report-btn">+ Add Reports</button>
+            <!-- <div class="add-report-btn-container">
+                <button class="add-report-btn">
+                    <span class="plus">+</span> 
+                    &nbsp;Add Reports
+                </button>
+            </div> -->
+
+            <div class="right-content">
+                
+                <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Add Reports</h3>
+                
+                <form action="" class="add-report-form">
+                    <label for="report-name">Report Name</label><br>
+                    <input type="text" id="report-name" name="report-name"><br><br>
+                    <label for="criteria">Criteria</label><br>
+                    <input type="text" id="criteria" name="criteria"><br><br>
+                    <label for="sdate">Start Date</label><br>
+                    <input type="date" id="sdate" name="sdate"><br><br>
+                    <label for="edate">End Date</label><br>
+                    <input type="date" id="edate" name="edate"><br><br>
+                    <input type="submit" value="Generate">
+                </form>
+                
             </div>
+            
         </div>
     </section>
 </main>
