@@ -40,6 +40,10 @@ class Users extends Controller{
         $this->view('users/accountCreationSuccessful');
     }
 
+    public function organizationRegistration(){
+        $this->view('users/organizationRegistration');
+    }
+
     // public function register(){
     //     // Initial form data
     //     $data = [

@@ -4,17 +4,17 @@
     <title>Oraganization Registration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="registerAndLogin.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
 </head>
 
 <body>
     <div class="container">
         <div class="image">
-            <img src="images/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
         </div>
         <div class="studentRegistration-formc shared-formc">
-            <div class="studentRegistration-formce">
-                <img src="images/logo.png" alt="Logo_Image" id="logo">
+            <div class="studentRegistration-formce shared-formce">
+                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Register as a Oraganization</h1>
                 <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
