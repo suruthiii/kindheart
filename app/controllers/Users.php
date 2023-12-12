@@ -16,6 +16,18 @@ class Users extends Controller{
         $this->view('users/login');
     }
 
+    public function forgetPassword1(){
+        $this->view('users/forgetPassword1');
+    }
+
+    public function forgetPassword2(){
+        $this->view('users/forgetPassword2');
+    }
+
+    public function passwordResetSuccessful(){
+        $this->view('users/passwordResetSuccessful');
+    }
+
     // public function register(){
     //     // Initial form data
     //     $data = [
