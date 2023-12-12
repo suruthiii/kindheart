@@ -64,7 +64,17 @@ class Users extends Controller{
         $this->view('users/profileCreationSuccessful');
     }
 
-    
+    public function donorCreateProfile1(){
+        $this->view('users/donorCreateProfile1');
+    }
+
+    public function donorCreateProfile2(){
+        $this->view('users/donorCreateProfile2');
+    }
+
+    public function donorCreateProfile3(){
+        $this->view('users/donorCreateProfile3');
+    }
     
     
 
