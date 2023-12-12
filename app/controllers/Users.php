@@ -44,7 +44,17 @@ class Users extends Controller{
         $this->view('users/organizationRegistration');
     }
 
+    public function donorRegistration(){
+        $this->view('users/donorRegistration');
+    }
+
+    public function studentCreatingProfile1(){
+        $this->view('users/studentCreatingProfile1');
+    }
+
     
+
+
 
     // public function register(){
     //     // Initial form data

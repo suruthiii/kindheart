@@ -350,11 +350,6 @@ section::after {
     font-size: 10px;
 }
 
-.studentCreateProfile-formce {
-    position: absolute;
-    left: calc(100% - 700px);
-}
-
 /* ---------------- Donor Create Profile 1 -------------- */
 .donorCreateProfile-text .choice {
     width: 500px;
