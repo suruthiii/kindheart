@@ -60,8 +60,8 @@ class Users extends Controller{
         $this->view('users/studentCreatingProfile3');
     }
 
-    public function studentOrganizationProfileCreationSuccessful(){
-        $this->view('users/studentOrganizationProfileCreationSuccessful');
+    public function profileCreationSuccessful(){
+        $this->view('users/profileCreationSuccessful');
     }
 
     
