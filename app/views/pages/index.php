@@ -12,10 +12,14 @@
         <h5 style="font-weight: normal;">Empowering generosity. Connect with causes, make a difference. Simplify giving. Change lives with every donation. Join us today.</h5>
         
         <div class="button-div">
-        <button class="button">Log In</button>
+            <a href="<?php echo URLROOT ?>/users/login">
+                <button class="button" >Log In</button>
+            </a>
     </div>
     <div class="button">
-        <button class="button">Sign Up</button>
+            <a href="<?php echo URLROOT ?>/users/registerLanding">
+                <button class="button" >Register</button>
+            </a>
     </div>
 
     </div>
