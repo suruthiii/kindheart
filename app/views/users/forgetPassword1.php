@@ -15,26 +15,30 @@
             <div class="forgetPsw-formce shared-formce">
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
-                <h1>Forget Password?</h1>
+                <h1>Forgot Password?</h1>
                 <span style="color: rgb(146, 141, 141);">Reset your password</span>     
                 <div class="forgetPsw-text shared-text shared-label shared-button">
                     <form action="#">
                         <div class="forgetPsw-input-field1 shared-input shared-margin">
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your Email address</label><br><br>
-                            <input class="inputt" type="text" name="email" required><br><br>
+                            <input class="inputt" type="text" name="email" /><br><br>
                             <label style="color: rgb(172, 34, 34); margin-bottom: 30px;" for="verificationCode"><b>Send OTP</b></label><br><br><br>
                             <label for="verificationCode" style="color: rgb(146, 141, 141);">Enter the verification code </label><br><br>
                         </div>
                         <div class="forgetPsw-input-field2 shared-input2">
                             <input type="text" />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
                         </div>
-                        <button type='submit'>Continue</button>
+
+                        <a href="<?php echo URLROOT ?>/users/forgetPassword2">
+                            <button type='submit'>Continue</button>
+                        </a>
+                        
                     </form>
                 </div>
                 

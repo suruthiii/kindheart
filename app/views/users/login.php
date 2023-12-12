@@ -24,7 +24,7 @@
                             <input class="inputt" type="username" name="psw" required><br><br>
                             <label for="password" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Password</label><br><br>
                             <input class="inputt" type="password" name="conf-psw" required><br><br>
-                            <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="#">Forget Password?</a></label><br><br>
+                            <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
                         </div>
                         <div>
                             <label>
