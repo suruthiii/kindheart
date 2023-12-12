@@ -3,7 +3,7 @@
     define('APPROOT', dirname(dirname(__FILE__)));
 
     // URLROOT
-    define('URLROOT', 'http://localhost:8888/kindheart');
+    define('URLROOT', 'http://localhost:88988/kindheart');
 
     // WEBSITE NAME
     define('SITENAME', 'Kind Heart');
