@@ -1,5 +1,7 @@
 <?php
 class Student extends Controller {
+    private $middleware;
+
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only students are allowed to access student pages
@@ -13,11 +15,32 @@ class Student extends Controller {
         $this->view('student/index', $data);
     }
 
-    public function about(){
-        $users = $this->pagesModel->getUser();
+    public function necessityRequest(){
         $data = [
-            'users' => $users
+            'title' => 'Home page'
         ];
-        $this->view('about', $data);
+        $this->view('student/necessityRequest', $data);
     }
+
+    public function monetoryfundingRequest(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/monetoryfundingRequest', $data);
+    }
+
+    public function physicalgoodsRequest(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/physicalgoodsRequest', $data);
+    }
+
+    // public function about(){
+    //     $users = $this->pagesModel->getUser();
+    //     $data = [
+    //         'users' => $users
+    //     ];
+    //     $this->view('about', $data);
+    // }
 }
