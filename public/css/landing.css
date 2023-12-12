@@ -1,0 +1,68 @@
+body {
+    background-image: url("../img/newback.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right top;
+    background-attachment: fixed;
+  }
+
+  .header-text{
+    width: 600px;
+    padding-left: 200px;
+    padding-top: 180px;
+  }
+
+  h1{
+    color: rgb(117, 20, 20);
+    font-family: 'Inter', sans-serif;
+    font-size: 90px;
+  }
+
+  h5{
+    color: rgb(62, 60, 60);
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    margin-top: 5%;
+  }
+
+  .button {
+  background-color: #c52424; /* Initial color (Red) */
+  border-radius: 7px;
+  border: none;
+  color: rgb(255, 252, 252);
+  font-family: 'Inter', sans-serif;
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.1s; /* Smooth transition */
+
+}
+
+.button-div {
+  background-color: #c52424; /* Initial color (Red) */
+  border-radius: 7px;
+  border: none;
+  color: rgb(255, 252, 252);
+  font-family: 'Inter', sans-serif;
+  padding: 5px 15px;
+  text-align: center;
+  display: inline-block;
+
+  cursor: pointer;
+  transition: background-color 0.1s; /* Smooth transition */
+
+}
+
+.button:hover {
+  background-color: #c52424; /* Green when hovered */
+}
+
+.mid {
+width: calc(60% - 330px);
+position: fixed;
+padding-left: 100px;
+left: 55%;
+top: 23%;
+}

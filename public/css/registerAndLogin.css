@@ -1,0 +1,386 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.container .image {
+    /* width: 50%;
+  height: 740px; */
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+}
+
+.container .image #registerAndLogin {
+    width: 80%;
+    height: 100%;
+}
+
+.container #logo {
+    height: 150px;
+    width: 150px;
+}
+
+/* ----------------Shared CSS-------------- */
+
+/* login & forget password1 & forget password2 & password reset successful & accountCreationSuccessful & studentCreatingProfile2,3*/
+.shared-formc {
+    padding-left: 50px;
+    padding-top: 50px;
+    width: 50%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+/* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
+.shared-text p {
+    font-size: 17px;
+}
+
+/* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
+.shared-label label {
+    font-size: 15px;
+}
+
+/* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
+.shared-input input {
+    height: 45px;
+    width: 500px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 10px #ddd;
+}
+
+/* login & forget password & forget password2 & studentRegistration & studentCreatingProfile2*/
+.shared-button form button {
+    margin-top: 50px;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+/* login & forget password & forget password2 & studentRegistration & studentCreatingProfile2*/
+.shared-button form button:hover {
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+    /* Adjusted box-shadow for a stronger effect */
+}
+
+/* forget password & studentRegistration & studentCreatingProfile2*/
+.shared-input2 input {
+    height: 45px;
+    width: 50px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 8px #ddd;
+    column-gap: 50px;
+    margin-right: 18px;
+}
+
+/* forget password & studentRegistration & studentCreatingProfile2*/
+.shared-input2 input:focus {
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* forget password & setPassword & studentCreatingProfile2*/
+.shared-margin {
+    margin-top: 40px;
+}
+
+/* login & studentRegistration */
+.shared-margin2 {
+    margin-top: 30px;
+}
+
+/* passwordResetSuccessful & studentCreatingProfile3 */
+.shared-button2 {
+    margin-top: 100px;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+    width: 150px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+/* passwordResetSuccessful & studentCreatingProfile3 */
+.shared-button2:hover {
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+    /* Adjusted box-shadow for a stronger effect */
+}
+
+.shared-formce {
+    position: absolute;
+    left: calc(100% - 700px);
+}
+
+/* Clear floats after the columns */
+section::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ----------------Register Landing-------------- */
+
+.container .registerLanding-formc {
+    margin-top: -20px !important;
+}
+
+
+.container .registerLanding-formc .registerLanding-formce .registerLanding-text .choice {
+    width: 500px;
+    height: 90px;
+    border-radius: 6px;
+    padding-left: 10px;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #3C3C3C;
+    border: 1px solid #000;
+    background: #ffffff;
+    box-shadow: 0px 0px 19px -2px #ddd;
+    -webkit-box-shadow: 0px 0px 19px -2px #ddd;
+    -moz-box-shadow: 0px 0px 19px -2px #ddd;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Align content to the left within the button */
+    transition: background-color 0.2s;
+    justify-content: center;
+    text-align: left;
+}
+
+.container .registerLanding-formc .registerLanding-formce .registerLanding-text .choice:hover {
+    background: #9D0000;
+    /* Change button color to red when clicked */
+    border: 1px solid #9D0000;
+    background: #FFF5F5;
+    color: #9D0000;
+    box-shadow: 0px 0px 19px -2px rgba(232, 33, 33, 0.08);
+    -webkit-box-shadow: 0px 0px 19px -2px rgba(232, 33, 33, 0.08);
+    -moz-box-shadow: 0px 0px 19px -2px rgba(232, 33, 33, 0.08);
+}
+
+.registerLanding-text p {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.registerLanding-text .choice .button-text {
+    font-weight: bold;
+    /* Bold the button text */
+}
+
+
+/* ----------------Login-------------- */
+
+.login-text .login-input-field label {
+    font-size: 18px;
+}
+
+/* ----------------Password Reset Successful-------------- */
+.pswResetSuccess-formc {
+    padding-top: 180px !important;
+}
+
+/* ----------------Student Creating Profile-------------- */
+.studentProfile3-text .studentProfile3-checkboxes .box {
+    display: flex;
+    align-items: center;
+    /* Vertically align items */
+    margin-bottom: 30px;
+}
+
+.studentProfile3-text .studentProfile3-checkboxes .inputt[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-right: 30px;
+    appearance: none;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    box-shadow: 0px 0px 19px -2px #ddd;
+    -webkit-box-shadow: 0px 0px 19px -2px #ddd;
+    -moz-box-shadow: 0px 0px 19px -2px #ddd;
+}
+
+.studentProfile3-text .studentProfile3-checkboxes .inputt[type="checkbox"]::before {
+    content: "✔";
+    /* Use a checkmark symbol or any other character you prefer */
+    font-size: 16px;
+    /* Adjust the size of the checkmark as needed */
+    line-height: 20px;
+    /* Vertically align the checkmark in the middle */
+    color: transparent;
+}
+
+.studentProfile3-text .studentProfile3-checkboxes .inputt[type="checkbox"]:checked::before {
+    color: #9D0000;
+    margin-left: 3px;
+}
+
+.studentProfile3-text .studentProfile3-checkboxes .labels {
+    display: flex;
+    align-items: center;
+    /* Vertically align items */
+    font-size: 15px;
+    color: rgb(146, 141, 141);
+    /* Set the label color */
+}
+
+.studentProfile3-text .button-next .next {
+    margin-top: 25px !important;
+}
+
+/* ----------------Account Creation Successful-------------- */
+.accountCreateSuccess-formc {
+    padding-top: 180px !important;
+}
+
+/* ----------------Profile Creation Successful-------------- */
+.profileCreateSuccess-formc {
+    padding-top: 180px !important;
+}
+
+/* ----------------Student Creating Profile-------------- */
+
+.container .studentCreateProfile-formc {
+    margin-top: -25px !important;
+}
+
+.studentCreateProfile-text .button-next .next {
+    margin-top: 25px !important;
+}
+
+.studentCreateProfile-input-field input,
+.studentCreateProfile-input-field .inputt {
+    height: 45px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1rem;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding-left: 5px;
+    box-shadow: 0px 0px 19px -2px #ddd;
+    -webkit-box-shadow: 0px 0px 19px -2px #ddd;
+    -moz-box-shadow: 0px 0px 19px -2px #ddd;
+}
+
+.studentCreateProfile-input-field .inputt {
+    font-size: 0.9rem;
+    width: 100px;
+}
+
+.studentCreateProfile-input-field select {
+    font-size: 1.15rem;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.studentCreateProfile-input-field .inputt1 {
+    padding-left: 5px;
+    width: 500px;
+    margin-top: 10px;
+}
+
+.studentCreateProfile-horizontal-input {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 5px;
+}
+
+.studentCreateProfile-horizontal-input .input-group {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    margin-top: -25px;
+}
+
+/* .studentCreateProfile-horizontal-input .input-group select *{
+    background-color: red;
+} */
+
+.studentCreateProfile-horizontal-input .input-group input,
+.studentCreateProfile-horizontal-input .input-group .inputt {
+    width: 240px;
+}
+
+/* ---------------- Student Create Profile 1 -------------- */
+.studentCreateProfile-input-field p {
+    font-size: 10px;
+}
+
+.studentCreateProfile-formce {
+    position: absolute;
+    left: calc(100% - 700px);
+}
+
+/* ---------------- Donor Create Profile 1 -------------- */
+.donorCreateProfile-text .choice {
+    width: 500px;
+    height: 50px;
+    border-radius: 6px;
+    margin-top: 25px;
+    font-size: 1rem;
+    color: #3C3C3C;
+    border: 1px solid #000;
+    background: #F5F5F5;
+    box-shadow: 0px 0px 19px -2px #ddd;
+    -webkit-box-shadow: 0px 0px 19px -2px #ddd;
+    -moz-box-shadow: 0px 0px 19px -2px #ddd;
+}
+
+.donorCreateProfile-text .choice:hover {
+    background: #9D0000;
+    /* Change button color to red when clicked */
+    border: 1px solid #9D0000;
+    background: #FFF5F5;
+    color: #9D0000;
+    box-shadow: 0px 0px 19px -2px rgba(232, 33, 33, 0.08);
+    -webkit-box-shadow: 0px 0px 19px -2px rgba(232, 33, 33, 0.08);
+    -moz-box-shadow: 0px 0px 19px -2px rgba(232, 33, 33, 0.08);
+}
+
+.donorCreateProfile-formce .next {
+    margin-top: 70px !important;
+}
