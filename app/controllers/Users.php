@@ -59,6 +59,12 @@ class Users extends Controller{
     public function studentCreatingProfile3(){
         $this->view('users/studentCreatingProfile3');
     }
+
+    public function studentOrganizationProfileCreationSuccessful(){
+        $this->view('users/studentOrganizationProfileCreationSuccessful');
+    }
+
+    
     
     
 
