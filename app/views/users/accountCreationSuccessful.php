@@ -4,23 +4,23 @@
     <title>Account Creation Successful</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="registerAndLogin.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
 </head>
 <body>
     <div class="container">
         <div class="image">
-            <img src="images/setps.jpg" alt="Set Password" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/setps.jpg" alt="Set Password" id="registerAndLogin">
         </div>
         <div class="accountCreateSuccess-formc shared-formc">
-            <div class="accountCreateSuccess-formce">
-                <img src="images/logo.png" alt="Logo_Image" id="logo">
+            <div class="accountCreateSuccess-formce shared-formce">
+                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Account Creation Successful!</h1>
                 <span style="color: rgb(146, 141, 141);">Now you can log in with your new password</span> 
-            </div>
 
-            <div class="button-next ">
-                <button class="next shared-button2">Log In</button>
+                <div class="button-next ">
+                    <button class="next shared-button2">Log In</button>
+                </div>
             </div>
         </div>
     </div>

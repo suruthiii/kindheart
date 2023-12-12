@@ -28,6 +28,18 @@ class Users extends Controller{
         $this->view('users/passwordResetSuccessful');
     }
 
+    public function studentRegistration(){
+        $this->view('users/studentRegistration');
+    }
+
+    public function setPassword(){
+        $this->view('users/setPassword');
+    }
+
+    public function accountCreationSuccessful(){
+        $this->view('users/accountCreationSuccessful');
+    }
+
     // public function register(){
     //     // Initial form data
     //     $data = [
