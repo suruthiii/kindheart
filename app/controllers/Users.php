@@ -35,7 +35,7 @@ class Users extends Controller{
     public function setPassword(){
         $this->view('users/setPassword');
     }
-
+    
     public function accountCreationSuccessful(){
         $this->view('users/accountCreationSuccessful');
     }

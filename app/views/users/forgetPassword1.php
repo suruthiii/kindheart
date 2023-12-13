@@ -18,7 +18,7 @@
                 <h1>Forgot Password?</h1>
                 <span style="color: rgb(146, 141, 141);">Reset your password</span>     
                 <div class="forgetPsw-text shared-text shared-label shared-button">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/forgetPassword2" method="GET">
                         <div class="forgetPsw-input-field1 shared-input shared-margin">
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your Email address</label><br><br>
                             <input class="inputt" type="text" name="email" /><br><br>
@@ -35,9 +35,7 @@
                             <input type="text"  />
                         </div>
 
-                        <a href="<?php echo URLROOT ?>/users/forgetPassword2">
-                            <button type='submit'>Continue</button>
-                        </a>
+                        <button type="submit">Continue</button>
                         
                     </form>
                 </div>
