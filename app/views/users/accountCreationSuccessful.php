@@ -19,7 +19,9 @@
                 <span style="color: rgb(146, 141, 141);">Now you can log in with your new password</span> 
 
                 <div class="button-next ">
-                    <button class="next shared-button2">Log In</button>
+                    <a href="<?php echo URLROOT ?>/users/studentCreatingProfile1">
+                        <button class="next shared-button2">Continue</button>
+                    </a>
                 </div>
             </div>
         </div>
