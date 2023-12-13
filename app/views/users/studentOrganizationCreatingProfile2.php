@@ -18,10 +18,10 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
                 <div class="studentProfile-text shared-text shared-label shared-button">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile3" method="GET">
                         <div class="studentProfile-input-field1 shared-input shared-margin">
                             <label for="mobilenumber" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Mobile Number </label><br><br>
-                            <input class="inputt" type="text" name="email" required><br><br>
+                            <input class="inputt" type="text" name="email" ><br><br>
                             <label style="color: rgb(172, 34, 34); margin-bottom: 30px;" for="verificationCode"><b>Send OTP</b></label><br><br><br>
                             <label for="verificationCode" style="color: rgb(146, 141, 141);">Enter the verification code </label><br><br>
                         </div>
