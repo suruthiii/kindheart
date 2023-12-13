@@ -18,7 +18,7 @@
                 <h1>Forgot Password?</h1>
                 <span style="color: rgb(146, 141, 141);">Reset your password</span>     
                 <div class="forgetPsw-text2 shared-text shared-label shared-button">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/passwordResetSuccessful" method="GET">
                         <div class="forgetPsw-input-field shared-input shared-margin">
                             <label for="psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter Password</label><br><br>
                             <input class="inputt" spellcheck="false" type="password" name="psw" id="password" ><br><br>
@@ -28,11 +28,7 @@
                             <input class="inputt" spellcheck="false"  type="password" name="conf-psw" id="cpassword" ><br><br>
                             <span id="password-error"></span><br>
                         </div>
-
-                        <a href="<?php echo URLROOT?>/users/passwordResetSuccessful">
                             <button type="submit" id="setPassword">Reset Password</button>
-                        </a>
-                        
                     </form>
                 </div>               
             </div>  
