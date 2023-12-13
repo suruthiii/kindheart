@@ -18,7 +18,7 @@
                 <h1>Privacy Preferences</h1>
                 <span style="color: rgb(146, 141, 141);">Select the details you want to show in your profile</span>     
                 <div class="studentProfile3-text shared-text">
-                    <form action="<?php echo URLROOT ?>/users/studentOrganizationCreatingProfile">
+                    <form action="<?php echo URLROOT ?>/users/profileCreationSuccessful" method="GET">
                         <div class="studentProfile3-checkboxes shared-margin">
                             <div class="box">
                                 <label class="labels">
