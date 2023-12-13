@@ -4,16 +4,16 @@
     <title>Donor Creating Profile</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="registerAndLogin.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
 
 <body>
     <div class="container">
         <div class="image">
-            <img src="images/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
         </div>
         <div class="donorCreateProfile-formc shared-formc">
-            <div class="donorCreateProfile-formce">
-                <img src="images/logo.png" alt="Logo_Image" id="logo">
+            <div class="donorCreateProfile-formce shared-formce">
+                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Provide donations for their educational success</span><br><br><br>     
