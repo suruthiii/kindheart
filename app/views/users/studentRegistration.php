@@ -19,10 +19,10 @@
                 <h1>Register as a Student</h1>
                 <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
                 <div class="studentRegistration-text shared-text shared-label shared-button">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/setPassword" method="GET">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
-                            <input class="inputt" spellcheck="false" type="email" name="email" id="email-field" onkeyup="validateEmail()" required><br><br>
+                            <input class="inputt" spellcheck="false" type="email" name="email" id="email-field" onkeyup="validateEmail()" ><br><br>
                             <span id="email-error"></span><br>
 
 
@@ -31,12 +31,12 @@
                         </div>
                         <div class="studentRegistration-input-field2 shared-input2">
                             <input type="text" />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
-                            <input type="text" disabled />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
+                            <input type="text"  />
                         </div>
                         <button>Verify</button>
                     </form>
