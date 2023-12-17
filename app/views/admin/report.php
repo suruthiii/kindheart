@@ -276,7 +276,7 @@
 
             <div class="right-content">
                 
-                <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Add Reports</h3>
+                <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Generate Reports</h3>
                 
                 <form action="" class="add-report-form">
                     <label for="report-name">Report Name</label><br>
@@ -290,7 +290,7 @@
 
                     <label for="edate">End Date</label><br>
                     <input type="date" id="edate" name="edate"><br><br>
-                    
+
                     <input type="submit" value="Generate">
                 </form>
                 
