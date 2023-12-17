@@ -244,7 +244,7 @@
     scale: 1.05;
 }
 
-.page-container .section .container .add-report-btn-container {
+/* .page-container .section .container .add-report-btn-container {
     margin-top: 40px;
     margin-left: 10px;
     margin-right: 400px;
@@ -275,7 +275,7 @@
     padding: 0 3px; 
     font-size: 10px; 
     font-weight: bold;
-}
+} */
 
 .page-container .section .container .right-content .add-report-form {
     margin-left: 65px;
@@ -284,6 +284,38 @@
 
 .page-container .section .container .right-content .add-report-form label {
     margin-bottom: 3px;
+    color: rgba(0, 0, 0, 0.571);
+}
+
+.page-container .section .container .right-content .add-report-form input {
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.page-container .section .container .right-content .add-report-form input[type=text], [type=date] {
+    border: 1px solid rgba(0, 0, 0, 0.153);
+}
+
+.page-container .section .container .right-content .add-report-form input[type=text], [type=date]:focus {
+    border: 1px solid rgba(0, 0, 0, 0.277);
+}
+
+.page-container .section .container .right-content .add-report-form input[type=submit] {
+    /* margin-left: 50px; */
+    margin-top: 15px;
+    border: none;
+    background-color: #8e0000;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.page-container .section .container .right-content .add-report-form input[type=submit]:hover {
+    scale: 1.05;
 }
 
 /* --------------------Necessity Pages------------------- */

@@ -281,12 +281,16 @@
                 <form action="" class="add-report-form">
                     <label for="report-name">Report Name</label><br>
                     <input type="text" id="report-name" name="report-name"><br><br>
+
                     <label for="criteria">Criteria</label><br>
                     <input type="text" id="criteria" name="criteria"><br><br>
+
                     <label for="sdate">Start Date</label><br>
                     <input type="date" id="sdate" name="sdate"><br><br>
+
                     <label for="edate">End Date</label><br>
                     <input type="date" id="edate" name="edate"><br><br>
+                    
                     <input type="submit" value="Generate">
                 </form>
                 
