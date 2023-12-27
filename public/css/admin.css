@@ -278,7 +278,7 @@
 } */
 
 .page-container .section .container .right-content .add-report-form {
-    margin-left: 65px;
+    margin-left: 50px;
     margin-top: 40px;
 }
 
@@ -287,29 +287,39 @@
     color: rgba(0, 0, 0, 0.571);
 }
 
-.page-container .section .container .right-content .add-report-form input {
+.page-container .section .container .right-content .add-report-form input[type=text] {
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.153);
+    outline: none;
     padding: 5px;
-    border-radius: 5px;
+    width:calc(100% - 60px);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=text], [type=date] {
+.page-container .section .container .right-content .add-report-form input[type=date] {
     border: 1px solid rgba(0, 0, 0, 0.153);
+    outline: none;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    padding: 5px;
+    width:calc(100% - 60px);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=text], [type=date]:focus {
-    border: 1px solid rgba(0, 0, 0, 0.277);
+.page-container .section .container .right-content .add-report-form input[type=text]:focus, [type=date]:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.727);
 }
 
 .page-container .section .container .right-content .add-report-form input[type=submit] {
     /* margin-left: 50px; */
     margin-top: 15px;
+    border-radius: 5px;
     border: none;
     background-color: #8e0000;
     color: white;
     font-weight: 500;
     cursor: pointer;
-    width: 80px;
-    height: 30px;
+    width:calc(100% - 50px);
+    padding: 6px 5px 6px 5px;
     text-align: center;
     transition: 0.2s;
 }
