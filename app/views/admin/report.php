@@ -294,9 +294,9 @@
                     <!-- <input type="submit" value="Generate"> -->
                     <div class="gen-area">
                         <p class="text-warning" id="message"></p>
-                        <button type="button" class="gen-btn" id="gen" onclick="generatePDF()">Generate Report</button>
+                        <button type="button" class="gen-btn" id="gen" onclick="generatePDF()">Generate</button>
                         <button class="view-btn" id="view" onclick="viewPDF()" style="display: none;">View</button>
-                        <button class="download-btn" id="down" onclick="saveBlob()" style="display: none;">Save</button>
+                        <button class="save-btn" id="down" onclick="saveBlob()" style="display: none;">Save</button>
                     </div>
                 </form>
 
