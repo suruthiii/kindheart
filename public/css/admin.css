@@ -352,7 +352,7 @@
     color: white;
     font-weight: 500;
     cursor: pointer;
-    width:calc(50% - 20px);
+    width:calc(50% - 25px);
     padding: 6px 5px 6px 5px;
     text-align: center;
     transition: 0.2s;
@@ -369,7 +369,7 @@
     color: white;
     font-weight: 500;
     cursor: pointer;
-    width:calc(50% - 30px);
+    width:calc(50% - 25px);
     padding: 6px 5px 6px 5px;
     text-align: center;
     transition: 0.2s;
