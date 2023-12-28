@@ -305,8 +305,12 @@
     width:calc(100% - 60px);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=text]:focus, [type=date]:focus {
+.page-container .section .container .right-content .add-report-form input[type=text]:focus {
     border-bottom: 1px solid rgba(0, 0, 0, 0.727);
+}
+
+.page-container .section .container .right-content .add-report-form [type=date]:focus {
+    border: 1px solid rgba(0, 0, 0, 0.727);
 }
 
 .page-container .section .container .right-content .add-report-form input[type=submit] {
