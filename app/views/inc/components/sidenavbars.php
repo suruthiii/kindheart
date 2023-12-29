@@ -1,0 +1,61 @@
+<div class="sidenav">
+    <div class="container">
+        <div class="logo"><img src="<?php echo URLROOT ?>/img/logo.jpg" alt=""></div>
+        <a class="sidenav-close-btn" onclick="navToggle()">X</a>
+        <div class="items">
+            <a href="<?php echo URLROOT ?>/superadmin/index">
+                <?php if ($section == 'dashboard'){?>
+                    <div class="selected-item">Dashboard</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Dashboard</div>
+                <?php } ?>
+            </a>
+
+            <a href="<?php echo URLROOT ?>/superadmin/admins">
+                <?php if ($section == 'admins'){?>
+                    <div class="selected-item">Admins</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Admins</div>
+                <?php } ?>
+            </a>
+            
+            <a href="<?php echo URLROOT ?>/admin/successStory">
+                <?php if ($section == 'successStories'){?>
+                    <div class="selected-item">Success Stories</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Success Stories</div>
+                <?php } ?>
+            </a>
+
+            <a href="<?php echo URLROOT ?>/superadmin/complaint">
+                <?php if ($section == 'complaints'){?>
+                    <div class="selected-item">Complaints</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Complaints</div>
+                <?php } ?>
+            </a>
+
+            <a href="<?php echo URLROOT ?>/superadmin/logOut">
+                <?php if ($section == 'logOut'){?>
+                    <div class="selected-item">Log Out</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Log Out</div>
+                <?php } ?>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function navToggle() {
+        console.log("pushed")
+        var element;
+        element = document.querySelector('.sidenav');
+        element.classList.toggle("sidenav-toggled");
+    }
+</script>            
