@@ -20,6 +20,15 @@
                     <div class="item">Admins</div>
                 <?php } ?>
             </a>
+
+            <a href="<?php echo URLROOT ?>/superadmin/user">
+                <?php if ($section == 'users'){?>
+                    <div class="selected-item">Users</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Users</div>
+                <?php } ?>
+            </a>
             
             <a href="<?php echo URLROOT ?>/superadmin/successStory">
                 <?php if ($section == 'successStories'){?>
