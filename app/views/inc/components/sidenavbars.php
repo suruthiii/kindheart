@@ -12,7 +12,7 @@
                 <?php } ?>
             </a>
 
-            <a href="<?php echo URLROOT ?>/superadmin/admins">
+            <a href="<?php echo URLROOT ?>/superadmin/admin">
                 <?php if ($section == 'admins'){?>
                     <div class="selected-item">Admins</div>
                 <?php }
@@ -21,7 +21,7 @@
                 <?php } ?>
             </a>
             
-            <a href="<?php echo URLROOT ?>/admin/successStory">
+            <a href="<?php echo URLROOT ?>/superadmin/successStory">
                 <?php if ($section == 'successStories'){?>
                     <div class="selected-item">Success Stories</div>
                 <?php }
