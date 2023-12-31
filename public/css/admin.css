@@ -420,8 +420,7 @@
 }
 
 .page-container .section .container .view-donation-btn-container .view-donation-btn {
-    width: 120px;
-    height: 25px;
+    padding: 5px 10px;
     background-color: #8e0000;
     color: white;
     font-weight: 500;
@@ -433,7 +432,6 @@
 
 .page-container .section .container .view-donation-btn-container .view-donation-btn:hover {
     scale: 1.05;
-    cursor: pointer;
 }
 
 

@@ -47,11 +47,11 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <form action="<?php echo URLROOT ?>/necessity/viewAdminNecessityDonation">
-                    <button type="submit" class="view-donation-btn" >
+                <a href="<?php echo URLROOT ?>/necessity/viewAdminNecessityDonation" class="view-donation-btn">
+                    <!-- <button type="submit" class="view-donation-btn" > -->
                         View Donations
-                    </button>
-                </form>
+                    <!-- </button> -->
+    </a>
             </div>
         </div>
     </section>
