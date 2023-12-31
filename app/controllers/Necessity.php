@@ -10,14 +10,14 @@ class Necessity extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('necessity/viewAdminNecessity', $data);
+        $this->view('admin/necessity/viewNecessity', $data);
     }
 
     public function viewAdminNecessityDonation(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('necessity/viewAdminNecessityDonation', $data);
+        $this->view('admin/necessity/viewNecessityDonation', $data);
     }
 
 }
