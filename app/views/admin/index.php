@@ -15,64 +15,16 @@
                 <!-- Card 3 -->
                 <a class="card-link" href="">
                     <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
+                        <div class="title">Requests</div>
+                        <div class="value">6</div>
                     </div>
                 </a>
 
                 <!-- Card 3 -->
                 <a class="card-link" href="">
                     <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
+                        <div class="title">Complaints</div>
+                        <div class="value">45</div>
                     </div>
                 </a>
 
