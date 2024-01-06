@@ -76,10 +76,4 @@ class Admin extends Controller {
         $this->view('admin/complaint', $data);
     }
 
-    public function logOut() {
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/logOut', $data);
-    }
 }

@@ -12,10 +12,6 @@ class Users extends Controller{
         $this->view('users/registerLanding');
     }
 
-    public function login(){
-        $this->view('users/login');
-    }
-
     public function forgetPassword1(){
         $this->view('users/forgetPassword1');
     }
@@ -345,144 +341,130 @@ class Users extends Controller{
     //     }
     // }
 
-    // public function login(){
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-    //         // Form is submitting
-    //         // Sanitize POST data
-    //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    public function login(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Form is submitting
+            // Sanitize POST data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-    //         // Input data
-    //         $data = [
-    //             'email' => trim($_POST['email']),
-    //             'password' => trim($_POST['password']),
-    //             'remember_me' => isset($_POST['remember_me']),
-    //             'err' => ''
-    //         ];
+            // Input data
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'remember_me' => isset($_POST['remember_me']),
+                'err' => ''
+            ];
 
-    //         // Validate data
-    //         // Validate email
-    //         if (empty($data['email'])){
-    //             $data['err'] = 'Please enter email';
-    //         }
-    //         else{
-    //             if ($this->userModel->findUserByEmail($data['email'])){
-    //                 // User found
-    //             }
-    //             else{
-    //                 // User not found
-    //                 $data['err'] = 'No user found';
-    //             }
-    //         }
+            // Validate data
+            // Validate email
+            if (empty($data['email'])){
+                $data['err'] = 'Please enter email';
+            }
+            else{
+                if ($this->userModel->findUserByEmail($data['email'])){
+                    // User found
+                }
+                else{
+                    // User not found
+                    $data['err'] = 'No user found';
+                }
+            }
 
-    //         // Validate password
-    //         if (empty($data['password'])){
-    //             $data['err'] = 'Please enter password';
-    //         }
+            // Validate password
+            if (empty($data['password'])){
+                $data['err'] = 'Please enter password';
+            }
 
-    //         // Check if error is empty
-    //         if (empty($data['err'])){
-    //             // log the user
-    //             $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-    //             if ($loggedInUser){
-    //                 // Create session
-    //                 $this->createUserSession($loggedInUser);
+            // Check if error is empty
+            if (empty($data['err'])){
+                // log the user
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                if ($loggedInUser){
+                    // Create session
+                    $this->createUserSession($loggedInUser);
+                }
+                else{
+                    $data['err'] = 'Password incorrect';
 
-    //                 // If "Remember Me" is checked, set a cookie
-    //                 if ($data['remember_me']) {
-    //                     $this->setRememberMeCookie($loggedInUser->id);
-    //                 }
-    //             }
-    //             else{
-    //                 $data['err'] = 'Password incorrect';
+                    // Load view with errors
+                    $this->view('users/login', $data);
+                }
+            }
+            else{
+                // Load view with errors
+                $this->view('users/login', $data);
+            }
+        }
+        else{
+            // Initial form load
+            $data = [
+                'email' => '',
+                'password' => '',
+                'err' => ''
+            ];
 
-    //                 // Load view with errors
-    //                 $this->view('users/login', $data);
-    //             }
-    //         }
-    //         else{
-    //             // Load view with errors
-    //             $this->view('users/login', $data);
-    //         }
-    //     }
-    //     else{
-    //         // Initial form load
-    //         $data = [
-    //             'email' => '',
-    //             'password' => '',
-    //             'err' => ''
-    //         ];
+            // Load view
+            $this->view('users/login', $data);
+        }
+    }
 
-    //         // Load view
-    //         $this->view('users/login', $data);
-    //     }
-    // }
+    // Create the session
+    public function createUserSession($user){
+        // die(print_r($user));
+        $_SESSION['user_id'] = $user->userID;
+        $_SESSION['user_email'] = $user->email;
+        $_SESSION['user_name'] = $user->username;
+        $_SESSION['user_type'] = $user->userType;
 
-    // // Function to set a "Remember Me" cookie
-    // private function setRememberMeCookie($userId) {
-    //     // Generate a unique token or identifier
-    //     $token = uniqid();
+        // die(print_r($_SESSION));
 
-    //     // Store the token in the database (you may need to create a "remember_tokens" table for this)
-    //     $this->userModel->storeRememberToken($userId, $token);
+        redirect($_SESSION['user_type'].'/index');
+    }
 
-    //     // Set a cookie with the token (you may want to set an expiration time)
-    //     setcookie('remember_me', $token, time() + 3600 * 24 * 30, '/');
-    // }
+    // Logout function
+    public function logout(){
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_type']);
 
-    // // Create the session
-    // public function createUserSession($user){
-    //     $_SESSION['user_id'] = $user->id;
-    //     $_SESSION['user_email'] = $user->email;
-    //     $_SESSION['user_name'] = $user->name;
-    //     $_SESSION['user_type'] = $user->userType;
+        session_destroy();
 
-    //     redirect($_SESSION['user_type'].'/index');
-    // }
+        redirect('users/login');
+    }
 
-    // // Logout function
-    // public function logout(){
-    //     unset($_SESSION['user_id']);
-    //     unset($_SESSION['user_email']);
-    //     unset($_SESSION['user_name']);
-    //     unset($_SESSION['user_type']);
+    // Check if user is logged in
+    public function isLoggedIn(){
+        if (isset($_SESSION['user_id'])){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-    //     session_destroy();
-
-    //     redirect('users/login');
-    // }
-
-    // // Check if user is logged in
-    // public function isLoggedIn(){
-    //     if (isset($_SESSION['user_id'])){
-    //         return true;
-    //     }
-    //     else{
-    //         return false;
-    //     }
-    // }
-
-    // // Check if user is logged in
-    // public function checkLogin() {
-    //     if (!isset($_SESSION['user_id'])) {
-    //         redirect('users/login');
-    //     } else {
-    //         $userType = $_SESSION['user_type'];
-    //         switch ($userType) {
-    //             case 'driver':
-    //                 redirect('driver/index');
-    //                 break;
-    //             case 'parkingOwner':
-    //                 redirect('parkingOwner/index');
-    //                 break;
-    //             case 'security':
-    //                 redirect('security/index');
-    //                 break;
-    //             case 'merchandiser':
-    //                 redirect('merchandiser/index');
-    //                 break;
-    //             default:
-    //                 redirect('pages/index');
-    //         }
-    //     }
-    // }
+    // Check if user is logged in
+    public function checkLogin() {
+        if (!isset($_SESSION['user_id'])) {
+            redirect('users/login');
+        } else {
+            $userType = $_SESSION['user_type'];
+            switch ($userType) {
+                case 'driver':
+                    redirect('driver/index');
+                    break;
+                case 'parkingOwner':
+                    redirect('parkingOwner/index');
+                    break;
+                case 'security':
+                    redirect('security/index');
+                    break;
+                case 'merchandiser':
+                    redirect('merchandiser/index');
+                    break;
+                default:
+                    redirect('pages/index');
+            }
+        }
+    }
 }

@@ -93,7 +93,7 @@
                 <?php } ?>
             </a>
 
-            <a href="<?php echo URLROOT ?>/admin/logOut">
+            <a href="<?php echo URLROOT ?>/users/logout">
                 <?php if ($section == 'logOut'){?>
                     <div class="selected-item">Log Out</div>
                 <?php }
