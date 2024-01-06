@@ -18,12 +18,12 @@
                 <h1>Welcome Back!</h1>
                 <span style="color: rgb(146, 141, 141);">Create a password for your account</span>     
                 <div class="login-text shared-text shared-label shared-button">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/login" method="POST">
                         <div class="login-input-field shared-input shared-margin2">
                             <label for="username" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Username</label><br><br>
-                            <input class="inputt" type="username" name="psw" required><br><br>
+                            <input class="inputt" type="text" name="email" id="email" required><br><br>
                             <label for="password" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Password</label><br><br>
-                            <input class="inputt" type="password" name="conf-psw" required><br><br>
+                            <input class="inputt" type="password" name="password" id="password" required><br><br>
                             <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
                         </div>
                         <div>
