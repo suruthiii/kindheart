@@ -21,6 +21,15 @@
                 <?php } ?>
             </a>
 
+            <a href="<?php echo URLROOT ?>/superadmin/necessity">
+                <?php if ($section == 'necessities'){?>
+                    <div class="selected-item">Necessities</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Necessities</div>
+                <?php } ?>
+            </a>
+
             <a href="<?php echo URLROOT ?>/superadmin/user">
                 <?php if ($section == 'users'){?>
                     <div class="selected-item">Users</div>
@@ -48,7 +57,7 @@
                 <?php } ?>
             </a>
 
-            <a href="<?php echo URLROOT ?>/superadmin/logOut">
+            <a href="<?php echo URLROOT ?>/users/logOut">
                 <?php if ($section == 'logOut'){?>
                     <div class="selected-item">Log Out</div>
                 <?php }

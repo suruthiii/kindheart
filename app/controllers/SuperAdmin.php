@@ -3,8 +3,8 @@
 class SuperAdmin extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
-        // Only admins are allowed to access admin pages
-        $this->middleware->checkAccess(['super_admin']);
+        // Only super admin is allowed to access superadmin pages
+        $this->middleware->checkAccess(['superAdmin']);
     }
 
     public function index(){
@@ -19,6 +19,13 @@ class SuperAdmin extends Controller {
             'title' => 'Home page'
         ];
         $this->view('super admin/admin', $data);
+    }
+
+    public function necessity() {
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity', $data);
     }
 
     public function user(){
@@ -40,13 +47,6 @@ class SuperAdmin extends Controller {
             'title' => 'Home page'
         ];
         $this->view('super admin/complaint', $data);
-    }
-
-    public function logOut(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('super admin/logOut', $data);
     }
 
 }    

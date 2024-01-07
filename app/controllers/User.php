@@ -10,20 +10,20 @@ class User extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('user/viewStudent', $data);
+        $this->view('admin/user/viewStudent', $data);
     }
 
     public function viewOrganization(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('user/viewOrganization', $data);
+        $this->view('admin/user/viewOrganization', $data);
     }
 
     public function viewDonor(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('user/viewDonor', $data);
+        $this->view('admin/user/viewDonor', $data);
     }
 }
