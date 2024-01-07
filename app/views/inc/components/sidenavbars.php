@@ -30,6 +30,15 @@
                 <?php } ?>
             </a>
 
+            <a href="<?php echo URLROOT ?>/superadmin/project">
+                <?php if ($section == 'projects'){?>
+                    <div class="selected-item">Projects</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Projects</div>
+                <?php } ?>
+            </a>
+
             <a href="<?php echo URLROOT ?>/superadmin/user">
                 <?php if ($section == 'users'){?>
                     <div class="selected-item">Users</div>
