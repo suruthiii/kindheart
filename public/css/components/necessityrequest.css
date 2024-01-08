@@ -16,7 +16,7 @@
 .MainTitle p{
     color: black; 
     font-size: 35px; 
-    font-family: Inter; 
+    font-family: 'Inter', sans-serif; 
     font-weight: 700;
     word-wrap: break-word;
 }
@@ -32,7 +32,7 @@
 .instruction p{
     color: #8692A6; 
     font-size: 15px; 
-    font-family: Inter; 
+    font-family: 'Inter', sans-serif; 
     font-weight: 400; 
     word-wrap: break-word;
 }
@@ -60,7 +60,7 @@
 .rightcontainer .TextOfButton{
     padding-left: 5px;
     color: #FFF;
-    font-family: Inter;
+    font-family: 'Inter', sans-serif;
     font-weight: 150;
     font-style: normal;
     margin-top: 10px;
@@ -69,23 +69,11 @@
     transition: font-weight 0.3s ease;
 }
 
-.requestButton:hover .TextOfButton {
-    font-weight: bold; /* Increase font weight on hover */
+/* .requestButton:hover .TextOfButton {
+    font-weight: bold;
 }
 
 .requestButton:hover img {
-    transform: scale(1.1); /* Increase image size on hover */
-}
-
-/* .requestButton:hover {
-    background-color: #6C0000;
-}
-
-.requestButton.clicked {
-    background-color: #4A0000;
-}
-
-.requestButton.clicked .TextOfButton {
-    font-weight: 600;
-    text-decoration: none;
+    transform: scale(1.1);
 } */
+

@@ -23,6 +23,7 @@
 .gobackandicon .GoBack {
     color: #000000; /* Adjust text color as needed */
     transition: color 0.3s;
+    font-family: 'Inter', sans-serif;
 }
 
 .gobackandicon .GoBack:hover{
