@@ -42,6 +42,12 @@ class SuperAdmin extends Controller {
         $this->view('super admin/scholarship', $data);
     }
 
+    public function benefaction() {
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/benefaction', $data);
+    }
 
     public function user(){
         $data = [
