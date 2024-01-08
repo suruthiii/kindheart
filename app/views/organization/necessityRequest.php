@@ -20,7 +20,7 @@
 
             <!-- go back icon and link -->
             <div class="gobackandicon">
-                <a href="#1" class="links">
+                <a href="<?php echo URLROOT ?>/organization/postednecessities" class="links">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
                     <span class="GoBack">Go Back</span>
                 </a>

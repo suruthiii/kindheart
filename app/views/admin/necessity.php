@@ -302,6 +302,29 @@
                             </table>
                         </div>
                     </a>
+
+                    <a href="">
+                        <div class="card">
+                            <table>
+                                <tr>
+                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
+                                    <td width="50%" class="content">
+                                        <h4>Stationary</h4>
+                                        <p>80 Page CR Book</p>
+                                    </td>
+                                    <td width="30%" class="amount">Rs. 34,567.00</td>
+                                    <td width="10%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                            <input type="text" name="name" id="name" hidden value="" />
+                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
                 </div>
             </div>
 

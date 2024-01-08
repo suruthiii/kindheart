@@ -11,7 +11,7 @@
         </div>
         <a class="sidenav-close-btn" onclick="navToggle()">X</a>
         <div class="items">
-            <a href="##1" class="child1">
+            <a href="<?php echo URLROOT ?>/organization/postednecessities" class="child1">
                 <?php 
                 $section = isset($section) ? $section : '';
                 if ($section == 'necessities'){?>
@@ -58,7 +58,7 @@
                 <?php } ?>
             </a>
 
-            <a href="#6">
+            <a href="<?php echo URLROOT ?>/organization/editprofile">
                 <?php if ($section == 'editprofile'){?>
                     <div class="selected-item">Edit Profile</div>
                 <?php }

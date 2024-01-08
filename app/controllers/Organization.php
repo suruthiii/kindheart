@@ -36,6 +36,27 @@ class Organization extends Controller {
         $this->view('organization/physicalgoodsRequest', $data);
     }
 
+    public function postednecessities(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/postednecessities', $data);
+    }
+
+    public function editprofile(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/editprofile', $data);
+    }
+
+    public function addProject(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/addProject', $data);
+    }
+
     // public function about(){
     //     $users = $this->pagesModel->getUser();
     //     $data = [

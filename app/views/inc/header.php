@@ -8,6 +8,7 @@
         
         <!-- External CSS -->
         <link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.css">
+        <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/sidenavbar1.css"> -->
     </head>
     <body>    
 
