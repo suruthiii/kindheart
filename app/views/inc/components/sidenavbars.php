@@ -48,6 +48,15 @@
                 <?php } ?>
             </a>
             
+            <a href="<?php echo URLROOT ?>/superadmin/benefaction">
+                <?php if ($section == 'benefactions'){?>
+                    <div class="selected-item">Benefactions</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Benefactions</div>
+                <?php } ?>
+            </a>
+
             <a href="<?php echo URLROOT ?>/superadmin/successStory">
                 <?php if ($section == 'successStories'){?>
                     <div class="selected-item">Success Stories</div>
