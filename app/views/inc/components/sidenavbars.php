@@ -39,12 +39,12 @@
                 <?php } ?>
             </a>
 
-            <a href="<?php echo URLROOT ?>/superadmin/user">
-                <?php if ($section == 'users'){?>
-                    <div class="selected-item">Users</div>
+            <a href="<?php echo URLROOT ?>/superadmin/scholarship">
+                <?php if ($section == 'scholarships'){?>
+                    <div class="selected-item">Scholarships</div>
                 <?php }
                 else{ ?>
-                    <div class="item">Users</div>
+                    <div class="item">Scholarships</div>
                 <?php } ?>
             </a>
             
@@ -54,6 +54,15 @@
                 <?php }
                 else{ ?>
                     <div class="item">Success Stories</div>
+                <?php } ?>
+            </a>
+
+            <a href="<?php echo URLROOT ?>/superadmin/user">
+                <?php if ($section == 'users'){?>
+                    <div class="selected-item">Users</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Users</div>
                 <?php } ?>
             </a>
 
