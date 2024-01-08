@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "necessities";?>
-<?php require APPROOT.'/views/inc/components/sidenavbars.php'; ?>
+<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
