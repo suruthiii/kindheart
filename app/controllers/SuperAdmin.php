@@ -70,6 +70,14 @@ class SuperAdmin extends Controller {
         $this->view('super admin/request', $data);
     }
 
+    public function report() {
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/report', $data);
+    }
+
+
     public function complaint(){
         $data = [
             'title' => 'Home page'
