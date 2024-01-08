@@ -13,10 +13,10 @@
             <h3>Super Admin Dashboard</h3>
             <div class="cards">
                 <!-- Card 3 -->
-                <a class="card-link" href="">
+                <a class="card-link" href="<?php echo URLROOT ?>/superadmin/admin">
                     <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
+                        <div class="title">Admins</div>
+                        <div class="value">10</div>
                     </div>
                 </a>
 
@@ -44,53 +44,7 @@
                     </div>
                 </a>
 
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a class="card-link" href="">
-                    <div class="card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </a>
+                
             </div>
         </div>
     </section>
