@@ -13,7 +13,7 @@
             <h3>Admin Dashboard</h3>
             <div class="cards">
                 <!-- Card 3 -->
-                <a class="card-link" href="">
+                <a class="card-link" href="<?php echo URLROOT ?>/admin/request">
                     <div class="card">
                         <div class="title">Requests</div>
                         <div class="value">6</div>
@@ -21,7 +21,7 @@
                 </a>
 
                 <!-- Card 3 -->
-                <a class="card-link" href="">
+                <a class="card-link" href="<?php echo URLROOT ?>/admin/complaint">
                     <div class="card">
                         <div class="title">Complaints</div>
                         <div class="value">45</div>
