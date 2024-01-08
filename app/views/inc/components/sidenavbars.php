@@ -84,6 +84,15 @@
                 <?php } ?>
             </a>
 
+            <a href="<?php echo URLROOT ?>/superadmin/report">
+                <?php if ($section == 'reports'){?>
+                    <div class="selected-item">Reports</div>
+                <?php }
+                else{ ?>
+                    <div class="item">Reports</div>
+                <?php } ?>
+            </a>
+
             <a href="<?php echo URLROOT ?>/superadmin/complaint">
                 <?php if ($section == 'complaints'){?>
                     <div class="selected-item">Complaints</div>
