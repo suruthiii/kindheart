@@ -49,6 +49,13 @@ class SuperAdmin extends Controller {
         $this->view('super admin/benefaction', $data);
     }
 
+    public function successStory(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/successStory', $data);
+    }
+
     public function user(){
         $data = [
             'title' => 'Home page'
@@ -56,11 +63,11 @@ class SuperAdmin extends Controller {
         $this->view('super admin/user', $data);
     }
 
-    public function successStory(){
+    public function request() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/successStory', $data);
+        $this->view('super admin/request', $data);
     }
 
     public function complaint(){
