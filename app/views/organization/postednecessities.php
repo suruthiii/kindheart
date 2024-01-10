@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/sidenavbar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/tablesandbutton.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/rightsidebar2.css">
 </head>
