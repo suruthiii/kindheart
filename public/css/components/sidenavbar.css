@@ -34,7 +34,7 @@
 }
 
 .sidenav .container .logo img{
-    width: 80px;
+    width: 70px;
 }
 
 .sidenav .container .sidenav-close-btn{
@@ -62,7 +62,7 @@
 }
 
 .sidenav .container .items{
-    margin-top: 20px;
+    margin-top: -30px;
 }
 
 .sidenav .container .items .item{

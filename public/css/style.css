@@ -20,6 +20,8 @@ body {
     font-family: Inter-Regular;
     font-size: small;
     text-align: left;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 a{
@@ -52,8 +54,10 @@ a{
 
 .page-container .section .container h3 {
     margin-left: 10px;
-    margin-top: 65px;
-    font-size: 25px;
+    margin-top: -10px;
+    /* transform: translateY(-20px); */
+    font-size: 18px;
+    font-weight: bolder;
 }
 
 .page-container .section .container p {
@@ -61,47 +65,37 @@ a{
     /* margin-left: 10px; */
 }
 
+/* ---------------------Necessity and Project lists---------------------*/
 
-
-.page-container .section .container .right-content {
-    top: 220px;
-    position: fixed;
-    right: 0;
-    background-color: #ffffff;
-    width: 20vw;
-    height: 60vh;
-    margin-top: 0;
-    margin-right: 3vw;
-    margin-bottom: 7vw;
-    border-radius: 20px;
-    box-shadow: 0 0 20px 0.1px #00000041;
+/* width and height of the scrollbar track */
+::-webkit-scrollbar {
+    width: 4px;
 }
-
-.page-container .section .container .right-content .right-cards {
-    padding: 20px;
-}
-
-.page-container .section .container .right-content .right-cards .right-card {
-    margin: 25px;
-    padding: 15px;
-    background-color: #8e0000;
+  
+/* color of the scrollbar handle */
+::-webkit-scrollbar-thumb {
+    background-color: #D9D9D9;
     border-radius: 10px;
-    color: white;
-    font-weight: 1000;
+}
+  
+.page-container .section .container .list {
+    margin-right: 500px;
+    margin-top: -10px;
 }
 
-.page-container .section .container .right-content .right-cards .right-card .title {
-    padding-bottom: 5px;
-    padding-left: 5px;
+.page-container .section .container .list .list-title {
+    padding: 5px 0 0 10px;
     font-size: 15px;
+    font-weight: 700;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.257);
 }
 
-.page-container .section .container .right-content .right-cards .right-card .value {
-    padding-left: 5px;
-    padding-top: 5px;
-    font-size: 18px;
+.page-container .section .container .list .card-list {
+    overflow: scroll;
+    height: 160px;
+    margin-top: 4px;
+    padding: 5px;
 }
-
 
 .page-container .section .container .list .card-list .card{
    width: 100%;
@@ -109,7 +103,7 @@ a{
    border-radius: 20px;
    border: 1px solid white;
    transition: 0.2s;
-   margin-top: 10px;
+   /* margin-top: 5px; */
    padding-top: 3px;
 }
 
@@ -168,3 +162,145 @@ a{
     cursor: pointer;
     scale: 1.05;
 }
+
+/* ------------------Right Content---------------- */
+
+.page-container .section .container .right-content {
+    top: 195px;
+    position: fixed;
+    right: 0;
+    background-color: #ffffff;
+    width: 20vw;
+    height: 65vh;
+    margin-top: 0;
+    margin-right: 3vw;
+    margin-bottom: 7vw;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 0.1px #00000041;
+}
+
+.page-container .section .container .right-content .right-cards {
+    padding: 20px;
+}
+
+.page-container .section .container .right-content .right-cards .right-card {
+    width: 200px;
+    height: 50px;
+    margin: 20px;
+    padding: 15px;
+    background-color: #8e0000;
+    border-radius: 10px;
+    color: white;
+    font-weight: 1000;
+}
+
+.page-container .section .container .right-content .right-cards .right-card .title {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    font-size: 15px;
+}
+
+.page-container .section .container .right-content .right-cards .right-card .value {
+    padding-left: 5px;
+    padding-top: 5px;
+    font-size: 18px;
+}
+
+/* -------------Success Story Cards--------------- */
+
+.page-container .section .container .story-cards {
+    margin-right: 500px;
+    margin-top: -10px;
+    /* background-color: #8e0000; */
+}
+
+.page-container .section .container .story-cards .story-card {
+    padding: 12px;
+    margin: 40px 50px 50px 10px;
+    width: 620px;
+    height: 460px;
+    /* background-color: green; */
+    border: 0.8px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0.1px #0000001e;
+}
+
+.page-container .section .container .story-cards .story-card .profile {
+    display: flex;
+    width: 500px;
+    height: 100px;
+    /* background-color: #8e0000; */
+    margin: 30px;
+}
+
+.page-container .section .container .story-cards .story-card .profile .profile-img {
+    /* width: 50px;
+    height: 50px;
+    border-radius: 10px; */
+}
+
+.page-container .section .container .story-cards .story-card .profile .profile-img .pro-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.page-container .section .container .story-cards .story-card .profile .profile-content {
+    transform: translate(10px, -15px);
+    /* background-color: #8e0000; */
+}
+
+.page-container .section .container .story-cards .story-card .profile .profile-content .date {
+    transform: translateY(-13px);
+    font-size: 12px;
+}
+
+.page-container .section .container .story-cards .story-card .story-img-container {
+    width: 200px;
+    height: 180px;
+    margin-left: 30px;
+    margin-top: -60px;
+    margin-bottom: 50px;
+}
+
+.page-container .section .container .story-cards .story-card .story-img-container .story-img {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.page-container .section .container .story-cards .story-card .story-desc {
+    /* width: ; */
+    margin: 20px 15px 20px 28px;
+    color: rgba(0, 0, 0, 0.333);
+}
+
+.page-container .section .container .story-cards .story-card .story-desc .more-desc-link {
+    color: #8e0000;
+    text-decoration: none;
+    font-weight: 1000;
+}
+
+.page-container .section .container .story-cards .story-card .story-btn-container {
+    margin: 25px;
+    /* background-color: green; */
+}
+
+.page-container .section .container .story-cards .story-card .story-btn-container .del-btn {
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    background-color: #8e0000;
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.page-container .section .container .story-cards .story-card .story-btn-container .del-btn:hover {
+    scale: 1.05;
+}
+

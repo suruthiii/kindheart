@@ -4,13 +4,13 @@
 <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "logOut";?>
+<?php $section = "complaints";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>Posted Projects</h3>
+            <h3>User Complaints</h3>
 
             
         </div>

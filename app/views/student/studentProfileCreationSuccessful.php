@@ -3,11 +3,11 @@
         <title><?php echo SITENAME ?></title>
 
         <!-- External CSS -->
-        <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/passwordcreationSuccess.css">
+        <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/studentProfileCreationSuccessful.css">
     </head>
     <body>
 
-<div class="donor-registration">
+    <div class="donor-registration">
         <div class="image">
             <img src="images/welcom.jpg" alt="Welcome_Image" id="welcome">
         </div>
@@ -15,12 +15,8 @@
             <div class="formce">
                 <img src="images/logo.png" alt="Logo_Image" id="logo">
             
-                <h1>Password Reset Successful!</h1>
-                <span style="color: rgb(146, 141, 141);">Now you can log in with your new password</span> 
-            </div>
-
-            <div class="button-next">
-                <button class="next">Log In</button>
+                <h1>Thank You!</h1>
+                <span style="color: rgb(146, 141, 141);">Our team will validate your information and contact you via email shortly. <br>Your account will be validated between 2-3 days</span> 
             </div>
         </div>
     </div>

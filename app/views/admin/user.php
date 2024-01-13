@@ -11,25 +11,25 @@
     <section class="section" id="main">
         <div class="container">
             <h3>Users</h3>
-            <p>Select a user type</p>
+            <p style="margin-left: 10px">Select a user type</p>
             <div class="user-types">
 
                 <!-- User 1 -->
-                <a class="user-link" href="">
+                <a class="user-link" href="<?php echo URLROOT ?>/user/viewStudent">
                     <div class="user">
                         <div class="title">Students</div>
                     </div>
                 </a>
 
                  <!-- User 2 -->
-                 <a class="user-link" href="">
+                 <a class="user-link" href="<?php echo URLROOT ?>/user/viewOrganization">
                     <div class="user">
                         <div class="title">Organizations</div>
                     </div>
                 </a>
 
                  <!-- User 3 -->
-                 <a class="user-link" href="">
+                 <a class="user-link" href="<?php echo URLROOT ?>/user/viewDonor">
                     <div class="user">
                         <div class="title">Donors</div>
                     </div>

@@ -28,8 +28,9 @@ class UserModel{
 
     // Find user
     public function findUserByEmail($email){
-        $this->db->query('SELECT * FROM user WHERE email = :email');
+        $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
         $this->db->bind(':email', $email);
+        $this->db->bind(':username', $email);
 
         $row = $this->db->single();
 
@@ -43,8 +44,9 @@ class UserModel{
 
     // Login user
     public function login($email, $password){
-        $this->db->query('SELECT * FROM user WHERE email = :email');
+        $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
         $this->db->bind(':email', $email);
+        $this->db->bind(':username', $email);
 
         $row = $this->db->single();
 

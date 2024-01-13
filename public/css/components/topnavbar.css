@@ -2,7 +2,7 @@
     overflow: hidden;
     width: 100vw;
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 0;
     z-index: 1;
 }
@@ -11,7 +11,7 @@
     float: right;
     color: rgba(0, 0, 0, 0.62);
     text-align: center;
-    padding: 14px 16px;
+    padding: 10px 16px;
     text-decoration: none;
     font-size: 18px;
     font-weight: bold;
@@ -35,7 +35,7 @@
 .topnav .items .content{
     transition: 0.5s;
     margin-left: 385px;
-    justify-content: space-between;
+    justify-content: right;
     display: flex;
     margin-right: 60px;
     padding-top: 7px;
@@ -85,22 +85,22 @@
 }
 
 .topnav .items .content .notify{
-    padding: 10px 10px 10px 10px;
-    border-radius: 10px;
+    padding: 10px 30px 10px 25px;
+    /* border-radius: 10px; */
     border: none;
-    box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.2); */
     outline: none;
     transition: 0.3s;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex; */
+    /* justify-content: space-between; */
 }
 
 .topnav .items .content .notify .ico{
-    width: 16px;
+    width: 18px;
 }
 
 .topnav .items .content .notify:hover{
-    box-shadow: 0 0 8px 0.1px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 8px 0.1px rgba(0, 0, 0, 0.2); */
     scale: 1.05;
     cursor: pointer;
 }
@@ -110,4 +110,22 @@
         margin-left: 150px;
         transition: left 0.5s ease-in;
     }
+}
+
+.topnav .items .content .profile{
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    overflow: hidden;
+    transform: translateY(5px);
+    scale: 0.95;
+    /* box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.2); */
+    outline: none;
+    transition: 0.3s;
+    /* display: flex; */
+    /* justify-content: space-between; */
+}
+
+.topnav .items .content .profile .ico {
+    width: 30px;
 }

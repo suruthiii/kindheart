@@ -1,30 +1,30 @@
-<html>
-    <head>
-        <title><?php echo SITENAME ?></title>
-
-        <!-- External CSS -->
-        <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/login.css">
-    </head>
-    <body>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
+</head>
+<body>
     <div class="container">
         <div class="image">
-            <img src="images/setps.jpg" alt="Set Password" id="password">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Set Password" id="registerAndLogin">
         </div>
-        <div class="formc">
-            <div class="formce">
-                <img src="images/logo.png" alt="Logo_Image" id="logo">
+        <div class="login-formc shared-formc">
+            <div class="login-formce shared-formce">
+                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Welcome Back!</h1>
                 <span style="color: rgb(146, 141, 141);">Create a password for your account</span>     
-                <div class="text">
-                    <form action="#">
-                        <div class="input-field">
+                <div class="login-text shared-text shared-label shared-button">
+                    <form action="<?php echo URLROOT ?>/users/login" method="POST">
+                        <div class="login-input-field shared-input shared-margin2">
                             <label for="username" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Username</label><br><br>
-                            <input class="inputt" type="username" name="psw" required><br><br>
+                            <input class="inputt" type="text" name="email" id="email" required><br><br>
                             <label for="password" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Password</label><br><br>
-                            <input class="inputt" type="password" name="conf-psw" required><br><br>
-                            <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="#">Forget Password?</a></label><br><br>
+                            <input class="inputt" type="password" name="password" id="password" required><br><br>
+                            <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
                         </div>
                         <div>
                             <label>
@@ -38,3 +38,5 @@
             </div>  
         </div>
     </div>
+</body>
+</html>

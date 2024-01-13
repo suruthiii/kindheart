@@ -2,7 +2,7 @@
 class Admin extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
-        // Only donors are allowed to access admin pages
+        // Only admins are allowed to access admin pages
         $this->middleware->checkAccess(['admin']);
     }
 
@@ -76,10 +76,4 @@ class Admin extends Controller {
         $this->view('admin/complaint', $data);
     }
 
-    public function logOut() {
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/logOut', $data);
-    }
 }
