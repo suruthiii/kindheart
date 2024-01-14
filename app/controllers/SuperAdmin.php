@@ -85,4 +85,11 @@ class SuperAdmin extends Controller {
         $this->view('super admin/complaint', $data);
     }
 
+    public function createAdmin(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/complaint', $data);
+    }
+
 }    
