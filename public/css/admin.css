@@ -323,7 +323,7 @@
     color: rgba(0, 0, 0, 0.571);
 }
 
-.page-container .section .container .right-content .add-form input[type=text], input[type=password] {
+.page-container .section .container .right-content .add-form input[type=text], input[type=password], input[type=email] {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.153);
     outline: none;
@@ -346,6 +346,10 @@
 }
 
 .page-container .section .container .right-content .add-form input[type=password]:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.727);
+}
+
+.page-container .section .container .right-content .add-form input[type=email]:focus {
     border-bottom: 1px solid rgba(0, 0, 0, 0.727);
 }
 
