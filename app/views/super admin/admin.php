@@ -69,19 +69,19 @@
                 
                 <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
                     <label for="name">Name</label><br>
-                    <input type="text" id="name" name="name"><br><br>
+                    <input type="text" id="name" name="name" required><br><br>
 
                     <label for="username">Username</label><br>
-                    <input type="text" id="username" name="username"><br><br>
+                    <input type="text" id="username" name="username" required><br><br>
 
                     <label for="email">Email</label><br>
-                    <input type="text" id="email" name="email"><br><br>
+                    <input type="email" id="email" name="email" required><br><br>
 
                     <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password"><br><br>
+                    <input type="password" id="password" name="password" required><br><br>
 
                     <label for="confirm_password">Confirm Password</label><br>
-                    <input type="password" id="confirm_password" name="confirm_password"><br><br>
+                    <input type="password" id="confirm_password" name="confirm_password" required><br><br>
 
                     <input type="submit" value="Submit">
                 </form>
