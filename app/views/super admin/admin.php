@@ -16,39 +16,37 @@
             <div class="tile-list">
                 <div class="tiles">
 
-                    <!-- Card 1 -->
-                    <a href="">
-                        <div class="tile">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="tile-name">Admin 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="edit-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="edit" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="ban" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    
-
+                    <?php foreach($data['admins'] as $item){?>
+                        <a href="">
+                            <div class="tile">
+                                <table>
+                                    <tr>
+                                        <td width="50%" class="tile-name"><?php echo $item->adminName;?></td>
+                                        <td width="50%" class="option">
+                                            <form action="<?php echo URLROOT ?>" method="post" class="edit-form">
+                                                <input type="text" name="name" id="name" hidden value="" />
+                                                <button type="submit" class="edit" onclick="return confirmSubmit();">
+                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
+                                                </button>
+                                            </form>
+                                            <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                                <input type="text" name="name" id="name" hidden value="" />
+                                                <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                    <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
+                                                </button>
+                                            </form>
+                                            <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
+                                                <input type="text" name="name" id="name" hidden value="" />
+                                                <button type="submit" class="ban" onclick="return confirmSubmit();">
+                                                    <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </a>
+                    <?php }?>
                 </div>
             </div>
             
@@ -62,8 +60,14 @@
             <div class="right-content">
                 
                 <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Admin Registration</h3>
+
+                <?php if (!empty($other_data)){?>
+                    <div class="error-msg">
+                        <span class="form-invalid"><?php echo $other_data["err"] ?></span>
+                    </div>
+                <?php } ?>
                 
-                <form class="add-form">
+                <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
                     <label for="name">Name</label><br>
                     <input type="text" id="name" name="name"><br><br>
 
@@ -73,11 +77,11 @@
                     <label for="email">Email</label><br>
                     <input type="text" id="email" name="email"><br><br>
 
-                    <label for="pass">Password</label><br>
-                    <input type="password" id="pass" name="pass"><br><br>
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password"><br><br>
 
-                    <label for="con-pass">Confirm Password</label><br>
-                    <input type="password" id="con-pass" name="con-pass"><br><br>
+                    <label for="confirm_password">Confirm Password</label><br>
+                    <input type="password" id="confirm_password" name="confirm_password"><br><br>
 
                     <input type="submit" value="Submit">
                 </form>
