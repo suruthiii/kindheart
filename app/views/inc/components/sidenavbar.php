@@ -215,7 +215,208 @@
                         <div class="item">Log Out</div>
                     <?php } ?>
                 </a>
-            <?php } ?> 
+            <?php } ?>
+            
+            <!------------------- Student ------------------>
+            <?php if ($_SESSION['user_type'] == 'student'){ ?>
+                <a href="#1">
+                    <?php if ($section == 'necessities'){?>
+                        <div class="selected-item">Necessities</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Necessities</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#2">
+                    <?php if ($section == 'scholarships'){?>
+                        <div class="selected-item">Scholarships</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Scholarships</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#3">
+                    <?php if ($section == 'benefactions'){?>
+                        <div class="selected-item">Benefactions</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Benefactions</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#4">
+                    <?php if ($section == 'successStories'){?>
+                        <div class="selected-item">Success Stories</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Success Stories</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#5">
+                    <?php if ($section == 'donors'){?>
+                        <div class="selected-item">Donors</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Donors</div>
+                    <?php } ?>
+                </a>
+                
+                <a href="#6">
+                    <?php if ($section == 'editprofile'){?>
+                        <div class="selected-item">Edit Profile</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Edit Profile</div>
+                    <?php } ?>
+                </a>
+
+                
+                <a href="<?php echo URLROOT ?>/users/logOut">
+                    <?php if ($section == 'logOut'){?>
+                        <div class="selected-item">Log Out</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Log Out</div>
+                    <?php } ?>
+                </a>
+            <?php } ?>
+
+            <!------------------- Organization ------------------>
+            <?php if ($_SESSION['user_type'] == 'organization'){ ?>
+                <a href="<?php echo URLROOT ?>/organization/postednecessities">
+                    <?php if ($section == 'necessities'){?>
+                        <div class="selected-item">Necessities</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Necessities</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#2">
+                    <?php if ($section == 'projects'){?>
+                        <div class="selected-item">Projects</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Projects</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#3">
+                    <?php if ($section == 'benefactions'){?>
+                        <div class="selected-item">Benefactions</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Benefactions</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#4">
+                    <?php if ($section == 'successStories'){?>
+                        <div class="selected-item">Success Stories</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Success Stories</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#5">
+                    <?php if ($section == 'donors'){?>
+                        <div class="selected-item">Donors</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Donors</div>
+                    <?php } ?>
+                </a>
+                
+                <a href="<?php echo URLROOT ?>/organization/editprofile">
+                    <?php if ($section == 'editprofile'){?>
+                        <div class="selected-item">Edit Profile</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Edit Profile</div>
+                    <?php } ?>
+                </a>
+
+                
+                <a href="<?php echo URLROOT ?>/users/logOut">
+                    <?php if ($section == 'logOut'){?>
+                        <div class="selected-item">Log Out</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Log Out</div>
+                    <?php } ?>
+                </a>
+            <?php } ?>
+
+            <!------------------- Donor ------------------>
+            <?php if ($_SESSION['user_type'] == 'donor'){ ?>
+                <a href="#1">
+                    <?php if ($section == 'necessities'){?>
+                        <div class="selected-item">Necessities</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Necessities</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#2">
+                    <?php if ($section == 'projects'){?>
+                        <div class="selected-item">Projects</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Projects</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#3">
+                    <?php if ($section == 'donations'){?>
+                        <div class="selected-item">Donations</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Donations</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#4">
+                    <?php if ($section == 'successStories'){?>
+                        <div class="selected-item">Success Stories</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Success Stories</div>
+                    <?php } ?>
+                </a>
+
+                <a href="#5">
+                    <?php if ($section == 'donees'){?>
+                        <div class="selected-item">Donees</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Donees</div>
+                    <?php } ?>
+                </a>
+                
+                <a href="#6">
+                    <?php if ($section == 'editprofile'){?>
+                        <div class="selected-item">Edit Profile</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Edit Profile</div>
+                    <?php } ?>
+                </a>
+
+                
+                <a href="<?php echo URLROOT ?>/users/logOut">
+                    <?php if ($section == 'logOut'){?>
+                        <div class="selected-item">Log Out</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Log Out</div>
+                    <?php } ?>
+                </a>
+            <?php } ?>
         </div>
     </div>
 </div>

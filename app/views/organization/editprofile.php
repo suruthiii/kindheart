@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/sidenavbar1.css">
+    <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/sidenavbar.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/askonlyforneeds.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/goback.css">
     <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/rightcontainerandmiddle.css">
@@ -11,7 +11,9 @@
 </head>
 <body>
     <!-- side navigation bar -->
-    <?php require APPROOT.'/views/inc/components/sidenavbar1.php'; ?>
+    <?php $section = "editprofile";?>
+    <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
+
     <!-- right container -->
     <div class="rightcontainersecond">
         <!-- go back icon and link -->
@@ -82,9 +84,6 @@
         </form>
         
     </div>
-
-    <!-- js for side navigation bar -->
-    <script src="<?php echo URLROOT ?>/js/sidenavbar1.js"></script>
 
 </body>
 </html>
