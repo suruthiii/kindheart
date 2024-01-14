@@ -1,4 +1,4 @@
- /* ------------------------- Dashboard Cards ------------------------ */
+ /* ------------------------- Dashboard tiles ------------------------ */
  
  .page-container .section .container .cards{
     margin-top: 60px;
@@ -137,19 +137,19 @@
     border-radius: 10px;
 }
   
-.page-container .section .container .report-list {
+.page-container .section .container .tile-list {
     margin-right: 400px;
     margin-top: 20px;
 }
 
-.page-container .section .container .report-list .report-cards {
+.page-container .section .container .tile-list .tiles {
     overflow: scroll;
     height: 440px;
     margin-top: 4px;
     padding: 5px 12px;
 }
 
-.page-container .section .container .report-list .report-cards .report-card {
+.page-container .section .container .tile-list .tiles .tile {
    width: 100%;
    height: 70px;
    border-radius: 20px;
@@ -161,29 +161,29 @@
    transition: 0.2s;
 }
 
-.page-container .section .container .report-list .report-cards .report-card:hover{
+.page-container .section .container .tile-list .tiles .tile:hover{
     /* border: 1px solid rgba(127, 127, 127, 0.2); */
     scale: 1.02;
     background-color: rgba(0, 0, 0, 0.03);
  }
 
-.page-container .section .container .report-list .report-cards .report-card table{
+.page-container .section .container .tile-list .tiles .tile table{
     width: 100%;
     height: 100%;
     padding: 0 10px 0 10px;
  }
 
-.page-container .section .container .report-list .report-cards .report-card table tr{
+.page-container .section .container .tile-list .tiles .tile table tr{
     width: 100%;
     height: 100%;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .report-name{
+.page-container .section .container .tile-list .tiles .tile table tr .tile-name{
     margin-top: 5px;
     color: black;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option{
+.page-container .section .container .tile-list .tiles .tile table tr .option{
     margin-left: 10px;
     display: flex;
     width: 85%;
@@ -191,7 +191,7 @@
     padding-top: 20px;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option .view-form .view {
+.page-container .section .container .tile-list .tiles .tile table tr .option .view-form .view {
     width: 60px;
     height: 25px;
     background-color: #8e000000;
@@ -204,12 +204,30 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option .view-form .view:hover {
+.page-container .section .container .tile-list .tiles .tile table tr .option .view-form .view:hover {
     cursor: pointer;
     scale: 1.05;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option .download-form .download {
+.page-container .section .container .tile-list .tiles .tile table tr .option .edit-form .edit {
+    width: 30px;
+    height: 25px;
+    background-color: #8e000000;
+    border: none;
+    font-weight: 500;                                                
+    text-align: center;
+    border: none;
+    margin-top: 2px;
+    border-radius: 5px;
+    transition: 0.2s;
+}
+
+.page-container .section .container .tile-list .tiles .tile table tr .option .edit-form .edit:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.page-container .section .container .tile-list .tiles .tile table tr .option .download-form .download {
     width: 60px;
     height: 25px;
     background-color: #8e000000;
@@ -221,13 +239,13 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option .download-form .download:hover {
+.page-container .section .container .tile-list .tiles .tile table tr .option .download-form .download:hover {
     cursor: pointer;
     scale: 1.05;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option .delete-form .delete {
-    width: 25px;
+.page-container .section .container .tile-list .tiles .tile table tr .option .delete-form .delete {
+    width: 27px;
     height: 25px;
     background-color: #8e000000;
     border: none;
@@ -239,7 +257,25 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .report-list .report-cards .report-card table tr .option .delete-form .delete:hover {
+.page-container .section .container .tile-list .tiles .tile table tr .option .delete-form .delete:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.page-container .section .container .tile-list .tiles .tile table tr .option .ban-form .ban {
+    width: 30px;
+    background-color: #8e000000;
+    border: none;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    transform: translateY(2px);
+    margin-left: 15px;
+    transition: 0.2s;
+}
+
+.page-container .section .container .tile-list .tiles .tile table tr .option .ban-form .ban:hover {
     cursor: pointer;
     scale: 1.05;
 }
@@ -277,17 +313,17 @@
     font-weight: bold;
 } */
 
-.page-container .section .container .right-content .add-report-form {
+.page-container .section .container .right-content .add-form {
     margin-left: 50px;
     margin-top: 40px;
 }
 
-.page-container .section .container .right-content .add-report-form label {
+.page-container .section .container .right-content .add-form label {
     margin-bottom: 3px;
     color: rgba(0, 0, 0, 0.571);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=text] {
+.page-container .section .container .right-content .add-form input[type=text], input[type=password] {
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.153);
     outline: none;
@@ -295,7 +331,7 @@
     width:calc(100% - 60px);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=date] {
+.page-container .section .container .right-content .add-form input[type=date] {
     border: 1px solid rgba(0, 0, 0, 0.153);
     outline: none;
     margin-top: 10px;
@@ -305,15 +341,19 @@
     width:calc(100% - 60px);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=text]:focus {
+.page-container .section .container .right-content .add-form input[type=text]:focus {
     border-bottom: 1px solid rgba(0, 0, 0, 0.727);
 }
 
-.page-container .section .container .right-content .add-report-form [type=date]:focus {
+.page-container .section .container .right-content .add-form input[type=password]:focus {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.727);
+}
+
+.page-container .section .container .right-content .add-form [type=date]:focus {
     border: 1px solid rgba(0, 0, 0, 0.727);
 }
 
-.page-container .section .container .right-content .add-report-form input[type=submit] {
+.page-container .section .container .right-content .add-form input[type=submit] {
     /* margin-left: 50px; */
     margin-top: 15px;
     border-radius: 5px;
@@ -328,11 +368,11 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .right-content .add-report-form input[type=submit]:hover {
+.page-container .section .container .right-content .add-form input[type=submit]:hover {
     scale: 1.05;
 }
 
-.page-container .section .container .right-content .add-report-form .gen-area .gen-btn {
+.page-container .section .container .right-content .add-form .gen-area .gen-btn {
     border-radius: 5px;
     border: none;
     background-color: #8e0000;
@@ -345,11 +385,11 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .right-content .add-report-form .gen-area .gen-btn:hover {
+.page-container .section .container .right-content .add-form .gen-area .gen-btn:hover {
     scale: 1.05;
 }
 
-.page-container .section .container .right-content .add-report-form .gen-area .view-btn {
+.page-container .section .container .right-content .add-form .gen-area .view-btn {
     border-radius: 5px;
     border: none;
     background-color: #8e0000;
@@ -362,11 +402,11 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .right-content .add-report-form .gen-area .view-btn:hover {
+.page-container .section .container .right-content .add-form .gen-area .view-btn:hover {
     scale: 1.05;
 }
 
-.page-container .section .container .right-content .add-report-form .gen-area .save-btn {
+.page-container .section .container .right-content .add-form .gen-area .save-btn {
     border-radius: 5px;
     border: none;
     background-color: #8e0000;
@@ -379,7 +419,7 @@
     transition: 0.2s;
 }
 
-.page-container .section .container .right-content .add-report-form .gen-area .save-btn:hover {
+.page-container .section .container .right-content .add-form .gen-area .save-btn:hover {
     scale: 1.05;
 }
 

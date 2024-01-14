@@ -13,15 +13,15 @@
             <h3>Reports</h3>
             <p style="margin-left: 10px">Generate various reports</p>
             
-            <div class="report-list">
-                <div class="report-cards">
+            <div class="tile-list">
+                <div class="tiles">
 
                     <!-- Card 1 -->
                     <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -49,10 +49,10 @@
 
                     <!-- Card 2 -->
                     <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -80,10 +80,10 @@
 
                      <!-- Card 3 -->
                      <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -111,10 +111,10 @@
 
                     <!-- Card 4 -->
                     <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -142,10 +142,10 @@
 
                      <!-- Card 5 -->
                      <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -173,10 +173,10 @@
 
                     <!-- Card 6 -->
                     <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -204,10 +204,10 @@
                     
                     <!-- Card 7 -->
                     <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -235,10 +235,10 @@
 
                     <!-- Card 8 -->
                     <a href="">
-                        <div class="report-card">
+                        <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
+                                    <td width="50%" class="tile-name">Report 1</td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="view-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -278,7 +278,7 @@
                 
                 <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Generate Reports</h3>
                 
-                <form class="add-report-form">
+                <form class="add-form">
                     <label for="report-name">Report Name</label><br>
                     <input type="text" id="report-name" name="report-name"><br><br>
 
