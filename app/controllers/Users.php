@@ -33,7 +33,9 @@ class Users extends Controller{
 
             //Input Data
             $data = [
-                'email' => trim($_POST['email'])
+                'email' => trim($_POST['email']),
+
+                'email_err' => ''
             ];
 
             //Validate Each Input
@@ -47,6 +49,21 @@ class Users extends Controller{
                 }
             }
 
+            //Validation is completed and no error the  regoster the user
+            if(empty($data['email_err'])){
+                //Hash Password
+
+                //Register USer
+                if($this->userModel->register($data)){
+                    die('User is Registered');
+                }else{
+                    die('Something Went Wring');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentRegistration');
+            }
+
 
         }else{
             //Initial Form
@@ -56,8 +73,6 @@ class Users extends Controller{
                 'email_err' => ''
             ];
         }
-
-        $this->view('users/studentRegistration');
     }
 
     public function setPassword(){
