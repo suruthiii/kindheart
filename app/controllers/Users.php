@@ -25,6 +25,38 @@ class Users extends Controller{
     }
 
     public function studentRegistration(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'email' => trim($_POST['email'])
+            ];
+
+            //Validate Each Input
+            //Validate Email
+            if(empty($data['email'])){
+                $data['email_err'] = 'Please enter an email';
+            }else{
+                //Check email is alreayd registered or not
+                if($this->userModel->findUserByEmail($data['email'])){
+                    $data['email_err'] = 'Email is Already Registered';
+                }
+            }
+
+
+        }else{
+            //Initial Form
+            $data = [
+                'email' => '',
+
+                'email_err' => ''
+            ];
+        }
+
         $this->view('users/studentRegistration');
     }
 

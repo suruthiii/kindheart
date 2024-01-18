@@ -22,7 +22,8 @@
                     <form action="<?php echo URLROOT ?>/users/setPassword" method="GET">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
-                            <input class="inputt" spellcheck="false" type="email" name="email" id="email-field" onkeyup="validateEmail()" ><br><br>
+                            <!-- <input class="inputt" spellcheck="false" type="email" name="email" id="email-field" onkeyup="validateEmail()" ><br><br> -->
+                            <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email'];?>" ><br><br>
                             <span id="email-error"></span><br>
 
 
