@@ -21,6 +21,41 @@
                 <div class="studentRegistration-text shared-text shared-label shared-button">
                     <form action="<?php echo URLROOT ?>/users/setPassword" method="GET">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
+                        <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
+                            <div class="inputbox">
+                                <input class="inputt" type="email" name="email" id="email-field"/><br><br>
+                                <span style="color: rgb(172, 34, 34); margin-bottom: 30px; font-weight: bold;" for="verificationCode"></span>
+                            </div>
+
+                            <label for="psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter Password</label><br><br>
+                            <div class="inputbox">
+                                <input class="inputt" spellcheck="false" type="password" name="psw" id="password" onkeyup="validateStrPassword()" ><br><br>
+                                <span id="spassword-error"></span><br>
+                            </div>
+                        </div>
+                        <button>Create Account</button>
+                    </form>
+                </div>
+                
+            </div>
+                
+            
+        </div>
+    </div>
+
+    <!-- <div class="container">
+        <div class="image">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
+        </div>
+        <div class="studentRegistration-formc shared-formc">
+            <div class="studentRegistration-formce shared-formce">
+                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
+            
+                <h1>Register as a Student</h1>
+                <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
+                <div class="studentRegistration-text shared-text shared-label shared-button">
+                    <form action="<?php echo URLROOT ?>/users/setPassword" method="GET">
+                        <div class="studentRegistration-input-field1 shared-input shared-margin2">
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
                             <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']; ?>" /><br><br>
                             <span style="color: rgb(172, 34, 34); margin-bottom: 30px; font-weight: bold;" for="verificationCode"><?php echo $data['email_err'];?></span>
@@ -46,6 +81,6 @@
                 
             
         </div>
-    </div>
+    </div> -->
 </body>
 </html>

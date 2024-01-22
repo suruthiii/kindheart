@@ -57,11 +57,11 @@ class Users extends Controller{
                 if($this->userModel->register($data)){
                     die('User is Registered');
                 }else{
-                    die('Something Went Wring');
+                    die('Something Went Wrong');
                 }
             }else{
                 //Load View
-                $this->view('users/studentRegistration');
+                
             }
 
 
@@ -73,6 +73,8 @@ class Users extends Controller{
                 'email_err' => ''
             ];
         }
+
+        $this->view('users/studentRegistration');
     }
 
     public function setPassword(){
