@@ -77,6 +77,10 @@ class Users extends Controller{
         $this->view('users/studentRegistration');
     }
 
+    public function emailVerifyOTP(){
+        $this->view('users/emailVerifyOTP');
+    }
+
     public function setPassword(){
         $this->view('users/setPassword');
     }

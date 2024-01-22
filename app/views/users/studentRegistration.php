@@ -16,10 +16,10 @@
             <div class="studentRegistration-formce shared-formce">
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
-                <h1>Register as a Student</h1>
-                <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
+                <h1>Create Your Account</h1>
+                <span style="color: rgb(146, 141, 141); margin-top: 10px;">Receive donations for your educational activities</span>     
                 <div class="studentRegistration-text shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/setPassword" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/emailVerifyOTP" method="GET">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
                         <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
                             <div class="inputbox">
