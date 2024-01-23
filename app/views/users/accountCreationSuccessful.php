@@ -13,10 +13,10 @@
         </div>
         <div class="accountCreateSuccess-formc shared-formc">
             <div class="accountCreateSuccess-formce shared-formce">
-                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
+            <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Account Creation Successful!</h1>
-                <span style="color: rgb(146, 141, 141);">Now you can log in with your new password</span> 
+                <span style="color: rgb(146, 141, 141);">Now you can create your profile</span> 
 
                 <div class="button-next ">
                     <a href="<?php echo URLROOT ?>/users/studentCreatingProfile1">

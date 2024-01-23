@@ -5,7 +5,7 @@ class Users extends Controller{
     }
 
     public function home(){
-        $this->view('users/index');
+        $this->view('pages/index');
     }
 
     public function registerLanding(){
