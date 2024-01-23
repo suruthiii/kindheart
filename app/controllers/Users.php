@@ -126,6 +126,11 @@ class Users extends Controller{
         $this->view('users/studentOrganizationCreatingProfile2');
     }
 
+    public function profile(){
+        $this->view('users/profile');
+    }
+
+
     
 
     public function profileCreationSuccessful(){
