@@ -16,19 +16,26 @@
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Creating Profile</h1>
-                <!-- <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br>    -->
+                <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br><br><br>     
                 <div class="studentCreateProfile-text">
-                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile4" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile3" method="GET">
                         <div class="studentCreateProfile-input-field">
+                            
+                            <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
+                            <input class="inputt1" type="text" name="orgName" ><br><br>
+                            <label for="acaYear" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Acadamic year/ Grade</label><br>
+                            <input class="inputt1" type="text" name="acaYear" ><br><br>
+                            <label for="schol" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Mention Currently receiving scholarships(Use Commas to break)</label><br>
+                            <input class="inputt1" type="text" name="schol"  ><br><br>
 
-                            <div class="studentCreateProfile-horizontal-input">
+                            <!-- <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
-                                    <label for="careType" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Select Caregiver</label><br>
+                                    <label for="careType" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Select Caregiver</label><br><br>
                                     <select class="inputt" name="careType" >
                                         <option value="Father" class="dropdown-option">Father</option>
                                         <option value="Mother" class="dropdown-option">Mother</option>
                                         <option value="Guardian" class="dropdown-option">Guardian</option>
-                                    </select>
+                                    </select><br>
                                 </div>
                             </div>
 
@@ -39,7 +46,7 @@
                             <label for="careRealat" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Relationship to the Student</label><br>
                             <input class="inputt1" type="text" name="careRealat" ><br><br>
 
-                            <!-- <div class="studentCreateProfile-horizontal-input">
+                            <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
                                     <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">GS Certificate</label>
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
@@ -49,9 +56,9 @@
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
                                     <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload a letter confirming your enrolment<br>from your University/ school.</p>
                                 </div>
-                            </div> -->
+                            </div>
 
-                            <!-- <div class="studentCreateProfile-horizontal-input">
+                            <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
                                     <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">NIC - Front </label>
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
@@ -70,8 +77,8 @@
                             <label for="branchName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Branch Name</label><br>
                             <input class="inputt1" type="text" name="branchName" ><br><br>
                             <label for="accNumber" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account Number</label><br>
-                            <input class="inputt1" type="text" name="accNumber" ><br><br> -->
-                        </div>
+                            <input class="inputt1" type="text" name="accNumber" ><br><br>
+                        </div> -->
                         <div class="button-next">
                            
                                 <button class="next shared-button2">Next</button>

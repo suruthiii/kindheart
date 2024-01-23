@@ -18,7 +18,7 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br><br><br>     
                 <div class="studentCreateProfile-text">
-                    <form action="<?php echo URLROOT ?>/users/studentOrganizationCreatingProfile2" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile2" method="GET">
                         <div class="studentCreateProfile-input-field">
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
 
-                            <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
+                            <!-- <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
                             <input class="inputt1" type="text" name="orgName" ><br><br>
                             <label for="acaYear" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Acadamic year/ Grade</label><br>
                             <input class="inputt1" type="text" name="acaYear" ><br><br>
@@ -108,7 +108,7 @@
                             <input class="inputt1" type="text" name="branchName" ><br><br>
                             <label for="accNumber" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account Number</label><br>
                             <input class="inputt1" type="text" name="accNumber" ><br><br>
-                        </div>
+                        </div> -->
                         <div class="button-next">
                            
                                 <button class="next shared-button2">Next</button>

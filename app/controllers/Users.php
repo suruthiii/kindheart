@@ -101,13 +101,32 @@ class Users extends Controller{
         $this->view('users/studentCreatingProfile1');
     }
 
-    public function studentOrganizationCreatingProfile2(){
-        $this->view('users/studentOrganizationCreatingProfile2');
+    public function studentCreatingProfile2(){
+        $this->view('users/studentCreatingProfile2');
     }
 
     public function studentCreatingProfile3(){
         $this->view('users/studentCreatingProfile3');
     }
+
+    public function studentCreatingProfile4(){
+        $this->view('users/studentCreatingProfile4');
+    }
+
+    public function studentCreatingProfile5(){
+        $this->view('users/studentCreatingProfile5');
+    }
+
+    public function studentCreatingProfile6(){
+        $this->view('users/studentCreatingProfile6');
+    }
+
+
+    public function studentOrganizationCreatingProfile2(){
+        $this->view('users/studentOrganizationCreatingProfile2');
+    }
+
+    
 
     public function profileCreationSuccessful(){
         $this->view('users/profileCreationSuccessful');

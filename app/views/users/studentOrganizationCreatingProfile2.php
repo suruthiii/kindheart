@@ -18,7 +18,7 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
                 <div class="studentProfile-text shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile3" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile6" method="GET">
                         <div class="studentProfile-input-field1 shared-input shared-margin">
                             <label for="mobilenumber" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Mobile Number </label><br><br>
                             <input class="inputt" type="text" name="email" ><br><br>

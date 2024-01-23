@@ -15,31 +15,12 @@
             <div class="studentCreateProfile-formce shared-formce">
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
-                <h1>Creating Profile</h1>
+                <h1>Creating Profile</h1><br><br>
                 <!-- <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br>    -->
                 <div class="studentCreateProfile-text">
-                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile4" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile5" method="GET">
                         <div class="studentCreateProfile-input-field">
-
                             <div class="studentCreateProfile-horizontal-input">
-                                <div class="input-group">
-                                    <label for="careType" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Select Caregiver</label><br>
-                                    <select class="inputt" name="careType" >
-                                        <option value="Father" class="dropdown-option">Father</option>
-                                        <option value="Mother" class="dropdown-option">Mother</option>
-                                        <option value="Guardian" class="dropdown-option">Guardian</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <label for="careName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Name</label><br>
-                            <input class="inputt1" type="text" name="careName" ><br><br>
-                            <label for="careOccu" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Occupation</label><br>
-                            <input class="inputt1" type="text" name="careOccu" ><br><br>
-                            <label for="careRealat" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Relationship to the Student</label><br>
-                            <input class="inputt1" type="text" name="careRealat" ><br><br>
-
-                            <!-- <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
                                     <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">GS Certificate</label>
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
@@ -49,9 +30,9 @@
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
                                     <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload a letter confirming your enrolment<br>from your University/ school.</p>
                                 </div>
-                            </div> -->
+                            </div>
 
-                            <!-- <div class="studentCreateProfile-horizontal-input">
+                            <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
                                     <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">NIC - Front </label>
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
@@ -63,7 +44,7 @@
                             </div>
                             <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload clear photos of both sides of your National Identity card if the student age is above 16.</p>
                             
-                            <label for="accHolderName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account holder's name</label><br>
+                            <!-- <label for="accHolderName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account holder's name</label><br>
                             <input class="inputt1" type="text" name="accHolderName" ><br><br>
                             <label for="bankName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the Bank</label><br>
                             <input class="inputt1" type="text" name="bankName" ><br><br>

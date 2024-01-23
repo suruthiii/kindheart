@@ -384,3 +384,10 @@ section::after {
 .donorCreateProfile-formce .next {
     margin-top: 70px !important;
 }
+
+
+
+.input-group .inputt2 {
+    width: 50px;
+    height: 20px;
+}
