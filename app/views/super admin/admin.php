@@ -17,7 +17,7 @@
                 <div class="tiles">
 
                     <?php foreach($data['admins'] as $item){?>
-                        <a href="">
+                        <a href="<?php echo URLROOT ?>/superadmin/viewAdmin/<?php echo $item->adminID?>">
                             <div class="tile">
                                 <table>
                                     <tr>
