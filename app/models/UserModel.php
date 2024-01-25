@@ -118,4 +118,14 @@ class UserModel{
 
         return $result;
     }
+
+    // View admin
+    public function viewAdmin($admin_ID){
+        $this->db->query('SELECT * FROM admin WHERE adminID = :adminID');
+        $this->db->bind(':adminID', $admin_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
 }

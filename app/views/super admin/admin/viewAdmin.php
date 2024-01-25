@@ -1,7 +1,7 @@
 <?php require APPROOT.'/views/inc/header.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "necessities";?>
+<?php $section = "admins"; ?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
@@ -18,8 +18,8 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Necessity</h3>
-            <p style="margin-left: 10px">View information about the necessities of donees</p>
+            <h3 style="margin-top: 25px">View Admin</h3>
+            <p style="margin-left: 10px">View information about the admins</p>
             
             <div class="necessity-info">
                 <table>

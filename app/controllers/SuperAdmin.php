@@ -160,4 +160,18 @@ class SuperAdmin extends Controller {
         }
     }
 
+    public function viewAdmin($admin_ID = null) {
+        if (empty($admin_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'admin_details' => $this->userModel->viewAdmin($admin_ID)
+        ];
+
+        die(print_r($data));
+
+        $this->view('super admin/admin/viewAdmin', $data);
+    }
 }    
