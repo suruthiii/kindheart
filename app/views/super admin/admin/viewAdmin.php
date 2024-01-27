@@ -1,5 +1,8 @@
 <?php require APPROOT.'/views/inc/header.php'; ?>
 
+<!--  TOP NAVIGATION  -->
+<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
+
 <!--  SIDE NAVIGATION  -->
 <?php $section = "admins"; ?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
@@ -43,6 +46,7 @@
             </div>
 
             <div class="view-donation-btn-container">
+                <a href="" class="view-donation-btn">Change Password</a>
                 <a href="" class="view-donation-btn">Edit</a>
                 <a href="" class="view-donation-btn">Delete</a>
                 <a href="" class="view-donation-btn">Ban</a>
