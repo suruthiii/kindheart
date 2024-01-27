@@ -120,7 +120,7 @@ class UserModel{
     }
 
     // View admin
-    public function viewAdmin($admin_ID){
+    public function getAdmin($admin_ID){
         $this->db->query('SELECT admin.*, user.email, user.username FROM admin JOIN user ON admin.adminID = user.userID WHERE adminID = :adminID;');
         $this->db->bind(':adminID', $admin_ID);
 
@@ -128,4 +128,25 @@ class UserModel{
 
         return $row;
     }
+
+    // Update Admin
+    public function updateAdmin($data){
+        // Admin Table Update
+        $this->db->query('UPDATE admin SET adminName = :adminName WHERE adminID = :adminID;');
+        $this->db->bind(':adminID', $data['user_id']);
+        $this->db->bind(':adminName', $data['name']);
+
+        $result1 =  $this->db->execute();
+
+        // User Table Update
+        $this->db->query('UPDATE user SET username = :username WHERE userID = :userID;');
+        $this->db->bind(':userID', $data['user_id']);
+        $this->db->bind(':username', $data['username']);
+
+        $result2 =  $this->db->execute();
+
+        return $result1 && $result2;
+    }
+
+
 }

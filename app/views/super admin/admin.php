@@ -23,8 +23,8 @@
                                     <tr>
                                         <td width="50%" class="tile-name"><?php echo $item->adminName;?></td>
                                         <td width="50%" class="option">
-                                            <form action="<?php echo URLROOT ?>" method="post" class="edit-form">
-                                                <input type="text" name="name" id="name" hidden value="" />
+                                            <form action="<?php echo URLROOT ?>/superadmin/editAdmin" method="GET" class="edit-form">
+                                                <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $item->adminID?>" />
                                                 <button type="submit" class="edit" onclick="return confirmSubmit();">
                                                     <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                                 </button>
