@@ -166,11 +166,9 @@ class SuperAdmin extends Controller {
         }
 
         $data = [
-            'title' => 'Home page',
+            'title' => 'View Admin',
             'admin_details' => $this->userModel->viewAdmin($admin_ID)
         ];
-
-        die(print_r($data));
 
         $this->view('super admin/admin/viewAdmin', $data);
     }

@@ -112,7 +112,7 @@ class UserModel{
 
     // View admins
     public function viewAdmins(){
-        $this->db->query('SELECT * FROM admin');
+        $this->db->query('SELECT * FROM admin ORDER BY adminName');
 
         $result =  $this->db->resultSet();
 
@@ -121,7 +121,7 @@ class UserModel{
 
     // View admin
     public function viewAdmin($admin_ID){
-        $this->db->query('SELECT * FROM admin WHERE adminID = :adminID');
+        $this->db->query('SELECT admin.*, user.email, user.username FROM admin JOIN user ON admin.adminID = user.userID WHERE adminID = :adminID;');
         $this->db->bind(':adminID', $admin_ID);
 
         $row = $this->db->single();
