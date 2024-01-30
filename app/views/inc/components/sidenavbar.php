@@ -330,6 +330,15 @@
                         <div class="item">Donors</div>
                     <?php } ?>
                 </a>
+
+                <a href="<?php echo URLROOT ?>/organization/complaint">
+                    <?php if ($section == 'complaint'){?>
+                        <div class="selected-item">Complaint</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Complaint</div>
+                    <?php } ?>
+                </a>
                 
                 <a href="<?php echo URLROOT ?>/organization/editprofile">
                     <?php if ($section == 'editprofile'){?>
