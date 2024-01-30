@@ -1,7 +1,7 @@
 <?php require APPROOT.'/views/inc/header.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "viewAdminNecessity";?>
+<?php $section = "necessities"; ?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
