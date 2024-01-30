@@ -13,257 +13,40 @@
             <h3>Admins</h3>
             <p style="margin-left: 10px">View the list of admins</p>
             
-            <div class="report-list">
-                <div class="report-cards">
+            <div class="tile-list">
+                <div class="tiles">
 
-                    <!-- Card 1 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <!-- Card 2 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                     <!-- Card 3 -->
-                     <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <!-- Card 4 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                     <!-- Card 5 -->
-                     <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <!-- Card 6 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-                    
-                    <!-- Card 7 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <!-- Card 8 -->
-                    <a href="">
-                        <div class="report-card">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="report-name">Report 1</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="view-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="view" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="download-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="download" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/download-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
+                    <?php foreach($data['admins'] as $item){?>
+                        <a href="<?php echo URLROOT ?>/superadmin/viewAdmin/<?php echo $item->adminID?>">
+                            <div class="tile">
+                                <table>
+                                    <tr>
+                                        <td width="50%" class="tile-name"><?php echo $item->adminName;?></td>
+                                        <td width="50%" class="option">
+                                            <form action="<?php echo URLROOT ?>/superadmin/editAdmin" method="GET" class="edit-form">
+                                                <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $item->adminID?>" />
+                                                <button type="submit" class="edit" onclick="return confirmSubmit();">
+                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
+                                                </button>
+                                            </form>
+                                            <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                                <input type="text" name="name" id="name" hidden value="" />
+                                                <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                    <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
+                                                </button>
+                                            </form>
+                                            <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
+                                                <input type="text" name="name" id="name" hidden value="" />
+                                                <button type="submit" class="ban" onclick="return confirmSubmit();">
+                                                    <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </a>
+                    <?php }?>
                 </div>
             </div>
             
@@ -276,166 +59,58 @@
 
             <div class="right-content">
                 
-                <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Generate Reports</h3>
-                
-                <form class="add-report-form">
-                    <label for="report-name">Report Name</label><br>
-                    <input type="text" id="report-name" name="report-name"><br><br>
+                <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Admin Registration</h3>
 
-                    <label for="criteria">Criteria</label><br>
-                    <input type="text" id="criteria" name="criteria"><br><br>
-
-                    <label for="sdate">Start Date</label><br>
-                    <input type="date" id="sdate" name="sdate"><br><br>
-
-                    <label for="edate">End Date</label><br>
-                    <input type="date" id="edate" name="edate"><br><br>
-
-                    <!-- <input type="submit" value="Generate"> -->
-                    <div class="gen-area">
-                        <p class="text-warning" id="message"></p>
-                        <button type="button" class="gen-btn" id="gen" onclick="generatePDF()">Generate</button>
-                        <button class="view-btn" id="view" onclick="viewPDF()" style="display: none;">View</button>
-                        <button class="save-btn" id="down" onclick="saveBlob()" style="display: none;">Save</button>
+                <?php if (!empty($other_data)){?>
+                    <div class="error-msg">
+                        <span class="form-invalid"><?php echo $other_data["err"] ?></span>
                     </div>
-                </form>
 
-                
-                
+                    <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" required value="<?php print_r($other_data['name']);?>"><br><br>
+
+                        <label for="username">Username</label><br>
+                        <input type="text" id="username" name="username" required value="<?php print_r($other_data['username']);?>"><br><br>
+
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" required value="<?php print_r($other_data['email']);?>"><br><br>
+
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" required><br><br>
+
+                        <label for="confirm_password">Confirm Password</label><br>
+                        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                <?php } else { ?>
+                    <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" required><br><br>
+
+                        <label for="username">Username</label><br>
+                        <input type="text" id="username" name="username" required><br><br>
+
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" required><br><br>
+
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" required><br><br>
+
+                        <label for="confirm_password">Confirm Password</label><br>
+                        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                <?php }?>
             </div>
-            
         </div>
     </section>
 </main>
 
-<script src="https://unpkg.com/jspdf-invoice-template@latest/dist/index.js" type="text/javascript"></script>
 <script>
-    //pdf generate code
-    //Generate pdf
-    var pdfObject; //outputType: jsPDFInvoiceTemplate.OutputType.Blob,
-
-    var props = {
-        outputType: jsPDFInvoiceTemplate.OutputType.Blob,
-        returnJsPDFDocObject: true,
-        fileName: "Invoice 2021",
-        orientationLandscape: false,
-        compress: true,
-        logo: {
-            src: "<?php echo URLROOT ?>/img/bell-1.png",
-            type: 'PNG', //optional, when src= data:uri (nodejs case)
-            width: 53.33, //aspect ratio = width/height
-            height: 26.66,
-            margin: {
-                top: 0, //negative or positive num, from the current position
-                left: 0 //negative or positive num, from the current position
-            }
-        },
-        
-        business: {
-            name: "Kind Heart",
-            address: "Sri Lanka",
-            phone: "0775554487",
-            email: "kindheart@gmail.com",
-            website: "www.kindheart.lk",
-        },
-        invoice: {
-            header: [
-                {
-                    title: "#",
-                    style: {
-                        width: 10
-                    }
-                },
-                {
-                    title: "Title",
-                    style: {
-                        width: 30
-                    }
-                },
-                {
-                    title: "Description",
-                    style: {
-                        width: 80
-                    }
-                },
-                { title: "Price" },
-                { title: "Quantity" },
-                { title: "Unit" },
-                { title: "Total" }
-            ],
-            table: Array.from(Array(100), (item, index) => ([
-                index + 1,
-                "There are many variations ",
-                "Lorem Ipsum is simply dummy text dummy text ",
-                200.5,
-                4.5,
-                "m2",
-                400.5
-            ])),
-            additionalRows: [{
-                col1: 'Total:',
-                col2: '145,250.50',
-                col3: 'ALL',
-                style: {
-                    fontSize: 14 //optional, default 12
-                }
-            },
-                {
-                    col1: 'VAT:',
-                    col2: '20',
-                    col3: '%',
-                    style: {
-                        fontSize: 10 //optional, default 12
-                    }
-                },
-                {
-                    col1: 'SubTotal:',
-                    col2: '116,199.90',
-                    col3: 'ALL',
-                    style: {
-                        fontSize: 10 //optional, default 12
-                    }
-                }],
-        },
-        footer: {
-            text: "The invoice is created on a computer and is valid without the signature and stamp.",
-        },
-        pageEnable: true,
-        pageLabel: "Page ",
-    };
-
-    /* generate pdf */
-    function generatePDF() {
-        pdfObject = jsPDFInvoiceTemplate.default(props);
-        console.log("Object generated: ", pdfObject);
-        document.getElementById('message').textContent = 'Your report is generated!';
-        document.getElementById('gen').style.display = 'none';
-        document.getElementById('view').style.display = 'inline-block';
-        document.getElementById('down').style.display = 'inline-block';
-    }
-
-    /* view pdf */
-    function viewPDF() {
-        if (!pdfObject) {
-            return console.log('No PDF Object');
-        }
-
-        var fileURL = URL.createObjectURL(pdfObject.blob);
-        window.open(fileURL, '_blank');
-    }
-
-    /* download pdf */
-    function saveBlob() {
-        if (!pdfObject) {
-            return console.log('No PDF Object');
-        }
-
-        const fileURL = URL.createObjectURL(pdfObject.blob);
-        const link = document.createElement('a');
-        link.href = fileURL;
-        link.download = "Invoice" + new Date() + ".pdf";
-        link.click();
-    }
+    history.pushState(null, null, '/kindheart/superadmin/admin');
 </script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

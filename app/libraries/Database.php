@@ -6,7 +6,7 @@
         private $dbname = DB_NAME;
 
         private $dbh;
-        private $statement;
+        private $statement; 
         private $error;
 
         public function __construct(){

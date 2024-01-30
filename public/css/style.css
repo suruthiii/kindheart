@@ -5,7 +5,8 @@
 /* ------------------ External Styles ------------------ */
 @import url('admin.css');
 @import url('organization.css');
-
+@import url('student.css');
+@import url('donor.css');
 
 /* ----------------- General Styles ---------------- */
 
