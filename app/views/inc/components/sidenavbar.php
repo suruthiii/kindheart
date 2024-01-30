@@ -313,7 +313,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="#4">
+                <a href="<?php echo URLROOT ?>/organization/successstory">
                     <?php if ($section == 'successStories'){?>
                         <div class="selected-item">Success Stories</div>
                     <?php }
