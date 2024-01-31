@@ -322,7 +322,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="#5">
+                <a href="<?php echo URLROOT ?>/organization/viewdonors">
                     <?php if ($section == 'donors'){?>
                         <div class="selected-item">Donors</div>
                     <?php }
