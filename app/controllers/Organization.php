@@ -57,6 +57,28 @@ class Organization extends Controller {
         $this->view('organization/addProject', $data);
     }
 
+    public function successstory(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/successstory', $data);
+    }
+
+    public function complaint(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/complaint', $data);
+    }
+
+    public function viewdonors(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/viewdonors', $data);
+    }
+
+
     // public function about(){
     //     $users = $this->pagesModel->getUser();
     //     $data = [

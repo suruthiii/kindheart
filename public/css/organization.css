@@ -1,0 +1,417 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.right-side-container{
+    position: fixed;
+    width: 70%;
+    height: 85vh;
+    right: 0;
+    margin-top: 2vh;
+}
+
+.middle-container{
+    position: fixed;
+    width: 45%;
+    height: 85vh;
+}
+
+.rightside-bar-type-one{
+    position: fixed;
+    width: 25%;
+    height: 85vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.middle-container-title-typeone{
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* ------------------Go Back Button ---------------------*/
+.goback-button{
+    position: fixed;
+    width: 45%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+.goback-button img{
+    width: 18px;
+    height: max-content;
+    cursor: pointer;
+}
+
+.goback-button button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 5px;
+    margin-top: 0.5vh;
+    font-size: 15px;
+}
+
+.goback-button img:hover, .goback-button button:hover{
+    color: #410000;
+}
+
+ /* ------------------Success story------------------ */
+.middle-container-titles{
+    position: fixed;
+    width: 45%;
+    height: 10vh;
+}
+
+.middle-container-titles h3{
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 2vh;
+}
+
+.middle-container-titles p{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 2vh;
+}
+
+.succes-story-scrol-card-container{
+    position: fixed;
+    width: 35%;
+    height: 73vh;
+    margin-top: 12vh;
+    overflow-y: auto;
+}
+
+.success-story-card{
+    position: relative;
+    width: 85%;
+    height: 60vh;
+    margin-bottom: 2vh;
+    border-radius: 9px;
+    border: 1px solid #000;
+    background: #FAFAFA;
+    box-shadow: 0px 0px 23px 4px rgba(0, 0, 0, 0.09);
+}
+
+.logo-name-date{
+    position: relative;
+    width: 50%;
+    height: 8vh;
+    margin: 15px;
+}
+
+.logo-for-success{
+    position: relative;
+    float: left;
+    width: 30%;
+    height: 8vh;
+}
+
+.logo-for-success img{
+    width: 60px;
+    height: 8vh;
+    border-radius: 7px;
+}
+
+.name-date{
+    position: relative;
+    float: right;
+    width: 70%;
+    height: 8vh;
+}
+
+.name-date h4{
+    margin-top: 1.5vh;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.name-date p{
+    margin-top: 0.5vh;
+    color: #757575;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.added-image-box{
+    position: relative;
+    width: 70%;
+    height: 32vh;
+    margin-left: 15px;
+    border-radius: 7px;
+    background: #D9D9D9;
+}
+
+.added-story-description{
+    position: relative;
+    width: 90%;
+    height: 9vh;
+    margin-top: 2vh;
+    margin-left: 15px;
+}
+
+.added-story-description p{
+    color: #757575;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+/* --------------right side bar ----------------------  */
+.right-side-bar{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.rightside-bar-title{
+    margin-top: 4vh;
+}
+
+.rightside-bar-title h3{
+    color: #1C1C1C;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.add-photo-box{
+    width: 80%;
+    height: 10vh;
+    margin-top: 3vh;
+    border-radius: 7px;
+    border: 1px dashed #000;
+    background: #DCD9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-photo-box form input[type="image"]{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.add-description-box{
+    width: 80%;
+    height: 30vh;
+    margin-top: 3vh;
+}
+
+.add-description-box textarea{
+    width: 100%;
+    height: 30vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #F5F5F5;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 14px;
+}
+
+.post-story-button{
+    width: 80%;
+    height: 5vh;
+    margin-top: 3vh;
+}
+
+.post-story-button input{
+    width: 40%;
+    height: 5vh;
+    margin-left: 60%;
+    background: #8E0000;
+    border: none;
+    color: #fff;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.post-story-button input:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.last-title{
+    width: 80%;
+    height: 5vh;
+    margin-top: 2vh;
+    display: flex;
+    justify-content: center;
+}
+
+.last-title h3{
+    color: #1C1C1C;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+/* ------------------Complaint-------------------------- */
+.middle-container-title-typeone{
+    position: fixed;
+    width: 45%;
+    height: 5vh;
+    margin-top: 5vh;
+}
+
+.form-area{
+    position: fixed;
+    width: 35%;
+    height: 70vh;
+    margin-top: 15vh;
+}
+
+.middle-container-oneline-input{
+    position: fixed;
+    width: 35%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.middle-container-oneline-input label, 
+.middle-container-online-textare label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 1.5vh;
+}
+
+.middle-container-oneline-input input{
+    height: 5vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+}
+
+.middle-container-online-textare{
+    position: fixed;
+    width: 35%;
+    height: 40vh;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.middle-container-oneline-input input:focus,
+.middle-container-online-textare textarea:focus{
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
+.middle-container-online-textare textarea{
+    height: 30vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 14px;
+}
+
+.complaint-button{
+    position: fixed;
+    width: 35%;
+    height: 10vh;
+    margin-top: 55vh;
+    display: flex;
+    align-items: center;
+}
+
+.complaint-button input{
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    color: #fff;
+    border-radius: 6px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+/* RIght side bar about Ask only for what you really need */
+.rightside-bar-type-one-image{
+    width: 79%;
+    height: 30vh;
+    margin-top: 5vh;
+}
+
+.rightside-bar-type-one-image img{
+    margin-top: 1vh;
+    width: max-content;
+    height: 28vh;
+}
+
+.rigntside-bar-type-one-description{
+    width: 80%;
+    height: 35vh;
+    background-color: #FFE0E0;
+    margin-top: 5vh;
+}
+
+.rigntside-bar-type-one-description h4{
+    color: #273240;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: 0.343px;
+    padding: 14px;
+}
+
+.rigntside-bar-type-one-description p{
+    color: #404852;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 128.023%;
+    padding: 14px;
+}
