@@ -22,14 +22,33 @@
 }
 
 .middle-container-title-typeone{
+    position: fixed;
+    width: 45%;
+    height: 8vh;
+    background-color: #73511e;
+    margin-top: 5vh;
+}
+
+.middle-container-title-typeone h3{
     color: #000;
     font-family: 'Inter', sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-top: -0.3vh;
 }
 
+.middle-container-title-typeone p{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -0.3vh;
+    margin-bottom: 1vh;
+}
 /* ------------------Go Back Button ---------------------*/
 .goback-button{
     position: fixed;
@@ -407,4 +426,18 @@
     font-weight: 400;
     line-height: 128.023%;
     padding: 14px;
+}
+
+/* ----------Search bar----------------- */
+.search-bar-for-view-donors{
+    position: fixed;
+    width: 30%;
+    height: 5vh;
+    margin-top: 20vh;
+    background-color: #F0EFEF;
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
 }
