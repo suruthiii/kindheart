@@ -89,8 +89,7 @@ class SuperAdmin extends Controller {
 
     public function createAdmin(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+            
             $data = [
                 'username' => trim($_POST['username']),
                 'name' => trim($_POST['name']),
