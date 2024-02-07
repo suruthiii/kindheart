@@ -10,28 +10,24 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="right-side-container">
-            <!-- Go Back Button -->
-            <div class="goback-button">
-                <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                <button onclick="">Go Back</button>
-            </div>
 
-            <!-- View Donor title and sub title -->
-            <div class="middle-container-title-typeone">
-                <h3>View Donors</h3>
-                <p>View the list of donors</p>
-            </div>
+            <!-- Middle container -->
+            <div class="middle-container">
+                <!-- Go Back Button -->
+                <div class="goback-button">
+                    <img src="<?php echo URLROOT ?>/img/back-arrow.png">
+                    <button onclick="">Go Back</button>
+                </div>
 
-            <div class="search-bar-for-view-donors"></div>
+                <!-- main title -->
+                <div class="middle-container-title-typeone">
+                    <h3>View Donors</h3>
+                    <p>View the list of donors</p>
+                </div>
 
-            <!-- <div class="donor-list-caption"><h4>Donor</h4></div>
 
-            <div class="donor-list-grey-line"></div> -->
-             
-            <!-- donor list -->
-            <!-- <div class="donor-list-to-view">
 
-            </div> -->
+            </div> 
 
         </div>
     </section>

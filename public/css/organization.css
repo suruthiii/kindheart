@@ -29,14 +29,31 @@
 }
 
 .middle-container-title-typeone{
+    position: fixed;
+    width: 45%;
+    height: 8vh;
+    background-color: #68af39;
+}
+
+.middle-container-title-typeone h3{
     color: #000;
     font-family: 'Inter', sans-serif;
     font-size: 22px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-bottom: 1vh;
 }
 
+.middle-container-title-typeone p{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 2vh;
+}
 /* ------------------Go Back Button ---------------------*/
 .goback-button{
     position: fixed;
