@@ -25,7 +25,8 @@
     position: fixed;
     width: 45%;
     height: 8vh;
-    background-color: #68af39;
+    background-color: #73511e;
+    margin-top: 5vh;
 }
 
 .middle-container-title-typeone h3{
@@ -35,7 +36,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
-    margin-bottom: 1vh;
+    margin-top: -0.3vh;
 }
 
 .middle-container-title-typeone p{
@@ -45,7 +46,8 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    margin-bottom: 2vh;
+    margin-top: -0.3vh;
+    margin-bottom: 1vh;
 }
 /* ------------------Go Back Button ---------------------*/
 .goback-button{
