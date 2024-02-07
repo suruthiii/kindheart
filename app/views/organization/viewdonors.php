@@ -25,6 +25,11 @@
                     <p>View the list of donors</p>
                 </div>
 
+                <!-- search bar -->
+                <div class="search-bar-for-view-donors">
+                    <img src="<?php echo URLROOT ?>/img/Vector.png" alt="search">
+                    <input type="search" placeholder="Search">
+                </div>
 
 
             </div> 
