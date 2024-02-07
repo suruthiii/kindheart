@@ -181,6 +181,7 @@ class SuperAdmin extends Controller {
                 'username' => trim($_POST['username']),
                 'name' => trim($_POST['name']),
                 'user_id' => trim($_POST['user_ID']),
+                'old_username' => trim($_POST['old_username']),
                 'err' => ''
             ];
 
@@ -189,7 +190,7 @@ class SuperAdmin extends Controller {
                 $data['err'] = 'Please enter username';
             } else {
                 // Check if username exists
-                if ($this->userModel->findUserByUsername($data['username'])) {
+                if ($data['username'] != $data['old_username'] && $this->userModel->findUserByUsername($data['username'])) {
                     $data['err'] = 'Username is already taken';
                 }
             }
@@ -209,18 +210,37 @@ class SuperAdmin extends Controller {
                 }
             } else {
                 // Load view with errors
-                $other_data['err'] = $data['err'];
-                $this->view('super admin/admin/editAdmin', $data, $other_data);
+                $backend_data = $this->userModel->getAdmin($data['user_id']);
+
+                $admin_data = [
+                    'title' => 'Edit Admin',
+                    'admin_details' => [
+                        'adminID' => $backend_data->adminID,
+                        'adminName' => $backend_data->adminName, 
+                        'email' => $backend_data->email,
+                        'username' => $backend_data->username
+                    ],
+                    'err' => $data['err']
+                ];
+                
+                $this->view('super admin/admin/editAdmin', $admin_data);
             }
         }
         else{
             if (empty($_GET['admin_ID'])) {
                 redirect('pages/404');
             }
+
+            $admin_details = $this->userModel->getAdmin($_GET['admin_ID']);
     
             $data = [
                 'title' => 'Edit Admin',
-                'admin_details' => $this->userModel->getAdmin($_GET['admin_ID'])
+                'admin_details' => [
+                    'adminID' => $admin_details->adminID,
+                    'adminName' => $admin_details->adminName, 
+                    'email' => $admin_details->email,
+                    'username' => $admin_details->username
+                ]
             ];
     
             $this->view('super admin/admin/editAdmin', $data);
