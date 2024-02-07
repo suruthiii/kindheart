@@ -80,7 +80,7 @@ class UserModel{
 
     // Login user
     public function login($email, $password){
-        $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
+        $this->db->query('SELECT * FROM user WHERE (email = :email OR username = :username) AND status = 1;');
         $this->db->bind(':email', $email);
         $this->db->bind(':username', $email);
 
@@ -97,7 +97,8 @@ class UserModel{
     // Find user by username
     public function findUserByUsername($username): bool
     {
-        $this->db->query('SELECT * FROM user WHERE username = :username');
+        $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
+        $this->db->bind(':email', $username);
         $this->db->bind(':username', $username);
 
         $row = $this->db->single();
