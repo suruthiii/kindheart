@@ -15,8 +15,8 @@
             <div class="studentCreateProfile-formce shared-formce">
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
-                <h1>Creating Profile</h1><br><br>
-                <!-- <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br>    -->
+                <h1>Creating Profile</h1>
+                <span style="color: rgb(146, 141, 141);">5 of 6</span><br> <br>  
                 <div class="studentCreateProfile-text">
                     <form action="<?php echo URLROOT ?>/users/studentOrganizationCreatingProfile2" method="GET">
                         <div class="studentCreateProfile-input-field">

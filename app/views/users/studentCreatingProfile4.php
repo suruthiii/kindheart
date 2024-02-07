@@ -15,18 +15,18 @@
             <div class="studentCreateProfile-formce shared-formce">
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
-                <h1>Creating Profile</h1><br><br>
-                <!-- <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br>    -->
+                <h1>Creating Profile</h1>
+                <span style="color: rgb(146, 141, 141);">4 of 6</span><br>   
                 <div class="studentCreateProfile-text">
                     <form action="<?php echo URLROOT ?>/users/studentCreatingProfile5" method="GET">
                         <div class="studentCreateProfile-input-field">
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">GS Certificate</label>
+                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 50px; margin-bottom: 12px !important;">GS Certificate</label>
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
                                     <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">How to obtain a GS certificate?<br>Click here </p>                                </div>
                                 <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">University/ School Letter</label>
+                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 50px; margin-bottom: 12px !important;">University/ School Letter</label>
                                     <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
                                     <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload a letter confirming your enrolment<br>from your University/ school.</p>
                                 </div>

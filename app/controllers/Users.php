@@ -25,6 +25,7 @@ class Users extends Controller{
     }
 
     public function studentRegistration(){
+
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //Form Submitting
 
@@ -34,8 +35,11 @@ class Users extends Controller{
             //Input Data
             $data = [
                 'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
 
-                'email_err' => ''
+                'email_err' => '',
+                'password_err' => ''
+
             ];
 
             //Validate Each Input
@@ -47,6 +51,13 @@ class Users extends Controller{
                 if($this->userModel->findUserByEmail($data['email'])){
                     $data['email_err'] = 'Email is Already Registered';
                 }
+            }
+
+            // Validate password
+            if (empty($data['password'])){
+                $data['password_err'] = 'Please enter password';
+            } elseif (strlen($data['password']) < 6){
+                $data['password_err'] = 'Password must be at least 6 characters';
             }
 
             //Validation is completed and no error the  regoster the user
@@ -61,9 +72,8 @@ class Users extends Controller{
                 }
             }else{
                 //Load View
-                
+                $this->view('users/studentRegistration', $data);
             }
-
 
         }else{
             //Initial Form
@@ -72,9 +82,11 @@ class Users extends Controller{
 
                 'email_err' => ''
             ];
+
+            //Load View
+            $this->view('users/studentRegistration', $data);
         }
 
-        $this->view('users/studentRegistration');
     }
 
     public function emailVerifyOTP(){
@@ -128,10 +140,7 @@ class Users extends Controller{
 
     public function profile(){
         $this->view('users/profile');
-    }
-
-
-    
+    }    
 
     public function profileCreationSuccessful(){
         $this->view('users/profileCreationSuccessful');

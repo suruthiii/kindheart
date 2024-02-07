@@ -16,7 +16,8 @@
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Creating Profile</h1>
-                <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span>     
+                <span style="color: rgb(146, 141, 141);">6 of 6</span><br>
+                <span style="color: rgb(146, 141, 141);"> Mobile Numer Verification</span>     
                 <div class="studentProfile-text shared-text shared-label shared-button">
                     <form action="<?php echo URLROOT ?>/users/studentCreatingProfile6" method="GET">
                         <div class="studentProfile-input-field1 shared-input shared-margin">

@@ -7,6 +7,17 @@
     <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
 </head>
 <body>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("whyGender");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
     <div class="container">
         <div class="image">
             <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
@@ -16,7 +27,7 @@
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Creating Profile</h1>
-                <span style="color: rgb(146, 141, 141);">Receive donations for your educational activities</span><br><br><br>     
+                <span style="color: rgb(146, 141, 141);">1 of 6</span><br><br><br>     
                 <div class="studentCreateProfile-text">
                     <form action="<?php echo URLROOT ?>/users/studentCreatingProfile2" method="GET">
                         <div class="studentCreateProfile-input-field">
@@ -40,6 +51,7 @@
                                     <select class="inputt" name="orgType" >
                                         <option value="male" class="dropdown-option">Male</option>
                                         <option value="female" class="dropdown-option">Female</option>
+                                        <option value="female" class="dropdown-option">Other</option>
                                     </select><br>
                                 </div>
                                 <div class="input-group">
@@ -50,6 +62,18 @@
                                     </select><br>
                                 </div>
                             </div>
+
+                            <!-- <label for="orgType" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Birth Day</label><br><br>
+                            <input type="date" id="birthday" name="birthday"> -->
+
+                            <span style="color: rgb(146, 141, 141);" onclick="myFunction()" >Why Age & Gender</span>
+                                <!-- <div id="whyGender">
+                                    <ul>
+                                        <li>The age limit requirement to use gudppl platform is 6 - 25 years.</li>
+                                        <li>Due to legal, health and safety reasons some volunteer activities are available to specific age groups and genders.</li>
+                                        <li>Your age and gender will remain private. <br>An organization might ask your age and/or gender when joining their volunteer group or activity. Then, you can choose to share or not.</li>
+                                    </ul>
+                                </div> -->
 
                             <!-- <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
                             <input class="inputt1" type="text" name="orgName" ><br><br>

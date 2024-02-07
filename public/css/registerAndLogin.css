@@ -341,10 +341,6 @@ section::after {
     margin-top: -25px;
 }
 
-/* .studentCreateProfile-horizontal-input .input-group select *{
-    background-color: red;
-} */
-
 .studentCreateProfile-horizontal-input .input-group input,
 .studentCreateProfile-horizontal-input .input-group .inputt {
     width: 240px;
@@ -353,6 +349,10 @@ section::after {
 /* ---------------- Student Create Profile 1 -------------- */
 .studentCreateProfile-input-field p {
     font-size: 10px;
+}
+
+#whyGender{
+    display: none;
 }
 
 /* ---------------- Donor Create Profile 1 -------------- */
@@ -385,9 +385,6 @@ section::after {
     margin-top: 70px !important;
 }
 
-
-
-.input-group .inputt2 {
-    width: 50px;
-    height: 20px;
-}
+/* .inputt2[type="file"]{
+    display: none;
+} */

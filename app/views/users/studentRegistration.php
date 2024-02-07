@@ -19,7 +19,7 @@
                 <h1>Create Your Account</h1>
                 <span style="color: rgb(146, 141, 141); margin-top: 10px;">Receive donations for your educational activities</span>     
                 <div class="studentRegistration-text shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/emailVerifyOTP" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/emailVerifyOTP" method="POST">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
                         <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
                             <div class="inputbox">
