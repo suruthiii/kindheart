@@ -89,16 +89,32 @@ class Users extends Controller{
 
     }
 
-    public function emailVerifyOTP(){
-        $this->view('users/emailVerifyOTP');
+    public function emailVerifyOTPStudent(){
+        $this->view('users/emailVerifyOTPStudent');
+    }
+
+    public function emailVerifyOTPDonor(){
+        $this->view('users/emailVerifyOTPDonor');
+    }
+
+    public function emailVerifyOTPOrganization(){
+        $this->view('users/emailVerifyOTPOrganization');
     }
 
     public function setPassword(){
         $this->view('users/setPassword');
     }
     
-    public function accountCreationSuccessful(){
-        $this->view('users/accountCreationSuccessful');
+    public function accountCreationSuccessfulStudent(){
+        $this->view('users/accountCreationSuccessfulStudent');
+    }
+
+    public function accountCreationSuccessfulDonor(){
+        $this->view('users/accountCreationSuccessfulDonor');
+    }
+
+    public function accountCreationSuccessfulOrganization(){
+        $this->view('users/accountCreationSuccessfulOrganization');
     }
 
     public function organizationRegistration(){
@@ -132,7 +148,6 @@ class Users extends Controller{
     public function studentCreatingProfile6(){
         $this->view('users/studentCreatingProfile6');
     }
-
 
     public function studentOrganizationCreatingProfile2(){
         $this->view('users/studentOrganizationCreatingProfile2');
