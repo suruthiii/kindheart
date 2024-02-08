@@ -31,6 +31,13 @@
                     <input type="search" placeholder="Search">
                 </div>
 
+                <!-- table caption -->
+                <div class="table-caption-for-view-dobor">
+                    <h4>Donors</h4>
+                </div>
+
+                <div class="grey-line-under-the-view-donor-table-caption"></div>
+
 
             </div> 
 
