@@ -25,7 +25,6 @@
     position: fixed;
     width: 45%;
     height: 8vh;
-    background-color: #73511e;
     margin-top: 5vh;
 }
 
@@ -440,4 +439,34 @@
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 10px;
+    transition: background 0.25s;
+}
+
+.search-bar-for-view-donors:focus-within{
+    background-color: #e8e6e6;
+}
+
+.search-bar-for-view-donors input{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin-left: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding-left: 3px;
+    padding-right: 5px;
+    width: 100%;
+}
+
+.search-bar-for-view-donors img{
+    padding-left: 6px;
+    width: 15px;
+    height: 15px;
+}
+
+.search-bar-for-view-donors input::placeholder{
+    color: #404852;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
 }
