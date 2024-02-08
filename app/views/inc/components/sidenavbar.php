@@ -286,7 +286,7 @@
 
             <!------------------- Organization ------------------>
             <?php if ($_SESSION['user_type'] == 'organization'){ ?>
-                <a href="<?php echo URLROOT ?>/organization/postednecessities">
+                <a href="<?php echo URLROOT ?>/organization/choosethenecessityType">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }

@@ -15,11 +15,11 @@ class Organization extends Controller {
         $this->view('organization/index', $data);
     }
 
-    public function necessityRequest(){
+    public function choosethenecessityType(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/necessityRequest', $data);
+        $this->view('organization/choosethenecessityType', $data);
     }
 
     public function monetoryfundingRequest(){
