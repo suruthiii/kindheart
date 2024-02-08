@@ -38,6 +38,58 @@
 
                 <div class="grey-line-under-the-view-donor-table-caption"></div>
 
+                <!-- view Donor table -->
+                <div class="view-donor-table">
+                    <table>
+                        <tr>
+                            <td>
+                                <h4>C.W.W. Kannangara</h4>
+                                <p>CEO of Kannangara.Inc</p>
+                            </td>
+                            <td>
+                                <button>View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>C.W.W. Kannangara</h4>
+                                <p>CEO of Kannangara.Inc</p>
+                            </td>
+                            <td>
+                                <button>View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>C.W.W. Kannangara</h4>
+                                <p>CEO of Kannangara.Inc</p>
+                            </td>
+                            <td>
+                                <button>View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>C.W.W. Kannangara</h4>
+                                <p>CEO of Kannangara.Inc</p>
+                            </td>
+                            <td>
+                                <button>View</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h4>C.W.W. Kannangara</h4>
+                                <p>CEO of Kannangara.Inc</p>
+                            </td>
+                            <td>
+                                <button>View</button>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </div>
+
 
             </div> 
 
