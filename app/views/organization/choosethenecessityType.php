@@ -40,8 +40,10 @@
                         </button>
                     </div>
                 </div>
-
                 
+                <div class="choose-the-type-last-insruction">
+                    <p>Physical goods may include : Food Items, Clothing, Stationary etc</p>
+                </div>
 
             </div>
 
