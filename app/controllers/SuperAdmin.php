@@ -245,4 +245,12 @@ class SuperAdmin extends Controller {
             $this->view('super admin/admin/editAdmin', $data);
         }
     }
-}    
+
+    public function deleteAdmin() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->userModel->deleteAdmin($_POST['admin_ID']);
+
+            redirect('superadmin/admin');
+        }
+    }
+}   
