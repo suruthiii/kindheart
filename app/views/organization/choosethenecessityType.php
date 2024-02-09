@@ -34,7 +34,7 @@
                         </button>
                     </div>
                     <div class="choose-necessity-button">
-                        <button onclick="">
+                        <button onclick="location.href ='<?php echo URLROOT ?>/organization/postedphysicalgoodsnecessity'">
                             <img src="<?php echo URLROOT ?>/img/icon _Box Open_.png">
                             <p>Physical Goods</p>
                         </button>

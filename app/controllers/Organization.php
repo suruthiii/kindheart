@@ -43,6 +43,13 @@ class Organization extends Controller {
         $this->view('organization/postedmonetarynecessity', $data);
     }
 
+    public function postedphysicalgoodsnecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/postedphysicalgoodsnecessity', $data);
+    }
+
     public function editprofile(){
         $data = [
             'title' => 'Home page'
