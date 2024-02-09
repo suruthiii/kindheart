@@ -25,7 +25,6 @@
     position: fixed;
     width: 45%;
     height: 8vh;
-    background-color: #73511e;
     margin-top: 5vh;
 }
 
@@ -60,17 +59,17 @@
 
 .goback-button img{
     width: 18px;
-    height: max-content;
     cursor: pointer;
 }
 
 .goback-button button{
+    height: 4vh;
     background: transparent;
     border: none;
     cursor: pointer;
     padding-left: 5px;
-    margin-top: 0.5vh;
     font-size: 15px;
+
 }
 
 .goback-button img:hover, .goback-button button:hover{
@@ -415,7 +414,7 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.343px;
-    padding: 14px;
+    padding-left: 14px;
 }
 
 .rigntside-bar-type-one-description p{
@@ -425,7 +424,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 128.023%;
-    padding: 14px;
+    padding-left: 14px;
 }
 
 /* ----------Search bar----------------- */
@@ -437,7 +436,163 @@
     background-color: #F0EFEF;
     display: flex;
     align-items: center;
-    padding-left: 5px;
-    padding-right: 5px;
     border-radius: 10px;
+    transition: background 0.25s;
+}
+
+.search-bar-for-view-donors:focus-within{
+    background-color: #e8e6e6;
+}
+
+.search-bar-for-view-donors input{
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin-left: 14px;
+    outline: none;
+    border: none;
+    background: transparent;
+    padding-left: 3px;
+    padding-right: 5px;
+    width: 100%;
+}
+
+.search-bar-for-view-donors img{
+    padding-left: 15px;
+    width: 15px;
+    height: 15px;
+}
+
+.search-bar-for-view-donors input::placeholder{
+    color: #404852;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+/* ------------View Donor table------------------ */
+.table-caption-for-view-dobor{
+    position: fixed;
+    width: 30%;
+    height: 3vh;
+    margin-top: 30vh;
+}
+
+.table-caption-for-view-dobor h4{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #262A41;
+    margin-left: 14px;
+    margin-top: -0.1vh;
+    font-weight: 600;
+}
+
+.grey-line-under-the-view-donor-table-caption{
+    position: fixed;
+    width: 30%;
+    height: 0.3vh;
+    margin-top: 33vh;
+    background-color: #DEDEDE;
+}
+
+.view-donor-table{
+    position: fixed;
+    width: 30%;
+    height: 46vh;
+    margin-top: 36vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.view-donor-table table{
+    width: 100%
+}
+
+.view-donor-table table tr{
+    width: 100%;
+    height: 10vh;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
+}
+
+.view-donor-table table tr td:nth-child(1){
+    width: 80%;
+}
+
+.view-donor-table table tr td:nth-child(1) h4,
+.view-donor-table table tr td:nth-child(1) p{
+    margin-left: 14px;
+}
+
+.view-donor-table table tr td:nth-child(1) p{
+    margin-top: -1vh;
+}
+
+
+.view-donor-table table trtd:nth-child(2){
+    width: 20%;
+}
+
+/* ---------------------Choose necessity type--------------------------- */
+.choose-necessity-buttons-container{
+    position: fixed;
+    width: 30%;
+    height: 50vh;
+    margin-top: 25vh;
+}
+
+.choose-necessity-button{
+    width: 100%;
+    height: 20vh;
+    margin-bottom: 2vh;
+}
+
+.choose-necessity-button button{
+    width: 100%;
+    height: 20vh;
+    background-color: #8E0000;
+    margin-bottom: 2vh;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-necessity-button button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.choose-necessity-button button img{
+    padding-right: 14px;
+}
+
+.choose-necessity-button button p{
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
+
+.choose-the-type-last-insruction{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 70vh;
+}
+
+.choose-the-type-last-insruction p{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -0.3vh;
+    margin-bottom: 1vh;
 }
