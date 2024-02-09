@@ -535,3 +535,50 @@
 .view-donor-table table trtd:nth-child(2){
     width: 20%;
 }
+
+/* ---------------------Choose necessity type--------------------------- */
+.choose-necessity-buttons-container{
+    position: fixed;
+    width: 30%;
+    height: 50vh;
+    margin-top: 25vh;
+}
+
+.choose-necessity-button{
+    width: 100%;
+    height: 20vh;
+    margin-bottom: 2vh;
+    /* border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer; */
+}
+
+.choose-necessity-button button{
+    width: 100%;
+    height: 20vh;
+    background-color: #8E0000;
+    margin-bottom: 2vh;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-necessity-button button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.choose-necessity-button button img{
+    padding-right: 14px;
+}
+
+.choose-necessity-button button p{
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
