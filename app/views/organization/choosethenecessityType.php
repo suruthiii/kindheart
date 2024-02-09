@@ -21,29 +21,11 @@
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Make a Complain</h3>
+                    <h3>Choose the<br>necessity type</h3>
+                    <p>Select the type of Necessity you want to post</p>
                 </div>
 
-                <!-- complaint form -->
-                <div class="form-area">
-                    <form action="" method="post">
-                        <!-- Complaint in brief -->
-                        <div class="middle-container-oneline-input">
-                            <label for="complaintinbrief">Complaint in brief </label>
-                            <input type="text" id="complaininbrief" name="complaininbrief">
-                        </div>
-                        <!-- Complaint Description -->
-                        <div class="middle-container-online-textare">
-                            <label for="complaintdescription">Description</label>
-                            <textarea name="complaintdescription" id="complaintdescription"></textarea>
-                        </div>
-                        <!-- Complaint Button -->
-                        <div class="complaint-button">
-                            <input type="submit" value="Complaint">
-                        </div>
-
-                    </form>
-                </div>
+                
 
             </div>
 

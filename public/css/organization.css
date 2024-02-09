@@ -414,7 +414,7 @@
     font-weight: 600;
     line-height: normal;
     letter-spacing: 0.343px;
-    padding: 14px;
+    padding-left: 14px;
 }
 
 .rigntside-bar-type-one-description p{
@@ -424,7 +424,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: 128.023%;
-    padding: 14px;
+    padding-left: 14px;
 }
 
 /* ----------Search bar----------------- */
