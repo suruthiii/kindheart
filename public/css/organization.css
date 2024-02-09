@@ -59,17 +59,17 @@
 
 .goback-button img{
     width: 18px;
-    height: max-content;
     cursor: pointer;
 }
 
 .goback-button button{
+    height: 4vh;
     background: transparent;
     border: none;
     cursor: pointer;
     padding-left: 5px;
-    margin-top: 0.5vh;
     font-size: 15px;
+
 }
 
 .goback-button img:hover, .goback-button button:hover{
