@@ -28,16 +28,19 @@
                 <div class="add-necessity-form">
                     <form>
                         <div class="add-necessity-one-line-input">
-
+                            <label for="complaintinbrief">Complaint in brief </label>
+                            <input type="text" id="complaininbrief" name="complaininbrief">
                         </div>
                         <div class="add-necessity-one-line-input">
-                            
+                            <label for="complaintinbrief">Complaint in brief </label>
+                            <input type="text" id="complaininbrief" name="complaininbrief">
                         </div>
                         <div class="add-necessity-text-area-input">
-
+                            <label for="complaintdescription">Description</label>
+                            <textarea name="complaintdescription" id="complaintdescription"></textarea>
                         </div>
                         <div class="add-necessity-add-button">
-                            
+                            <input type="submit" value="Add">
                         </div>
                     </form>
                 </div>
