@@ -596,3 +596,27 @@
     margin-top: -0.3vh;
     margin-bottom: 1vh;
 }
+
+/* ---------------Posted Necessities---------------------*/
+.posted-necessity-pending-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 18vh;
+}
+
+.posted-necessity-pending-table-caption p{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #262A41;
+    margin-top: -0.1vh;
+    font-weight: 600;
+}
+
+.posted-necessity-pending-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 22vh;
+    background-color: #DEDEDE;
+}

@@ -25,6 +25,10 @@
                     <p>Last 30 Days</p>
                 </div>
 
+                <div class="posted-necessity-pending-table-caption">
+                    <p>Pending</p>
+                </div>
+                <div class="posted-necessity-pending-table-grey-line"></div>
                 
 
             </div>

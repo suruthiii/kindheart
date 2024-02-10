@@ -14,10 +14,10 @@
             <!-- Middle container -->
             <div class="middle-container">
                 <!-- Go Back Button -->
-                <div class="goback-button">
+                <!-- <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
                     <button onclick="">Go Back</button>
-                </div>
+                </div> -->
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
