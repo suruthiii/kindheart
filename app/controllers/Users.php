@@ -172,7 +172,18 @@ class Users extends Controller{
     public function donorCreateProfile3(){
         $this->view('users/donorCreateProfile3');
     }
-    
+
+    public function organizationCreatingProfile1(){
+        $this->view('users/organizationCreatingProfile1');
+    }
+
+    public function organizationCreatingProfile2(){
+        $this->view('users/organizationCreatingProfile2');
+    }
+
+    public function organizationCreatingProfile3(){
+        $this->view('users/organizationCreatingProfile3');
+    }
     
 
     // public function register(){
