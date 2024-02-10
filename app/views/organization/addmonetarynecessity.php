@@ -29,17 +29,29 @@
                 <div class="add-necessity-form">
                     <form action="" method="post">
                         <!-- First line of form -->
-                        <div class="add-necessity-one-line-input">
+                        <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-first-div">
                                 <label for="necessityMonetary">Necessity </label>
                                 <input type="text" id="necessityMonetary" name="necessityMonetary">
                             </div>
-                            <div class="necessity-second-div"></div>
-                            
+                            <div class="necessity-second-div">
+                                <label for="necessityMonetary">Necessity Type</label>
+                                <select>
+                                    <option value="recurring">Recurring</option>
+                                    <option value="onetime">One-Time</option>
+                                </select>
+                            </div>
                         </div>
                         <!-- Second line of form -->
-                        <div class="add-necessity-one-line-input">
-                            
+                        <div class="add-necessity-one-line-second-type-input">
+                            <div class="necessity-third-div">
+                                <label for="recurringstartdate">Start Date (if recurring) </label>
+                                <input type="date" id="recurringstartdate" name="recurringstartdate">
+                            </div>
+                            <div class="necessity-fourth-div">
+                                <label for="recurringenddate">End Date (if recurring)</label>
+                                <input type="date" id="recurringenddate" name="recurringenddate">
+                            </div>
                         </div>
                         <!-- Description about requested necessity -->
                         <div class="add-necessity-text-area-input-to-oneline">
