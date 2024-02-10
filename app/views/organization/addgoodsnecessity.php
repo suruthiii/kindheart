@@ -21,8 +21,25 @@
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Choose the<br>necessity type</h3>
-                    <p>Select the type of Necessity you want to post</p>
+                    <h3>Add (Good) Necessities</h3>
+                    <p>Enter correct information and add your necessities.</p>
+                </div>
+
+                <div class="add-necessity-form">
+                    <form>
+                        <div class="add-necessity-one-line-input">
+
+                        </div>
+                        <div class="add-necessity-one-line-input">
+                            
+                        </div>
+                        <div class="add-necessity-text-area-input">
+
+                        </div>
+                        <div class="add-necessity-add-button">
+                            
+                        </div>
+                    </form>
                 </div>
 
                 
