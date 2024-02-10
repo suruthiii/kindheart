@@ -113,7 +113,7 @@ class UserModel{
 
     // View admins
     public function viewAdmins(){
-        $this->db->query('SELECT * FROM admin ORDER BY adminName');
+        $this->db->query('SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 ORDER BY adminName');
 
         $result =  $this->db->resultSet();
 
@@ -149,5 +149,16 @@ class UserModel{
         return $result1 && $result2;
     }
 
+    // Delete Admin
+    public function deleteAdmin($admin_ID) {
+        $this->db->query('UPDATE user SET status = 10 WHERE userID = :userID;');
+        $this->db->bind(':userID', $admin_ID);
 
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }

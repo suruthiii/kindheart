@@ -29,8 +29,8 @@
                                                     <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                                 </button>
                                             </form>
-                                            <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                                <input type="text" name="name" id="name" hidden value="" />
+                                            <form action="<?php echo URLROOT ?>/superadmin/deleteAdmin" method="post" class="delete-form">
+                                                <input type="text" name="admin_ID" id="deladmin_ID" hidden value="<?php echo $item->adminID?>" />
                                                 <button type="submit" class="delete" onclick="return confirmSubmit();">
                                                     <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
                                                 </button>
