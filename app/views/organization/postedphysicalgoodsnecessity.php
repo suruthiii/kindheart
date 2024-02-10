@@ -92,6 +92,13 @@
                         </tr>
                     </table>
                 </div>
+
+                <div class="add-necessity-button-for-post">
+                    <button>
+                        <img src="<?php echo URLROOT ?>/img/Plus.png">
+                        <h5>Add Necessities</h5>
+                    </button>
+                </div>
                 
 
             </div>

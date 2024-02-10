@@ -690,3 +690,43 @@
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.add-necessity-button-for-post{
+    position: fixed;
+    width: 45%;
+    height: 5vh;
+    margin-top: 82vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-necessity-button-for-post button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-necessity-button-for-post button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-necessity-button-for-post button img{
+    padding-right: 8px;
+}
+
+.add-necessity-button-for-post button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
