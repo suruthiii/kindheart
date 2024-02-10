@@ -55,18 +55,31 @@ class Users extends Controller{
 
             // Validate password
             if (empty($data['password'])){
-                $data['password_err'] = 'Please enter password';
-            } elseif (strlen($data['password']) < 6){
-                $data['password_err'] = 'Password must be at least 6 characters';
+                $data['password_err'] = 'Please enter a password';
+            } else if ( strlen($data['password']) < 8 ){
+                $data['password_err'] = 'Password must be at least 8 characters';
             }
+            // } else if ( preg_match('/[a-z]/', ($data['password'])) || preg_match('/[A-Z]/', ($data['password'])) ) {
+            //     $data['password_err'] = 'Password must include both lowercase and uppercase letters';
+            // } else if ( preg_match('/[a-zA-Z]/', ($data['password'])) || preg_match('/\d/', ($data['password'])) ) {
+            //     $data['password_err'] = 'Password must include both numbers and letters';
+            // } else if ( preg_match('/[!@#?]/', ($data['password'])) ) {
+            //     $data['password_err'] = 'Password must include at least one special charater (@, #, ?, !)';
+            // } else if ( strpos(($data['password']), '<') == false || strpos(($data['password']), '>') == false ) {
+            //     $data['password_err'] = 'Password must not include < or >';
+            // }
 
-            //Validation is completed and no error the  regoster the user
-            if(empty($data['email_err'])){
+            //Validation is completed and no error then register the user
+            if(empty($data['email_err']) && empty($data['password_err']) ){
                 //Hash Password
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 //Register USer
-                if($this->userModel->register($data)){
-                    die('User is Registered');
+                if($this->userModel->register($data)) {
+                    // $this->view('users/emailVerifyOTP', $data);
+
+                    $this->view('users/accountCreationSuccessful', $data);
+                    
                 }else{
                     die('Something Went Wrong');
                 }
@@ -79,8 +92,10 @@ class Users extends Controller{
             //Initial Form
             $data = [
                 'email' => '',
+                'password' => '',
 
-                'email_err' => ''
+                'email_err' => '',
+                'password_err' => ''
             ];
 
             //Load View
@@ -89,8 +104,8 @@ class Users extends Controller{
 
     }
 
-    public function emailVerifyOTPStudent(){
-        $this->view('users/emailVerifyOTPStudent');
+    public function emailVerifyOTP(){
+        $this->view('users/emailVerifyOTP');
     }
 
     public function emailVerifyOTPDonor(){
@@ -105,8 +120,8 @@ class Users extends Controller{
         $this->view('users/setPassword');
     }
     
-    public function accountCreationSuccessfulStudent(){
-        $this->view('users/accountCreationSuccessfulStudent');
+    public function accountCreationSuccessful(){
+        $this->view('users/accountCreationSuccessful');
     }
 
     public function accountCreationSuccessfulDonor(){

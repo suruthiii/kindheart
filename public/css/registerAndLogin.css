@@ -55,6 +55,7 @@ a {
 /* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
 .shared-label label {
     font-size: 15px;
+    margin-top: 50px;
 }
 
 /* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
@@ -388,3 +389,10 @@ section::after {
 /* .inputt2[type="file"]{
     display: none;
 } */
+
+.error-message{
+    color: rgb(172, 34, 34); 
+    font-size: 12px;
+    font-weight: bold;
+}
+

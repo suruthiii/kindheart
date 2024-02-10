@@ -21,7 +21,7 @@
                 <span style="color: rgb(146, 141, 141); display: block;">Please enter the code below, to verify your email. </span>
                 <span style="color: rgb(146, 141, 141); display: block;">Thank you.</span>     
                 <div class="studentRegistration-text shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/accountCreationSuccessfulStudent" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/emailVerifyOTP" method="POST">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter the verification code</label><br><br>
                             <div class="studentRegistration-input-field2 shared-input2">

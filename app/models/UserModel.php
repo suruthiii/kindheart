@@ -9,13 +9,11 @@ class UserModel{
     // Register user
     public function register($data){
         // Prepare statement
-        $this->db->query('INSERT INTO user (username, email, password, userType) VALUES (:username, :email, :password, :userType)');
+        $this->db->query('INSERT INTO user (email, password) VALUES (:email, :password)');
 
         // Bind values
-        $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
-        $this->db->bind(':userType', $data['user_type']);
 
         // Execute
         if ($this->db->execute() && $this->updateUserTable($data)){
@@ -29,10 +27,11 @@ class UserModel{
     // Update user tables
     public function updateUserTable($data){
 
-        $this->db->query('SELECT userID FROM user WHERE username = :username AND password = :password');
+        $this->db->query('SELECT userID FROM user WHERE email = :email AND password = :password');
 
         // Bind values
-        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':email', $data['email']);
+        
         $this->db->bind(':password', $data['password']);
 
         $row = $this->db->single();
@@ -40,17 +39,17 @@ class UserModel{
 
         $result = true;
 
-        // Prepare statement
-        if ($data['user_type'] == 'admin'){
-            // Prepare statement
-            $this->db->query('INSERT INTO admin (adminID, adminName) VALUES (:id, :name)');
+        // // Prepare statement
+        // if ($data['user_type'] == 'student'){
+        //     // Prepare statement
+        //     $this->db->query('INSERT INTO admin (studentID, studentName) VALUES (:id, :name)');
 
-            // Bind values
-            $this->db->bind(':name', $data['name']);
-            $this->db->bind(':id', $id);
+        //     // Bind values
+        //     $this->db->bind(':name', $data['name']);
+        //     $this->db->bind(':id', $id);
 
-            $result = $this->db->execute();
-        }
+        //     $result = $this->db->execute();
+        // }
 
 
         // Execute
