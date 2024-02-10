@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="add-necessity-button-for-post">
-                    <button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/organization/addmonetarynecessity'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
                         <h5>Add Necessities</h5>
                     </button>
