@@ -29,11 +29,11 @@ class Organization extends Controller {
         $this->view('organization/monetoryfundingRequest', $data);
     }
 
-    public function physicalgoodsRequest(){
+    public function addgoodsnecessity(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/physicalgoodsRequest', $data);
+        $this->view('organization/addgoodsnecessity', $data);
     }
 
     public function postedmonetarynecessity(){
