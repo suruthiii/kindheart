@@ -25,10 +25,73 @@
                     <p>Last 30 Days</p>
                 </div>
 
+                <!-- Pending table -->
                 <div class="posted-necessity-pending-table-caption">
                     <p>Pending</p>
                 </div>
                 <div class="posted-necessity-pending-table-grey-line"></div>
+                <div class="posted-necessities-pending-table">
+                    <table>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <!-- Completed Table -->
+                <div class="posted-necessity-Completed-table-caption">
+                    <p>Completed</p>
+                </div>
+                <div class="posted-necessity-Completed-table-grey-line"></div>
+                <div class="posted-necessities-Completed-table">
+                    <table>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                        <tr>
+                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
+                            <td></td>
+                            <td><p>Rs. 2000,00</p></td>
+                        </tr>
+                    </table>
+                </div>
                 
 
             </div>

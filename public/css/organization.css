@@ -605,7 +605,8 @@
     margin-top: 18vh;
 }
 
-.posted-necessity-pending-table-caption p{
+.posted-necessity-pending-table-caption p, 
+.posted-necessity-Completed-table-caption p{
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: #262A41;
@@ -619,4 +620,73 @@
     height: 0.3vh;
     margin-top: 22vh;
     background-color: #DEDEDE;
+}
+
+.posted-necessities-pending-table{
+    position: fixed;
+    width: 45%;
+    height: 24vh;
+    margin-top: 24vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-necessities-pending-table table,
+.posted-necessities-Completed-table table{
+    width: 100%;
+}
+
+.posted-necessities-pending-table table tr,
+.posted-necessities-Completed-table table tr{
+    width: 100%;
+    height: 10vh;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
+}
+
+.posted-necessities-pending-table table tr td:nth-child(1),
+.posted-necessities-Completed-table table tr td:nth-child(1){
+    width: 15%;
+    padding-left: 15px;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(2){
+    width: 40%;
+    padding-left: 14px;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(3){
+    width: 30%;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(4){
+    width: 20%;
+}
+
+.posted-necessity-Completed-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 50vh;
+}
+
+.posted-necessity-Completed-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 54vh;
+    background-color: #DEDEDE;
+}
+
+.posted-necessities-Completed-table{
+    position: fixed;
+    width: 45%;
+    height: 24vh;
+    margin-top: 56vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
