@@ -21,12 +21,41 @@
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Add (Good) Necessities</h3>
+                    <h3>Add Monetary Necessities</h3>
                     <p>Enter correct information and add your necessities.</p>
                 </div>
 
+                <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    
+                    <form action="" method="post">
+                        <!-- First line of form -->
+                        <div class="add-necessity-one-line-input">
+                            <div class="necessity-first-div">
+                                <label for="necessityMonetary">Necessity </label>
+                                <input type="text" id="necessityMonetary" name="necessityMonetary">
+                            </div>
+                            <div class="necessity-second-div"></div>
+                            
+                        </div>
+                        <!-- Second line of form -->
+                        <div class="add-necessity-one-line-input">
+                            
+                        </div>
+                        <!-- Description about requested necessity -->
+                        <div class="add-necessity-text-area-input-to-oneline">
+                            <label for="monetarynecessitydes">Description</label>
+                            <textarea name="monetarynecessitydes" id="monetarynecessitydes"></textarea>
+                        </div>
+                        <!-- Requested Amount in Rupees -->
+                        <div class="add-necessity-one-line-input">
+                            <label for="requestedamount">Requested Amount in Rupees </label>
+                            <input type="number" id="requestedamount" name="requestedamount">
+                        </div>
+                        <!-- Add Button for necessity -->
+                        <div class="add-necessity-add-button">
+                            <input type="submit" value="Add">
+                        </div>
+                    </form>
                 </div>
 
                 

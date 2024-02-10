@@ -25,20 +25,25 @@
                     <p>Enter correct information and add your necessities.</p>
                 </div>
 
+                <!-- Add goods Necessity Form -->
                 <div class="add-necessity-form">
-                    <form>
+                    <form action="" method="post">
+                        <!-- Necessity -->
                         <div class="add-necessity-one-line-input">
-                            <label for="complaintinbrief">Complaint in brief </label>
-                            <input type="text" id="complaininbrief" name="complaininbrief">
+                            <label for="necessitygoods">Necessity </label>
+                            <input type="text" id="necessitygoods" name="necessitygoods">
                         </div>
+                        <!-- Requested Amount -->
                         <div class="add-necessity-one-line-input">
-                            <label for="complaintinbrief">Complaint in brief </label>
-                            <input type="text" id="complaininbrief" name="complaininbrief">
+                            <label for="requestedgoodsquantity">Requested Quantity </label>
+                            <input type="number" id="requestedgoodsquantity" name="requestedgoodsquantity">
                         </div>
+                        <!-- Description about the necessity -->
                         <div class="add-necessity-text-area-input">
-                            <label for="complaintdescription">Description</label>
-                            <textarea name="complaintdescription" id="complaintdescription"></textarea>
+                            <label for="goodsnecessitydes">Description</label>
+                            <textarea name="goodsnecessitydes" id="goodsnecessitydes"></textarea>
                         </div>
+                        <!-- Add button -->
                         <div class="add-necessity-add-button">
                             <input type="submit" value="Add">
                         </div>
