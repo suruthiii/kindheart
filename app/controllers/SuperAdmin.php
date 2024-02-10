@@ -80,7 +80,6 @@ class SuperAdmin extends Controller {
         $this->view('super admin/report', $data);
     }
 
-
     public function complaint(){
         $data = [
             'title' => 'Home page'
@@ -90,8 +89,7 @@ class SuperAdmin extends Controller {
 
     public function createAdmin(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
+            
             $data = [
                 'username' => trim($_POST['username']),
                 'name' => trim($_POST['name']),
@@ -113,44 +111,41 @@ class SuperAdmin extends Controller {
             }
 
             // Validate name
-            if (empty($data['name'])) {
+            if (empty($data['name']) && empty($data['err'])) {
                 $data['err'] = 'Please enter name';
             }
 
             // Validate email
-            if (empty($data['email'])) {
+            if (empty($data['email']) && empty($data['err'])) {
                 $data['err'] = 'Please enter email';
             } else {
                 // Check if email exists
-                if ($this->userModel->findUserByEmail($data['email'])) {
+                if (empty($data['err']) && $this->userModel->findUserByEmail($data['email'])) {
                     $data['err'] = 'Email is already taken';
                 }
             }
 
             // Validate password
-            if (empty($data['password'])) {
+            if (empty($data['password']) && empty($data['err'])) {
                 $data['err'] = 'Please enter password';
-            } elseif (strlen($data['password']) < 6) {
+            } else if (strlen($data['password']) < 6) {
                 $data['err'] = 'Password must be at least 6 characters';
             }
 
             // Validate confirm password
-            if (empty($data['confirm_password'])) {
+            if (empty($data['confirm_password']) && empty($data['err'])) {
                 $data['err'] = 'Please confirm password';
             } else {
-                if ($data['password'] != $data['confirm_password']) {
+                if (empty($data['err']) && $data['password'] != $data['confirm_password']) {
                     $data['err'] = 'Passwords do not match';
                 }
             }
-
-            // die(print_r($data));
 
             // Make sure errors are empty
             if (empty($data['err'])) {
                 // Hash password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
-                // die(print_r($data));
                 // Register user
                 if ($this->userModel->register($data)) {
                     redirect('superadmin/admin');
@@ -164,4 +159,98 @@ class SuperAdmin extends Controller {
         }
     }
 
-}    
+    public function viewAdmin($admin_ID = null) {
+        if (empty($admin_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'View Admin',
+            'admin_details' => $this->userModel->getAdmin($admin_ID)
+        ];
+
+        $this->view('super admin/admin/viewAdmin', $data);
+    }
+
+    public function editAdmin() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'username' => trim($_POST['username']),
+                'name' => trim($_POST['name']),
+                'user_id' => trim($_POST['user_ID']),
+                'old_username' => trim($_POST['old_username']),
+                'err' => ''
+            ];
+
+            // Validate username
+            if (empty($data['username'])) {
+                $data['err'] = 'Please enter username';
+            } else {
+                // Check if username exists
+                if ($data['username'] != $data['old_username'] && $this->userModel->findUserByUsername($data['username'])) {
+                    $data['err'] = 'Username is already taken';
+                }
+            }
+
+            // Validate name
+            if (empty($data['name']) && empty($data['err'])) {
+                $data['err'] = 'Please enter name';
+            }
+
+            // Make sure errors are empty
+            if (empty($data['err'])) {
+
+                if ($this->userModel->updateAdmin($data)) {
+                    redirect('superadmin/editAdmin?admin_ID='.$data['user_id']);
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $backend_data = $this->userModel->getAdmin($data['user_id']);
+
+                $admin_data = [
+                    'title' => 'Edit Admin',
+                    'admin_details' => [
+                        'adminID' => $backend_data->adminID,
+                        'adminName' => $backend_data->adminName, 
+                        'email' => $backend_data->email,
+                        'username' => $backend_data->username
+                    ],
+                    'err' => $data['err']
+                ];
+                
+                $this->view('super admin/admin/editAdmin', $admin_data);
+            }
+        }
+        else{
+            if (empty($_GET['admin_ID'])) {
+                redirect('pages/404');
+            }
+
+            $admin_details = $this->userModel->getAdmin($_GET['admin_ID']);
+    
+            $data = [
+                'title' => 'Edit Admin',
+                'admin_details' => [
+                    'adminID' => $admin_details->adminID,
+                    'adminName' => $admin_details->adminName, 
+                    'email' => $admin_details->email,
+                    'username' => $admin_details->username
+                ]
+            ];
+    
+            $this->view('super admin/admin/editAdmin', $data);
+        }
+    }
+
+    public function deleteAdmin() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->userModel->deleteAdmin($_POST['admin_ID']);
+
+            redirect('superadmin/admin');
+        }
+    }
+}   

@@ -456,12 +456,10 @@ class Users extends Controller{
     public function login(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
             // Form is submitting
-            // Sanitize POST data
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             // Input data
             $data = [
-                'email' => trim($_POST['email']),
+                'username' => trim($_POST['username']),
                 'password' => trim($_POST['password']),
                 'remember_me' => isset($_POST['remember_me']),
                 'err' => ''
@@ -469,11 +467,11 @@ class Users extends Controller{
 
             // Validate data
             // Validate email
-            if (empty($data['email'])){
-                $data['err'] = 'Please enter email';
+            if (empty($data['username'])){
+                $data['err'] = 'Please enter username';
             }
             else{
-                if ($this->userModel->findUserByEmail($data['email'])){
+                if ($this->userModel->findUserByUsername($data['username'])){
                     // User found
                 }
                 else{
@@ -490,7 +488,7 @@ class Users extends Controller{
             // Check if error is empty
             if (empty($data['err'])){
                 // log the user
-                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
                 if ($loggedInUser){
                     // Create session
                     $this->createUserSession($loggedInUser);
@@ -510,7 +508,7 @@ class Users extends Controller{
         else{
             // Initial form load
             $data = [
-                'email' => '',
+                'username' => '',
                 'password' => '',
                 'err' => ''
             ];

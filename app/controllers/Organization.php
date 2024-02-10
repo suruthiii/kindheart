@@ -15,11 +15,11 @@ class Organization extends Controller {
         $this->view('organization/index', $data);
     }
 
-    public function necessityRequest(){
+    public function choosethenecessityType(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/necessityRequest', $data);
+        $this->view('organization/choosethenecessityType', $data);
     }
 
     public function monetoryfundingRequest(){
@@ -36,11 +36,18 @@ class Organization extends Controller {
         $this->view('organization/physicalgoodsRequest', $data);
     }
 
-    public function postednecessities(){
+    public function postedmonetarynecessity(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/postednecessities', $data);
+        $this->view('organization/postedmonetarynecessity', $data);
+    }
+
+    public function postedphysicalgoodsnecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/postedphysicalgoodsnecessity', $data);
     }
 
     public function editprofile(){
@@ -56,6 +63,28 @@ class Organization extends Controller {
         ];
         $this->view('organization/addProject', $data);
     }
+
+    public function successstory(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/successstory', $data);
+    }
+
+    public function complaint(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/complaint', $data);
+    }
+
+    public function viewdonors(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('organization/viewdonors', $data);
+    }
+
 
     // public function about(){
     //     $users = $this->pagesModel->getUser();

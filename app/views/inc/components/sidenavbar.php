@@ -286,7 +286,7 @@
 
             <!------------------- Organization ------------------>
             <?php if ($_SESSION['user_type'] == 'organization'){ ?>
-                <a href="<?php echo URLROOT ?>/organization/postednecessities">
+                <a href="<?php echo URLROOT ?>/organization/choosethenecessityType">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }
@@ -313,7 +313,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="#4">
+                <a href="<?php echo URLROOT ?>/organization/successstory">
                     <?php if ($section == 'successStories'){?>
                         <div class="selected-item">Success Stories</div>
                     <?php }
@@ -322,12 +322,21 @@
                     <?php } ?>
                 </a>
 
-                <a href="#5">
+                <a href="<?php echo URLROOT ?>/organization/viewdonors">
                     <?php if ($section == 'donors'){?>
                         <div class="selected-item">Donors</div>
                     <?php }
                     else{ ?>
                         <div class="item">Donors</div>
+                    <?php } ?>
+                </a>
+
+                <a href="<?php echo URLROOT ?>/organization/complaint">
+                    <?php if ($section == 'complaint'){?>
+                        <div class="selected-item">Complaint</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Complaint</div>
                     <?php } ?>
                 </a>
                 

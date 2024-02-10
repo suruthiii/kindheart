@@ -17,20 +17,20 @@
                 <div class="tiles">
 
                     <?php foreach($data['admins'] as $item){?>
-                        <a href="">
+                        <a href="<?php echo URLROOT ?>/superadmin/viewAdmin/<?php echo $item->adminID?>">
                             <div class="tile">
                                 <table>
                                     <tr>
                                         <td width="50%" class="tile-name"><?php echo $item->adminName;?></td>
                                         <td width="50%" class="option">
-                                            <form action="<?php echo URLROOT ?>" method="post" class="edit-form">
-                                                <input type="text" name="name" id="name" hidden value="" />
+                                            <form action="<?php echo URLROOT ?>/superadmin/editAdmin" method="GET" class="edit-form">
+                                                <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $item->adminID?>" />
                                                 <button type="submit" class="edit" onclick="return confirmSubmit();">
                                                     <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                                 </button>
                                             </form>
-                                            <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                                <input type="text" name="name" id="name" hidden value="" />
+                                            <form action="<?php echo URLROOT ?>/superadmin/deleteAdmin" method="post" class="delete-form">
+                                                <input type="text" name="admin_ID" id="deladmin_ID" hidden value="<?php echo $item->adminID?>" />
                                                 <button type="submit" class="delete" onclick="return confirmSubmit();">
                                                     <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
                                                 </button>
@@ -65,35 +65,52 @@
                     <div class="error-msg">
                         <span class="form-invalid"><?php echo $other_data["err"] ?></span>
                     </div>
-                <?php } ?>
-                
-                <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
-                    <label for="name">Name</label><br>
-                    <input type="text" id="name" name="name" required><br><br>
 
-                    <label for="username">Username</label><br>
-                    <input type="text" id="username" name="username" required><br><br>
+                    <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" required value="<?php print_r($other_data['name']);?>"><br><br>
 
-                    <label for="email">Email</label><br>
-                    <input type="email" id="email" name="email" required><br><br>
+                        <label for="username">Username</label><br>
+                        <input type="text" id="username" name="username" required value="<?php print_r($other_data['username']);?>"><br><br>
 
-                    <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password" required><br><br>
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" required value="<?php print_r($other_data['email']);?>"><br><br>
 
-                    <label for="confirm_password">Confirm Password</label><br>
-                    <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" required><br><br>
 
-                    <input type="submit" value="Submit">
-                </form>
+                        <label for="confirm_password">Confirm Password</label><br>
+                        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
 
-                
-                
+                        <input type="submit" value="Submit">
+                    </form>
+                <?php } else { ?>
+                    <form class="add-form" method="POST" action="<?php echo URLROOT ?>/superadmin/createAdmin">
+                        <label for="name">Name</label><br>
+                        <input type="text" id="name" name="name" required><br><br>
+
+                        <label for="username">Username</label><br>
+                        <input type="text" id="username" name="username" required><br><br>
+
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" required><br><br>
+
+                        <label for="password">Password</label><br>
+                        <input type="password" id="password" name="password" required><br><br>
+
+                        <label for="confirm_password">Confirm Password</label><br>
+                        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+
+                        <input type="submit" value="Submit">
+                    </form>
+                <?php }?>
             </div>
-            
         </div>
     </section>
 </main>
 
-
+<script>
+    history.pushState(null, null, '/kindheart/superadmin/admin');
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
