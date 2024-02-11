@@ -6,7 +6,7 @@ class Necessity extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
-        // $this->middleware->checkAccess(['admin']);
+        $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
     }
 
     public function viewAdminNecessity(){
