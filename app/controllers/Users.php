@@ -116,9 +116,9 @@ class Users extends Controller{
         $this->view('users/emailVerifyOTPOrganization');
     }
 
-    public function setPassword(){
-        $this->view('users/setPassword');
-    }
+    // public function setPassword(){
+    //     $this->view('users/setPassword');
+    // }
     
     public function accountCreationSuccessful(){
         $this->view('users/accountCreationSuccessful');
@@ -141,7 +141,114 @@ class Users extends Controller{
     }
 
     public function studentCreatingProfile1(){
-        $this->view('users/studentCreatingProfile1');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'firstName' => trim($_POST['firstName']),
+                'lastName' => trim($_POST['lastName']),
+                'address' => trim($_POST['address']),
+                'dob' => trim($_POST['dob']),
+                'gender' => $_POST['gender'] ?? '',
+                'studentType' => $_POST['studentType'] ?? '',
+
+                'firstName_err' => '',
+                'lastName_err' => '',
+                'address_err' => '',
+                'dob_err' => '',
+                'gender_err' => '',
+                'studentType_err' => ''
+
+            ];
+
+            //Validate Each Input
+
+            //Validate FirstName
+            if(empty($data['firstName'])){
+                $data['firstName_err'] = 'Please enter the first name';
+            } elseif(!preg_match("/^[a-zA-Z]+$/", $data['firstName'])){
+                $data['firstName_err'] = 'Only letters are allowed';
+            }
+
+            //Validate LastName
+            if(empty($data['lastName'])){
+                $data['lastName_err'] = 'Please enter the last name';
+            } elseif(!preg_match("/^[a-zA-Z]+$/", $data['lastName'])){
+                $data['lastName_err'] = 'Only letters are allowed';
+            }
+
+            //Validate Address
+            if(empty($data['address'])){
+                $data['address_err'] = 'Please enter an address';
+            }
+
+            //Validate DOB
+            if(empty($data['dob'])){
+                $data['dob_err'] = 'Please select the date of birth';
+            } else {
+                // Create DateTime objects for the provided date of birth and the present date
+                $dob = DateTime::createFromFormat('Y-m-d', $data['dob']);
+                $presentDate = new DateTime();
+
+                // Check if the provided date of birth is not after the present date
+                if ($dob > $presentDate) {
+                    $data['dob_err'] = 'Date of birth cannot be after the present date';
+                }
+            }
+      
+            //Validate Gender
+            if(empty($data['gender'])){
+                $data['gender_err'] = 'Please select the gender';
+            }
+
+            //Validate Student TYpe
+            if(empty($data['studentType'])){
+                $data['studentType_err'] = 'Please select the student type';
+            }            
+
+
+            //Validation is completed and no error then register the user
+            if(empty($data['firstName_err']) && empty($data['lastName_err']) && empty($data['address_err']) && empty($data['dob_err']) && empty($data['gender_err']) && empty($data['studentType_err']) ){
+
+                //Register USer
+                if($this->userModel->createAccount($data)) {
+                    // $this->view('users/emailVerifyOTP', $data);
+
+                    $this->view('users/studentCreatingProfile2', $data);
+                    
+                }else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentCreatingProfile1', $data);
+            }
+
+        }else{
+            //Initial Form
+            $data = [
+                'firstName' => '',
+                'lastName' => '',
+                'address' => '',
+                'dob' => '',
+                'gender' => '',
+                'studentType' => '',
+
+                'firstName_err' => '',
+                'lastName_err' => '',
+                'address_err' => '',
+                'dob_err' => '',
+                'gender_err' => '',
+                'studentType_err' => ''
+            ];
+
+            //Load View
+            $this->view('users/studentCreatingProfile1', $data);
+        }
     }
 
     public function studentCreatingProfile2(){

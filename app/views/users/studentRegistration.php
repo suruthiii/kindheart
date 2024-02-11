@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="image">
-            <img src="<?php echo URLROOT?>/img/welcm.jpg" alt="Welcome_Image" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
         </div>
         <div class="studentRegistration-formc shared-formc">
             <div class="studentRegistration-formce shared-formce">

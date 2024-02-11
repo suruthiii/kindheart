@@ -54,7 +54,7 @@ a {
 
 /* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
 .shared-label label {
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 50px;
 }
 
@@ -135,7 +135,7 @@ a {
     border: none;
     padding: 9px 0;
     cursor: pointer;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     transition: all 0.2s ease;
     width: 150px;
     height: 50px;
@@ -296,18 +296,38 @@ section::after {
     margin-top: 25px !important;
 }
 
-.studentCreateProfile-input-field input,
+.studentCreateProfile-input-field input[type="text"],
+.studentCreateProfile-input-field input[type="date"],
 .studentCreateProfile-input-field .inputt {
     height: 45px;
     border-radius: 6px;
     outline: none;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: left;
     border: 1px solid #ddd;
     padding-left: 5px;
     box-shadow: 0px 0px 19px -2px #ddd;
     -webkit-box-shadow: 0px 0px 19px -2px #ddd;
     -moz-box-shadow: 0px 0px 19px -2px #ddd;
+}
+
+.studentCreateProfile-input-field input[type="radio"] {
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.studentCreateProfile-input-field .radio-group2 {
+    margin-left: 160px;
+}
+
+.studentCreateProfile-input-field .radio-buttons {
+    margin-left: 20px;
+}
+
+.studentCreateProfile-input-field #radio_label {
+    margin-right: 10px;
+    margin-left: -10px;
+    margin-top: 5px;
 }
 
 .studentCreateProfile-input-field .inputt {
@@ -339,7 +359,7 @@ section::after {
     margin-right: 5px;
     margin-bottom: 10px;
     margin-right: 15px;
-    margin-top: -25px;
+    margin-top: -45px;
 }
 
 .studentCreateProfile-horizontal-input .input-group input,

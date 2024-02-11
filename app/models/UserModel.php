@@ -16,50 +16,111 @@ class UserModel{
         $this->db->bind(':password', $data['password']);
 
         // Execute
-        if ($this->db->execute() && $this->updateUserTable($data)){
+        if ($this->db->execute()){
             return true;
         }
         else {
             return false;
         }
+
+        // if ($this->db->execute() && $this->updateUserTable($data)){
+        //     return true;
+        // }
+        // else {
+        //     return false;
+        // }
     }
+    
+    // // Update User Table
+    // public function updateUserTable($data){
 
-    // Update user tables
-    public function updateUserTable($data){
+    //     // Prepare statement
+    //     $this->db->query('SELECT userID FROM user WHERE email = :email AND password = :password');
 
-        $this->db->query('SELECT userID FROM user WHERE email = :email AND password = :password');
+    //     // Bind values
+    //     $this->db->bind(':email', $data['email']);        
+    //     $this->db->bind(':password', $data['password']);
+
+    //     $row = $this->db->single();
+    //     $id = $row->userID;
+
+    //     $result = true;
+
+    //     // Execute
+    //     if ($result){
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+
+    public function createAccount($data){
+
+        // Prepare statement
+        $this->db->query('INSERT INTO donee (address) VALUES (:address)');
 
         // Bind values
-        $this->db->bind(':email', $data['email']);
-        
-        $this->db->bind(':password', $data['password']);
-
-        $row = $this->db->single();
-        $id = $row->userID;
-
-        $result = true;
-
-        // // Prepare statement
-        // if ($data['user_type'] == 'student'){
-        //     // Prepare statement
-        //     $this->db->query('INSERT INTO admin (studentID, studentName) VALUES (:id, :name)');
-
-        //     // Bind values
-        //     $this->db->bind(':name', $data['name']);
-        //     $this->db->bind(':id', $id);
-
-        //     $result = $this->db->execute();
-        // }
-
+        $this->db->bind(':address', $data['address']);
 
         // Execute
-        if ($result){
+        if ($this->db->execute()){
+            return true;
+        }
+        else {
+            return false;
+        }
+
+        // Prepare statement
+        $this->db->query('INSERT INTO student (fName, lname, dateOfBirth, gender, studentType) VALUES (:firstName, :lastName, :dob, :gender, :studentType)');
+
+        // Bind values
+
+        $this->db->bind(':firstName', $data['firstName']);
+        $this->db->bind(':lastName', $data['lastName']);
+        $this->db->bind(':dob', $data['dob']);
+        $this->db->bind(':gender', $data['gender']);
+        $this->db->bind(':studentType', $data['studentType']);
+
+        // Execute
+        if ($this->db->execute()){
             return true;
         }
         else {
             return false;
         }
     }
+
+
+    // // Update Student Table
+    // public function updateStudentTable($data){
+        
+    //     // Prepare statement
+    //     $this->db->query('SELECT studentID FROM student WHERE fName = :firstName AND lname = :lastName AND dateOfBirth = :dob AND gender = :gender AND studentType = :studentType');
+
+    //     $this->db->query('SELECT doneeID FROM donee WHERE address = :address');
+    //     // Bind values
+
+    //     $this->db->bind(':firstName', $data['firstName']);
+    //     $this->db->bind(':lastName', $data['lastName']);
+    //     $this->db->bind(':address', $data['address']);
+    //     $this->db->bind(':dob', $data['dob']);
+    //     $this->db->bind(':gender', $data['gender']);
+    //     $this->db->bind(':studentType', $data['studentType']);
+
+    //     $row = $this->db->single();
+    //     $id = $row->userID;
+
+    //     $result = true;
+
+    //     // Execute
+    //     if ($result){
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 
     // Find user
     public function findUserByEmail($email){
