@@ -23,13 +23,6 @@ class UserModel{
         else {
             return false;
         }
-
-        // if ($this->db->execute() && $this->updateUserTable($data)){
-        //     return true;
-        // }
-        // else {
-        //     return false;
-        // }
     }
     
     // // Update User Table
@@ -56,6 +49,14 @@ class UserModel{
     //     }
     // }
 
+    // Function to check if a user is already in a table
+    private function isUserInTable($userID, $table) {
+        $this->db->query("SELECT * FROM $table WHERE $table"."ID = :userID");
+        $this->db->bind(':userID', $userID);
+        $this->db->execute();
+        return $this->db->rowCount() > 0;
+    }
+
 
 
     public function createAccount($data){
@@ -66,7 +67,7 @@ class UserModel{
         // Bind values
         $this->db->bind(':address', $data['address']);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
-        
+
         $result1 = $this->db->execute();
 
 
@@ -85,6 +86,27 @@ class UserModel{
         $result2 = $this->db->execute();
 
         return $result1 && $result2;
+    }
+
+    public function createAccount2($data){
+
+        //Student Table
+        // Prepare statement
+        $this->db->query('INSERT INTO student (studentID, institutionName, studyingYear, receivingScholarships) VALUES (:studentID, :orgName, :acaYear, :schol)');
+
+        // Bind values
+        $this->db->bind(':studentID', $_SESSION['user_id']);
+        $this->db->bind(':orgName', $data['orgName']);
+        $this->db->bind(':acaYear', $data['acaYear']);
+        $this->db->bind(':schol', $data['schol']);
+
+        //Execute
+        if ($this->db->execute()){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 

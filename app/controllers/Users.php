@@ -221,8 +221,7 @@ class Users extends Controller{
 
                 //Register USer
                 if($this->userModel->createAccount($data)) {
-                    // $this->view('users/emailVerifyOTP', $data);
-
+                    
                     $this->view('users/studentCreatingProfile2', $data);
                     
                 }else{
@@ -257,7 +256,65 @@ class Users extends Controller{
     }
 
     public function studentCreatingProfile2(){
-        $this->view('users/studentCreatingProfile2');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'orgName' => trim($_POST['orgName']),
+                'acaYear' => trim($_POST['acaYear']),
+                'schol' => trim($_POST['schol']),
+
+                'orgName_err' => '',
+                'acaYear_err' => ''
+            ];
+
+            //Validate Each Input
+
+            //Validate Organization Name
+            if(empty($data['orgName'])){
+                $data['orgName_err'] = 'Organization Name Is Required';
+            }
+
+            //Validate Academic Year
+            if(empty($data['acaYear'])){
+                $data['acaYear_err'] = 'Academic Year Is Required';
+            }         
+
+
+            //Validation is completed and no error then register the user
+            if(empty($data['orgName_err']) && empty($data['acaYear_err'])){
+
+                //Register USer
+                if($this->userModel->createAccount2($data)) {
+
+                    $this->view('users/studentCreatingProfile3', $data);
+                    
+                }else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentCreatingProfile2', $data);
+            }
+
+        }else{
+            //Initial Form
+            $data = [
+                'orgName' => '',
+                'acaYear' => '',
+                'schol' => '',
+
+                'orgName_err' => '',
+                'acaYear_err' => ''
+            ];
+
+            //Load View
+            $this->view('users/studentCreatingProfile2', $data);
+        }
     }
 
     public function studentCreatingProfile3(){
