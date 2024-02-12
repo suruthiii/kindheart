@@ -17,13 +17,13 @@
             
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">3 of 6</span><br>   
-                <div class="studentCreateProfile-text">
+                <div class="studentCreateProfile-text shared-text shared-label">
                     <form action="<?php echo URLROOT ?>/users/studentCreatingProfile4" method="GET">
-                        <div class="studentCreateProfile-input-field">
+                        <div class="studentCreateProfile-input-field shared-margin2">
 
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
-                                    <label for="careType" style="color: rgb(146, 141, 141); margin-top: 40px !important;margin-bottom: 5px !important;">Select Caregiver</label>
+                                    <label for="careType" style="color: rgb(146, 141, 141); margin-bottom: 5px !important;">Select Caregiver</label>
                                     <select class="inputt" name="careType" >
                                         <option value="Father" class="dropdown-option">Father</option>
                                         <option value="Mother" class="dropdown-option">Mother</option>

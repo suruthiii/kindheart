@@ -17,7 +17,7 @@
             
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">5 of 6</span><br> <br>  
-                <div class="studentCreateProfile-text">
+                <div class="studentCreateProfile-text shared-text shared-label">
                     <form action="<?php echo URLROOT ?>/users/studentOrganizationCreatingProfile2" method="GET">
                         <div class="studentCreateProfile-input-field">
                             

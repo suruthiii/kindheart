@@ -17,9 +17,9 @@
             
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">2 of 6</span><br><br><br>     
-                <div class="studentCreateProfile-text">
+                <div class="studentCreateProfile-text  shared-text shared-label">
                     <form action="<?php echo URLROOT ?>/users/studentCreatingProfile3" method="GET">
-                        <div class="studentCreateProfile-input-field">
+                        <div class="studentCreateProfile-input-field ">
                             
                             <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
                             <input class="inputt1" type="text" name="orgName" ><br><br>
@@ -27,58 +27,6 @@
                             <input class="inputt1" type="text" name="acaYear" ><br><br>
                             <label for="schol" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Mention Currently receiving scholarships(Use Commas to break)</label><br>
                             <input class="inputt1" type="text" name="schol"  ><br><br>
-
-                            <!-- <div class="studentCreateProfile-horizontal-input">
-                                <div class="input-group">
-                                    <label for="careType" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Select Caregiver</label><br><br>
-                                    <select class="inputt" name="careType" >
-                                        <option value="Father" class="dropdown-option">Father</option>
-                                        <option value="Mother" class="dropdown-option">Mother</option>
-                                        <option value="Guardian" class="dropdown-option">Guardian</option>
-                                    </select><br>
-                                </div>
-                            </div>
-
-                            <label for="careName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Name</label><br>
-                            <input class="inputt1" type="text" name="careName" ><br><br>
-                            <label for="careOccu" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Occupation</label><br>
-                            <input class="inputt1" type="text" name="careOccu" ><br><br>
-                            <label for="careRealat" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Relationship to the Student</label><br>
-                            <input class="inputt1" type="text" name="careRealat" ><br><br>
-
-                            <div class="studentCreateProfile-horizontal-input">
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">GS Certificate</label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                    <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">How to obtain a GS certificate?<br>Click here </p>                                </div>
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">University/ School Letter</label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                    <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload a letter confirming your enrolment<br>from your University/ school.</p>
-                                </div>
-                            </div>
-
-                            <div class="studentCreateProfile-horizontal-input">
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">NIC - Front </label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                </div>
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">NIC - Back </label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                </div>
-                            </div>
-                            <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload clear photos of both sides of your National Identity card if the student age is above 16.</p>
-                            
-                            <label for="accHolderName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account holder's name</label><br>
-                            <input class="inputt1" type="text" name="accHolderName" ><br><br>
-                            <label for="bankName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the Bank</label><br>
-                            <input class="inputt1" type="text" name="bankName" ><br><br>
-                            <label for="branchName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Branch Name</label><br>
-                            <input class="inputt1" type="text" name="branchName" ><br><br>
-                            <label for="accNumber" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account Number</label><br>
-                            <input class="inputt1" type="text" name="accNumber" ><br><br>
-                        </div> -->
                         <div class="button-next">
                            
                                 <button class="next shared-button2">Next</button>

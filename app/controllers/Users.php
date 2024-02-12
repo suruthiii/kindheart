@@ -36,6 +36,7 @@ class Users extends Controller{
             $data = [
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
+                'userType' => 'student',
 
                 'email_err' => '',
                 'password_err' => ''
@@ -77,6 +78,10 @@ class Users extends Controller{
                 //Register USer
                 if($this->userModel->register($data)) {
                     // $this->view('users/emailVerifyOTP', $data);
+
+                    $_SESSION['user_id'] = $this->userModel->getUserIDByEmail($data['email']);
+                    $_SESSION['user_email'] = $data['email'];
+                    $_SESSION['user_type'] = 'student';
 
                     $this->view('users/accountCreationSuccessful', $data);
                     

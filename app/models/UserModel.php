@@ -9,13 +9,14 @@ class UserModel{
     // Register user
     public function register($data){
         // Prepare statement
-        $this->db->query('INSERT INTO user (email, password) VALUES (:email, :password)');
+        $this->db->query('INSERT INTO user (email, password, userType) VALUES (:email, :password, :userType)');
 
         // Bind values
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
+        $this->db->bind(':userType', $data['userType']);
 
-        // Execute
+        //Execute
         if ($this->db->execute()){
             return true;
         }
@@ -55,55 +56,47 @@ class UserModel{
     //     }
     // }
 
-    public function createAccount($data){
 
+
+    public function createAccount($data){
+        // Donee Table
         // Prepare statement
-        $this->db->query('INSERT INTO donee (address) VALUES (:address)');
+        $this->db->query('INSERT INTO donee (doneeID, address) VALUES (:doneeID, :address)');
 
         // Bind values
         $this->db->bind(':address', $data['address']);
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        
+        $result1 = $this->db->execute();
 
-        // Execute
-        if ($this->db->execute()){
-            return true;
-        }
-        else {
-            return false;
-        }
 
+        //Student Table
         // Prepare statement
-        $this->db->query('INSERT INTO student (fName, lname, dateOfBirth, gender, studentType) VALUES (:firstName, :lastName, :dob, :gender, :studentType)');
+        $this->db->query('INSERT INTO student (studentID, fName, lname, dateOfBirth, gender, studentType) VALUES (:studentID, :firstName, :lastName, :dob, :gender, :studentType)');
 
         // Bind values
-
+        $this->db->bind(':studentID', $_SESSION['user_id']);
         $this->db->bind(':firstName', $data['firstName']);
         $this->db->bind(':lastName', $data['lastName']);
         $this->db->bind(':dob', $data['dob']);
         $this->db->bind(':gender', $data['gender']);
         $this->db->bind(':studentType', $data['studentType']);
 
-        // Execute
-        if ($this->db->execute()){
-            return true;
-        }
-        else {
-            return false;
-        }
+        $result2 = $this->db->execute();
+
+        return $result1 && $result2;
     }
 
 
-    // // Update Student Table
+    // Update Student Table
     // public function updateStudentTable($data){
         
     //     // Prepare statement
     //     $this->db->query('SELECT studentID FROM student WHERE fName = :firstName AND lname = :lastName AND dateOfBirth = :dob AND gender = :gender AND studentType = :studentType');
-
-    //     $this->db->query('SELECT doneeID FROM donee WHERE address = :address');
+        
     //     // Bind values
-
     //     $this->db->bind(':firstName', $data['firstName']);
     //     $this->db->bind(':lastName', $data['lastName']);
-    //     $this->db->bind(':address', $data['address']);
     //     $this->db->bind(':dob', $data['dob']);
     //     $this->db->bind(':gender', $data['gender']);
     //     $this->db->bind(':studentType', $data['studentType']);
@@ -122,6 +115,29 @@ class UserModel{
     //     }
     // }
 
+    //     // Update Student Table
+    //     public function updateDoneeTable($data){
+        
+    //         // Prepare statement
+    //         $this->db->query('SELECT doneeID FROM donee WHERE address = :address');
+
+    //         // Bind values
+    //         $this->db->bind(':address', $data['address']);
+    
+    //         $row = $this->db->single();
+    //         $id = $row->userID;
+    
+    //         $result = true;
+    
+    //         // Execute
+    //         if ($result){
+    //             return true;
+    //         }
+    //         else {
+    //             return false;
+    //         }
+    //     }
+
     // Find user
     public function findUserByEmail($email){
         $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
@@ -136,6 +152,16 @@ class UserModel{
         } else {
             return false;
         }
+    }
+
+    // Find user
+    public function getUserIDByEmail($email){
+        $this->db->query('SELECT * FROM user WHERE email = :email');
+        $this->db->bind(':email', $email);
+
+        $row = $this->db->single();
+
+        return $row->userID;
     }
 
     // Login user
