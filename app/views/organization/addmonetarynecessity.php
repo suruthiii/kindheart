@@ -15,8 +15,8 @@
             <div class="middle-container">
                 <!-- Go Back Button -->
                 <div class="goback-button">
-                    <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/organization/postedmonetarynecessity'">Go Back</button>
+                    <img src="<?php echo URLROOT; ?>/img/back-arrow.png">
+                    <button onclick="location.href='<?php echo URLROOT; ?>/organization/postedmonetarynecessity'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -27,17 +27,18 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form action="<?php echo URLROOT ?>/Necessity/addmonetarynecessity" method="POST">
+                    <form action="<?php echo URLROOT;?>/Necessity/addingmonetarynecessity" method="POST">
                         <!-- First line of form -->
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-first-div">
-                                <label for="necessityMonetary">Necessity </label>
-                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
+                                <label>Necessity </label>
+                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo $data['necessityMonetary']; ?>">
+                                <span class="form-invalid-row"><?php echo $data['necessityMonetary_err']; ?></span>
                             </div>
                             <div class="necessity-second-div">
-                                <label for="necessityType">Necessity Type</label>
+                                <label>Necessity Type</label>
                                 <select name="necessityType" id="necessityType">
-                                    <option value=""><?php echo isset($data['necessityType']) ? $data['necessityType'] : '(Select)'; ?></option>
+                                    <option value=""><option>
                                     <option value="recurring">Recurring</option>
                                     <option value="onetime">One-Time</option>
                                 </select>
@@ -46,26 +47,26 @@
                         <!-- Second line of form -->
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-third-div">
-                                <label for="recurringstartdate">Start Date (if recurring) </label>
-                                <input type="date" id="recurringstartdate" name="recurringstartdate" value="<?php echo isset($data['recurringstartdate']) ? $data['recurringstartdate'] : date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
+                                <label>Start Date (if recurring) </label>
+                                <input type="date" id="recurringstartdate" name="recurringstartdate" min="<?php echo date('Y-m-d'); ?>">
                             </div>
                             <div class="necessity-fourth-div">
-                                <label for="recurringenddate">End Date (if recurring)</label>
-                                <input type="date" id="recurringenddate" name="recurringenddate" value="<?php echo isset($data['recurringenddate']) ? $data['recurringstartdate'] : date('Y-m-d'); ?>" min="<?php echo date('Y-m-d'); ?>">
+                                <label>End Date (if recurring)</label>
+                                <input type="date" id="recurringenddate" name="recurringenddate" min="<?php echo date('Y-m-d'); ?>">
                             </div>
                         </div>
                         <!-- Description about requested necessity -->
                         <div class="add-necessity-text-area-input-to-oneline">
-                            <label for="monetarynecessitydes">Description</label>
+                            <label>Description</label>
                             <textarea name="monetarynecessitydes" id="monetarynecessitydes">
-                                <?php echo isset($data['monetarynecessitydes']) ? $data['monetarynecessitydes'] : ''; ?>
+                                
                             </textarea>
                         </div>
 
                         <!-- Requested Amount in Rupees -->
                         <div class="add-necessity-one-line-input">
-                            <label for="requestedamount">Requested Amount in Rupees </label>
-                            <input type="number" id="requestedamount" name="requestedamount" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
+                            <label>Requested Amount in Rupees </label>
+                            <input type="number" id="requestedamount" name="requestedamount">
                         </div>
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
