@@ -9,13 +9,20 @@ class UserModel{
     // Register user
     public function register($data){
         // Prepare statement
-        $this->db->query('INSERT INTO user (username, email, password, userType) VALUES (:username, :email, :password, :userType)');
+        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, :status, 0)');
 
         // Bind values
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':userType', $data['user_type']);
+
+        if($data['user_type'] == 'admin'){
+            $this->db->bind(':status', 1);
+        }
+        else{
+            $this->db->bind(':status', 0);
+        }
 
         // Execute
         if ($this->db->execute() && $this->updateUserTable($data)){
