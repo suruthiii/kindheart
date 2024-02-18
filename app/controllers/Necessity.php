@@ -38,7 +38,6 @@ class Necessity extends Controller {
                 'requestedamount_err' => '',
                 'recurringstartdate_err' => '',
                 'recurringenddate_err' => ''
-
             ];
 
             if(empty($data['necessityMonetary'])){
@@ -56,9 +55,11 @@ class Necessity extends Controller {
 
                 if(empty($data['recurringenddate'])){
                     $data['recurringenddate_err']='Please enter the Recurring End Date';
-                }   
-            }elseif($data['necessityType']== 'onetime'){
+                }
                 
+            }else{
+                $data['recurringstartdate']= '';
+                $data['recurringenddate']= '';
             }
 
             if(empty($data['requestedamount'])){
