@@ -253,4 +253,35 @@ class SuperAdmin extends Controller {
             redirect('superadmin/admin');
         }
     }
+
+    public function userBan() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            if($this->userModel->userBan($_POST['user_ID'])) {
+                $userType = $this->userModel->getUserType($_POST['user_ID']);
+
+                if($userType == 'admin') {
+                    redirect('superadmin/admin');
+                }
+
+                else if($userType == 'student') {
+                    redirect('user/viewStudent');
+                }
+
+                else if($userType == 'organization') {
+                    redirect('user/viewOrganization');
+                }
+
+                else if($userType == 'donor') {
+                    redirect('user/viewDonor');
+                }
+
+                else
+                    die('User Type Not Found');
+            }
+            
+            else
+                die('User Not Found');
+        }
+    }
 }   
