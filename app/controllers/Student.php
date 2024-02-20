@@ -36,6 +36,27 @@ class Student extends Controller {
         $this->view('student/physicalgoodsRequest', $data);
     }
 
+    public function choosethenecessityType(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/choosethenecessityType', $data);
+    }
+
+    public function successstory(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/successstory', $data);
+    }
+
+    public function postedmonetarynecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/necessity/postedmonetarynecessity', $data);
+    }
+
     // public function about(){
     //     $users = $this->pagesModel->getUser();
     //     $data = [
@@ -43,4 +64,7 @@ class Student extends Controller {
     //     ];
     //     $this->view('about', $data);
     // }
+    
+    
+    
 }
