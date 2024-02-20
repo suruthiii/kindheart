@@ -1,11 +1,31 @@
 <div class="topnav">
-    <a class="active" href="">Home</a>
-    <?php if (empty($_SESSION['user_id'])){ ?>
-        <a href="<?php echo URLROOT ?>/users/login">Login</a>
-        <a href="<?php echo URLROOT ?>/users/register">Register</a>
-    <?php
-    }else{ ?>
-        <a href="<?php echo URLROOT ?>/users/logout">Logout</a>
-        <a href=""><?php echo $_SESSION['user_name'] ?></a>
-    <?php } ?>
+    <div class="container">
+        <div class="items">
+            <a class="item menu" onclick="navToggle()"><img style="width: 20px" src="<?php echo URLROOT ?>/img/menu.svg" alt=""></i></a>
+            <div class="content">
+                <!-- <div class="search">
+                    <input class="search-bar"  type="search" placeholder="Search...">
+                    <div class="filter">
+                        <img class="filter-ico" src="<?php echo URLROOT ?>/img/filter.png" alt="">
+                    </div>
+                </div> -->
+                <div class="notify">
+                    <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt="">
+                </div>
+
+                <div class="profile">
+                    <img class="ico" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function navToggle() {
+        console.log("pushed")
+        var element;
+        element = document.querySelector('.sidenav');
+        element.classList.toggle("sidenav-toggled");
+    }
+</script>

@@ -1,0 +1,34 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.rightcontainer {
+    position: relative;
+    float: right;
+    width: 80%;
+    height: 92vh;
+    margin-top: 4vh;
+}
+
+.rightcontainer .rightmiddle {
+    position: relative;
+    float: left;
+    width: 52%;
+    left: 12%;
+    height: 92vh;
+}
+
+.rightcontainersecond {
+    position: relative;
+    float: right;
+    width: 70%;
+    height: 92vh;
+    margin-top: 4vh;
+}
+
+.links{
+    text-decoration: none;
+}

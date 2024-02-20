@@ -1,0 +1,91 @@
+.sidenav{
+    background-color: #8E0000;
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    border-radius: 0 20px 20px 0;
+    height: 100vh;
+    width: 320px;  
+    left: 0;
+    transition: left 0.5s ease-in;
+}
+
+@media screen and (max-width: 720px){
+    .sidenav{
+        left: -340px;
+        transition: left 0.5s ease-in;
+    }
+}
+
+.sidenav-toggled{
+    left: 0;
+}
+
+.sidenav .container{
+    padding: 10px 0 10px 50px;
+    height: 95vh;
+}
+
+.sidenav .container .logo{
+    font-size: 40px;
+    text-align: left;
+    padding: 20px 0 50px 15px;
+    margin: 0 10px 0 10px;
+}
+
+.sidenav .container .logo img{
+    width: 70px;
+}
+
+.sidenav .container .sidenav-close-btn{
+    position: absolute;
+    top: 40px;
+    cursor: pointer;
+    right: -15px;
+    padding: 7px 11px;
+    font-size: 15px;
+    transition: 0.3s;
+    background-color: rgb(235, 194, 194);
+    border-radius: 50%;
+    color: #8E0000;
+}
+
+.sidenav .container .sidenav-close-btn:hover{
+    scale: 1.1;
+    
+}
+
+@media screen and (min-width: 720px){
+    .sidenav .container .sidenav-close-btn{
+        display: none;
+    }
+}
+
+.sidenav .container .items{
+    margin-top: -30px;
+}
+
+.sidenav .container .items .item{
+    padding: 15px 10px 15px 25px;
+    transition: 0.3s;
+    color: rgb(184, 116, 116);
+    font-size: 17px;
+    font-weight: 1000;
+}
+
+.sidenav .container .items .selected-item{
+    padding: 15px 10px 15px 25px;
+    transition: 0.3s;
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    font-weight: 1000;
+}
+
+.sidenav .container .items a{
+    text-decoration: none;
+    color: black;
+}
+
+.sidenav .container .items .item:hover{
+    color: white;
+}

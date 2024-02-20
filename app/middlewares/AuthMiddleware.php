@@ -5,7 +5,6 @@ class AuthMiddleware {
         if (session_status() == PHP_SESSION_NONE) {
             session_start();
         }
-        //Jayathma Modai
     }
 
     public function checkAccess($allowedRoles) {
