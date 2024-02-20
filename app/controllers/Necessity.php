@@ -29,17 +29,24 @@ class Necessity extends Controller {
             $data = [
                 'necessityMonetary' => trim($_POST['necessityMonetary']),
                 'necessityType' => trim($_POST['necessityType']),
-                'recurringstartdate' => trim($_POST['recurringstartdate']),
-                'recurringenddate' => trim($_POST['recurringenddate']),
                 'monetarynecessitydes' => trim($_POST['monetarynecessitydes']),
                 'requestedamount' => trim($_POST['requestedamount']),
                 'necessityMonetary_err' => '',
                 'monetarynecessitydes_err' => '',
-                'requestedamount_err' => '',
-                'recurringstartdate_err' => '',
-                'recurringenddate_err' => ''
+                'requestedamount_err' => ''
             ];
 
+            //change the getting input according to necessity type
+            if ($data['necessityType'] === 'recurring') {
+                $data['recurringstartdate'] = trim($_POST['recurringstartdate']);
+                $data['recurringenddate'] = trim($_POST['recurringenddate']);
+            } else {
+                $data['recurringstartdate'] = null;
+                $data['recurringenddate'] = null;
+            }
+
+
+            //check wheather field are empty or not
             if(empty($data['necessityMonetary'])){
                 $data['necessityMonetary_err']='Please enter the Necessity about Monetary';
             }
@@ -57,14 +64,13 @@ class Necessity extends Controller {
                     $data['recurringenddate_err']='Please enter the Recurring End Date';
                 }
                 
-            }else{
-                $data['recurringstartdate']= '';
-                $data['recurringenddate']= '';
             }
 
             if(empty($data['requestedamount'])){
                 $data['requestedamount_err']='Please enter the Requested Amount';
             }
+
+            print_r($_POST);
 
             $this->view('organization/addmonetarynecessity', $data);
 
