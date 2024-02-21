@@ -10,7 +10,7 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>Posted Benefactions</h3>
+            <h3>Benefactions</h3>
             <p style="margin-left: 10px">Last 30 days</p>
             <div class="list">
                 <div class="list-title">

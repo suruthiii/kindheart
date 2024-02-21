@@ -21,7 +21,7 @@
                     </a>
                 </div>
 
-            <h3 style="margin-top: 25px">View Student Requests</h3>
+            <h3 style="margin-top: 25px">Student Requests</h3>
             <p style="margin-left: 10px">View the list of student requests</p>
             <div class="req-list">
                 <div class="list-title">
