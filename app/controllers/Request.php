@@ -13,6 +13,13 @@ class Request extends Controller {
         $this->view('admin/request/studentRequest', $data);
     }
 
+    public function adminOrganizationRequest(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/request/organizationRequest', $data);
+    }
+
     public function viewOrganization(){
         $data = [
             'title' => 'Home page'
