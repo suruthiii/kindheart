@@ -6,11 +6,11 @@ class Request extends Controller {
         // $this->middleware->checkAccess(['admin']);
     }
 
-    public function viewStudent(){
+    public function adminStudentRequest(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/user/viewStudent', $data);
+        $this->view('admin/request/studentRequest', $data);
     }
 
     public function viewOrganization(){

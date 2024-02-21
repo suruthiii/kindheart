@@ -10,11 +10,22 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>View Requests</h3>
-            <p style="margin-left: 10px">View the list of requests</p>
+                <div class="back-arrow-btn">
+                    <a href="<?php echo URLROOT ?>/admin/request">
+                        <table>
+                            <tr>
+                                <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
+                                <td width="70%">Go Back</td>
+                            </tr>
+                        </table>
+                    </a>
+                </div>
+
+            <h3 style="margin-top: 25px">View Student Requests</h3>
+            <p style="margin-left: 10px">View the list of student requests</p>
             <div class="req-list">
                 <div class="list-title">
-                    <h4>User name</h4>
+                    <h4>Student name</h4>
                 </div>
                 <div class="list-items">
                     <table>
