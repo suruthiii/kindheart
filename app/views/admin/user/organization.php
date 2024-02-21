@@ -24,92 +24,84 @@
             <h3 style="margin-top: 25px">Organizations</h3>
             <p style="margin-left: 10px">View the list of organizations</p>
 
-            <div class="user-list">
-                <div class="user-list-title">
-                    <h4>Organization name</h4>
+            <div class="tile-list">
+                <div class="tiles">
+
+                    <!-- Card 1 -->
+                    <a href="">
+                        <div class="tile">
+                            <table>
+                                <tr>
+                                    <td width="50%" class="tile-name">Organization 1</td>
+                                    <td width="50%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                            <input type="text" name="name" id="del" hidden value="" />
+                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
+                                            </button>
+                                        </form>
+                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
+                                            <input type="text" name="name" id="ban" hidden value="" />
+                                            <button type="submit" class="ban" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
+
+                    <!-- Card 2 -->
+                    <a href="">
+                        <div class="tile">
+                            <table>
+                                <tr>
+                                    <td width="50%" class="tile-name">Organization 2</td>
+                                    <td width="50%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                            <input type="text" name="name" id="del" hidden value="" />
+                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
+                                            </button>
+                                        </form>
+                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
+                                            <input type="text" name="name" id="ban" hidden value="" />
+                                            <button type="submit" class="ban" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
+
+                     <!-- Card 3 -->
+                     <a href="">
+                        <div class="tile">
+                            <table>
+                                <tr>
+                                    <td width="50%" class="tile-name">Organization 3</td>
+                                    <td width="50%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                            <input type="text" name="name" id="del" hidden value="" />
+                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
+                                            </button>
+                                        </form>
+                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
+                                            <input type="text" name="name" id="ban" hidden value="" />
+                                            <button type="submit" class="ban" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
                 </div>
-
-                <div class="user-list-items">
-                    <table>
-                        <!-- Organization 1 -->
-                        <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Organization 2 -->
-                        <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-
-                       <!-- Organization 3 -->
-                       <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Organization 4 -->
-                        <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-
-                        <!-- Organization 5 -->
-                        <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Organization 6 -->
-                        <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-                    </table>  
-                </div>     
             </div>
         </div>
     </section>
