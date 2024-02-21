@@ -8,7 +8,7 @@
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/admin/necessity">
+                <a href="<?php echo URLROOT ?>/necessity/adminMonetary">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -18,8 +18,8 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Necessity</h3>
-            <p style="margin-left: 10px">View information about the necessities of donees</p>
+            <h3 style="margin-top: 25px">View Monetary Necessity</h3>
+            <p style="margin-left: 10px">View information about the monetary necessities of donees</p>
             
             <div class="necessity-info">
                 <table>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>/necessity/viewAdminNecessityDonation" class="view-donation-btn">
+                <a href="<?php echo URLROOT ?>/necessity/viewAdminMonetaryDonation" class="view-donation-btn">
                     <!-- <button type="submit" class="view-donation-btn" > -->
                         View Donations
                     <!-- </button> -->

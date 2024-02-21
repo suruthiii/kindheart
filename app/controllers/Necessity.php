@@ -9,18 +9,18 @@ class Necessity extends Controller {
         $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
     }
 
-    public function viewAdminMonetary(){
+    public function adminMonetary(){
         $data = [
             'title' => 'Home page'
         ];
         $this->view('admin/necessity/monetary', $data);
     }
 
-    public function viewAdminNecessity(){
+    public function viewAdminMonetary(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/necessity/viewNecessity', $data);
+        $this->view('admin/necessity/viewMonetary', $data);
     }
 
     public function viewAdminNecessityDonation(){
