@@ -49,13 +49,13 @@ class UserModel{
     //     }
     // }
 
-    // Function to check if a user is already in a table
-    private function isUserInTable($userID, $table) {
-        $this->db->query("SELECT * FROM $table WHERE $table"."ID = :userID");
-        $this->db->bind(':userID', $userID);
-        $this->db->execute();
-        return $this->db->rowCount() > 0;
-    }
+    // // Function to check if a user is already in a table
+    // private function isUserInTable($userID, $table) {
+    //     $this->db->query("SELECT * FROM $table WHERE $table"."ID = :userID");
+    //     $this->db->bind(':userID', $userID);
+    //     $this->db->execute();
+    //     return $this->db->rowCount() > 0;
+    // }
 
 
 
@@ -92,7 +92,7 @@ class UserModel{
 
         //Student Table
         // Prepare statement
-        $this->db->query('INSERT INTO student (studentID, institutionName, studyingYear, receivingScholarships) VALUES (:studentID, :orgName, :acaYear, :schol)');
+        $this->db->query('INSERT INTO student (institutionName, studyingYear, receivingScholarships) VALUES (:orgName, :acaYear, :schol)');
 
         // Bind values
         $this->db->bind(':studentID', $_SESSION['user_id']);

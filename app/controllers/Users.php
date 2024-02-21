@@ -221,7 +221,7 @@ class Users extends Controller{
 
                 //Register USer
                 if($this->userModel->createAccount($data)) {
-                    
+
                     $this->view('users/studentCreatingProfile2', $data);
                     
                 }else{
@@ -300,6 +300,7 @@ class Users extends Controller{
                 //Load View
                 $this->view('users/studentCreatingProfile2', $data);
             }
+
 
         }else{
             //Initial Form

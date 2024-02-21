@@ -22,12 +22,14 @@
                         <div class="studentCreateProfile-input-field ">
                             
                             <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
-                            <input class="inputt1" type="text" name="orgName" value="<?php echo $data['orgName']; ?>">
+                            <input class="inputt1" type="text" name="firstName" value="<?php echo $data['orgName']; ?>">
                             <span class="error-message" for="register"><?php echo $data['orgName_err']; ?></span>
+                            <br><br>
 
                             <label for="acaYear" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Acadamic year/ Grade</label><br>
                             <input class="inputt1" type="text" name="acaYear" value="<?php echo $data['acaYear']; ?>">
                             <span class="error-message" for="register"><?php echo $data['acaYear_err']; ?></span>
+                            <br><br>
 
                             <label for="schol" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Mention Currently receiving scholarships(Use Commas to break)</label><br>
                             <input class="inputt1" type="text" name="schol" value="<?php echo $data['schol']; ?>"><br><br>
