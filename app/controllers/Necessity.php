@@ -30,13 +30,6 @@ class Necessity extends Controller {
         $this->view('admin/necessity/viewMonetaryDonation', $data);
     }
 
-    public function viewAdminNecessityDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewNecessityDonation', $data);
-    }
-
     public function adminGood(){
         $data = [
             'title' => 'Home page'
@@ -49,6 +42,13 @@ class Necessity extends Controller {
             'title' => 'Home page'
         ];
         $this->view('admin/necessity/viewGood', $data);
+    }
+
+    public function viewAdminGoodDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/necessity/viewGoodDonation', $data);
     }
 
 
