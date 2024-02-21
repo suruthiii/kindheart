@@ -44,6 +44,14 @@ class Necessity extends Controller {
         $this->view('admin/necessity/physicalGood', $data);
     }
 
+    public function viewAdminGood(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/necessity/viewGood', $data);
+    }
+
+
     public function addmonetarynecessity(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             // $data = [
