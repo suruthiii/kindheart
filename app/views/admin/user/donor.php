@@ -1,5 +1,8 @@
 <?php require APPROOT.'/views/inc/header.php'; ?>
 
+<!--  TOP NAVIGATION  -->
+<?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
+
 <!--  SIDE NAVIGATION  -->
 <?php $section = "users";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
@@ -18,20 +21,20 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Organizations</h3>
-            <p style="margin-left: 10px">View the list of organizations</p>
+            <h3 style="margin-top: 25px">Donors</h3>
+            <p style="margin-left: 10px">View the list of donors</p>
 
             <div class="user-list">
                 <div class="user-list-title">
-                    <h4>Organization name</h4>
+                    <h4>Donor name</h4>
                 </div>
 
                 <div class="user-list-items">
                     <table>
-                        <!-- Organization 1 -->
+                        <!-- Donor 1 -->
                         <tr class="user-list-item">
                             <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
+                                <h4>Lizzie Mayor</h4>
                             </td>
                             <td width="20%" class="view-btn-container">
                                 <button class="view-btn">View</button>
@@ -41,10 +44,10 @@
                             </td>
                         </tr>
                         
-                        <!-- Organization 2 -->
+                        <!-- Donor 2 -->
                         <tr class="user-list-item">
                             <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
+                                <h4>Lizzie Mayor</h4>
                             </td>
                             <td width="20%" class="view-btn-container">
                                 <button class="view-btn">View</button>
@@ -54,23 +57,10 @@
                             </td>
                         </tr>
 
-                       <!-- Organization 3 -->
-                       <tr class="user-list-item">
-                            <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
-                            </td>
-                            <td width="20%" class="view-btn-container">
-                                <button class="view-btn">View</button>
-                            </td>
-                            <td width="20%" class="remove-btn-container">
-                                <button class="remove-btn">Remove</button>
-                            </td>
-                        </tr>
-                        
-                        <!-- Organization 4 -->
+                        <!-- Donor 3 -->
                         <tr class="user-list-item">
                             <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
+                                <h4>Lizzie Mayor</h4>
                             </td>
                             <td width="20%" class="view-btn-container">
                                 <button class="view-btn">View</button>
@@ -80,10 +70,10 @@
                             </td>
                         </tr>
 
-                        <!-- Organization 5 -->
+                        <!-- Donor 4 -->
                         <tr class="user-list-item">
                             <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
+                                <h4>Lizzie Mayor</h4>
                             </td>
                             <td width="20%" class="view-btn-container">
                                 <button class="view-btn">View</button>
@@ -92,11 +82,24 @@
                                 <button class="remove-btn">Remove</button>
                             </td>
                         </tr>
-                        
-                        <!-- Organization 6 -->
+
+                        <!-- Donor 5 -->
                         <tr class="user-list-item">
                             <td width="60%" class="user-name">
-                                <h4>ABC Vidyalaya</h4>
+                                <h4>Lizzie Mayor</h4>
+                            </td>
+                            <td width="20%" class="view-btn-container">
+                                <button class="view-btn">View</button>
+                            </td>
+                            <td width="20%" class="remove-btn-container">
+                                <button class="remove-btn">Remove</button>
+                            </td>
+                        </tr>
+
+                        <!-- Donor 6 -->
+                        <tr class="user-list-item">
+                            <td width="60%" class="user-name">
+                                <h4>Lizzie Mayor</h4>
                             </td>
                             <td width="20%" class="view-btn-container">
                                 <button class="view-btn">View</button>

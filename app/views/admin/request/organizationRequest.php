@@ -21,11 +21,11 @@
                     </a>
                 </div>
 
-            <h3 style="margin-top: 25px">View Organization Requests</h3>
+            <h3 style="margin-top: 25px">Organization Requests</h3>
             <p style="margin-left: 10px">View the list of organization requests</p>
             <div class="req-list">
                 <div class="list-title">
-                    <h4>Student name</h4>
+                    <h4>Organization name</h4>
                 </div>
                 <div class="list-items">
                     <table>
