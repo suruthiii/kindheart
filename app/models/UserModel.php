@@ -88,26 +88,46 @@ class UserModel{
         return $result1 && $result2;
     }
 
-    public function createAccount2($data){
+        // Update Student Table
+        public function updateStudentTable($data){
+            
+            // Prepare statement
+            $this->db->query('UPDATE student SET institutionName = :orgName, studyingYear = :acaYear, receivingScholarships = :schol WHERE studentID = :studentID');
+            
+            // Bind values
+            $this->db->bind(':studentID', $_SESSION['user_id']);
+            $this->db->bind(':orgName', $data['orgName']);
+            $this->db->bind(':acaYear', $data['acaYear']);
+            $this->db->bind(':schol', $data['schol']);
 
-        //Student Table
-        // Prepare statement
-        $this->db->query('INSERT INTO student (institutionName, studyingYear, receivingScholarships) VALUES (:orgName, :acaYear, :schol)');
-
-        // Bind values
-        $this->db->bind(':studentID', $_SESSION['user_id']);
-        $this->db->bind(':orgName', $data['orgName']);
-        $this->db->bind(':acaYear', $data['acaYear']);
-        $this->db->bind(':schol', $data['schol']);
-
-        //Execute
-        if ($this->db->execute()){
-            return true;
+            if ($this->db->execute()){
+                return true;
+            }
+            else {
+                return false;
+            }
         }
-        else {
-            return false;
-        }
-    }
+
+    // public function createAccount2($data){
+
+    //     //Student Table
+    //     // Prepare statement
+    //     $this->db->query('INSERT INTO student (studentID, institutionName, studyingYear, receivingScholarships) VALUES (:studentID, :orgName, :acaYear, :schol)');
+
+    //     // Bind values
+    //     $this->db->bind(':studentID', $_SESSION['user_id']);
+    //     $this->db->bind(':orgName', $data['orgName']);
+    //     $this->db->bind(':acaYear', $data['acaYear']);
+    //     $this->db->bind(':schol', $data['schol']);
+
+    //     //Execute
+    //     if ($this->db->execute()){
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
 
 
     // Update Student Table

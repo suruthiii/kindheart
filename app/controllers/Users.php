@@ -289,7 +289,7 @@ class Users extends Controller{
             if(empty($data['orgName_err']) && empty($data['acaYear_err'])){
 
                 //Register USer
-                if($this->userModel->createAccount2($data)) {
+                if($this->userModel->updateStudentTable($data)) {
 
                     $this->view('users/studentCreatingProfile3', $data);
                     

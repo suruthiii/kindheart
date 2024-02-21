@@ -22,7 +22,7 @@
                         <div class="studentCreateProfile-input-field ">
                             
                             <label for="orgName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the University/ School</label><br>
-                            <input class="inputt1" type="text" name="firstName" value="<?php echo $data['orgName']; ?>">
+                            <input class="inputt1" type="text" name="orgName" value="<?php echo $data['orgName']; ?>">
                             <span class="error-message" for="register"><?php echo $data['orgName_err']; ?></span>
                             <br><br>
 
