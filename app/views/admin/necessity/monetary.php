@@ -10,7 +10,18 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>Posted Necessities</h3>
+                <div class="back-arrow-btn">
+                    <a href="<?php echo URLROOT ?>/admin/necessity">
+                        <table>
+                            <tr>
+                                <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
+                                <td width="70%">Go Back</td>
+                            </tr>
+                        </table>
+                    </a>
+                </div>
+
+            <h3 style="margin-top: 25px">Monetary Necessities</h3>
             <p style="margin-left: 10px">Last 30 days</p>
             <div class="list">
                 <div class="list-title">
