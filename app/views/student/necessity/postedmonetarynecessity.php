@@ -16,12 +16,12 @@
                 <!-- Go Back Button -->
                 <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/student/choosethenecessityType'">Go Back</button>
                 </div>
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Posted Physical Goods Necessities</h3>
+                    <h3>Posted Monetary Necessities</h3>
                     <p>Last 30 Days</p>
                 </div>
 
@@ -94,12 +94,11 @@
                 </div>
 
                 <div class="add-necessity-button-for-post">
-                    <button onclick="location.href='<?php echo URLROOT ?>/organization/addgoodsnecessity'">
+                    <button onclick="location.href='<?php echo URLROOT ?>/organization/addmonetarynecessity'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
                         <h5>Add Necessities</h5>
                     </button>
                 </div>
-                
 
             </div>
 

@@ -35,8 +35,8 @@
                                                     <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
                                                 </button>
                                             </form>
-                                            <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
-                                                <input type="text" name="name" id="name" hidden value="" />
+                                            <form action="<?php echo URLROOT ?>/superadmin/userBan" method="post" class="ban-form">
+                                                <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->adminID?>" />
                                                 <button type="submit" class="ban" onclick="return confirmSubmit();">
                                                     <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
                                                 </button>

@@ -497,7 +497,7 @@
 .view-donor-table{
     position: fixed;
     width: 30%;
-    height: 46vh;
+    height: 44vh;
     margin-top: 36vh;
     overflow: hidden;
     overflow-y: scroll;
@@ -595,4 +595,299 @@
     line-height: normal;
     margin-top: -0.3vh;
     margin-bottom: 1vh;
+}
+
+/* ---------------Posted Necessities---------------------*/
+.posted-necessity-pending-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 18vh;
+}
+
+.posted-necessity-pending-table-caption p, 
+.posted-necessity-Completed-table-caption p{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #262A41;
+    margin-top: -0.1vh;
+    font-weight: 600;
+}
+
+.posted-necessity-pending-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 22vh;
+    background-color: #DEDEDE;
+}
+
+.posted-necessities-pending-table{
+    position: fixed;
+    width: 45%;
+    height: 24vh;
+    margin-top: 24vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-necessities-pending-table table,
+.posted-necessities-Completed-table table{
+    width: 100%;
+}
+
+.posted-necessities-pending-table table tr,
+.posted-necessities-Completed-table table tr{
+    width: 100%;
+    height: 10vh;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
+}
+
+.posted-necessities-pending-table table tr td:nth-child(1),
+.posted-necessities-Completed-table table tr td:nth-child(1){
+    width: 15%;
+    padding-left: 15px;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(2){
+    width: 40%;
+    padding-left: 14px;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(3){
+    width: 30%;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(4){
+    width: 20%;
+}
+
+.posted-necessity-Completed-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 50vh;
+}
+
+.posted-necessity-Completed-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 54vh;
+    background-color: #DEDEDE;
+}
+
+.posted-necessities-Completed-table{
+    position: fixed;
+    width: 45%;
+    height: 24vh;
+    margin-top: 56vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.add-necessity-button-for-post{
+    position: fixed;
+    width: 45%;
+    height: 5vh;
+    margin-top: 82vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-necessity-button-for-post button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-necessity-button-for-post button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-necessity-button-for-post button img{
+    padding-right: 8px;
+}
+
+.add-necessity-button-for-post button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ------------------Add Good Necessities--------------- */
+.add-necessity-form{
+    position: relative;
+    width: 80%;
+    height: 69vh;
+    margin-top: 16vh;
+}
+
+
+.add-necessity-one-line-input{
+    position: relative;
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.add-necessity-one-line-second-type-input{
+    position: relative;
+    width: 100%;
+    height: 12vh;
+    margin-bottom: 3vh;
+}
+
+.add-necessity-text-area-input{
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.add-necessity-text-area-input-to-oneline{
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.add-necessity-add-button{
+    position: relative;
+    width: 100%;
+    height: 5vh;
+}
+
+.add-necessity-one-line-input label,
+.add-necessity-text-area-input label,
+.add-necessity-text-area-input-to-oneline label,
+.add-necessity-one-line-second-type-input label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 1.5vh;
+}
+
+.add-necessity-one-line-input input,
+.add-necessity-one-line-second-type-input .necessity-first-div input,
+.add-necessity-one-line-second-type-input .necessity-third-div input,
+.add-necessity-one-line-second-type-input .necessity-fourth-div input,
+.add-necessity-one-line-second-type-input .necessity-second-div select{
+    height: 5vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+}
+
+.add-necessity-text-area-input textarea{
+    height: 35vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 14px;
+}
+
+.add-necessity-text-area-input-to-oneline textarea{
+    height: 6vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.add-necessity-one-line-input input:focus,
+.add-necessity-text-area-input textarea:focus,
+.add-necessity-text-area-input-to-oneline textarea:focus,
+.add-necessity-one-line-second-type-input .necessity-first-div input:focus,
+.add-necessity-one-line-second-type-input .necessity-third-div input:focus,
+.add-necessity-one-line-second-type-input .necessity-fourth-div input:focus,
+.add-necessity-one-line-second-type-input .necessity-second-div select:focus{
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
+.add-necessity-add-button input{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-necessity-add-button input:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-necessity-add-button input[type="submit"] {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.necessity-first-div, .necessity-second-div,
+.necessity-third-div, .necessity-fourth-div{
+    position: relative;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.necessity-first-div{
+    width: 68%;
+    float: left;
+}
+
+.necessity-second-div{
+    width: 30%;
+    float: right;
+}
+
+.necessity-third-div{
+    width: 49%;
+    float: left;
+}
+
+.necessity-fourth-div{
+    width: 50%;
+    float: right;
 }

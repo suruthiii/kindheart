@@ -22,18 +22,18 @@ class Organization extends Controller {
         $this->view('organization/choosethenecessityType', $data);
     }
 
-    public function monetoryfundingRequest(){
+    public function addmonetarynecessity(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/monetoryfundingRequest', $data);
+        $this->view('organization/addmonetarynecessity', $data);
     }
 
-    public function physicalgoodsRequest(){
+    public function addgoodsnecessity(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/physicalgoodsRequest', $data);
+        $this->view('organization/addgoodsnecessity', $data);
     }
 
     public function postedmonetarynecessity(){
