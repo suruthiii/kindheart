@@ -57,6 +57,13 @@ class Necessity extends Controller {
         $this->view('super admin/necessity/monetary', $data);
     }
 
+    public function viewSuperAdminMonetary(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/viewMonetary', $data);
+    }
+
     public function superAdminGood(){
         $data = [
             'title' => 'Home page'
