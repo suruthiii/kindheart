@@ -20,11 +20,11 @@ class Request extends Controller {
         $this->view('admin/request/organizationRequest', $data);
     }
 
-    public function viewOrganization(){
+    public function superAdminStudentRequest(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/user/viewOrganization', $data);
+        $this->view('super admin/request/studentRequest', $data);
     }
 
     public function viewDonor(){
