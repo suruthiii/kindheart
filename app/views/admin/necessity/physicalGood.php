@@ -29,7 +29,7 @@
                 </div>
                 
                 <div class="card-list">
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -52,7 +52,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -75,7 +75,7 @@
                         </div>
                     </a>
                     
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -98,7 +98,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -121,7 +121,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -144,7 +144,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -176,7 +176,7 @@
                 </div>
                 
                 <div class="card-list">
-                <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -199,7 +199,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -222,7 +222,7 @@
                         </div>
                     </a>
                     
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -245,7 +245,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -268,7 +268,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -291,7 +291,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>
@@ -314,7 +314,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewAdminGood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
                         <div class="card">
                             <table>
                                 <tr>

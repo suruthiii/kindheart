@@ -26,4 +26,6 @@ class User extends Controller {
         ];
         $this->view('admin/user/donor', $data);
     }
+
+    
 }
