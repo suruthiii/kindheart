@@ -141,29 +141,30 @@
                     <div class="rightside-bar-title">
                         <h3>Add success Stories</h3>
                     </div>
-                    <!-- add image box -->
-                    <div class="add-photo-box">
-                        <form action="">
-                            <input type="image" value="+ Add Photo">
-                        </form>         
-                    </div>
-                    <!-- add description box -->
-                    <div class="add-description-box">
-                        <form action="">
-                            <textarea placeholder="Add description..."></textarea>
-                        </form>         
-                    </div>
 
-                    <!-- post button -->
-                    <div class="post-story-button">
-                        <form action="">
-                            <input type="submit" value="Post">
-                        </form>         
-                    </div>
+                    <div class="add-success-story-form">
+                        <form action="" method="post">
+                            <!-- add image box -->
+                            <div class="add-photo-box">
+                                <input type="image" value="+ Add Photo">        
+                            </div>
+                            <!-- add description box -->
+                            <div class="add-description-box">
+                                <textarea name="" id="" placeholder="Add description..."></textarea>
+                            </div>
 
-                    <!-- last-title for this -->
-                    <div class="last-title">
-                        <h3>Your success stories</h3>
+                            <!-- post button -->
+                            <div class="post-story-button">
+                                <input type="submit" value="Post">
+                
+                            </div>
+
+                            
+                        </form>
+                        <!-- last-title for this -->
+                        <div class="last-title">
+                                <h3>Your success stories</h3>
+                        </div>
                     </div>
 
                 </div>
