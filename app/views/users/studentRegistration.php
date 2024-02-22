@@ -21,16 +21,22 @@
                 <div class="studentRegistration-text shared-text shared-label shared-button">
                     <form action="<?php echo URLROOT ?>/users/studentRegistration" method="POST">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
-                        <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
+                            <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
                             <div class="inputbox">
                                 <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']; ?>" ><br>
                                 <span class="error-message" for="verificationCode"><?php echo $data['email_err']; ?></span>
                             </div><br>
 
-                        <label for="psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter Password</label><br><br>
+                            <label for="psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter Password</label><br><br>
                             <div class="inputbox">
                                 <input class="inputt" type="password" name="password" id="password" value="<?php echo $data['password']; ?>"><br>
                                 <span class="error-message" for="verificationCode"><?php echo $data['password_err']; ?></span>
+                            </div><br>
+
+                            <label for="psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Confirm Password</label><br><br>
+                            <div class="inputbox">
+                                <input class="inputt" type="password" name="confirmPassword" id="confirmPassword" value="<?php echo $data['confirmPassword']; ?>"><br>
+                                <span class="error-message" for="verificationCode"><?php echo $data['confirmPassword_err']; ?></span>
                             </div>
                         </div>
                         <button>Create Account</button>

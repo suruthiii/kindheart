@@ -36,10 +36,12 @@ class Users extends Controller{
             $data = [
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
                 'userType' => 'student',
 
                 'email_err' => '',
-                'password_err' => ''
+                'password_err' => '',
+                'confirmPassword_err' => ''
 
             ];
 
@@ -70,13 +72,19 @@ class Users extends Controller{
             //     $data['password_err'] = 'Password must not include < or >';
             // }
 
+            if (empty($data['confirmPassword'])) {
+                $data['confirmPassword_err'] = 'Please confirm password';
+            } else if ($data['password'] != $data['confirmPassword']) {
+                $data['confirmPassword_err'] = 'Passwords do not match';                
+            }
+
             //Validation is completed and no error then register the user
-            if(empty($data['email_err']) && empty($data['password_err']) ){
+            if(empty($data['email_err']) && empty($data['password_err']) && empty($data['confirmPassword_err']) ){
                 //Hash Password
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
 
                 //Register USer
-                if($this->userModel->register($data)) {
+                if($this->userModel->registerUser($data)) {
                     // $this->view('users/emailVerifyOTP', $data);
 
                     $_SESSION['user_id'] = $this->userModel->getUserIDByEmail($data['email']);
@@ -98,9 +106,11 @@ class Users extends Controller{
             $data = [
                 'email' => '',
                 'password' => '',
+                'confirmPassword' => '',
 
                 'email_err' => '',
-                'password_err' => ''
+                'password_err' => '',
+                'confirmPassword_err' => '',
             ];
 
             //Load View

@@ -6,17 +6,17 @@ class UserModel{
         $this->db = new Database();
     }
 
-    // Register user
+    // Register Admin
     public function register($data){
         // Prepare statement
-        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, :status, 0)');
+        $this->db->query('INSERT INTO user (email, password, userType, status, banCount) VALUES (:email, :password, :userType, :status, 0)');
 
         // Bind values
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':userType', $data['userType']);
 
-        if($data['user_type'] == 'admin'){
+        if($data['userType'] == 'admin'){
             $this->db->bind(':status', 1);
         }
         else{
@@ -31,40 +31,49 @@ class UserModel{
             return false;
         }
     }
-    
-    // // Update User Table
-    // public function updateUserTable($data){
 
-    //     // Prepare statement
-    //     $this->db->query('SELECT userID FROM user WHERE email = :email AND password = :password');
+    // Update User Table
+    public function updateUserTable($data){
 
-    //     // Bind values
-    //     $this->db->bind(':email', $data['email']);        
-    //     $this->db->bind(':password', $data['password']);
+        // Prepare statement
+        $this->db->query('SELECT userID FROM user WHERE email = :email AND password = :password');
 
-    //     $row = $this->db->single();
-    //     $id = $row->userID;
+        // Bind values
+        $this->db->bind(':email', $data['email']);        
+        $this->db->bind(':password', $data['password']);
 
-    //     $result = true;
+        $row = $this->db->single();
+        $id = $row->userID;
 
-    //     // Execute
-    //     if ($result){
-    //         return true;
-    //     }
-    //     else {
-    //         return false;
-    //     }
-    // }
+        $result = true;
 
-    // // Function to check if a user is already in a table
-    // private function isUserInTable($userID, $table) {
-    //     $this->db->query("SELECT * FROM $table WHERE $table"."ID = :userID");
-    //     $this->db->bind(':userID', $userID);
-    //     $this->db->execute();
-    //     return $this->db->rowCount() > 0;
-    // }
+        // Execute
+        if ($result){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
+    // Register user
+    public function registerUser($data){
+        // Prepare statement
+        $this->db->query('INSERT INTO user (email, password, userType) VALUES (:email, :password, :userType)');
 
+        // Bind values
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':userType', $data['userType']);
+
+        // Execute
+        if ($this->db->execute()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     public function createAccount($data){
         // Donee Table
