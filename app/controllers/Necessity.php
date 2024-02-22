@@ -8,21 +8,50 @@ class Necessity extends Controller {
         $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
     }
 
-    public function viewAdminNecessity(){
+    public function adminMonetary(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/necessity/viewNecessity', $data);
+        $this->view('admin/necessity/monetary', $data);
     }
 
-    public function viewAdminNecessityDonation(){
+    public function viewAdminMonetary(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/necessity/viewNecessityDonation', $data);
+        $this->view('admin/necessity/viewMonetary', $data);
     }
 
-    public function addingmonetarynecessity(){
+    public function viewAdminMonetaryDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/necessity/viewMonetaryDonation', $data);
+    }
+
+    public function adminGood(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/necessity/physicalGood', $data);
+    }
+
+    public function viewAdminGood(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/necessity/viewGood', $data);
+    }
+
+    public function viewAdminGoodDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('admin/necessity/viewGoodDonation', $data);
+    }
+
+
+    public function addmonetarynecessity(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 

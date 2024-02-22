@@ -219,7 +219,7 @@
             
             <!------------------- Student ------------------>
             <?php if ($_SESSION['user_type'] == 'student'){ ?>
-                <a href="#1">
+                <a href="<?php echo URLROOT ?>/student/choosethenecessityType">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }
@@ -246,7 +246,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="#4">
+                <a href="<?php echo URLROOT ?>/student/successstory">
                     <?php if ($section == 'successStories'){?>
                         <div class="selected-item">Success Stories</div>
                     <?php }

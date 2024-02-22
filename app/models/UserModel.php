@@ -9,13 +9,20 @@ class UserModel{
     // Register user
     public function register($data){
         // Prepare statement
-        $this->db->query('INSERT INTO user (username, email, password, userType) VALUES (:username, :email, :password, :userType)');
+        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, :status, 0)');
 
         // Bind values
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':userType', $data['user_type']);
+
+        if($data['user_type'] == 'admin'){
+            $this->db->bind(':status', 1);
+        }
+        else{
+            $this->db->bind(':status', 0);
+        }
 
         // Execute
         if ($this->db->execute() && $this->updateUserTable($data)){
@@ -79,7 +86,8 @@ class UserModel{
     }
 
     // Login user
-    public function login($email, $password){
+    public function login($email, $password)
+    {
         $this->db->query('SELECT * FROM user WHERE (email = :email OR username = :username) AND status = 1;');
         $this->db->bind(':email', $email);
         $this->db->bind(':username', $email);
@@ -95,7 +103,7 @@ class UserModel{
     }
 
     // Find user by username
-    public function findUserByUsername($username): bool
+    public function findUserByUsername($username)
     {
         $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
         $this->db->bind(':email', $username);
@@ -160,5 +168,28 @@ class UserModel{
         else {
             return false;
         }
+    }
+
+    // User Ban Functionality
+    public function userBan($user_ID) {
+        $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID');
+        $this->db->bind(':userID', $user_ID);
+        $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else
+            return false;
+    }
+
+    public function getUserType($user_ID) {
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID');
+        $this->db->bind(':userID', $user_ID);
+
+        $result = $this->db->single();
+
+        return $result->userType;
     }
 }

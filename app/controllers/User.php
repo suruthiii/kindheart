@@ -6,24 +6,24 @@ class User extends Controller {
         // $this->middleware->checkAccess(['admin']);
     }
 
-    public function viewStudent(){
+    public function adminStudent(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/user/viewStudent', $data);
+        $this->view('admin/user/student', $data);
     }
 
-    public function viewOrganization(){
+    public function adminOrganization(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/user/viewOrganization', $data);
+        $this->view('admin/user/organization', $data);
     }
 
-    public function viewDonor(){
+    public function adminDonor(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/user/viewDonor', $data);
+        $this->view('admin/user/donor', $data);
     }
 }

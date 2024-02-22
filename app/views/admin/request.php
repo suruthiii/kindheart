@@ -10,34 +10,52 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>View Requests</h3>
-            <p style="margin-left: 10px">View the list of requests</p>
-            <div class="req-list">
-                <div class="list-title">
-                    <h4>User name</h4>
-                </div>
-                <div class="list-items">
-                    <table>
-                        <!-- Request 1 -->
-                        <tr>
-                            <td class="name">
-                                <h4>A.L.M.Callister</h4>
-                            </td>
-                            <td class="btn">
-                                <button class="rev-btn">Review</button>
-                            </td>
-                        </tr>
+            <h3>Donee Registration Requests</h3>
+            <p style="margin-left: 10px">Select a donee type</p>
+            <div class="user-types">
 
-                        <!-- Request 2 -->
-                        <tr>
-                            <td class="name">
-                                <h4>A.L.M.Callister</h4>
-                            </td>
-                            <td class="btn">
-                                <button class="rev-btn">Review</button>
-                            </td>
-                        </tr>
-                    </table>
+                <!-- Necessity 1 -->
+                <a class="user-link" href="<?php echo URLROOT ?>/request/adminStudentRequest">
+                    <div class="user">
+                        <div class="title">Students</div>
+                    </div>
+                </a>
+
+                 <!-- Necessity 2 -->
+                 <a class="user-link" href="<?php echo URLROOT ?>/request/adminOrganizationRequest">
+                    <div class="user">
+                        <div class="title">Organizations</div>
+                    </div>
+                </a>
+
+            </div>
+            <div class="right-content">
+                <div class="right-cards">
+
+                    <!-- Card 1 -->
+                    <div class="right-card">
+                        <div class="title">Posted Necessities</div>
+                        <div class="value">58,977</div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="right-card">
+                        <div class="title">Fulfilled Necessities</div>
+                        <div class="value">58,977</div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="right-card">
+                        <div class="title">Monthly Donations</div>
+                        <div class="value">Rs. 58,977.00</div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="right-card">
+                        <div class="title">Total Donations</div>
+                        <div class="value">Rs. 58,977.00</div>
+                    </div>
+
                 </div>
             </div>
         </div>
