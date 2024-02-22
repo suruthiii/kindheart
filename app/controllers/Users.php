@@ -319,8 +319,85 @@ class Users extends Controller{
     }
 
     public function studentCreatingProfile3(){
-        $this->view('users/studentCreatingProfile3');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'careType' => trim($_POST['careType']),
+                'careName' => trim($_POST['careName']),
+                'careOccu' => trim($_POST['careOccu']),
+                'careRealat' => isset($_POST['careRealat']) ? trim($_POST['careRealat']) : '',
+
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''
+
+            ];
+
+            //Validate Each Input
+
+            //Validate CareTaker Type
+            if(empty($data['careType'])){
+                $data['careType_err'] = 'Please select a cargiver type';
+            }
+
+            //Validate Name
+            if (empty($data['careName'])) {
+                $data['careName_err'] = 'Caregiver name is required';
+            }
+      
+            //Validate Occupation
+            if(empty($data['careOccu'])){
+                $data['careOccu_err'] = 'Caregiver occupation is required';
+            }
+
+            // //Validate Relationship
+            if (!empty($data['careRealat']) && isset($_POST['careRealat'])) {
+                if (empty($data['careRealat'])) {
+                    $data['careRealat_err'] = 'Relationship to the student is required';
+                }
+            }
+    
+            // If no errors, proceed
+            if (empty($data['careType_err']) && empty($data['careName_err']) && empty($data['careOccu_err']) && empty($data['careRealat_err'])) {
+
+                //Register USer
+                if($this->userModel->updateStudentTableRemain($data)) {
+
+                    $this->view('users/studentCreatingProfile4', $data);
+                    
+                }else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentCreatingProfile3', $data);
+            }
+
+        }else{
+            //Initial Form
+            $data = [
+                'careType' => '',
+                'careName' => '',
+                'careOccu' => '',
+                'careRealat' => isset($_POST['careRealat']) ? trim($_POST['careRealat']) : '',
+
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''
+            ];
+
+            //Load View
+            $this->view('users/studentCreatingProfile3', $data);
+        }
     }
+
 
     public function studentCreatingProfile4(){
         $this->view('users/studentCreatingProfile4');

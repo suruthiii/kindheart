@@ -35,23 +35,23 @@
                                 <div class="input-group">
                                     <label for="firstName" style="color: rgb(146, 141, 141); margin-top: 25px; margin-bottom: 12px !important;">First Name</label>
                                     <input class="inputt2" type="text" name="firstName" value="<?php echo $data['firstName']; ?>">
-                                    <span class="error-message" for="register"><?php echo $data['firstName_err']; ?></span>
+                                    <span class="error-message"><?php echo $data['firstName_err']; ?></span>
                                 </div>
                                 <div class="input-group">
                                     <label for="lastName" style="color: rgb(146, 141, 141); margin-top: 25px; margin-bottom: 12px !important;">Last Name</label>
                                     <input class="inputt2" type="text" name="lastName" value="<?php echo $data['lastName']; ?>">
-                                    <span class="error-message" for="register"><?php echo $data['lastName_err']; ?></span>
+                                    <span class="error-message"><?php echo $data['lastName_err']; ?></span>
                                 </div>
                             </div>
                             
                             <label for="address" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Address</label><br>
                             <input class="inputt1" type="text" name="address" value="<?php echo $data['address']; ?>"><br>
-                            <span class="error-message" for="register"><?php echo $data['address_err']; ?></span>
+                            <span class="error-message"><?php echo $data['address_err']; ?></span>
                             <br>
 
                             <label for="dob" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Date Of Birth</label><br>
                             <input class="inputt1" type="date" name="dob" value="<?php echo $data['dob']; ?>"><br>
-                            <span class="error-message" for="register"><?php echo $data['dob_err']; ?></span>
+                            <span class="error-message"><?php echo $data['dob_err']; ?></span>
                             <br>
 
                             <div class="studentCreateProfile-horizontal-input">
@@ -65,7 +65,7 @@
                                         <input type="radio" id="other" name="gender" value="other"<?php echo ($data['gender'] === 'other') ? ' checked' : ''; ?>>
                                         <label id="radio_label" for="other">Other</label><br>
                                     </div>
-                                    <span class="error-message" for="register"><?php echo $data['gender_err']; ?></span>   
+                                    <span class="error-message"><?php echo $data['gender_err']; ?></span>   
 
                                 </div>
                                 <!-- <br> -->
@@ -78,7 +78,7 @@
                                         <input type="radio" id="universityStudent" name="studentType" value="universityStudent"<?php echo ($data['studentType'] === 'universityStudent') ? ' checked' : ''; ?>>
                                         <label id="radio_label" for="universityStudent">University Student</label><br>
                                     </div>
-                                    <span class="error-message" for="register"><?php echo $data['studentType_err']; ?></span>
+                                    <span class="error-message"><?php echo $data['studentType_err']; ?></span>
                                 </div>
                                 <!-- <br> -->
                             </div>

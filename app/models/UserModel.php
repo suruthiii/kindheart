@@ -108,6 +108,26 @@ class UserModel{
             }
         }
 
+        public function updateStudentTableRemain($data){
+            
+            // Prepare statement
+            $this->db->query('UPDATE student SET caregiverType = :careType, caregiverName = :careName, caregiverOccupation = :careOccu, caregiverRelationship = :careRealat WHERE studentID = :studentID');
+            
+            // Bind values
+            $this->db->bind(':studentID', $_SESSION['user_id']);
+            $this->db->bind(':careType', $data['careType']);
+            $this->db->bind(':careName', $data['careName']);
+            $this->db->bind(':careOccu', $data['careOccu']);
+            $this->db->bind(':careRealat', $data['careRealat']);
+
+            if ($this->db->execute()){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
     // public function createAccount2($data){
 
     //     //Student Table

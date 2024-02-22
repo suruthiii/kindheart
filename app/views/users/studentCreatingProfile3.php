@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
+    
 </head>
 <body>
     <div class="container">
@@ -18,59 +19,32 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">3 of 6</span><br>   
                 <div class="studentCreateProfile-text shared-text shared-label">
-                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile4" method="GET">
+                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile3" method="POST">
                         <div class="studentCreateProfile-input-field shared-margin2">
 
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
                                     <label for="careType" style="color: rgb(146, 141, 141); margin-bottom: 5px !important;">Select Caregiver</label>
-                                    <select class="inputt" name="careType" >
+                                    <select class="inputt" name="careType" id="careType" value="<?php echo $data['careType']; ?>">
                                         <option value="Father" class="dropdown-option">Father</option>
                                         <option value="Mother" class="dropdown-option">Mother</option>
                                         <option value="Guardian" class="dropdown-option">Guardian</option>
                                     </select>
+                                    <span class="error-message"><?php echo $data['careType_err']; ?></span>
                                 </div>
                             </div>
 
                             <label for="careName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Name</label><br>
-                            <input class="inputt1" type="text" name="careName" ><br><br>
+                            <input class="inputt1" type="text" name="careName" value="<?php echo $data['careName']; ?>"><br><br>
+                            <span class="error-message"><?php echo $data['careName_err']; ?></span>
+
                             <label for="careOccu" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Occupation</label><br>
-                            <input class="inputt1" type="text" name="careOccu" ><br><br>
+                            <input class="inputt1" type="text" name="careOccu" value="<?php echo $data['careOccu']; ?>"><br><br>
+                            <span class="error-message"><?php echo $data['careOccu_err']; ?></span>
+
                             <label for="careRealat" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Relationship to the Student</label><br>
-                            <input class="inputt1" type="text" name="careRealat" ><br><br>
-
-                            <!-- <div class="studentCreateProfile-horizontal-input">
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">GS Certificate</label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                    <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">How to obtain a GS certificate?<br>Click here </p>                                </div>
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">University/ School Letter</label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                    <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload a letter confirming your enrolment<br>from your University/ school.</p>
-                                </div>
-                            </div> -->
-
-                            <!-- <div class="studentCreateProfile-horizontal-input">
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">NIC - Front </label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                </div>
-                                <div class="input-group">
-                                    <label for="letterimg" style="color: rgb(146, 141, 141); margin-top: 30px; margin-bottom: 12px !important;">NIC - Back </label>
-                                    <input class="inputt2" type="file" name="letterimg" placeholder="Upload a Photo" >
-                                </div>
-                            </div>
-                            <p class="para" style="color: rgb(146, 141, 141); margin-top: 5px; margin-bottom: 10px !important;">Upload clear photos of both sides of your National Identity card if the student age is above 16.</p>
-                            
-                            <label for="accHolderName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account holder's name</label><br>
-                            <input class="inputt1" type="text" name="accHolderName" ><br><br>
-                            <label for="bankName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Name of the Bank</label><br>
-                            <input class="inputt1" type="text" name="bankName" ><br><br>
-                            <label for="branchName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Branch Name</label><br>
-                            <input class="inputt1" type="text" name="branchName" ><br><br>
-                            <label for="accNumber" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Account Number</label><br>
-                            <input class="inputt1" type="text" name="accNumber" ><br><br> -->
+                            <input class="inputt1" type="text" name="careRealat" id="careRealat" value="<?php echo $data['careRealat']; ?>" disabled><br><br>
+                            <span class="error-message"><?php echo $data['careRealat_err']; ?></span>
                         </div>
                         <div class="button-next">
                            
@@ -82,5 +56,20 @@
             </div>       
         </div>
     </div>
+
+    <script>
+        document.getElementById("careType").onchange = function() {
+            var careType = this.value;
+            var careRealatInput = document.getElementById("careRealat");
+            if (careType === "Guardian") {
+                // If the caregiver type is "Guardian", enable the relationship input
+                careRealatInput.disabled = false;
+            } else {
+                // If not, disable the relationship input and clear its value
+                careRealatInput.disabled = true;
+                careRealatInput.value = "";
+            }
+        };
+    </script>
 </body>
 </html>
