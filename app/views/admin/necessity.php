@@ -15,14 +15,14 @@
             <div class="user-types">
 
                 <!-- Necessity 1 -->
-                <a class="user-link" href="<?php echo URLROOT ?>/necessity/adminGood">
+                <a class="user-link" href="<?php echo URLROOT ?>/necessity/admingood">
                     <div class="user">
                         <div class="title">Physical Goods</div>
                     </div>
                 </a>
 
                  <!-- Necessity 2 -->
-                 <a class="user-link" href="<?php echo URLROOT ?>/necessity/adminMonetary">
+                 <a class="user-link" href="<?php echo URLROOT ?>/necessity/adminmonetary">
                     <div class="user">
                         <div class="title">Monetary</div>
                     </div>

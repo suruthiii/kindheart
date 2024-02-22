@@ -15,21 +15,21 @@
             <div class="user-types">
 
                 <!-- User 1 -->
-                <a class="user-link" href="<?php echo URLROOT ?>/user/adminStudent">
+                <a class="user-link" href="<?php echo URLROOT ?>/user/adminstudent">
                     <div class="user">
                         <div class="title">Students</div>
                     </div>
                 </a>
 
                  <!-- User 2 -->
-                 <a class="user-link" href="<?php echo URLROOT ?>/user/adminOrganization">
+                 <a class="user-link" href="<?php echo URLROOT ?>/user/adminorganization">
                     <div class="user">
                         <div class="title">Organizations</div>
                     </div>
                 </a>
 
                  <!-- User 3 -->
-                 <a class="user-link" href="<?php echo URLROOT ?>/user/adminDonor">
+                 <a class="user-link" href="<?php echo URLROOT ?>/user/admindonor">
                     <div class="user">
                         <div class="title">Donors</div>
                     </div>

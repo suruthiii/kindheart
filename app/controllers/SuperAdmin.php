@@ -95,8 +95,8 @@ class SuperAdmin extends Controller {
                 'name' => trim($_POST['name']),
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
-                'confirm_password' => trim($_POST['confirm_password']),
-                'user_type' => 'admin',
+                'confirmPassword' => trim($_POST['confirmPassword']),
+                'userType' => 'admin',
                 'err' => ''
             ];
 
@@ -133,10 +133,10 @@ class SuperAdmin extends Controller {
             }
 
             // Validate confirm password
-            if (empty($data['confirm_password']) && empty($data['err'])) {
+            if (empty($data['confirmPassword']) && empty($data['err'])) {
                 $data['err'] = 'Please confirm password';
             } else {
-                if (empty($data['err']) && $data['password'] != $data['confirm_password']) {
+                if (empty($data['err']) && $data['password'] != $data['confirmPassword']) {
                     $data['err'] = 'Passwords do not match';
                 }
             }
