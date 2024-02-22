@@ -85,6 +85,13 @@ class Necessity extends Controller {
         $this->view('super admin/necessity/viewGood', $data);
     }
 
+    public function viewSuperAdminGoodDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/viewGoodDonation', $data);
+    }
+
     public function addmonetarynecessity(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
