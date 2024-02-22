@@ -75,6 +75,16 @@ class UserModel{
         }
     }
 
+        // // View User
+        // public function getUser($user_id){
+        //     $this->db->query('SELECT * FROM user WHERE user_id = :user_id;');
+        //     $this->db->bind(':user_id', $user_id);
+    
+        //     $row = $this->db->single();
+    
+        //     return $row;
+        // }
+
     public function createAccount($data){
         // Donee Table
         // Prepare statement

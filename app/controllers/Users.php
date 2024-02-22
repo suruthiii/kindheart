@@ -24,7 +24,7 @@ class Users extends Controller{
         $this->view('users/passwordResetSuccessful');
     }
 
-    public function studentRegistration(){
+    public function studentRegistration($email = null, $pw = null, $cp = null){
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             //Form Submitting
@@ -116,7 +116,6 @@ class Users extends Controller{
             //Load View
             $this->view('users/studentRegistration', $data);
         }
-
     }
 
     public function emailVerifyOTP(){
@@ -176,7 +175,11 @@ class Users extends Controller{
                 'address_err' => '',
                 'dob_err' => '',
                 'gender_err' => '',
-                'studentType_err' => ''
+                'studentType_err' => '',
+
+                'orgName_err' => '',
+                'acaYear_err' => '',
+                'schol_err' => ''
 
             ];
 
@@ -231,10 +234,9 @@ class Users extends Controller{
 
                 //Register USer
                 if($this->userModel->createAccount($data)) {
-
                     $this->view('users/studentCreatingProfile2', $data);
-                    
-                }else{
+                }
+                else{
                     die('Something Went Wrong');
                 }
             }else{
@@ -279,7 +281,12 @@ class Users extends Controller{
                 'schol' => trim($_POST['schol']),
 
                 'orgName_err' => '',
-                'acaYear_err' => ''
+                'acaYear_err' => '',
+
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''                
             ];
 
             //Validate Each Input

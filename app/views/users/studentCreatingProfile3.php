@@ -35,15 +35,15 @@
                             </div>
 
                             <label for="careName" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Name</label><br>
-                            <input class="inputt1" type="text" name="careName" value="<?php echo $data['careName']; ?>"><br><br>
+                            <input class="inputt1" type="text" name="careName"><br><br>
                             <span class="error-message"><?php echo $data['careName_err']; ?></span>
 
                             <label for="careOccu" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Caregiver Occupation</label><br>
-                            <input class="inputt1" type="text" name="careOccu" value="<?php echo $data['careOccu']; ?>"><br><br>
+                            <input class="inputt1" type="text" name="careOccu" ><br><br>
                             <span class="error-message"><?php echo $data['careOccu_err']; ?></span>
 
                             <label for="careRealat" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Relationship to the Student</label><br>
-                            <input class="inputt1" type="text" name="careRealat" id="careRealat" value="<?php echo $data['careRealat']; ?>" disabled><br><br>
+                            <input class="inputt1" type="text" name="careRealat" id="careRealat" disabled><br><br>
                             <span class="error-message"><?php echo $data['careRealat_err']; ?></span>
                         </div>
                         <div class="button-next">
