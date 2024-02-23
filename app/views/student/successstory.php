@@ -149,21 +149,24 @@
                              
                     </div> -->
                     <!-- add description box -->
-                    <label for="title">title</label><br>
+                    <label for="title">Add Title</label><br>
                         <input type="text" id="title" name="title" required><br><br>
 
-                    <!-- <div class="add-description-box"> -->
+                       
+
+                    <div class="add-description-box">
                         
-                            <!-- <textarea placeholder="Add description..." id="storyDescription" name="storyDescription" ></textarea> -->
+                            <textarea placeholder="Add description..." id="storyDescription" name="storyDescription" ></textarea>
                         
-                    <!-- </div> -->
+                    </div> 
+                    <br>
 
                     <!-- post button -->
-                    <!-- <div class="post-story-button"> -->
+                    <div class="post-story-button"> 
                        
-                            <input type="submit" value="Post">
+                           <input type="submit" value="Post">
                           
-                    <!-- </div> -->
+                    </div> 
                     </form>
 
                     <!-- last-title for this -->

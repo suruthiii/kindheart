@@ -45,58 +45,6 @@ class Student extends Controller {
         $this->view('student/neccessities', $data);
     }
 
-    public function successstory(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/successstory', $data);
-    }
-
-  
-
-    public function addSuccessStory(){  
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
-            $data = [
-                'title' => trim($_POST['title']),
-                // 'storyDescription' => trim($_POST['storyDescription']),
-                'err' => ''
-            ];
-
-            // die('hello');
-
-
-            // Validate name
-            // if (empty($data['name'])) {
-            //     $data['err'] = 'Please enter a name';
-            // } 
-
-            // // Validate success story
-            // if (empty($data['storyDescription']) && empty($data['err'])) {
-            //     $data['err'] = 'Please enter the story';
-            // }
-
-
-            // Make sure errors are empty
-            if (empty($data['err'])) {
-                // die(print_r($data));
-            
-                // Add Data to DB
-                if ($this->studentModel->addSuccessStory($data)) {
-                    redirect('student/successstory');
-                } else {
-                    die('Something went wrong');
-                }
-            } else {
-                // Load view with errors
-                die('2Something went wrong');
-                $this->student($data);
-            }
-        }else{
-            die('incorrect method!');
-        }
-    }
-
     public function postedmonetarynecessity(){
         $data = [
             'title' => 'Home page'
@@ -125,6 +73,62 @@ class Student extends Controller {
         ];
         $this->view('student/necessity/addgoodsnecessity', $data);
     }
+
+
+
+    public function successstory(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/successstory', $data);
+    }
+
+
+    public function addSuccessStory(){  
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            $data = [
+                'title' => trim($_POST['title']),
+                'storyDescription' => trim($_POST['storyDescription']),
+                'err' => ''
+            ];
+
+            // die('hello');
+
+
+            // Validate name
+            // if (empty($data['name'])) {
+            //     $data['err'] = 'Please enter a name';
+            // } 
+
+            // // Validate success story
+            // if (empty($data['storyDescription']) && empty($data['err'])) {
+            //     $data['err'] = 'Please enter the story';
+            // }
+
+
+            // Make sure errors are empty
+            if (empty($data['err'])) {
+                // die(print_r($data));
+            
+                // Add Data to DB
+                if ($this->studentModel->addSuccessStory($data)) {
+                    die('jjj');
+                    redirect('student/successstory');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                die('2Something went wrong');
+                $this->student($data);
+            }
+        }else{
+            die('incorrect method!');
+        }
+    }
+
+    
 
     // public function about(){
     //     $users = $this->pagesModel->getUser();

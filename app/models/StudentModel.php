@@ -15,8 +15,7 @@ class StudentModel{
     
 
     // add SuceessStory
-    public function addSuceessStory($data){
-        die(print_r($data));
+    public function addSuccessStory($data){
         // Prepare statement
         $this->db->query('INSERT INTO successstory (title) VALUES (:title)');
 
