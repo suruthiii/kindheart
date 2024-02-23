@@ -362,15 +362,6 @@
 
             <!------------------- Donor ------------------>
             <?php if ($_SESSION['user_type'] == 'donor'){ ?>
-                <a href="<?php echo URLROOT ?>/donor/index">
-                    <?php if ($section == 'dashboard'){?>
-                        <div class="selected-item">Dashboard</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Dashboard</div>
-                    <?php } ?>
-                </a>
-
                 <a href="<?php echo URLROOT ?>/donor/necessity">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
@@ -406,7 +397,7 @@
                         <div class="item">Benefactions</div>
                     <?php } ?>
                 </a>
-                                
+
                 <a href="<?php echo URLROOT ?>/donor/successStory">
                     <?php if ($section == 'successStories'){?>
                         <div class="selected-item">Success Stories</div>
@@ -416,39 +407,30 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/donor/user">
-                    <?php if ($section == 'users'){?>
-                        <div class="selected-item">Users</div>
+                <a href="<?php echo URLROOT ?>/donor/viewdonors">
+                    <?php if ($section == 'donors'){?>
+                        <div class="selected-item">Donees</div>
                     <?php }
                     else{ ?>
-                        <div class="item">Users</div>
-                    <?php } ?>
-                </a>
-
-                <a href="<?php echo URLROOT ?>/donor/request">
-                    <?php if ($section == 'requests'){?>
-                        <div class="selected-item">Requests</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Requests</div>
-                    <?php } ?>
-                </a>
-                
-                <a href="<?php echo URLROOT ?>/admin/report">
-                    <?php if ($section == 'reports'){?>
-                        <div class="selected-item">Reports</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Reports</div>
+                        <div class="item">Donees</div>
                     <?php } ?>
                 </a>
 
                 <a href="<?php echo URLROOT ?>/donor/complaint">
-                    <?php if ($section == 'complaints'){?>
-                        <div class="selected-item">Complaints</div>
+                    <?php if ($section == 'complaint'){?>
+                        <div class="selected-item">Complaint</div>
                     <?php }
                     else{ ?>
-                        <div class="item">Complaints</div>
+                        <div class="item">Complaint</div>
+                    <?php } ?>
+                </a>
+                
+                <a href="<?php echo URLROOT ?>/donor/editprofile">
+                    <?php if ($section == 'editprofile'){?>
+                        <div class="selected-item">Edit Profile</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Edit Profile</div>
                     <?php } ?>
                 </a>
 
