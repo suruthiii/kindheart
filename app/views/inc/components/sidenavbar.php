@@ -218,15 +218,30 @@
             <?php } ?>
             
             <!------------------- Student ------------------>
+
+
+
             <?php if ($_SESSION['user_type'] == 'student'){ ?>
-                <a href="<?php echo URLROOT ?>/student/choosethenecessityType">
-                    <?php if ($section == 'necessities'){?>
+                <a href="<?php echo URLROOT ?>/student/index">
+                    <?php if ($section == 'dashboard'){?>
+                        <div class="selected-item">Dashboard</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Dashboard</div>
+                    <?php } ?>
+                </a>
+
+
+                <a href="<?php echo URLROOT ?>/student/neccessities">
+                    <?php if ($section == 'student'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }
                     else{ ?>
                         <div class="item">Necessities</div>
                     <?php } ?>
                 </a>
+            
+
 
                 <a href="#2">
                     <?php if ($section == 'scholarships'){?>
@@ -236,6 +251,8 @@
                         <div class="item">Scholarships</div>
                     <?php } ?>
                 </a>
+
+
 
                 <a href="#3">
                     <?php if ($section == 'benefactions'){?>
