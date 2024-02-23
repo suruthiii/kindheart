@@ -15,9 +15,9 @@ class UserModel{
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
-        $this->db->bind(':userType', $data['user_type']);
+        $this->db->bind(':userType', $data['userType']);
 
-        if($data['user_type'] == 'admin'){
+        if($data['userType'] == 'admin'){
             $this->db->bind(':status', 1);
         }
         else{
@@ -48,7 +48,7 @@ class UserModel{
         $result = true;
 
         // Prepare statement
-        if ($data['user_type'] == 'admin'){
+        if ($data['userType'] == 'admin'){
             // Prepare statement
             $this->db->query('INSERT INTO admin (adminID, adminName) VALUES (:id, :name)');
 

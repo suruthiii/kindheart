@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
                 <div class="back-arrow-btn">
-                    <a href="<?php echo URLROOT ?>/admin/necessity">
+                    <a href="<?php echo URLROOT ?>/superadmin/necessity">
                         <table>
                             <tr>
                                 <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -21,7 +21,7 @@
                     </a>
                 </div>
 
-            <h3 style="margin-top: 25px">Physical Goods</h3>
+            <h3 style="margin-top: 25px">Monetary Necessities</h3>
             <p style="margin-left: 10px">Last 30 days</p>
             <div class="list">
                 <div class="list-title">
@@ -29,7 +29,7 @@
                 </div>
                 
                 <div class="card-list">
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -38,7 +38,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -52,7 +52,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -61,7 +61,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -75,7 +75,7 @@
                         </div>
                     </a>
                     
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -84,7 +84,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -98,7 +98,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -107,7 +107,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -121,7 +121,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -130,7 +130,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -144,7 +144,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -153,7 +153,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -176,7 +176,7 @@
                 </div>
                 
                 <div class="card-list">
-                <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -185,7 +185,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -199,7 +199,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -208,7 +208,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -222,7 +222,7 @@
                         </div>
                     </a>
                     
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -231,7 +231,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -245,7 +245,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -254,7 +254,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -268,7 +268,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -277,7 +277,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -291,7 +291,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -300,7 +300,7 @@
                                         <h4>Stationary</h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,000.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -314,7 +314,7 @@
                         </div>
                     </a>
 
-                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood">
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
                         <div class="card">
                             <table>
                                 <tr>
@@ -323,7 +323,7 @@
                                         <h4>Stationary</h4>
                                         <p>80 Page CR Book</p>
                                     </td>
-                                    <td width="30%" class="amount">34</td>
+                                    <td width="30%" class="amount">Rs. 34,567.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
