@@ -55,7 +55,7 @@
                             <!-- Neccessity description error display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionDescription_err']) ? $data['benefactionDescription_err']: ''; ?></span>
                         </div>
-
+                        
                         <!-- Add Button for necessity -->
                         <div class="add-benefaction-add-button">
                             <input type="submit" value="Add">
