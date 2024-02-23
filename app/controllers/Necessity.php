@@ -1,4 +1,6 @@
 <?php
+
+
 class Necessity extends Controller {
     private $middleware;
     private $organizationModel;
