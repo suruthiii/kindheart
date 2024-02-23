@@ -18,12 +18,12 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Provide donations for their educational success</span><br><br><br>     
                 <div class="studentCreateProfile-text">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/profileCreationSuccessful" method="GET">
                         <div class="studentCreateProfile-input-field">
                             <label for="company" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Company</label><br>
-                            <input class="inputt1" type="text" name="company" required><br><br>
+                            <input class="inputt1" type="text" name="company" ><br><br>
                             <label for="regNo" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Company Registration Number</label><br>
-                            <input class="inputt1" type="text" name="regNo" required><br><br>
+                            <input class="inputt1" type="text" name="regNo" ><br><br>
                         </div>                            
                         <div class="button-next">
                             <button class="next shared-button2">Next</button>

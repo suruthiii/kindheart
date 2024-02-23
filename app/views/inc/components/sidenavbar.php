@@ -362,7 +362,7 @@
 
             <!------------------- Donor ------------------>
             <?php if ($_SESSION['user_type'] == 'donor'){ ?>
-                <a href="#1">
+                <a href="<?php echo URLROOT ?>/donor/necessity">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }
@@ -370,8 +370,8 @@
                         <div class="item">Necessities</div>
                     <?php } ?>
                 </a>
-
-                <a href="#2">
+                
+                <a href="<?php echo URLROOT ?>/donor/project">
                     <?php if ($section == 'projects'){?>
                         <div class="selected-item">Projects</div>
                     <?php }
@@ -380,16 +380,25 @@
                     <?php } ?>
                 </a>
 
-                <a href="#3">
-                    <?php if ($section == 'donations'){?>
-                        <div class="selected-item">Donations</div>
+                <a href="<?php echo URLROOT ?>/donor/scholarship">
+                    <?php if ($section == 'scholarships'){?>
+                        <div class="selected-item">Scholarships</div>
                     <?php }
                     else{ ?>
-                        <div class="item">Donations</div>
+                        <div class="item">Scholarships</div>
                     <?php } ?>
                 </a>
 
-                <a href="#4">
+                <a href="<?php echo URLROOT ?>/donor/benefaction">
+                    <?php if ($section == 'benefactions'){?>
+                        <div class="selected-item">Benefactions</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Benefactions</div>
+                    <?php } ?>
+                </a>
+
+                <a href="<?php echo URLROOT ?>/donor/successStory">
                     <?php if ($section == 'successStories'){?>
                         <div class="selected-item">Success Stories</div>
                     <?php }
@@ -398,16 +407,25 @@
                     <?php } ?>
                 </a>
 
-                <a href="#5">
-                    <?php if ($section == 'donees'){?>
+                <a href="<?php echo URLROOT ?>/donor/viewdonors">
+                    <?php if ($section == 'donors'){?>
                         <div class="selected-item">Donees</div>
                     <?php }
                     else{ ?>
                         <div class="item">Donees</div>
                     <?php } ?>
                 </a>
+
+                <a href="<?php echo URLROOT ?>/donor/complaint">
+                    <?php if ($section == 'complaint'){?>
+                        <div class="selected-item">Complaint</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Complaint</div>
+                    <?php } ?>
+                </a>
                 
-                <a href="#6">
+                <a href="<?php echo URLROOT ?>/donor/editprofile">
                     <?php if ($section == 'editprofile'){?>
                         <div class="selected-item">Edit Profile</div>
                     <?php }
@@ -416,8 +434,7 @@
                     <?php } ?>
                 </a>
 
-                
-                <a href="<?php echo URLROOT ?>/users/logOut">
+                <a href="<?php echo URLROOT ?>/users/logout">
                     <?php if ($section == 'logOut'){?>
                         <div class="selected-item">Log Out</div>
                     <?php }
@@ -425,7 +442,7 @@
                         <div class="item">Log Out</div>
                     <?php } ?>
                 </a>
-            <?php } ?>
+            <?php } ?>  
         </div>
     </div>
 </div>
