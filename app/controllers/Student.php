@@ -1,4 +1,5 @@
 <?php
+
 class Student extends Controller {
     private $middleware;
 
@@ -6,6 +7,7 @@ class Student extends Controller {
         $this->middleware = new AuthMiddleware();
         // Only students are allowed to access student pages
         $this->middleware->checkAccess(['student']);
+        $this->studentModel = $this->model('StudentModel');
     }
 
     public function index(){
@@ -36,11 +38,11 @@ class Student extends Controller {
         $this->view('student/physicalgoodsRequest', $data);
     }
 
-    public function choosethenecessityType(){
+    public function neccessities(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('student/choosethenecessityType', $data);
+        $this->view('student/neccessities', $data);
     }
 
     public function successstory(){
@@ -50,11 +52,78 @@ class Student extends Controller {
         $this->view('student/successstory', $data);
     }
 
+  
+
+    public function addSuccessStory(){  
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            $data = [
+                'title' => trim($_POST['title']),
+                // 'storyDescription' => trim($_POST['storyDescription']),
+                'err' => ''
+            ];
+
+            // die('hello');
+
+
+            // Validate name
+            // if (empty($data['name'])) {
+            //     $data['err'] = 'Please enter a name';
+            // } 
+
+            // // Validate success story
+            // if (empty($data['storyDescription']) && empty($data['err'])) {
+            //     $data['err'] = 'Please enter the story';
+            // }
+
+
+            // Make sure errors are empty
+            if (empty($data['err'])) {
+                // die(print_r($data));
+            
+                // Add Data to DB
+                if ($this->studentModel->addSuccessStory($data)) {
+                    redirect('student/successstory');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                die('2Something went wrong');
+                $this->student($data);
+            }
+        }else{
+            die('incorrect method!');
+        }
+    }
+
     public function postedmonetarynecessity(){
         $data = [
             'title' => 'Home page'
         ];
         $this->view('student/necessity/postedmonetarynecessity', $data);
+    }
+
+    public function postedphysicalgoodsnecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/necessity/postedphysicalgoodsnecessity', $data);
+    }
+
+
+    public function  addmonetarynecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/necessity/addmonetarynecessity', $data);
+    }
+
+    public function addgoodsnecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('student/necessity/addgoodsnecessity', $data);
     }
 
     // public function about(){
@@ -64,6 +133,10 @@ class Student extends Controller {
     //     ];
     //     $this->view('about', $data);
     // }
+    
+
+    
+   
     
     
     
