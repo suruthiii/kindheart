@@ -6,12 +6,13 @@ class UserModel{
         $this->db = new Database();
     }
 
-    // Register Admin
+    // Register user
     public function register($data){
         // Prepare statement
-        $this->db->query('INSERT INTO user (email, password, userType, status, banCount) VALUES (:email, :password, :userType, :status, 0)');
+        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, :status, 0)');
 
         // Bind values
+        $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
         $this->db->bind(':userType', $data['userType']);
@@ -32,14 +33,13 @@ class UserModel{
         }
     }
 
-    // Update User Table
+    // Update user tables
     public function updateUserTable($data){
 
-        // Prepare statement
-        $this->db->query('SELECT userID FROM user WHERE email = :email AND password = :password');
+        $this->db->query('SELECT userID FROM user WHERE username = :username AND password = :password');
 
         // Bind values
-        $this->db->bind(':email', $data['email']);        
+        $this->db->bind(':username', $data['username']);
         $this->db->bind(':password', $data['password']);
 
         $row = $this->db->single();
@@ -48,7 +48,7 @@ class UserModel{
         $result = true;
 
         // Prepare statement
-        if ($data['user_type'] == 'admin'){
+        if ($data['userType'] == 'admin'){
             // Prepare statement
             $this->db->query('INSERT INTO admin (adminID, adminName) VALUES (:id, :name)');
 
