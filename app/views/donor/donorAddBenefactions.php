@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postDonations'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/donor/donorPostDonations'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -69,33 +69,6 @@
 
             <!-- right side bar for success story/ choose or add necessity -->
             <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
-
-            <!-- ----------------- Javascript for disable recurring chossing date when one-time---------------- -->
-            <!-- <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var necessityTypeSelect = document.getElementById('necessityType');
-
-                    function toggleRecurringFields() {
-                        var recurringStartDateInput = document.getElementById('recurringstartdate');
-                        var recurringEndDateInput = document.getElementById('recurringenddate');
-
-                        if (necessityTypeSelect.value === 'onetime') {
-                            recurringStartDateInput.disabled = true;
-                            recurringEndDateInput.disabled = true;
-                        } else {
-                            recurringStartDateInput.disabled = false;
-                            recurringEndDateInput.disabled = false;
-                        }
-                    }
-
-                    // Call toggleRecurringFields initially to set initial state
-                    toggleRecurringFields();
-
-                    // Add event listener to necessityType select element
-                    necessityTypeSelect.addEventListener('change', toggleRecurringFields);
-                });
-            </script> -->
-            <!-- ---------------------------------------------------------------------------------------------- -->
 
         </div>
     </section>

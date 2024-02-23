@@ -68,6 +68,17 @@
     color: #410000;
 }
 
+/* ----------For errors------------ */
+span .donor-form-error-details{
+    color: #8E0000;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-top: 0.5vh;
+}
+
 /* ------------------Add Benefaction--------------- */
 .add-benefaction-form{
     position: relative;
@@ -168,14 +179,138 @@
     font-weight: 400;
 }
 
-/* ----------For errors------------ */
-span .donor-form-error-details{
-    color: #8E0000;
+/* ----------Posted Benefaction ----------- */
+
+.posted-benefaction-pending-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 18vh;
+}
+
+.posted-benefaction-pending-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 22vh;
+    background-color: #DEDEDE;
+}
+
+.posted-benefactions-pending-table{
+    position: fixed;
+    width: 45%;
+    height: 24vh;
+    margin-top: 24vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-benefaction-Completed-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 50vh;
+}
+
+.posted-benefaction-Completed-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 54vh;
+    background-color: #DEDEDE;
+}
+
+.posted-benefactions-Completed-table{
+    position: fixed;
+    width: 45%;
+    height: 24vh;
+    margin-top: 56vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-benefaction-pending-table-caption p, 
+.posted-benefaction-Completed-table-caption p{
     font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-style: normal;
+    font-size: 16px;
+    color: #262A41;
+    margin-top: -0.1vh;
+    font-weight: 600;
+}
+
+.posted-benefactions-pending-table table,
+.posted-benefactions-Completed-table table{
+    width: 95%;
+}
+
+.posted-benefactions-pending-table table tr,
+.posted-benefactions-Completed-table table tr{
+    width: 100%;
+    height: 10vh;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
+}
+
+.posted-benefactions-pending-table table tr td:nth-child(1),
+.posted-benefactions-Completed-table table tr td:nth-child(1){
+    width: 15%;
+    padding-left: 15px;
+}
+
+.posted-benefactions-pending-table table tr td:nth-child(2){
+    width: 40%;
+    padding-left: 14px;
+}
+
+.posted-benefactions-pending-table table tr td:nth-child(3){
+    width: 30%;
+}
+
+.posted-benefactions-pending-table table tr td:nth-child(4){
+    width: 20%;
+}
+
+.add-benefaction-button-for-post{
+    position: fixed;
+    width: 45%;
+    height: 5vh;
+    margin-top: 82vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-benefaction-button-for-post button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-benefaction-button-for-post button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-benefaction-button-for-post button img{
+    padding-right: 8px;
+}
+
+.add-benefaction-button-for-post button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
-    line-height: 28px;
-    margin-top: 0.5vh;
 }
 
