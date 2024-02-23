@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "benefactions";?>
-<!-- <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?> -->
+<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
@@ -27,11 +27,11 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-benefaction-form">
-                    <!-- <form action="<?php echo URLROOT ?>/Benefaction/addingbenefactions" method="POST"> -->
-                    <form action="#" method="POST">
+                    <form action="<?php echo URLROOT ?>/Benefaction/addingbenefactions" method="POST">
+                    
                         <!-- Item -->
                         <div class="benefaction-first-div">
-                            <label for="itemBenefaction">Items</label>
+                            <label for="itemBenefaction">Item</label>
                             <input type="text" id="itemBenefaction" name="itemBenefaction" value="<?php echo isset($data['itemBenefaction']) ? $data['itemBenefaction'] : ''; ?>">
 
                             <!-- Monetary necessity Error display -->

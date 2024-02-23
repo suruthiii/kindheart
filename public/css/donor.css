@@ -12,34 +12,6 @@
     height: 85vh;
 }
 
-/* ------------------Go Back Button ---------------------*/
-.donor-goback-button{
-    position: fixed;
-    width: 45%;
-    height: 4vh;
-    display: flex;
-    align-items: center;
-}
-
-.donor-goback-button img{
-    width: 18px;
-    cursor: pointer;
-}
-
-.donor-goback-button button{
-    height: 4vh;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding-left: 5px;
-    font-size: 15px;
-
-}
-
-.donor-goback-button img:hover, .donor-goback-button button:hover{
-    color: #410000;
-}
-
 .donor-middle-container-title-typeone{
     position: fixed;
     width: 45%;
@@ -66,6 +38,34 @@
     line-height: normal;
     margin-top: -0.3vh;
     margin-bottom: 1vh;
+}
+
+/* ------------------Go Back Button ---------------------*/
+.donor-goback-button{
+    position: fixed;
+    width: 45%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+.donor-goback-button img{
+    width: 18px;
+    cursor: pointer;
+}
+
+.donor-goback-button button{
+    height: 4vh;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 5px;
+    font-size: 15px;
+
+}
+
+.donor-goback-button img:hover, .donor-goback-button button:hover{
+    color: #410000;
 }
 
 /* ------------------Add Benefaction--------------- */
@@ -114,6 +114,8 @@
     padding-right: 14px;
 }
 
+.benefaction-first-div label,
+.benefaction-second-div label,
 .add-benefaction-text-area-input-to-oneline label{
     color: #8692A6;
     font-family: 'Inter', sans-serif;
