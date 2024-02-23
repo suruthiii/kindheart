@@ -50,6 +50,47 @@ class Necessity extends Controller {
         $this->view('admin/necessity/viewGoodDonation', $data);
     }
 
+    public function superAdminMonetary(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/monetary', $data);
+    }
+
+    public function viewSuperAdminMonetary(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/viewMonetary', $data);
+    }
+
+    public function viewSuperAdminMonetaryDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/viewMonetaryDonation', $data);
+    }
+
+    public function superAdminGood(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/physicalGood', $data);
+    }
+
+    public function viewSuperAdminGood(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/viewGood', $data);
+    }
+
+    public function viewSuperAdminGoodDonation(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/necessity/viewGoodDonation', $data);
+    }
 
     public function addmonetarynecessity(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){

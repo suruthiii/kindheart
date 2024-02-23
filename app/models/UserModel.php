@@ -47,6 +47,19 @@ class UserModel{
 
         $result = true;
 
+        // Prepare statement
+        if ($data['user_type'] == 'admin'){
+            // Prepare statement
+            $this->db->query('INSERT INTO admin (adminID, adminName) VALUES (:id, :name)');
+
+            // Bind values
+            $this->db->bind(':name', $data['name']);
+            $this->db->bind(':id', $id);
+
+            $result = $this->db->execute();
+        }
+
+
         // Execute
         if ($result){
             return true;

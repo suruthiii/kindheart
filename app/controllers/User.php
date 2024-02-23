@@ -26,4 +26,25 @@ class User extends Controller {
         ];
         $this->view('admin/user/donor', $data);
     }
+
+    public function superAdminStudent(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/user/student', $data);
+    }
+
+    public function superAdminOrganization(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/user/organization', $data);
+    }
+
+    public function superAdminDonor(){
+        $data = [
+            'title' => 'Home page'
+        ];
+        $this->view('super admin/user/donor', $data);
+    }
 }
