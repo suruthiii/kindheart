@@ -192,4 +192,8 @@ class UserModel{
 
         return $result->userType;
     }
+
+    // public function userUnban() {
+    //     $this->db->query('UPDATE user SET status = 1;');
+    // }
 }
