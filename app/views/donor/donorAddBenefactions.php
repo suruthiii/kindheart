@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-benefaction-form">
-                    <form action="<?php echo URLROOT ?>/Benefaction/addingbenefactions" method="POST">
+                    <form action="<?php echo URLROOT ?>/Benefaction/donorAddBenefactions" method="POST">
                     
                         <!-- Item -->
                         <div class="benefaction-first-div">
