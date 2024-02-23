@@ -1,11 +1,15 @@
 <?php
+
+
 class Necessity extends Controller {
     private $middleware;
+    private $organizationModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
         $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
+        $this->organizationModel = $this->model('organizationModel');
     }
 
     public function adminMonetary(){
@@ -92,7 +96,8 @@ class Necessity extends Controller {
         $this->view('super admin/necessity/viewGoodDonation', $data);
     }
 
-    public function addmonetarynecessity(){
+    //Add monetary necessity
+    public function addingmonetarynecessity(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -103,7 +108,8 @@ class Necessity extends Controller {
                 'requestedamount' => trim($_POST['requestedamount']),
                 'necessityMonetary_err' => '',
                 'monetarynecessitydes_err' => '',
-                'requestedamount_err' => ''
+                'requestedamount_err' => '',
+                'recurringdate_err' => ''
             ];
 
             //change the getting input according to necessity type
@@ -117,14 +123,18 @@ class Necessity extends Controller {
 
 
             //check wheather field are empty or not
+
+            //necessity field
             if(empty($data['necessityMonetary'])){
                 $data['necessityMonetary_err']='Please enter the Necessity about Monetary';
             }
 
+            //necessity description field
             if(empty($data['monetarynecessitydes'])){
                 $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
             }
 
+            //necessity type field
             if($data['necessityType']== 'recurring'){
                 if(empty($data['recurringstartdate'])){
                     $data['recurringstartdate_err']='Please enter the Recurring Start Date';
@@ -132,15 +142,30 @@ class Necessity extends Controller {
 
                 if(empty($data['recurringenddate'])){
                     $data['recurringenddate_err']='Please enter the Recurring End Date';
-                }
-                
+                }  
             }
 
+            //recurring start and end date check
+            if($data['recurringstartdate'] > $data['recurringenddate']){
+                $data['recurringdate_err']="Please give a valid dates.";
+            }
+
+            //necessity requested amount field
             if(empty($data['requestedamount'])){
                 $data['requestedamount_err']='Please enter the Requested Amount';
             }
 
-            print_r($_POST);
+            //check whether there any errors
+            if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err'])){
+                if($this->organizationModel->addmonetarynecessitytodb($data)){
+                    redirect('organization/postedmonetarynecessity');
+                }else{
+                    error_log('Error: Failed to insert data into the database.');
+                    die('something went wrong');
+                }
+            }else{
+                $this->view('organization/addmonetarynecessity', $data);
+            }
 
             $this->view('organization/addmonetarynecessity', $data);
 
@@ -156,7 +181,8 @@ class Necessity extends Controller {
                 'monetarynecessitydes_err' => '',
                 'requestedamount_err' => '',
                 'recurringstartdate_err' => '',
-                'recurringenddate_err' => ''
+                'recurringenddate_err' => '',
+                'recurringdate_err' => ''
             ];
 
             $this->view('organization/addmonetarynecessity', $data);
