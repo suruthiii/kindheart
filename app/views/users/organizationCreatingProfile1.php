@@ -1,5 +1,5 @@
 <html>
-    <head>
+    <head>-
         <title><?php echo SITENAME ?></title>
 
         <!-- External CSS -->

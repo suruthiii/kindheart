@@ -18,13 +18,13 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Provide donations for their educational success</span><br><br><br>     
                 <span style="color: rgb(146, 141, 141);">You're a</span>
-                <div class="donorCreateProfile-text shared-text">                                          
+                <div class="donorCreateProfile-text shared-text">    
+                    <a href="<?php echo URLROOT ?>/users/donorCreateProfile2">                                      
                     <button class="choice" id="choice1">Individual</button><br>
+
+                    <a href="<?php echo URLROOT ?>/users/donorCreateProfile3">
                     <button class="choice" id="choice2">Company</button>
-                </div>
-                <div class="button-next">
-                    <button class="next shared-button2">Next</button>
-                </div>            
+                </div>         
             </div>       
         </div>
     </div>

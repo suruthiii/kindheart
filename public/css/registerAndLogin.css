@@ -54,20 +54,22 @@ a {
 
 /* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
 .shared-label label {
-    font-size: 15px;
+    font-size: 14px;
+    margin-top: 50px;
 }
 
 /* login & forget password1 & forget password2 & studentRegistration & studentCreatingProfile2*/
 .shared-input input {
     height: 45px;
     width: 500px;
-    border-radius: 6px;
+    margin: 1px 2px 1px 2px;
     outline: none;
-    font-size: 1.125rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
     text-align: left;
     padding-left: 5px;
-    border: 1px solid #ddd;
-    box-shadow: 0px 0px 10px #ddd;
+    border: 1px solid #acacac;
+    /* box-shadow: 0px 0px 10px #ddd; */
 }
 
 /* login & forget password & forget password2 & studentRegistration & studentCreatingProfile2*/
@@ -104,8 +106,8 @@ a {
     outline: none;
     font-size: 1.125rem;
     text-align: center;
-    border: 1px solid #ddd;
-    box-shadow: 0px 0px 8px #ddd;
+    border: 1px solid #acacac;
+    /* box-shadow: 0px 0px 8px #ddd; */
     column-gap: 50px;
     margin-right: 18px;
 }
@@ -133,7 +135,7 @@ a {
     border: none;
     padding: 9px 0;
     cursor: pointer;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     transition: all 0.2s ease;
     width: 150px;
     height: 50px;
@@ -217,7 +219,7 @@ section::after {
 /* ----------------Login-------------- */
 
 .login-text .login-input-field label {
-    font-size: 18px;
+    font-size: 14px;
 }
 
 /* ----------------Password Reset Successful-------------- */
@@ -264,10 +266,8 @@ section::after {
 .studentProfile3-text .studentProfile3-checkboxes .labels {
     display: flex;
     align-items: center;
-    /* Vertically align items */
-    font-size: 15px;
+    font-size: 14px;
     color: rgb(146, 141, 141);
-    /* Set the label color */
 }
 
 .studentProfile3-text .button-next .next {
@@ -294,18 +294,38 @@ section::after {
     margin-top: 25px !important;
 }
 
-.studentCreateProfile-input-field input,
+.studentCreateProfile-input-field input[type="text"],
+.studentCreateProfile-input-field input[type="date"],
 .studentCreateProfile-input-field .inputt {
     height: 45px;
     border-radius: 6px;
     outline: none;
-    font-size: 1rem;
+    font-size: 0.8rem;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #acacac;
     padding-left: 5px;
-    box-shadow: 0px 0px 19px -2px #ddd;
+    /* box-shadow: 0px 0px 19px -2px #ddd;
     -webkit-box-shadow: 0px 0px 19px -2px #ddd;
-    -moz-box-shadow: 0px 0px 19px -2px #ddd;
+    -moz-box-shadow: 0px 0px 19px -2px #ddd; */
+}
+
+.studentCreateProfile-input-field input[type="radio"] {
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.studentCreateProfile-input-field .radio-group2 {
+    margin-left: 160px;
+}
+
+.studentCreateProfile-input-field .radio-buttons {
+    margin-left: 20px;
+}
+
+.studentCreateProfile-input-field #radio_label {
+    margin-right: 10px;
+    margin-left: -10px;
+    margin-top: 5px;
 }
 
 .studentCreateProfile-input-field .inputt {
@@ -337,12 +357,8 @@ section::after {
     margin-right: 5px;
     margin-bottom: 10px;
     margin-right: 15px;
-    margin-top: -25px;
+    margin-top: -45px;
 }
-
-/* .studentCreateProfile-horizontal-input .input-group select *{
-    background-color: red;
-} */
 
 .studentCreateProfile-horizontal-input .input-group input,
 .studentCreateProfile-horizontal-input .input-group .inputt {
@@ -352,6 +368,10 @@ section::after {
 /* ---------------- Student Create Profile 1 -------------- */
 .studentCreateProfile-input-field p {
     font-size: 10px;
+}
+
+#whyGender{
+    display: none;
 }
 
 /* ---------------- Donor Create Profile 1 -------------- */
@@ -382,4 +402,14 @@ section::after {
 
 .donorCreateProfile-formce .next {
     margin-top: 70px !important;
+}
+
+.inputt2[type="file"]{
+    opacity: 0;
+}
+
+.error-message{
+    color: rgb(172, 34, 34); 
+    font-size: 12px;
+    font-weight: bold;
 }

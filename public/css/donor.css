@@ -1,0 +1,181 @@
+.donor-right-side-container{
+    position: fixed;
+    width: 70%;
+    height: 85vh;
+    right: 0;
+    margin-top: 2vh;
+}
+
+.donor-middle-container{
+    position: fixed;
+    width: 45%;
+    height: 85vh;
+}
+
+.donor-middle-container-title-typeone{
+    position: fixed;
+    width: 45%;
+    height: 8vh;
+    margin-top: 5vh;
+}
+
+.donor-middle-container-title-typeone h3{
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: -0.3vh;
+}
+
+.donor-middle-container-title-typeone p{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-top: -0.3vh;
+    margin-bottom: 1vh;
+}
+
+/* ------------------Go Back Button ---------------------*/
+.donor-goback-button{
+    position: fixed;
+    width: 45%;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+}
+
+.donor-goback-button img{
+    width: 18px;
+    cursor: pointer;
+}
+
+.donor-goback-button button{
+    height: 4vh;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding-left: 5px;
+    font-size: 15px;
+
+}
+
+.donor-goback-button img:hover, .donor-goback-button button:hover{
+    color: #410000;
+}
+
+/* ------------------Add Benefaction--------------- */
+.add-benefaction-form{
+    position: relative;
+    width: 80%;
+    height: 69vh;
+    margin-top: 16vh;
+}
+
+.benefaction-first-div,
+.benefaction-second-div{
+    position: relative;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+    width: 68%;
+    float: left;
+}
+
+.benefaction-first-div input,
+.benefaction-second-div input{
+    height: 5vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+}
+
+.benefaction-first-div input:focus,
+.benefaction-second-div input:focus,
+.add-benefaction-text-area-input-to-oneline textarea:focus{
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
+.add-benefaction-text-area-input-to-oneline textarea{
+    height: 6vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.benefaction-first-div label,
+.benefaction-second-div label,
+.add-benefaction-text-area-input-to-oneline label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 1.5vh;
+}
+
+.add-benefaction-text-area-input-to-oneline{
+    position: relative;
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.add-benefaction-add-button{
+    position: relative;
+    width: 100%;
+    height: 5vh;
+}
+
+.add-benefaction-add-button input{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-benefaction-add-button input:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-benefaction-add-button input[type="submit"] {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ----------For errors------------ */
+span .donor-form-error-details{
+    color: #8E0000;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-top: 0.5vh;
+}
+

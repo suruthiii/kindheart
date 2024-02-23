@@ -18,28 +18,28 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">Provide donations for their educational success</span><br><br><br>     
                 <div class="studentCreateProfile-text">
-                    <form action="#">
+                    <form action="<?php echo URLROOT ?>/users/profileCreationSuccessful" method="GET">
                         <div class="studentCreateProfile-input-field">
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="studentCreateProfile-horizontal-input">
                                     <div class="input-group">
                                         <label for="firstName" style="color: rgb(146, 141, 141); margin-top: 25px; margin-bottom: 12px !important;">First Name</label>
-                                        <input class="inputt2" type="text" name="firstName" required>
+                                        <input class="inputt2" type="text" name="firstName" >
                                     </div>
                                     <div class="input-group">
                                         <label for="lastName" style="color: rgb(146, 141, 141); margin-top: 25px; margin-bottom: 12px !important;">Last Name</label>
-                                        <input class="inputt2" type="text" name="lastName" required>
+                                        <input class="inputt2" type="text" name="lastName" >
                                     </div>
                                 </div>
                             </div>
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">
                                     <label for="nic" style="color: rgb(146, 141, 141); margin-top: 30px !important;">NIC Number</label><br>
-                                    <input class="inputt2" type="text" name="nic" required><br>
+                                    <input class="inputt2" type="text" name="nic" ><br>
                                 </div>
                                 <div class="input-group">
                                     <label for="gender" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Gender</label><br>
-                                    <select class="inputt" name="orgType" required>
+                                    <select class="inputt" name="orgType" >
                                         <option value="male" class="dropdown-option">Male</option>
                                         <option value="female" class="dropdown-option">Female</option>
                                     </select><br>
