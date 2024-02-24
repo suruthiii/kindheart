@@ -750,12 +750,30 @@ class Users extends Controller{
                 $data['err'] = 'Please enter username';
             }
             else{
-                if ($this->userModel->findUserByUsername($data['username'])){
-                    // User found
+                if ($this->userModel->findUserByUsername($data['username'])) {
+                    if($this->userModel->checkStatus($data['username']) == 5){
+                        $details = $this->userModel->bannedDetails($data['username']);
+
+                        $duration = $details['totalDays'];
+                        $banCount = $details['banCount'];
+
+                        if (($banCount == 1 && $duration >= 1) || ($banCount == 2 && $duration >= 3)) {
+                            $this->userModel->userUnban($data['username']);
+                        }
+
+                        else {
+                            $data['err'] = 'You have been banned'; 
+                        }
+                    }
+
+                    else if($this->userModel->checkStatus($data['username']) == 10) {
+                        $data['err'] = 'User Not Found'; 
+                    }
+
                 }
                 else{
                     // User not found
-                    $data['err'] = 'No user found';
+                    $data['err'] = 'User Not Found'; 
                 }
             }
 
