@@ -27,7 +27,7 @@
 
                 <!-- Add goods Necessity Form -->
                 <div class="add-necessity-form">
-                    <form action="" method="post">
+                    <form action="<?php echo URLROOT ?>/Necessity/addingGoodsNecessity" method="post">
                         <!-- Necessity -->
                         <div class="add-necessity-one-line-input">
                             <label for="necessitygoods">Necessity </label>

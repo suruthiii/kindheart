@@ -153,7 +153,7 @@ class Necessity extends Controller {
             //necessity requested amount field
             if(empty($data['requestedamount'])){
                 $data['requestedamount_err']='Please enter the Requested Amount';
-            }elseif($data['requestedamount']<0){
+            }elseif($data['requestedamount']<0){// check the validity of inserted value
                 $data['requestedamount_err']='Please enter Valid Amount';
             }
 
@@ -196,6 +196,50 @@ class Necessity extends Controller {
     //Add Physcicall goods Necessity
     public function addingGoodsNecessity(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'necessitygoods' => trim($_POST['necessitygoods']),
+                'requestedgoodsquantity' => trim($_POST['requestedgoodsquantity']),
+                'goodsnecessitydes' => trim($_POST['goodsnecessitydes']),
+                'necessitygoods_err' => '',
+                'requestedgoodsquantity_err' => '',
+                'goodsnecessitydes_err' => ''
+            ];
+
+            //check wheather field are empty or not
+
+            //necessity good field
+            if(empty($data['necessitygoods'])){
+                $data['necessitygoods_err']='Please enter the Necessity about Goods';
+            }
+
+            //requested goods quantity
+            if(empty($data['requestedgoodsquantity'])){
+                $data['requestedgoodsquantity_err']='Please enter the Quantity of Goods wants';
+            }elseif($data['requestedgoodsquantity']<0){
+                $data['requestedgoodsquantity_err']='Please enter Valid number for quantity of goods';
+            }
+
+            //necessity decsription about necessity
+            if(empty($data['goodsnecessitydes'])){
+                $data['goodsnecessitydes_err']='Please enter the description about the necessity';
+            }
+
+            //check whether there any errors
+            if(empty($data['necessitygoods_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
+                // if($this->organizationModel->addmonetarynecessitytodb($data)){
+                //     redirect('organization/postedmonetarynecessity');
+                // }else{
+                //     error_log('Error: Failed to insert data into the database.');
+                //     die('something went wrong');
+                // }
+            }else{
+                $this->view('organization/addmonetarynecessity', $data);
+            }
+
+
+            $this->view('organization/addgoodsnecessity', $data);
 
         }else{
             $data = [
