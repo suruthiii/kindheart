@@ -5,7 +5,7 @@ class Users extends Controller{
     }
 
     public function home(){
-        $this->view('users/index');
+        $this->view('pages/index');
     }
 
     public function registerLanding(){
@@ -24,16 +24,126 @@ class Users extends Controller{
         $this->view('users/passwordResetSuccessful');
     }
 
-    public function studentRegistration(){
-        $this->view('users/studentRegistration');
+    public function studentRegistration($email = null, $pw = null, $cp = null){
+
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
+                'userType' => 'student',
+
+                'email_err' => '',
+                'password_err' => '',
+                'confirmPassword_err' => ''
+
+            ];
+
+            //Validate Each Input
+            //Validate Email
+            if(empty($data['email'])){
+                $data['email_err'] = 'Please enter an email';
+            }else{
+                //Check email is alreayd registered or not
+                if($this->userModel->findUserByEmail($data['email'])){
+                    $data['email_err'] = 'Email is Already Registered';
+                }
+            }
+
+            // Validate password
+            if (empty($data['password'])){
+                $data['password_err'] = 'Please enter a password';
+            } else if ( strlen($data['password']) < 8 ){
+                $data['password_err'] = 'Password must be at least 8 characters';
+            }
+            // } else if ( preg_match('/[a-z]/', ($data['password'])) || preg_match('/[A-Z]/', ($data['password'])) ) {
+            //     $data['password_err'] = 'Password must include both lowercase and uppercase letters';
+            // } else if ( preg_match('/[a-zA-Z]/', ($data['password'])) || preg_match('/\d/', ($data['password'])) ) {
+            //     $data['password_err'] = 'Password must include both numbers and letters';
+            // } else if ( preg_match('/[!@#?]/', ($data['password'])) ) {
+            //     $data['password_err'] = 'Password must include at least one special charater (@, #, ?, !)';
+            // } else if ( strpos(($data['password']), '<') == false || strpos(($data['password']), '>') == false ) {
+            //     $data['password_err'] = 'Password must not include < or >';
+            // }
+
+            if (empty($data['confirmPassword'])) {
+                $data['confirmPassword_err'] = 'Please confirm password';
+            } else if ($data['password'] != $data['confirmPassword']) {
+                $data['confirmPassword_err'] = 'Passwords do not match';                
+            }
+
+            //Validation is completed and no error then register the user
+            if(empty($data['email_err']) && empty($data['password_err']) && empty($data['confirmPassword_err']) ){
+                //Hash Password
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+
+                //Register USer
+                if($this->userModel->registerUser($data)) {
+                    // $this->view('users/emailVerifyOTP', $data);
+
+                    $_SESSION['user_id'] = $this->userModel->getUserIDByEmail($data['email']);
+                    $_SESSION['user_email'] = $data['email'];
+                    $_SESSION['user_type'] = 'student';
+
+                    $this->view('users/accountCreationSuccessful', $data);
+                    
+                }else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentRegistration', $data);
+            }
+
+        }else{
+            //Initial Form
+            $data = [
+                'email' => '',
+                'password' => '',
+                'confirmPassword' => '',
+
+                'email_err' => '',
+                'password_err' => '',
+                'confirmPassword_err' => '',
+            ];
+
+            //Load View
+            $this->view('users/studentRegistration', $data);
+        }
     }
 
-    public function setPassword(){
-        $this->view('users/setPassword');
+    public function emailVerifyOTP(){
+        $this->view('users/emailVerifyOTP');
     }
+
+    public function emailVerifyOTPDonor(){
+        $this->view('users/emailVerifyOTPDonor');
+    }
+
+    public function emailVerifyOTPOrganization(){
+        $this->view('users/emailVerifyOTPOrganization');
+    }
+
+    // public function setPassword(){
+    //     $this->view('users/setPassword');
+    // }
     
     public function accountCreationSuccessful(){
         $this->view('users/accountCreationSuccessful');
+    }
+
+    public function accountCreationSuccessfulDonor(){
+        $this->view('users/accountCreationSuccessfulDonor');
+    }
+
+    public function accountCreationSuccessfulOrganization(){
+        $this->view('users/accountCreationSuccessfulOrganization');
     }
 
     public function organizationRegistration(){
@@ -45,16 +155,286 @@ class Users extends Controller{
     }
 
     public function studentCreatingProfile1(){
-        $this->view('users/studentCreatingProfile1');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'firstName' => trim($_POST['firstName']),
+                'lastName' => trim($_POST['lastName']),
+                'address' => trim($_POST['address']),
+                'dob' => trim($_POST['dob']),
+                'gender' => $_POST['gender'] ?? '',
+                'studentType' => $_POST['studentType'] ?? '',
+
+                'firstName_err' => '',
+                'lastName_err' => '',
+                'address_err' => '',
+                'dob_err' => '',
+                'gender_err' => '',
+                'studentType_err' => '',
+
+                'orgName_err' => '',
+                'acaYear_err' => '',
+                'schol_err' => ''
+
+            ];
+
+            //Validate Each Input
+
+            //Validate FirstName
+            if(empty($data['firstName'])){
+                $data['firstName_err'] = 'Please enter the first name';
+            } elseif(!preg_match("/^[a-zA-Z]+$/", $data['firstName'])){
+                $data['firstName_err'] = 'Only letters are allowed';
+            }
+
+            //Validate LastName
+            if(empty($data['lastName'])){
+                $data['lastName_err'] = 'Please enter the last name';
+            } elseif(!preg_match("/^[a-zA-Z]+$/", $data['lastName'])){
+                $data['lastName_err'] = 'Only letters are allowed';
+            }
+
+            //Validate Address
+            if(empty($data['address'])){
+                $data['address_err'] = 'Please enter an address';
+            }
+
+            //Validate DOB
+            if(empty($data['dob'])){
+                $data['dob_err'] = 'Please select the date of birth';
+            } else {
+                // Create DateTime objects for the provided date of birth and the present date
+                $dob = DateTime::createFromFormat('Y-m-d', $data['dob']);
+                $presentDate = new DateTime();
+
+                // Check if the provided date of birth is not after the present date
+                if ($dob > $presentDate) {
+                    $data['dob_err'] = 'Date of birth cannot be after the present date';
+                }
+            }
+      
+            //Validate Gender
+            if(empty($data['gender'])){
+                $data['gender_err'] = 'Please select the gender';
+            }
+
+            //Validate Student TYpe
+            if(empty($data['studentType'])){
+                $data['studentType_err'] = 'Please select the student type';
+            }            
+
+
+            //Validation is completed and no error then register the user
+            if(empty($data['firstName_err']) && empty($data['lastName_err']) && empty($data['address_err']) && empty($data['dob_err']) && empty($data['gender_err']) && empty($data['studentType_err']) ){
+
+                //Register USer
+                if($this->userModel->createAccount($data)) {
+                    $this->view('users/studentCreatingProfile2', $data);
+                }
+                else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentCreatingProfile1', $data);
+            }
+
+        }else{
+            //Initial Form
+            $data = [
+                'firstName' => '',
+                'lastName' => '',
+                'address' => '',
+                'dob' => '',
+                'gender' => '',
+                'studentType' => '',
+
+                'firstName_err' => '',
+                'lastName_err' => '',
+                'address_err' => '',
+                'dob_err' => '',
+                'gender_err' => '',
+                'studentType_err' => ''
+            ];
+
+            //Load View
+            $this->view('users/studentCreatingProfile1', $data);
+        }
+    }
+
+    public function studentCreatingProfile2(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'orgName' => trim($_POST['orgName']),
+                'acaYear' => trim($_POST['acaYear']),
+                'schol' => trim($_POST['schol']),
+
+                'orgName_err' => '',
+                'acaYear_err' => '',
+
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''                
+            ];
+
+            //Validate Each Input
+
+            //Validate Organization Name
+            if(empty($data['orgName'])){
+                $data['orgName_err'] = 'Organization Name Is Required';
+            }
+
+            //Validate Academic Year
+            if(empty($data['acaYear'])){
+                $data['acaYear_err'] = 'Academic Year Is Required';
+            }         
+
+
+            //Validation is completed and no error then register the user
+            if(empty($data['orgName_err']) && empty($data['acaYear_err'])){
+
+                //Register USer
+                if($this->userModel->updateStudentTable($data)) {
+
+                    $this->view('users/studentCreatingProfile3', $data);
+                    
+                }else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentCreatingProfile2', $data);
+            }
+
+
+        }else{
+            //Initial Form
+            $data = [
+                'orgName' => '',
+                'acaYear' => '',
+                'schol' => '',
+
+                'orgName_err' => '',
+                'acaYear_err' => ''
+            ];
+
+            //Load View
+            $this->view('users/studentCreatingProfile2', $data);
+        }
+    }
+
+    public function studentCreatingProfile3(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            //Form Submitting
+
+            //Validate Data
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            //Input Data
+            $data = [
+                'careType' => trim($_POST['careType']),
+                'careName' => trim($_POST['careName']),
+                'careOccu' => trim($_POST['careOccu']),
+                'careRealat' => isset($_POST['careRealat']) ? trim($_POST['careRealat']) : '',
+
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''
+
+            ];
+
+            //Validate Each Input
+
+            //Validate CareTaker Type
+            if(empty($data['careType'])){
+                $data['careType_err'] = 'Please select a cargiver type';
+            }
+
+            //Validate Name
+            if (empty($data['careName'])) {
+                $data['careName_err'] = 'Caregiver name is required';
+            }
+      
+            //Validate Occupation
+            if(empty($data['careOccu'])){
+                $data['careOccu_err'] = 'Caregiver occupation is required';
+            }
+
+            // //Validate Relationship
+            if (!empty($data['careRealat']) && isset($_POST['careRealat'])) {
+                if (empty($data['careRealat'])) {
+                    $data['careRealat_err'] = 'Relationship to the student is required';
+                }
+            }
+    
+            // If no errors, proceed
+            if (empty($data['careType_err']) && empty($data['careName_err']) && empty($data['careOccu_err']) && empty($data['careRealat_err'])) {
+
+                //Register USer
+                if($this->userModel->updateStudentTableRemain($data)) {
+
+                    $this->view('users/studentCreatingProfile4', $data);
+                    
+                }else{
+                    die('Something Went Wrong');
+                }
+            }else{
+                //Load View
+                $this->view('users/studentCreatingProfile3', $data);
+            }
+
+        }else{
+            //Initial Form
+            $data = [
+                'careType' => '',
+                'careName' => '',
+                'careOccu' => '',
+                'careRealat' => isset($_POST['careRealat']) ? trim($_POST['careRealat']) : '',
+
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''
+            ];
+
+            //Load View
+            $this->view('users/studentCreatingProfile3', $data);
+        }
+    }
+
+
+    public function studentCreatingProfile4(){
+        $this->view('users/studentCreatingProfile4');
+    }
+
+    public function studentCreatingProfile5(){
+        $this->view('users/studentCreatingProfile5');
+    }
+
+    public function studentCreatingProfile6(){
+        $this->view('users/studentCreatingProfile6');
     }
 
     public function studentOrganizationCreatingProfile2(){
         $this->view('users/studentOrganizationCreatingProfile2');
     }
 
-    public function studentCreatingProfile3(){
-        $this->view('users/studentCreatingProfile3');
-    }
+    public function profile(){
+        $this->view('users/profile');
+    }    
 
     public function profileCreationSuccessful(){
         $this->view('users/profileCreationSuccessful');
@@ -71,7 +451,18 @@ class Users extends Controller{
     public function donorCreateProfile3(){
         $this->view('users/donorCreateProfile3');
     }
-    
+
+    public function organizationCreatingProfile1(){
+        $this->view('users/organizationCreatingProfile1');
+    }
+
+    public function organizationCreatingProfile2(){
+        $this->view('users/organizationCreatingProfile2');
+    }
+
+    public function organizationCreatingProfile3(){
+        $this->view('users/organizationCreatingProfile3');
+    }
     
 
     // public function register(){

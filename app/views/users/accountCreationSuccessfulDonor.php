@@ -19,7 +19,7 @@
                 <span style="color: rgb(146, 141, 141);">Now you can create your profile</span> 
 
                 <div class="button-next ">
-                    <a href="<?php echo URLROOT ?>/users/studentCreatingProfile1">
+                    <a href="<?php echo URLROOT ?>/users/donorCreateProfile1">
                         <button class="next shared-button2">Continue</button>
                     </a>
                 </div>
