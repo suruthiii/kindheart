@@ -228,12 +228,12 @@ class Necessity extends Controller {
 
             //check whether there any errors
             if(empty($data['necessitygoods_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
-                // if($this->organizationModel->addmonetarynecessitytodb($data)){
-                //     redirect('organization/postedmonetarynecessity');
-                // }else{
-                //     error_log('Error: Failed to insert data into the database.');
-                //     die('something went wrong');
-                // }
+                if($this->organizationModel->addgoodsnecessitytodb($data)){
+                    redirect('organization/postedphysicalgoodsnecessity');
+                }else{
+                    error_log('Error: Failed to insert data into the database.');
+                    die('something went wrong');
+                }
             }else{
                 $this->view('organization/addmonetarynecessity', $data);
             }
