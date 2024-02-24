@@ -143,30 +143,28 @@
                     </div>
                     <!-- add image box -->
                     <form class="add-form" method="POST" action="<?php echo URLROOT ?>/student/addSuccessStory">
-                    <!-- <div class="add-photo-box">
+                    <div class="add-photo-box">
                         
                             <input type="image" value="+ Add Photo">
                              
-                    </div> -->
+                    </div> 
                     <!-- add description box -->
-                    <label for="title">Add Title</label><br>
-                        <input type="text" id="title" name="title" required><br><br>
 
-                       
-
-                    <div class="add-description-box">
+                    <div class="add-title-box">
                         
+                        <input type=text placeholder="Add title..." id="title" name="title" ></text>
+
+                        <div class="add-description-box">
                             <textarea placeholder="Add description..." id="storyDescription" name="storyDescription" ></textarea>
-                        
-                    </div> 
-                    <br>
-
-                    <!-- post button -->
-                    <div class="post-story-button"> 
-                       
+                        </div> 
+                        <br>
+                        <!-- post button -->
+                        <div class="post-story-button"> 
                            <input type="submit" value="Post">
-                          
+                        </div> 
+                    
                     </div> 
+                                       
                     </form>
 
                     <!-- last-title for this -->

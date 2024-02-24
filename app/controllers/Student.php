@@ -113,7 +113,6 @@ class Student extends Controller {
             
                 // Add Data to DB
                 if ($this->studentModel->addSuccessStory($data)) {
-                    die('jjj');
                     redirect('student/successstory');
                 } else {
                     die('Something went wrong');
