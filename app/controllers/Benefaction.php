@@ -22,6 +22,8 @@ class Benefaction extends Controller {
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
+                'availability' => '1',
+                // 'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
                 'quantityBenfaction_err' => '',
@@ -68,17 +70,13 @@ class Benefaction extends Controller {
     }
 
     public function postedBenefactions(){
-        // Get pending benefactions
-        $pendingItems = $this->benefactionModel->getPendingItems();
-
-        // Get completed benefactions
-        $completedItems = $this->benefactionModel->getCompletedItems();
-
         // Load the view with data
         $data = [
-            'pendingItems' => $pendingItems,
-            'completedItems' => $completedItems
+            'pendingBenefaction' => $this->benefactionModel->getPendingBenefaction();
+            die(print_r(123))
         ];
+        
+        die(print_r($data['pendingBenefaction']))
 
         //Load View
         $this->view('donor/postedBenefactions', $data);
