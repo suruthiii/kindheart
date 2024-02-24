@@ -17,18 +17,12 @@ class StudentModel{
     // add SuceessStory
     public function addSuccessStory($data){
         // Prepare statement
-        $this->db->query('INSERT INTO successstory (title) VALUES (:title)');
+        $this->db->query('INSERT INTO successstory (title,description) VALUES (:title, :storyDescription)');
 
         // Bind values
         $this->db->bind(':title', $data['title']);
+        $this->db->bind(':storyDescription', $data['storyDescription']);
        
-
-        // if($data['user_type'] == 'admin'){
-        //     $this->db->bind(':status', 1);
-        // }
-        // else{
-        //     $this->db->bind(':status', 0);
-        // }
 
         // Execute
         if ($this->db->execute()) {
