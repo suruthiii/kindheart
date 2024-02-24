@@ -153,6 +153,8 @@ class Necessity extends Controller {
             //necessity requested amount field
             if(empty($data['requestedamount'])){
                 $data['requestedamount_err']='Please enter the Requested Amount';
+            }elseif($data['requestedamount']<0){
+                $data['requestedamount_err']='Please enter Valid Amount';
             }
 
             //check whether there any errors
@@ -188,6 +190,26 @@ class Necessity extends Controller {
             $this->view('organization/addmonetarynecessity', $data);
         }
 
+    }
+
+
+    //Add Physcicall goods Necessity
+    public function addingGoodsNecessity(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+        }else{
+            $data = [
+                'necessitygoods' => '',
+                'requestedgoodsquantity' => '',
+                'goodsnecessitydes' => '',
+                'necessitygoods_err' => '',
+                'requestedgoodsquantity_err' => '',
+                'goodsnecessitydes_err' => ''
+            ];
+
+            $this->view('organization/addgoodsnecessity', $data);
+
+        }
     }
 
     
