@@ -55,7 +55,13 @@
 
         // Execute the prepared statement
         public function execute(){
-            return $this->statement->execute();
+            try {
+                return $this->statement->execute();
+            } catch (PDOException $e) {
+                $this->error = $e->getMessage();
+                echo "Error executing query: " . $this->error;
+                return false;
+            }
         }
 
         // Get multiple records as result
@@ -73,5 +79,10 @@
         // Get row count
         public function rowCount(){
             return $this->statement->rowCount();
+        }
+
+        //getError
+        public function getError(){
+            return $this->error;
         }
     }
