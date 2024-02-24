@@ -31,17 +31,23 @@
                         <!-- Necessity -->
                         <div class="add-necessity-one-line-input">
                             <label for="necessitygoods">Necessity </label>
-                            <input type="text" id="necessitygoods" name="necessitygoods">
+                            <input type="text" id="necessitygoods" name="necessitygoods" value="<?php echo isset($data['necessitygoods']) ? $data['necessitygoods'] : ''; ?>">
+                            <!-- NecessityGoods Error Display for Goods-->
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessitygoods_err']) ? $data['necessitygoods_err']: ''; ?></span>
                         </div>
                         <!-- Requested Amount -->
                         <div class="add-necessity-one-line-input">
                             <label for="requestedgoodsquantity">Requested Quantity </label>
-                            <input type="number" id="requestedgoodsquantity" name="requestedgoodsquantity">
+                            <input type="number" id="requestedgoodsquantity" name="requestedgoodsquantity" value="<?php echo isset($data['requestedgoodsquantity']) ? $data['requestedgoodsquantity'] : ''; ?>">
+                            <!-- Requested Ammount Error Display for Goods -->
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['requestedgoodsquantity_err']) ? $data['requestedgoodsquantity_err']: ''; ?></span>
                         </div>
                         <!-- Description about the necessity -->
                         <div class="add-necessity-text-area-input">
                             <label for="goodsnecessitydes">Description</label>
-                            <textarea name="goodsnecessitydes" id="goodsnecessitydes"></textarea>
+                            <textarea name="goodsnecessitydes" id="goodsnecessitydes"><?php echo isset($data['goodsnecessitydes']) ? $data['goodsnecessitydes'] : ''; ?></textarea>
+                            <!-- Description about the necessisty error display for goods -->
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['goodsnecessitydes_err']) ? $data['goodsnecessitydes_err']: ''; ?></span>
                         </div>
                         <!-- Add button -->
                         <div class="add-necessity-add-button">
