@@ -22,7 +22,7 @@ class Donor extends Controller {
 
     public function postedBenefactions(){
         $data = [
-            'title' => 'Add Benefactions'
+            'title' => 'Posted Benefactions'
         ];
         $this->view('donor/postedBenefactions', $data);
     }

@@ -66,4 +66,22 @@ class Benefaction extends Controller {
             $this->view('donor/donorAddBenefactions', $data);
         }
     }
+
+    public function postedBenefactions(){
+        // Get pending benefactions
+        $pendingItems = $this->benefactionModel->getPendingItems();
+
+        // Get completed benefactions
+        $completedItems = $this->benefactionModel->getCompletedItems();
+
+        // Load the view with data
+        $data = [
+            'pendingItems' => $pendingItems,
+            'completedItems' => $completedItems
+        ];
+
+        //Load View
+        $this->view('donor/postedBenefactions', $data);
+    }
+
 }
