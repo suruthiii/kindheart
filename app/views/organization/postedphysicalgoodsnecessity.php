@@ -36,23 +36,7 @@
                             <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
                             <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
                             <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
                             <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
-                            <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
                             <td></td>
                             <td><p>Rs. 2000,00</p></td>
                         </tr>
@@ -72,27 +56,9 @@
                             <td></td>
                             <td><p>Rs. 2000,00</p></td>
                         </tr>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
-                            <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
-                            <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
-                            <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
                     </table>
                 </div>
-
+                
                 <div class="add-necessity-button-for-post">
                     <button onclick="location.href='<?php echo URLROOT ?>/organization/addgoodsnecessity'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
