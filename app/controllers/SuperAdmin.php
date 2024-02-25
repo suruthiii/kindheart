@@ -284,4 +284,6 @@ class SuperAdmin extends Controller {
                 die('User Not Found');
         }
     }
+
+    
 }   

@@ -372,4 +372,51 @@ class UserModel{
 
         return $result->userType;
     }
+
+    public function checkStatus($username) {
+        $this->db->query('SELECT status FROM user WHERE username = :username;');
+        $this->db->bind(':username', $username);
+
+        $result = $this->db->single();
+
+        return $result->status;
+
+    }
+
+    public function bannedDetails($username) {
+        $this->db->query('SELECT bannedTime, banCount FROM user WHERE username = :username;');
+        $this->db->bind(':username', $username);
+
+        $result = $this->db->single();
+
+        $startTime = $result->bannedTime;
+
+        $dateTime1 = new DateTime($startTime);
+        $dateTime2 = new DateTime();
+
+        $interval = $dateTime1->diff($dateTime2);
+
+        $totalDays = $interval->days;
+
+        $data = [
+            'totalDays' => $totalDays,
+            'banCount' => $result->banCount
+        ];
+
+        return $data;
+    }
+
+    public function userUnban($username) {
+        $this->db->query('UPDATE user SET status = 1 WHERE username = :username;');
+        $this->db->bind(':username', $username);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+
+    }
 }

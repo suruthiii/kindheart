@@ -21,7 +21,7 @@
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Posted Monetary Necessities</h3>
+                    <h3>Posted Physical Goods Necessities</h3>
                     <p>Last 30 Days</p>
                 </div>
 
@@ -94,11 +94,12 @@
                 </div>
 
                 <div class="add-necessity-button-for-post">
-                    <button onclick="location.href='<?php echo URLROOT ?>/student/addmonetarynecessity'">
+                    <button onclick="location.href='<?php echo URLROOT ?>/student/addgoodsnecessity'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
                         <h5>Add Necessities</h5>
                     </button>
                 </div>
+                
 
             </div>
 
