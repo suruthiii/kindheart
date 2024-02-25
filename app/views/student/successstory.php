@@ -142,10 +142,17 @@
                         <h3>Add success Stories</h3>
                     </div>
                     <!-- add image box -->
-                    <form class="add-form" method="POST" action="<?php echo URLROOT ?>/student/addSuccessStory">
-                    <div class="add-photo-box">
+                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory">
+                    <div >
+
                         
-                            <input type="image" value="+ Add Photo">
+                    <label for ="image-browser" class="add-photo-box">
+                            <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;">
+                            + Add Photo</input>
+                    </label> 
+                
+                    <small class="file_info text-muted"> </small>
+                    <br>
                              
                     </div> 
                     <!-- add description box -->
@@ -178,5 +185,13 @@
         </div>
     </section>
 </main>
+
+<script>
+function display_image_name (file_name)
+{
+    document .querySelector (".file_info").innerHTML = ' <b>Selected file:</b> <br>' + file_name;
+}   
+</script>
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

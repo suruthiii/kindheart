@@ -86,10 +86,36 @@ class Student extends Controller {
 
     public function addSuccessStory(){  
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        
+            if (!empty($_FILES['image']['name'])) {
+
+                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                    echo "File was successfully placed in the temporary directory.";
+                } else {
+                    echo "Failed to place the file in the temporary directory.";
+                }
+                $targetDir = URLROOT."/public/uploads/"; // Make sure this directory exists
+                $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+
+                // Move the uploaded file to the destination directory
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+                    $imagePath = $targetFile;
+                } else {
+                    // var_dump($_FILES['image']['tmp_name']);
+                    // var_dump($targetFile);
+                    var_dump(error_get_last());  // Display the last PHP error
+
+                    die('Failed to upload image');
+                }
+            } else {
+                var_dump($_FILES);
+                die('Image file is required');
+            }
             
             $data = [
                 'title' => trim($_POST['title']),
                 'storyDescription' => trim($_POST['storyDescription']),
+                'imagePath' => $imagePath,
                 'err' => ''
             ];
 
