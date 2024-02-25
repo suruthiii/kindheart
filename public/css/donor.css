@@ -88,7 +88,8 @@ span .donor-form-error-details{
 }
 
 .benefaction-first-div,
-.benefaction-second-div{
+.benefaction-second-div,
+.benefaction-third-div{
     position: relative;
     height: 12vh;
     display: flex;
@@ -99,7 +100,8 @@ span .donor-form-error-details{
 }
 
 .benefaction-first-div input,
-.benefaction-second-div input{
+.benefaction-second-div input,
+.benefaction-third-div input{
     height: 5vh;
     border-radius: 6px;
     border: 1px solid #707070;
@@ -110,6 +112,7 @@ span .donor-form-error-details{
 
 .benefaction-first-div input:focus,
 .benefaction-second-div input:focus,
+.benefaction-third-div input:focus,
 .add-benefaction-text-area-input-to-oneline textarea:focus{
     outline: none !important;
     border: #8E0000 solid;
@@ -127,6 +130,7 @@ span .donor-form-error-details{
 
 .benefaction-first-div label,
 .benefaction-second-div label,
+.benefaction-third-div label,
 .add-benefaction-text-area-input-to-oneline label{
     color: #8692A6;
     font-family: 'Inter', sans-serif;
@@ -139,7 +143,7 @@ span .donor-form-error-details{
 
 .add-benefaction-text-area-input-to-oneline{
     position: relative;
-    width: 100%;
+    width: 70%;
     height: 15vh;
     display: flex;
     flex-direction: column;

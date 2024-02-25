@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-benefaction-form">
-                    <form action="<?php echo URLROOT ?>/Benefaction/donorAddBenefactions" method="POST">
+                    <form action="<?php echo URLROOT ?>/Benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
                     
                         <!-- Item -->
                         <div class="benefaction-first-div">
@@ -45,6 +45,15 @@
 
                             <!-- Requested Amount Error Display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?></span>
+                        </div>
+                        
+                        <!-- Images -->
+                        <div class="benefaction-third-div">
+                            <label for="photoBenfaction">Photos of The Item </label>
+                            <input type="file" id="photoBenfaction" name="photoBenfaction" value="<?php echo isset($data['photoBenfaction']) ? $data['photoBenfaction'] : ''; ?>" accept=".png, .jpg, .jpeg">
+
+                            <!-- Requested Amount Error Display -->
+                            <span class="donor-form-error-details" id="photoBenfaction_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['photoBenfaction_err']) ? $data['photoBenfaction_err']: ''; ?></span>
                         </div>
 
                         <!-- Description about requested necessity -->
@@ -73,5 +82,23 @@
         </div>
     </section>
 </main>
+<script>
+        function validateForm() {
+            var fileInput = document.getElementById('photoBenfaction');
+            var errorMessage = document.getElementById('photoBenfaction_err');
+            var fileName = fileInput.value;
+            var acceptedExtensions = ['png', 'jpg', 'jpeg'];
+
+            if (fileName) {
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                if (acceptedExtensions.indexOf(fileExtension) === -1) {
+                    errorMessage.textContent = 'Please upload a PNG, JPG, or JPEG file.';
+                    return false;
+                }
+            }
+
+            return true;
+        }
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
