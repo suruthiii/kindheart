@@ -48,8 +48,10 @@ class Organization extends Controller {
     }
 
     public function postedphysicalgoodsnecessity(){
+        $tablerow= $this->organizationModel->getaddedGoodsNecessities();
+
         $data = [
-            'title' => 'Home page'
+            'tablerow' => $tablerow
         ];
         $this->view('organization/postedphysicalgoodsnecessity', $data);
     }

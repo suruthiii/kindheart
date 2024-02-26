@@ -64,7 +64,8 @@ class organizationModel{
     }
 
     public function getaddedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.name,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID WHERE necessityType = 'Monetary Funding';");
+        $this->db->query("SELECT necessity.name,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 'Pending';");
         $result = $this->db->resultSet();
         return $result;
     }
@@ -113,4 +114,12 @@ class organizationModel{
             return false;
         }
     }
+
+    public function getaddedGoodsNecessities(){
+        $this->db->query("SELECT necessity.name,necessity.description,physicalgood.requestedQuantity FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
+        WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 'Pending';");
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
 }
