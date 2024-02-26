@@ -37,8 +37,8 @@
                             <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
                             <td><p>Rs. 2000,00</p></td>
                             <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
-                            <td><button><img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
-                            <td><button><img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
+                            <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
+                            <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
                         </tr>
                     </table>
                 </div>
