@@ -31,10 +31,6 @@
                         <td width="70%">6</td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Student Name</th>
-                        <td width="70%">Student 1</td>
-                    </tr>
-                    <tr class="necessity-data">
                         <th width="30%">Student Username</th>
                         <td width="70%">student1</td>
                     </tr>
@@ -51,12 +47,36 @@
                         <td width="70%">Winehouse</td>
                     </tr>
                     <tr class="necessity-data">
+                        <th width="30%">Gender</th>
+                        <td width="70%">Female</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Date of Birth</th>
+                        <td width="70%">01/01/2007</td>
+                    </tr>
+                    <tr class="necessity-data">
                         <th width="30%">Institute Name</th>
                         <td width="70%">ABC College</td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Institue Type</th>
                         <td width="70%">School</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Bank Account Number</th>
+                        <td width="70%">12345678</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Account Holder's Name</th>
+                        <td width="70%">Kiara White</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Bank Name</th>
+                        <td width="70%">HNB</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Branch Name</th>
+                        <td width="70%">Wellawatte</td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Address</th>
