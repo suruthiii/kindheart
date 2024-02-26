@@ -42,6 +42,30 @@
                         <th width="30%">Student Email</th>
                         <td width="70%">student1@gmail.com</td>
                     </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">First Name</th>
+                        <td width="70%">Amy</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Last Name</th>
+                        <td width="70%">Winehouse</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Institute Name</th>
+                        <td width="70%">ABC College</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Institue Type</th>
+                        <td width="70%">School</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Address</th>
+                        <td width="70%">ABD Road</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Phone Number</th>
+                        <td width="70%">0712345678</td>
+                    </tr>
                 </table>
             </div>
 
