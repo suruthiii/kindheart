@@ -192,6 +192,8 @@ class Necessity extends Controller {
 
     }
 
+    
+
 
     //Add Physcicall goods Necessity
     public function addingGoodsNecessity(){

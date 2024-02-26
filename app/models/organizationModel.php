@@ -1,6 +1,4 @@
 <?php
-
-
 class organizationModel{
     private $db;
 
@@ -16,12 +14,13 @@ class organizationModel{
 
     public function addmonetarynecessitytodb($data){
         //sql statement for adding monetary necessity, necessity table
-        $this->db->query('INSERT INTO necessity(name,necessaryType,description,doneeID) 
-        VALUES (:necessityMonetary, :necessityType, :monetarynecessitydes, :doneeID)');
+        $this->db->query('INSERT INTO necessity(name,necessityType,fulfillmentStatus,description,doneeID) 
+        VALUES (:necessityMonetary, :necessityType, :fulfillmentStatus, :monetarynecessitydes, :doneeID)');
 
         // Binding values with array value
         $this->db->bind(':necessityMonetary', $data['necessityMonetary']);
         $this->db->bind(':necessityType', 'Monetary Funding');
+        $this->db->bind(':fulfillmentStatus','Pending');
         $this->db->bind(':monetarynecessitydes', $data['monetarynecessitydes']);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -49,6 +48,8 @@ class organizationModel{
 
             $result2 = $this->db->execute();
 
+
+
             if ($result2) {
                 return true;
             } else {
@@ -62,14 +63,21 @@ class organizationModel{
      
     }
 
+    public function getaddedMonetaryNecessities(){
+        $this->db->query("SELECT necessity.name,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID WHERE necessityType = 'Monetary Funding';");
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
     public function addgoodsnecessitytodb($data){
         //sql statement for adding Goods necessity, necessity table
-        $this->db->query('INSERT INTO necessity(name,necessaryType,description,doneeID) 
-        VALUES (:necessitygoods, :necessityType, :goodsnecessitydes, :doneeID)');
+        $this->db->query('INSERT INTO necessity(name,necessityType,fulfillmentStatus,description,doneeID) 
+        VALUES (:necessitygoods, :necessityType,:fulfillmentStatus, :goodsnecessitydes, :doneeID)');
 
         // Binding values with array value
         $this->db->bind(':necessitygoods', $data['necessitygoods']);
         $this->db->bind(':necessityType', 'Physical Goods');
+        $this->db->bind(':fulfillmentStatus','Pending');
         $this->db->bind(':goodsnecessitydes', $data['goodsnecessitydes']);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         

@@ -657,11 +657,6 @@
     overflow-y: scroll;
 }
 
-/* .posted-necessities-pending-table table tr td button img{
-    height: "16";
-    width: "18";
-} */
-
 .posted-necessities-pending-table table,
 .posted-necessities-Completed-table table{
     width: 100%;
@@ -752,6 +747,16 @@
     margin-top: 56vh;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+.pending-postednecessityTitle{
+    margin-bottom: -1vh;
+    font-size: 14px;
+}
+
+.pending-postednecessitydescription{
+    margin-right: 15px;
+    font-size: 11px;
 }
 
 .posted-necessities-Completed-table table tr td:nth-child(1){

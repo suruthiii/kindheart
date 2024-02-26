@@ -1,11 +1,13 @@
 <?php
 class Organization extends Controller {
     private $middleware;
+    private $organizationModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only organizations are allowed to access organization pages
         $this->middleware->checkAccess(['organization']);
+        $this->organizationModel = $this->model('organizationModel');
     }
 
     public function index(){
@@ -37,8 +39,10 @@ class Organization extends Controller {
     }
 
     public function postedmonetarynecessity(){
+        $tablerow= $this->organizationModel->getaddedMonetaryNecessities();
+
         $data = [
-            'title' => 'Home page'
+            'tablerow' => $tablerow
         ];
         $this->view('organization/postedmonetarynecessity', $data);
     }

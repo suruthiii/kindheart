@@ -32,14 +32,18 @@
                 <div class="posted-necessity-pending-table-grey-line"></div>
                 <div class="posted-necessities-pending-table">
                     <table>
+                    <?php foreach($data['tablerow'] as $tablerow): ?>
                         <tr>
                             <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
-                            <td><p>Rs. 2000,00</p></td>
+                            <td><h4 class="pending-postednecessityTitle"><?php echo $tablerow->name?></h4>
+                                <p class="pending-postednecessitydescription"><?php echo $tablerow->description?></p>
+                            </td>
+                            <td><p>Rs.<?php echo $tablerow->requestedAmount?></p></td>
                             <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
                             <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
                             <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
                         </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
 
