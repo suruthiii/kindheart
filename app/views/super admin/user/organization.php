@@ -34,8 +34,8 @@
                                 <tr>
                                     <td width="50%" class="tile-name"><?php echo $item->orgName; ?></td>
                                     <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="org_ID" id="org_ID" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/user/superadmindeleteorganization" method="post" class="delete-form">
+                                            <input type="text" name="org_ID" id="org_ID" hidden value="<?php echo $item->orgID?>" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
                                             </button>

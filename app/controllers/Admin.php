@@ -83,15 +83,15 @@ class Admin extends Controller {
                 $userType = $this->userModel->getUserType($_POST['user_ID']);
 
                 if($userType == 'student') {
-                    redirect('user/viewStudent');
+                    redirect('user/adminStudent');
                 }
 
                 else if($userType == 'organization') {
-                    redirect('user/viewOrganization');
+                    redirect('user/adminOrganization');
                 }
 
                 else if($userType == 'donor') {
-                    redirect('user/viewDonor');
+                    redirect('user/adminDonor');
                 }
 
                 else
