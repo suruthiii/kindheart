@@ -83,52 +83,48 @@ class Student extends Controller {
         $this->view('student/successstory', $data);
     }
 
+    public function imgUpload($file){
+        $file_name = $_FILES[$file]['name'];
+        $file_size = $_FILES[$file]['size'];
+        $tmp_name = $_FILES[$file]['tmp_name'];
+        $error = $_FILES[$file]['error'];
+
+        if ($error === 0){
+            $file_ex = pathinfo($file_name, PATHINFO_EXTENSION);
+            $file_ex_lc = strtolower($file_ex);
+
+            $allowed_exs = array("jpg", "jpeg", "png");
+
+            if (in_array($file_ex_lc, $allowed_exs)){
+                // Move into ParkingPhotos folder
+                $new_file_name = uniqid("IMG-", true).'.'.$file_ex_lc;
+                $file_upload_path = PUBLICROOT.'/uploads/'.$new_file_name;
+
+                move_uploaded_file($tmp_name, $file_upload_path);
+                return $new_file_name;
+            }
+
+            else{
+                $data['err'] = 'Invalid file type. Please choose a JPG, JPEG, or PNG file.';
+            }
+        }
+    }
+
 
     public function addSuccessStory(){  
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        
-            if (!empty($_FILES['image']['name'])) {
-
-                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                    echo "File was successfully placed in the temporary directory.";
-                } else {
-                    echo "Failed to place the file in the temporary directory.";
-                }
-                $targetDir = "uploads/"; 
-                $targetFile = $targetDir . basename($_FILES["image"]["name"]);
-                
-
-                // Move the uploaded file to the destination directory
-                if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
-                    $imagePath = $targetFile;
-               
-                } else {
-                    // var_dump($_FILES['image']['tmp_name']);
-                    // var_dump($targetFile);
-
-                    
-
-                    die('Failed to upload image');
-                }
-            } else {
-                //die('Image file is required');
-                //echo "no image";
-            }
-
-           // $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
            
             $data = [
                 'title' => trim($_POST['title']),
                 'storyDescription' => trim($_POST['storyDescription']),
-                //'imagePath' => $imagePath,
-                //'userID' => $userID,
+                'imagePath' => $this->imgUpload('image'),
                 'err' => ''
             ];
 
 
+
             // Make sure errors are empty
             if (empty($data['err'])) {
-                // die(print_r($data));
             
                 // Add Data to DB
                 if ($this->studentModel->addSuccessStory($data)) {

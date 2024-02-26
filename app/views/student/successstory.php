@@ -142,36 +142,35 @@
                         <h3>Add success Stories</h3>
                     </div>
                     <!-- add image box -->
-                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory">
+                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" >
                     <div >
-
                         
                     <label for ="image-browser" class="add-photo-box">
                             <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;">
                             + Add Photo</input>
                     </label> 
                 
-                    <small class="file_info text-muted"> </small>
-                    <br>
+                    <small class="file_info text-muted"> </small> 
+                    <div class="file_info text-muted"></div>  <br><br>
+
+                    <?php if (!empty($data['err'])): ?>
+                        <div class="error-message"> <?php echo $data['err']; ?></div>
+                    <?php endif; ?> 
                              
                     </div> 
-                    <!-- add description box -->
+                    <!-- add input fields of the form -->
 
-                    <div class="add-title-box">
-                        
-                        <input type=text placeholder="Add title..." id="title" name="title" ></text>
+                    <div>
 
-                        <div class="add-description-box">
-                            <textarea placeholder="Add description..." id="storyDescription" name="storyDescription" ></textarea>
-                        </div> 
-                        <br>
-                        <!-- post button -->
-                        <div class="post-story-button"> 
-                           <input type="submit" value="Post">
-                        </div> 
-                    
-                    </div> 
-                                       
+                        <label for="title">Add Title</label><br>
+                        <input type="text" id="title" name="title" required><br><br>
+
+                        <label for="storyDescription">Add Description</label><br>
+                        <input type="textarea" id="storyDescription" name="storyDescription" required><br><br>
+
+                        <input type="submit" value="Submit">
+
+                    </div>                  
                     </form>
 
                     <!-- last-title for this -->
@@ -186,11 +185,17 @@
     </section>
 </main>
 
+
 <script>
-function display_image_name (file_name)
-{
-    document .querySelector (".file_info").innerHTML = ' <b>Selected file:</b> <br>' + file_name;
-}   
+function display_image_name(file_name) {
+    const labelElement = document.querySelector("label[for='image-browser']");
+    labelElement.textContent = file_name; 
+    labelElement.classList.add('selected'); 
+
+    // Optionally clear the '.file_info' element:
+    document.querySelector(".file_info").textContent = ""; 
+}
+
 </script>
 
 
