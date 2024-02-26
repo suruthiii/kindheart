@@ -94,43 +94,36 @@ class Student extends Controller {
                 } else {
                     echo "Failed to place the file in the temporary directory.";
                 }
-                $targetDir = URLROOT."/public/uploads/"; // Make sure this directory exists
+                $targetDir = "uploads/"; 
                 $targetFile = $targetDir . basename($_FILES["image"]["name"]);
+                
 
                 // Move the uploaded file to the destination directory
                 if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
                     $imagePath = $targetFile;
+               
                 } else {
                     // var_dump($_FILES['image']['tmp_name']);
                     // var_dump($targetFile);
-                    var_dump(error_get_last());  // Display the last PHP error
+
+                    
 
                     die('Failed to upload image');
                 }
             } else {
-                var_dump($_FILES);
-                die('Image file is required');
+                //die('Image file is required');
+                //echo "no image";
             }
-            
+
+           // $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
+           
             $data = [
                 'title' => trim($_POST['title']),
                 'storyDescription' => trim($_POST['storyDescription']),
-                'imagePath' => $imagePath,
+                //'imagePath' => $imagePath,
+                //'userID' => $userID,
                 'err' => ''
             ];
-
-            // die('hello');
-
-
-            // Validate name
-            // if (empty($data['name'])) {
-            //     $data['err'] = 'Please enter a name';
-            // } 
-
-            // // Validate success story
-            // if (empty($data['storyDescription']) && empty($data['err'])) {
-            //     $data['err'] = 'Please enter the story';
-            // }
 
 
             // Make sure errors are empty
@@ -145,7 +138,7 @@ class Student extends Controller {
                 }
             } else {
                 // Load view with errors
-                die('2Something went wrong');
+                die('Something went wrong');
                 $this->student($data);
             }
         }else{
