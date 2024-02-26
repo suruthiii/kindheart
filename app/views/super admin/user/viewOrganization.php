@@ -39,16 +39,16 @@
                         <td width="70%">organization1</td>
                     </tr>
                     <tr class="necessity-data">
+                        <th width="30%">Organization Email</th>
+                        <td width="70%">organization1@gmail.com</td>
+                    </tr>
+                    <tr class="necessity-data">
                         <th width="30%">Organization Number</th>
                         <td width="70%">5645455</td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Organization Type</th>
                         <td width="70%">School</td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Organization Email</th>
-                        <td width="70%">organization1@gmail.com</td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Address</th>
