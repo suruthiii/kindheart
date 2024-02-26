@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/donorPostDonations'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postedBenefactions'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-benefaction-form">
-                    <form action="<?php echo URLROOT ?>/Benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
+                    <form action="<?php echo URLROOT ?>/benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
                     
                         <!-- Item -->
                         <div class="benefaction-first-div">

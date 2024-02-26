@@ -13,20 +13,6 @@ class Donor extends Controller {
         $this->view('donor/index', $data);
     }
 
-    public function donorAddBenefactions(){
-        $data = [
-            'title' => 'Add Benefactions'
-        ];
-        $this->view('donor/donorAddBenefactions', $data);
-    }
-
-    public function postedBenefactions(){
-        $data = [
-            'title' => 'Posted Benefactions'
-        ];
-        $this->view('donor/postedBenefactions', $data);
-    }
-
     public function about(){
         $users = $this->pagesModel->getUser();
         $data = [

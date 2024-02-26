@@ -259,24 +259,41 @@ span .donor-form-error-details{
     box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
 }
 
-.posted-benefactions-pending-table table tr td:nth-child(1),
+.posted-benefactions-pending-table table tr:hover,
+.posted-benefactions-Completed-table table tr:hover{
+    background-color: #E5E5E5;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+/* .posted-benefactions-pending-table table tr td:nth-child(1),
 .posted-benefactions-Completed-table table tr td:nth-child(1){
-    width: 15%;
+    width: 10%;
     padding-left: 15px;
 }
 
 .posted-benefactions-pending-table table tr td:nth-child(2){
-    width: 40%;
+    width: 50%;
     padding-left: 14px;
 }
 
 .posted-benefactions-pending-table table tr td:nth-child(3){
-    width: 30%;
+    width: 10%;
 }
 
 .posted-benefactions-pending-table table tr td:nth-child(4){
-    width: 20%;
+    width: 10%;
 }
+
+.posted-benefactions-pending-table table tr td:nth-child(5){
+    width: 10%;
+}
+
+.posted-benefactions-pending-table table tr td:nth-child(6){
+    width: 10%;
+} */
+
+
 
 .add-benefaction-button-for-post{
     position: fixed;
@@ -317,4 +334,5 @@ span .donor-form-error-details{
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
+
 

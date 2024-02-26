@@ -18,12 +18,25 @@ class donorModel{
         $this->db->bind(':postedDate', date('Y-m-d')); // Automatically set the posted date
         $this->db->bind(':donorID', $_SESSION['user_id']);
         $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
+        // $this->db->bind(':availability', $data['availability']);
 
+        // // if the benefaction is pending it's availabitySTatus is 1
         // if($data['availability'] == 'pending'){
-        //     $this->db->bind(':availabilityStatus', 1);
-        // }
-        // else{
-        //     $this->db->bind(':availabilityStatus', 0);
+        //     $this->db->query('UPDATE benefaction SET availabilityStatus = 1 WHERE benefactionID = :benefactionID');
+        //     $this->db->bind(':benefactionID', $data['benefactionID']);
+        //     if($this->db->execute()){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
+        // }else{
+        //     $this->db->query('UPDATE benefaction SET availabilityStatus = 0 WHERE benefactionID = :benefactionID');
+        //     $this->db->bind(':benefactionID', $data['benefactionID']);
+        //     if($this->db->execute()){
+        //         return true;
+        //     }else{
+        //         return false;
+        //     }
         // }
         
         // Execute
@@ -32,17 +45,30 @@ class donorModel{
         }else{
             return false;
         }
+
     }
 
     // Get pending benefactions
     public function getPendingBenefaction() {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction');
-    
-        // // Bind the availabilityStatus parameter
-        // $this->db->bind(':availabilityStatus', 1);
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 1');
         
-        // Return result set
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
+        return $this->db->resultSet();
+    }
+
+    // Get completed benefactions
+    public function getCompletedBenefaction() {
+        // Prepare statement
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 0');
+        
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
         return $this->db->resultSet();
     }
 

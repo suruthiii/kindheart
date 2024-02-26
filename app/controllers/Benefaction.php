@@ -24,7 +24,7 @@ class Benefaction extends Controller {
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
                 'photoBenfaction' => trim($_POST['photoBenfaction']),
                 'availabilityStatus' => '1',
-                // 'availability' => 'pending',
+                'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
                 'quantityBenfaction_err' => '',
@@ -78,17 +78,16 @@ class Benefaction extends Controller {
         }
     }
 
-    // public function postedBenefactions(){
-    //     // Load the view with data
-    //     $data = [
-    //         'pendingBenefaction' => $this->benefactionModel->getPendingBenefaction();
-    //         die(print_r(123))
-    //     ];
-        
-    //     die(print_r($data['pendingBenefaction']))
+    public function postedBenefactions(){
+        // Load the view with data
+        $data = [
+            'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+            
+            'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+        ];
 
-    //     //Load View
-    //     $this->view('donor/postedBenefactions', $data);
-    // }
+        //Load View
+        $this->view('donor/postedBenefactions', $data);
+    }
 
 }
