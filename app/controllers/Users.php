@@ -817,13 +817,10 @@ class Users extends Controller{
 
     // Create the session
     public function createUserSession($user){
-        // die(print_r($user));
         $_SESSION['user_id'] = $user->userID;
         $_SESSION['user_email'] = $user->email;
         $_SESSION['user_name'] = $user->username;
         $_SESSION['user_type'] = $user->userType;
-
-        // die(print_r($_SESSION));
 
         redirect($_SESSION['user_type'].'/index');
     }

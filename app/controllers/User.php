@@ -44,18 +44,23 @@ class User extends Controller {
         $this->view('super admin/user/viewStudent', $data);
     }
 
-    public function superAdminOrganization($other_data = null){
+    public function superAdminOrganization(){
         $data = [
             'title' => 'Home page',
             'organizations' => $this->userModel->viewOrganizations()
         ];
 
-        $this->view('super admin/user/organization', $data, $other_data);
+        $this->view('super admin/user/organization', $data);
     }
 
-    public function superAdminViewOrganization(){
+    public function superAdminViewOrganization($org_ID = null){
+        if(empty($org_ID)) {
+            redirect('pages/404');
+        }
+
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'organization_details' => $this->userModel->getOrganization($org_ID)
         ];
         $this->view('super admin/user/viewOrganization', $data);
     }
@@ -67,10 +72,12 @@ class User extends Controller {
         ];
         $this->view('super admin/user/donor', $data);
     }
-   public function superAdminViewDonor(){
+    public function superAdminViewDonor(){
         $data = [
             'title' => 'Home page'
         ];
         $this->view('super admin/user/viewDonor', $data);
     }
+
+
 }
