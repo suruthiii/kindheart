@@ -31,10 +31,6 @@
                         <td width="70%">6</td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Organization Name</th>
-                        <td width="70%">Organization 1</td>
-                    </tr>
-                    <tr class="necessity-data">
                         <th width="30%">Organization Username</th>
                         <td width="70%">organization1</td>
                     </tr>
@@ -43,12 +39,32 @@
                         <td width="70%">organization1@gmail.com</td>
                     </tr>
                     <tr class="necessity-data">
+                        <th width="30%">Organization Name</th>
+                        <td width="70%">Organization 1</td>
+                    </tr>
+                    <tr class="necessity-data">
                         <th width="30%">Organization Number</th>
                         <td width="70%">5645455</td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Organization Type</th>
                         <td width="70%">School</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Bank Account Number</th>
+                        <td width="70%">12345678</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Account Holder's Name</th>
+                        <td width="70%">Kiara White</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Bank Name</th>
+                        <td width="70%">HNB</td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Branch Name</th>
+                        <td width="70%">Wellawatte</td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Address</th>
