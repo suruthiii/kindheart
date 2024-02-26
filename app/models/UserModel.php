@@ -419,4 +419,12 @@ class UserModel{
         }
 
     }
+
+    public function viewOrganizations() {
+        $this->db->query('SELECT org.orgID, org.orgName FROM organization AS org JOIN user ON user.userid = org.orgid WHERE user.status != 10 ORDER BY orgID;');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }

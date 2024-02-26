@@ -4,6 +4,8 @@ class User extends Controller {
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
         // $this->middleware->checkAccess(['admin']);
+        //$this->middleware->checkAccess(['superAdmin']);
+        $this->userModel = $this->model('UserModel');
     }
 
     public function adminStudent(){
@@ -38,14 +40,17 @@ class User extends Controller {
         $data = [
             'title' => 'Home page'
         ];
+
         $this->view('super admin/user/viewStudent', $data);
     }
 
-    public function superAdminOrganization(){
+    public function superAdminOrganization($other_data = null){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'organizations' => $this->userModel->viewOrganizations()
         ];
-        $this->view('super admin/user/organization', $data);
+
+        $this->view('super admin/user/organization', $data, $other_data);
     }
 
     public function superAdminViewOrganization(){
