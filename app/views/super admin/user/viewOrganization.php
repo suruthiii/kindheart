@@ -27,7 +27,7 @@
             <div class="necessity-info">
                 <table>
                     <tr class="necessity-data">
-                        <th width="30%">User ID</th>
+                        <th width="30%">Organization ID</th>
                         <td width="70%"><?php print_r($data['organization_details']->orgID); ?></td>
                     </tr>
                     <tr class="necessity-data">

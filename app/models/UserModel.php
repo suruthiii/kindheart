@@ -436,4 +436,16 @@ class UserModel{
 
         return $row;
     }
+
+    public function deleteOrganization($org_ID) {
+        $this->db->query('UPDATE user SET status = 10 WHERE userID = :userID;');
+        $this->db->bind(':userID', $org_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
