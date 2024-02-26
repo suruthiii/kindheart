@@ -4,6 +4,8 @@ class User extends Controller {
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
         // $this->middleware->checkAccess(['admin']);
+        //$this->middleware->checkAccess(['superAdmin']);
+        $this->userModel = $this->model('UserModel');
     }
 
     public function adminStudent(){
@@ -38,23 +40,38 @@ class User extends Controller {
         $data = [
             'title' => 'Home page'
         ];
+
         $this->view('super admin/user/viewStudent', $data);
     }
 
     public function superAdminOrganization(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'organizations' => $this->userModel->viewOrganizations()
         ];
+
         $this->view('super admin/user/organization', $data);
     }
 
-    public function superAdminViewOrganization(){
+    public function superAdminViewOrganization($org_ID = null){
+        if(empty($org_ID)) {
+            redirect('pages/404');
+        }
+
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'organization_details' => $this->userModel->getOrganization($org_ID)
         ];
         $this->view('super admin/user/viewOrganization', $data);
     }
 
+    public function superAdminDeleteOrganization() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $this->userModel->deleteOrganization($_POST['org_ID']);
+
+            redirect('user/superadminorganization');
+        }
+    }
 
     public function superAdminDonor(){
         $data = [
@@ -62,10 +79,12 @@ class User extends Controller {
         ];
         $this->view('super admin/user/donor', $data);
     }
-   public function superAdminViewDonor(){
+    public function superAdminViewDonor(){
         $data = [
             'title' => 'Home page'
         ];
         $this->view('super admin/user/viewDonor', $data);
     }
+
+
 }

@@ -27,36 +27,52 @@
             <div class="necessity-info">
                 <table>
                     <tr class="necessity-data">
-                        <th width="30%">User ID</th>
-                        <td width="70%">6</td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Organization Name</th>
-                        <td width="70%">Organization 1</td>
+                        <th width="30%">Organization ID</th>
+                        <td width="70%"><?php print_r($data['organization_details']->orgID); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Organization Username</th>
-                        <td width="70%">organization1</td>
+                        <td width="70%"><?php print_r($data['organization_details']->username); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Organization Email</th>
-                        <td width="70%">organization1@gmail.com</td>
+                        <td width="70%"><?php print_r($data['organization_details']->email); ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Organization Name</th>
+                        <td width="70%"><?php print_r($data['organization_details']->orgName); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Organization Number</th>
-                        <td width="70%">5645455</td>
+                        <td width="70%"><?php print_r($data['organization_details']->orgNumber); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Organization Type</th>
+                        <th width="30%"><?php print_r($data['organization_details']->orgType); ?></th>
                         <td width="70%">School</td>
                     </tr>
                     <tr class="necessity-data">
+                        <th width="30%">Bank Account Number</th>
+                        <td width="70%"><?php print_r($data['organization_details']->accNumber); ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Account Holder's Name</th>
+                        <td width="70%"><?php print_r($data['organization_details']->accountHoldersName); ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Bank Name</th>
+                        <td width="70%"><?php print_r($data['organization_details']->bankName); ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Branch Name</th>
+                        <td width="70%"><?php print_r($data['organization_details']->branchName); ?></td>
+                    </tr>
+                    <tr class="necessity-data">
                         <th width="30%">Address</th>
-                        <td width="70%">ABC Road</td>
+                        <td width="70%"><?php print_r($data['organization_details']->address); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Phone Number</th>
-                        <td width="70%">0712345678</td>
+                        <td width="70%"><?php print_r($data['organization_details']->phoneNumber); ?></td>
                     </tr>
                 </table>
             </div>
