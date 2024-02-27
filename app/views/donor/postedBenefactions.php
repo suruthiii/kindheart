@@ -53,7 +53,7 @@
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
+                                        <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
                                             <input type="text" name="edit" id="edit" hidden value="" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
@@ -96,7 +96,7 @@
                                     <td width="10%" style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
 
                                     <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/donor/viewBenefaction" method="post" class="view-form">
+                                        <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
                                             <input type="text" name="view" id="view" hidden value="" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
