@@ -75,7 +75,20 @@ class donorModel{
         return $this->db->resultSet();
     }
 
+    // View Benefaction
+    public function getBenefaction($benefactionID) {
+        // Prepare statement
+        $this->db->query('SELECT * FROM benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefactionID);
+        
+        // Execute
+        $row = $this->db->single();
 
+        // Fetch result set
+        return $row;
+    }
+
+    // Get user
     public function getUser(){
         $this->db->query('SELECT * FROM user');
 

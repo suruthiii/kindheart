@@ -391,3 +391,20 @@ span .donor-form-error-details{
 }
 
 
+/* ----------------View Posted Benfactions------------------ */
+
+.benefaction-info {
+    margin-left: 10px;
+    padding-top: 25px;
+}
+
+.benefaction-info table {
+    width: 700px;
+}
+
+.benefaction-data {
+    width: 100%;
+    height: 35px;
+}
+
+

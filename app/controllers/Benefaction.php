@@ -96,4 +96,16 @@ class Benefaction extends Controller {
         $this->view('donor/postedBenefactions', $data);
     }
 
+
+    public function viewPostedBenefactions($benefactionID = null){
+        // Load the view with data
+        $data = [
+            'title' => 'View Posted Benefactions',
+            'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+        ];
+    
+        //Load View
+        $this->view('donor/viewPostedBenefactions', $data);
+    }
+
 }
