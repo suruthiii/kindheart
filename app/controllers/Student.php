@@ -105,7 +105,8 @@ class Student extends Controller {
             }
 
             else{
-                $data['err'] = 'Invalid file type. Please choose a JPG, JPEG, or PNG file.';
+                $data['err'] = "You can't upload files of this type";
+                return $data;
             }
         }
     }
@@ -122,9 +123,9 @@ class Student extends Controller {
             ];
 
 
-
             // Make sure errors are empty
             if (empty($data['err'])) {
+                // die(print_r($data));
             
                 // Add Data to DB
                 if ($this->studentModel->addSuccessStory($data)) {

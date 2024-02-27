@@ -142,24 +142,23 @@
                         <h3>Add success Stories</h3>
                     </div>
                     <!-- add image box -->
-                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" >
+                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory">
                     <div >
+
+
+
+
                         
                     <label for ="image-browser" class="add-photo-box">
-                            <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;">
-                            + Add Photo</input>
+                            <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;" />
+                            <p class='file_info'>+ Add Photo</p>
                     </label> 
                 
-                    <small class="file_info text-muted"> </small> 
-                    <div class="file_info text-muted"></div>  <br><br>
-
-                    <?php if (!empty($data['err'])): ?>
-                        <div class="error-message"> <?php echo $data['err']; ?></div>
-                    <?php endif; ?> 
+                    <br><br>
                              
                     </div> 
-                    <!-- add input fields of the form -->
 
+                    <!-- add description and title box -->
                     <div>
 
                         <label for="title">Add Title</label><br>
@@ -185,17 +184,15 @@
     </section>
 </main>
 
-
 <script>
-function display_image_name(file_name) {
-    const labelElement = document.querySelector("label[for='image-browser']");
-    labelElement.textContent = file_name; 
-    labelElement.classList.add('selected'); 
+function display_image_name (file_name)
+{
+    document .querySelector (".file_info").innerHTML = ' <b>Selected file:</b> <br>' + file_name;
+    document .querySelector (".add-photo-box").style.border = '1px dashed red';
+    document .querySelector (".add-photo-box").style.backgroundColor= 'rgb(249, 224, 209';
+    document .querySelector (".add-photo-box").style.color= 'rgb(213, 83, 7)';
 
-    // Optionally clear the '.file_info' element:
-    document.querySelector(".file_info").textContent = ""; 
-}
-
+}   
 </script>
 
 
