@@ -338,9 +338,9 @@ class UserModel{
     }
 
     // Delete Admin
-    public function deleteAdmin($admin_ID) {
+    public function deleteUser($user_ID) {
         $this->db->query('UPDATE user SET status = 10 WHERE userID = :userID;');
-        $this->db->bind(':userID', $admin_ID);
+        $this->db->bind(':userID', $user_ID);
 
         if($this->db->execute()) {
             return true;
@@ -351,7 +351,7 @@ class UserModel{
     }
 
     // User Ban Functionality
-    public function userBan($user_ID) {
+    public function banUser($user_ID) {
         $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID');
         $this->db->bind(':userID', $user_ID);
         $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));
@@ -405,7 +405,7 @@ class UserModel{
         return $data;
     }
 
-    public function userUnban($username) {
+    public function unbanUser($username) {
         $this->db->query('UPDATE user SET status = 1 WHERE username = :username;');
         $this->db->bind(':username', $username);
 
@@ -418,4 +418,22 @@ class UserModel{
         }
 
     }
+
+    public function viewOrganizations() {
+        $this->db->query('SELECT o.orgID, o.orgName FROM organization o JOIN user u ON u.userID = o.orgID WHERE u.status != 10 ORDER BY orgID;');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getOrganization($org_ID) {
+        $this->db->query('SELECT u.email, u.username, d.address, d.phoneNumber, d.accNumber, d.accountHoldersName, d.bankName, d.branchName, o.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN organization o ON d.doneeID = o.orgID WHERE orgID = :orgID;');
+        $this->db->bind(':orgID', $org_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
 }

@@ -142,6 +142,7 @@
                         <h3>Add success Stories</h3>
                     </div>
 
+
                     <div class="add-success-story-form">
                         <form action="" method="post">
                             <!-- add image box -->
@@ -152,6 +153,7 @@
                             <div class="add-description-box">
                                 <textarea name="" id="" placeholder="Add description..."></textarea>
                             </div>
+
 
                             <!-- post button -->
                             <div class="post-story-button">
@@ -173,5 +175,19 @@
         </div>
     </section>
 </main>
+
+
+<script>
+function display_image_name(file_name) {
+    const labelElement = document.querySelector("label[for='image-browser']");
+    labelElement.textContent = file_name; 
+    labelElement.classList.add('selected'); 
+
+    // Optionally clear the '.file_info' element:
+    document.querySelector(".file_info").textContent = ""; 
+}
+
+</script>
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

@@ -248,40 +248,22 @@ class SuperAdmin extends Controller {
 
     public function deleteAdmin() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->userModel->deleteAdmin($_POST['admin_ID']);
+            $this->userModel->deleteUser($_POST['admin_ID']);
 
-            redirect('superadmin/admin');
+           redirect('superadmin/admin');      
         }
     }
-
-    public function userBan() {
+    
+    public function banAdmin() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            if($this->userModel->userBan($_POST['user_ID'])) {
-                $userType = $this->userModel->getUserType($_POST['user_ID']);
-
-                if($userType == 'admin') {
-                    redirect('superadmin/admin');
-                }
-
-                else if($userType == 'student') {
-                    redirect('user/viewStudent');
-                }
-
-                else if($userType == 'organization') {
-                    redirect('user/viewOrganization');
-                }
-
-                else if($userType == 'donor') {
-                    redirect('user/viewDonor');
-                }
-
-                else
-                    die('User Type Not Found');
+            if($this->userModel->banUser($_POST['admin_ID'])) {
+                redirect('superadmin/admin');
             }
             
-            else
+            else {
                 die('User Not Found');
+            }       
         }
     }
 

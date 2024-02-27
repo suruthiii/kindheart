@@ -5,6 +5,9 @@
     // URLROOT
     define('URLROOT', 'http://localhost/kindheart');
 
+    // PUBLICROOT
+    define('PUBLICROOT', dirname(dirname(dirname(__FILE__))). '/public');
+
     // WEBSITE NAME
     define('SITENAME', 'Kind Heart');
 

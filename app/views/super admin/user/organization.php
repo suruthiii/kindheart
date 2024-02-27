@@ -27,21 +27,21 @@
             <div class="tile-list">
                 <div class="tiles">
 
-                    <!-- Card 1 -->
-                    <a href="">
+                    <?php foreach($data['organizations'] as $item) {?>
+                    <a href="<?php echo URLROOT ?>/user/superadminvieworganization/<?php echo $item->orgID; ?>">
                         <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="tile-name">Organization 1</td>
+                                    <td width="50%" class="tile-name"><?php echo $item->orgName; ?></td>
                                     <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="del" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/user/superadmindeleteorganization" method="post" class="delete-form">
+                                            <input type="text" name="org_ID" id="org_ID" hidden value="<?php echo $item->orgID; ?>" />
                                             <button type="submit" class="delete" onclick="return confirmSubmit();">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
                                             </button>
                                         </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
-                                            <input type="text" name="name" id="ban" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/user/banUser" method="post" class="ban-form">
+                                            <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->orgID; ?>" />
                                             <button type="submit" class="ban" onclick="return confirmSubmit();">
                                                 <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
                                             </button>
@@ -51,56 +51,7 @@
                             </table>
                         </div>
                     </a>
-
-                    <!-- Card 2 -->
-                    <a href="">
-                        <div class="tile">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="tile-name">Organization 2</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="del" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
-                                            <input type="text" name="name" id="ban" hidden value="" />
-                                            <button type="submit" class="ban" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                     <!-- Card 3 -->
-                     <a href="">
-                        <div class="tile">
-                            <table>
-                                <tr>
-                                    <td width="50%" class="tile-name">Organization 3</td>
-                                    <td width="50%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="del" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
-                                            </button>
-                                        </form>
-                                        <form action="<?php echo URLROOT ?>" method="post" class="ban-form">
-                                            <input type="text" name="name" id="ban" hidden value="" />
-                                            <button type="submit" class="ban" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/ban-solid.svg" alt="" style='width: 100%'>
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
+                    <?php }?>
                 </div>
             </div>
         </div>

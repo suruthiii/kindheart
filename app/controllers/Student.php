@@ -83,28 +83,44 @@ class Student extends Controller {
         $this->view('student/successstory', $data);
     }
 
+    public function imgUpload($file){
+        $file_name = $_FILES[$file]['name'];
+        $file_size = $_FILES[$file]['size'];
+        $tmp_name = $_FILES[$file]['tmp_name'];
+        $error = $_FILES[$file]['error'];
+
+        if ($error === 0){
+            $file_ex = pathinfo($file_name, PATHINFO_EXTENSION);
+            $file_ex_lc = strtolower($file_ex);
+
+            $allowed_exs = array("jpg", "jpeg", "png");
+
+            if (in_array($file_ex_lc, $allowed_exs)){
+                // Move into ParkingPhotos folder
+                $new_file_name = uniqid("IMG-", true).'.'.$file_ex_lc;
+                $file_upload_path = PUBLICROOT.'/uploads/'.$new_file_name;
+
+                move_uploaded_file($tmp_name, $file_upload_path);
+                return $new_file_name;
+            }
+
+            else{
+                $data['err'] = "You can't upload files of this type";
+                return $data;
+            }
+        }
+    }
+
 
     public function addSuccessStory(){  
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+           
             $data = [
                 'title' => trim($_POST['title']),
                 'storyDescription' => trim($_POST['storyDescription']),
+                'imagePath' => $this->imgUpload('image'),
                 'err' => ''
             ];
-
-            // die('hello');
-
-
-            // Validate name
-            // if (empty($data['name'])) {
-            //     $data['err'] = 'Please enter a name';
-            // } 
-
-            // // Validate success story
-            // if (empty($data['storyDescription']) && empty($data['err'])) {
-            //     $data['err'] = 'Please enter the story';
-            // }
 
 
             // Make sure errors are empty
@@ -119,7 +135,7 @@ class Student extends Controller {
                 }
             } else {
                 // Load view with errors
-                die('2Something went wrong');
+                die('Something went wrong');
                 $this->student($data);
             }
         }else{
