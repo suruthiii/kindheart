@@ -2,9 +2,8 @@
 class User extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
-        // Only admins are allowed to access admin pages
-        // $this->middleware->checkAccess(['admin']);
-        //$this->middleware->checkAccess(['superAdmin']);
+        // Only admins are allowed to access admin/superadmin pages
+        $this->middleware->checkAccess(['superAdmin', 'admin']);
         $this->userModel = $this->model('UserModel');
     }
 
@@ -67,7 +66,7 @@ class User extends Controller {
 
     public function superAdminDeleteOrganization() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->userModel->deleteOrganization($_POST['org_ID']);
+            $this->userModel->deleteUser($_POST['org_ID']);
 
             redirect('user/superadminorganization');
         }
@@ -86,5 +85,32 @@ class User extends Controller {
         $this->view('super admin/user/viewDonor', $data);
     }
 
+    // public function banUser() {
+    //     if($_SERVER['REQUEST_METHOD' == 'POST']) {
+    //         if($this->userModel->banUser($_POST['user_ID'])) {
+    //             $userType = $this->userModel->getUserType($_POST['user_ID']);
 
+    //             if($userType == 'student') {
+    //                 redirect('user/superadminstudent');
+    //             }
+
+    //             else if($userType == 'organization') {
+    //                 redirect('user/superadminorganization');
+    //             }
+
+    //             else if($userType == 'donor') {
+    //                 redirect('user/superadmindonor');
+    //             }
+
+    //             else {
+    //                 die('User Type Not Found');
+    //             }
+
+    //         }
+
+    //         else {
+    //             die('User Not Found');
+    //         }
+    //     }
+    // }
 }
