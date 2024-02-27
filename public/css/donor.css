@@ -315,8 +315,8 @@ span .donor-form-error-details{
 
 .posted-benefactions-pending-table table tr:hover,
 .posted-benefactions-Completed-table table tr:hover{
-    background-color: #E5E5E5;
-    transition: 0.3s;
+    background-color: #fffdfd;
+    transition: 0.2s;
     cursor: pointer;
 }
 
