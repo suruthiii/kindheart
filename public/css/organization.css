@@ -750,6 +750,16 @@
     overflow-y: scroll;
 }
 
+.pending-postednecessityTitle{
+    margin-bottom: -1vh;
+    font-size: 14px;
+}
+
+.pending-postednecessitydescription{
+    margin-right: 15px;
+    font-size: 11px;
+}
+
 .posted-necessities-Completed-table table tr td:nth-child(1){
     width: 13%;
     padding-left: 15px;
