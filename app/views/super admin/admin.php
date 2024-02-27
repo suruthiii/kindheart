@@ -79,8 +79,8 @@
                         <label for="password">Password</label><br>
                         <input type="password" id="password" name="password" required><br><br>
 
-                        <label for="confirm_password">Confirm Password</label><br>
-                        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+                        <label for="confirmPassword">Confirm Password</label><br>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
 
                         <input type="submit" value="Submit">
                     </form>
@@ -98,8 +98,8 @@
                         <label for="password">Password</label><br>
                         <input type="password" id="password" name="password" required><br><br>
 
-                        <label for="confirm_password">Confirm Password</label><br>
-                        <input type="password" id="confirm_password" name="confirm_password" required><br><br>
+                        <label for="confirmPassword">Confirm Password</label><br>
+                        <input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
 
                         <input type="submit" value="Submit">
                     </form>

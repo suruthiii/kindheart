@@ -76,4 +76,31 @@ class Admin extends Controller {
         $this->view('admin/complaint', $data);
     }
 
+    public function userBan() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            if($this->userModel->userBan($_POST['user_ID'])) {
+                $userType = $this->userModel->getUserType($_POST['user_ID']);
+
+                if($userType == 'student') {
+                    redirect('user/adminStudent');
+                }
+
+                else if($userType == 'organization') {
+                    redirect('user/adminOrganization');
+                }
+
+                else if($userType == 'donor') {
+                    redirect('user/adminDonor');
+                }
+
+                else
+                    die('User Type Not Found');
+            }
+            
+            else
+                die('User Not Found');
+        }
+    }
+
 }

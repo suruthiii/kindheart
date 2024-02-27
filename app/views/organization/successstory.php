@@ -141,41 +141,32 @@
                     <div class="rightside-bar-title">
                         <h3>Add success Stories</h3>
                     </div>
-                    <!-- add image box -->
-                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" >
-                    <div >
-                        
-                    <label for ="image-browser" class="add-photo-box">
-                            <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;">
-                            + Add Photo</input>
-                    </label> 
+
+
+                    <div class="add-success-story-form">
+                        <form action="" method="post">
+                            <!-- add image box -->
+                            <div class="add-photo-box">
+                                <input type="image" value="+ Add Photo">        
+                            </div>
+                            <!-- add description box -->
+                            <div class="add-description-box">
+                                <textarea name="" id="" placeholder="Add description..."></textarea>
+                            </div>
+
+
+                            <!-- post button -->
+                            <div class="post-story-button">
+                                <input type="submit" value="Post">
                 
-                    <small class="file_info text-muted"> </small> 
-                    <div class="file_info text-muted"></div>  <br><br>
+                            </div>
 
-                    <?php if (!empty($data['err'])): ?>
-                        <div class="error-message"> <?php echo $data['err']; ?></div>
-                    <?php endif; ?> 
-                             
-                    </div> 
-                    <!-- add input fields of the form -->
-
-                    <div>
-
-                        <label for="title">Add Title</label><br>
-                        <input type="text" id="title" name="title" required><br><br>
-
-                        <label for="storyDescription">Add Description</label><br>
-                        <input type="textarea" id="storyDescription" name="storyDescription" required><br><br>
-
-                        <input type="submit" value="Submit">
-
-                    </div>                  
-                    </form>
-
-                    <!-- last-title for this -->
-                    <div class="last-title">
-                        <h3>Your success stories</h3>
+                            
+                        </form>
+                        <!-- last-title for this -->
+                        <div class="last-title">
+                                <h3>Your success stories</h3>
+                        </div>
                     </div>
 
                 </div>

@@ -675,8 +675,7 @@
     box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
 }
 
-.posted-necessities-pending-table table tr td:nth-child(1),
-.posted-necessities-Completed-table table tr td:nth-child(1){
+.posted-necessities-pending-table table tr td:nth-child(1){
     width: 15%;
     padding-left: 15px;
 }
@@ -691,7 +690,40 @@
 }
 
 .posted-necessities-pending-table table tr td:nth-child(4){
-    width: 20%;
+    width: 10%;
+    text-align: right;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(5){
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(6){
+    width: 10%;
+}
+
+
+.posted-necessities-pending-table table tr td:nth-child(4) button,
+.posted-necessities-pending-table table tr td:nth-child(5) button,
+.posted-necessities-pending-table table tr td:nth-child(6) button{
+    border: none;
+    cursor: pointer;
+    background-color: #F5F5F5;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(4) button img,
+.posted-necessities-pending-table table tr td:nth-child(5) button img,
+.posted-necessities-pending-table table tr td:nth-child(6) button img{
+    transition: transform 0.3s ease-in-out;
+}
+
+.posted-necessities-pending-table table tr td:nth-child(4) button img:hover,
+.posted-necessities-pending-table table tr td:nth-child(5) button img:hover,
+.posted-necessities-pending-table table tr td:nth-child(6) button img:hover{
+    transform: scale(1.1);
 }
 
 .posted-necessity-Completed-table-caption{
@@ -716,6 +748,25 @@
     margin-top: 56vh;
     overflow: hidden;
     overflow-y: scroll;
+}
+
+.posted-necessities-Completed-table table tr td:nth-child(1){
+    width: 13%;
+    padding-left: 15px;
+}
+
+.posted-necessities-Completed-table table tr td:nth-child(2){
+    width: 35%;
+    padding-left: 14px;
+}
+
+.posted-necessities-Completed-table table tr td:nth-child(3){
+    width: 30%;
+    padding-left: 14px;
+}
+
+.posted-necessities-Completed-table table tr td:nth-child(4){
+    width: 20%;
 }
 
 .add-necessity-button-for-post{
@@ -918,3 +969,5 @@
     width: 50%;
     float: right;
 }
+
+

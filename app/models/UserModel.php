@@ -15,9 +15,9 @@ class UserModel{
         $this->db->bind(':username', $data['username']);
         $this->db->bind(':email', $data['email']);
         $this->db->bind(':password', $data['password']);
-        $this->db->bind(':userType', $data['user_type']);
+        $this->db->bind(':userType', $data['userType']);
 
-        if($data['user_type'] == 'admin'){
+        if($data['userType'] == 'admin'){
             $this->db->bind(':status', 1);
         }
         else{
@@ -48,7 +48,7 @@ class UserModel{
         $result = true;
 
         // Prepare statement
-        if ($data['user_type'] == 'admin'){
+        if ($data['userType'] == 'admin'){
             // Prepare statement
             $this->db->query('INSERT INTO admin (adminID, adminName) VALUES (:id, :name)');
 
@@ -69,6 +69,176 @@ class UserModel{
         }
     }
 
+    // Register user
+    public function registerUser($data){
+        // Prepare statement
+        $this->db->query('INSERT INTO user (email, password, userType) VALUES (:email, :password, :userType)');
+
+        // Bind values
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':userType', $data['userType']);
+
+        // Execute
+        if ($this->db->execute()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+        // // View User
+        // public function getUser($user_id){
+        //     $this->db->query('SELECT * FROM user WHERE user_id = :user_id;');
+        //     $this->db->bind(':user_id', $user_id);
+    
+        //     $row = $this->db->single();
+    
+        //     return $row;
+        // }
+
+    public function createAccount($data){
+        // Donee Table
+        // Prepare statement
+        $this->db->query('INSERT INTO donee (doneeID, address) VALUES (:doneeID, :address)');
+
+        // Bind values
+        $this->db->bind(':address', $data['address']);
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+
+        $result1 = $this->db->execute();
+
+
+        //Student Table
+        // Prepare statement
+        $this->db->query('INSERT INTO student (studentID, fName, lname, dateOfBirth, gender, studentType) VALUES (:studentID, :firstName, :lastName, :dob, :gender, :studentType)');
+
+        // Bind values
+        $this->db->bind(':studentID', $_SESSION['user_id']);
+        $this->db->bind(':firstName', $data['firstName']);
+        $this->db->bind(':lastName', $data['lastName']);
+        $this->db->bind(':dob', $data['dob']);
+        $this->db->bind(':gender', $data['gender']);
+        $this->db->bind(':studentType', $data['studentType']);
+
+        $result2 = $this->db->execute();
+
+        return $result1 && $result2;
+    }
+
+        // Update Student Table
+        public function updateStudentTable($data){
+            
+            // Prepare statement
+            $this->db->query('UPDATE student SET institutionName = :orgName, studyingYear = :acaYear, receivingScholarships = :schol WHERE studentID = :studentID');
+            
+            // Bind values
+            $this->db->bind(':studentID', $_SESSION['user_id']);
+            $this->db->bind(':orgName', $data['orgName']);
+            $this->db->bind(':acaYear', $data['acaYear']);
+            $this->db->bind(':schol', $data['schol']);
+
+            if ($this->db->execute()){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+        public function updateStudentTableRemain($data){
+            
+            // Prepare statement
+            $this->db->query('UPDATE student SET caregiverType = :careType, caregiverName = :careName, caregiverOccupation = :careOccu, caregiverRelationship = :careRealat WHERE studentID = :studentID');
+            
+            // Bind values
+            $this->db->bind(':studentID', $_SESSION['user_id']);
+            $this->db->bind(':careType', $data['careType']);
+            $this->db->bind(':careName', $data['careName']);
+            $this->db->bind(':careOccu', $data['careOccu']);
+            $this->db->bind(':careRealat', $data['careRealat']);
+
+            if ($this->db->execute()){
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+
+    // public function createAccount2($data){
+
+    //     //Student Table
+    //     // Prepare statement
+    //     $this->db->query('INSERT INTO student (studentID, institutionName, studyingYear, receivingScholarships) VALUES (:studentID, :orgName, :acaYear, :schol)');
+
+    //     // Bind values
+    //     $this->db->bind(':studentID', $_SESSION['user_id']);
+    //     $this->db->bind(':orgName', $data['orgName']);
+    //     $this->db->bind(':acaYear', $data['acaYear']);
+    //     $this->db->bind(':schol', $data['schol']);
+
+    //     //Execute
+    //     if ($this->db->execute()){
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+
+
+    // Update Student Table
+    // public function updateStudentTable($data){
+        
+    //     // Prepare statement
+    //     $this->db->query('SELECT studentID FROM student WHERE fName = :firstName AND lname = :lastName AND dateOfBirth = :dob AND gender = :gender AND studentType = :studentType');
+        
+    //     // Bind values
+    //     $this->db->bind(':firstName', $data['firstName']);
+    //     $this->db->bind(':lastName', $data['lastName']);
+    //     $this->db->bind(':dob', $data['dob']);
+    //     $this->db->bind(':gender', $data['gender']);
+    //     $this->db->bind(':studentType', $data['studentType']);
+
+    //     $row = $this->db->single();
+    //     $id = $row->userID;
+
+    //     $result = true;
+
+    //     // Execute
+    //     if ($result){
+    //         return true;
+    //     }
+    //     else {
+    //         return false;
+    //     }
+    // }
+
+    //     // Update Student Table
+    //     public function updateDoneeTable($data){
+        
+    //         // Prepare statement
+    //         $this->db->query('SELECT doneeID FROM donee WHERE address = :address');
+
+    //         // Bind values
+    //         $this->db->bind(':address', $data['address']);
+    
+    //         $row = $this->db->single();
+    //         $id = $row->userID;
+    
+    //         $result = true;
+    
+    //         // Execute
+    //         if ($result){
+    //             return true;
+    //         }
+    //         else {
+    //             return false;
+    //         }
+    //     }
+
     // Find user
     public function findUserByEmail($email){
         $this->db->query('SELECT * FROM user WHERE email = :email OR username = :username');
@@ -83,6 +253,16 @@ class UserModel{
         } else {
             return false;
         }
+    }
+
+    // Find user
+    public function getUserIDByEmail($email){
+        $this->db->query('SELECT * FROM user WHERE email = :email');
+        $this->db->bind(':email', $email);
+
+        $row = $this->db->single();
+
+        return $row->userID;
     }
 
     // Login user
@@ -191,5 +371,81 @@ class UserModel{
         $result = $this->db->single();
 
         return $result->userType;
+    }
+
+    public function checkStatus($username) {
+        $this->db->query('SELECT status FROM user WHERE username = :username;');
+        $this->db->bind(':username', $username);
+
+        $result = $this->db->single();
+
+        return $result->status;
+
+    }
+
+    public function bannedDetails($username) {
+        $this->db->query('SELECT bannedTime, banCount FROM user WHERE username = :username;');
+        $this->db->bind(':username', $username);
+
+        $result = $this->db->single();
+
+        $startTime = $result->bannedTime;
+
+        $dateTime1 = new DateTime($startTime);
+        $dateTime2 = new DateTime();
+
+        $interval = $dateTime1->diff($dateTime2);
+
+        $totalDays = $interval->days;
+
+        $data = [
+            'totalDays' => $totalDays,
+            'banCount' => $result->banCount
+        ];
+
+        return $data;
+    }
+
+    public function userUnban($username) {
+        $this->db->query('UPDATE user SET status = 1 WHERE username = :username;');
+        $this->db->bind(':username', $username);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+
+    }
+
+    public function viewOrganizations() {
+        $this->db->query('SELECT o.orgID, o.orgName FROM organization o JOIN user u ON u.userID = o.orgID WHERE u.status != 10 ORDER BY orgID;');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getOrganization($org_ID) {
+        $this->db->query('SELECT u.email, u.username, d.address, d.phoneNumber, d.accNumber, d.accountHoldersName, d.bankName, d.branchName, o.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN organization o ON d.doneeID = o.orgID WHERE orgID = :orgID;');
+        $this->db->bind(':orgID', $org_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function deleteOrganization($org_ID) {
+        $this->db->query('UPDATE user SET status = 10 WHERE userID = :userID;');
+        $this->db->bind(':userID', $org_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

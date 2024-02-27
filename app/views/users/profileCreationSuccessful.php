@@ -19,8 +19,8 @@
                 <span style="color: rgb(146, 141, 141);">Our team will validate your information and contact you via email shortly. <br>Your account will be validated between 2-3 days</span> 
             
                 <div class="button-next ">
-                    <a href="<?php echo URLROOT ?>/users/login">
-                        <button class="next shared-button2">Log In</button>
+                    <a href="<?php echo URLROOT ?>/users/profile">
+                        <button class="next shared-button2">View Profile</button>
                     </a>
                 </div>
             </div>

@@ -16,7 +16,14 @@
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
                 <h1>Welcome Back!</h1>
-                <span style="color: rgb(146, 141, 141);">Create a password for your account</span>     
+
+                <?php if (!empty($data['err'])) { ?>
+                    <div class="error-msg">
+                        <span class="form-invalid"><?php echo $data["err"] ?></span>
+                    </div>
+                <?php } ?>
+                
+                <!-- <span style="color: rgb(146, 141, 141);">Create a password for your account</span>      -->
                 <div class="login-text shared-text shared-label shared-button">
                     <form action="<?php echo URLROOT ?>/users/login" method="POST">
                         <div class="login-input-field shared-input shared-margin2">
