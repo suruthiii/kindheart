@@ -142,7 +142,7 @@
                         <h3>Add success Stories</h3>
                     </div>
                     <!-- add image box -->
-                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory">
+                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" onsubmit="return validateFileType()">
                     <div >
 
 
@@ -153,6 +153,7 @@
                             <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;" />
                             <p class='file_info'>+ Add Photo</p>
                     </label> 
+                    <small class="error-message"></small> 
                 
                     <br><br>
                              
@@ -187,12 +188,39 @@
 <script>
 function display_image_name (file_name)
 {
+
     document .querySelector (".file_info").innerHTML = ' <b>Selected file:</b> <br>' + file_name;
     document .querySelector (".add-photo-box").style.border = '1px dashed red';
     document .querySelector (".add-photo-box").style.backgroundColor= 'rgb(249, 224, 209';
     document .querySelector (".add-photo-box").style.color= 'rgb(213, 83, 7)';
 
 }   
+
+function validateFileType() {
+    const fileInput = document.getElementById("image-browser");
+    const filePath = fileInput.value;
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;  
+
+    const errorMessageElement = document.querySelector('.error-message');
+
+    if (!allowedExtensions.exec(filePath)) {
+        errorMessageElement.textContent = 'Invalid file type. Please choose a JPG, JPEG, or PNG file.';
+        errorMessageElement.style.color = 'red'; 
+        fileInput.value = ''; // Clear the invalid file selection
+        return false; 
+    } else {
+        errorMessageElement.textContent = ''; // Clear error if valid
+        return true;
+    }
+}
+
+const form = document.querySelector('.add-form'); 
+    form.addEventListener('submit', function(event) {
+        if (!validateFileType()) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+  });
+
 </script>
 
 
