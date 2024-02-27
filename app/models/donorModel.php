@@ -44,6 +44,10 @@ class donorModel{
         
         // Execute
         if($this->db->execute()){
+            // move_uploaded_file($_FILES['photoBenfaction1']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction1']['name']);
+            // move_uploaded_file($_FILES['photoBenfaction2']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction2']['name']);
+            // move_uploaded_file($_FILES['photoBenfaction3']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction3']['name']);
+            // move_uploaded_file($_FILES['photoBenfaction4']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction4']['name']);
             return true;
         }else{
             return false;

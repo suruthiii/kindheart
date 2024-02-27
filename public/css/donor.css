@@ -393,18 +393,60 @@ span .donor-form-error-details{
 
 /* ----------------View Posted Benfactions------------------ */
 
-.benefaction-info {
-    margin-left: 10px;
-    padding-top: 25px;
-}
-
 .benefaction-info table {
     width: 700px;
+    height: 8vh;
+    margin-top: 20vh;
 }
 
 .benefaction-data {
     width: 100%;
     height: 35px;
+}
+
+
+.view-benefaction-btn-container{
+    position: fixed;
+    width: 25%;
+    height: 5vh;
+    margin-top:10vh;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.view-benefaction-btn-container button:first-child {
+    margin-right: 10px;
+}
+
+.view-benefaction-btn-container button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-benefaction-btn-container button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.view-benefaction-btn-container button img{
+    padding-right: 8px;
+}
+
+.view-benefaction-btn-container button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
 
 

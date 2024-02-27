@@ -28,30 +28,37 @@
                 <div class="benefaction-info">
                     <table>
                         <tr class="benefaction-data">
-                            <th width="30%">Item Name</th>
-                            <!-- <td width="70%"><?php print_r($data['benefaction_details']->itemName); ?></td> -->
+                            <th width="20%">Item Name</th>
+                            <td width="20%"><?php print_r($data['benefaction_details']->itemName); ?></td>
                         </tr>
                         <tr class="benefaction-data">
-                            <th width="30%">Quantity</th>
-                            <!-- <td width="70%"><?php print_r($data['benefaction_details']->itemQuantity) ?></td> -->
+                            <th width="20%">Quantity</th>
+                            <td width="20%"><?php print_r($data['benefaction_details']->itemQuantity) ?></td>
                         </tr>
                         <tr class="benefaction-data">
-                            <th width="30%">Description</th>
-                            <!-- <td width="70%"><?php print_r($data['benefaction_details']->description) ?></td> -->
+                            <th width="20%">Description</th>
+                            <td width="20%"><?php print_r($data['benefaction_details']->description) ?></td>
                         </tr>
-                        <tr class="benefaction-data">
-                            <th width="30%">Images</th>
-                            <!-- <td width="18%"><?php print_r($data['benefaction_details']->itemPhoto1) ?></td>
-                            <td width="18%"><?php print_r($data['benefaction_details']->itemPhoto2) ?></td>
-                            <td width="18%"><?php print_r($data['benefaction_details']->itemPhoto3) ?></td>
-                            <td width="18%"><?php print_r($data['benefaction_details']->itemPhoto4) ?></td> -->
+                        <tr class="benefaction-data" style="height: 100px">
+                            <th width="20%">Images</th>
+                            <td width="20%"><img src="<?php echo "img/benefactionPhotos/".$data['benefaction_details']->itemPhoto1; ?>" width="100px"></td>
+                            <td width="20%"><img src="<?php echo $data['benefaction_details']->itemPhoto2; ?>"></td>
+                            <td width="20%"><img src="<?php echo $data['benefaction_details']->itemPhoto3; ?>"></td>
+                            <td width="20%"><img src="<?php echo $data['benefaction_details']->itemPhoto4; ?>"></td>
                         </tr>
                     </table>
                 </div>
 
                 <div class="view-benefaction-btn-container">
-                    <a href="" class="view-donation-btn">Edit</a>
-                    <a href="" class="view-donation-btn">Delete</a>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/editPostedBenefactions'">
+                        <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%);">
+                        <h5>Edit</h5>
+                    </button>
+
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/donorAddBenefactions'">
+                        <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%);">
+                        <h5>Delete</h5>
+                    </button>
                 </div>
             </div>
         </div>
