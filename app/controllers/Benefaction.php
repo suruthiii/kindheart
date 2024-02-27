@@ -96,4 +96,26 @@ class Benefaction extends Controller {
         $this->view('donor/postedBenefactions', $data);
     }
 
+
+    public function viewPostedBenefactions(){
+
+        // Get benefactionID from POST request
+        $benefactionID = $_POST['benefactionID'] ?? null;
+        $benefactionID = '13';
+
+        // Check if benefactionID is provided
+        if ($benefactionID === null) {
+            die('Benefaction ID is missing.');
+        }
+
+        // Load the view with data
+        $data = [
+            'title' => 'View Posted Benefactions',
+            'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+        ];
+    
+        //Load View
+        $this->view('donor/viewPostedBenefactions', $data);
+    }
+
 }

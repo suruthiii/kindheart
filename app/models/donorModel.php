@@ -44,6 +44,10 @@ class donorModel{
         
         // Execute
         if($this->db->execute()){
+            // move_uploaded_file($_FILES['photoBenfaction1']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction1']['name']);
+            // move_uploaded_file($_FILES['photoBenfaction2']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction2']['name']);
+            // move_uploaded_file($_FILES['photoBenfaction3']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction3']['name']);
+            // move_uploaded_file($_FILES['photoBenfaction4']['tmp_name'], 'img/benefactionPhotos/'.$_FILES['photoBenfaction4']['name']);
             return true;
         }else{
             return false;
@@ -75,7 +79,20 @@ class donorModel{
         return $this->db->resultSet();
     }
 
+    // View Benefaction
+    public function getBenefaction($benefactionID) {
+        // Prepare statement
+        $this->db->query('SELECT * FROM benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefactionID);
+        
+        // Execute
+        $row = $this->db->single();
 
+        // Fetch result set
+        return $row;
+    }
+
+    // Get user
     public function getUser(){
         $this->db->query('SELECT * FROM user');
 
