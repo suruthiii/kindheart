@@ -198,6 +198,7 @@
 
 
 /* --------------right side bar ----------------------  */
+
 .right-side-bar{
     position: fixed;
     width: 20%;
@@ -969,13 +970,4 @@
     float: right;
 }
 
-/* ----------For errors------------ */
-span .form-error-details{
-    color: #8E0000;
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 28px;
-    margin-top: 0.5vh;
-}
+

@@ -142,29 +142,34 @@
                         <h3>Add success Stories</h3>
                     </div>
                     <!-- add image box -->
-                    <form class="add-form" method="POST" action="<?php echo URLROOT ?>/student/addSuccessStory">
-                    <div class="add-photo-box">
+                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory">
+                    <div >
+
+
+
+
                         
-                            <input type="image" value="+ Add Photo">
+                    <label for ="image-browser" class="add-photo-box">
+                            <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;" />
+                            <p class='file_info'>+ Add Photo</p>
+                    </label> 
+                
+                    <br><br>
                              
                     </div> 
-                    <!-- add description box -->
 
-                    <div class="add-title-box">
-                        
-                        <input type=text placeholder="Add title..." id="title" name="title" ></text>
+                    <!-- add description and title box -->
+                    <div>
 
-                        <div class="add-description-box">
-                            <textarea placeholder="Add description..." id="storyDescription" name="storyDescription" ></textarea>
-                        </div> 
-                        <br>
-                        <!-- post button -->
-                        <div class="post-story-button"> 
-                           <input type="submit" value="Post">
-                        </div> 
-                    
-                    </div> 
-                                       
+                        <label for="title">Add Title</label><br>
+                        <input type="text" id="title" name="title" required><br><br>
+
+                        <label for="storyDescription">Add Description</label><br>
+                        <input type="textarea" id="storyDescription" name="storyDescription" required><br><br>
+
+                        <input type="submit" value="Submit">
+
+                    </div>                  
                     </form>
 
                     <!-- last-title for this -->
@@ -178,5 +183,17 @@
         </div>
     </section>
 </main>
+
+<script>
+function display_image_name (file_name)
+{
+    document .querySelector (".file_info").innerHTML = ' <b>Selected file:</b> <br>' + file_name;
+    document .querySelector (".add-photo-box").style.border = '1px dashed red';
+    document .querySelector (".add-photo-box").style.backgroundColor= 'rgb(249, 224, 209';
+    document .querySelector (".add-photo-box").style.color= 'rgb(213, 83, 7)';
+
+}   
+</script>
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
