@@ -41,34 +41,34 @@
                                             <p><?php echo $benefaction->description;?></p>
                                         </td>
 
-                                        <td width="10%"><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
+                                        <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
 
-                                        <td width="10%" style="text-align: center;">
-                                            <form action="<?php echo URLROOT ?>/donor/viewBenefaction" method="post" class="view-form">
-                                                <input type="text" name="view" id="view" hidden value="" />
-                                                <button type="submit" class="benefaction_button" style=" background-color: #F5F5F5; cursor: pointer; border: none;" >
-                                                    <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                                </button>
-                                            </form>
-                                        </td>
+                                        <td width="10%"style="transform: translateX(15%);">
+                                        <form action="<?php echo URLROOT ?>/donor/viewBenefaction" method="post" class="view-form">
+                                            <input type="text" name="view" id="view" hidden value="" />
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
+                                            </button>
+                                        </form>
+                                    </td>
 
-                                        <td width="10%" style="margin-right: 15px;"> 
-                                            <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
-                                                <input type="text" name="edit" id="edit" hidden value="" />
-                                                <button type="submit" class="benefaction_button" style=" background-color: #F5F5F5; cursor: pointer; border: none;" >
-                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
-                                                </button>
-                                            </form>
-                                        </td>
+                                    <td width="10%"style="transform: translateX(15%);"> 
+                                        <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
+                                            <input type="text" name="edit" id="edit" hidden value="" />
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
+                                            </button>
+                                        </form>
+                                    </td>
 
-                                        <td width="10%">
-                                            <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                                <input type="text" name="delete" id="delete" hidden value="" />
-                                                <button type="submit" class="benefaction_button" style=" background-color: #F5F5F5; cursor: pointer; border: none;" onclick="return confirmDelete();">
-                                                    <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                                </button>
-                                            </form>
-                                        </td>
+                                    <td width="10%"style="transform: translateX(15%);">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                            <input type="text" name="delete" id="delete" hidden value="" />
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" onclick="return confirmDelete();">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                            </button>
+                                        </form>
+                                    </td>
 
                                     </tr>
 
@@ -93,12 +93,12 @@
                                         <p><?php echo $benefaction->description;?></p>
                                     </td>
 
-                                    <td width="10%" style="transform: translateX(-175%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
+                                    <td width="10%" style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/donor/viewBenefaction" method="post" class="view-form">
                                             <input type="text" name="view" id="view" hidden value="" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: #F5F5F5; cursor: pointer; border: none;" >
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
                                         </form>
@@ -107,7 +107,7 @@
                                     <td width="10%"style="transform: translateX(15%);"> 
                                         <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
                                             <input type="text" name="edit" id="edit" hidden value="" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: #F5F5F5; cursor: pointer; border: none;" >
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                             </button>
                                         </form>
@@ -116,7 +116,7 @@
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="delete" id="delete" hidden value="" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: #F5F5F5; cursor: pointer; border: none;" onclick="return confirmDelete();">
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" onclick="return confirmDelete();">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                             </button>
                                         </form>

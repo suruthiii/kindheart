@@ -22,7 +22,10 @@ class Benefaction extends Controller {
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
-                'photoBenfaction' => trim($_POST['photoBenfaction']),
+                'photoBenfaction1' => trim($_POST['photoBenfaction1']),
+                'photoBenfaction2' => trim($_POST['photoBenfaction2']),
+                'photoBenfaction3' => trim($_POST['photoBenfaction3']),
+                'photoBenfaction4' => trim($_POST['photoBenfaction4']),
                 'availabilityStatus' => '1',
                 'availability' => 'pending',
 
@@ -45,8 +48,8 @@ class Benefaction extends Controller {
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if(empty($data['photoBenfaction'])){
-                $data['photoBenfaction_err']='Please upload a photo of the item';
+            if(empty($data['photoBenfaction1']) && empty($data['photoBenfaction2'])){
+                $data['photoBenfaction_err']='Please upload at least 2 photos of the item';
             }
 
             if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
@@ -66,7 +69,10 @@ class Benefaction extends Controller {
                 'itemBenefaction' => '',
                 'quantityBenfaction' => '',
                 'benefactionDescription' => '',
-                'photoBenfaction' => '',
+                'photoBenfaction1' => '',
+                'photoBenfaction2' => '',
+                'photoBenfaction3' => '',
+                'photoBenfaction4' => '',
 
                 'itemBenefaction_err' => '',
                 'quantityBenfaction_err' => '',

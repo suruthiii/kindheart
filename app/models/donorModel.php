@@ -8,12 +8,15 @@ class donorModel{
 
     public function addBenefaction($data){
         // Prepare statement
-        $this->db->query('INSERT INTO benefaction (itemName, itemQuantity, itemPhoto, description, postedDate, donorID, availabilityStatus) VALUES (:itemName, :itemQuantity, :itemPhoto, :description, :postedDate, :donorID, :availabilityStatus)');
+        $this->db->query('INSERT INTO benefaction (itemName, itemQuantity, itemPhoto1, itemPhoto2, itemPhoto3, itemPhoto4, description, postedDate, donorID, availabilityStatus) VALUES (:itemName, :itemQuantity, :itemPhoto1, :itemPhoto2, :itemPhoto3, :itemPhoto4, :description, :postedDate, :donorID, :availabilityStatus)');
 
         // Bind values
         $this->db->bind(':itemName', $data['itemBenefaction']);
         $this->db->bind(':itemQuantity', $data['quantityBenfaction']);
-        $this->db->bind(':itemPhoto', $data['photoBenfaction']);
+        $this->db->bind(':itemPhoto1', $data['photoBenfaction1']);
+        $this->db->bind(':itemPhoto2', $data['photoBenfaction2']);
+        $this->db->bind(':itemPhoto3', $data['photoBenfaction3']);
+        $this->db->bind(':itemPhoto4', $data['photoBenfaction4']);
         $this->db->bind(':description', $data['benefactionDescription']);
         $this->db->bind(':postedDate', date('Y-m-d')); // Automatically set the posted date
         $this->db->bind(':donorID', $_SESSION['user_id']);
