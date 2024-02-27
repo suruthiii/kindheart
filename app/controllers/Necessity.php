@@ -12,6 +12,38 @@ class Necessity extends Controller {
         $this->organizationModel = $this->model('organizationModel');
     }
 
+    // public function monetary(){
+    //     $data = [
+    //         'title' => 'Home page'
+    //     ];
+
+    //     $userType = $_SESSION['user_type'];
+
+    //     if($userType == 'admin') {
+    //         $this->view('admin/necessity/monetary', $data);
+    //     }
+
+    //     else if($userType == 'superAdmin') {
+    //         $this->view('superAdmin/necessity/monetary', $data);
+    //     }
+
+    //     else if($userType == 'student') {
+    //         $this->view('student/necessity/monetary', $data);
+    //     }
+
+    //     else if($userType == 'organization') {
+    //         $this->view('organization/necessity/monetary', $data);
+    //     }
+
+    //     else if($userType == 'donor') {
+    //         $this->view('donor/necessity/monetary', $data);
+    //     }
+
+    //     else {
+    //         die('User Type Not Found');
+    //     }
+    // }
+
     public function adminMonetary(){
         $data = [
             'title' => 'Home page'

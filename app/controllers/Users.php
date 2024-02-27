@@ -758,7 +758,7 @@ class Users extends Controller{
                         $banCount = $details['banCount'];
 
                         if (($banCount == 1 && $duration >= 1) || ($banCount == 2 && $duration >= 3)) {
-                            $this->userModel->userUnban($data['username']);
+                            $this->userModel->unbanUser($data['username']);
                         }
 
                         else {
