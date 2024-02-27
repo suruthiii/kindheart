@@ -22,10 +22,14 @@ class Benefaction extends Controller {
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
+                'photoBenfaction' => trim($_POST['photoBenfaction']),
+                'availabilityStatus' => '1',
+                'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
                 'quantityBenfaction_err' => '',
-                'benefactionDescription_err' => ''
+                'benefactionDescription_err' => '',
+                'photoBenfaction_err' => ''
             ];
 
             //validate the input fields seperately
@@ -41,9 +45,14 @@ class Benefaction extends Controller {
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err'])){
+            if(empty($data['photoBenfaction'])){
+                $data['photoBenfaction_err']='Please upload a photo of the item';
+            }
+
+            if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
                 if($this->donorModel->addBenefaction($data)){
                     $this->view('donor/donorPostDonations', $data);
+                    // die(print_r(123));
                 }else{
                     die('Something Went Wrong');
                 }
@@ -57,13 +66,28 @@ class Benefaction extends Controller {
                 'itemBenefaction' => '',
                 'quantityBenfaction' => '',
                 'benefactionDescription' => '',
+                'photoBenfaction' => '',
 
                 'itemBenefaction_err' => '',
                 'quantityBenfaction_err' => '',
-                'benefactionDescription_err' => ''
+                'benefactionDescription_err' => '',
+                'photoBenfaction_err' => ''
             ];
 
             $this->view('donor/donorAddBenefactions', $data);
         }
     }
+
+    public function postedBenefactions(){
+        // Load the view with data
+        $data = [
+            'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+            
+            'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+        ];
+
+        //Load View
+        $this->view('donor/postedBenefactions', $data);
+    }
+
 }

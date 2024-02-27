@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postDonations'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postedBenefactions'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-benefaction-form">
-                    <form action="<?php echo URLROOT ?>/Benefaction/donorAddBenefactions" method="POST">
+                    <form action="<?php echo URLROOT ?>/benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
                     
                         <!-- Item -->
                         <div class="benefaction-first-div">
@@ -46,6 +46,15 @@
                             <!-- Requested Amount Error Display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?></span>
                         </div>
+                        
+                        <!-- Images -->
+                        <div class="benefaction-third-div">
+                            <label for="photoBenfaction">Photos of The Item </label>
+                            <input type="file" id="photoBenfaction" name="photoBenfaction" value="<?php echo isset($data['photoBenfaction']) ? $data['photoBenfaction'] : ''; ?>" accept=".png, .jpg, .jpeg">
+
+                            <!-- Requested Amount Error Display -->
+                            <span class="donor-form-error-details" id="photoBenfaction_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['photoBenfaction_err']) ? $data['photoBenfaction_err']: ''; ?></span>
+                        </div>
 
                         <!-- Description about requested necessity -->
                         <div class="add-benefaction-text-area-input-to-oneline">
@@ -55,7 +64,7 @@
                             <!-- Neccessity description error display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionDescription_err']) ? $data['benefactionDescription_err']: ''; ?></span>
                         </div>
-
+                        
                         <!-- Add Button for necessity -->
                         <div class="add-benefaction-add-button">
                             <input type="submit" value="Add">
@@ -70,35 +79,26 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
 
-            <!-- ----------------- Javascript for disable recurring chossing date when one-time---------------- -->
-            <!-- <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    var necessityTypeSelect = document.getElementById('necessityType');
-
-                    function toggleRecurringFields() {
-                        var recurringStartDateInput = document.getElementById('recurringstartdate');
-                        var recurringEndDateInput = document.getElementById('recurringenddate');
-
-                        if (necessityTypeSelect.value === 'onetime') {
-                            recurringStartDateInput.disabled = true;
-                            recurringEndDateInput.disabled = true;
-                        } else {
-                            recurringStartDateInput.disabled = false;
-                            recurringEndDateInput.disabled = false;
-                        }
-                    }
-
-                    // Call toggleRecurringFields initially to set initial state
-                    toggleRecurringFields();
-
-                    // Add event listener to necessityType select element
-                    necessityTypeSelect.addEventListener('change', toggleRecurringFields);
-                });
-            </script> -->
-            <!-- ---------------------------------------------------------------------------------------------- -->
-
         </div>
     </section>
 </main>
+<script>
+        function validateForm() {
+            var fileInput = document.getElementById('photoBenfaction');
+            var errorMessage = document.getElementById('photoBenfaction_err');
+            var fileName = fileInput.value;
+            var acceptedExtensions = ['png', 'jpg', 'jpeg'];
+
+            if (fileName) {
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                if (acceptedExtensions.indexOf(fileExtension) === -1) {
+                    errorMessage.textContent = 'Please upload a PNG, JPG, or JPEG file.';
+                    return false;
+                }
+            }
+
+            return true;
+        }
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

@@ -356,12 +356,11 @@ class UserModel{
         $this->db->bind(':userID', $user_ID);
         $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));
 
-        if($this->db->execute()) {
+        if($this->db->execute()){
             return true;
-        }
-
-        else
+        }else
             return false;
+            
     }
 
     public function getUserType($user_ID) {
