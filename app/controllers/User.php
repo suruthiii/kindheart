@@ -64,9 +64,9 @@ class User extends Controller {
         $this->view('super admin/user/viewOrganization', $data);
     }
 
-    public function superAdminDeleteOrganization() {
+    public function deleteUser() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->userModel->deleteUser($_POST['org_ID']);
+            $this->userModel->deleteUser($_POST['user_ID']);
 
             redirect('user/superadminorganization');
         }

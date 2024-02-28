@@ -77,11 +77,21 @@
                 </table>
             </div>
 
-            <div class="view-donation-btn-container">
-                <a href="" class="view-donation-btn">Change Password</a>
-                <a href="" class="view-donation-btn">Edit</a>
-                <a href="" class="view-donation-btn">Delete</a>
-                <a href="" class="view-donation-btn">Ban</a>
+            <div class="view-donation-btn-container" style="display: flex;">
+                <form action="<?php echo URLROOT ?>/user/deleteUser" method="post" class="delete-form">
+                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                        Delete
+                    </button>
+                </form>
+                &nbsp;
+                <form action="<?php echo URLROOT ?>/user/banUser" method="post" class="delete-form">
+                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                        Ban
+                    </button>
+                </form>
+                
             </div>
         </div>
     </section>
