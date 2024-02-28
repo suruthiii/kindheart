@@ -46,6 +46,15 @@ class StudentModel{
        
     }
 
+    public function getSuccessStories($criteria = null) { 
+        
+        
+        $this->db->query('SELECT s.title, s.image, s.description, u.username , NOW() AS addDate FROM successstory s JOIN user u ON u.userID = s.doneeID;');
+        $result = $this->db->resultSet();
+        
+        return  array_reverse($result); // Return an array of story data
+    }
+
 
     
     
