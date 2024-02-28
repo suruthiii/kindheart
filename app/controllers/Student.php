@@ -77,9 +77,12 @@ class Student extends Controller {
 
 
     public function successstory(){
+        
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'successstories' => $this->studentModel->getSuccessStories()
         ];
+        
         $this->view('student/successstory', $data);
     }
 
@@ -141,6 +144,10 @@ class Student extends Controller {
         }else{
             die('incorrect method!');
         }
+
+        // Pass data to the view 
+        $successStories = $this->studentModel->getSuccessStories();
+         $this->view('student/successstory', $successStories); 
     }
 
     
