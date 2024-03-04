@@ -75,7 +75,6 @@ class Student extends Controller {
     }
 
 
-
     public function successstory(){
         
         $data = [
@@ -85,6 +84,17 @@ class Student extends Controller {
         
         $this->view('student/successstory', $data);
     }
+    public function viewSuccessStory(){
+        
+        $data = [
+            'title' => 'Home page',
+            'stories' => $this->studentModel->getUserSuccessStories()
+        ];
+        
+        $this->view('student/viewSuccessStory', $data);
+    }
+
+    
 
     public function imgUpload($file){
         $file_name = $_FILES[$file]['name'];
@@ -149,6 +159,23 @@ class Student extends Controller {
         $successStories = $this->studentModel->getSuccessStories();
          $this->view('student/successstory', $successStories); 
     }
+
+    // delete success story
+
+    public function deleteStory(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+           
+
+            $data = [
+                'storyID' => $_POST['storyID']
+            ];
+            
+            $this->studentModel->deleteStory($data);
+            redirect('student/viewSuccessStory');
+        }
+    }
+
+
 
     
 

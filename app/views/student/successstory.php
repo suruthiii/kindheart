@@ -22,82 +22,83 @@
                 <div class="succes-story-scrol-card-container">
                     <!-- added story cards -->
                     <?php foreach ($data['successstories'] as $item) { ?>
-    <div class="success-story-card-new">
-        <!-- logo name and story added date -->
-        <div class="logo-name-date">
-            <div class="logo-for-success">
-                <img src="<?php echo URLROOT ?>/img/logo.jpg" alt="">
-            </div>
-            <div class="name-date">
-                <h4><?php echo $item->username; ?></h4>
-                <p><?php echo $item->addDate; ?></p>
-            </div>
-        </div>
+                        <div class="success-story-card-new">
+                            <!-- logo name and story added date -->
+                            <div class="logo-name-date">
+                                <div class="logo-for-success">
+                                    <img src="<?php echo URLROOT ?>/img/logo.jpg" alt="">
+                                </div>
+                                <div class="name-date">
+                                    <h4><?php echo $item->username; ?></h4>
+                                    <p><?php echo $item->addDate; ?></p>
+                                </div>
+                            </div>
 
-        <div class="added-story-title">
-            <h3><?php echo $item->title; ?></h3>
-        </div>
+                            <div class="added-story-title">
+                                <h3><?php echo $item->title; ?></h3>
+                            </div>
 
-        <!-- Added image show box -->
-        <?php if ($item->image !== null) { ?>
-            <div class="added-image-box1">
-                <img src="<?php echo URLROOT ?>/uploads/<?php echo $item->image; ?>" alt="<?php echo $item->storyTitle; ?>">
-            </div>
-        <?php } ?>
+                            <!-- Added image show box -->
+                            <?php if ($item->image !== null) { ?>
+                                <div class="added-image-box1">
+                                    <img src="<?php echo URLROOT ?>/uploads/<?php echo $item->image; ?>" alt="<?php echo $item->storyTitle; ?>">
+                                </div>
+                            <?php } ?>
 
-        <!-- added story description -->
-        <div class="added-story-description-new">
-            <p><?php echo $item->description; ?></p>
-        </div>
-    </div>
-<?php } ?>
-
-
-                    
-            </div>
-
-            <!-- right side bar for success story -->
-            <div class="rightside-bar-type-one">
-                <div class="right-side-bar">
-                    <!-- title for rightside bar -->
-                    <div class="rightside-bar-title">
-                        <h3>Add success Stories</h3>
-                    </div>
-                    <!-- add image box -->
-                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" onsubmit="return validateFileType()">
-                    <div >
-                        
-                    <label for ="image-browser" class="add-photo-box">
-                            <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;" />
-                            <p class='file_info'>+ Add Photo</p>
-                    </label> 
-                    <small class="error-message"></small> 
-                
-                    <br><br>
-                             
-                    </div> 
-
-                    <!-- add description and title box -->
-                    <div>
-
-                        <label for="title">Add Title</label><br>
-                        <input type="text" id="title" name="title" required><br><br>
-
-                        <label for="storyDescription">Add Description</label><br>
-                        <input type="textarea" id="storyDescription" name="storyDescription" required><br><br>
-
-                        <input type="submit" value="Submit">
-
-                    </div>                  
-                    </form>
-
-                    <!-- last-title for this -->
-                    <div class="last-title">
-                        <h3>Your success stories</h3>
-                    </div>
-
+                            <!-- added story description -->
+                            <div class="added-story-description-new">
+                                <p><?php echo $item->description; ?></p>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
-            </div> 
+
+                <!-- right side bar for success story -->
+                <div class="rightside-bar-type-one">
+                    <div class="right-side-bar">
+                        <!-- title for rightside bar -->
+                        <div class="rightside-bar-title">
+                            <h3>Add success Stories</h3>
+                        </div>
+                        <!-- add image box -->
+                        <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" onsubmit="return validateFileType()">
+                            <div >
+                                
+                                <label for ="image-browser" class="add-photo-box">
+                                        <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;" />
+                                        <p class='file_info'>+ Add Photo</p>
+                                </label> 
+                            
+                                <small class="error-message"></small> 
+                            
+                                <br><br>
+                                    
+                            </div> 
+
+                            <!-- add description and title box -->
+                            <div>
+
+                                <label for="title">Add Title</label><br>
+                                <input type="text" id="title" name="title" required><br><br>
+
+                                <label for="storyDescription">Add Description</label><br>
+                                <input type="textarea" id="storyDescription" name="storyDescription" required><br><br>
+
+                                <input type="submit" value="Publish">
+
+                            </div>                  
+                        </form>
+
+                        <!-- last-title for this -->
+
+                        <div class="view-posted-stories" onclick="location.href='<?php echo URLROOT ?>/student/viewSuccessStory'">
+                                <h3>Your Success Stories</h3>
+                         </div>
+
+                     
+
+                    </div>
+                </div> 
 
         </div>
     </section>
