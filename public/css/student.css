@@ -292,3 +292,42 @@
     scale: 1.05;
 }
 
+
+.dash-card-container{
+    height: 600px;
+    width: 100%;
+    margin-top: 120px;
+    padding: 4px 12px;
+}
+
+
+.dash-cards{
+   width: 50%;
+   height: 130px;
+   border-radius: 20px;
+   background-color: #fef3f300;
+   border: 1px solid white;
+   transition: 0.2s;
+   margin-top: 30px;
+   padding-top: 3px;
+   box-shadow: 0 0 5px 0.1px rgba(0, 0, 0.09, 0.190);
+}
+
+.dash-cards h2{
+    text-align: center;
+    padding-top: 10px;
+    color: #8e0000;
+    font-weight: 2000;
+    font-size: x-large;
+
+}
+
+.dash-cards h3{
+    text-align: center;
+    padding-bottom: 10px;
+
+}
+
+
+
+
