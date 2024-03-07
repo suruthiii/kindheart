@@ -81,6 +81,52 @@ class StudentModel{
 
     }
 
+
+    public function getStoryEditData($storyID) { 
+        
+        
+        $this->db->query('SELECT s.title, s.image, s.storyID, s.description, u.username , NOW() AS addDate FROM successstory s JOIN user u ON u.userID = s.doneeID WHERE storyID = :storyID;');
+        $this->db->bind(':storyID', $storyID);
+        $row = $this->db->single();
+        
+        // Return an array of story data
+        return $row; 
+    }
+
+    public function editSuccessStory($data){
+       
+        if (!empty($data['imagePath'])) {
+           // Prepare statement with image path
+           $this->db->query('UPDATE successstory SET title = :title, description = :storyDescription, image = :imagePath WHERE storyID = :storyID;');
+   
+           // Bind values
+           $this->db->bind(':title', $data['title']);
+           $this->db->bind(':storyDescription', $data['storyDescription']);
+           $this->db->bind(':imagePath', $data['imagePath']);
+           $this->db->bind(':storyID', $data['storyID']);
+
+       } else {
+           // Prepare statement without image path
+           $this->db->query('UPDATE successstory SET title = :title, description = :storyDescription WHERE storyID = :storyID;');
+   
+           // Bind values
+           $this->db->bind(':title', $data['title']);
+           $this->db->bind(':storyDescription', $data['storyDescription']);
+           $this->db->bind(':storyID', $data['storyID']);
+       }
+   
+           // Execute
+           if ($this->db->execute()) {
+               return true;
+           } else {
+               return false;
+           }
+          
+       }
+
+
+       
+
     
 
 
