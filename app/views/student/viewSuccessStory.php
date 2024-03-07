@@ -39,15 +39,16 @@
                                             <tr>
                                                 <td width="50%" class="tile-name"><?php echo $item->title;?></td>
                                                 <td width="50%" class="option-new">
-                                                    <form action="<?php echo URLROOT ?>/superadmin/editAdmin" method="GET" class="edit-form-new ">
-                                                        <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $item->adminID?>" />
-                                                        <button type="submit" class="edit" onclick="return confirmSubmit();">
+                                                    <form action="<?php echo URLROOT ?>/student/editStory" method="POST" class="edit-form-new " >
+                                                        <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
+                                                        <button type="submit" class="edit" >
                                                             <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                                         </button>
                                                     </form>
-                                                    <form action="<?php echo URLROOT ?>/student/deleteStory" method="post" class="delete-form-new ">
+                                                    
+                                                    <form action="<?php echo URLROOT ?>/student/deleteStory" method="post" class="delete-form-new " onsubmit="return confirmDelete();">
                                                         <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
-                                                        <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                        <button type="submit" class="delete">
                                                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
                                                         </button>
                                                     </form>
@@ -60,6 +61,7 @@
                         </div>
                     </div>
                  </div>
+                 
             
 
             <!-- right side bar for success story -->
@@ -155,6 +157,12 @@ const form = document.querySelector('.add-form');
 adjustCardHeights(); 
 
 history.pushState(null, null, '/kindheart/student/viewSuccessStory');
+
+
+
+function confirmDelete() {
+        return confirm("Are you sure you want to delete this story?");
+    }
 
 </script>
 

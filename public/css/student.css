@@ -67,6 +67,7 @@
     box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
     padding: 30px;
     vertical-align: top;
+    cursor: pointer;
 }
 
 .add-form input[type=submit] {
@@ -291,4 +292,63 @@
     cursor: pointer;
     scale: 1.05;
 }
+
+
+.dash-card-container{
+    height: 600px;
+    width: 100%;
+    margin-top: 120px;
+    padding: 4px 12px;
+}
+
+
+.dash-cards{
+   width: 50%;
+   height: 130px;
+   border-radius: 20px;
+   background-color: #fbefef00;
+   border: 1px solid white;
+   transition: 0.2s;
+   margin-top: 30px;
+   padding-top: 3px;
+   box-shadow: 0 0 5px 0.1px rgba(0, 0, 0.09, 0.190);
+}
+
+.dash-cards h2{
+    text-align: center;
+    padding-top: 10px;
+    color: #8e0000;
+    font-weight: 2000;
+    font-size: x-large;
+
+}
+
+.dash-cards h3{
+    text-align: center;
+    padding-bottom: 10px;
+
+}
+
+.edit-story{
+    height: 600px;
+    width: 100%;
+    margin-top: 120px;
+    padding: 4px 12px;
+
+}
+
+.back-image{
+    position: fixed;
+    width: 44%;
+    height: 100vh;
+    right: 0;
+    margin-top: 2vh;
+    background-color: #8e0000;
+}
+
+
+
+
+
+
 
