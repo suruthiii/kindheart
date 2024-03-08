@@ -60,7 +60,7 @@ class Benefaction extends Controller {
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
 
-                'photoBenfaction1' => $this->imgUpload('photoBenfaction1'),
+                'photoBenfaction1' => $this->imgUpload('photoBenfaction1'),                
                 'photoBenfaction2' => $this->imgUpload('photoBenfaction2'),
                 'photoBenfaction3' => $this->imgUpload('photoBenfaction3'),
                 'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
@@ -73,6 +73,7 @@ class Benefaction extends Controller {
                 'benefactionDescription_err' => '',
                 'photoBenfaction_err' => ''
             ];
+            // die(print_r($this->imgUpload('photoBenfaction1')));
 
             //validate the input fields seperately
             if(empty($data['itemBenefaction'])){
@@ -87,14 +88,17 @@ class Benefaction extends Controller {
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if(empty($data['photoBenfaction1']) && empty($data['photoBenfaction2'])){
-                $data['photoBenfaction_err']='Please upload at least 2 photos of the item';
+            $uploadedFields = array_filter([$data['photoBenfaction1'], $data['photoBenfaction2'], $data['photoBenfaction3'], $data['photoBenfaction4']]);
+           
+            if (count($uploadedFields) < 2) {
+                $data['photoBenfaction_err'] = 'Please upload at least 2 photos of the item';
             }
 
             if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
                 if($this->donorModel->addBenefaction($data)){
-                    $this->view('donor/donorPostDonations', $data);
                     // die(print_r(123));
+                    // die(print_r($this->imgUpload('photoBenfaction1')));
+                    $this->view('donor/donorPostDonations', $data);
                 }else{
                     die('Something Went Wrong');
                 }

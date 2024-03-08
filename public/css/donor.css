@@ -86,18 +86,47 @@ span .donor-form-error-details{
     display: flex;
 }
 
-.left-column {
-    flex: 70;
-    padding-right: 10px; /* Adjust spacing between columns */
+.left-column {   
+    flex: 70; 
+    min-width: 70%;
+    border: #000;
 }
 
 .right-column {
     flex: 30;
-    padding-left: 10px; /* Adjust spacing between columns */
-    /* align items in this colum to center */
     display: flex;
     flex-direction: column;
     justify-content: center;
+    border: #4d3131;
+    align-items: center;
+}
+
+#placeholderImage{
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
+    margin-bottom: -50px
+}
+
+
+.right-column-inner{
+    width: 100%;    
+    max-height: 85vh;
+    overflow-x: hidden;
+    overflow-y: auto;    
+    margin-right: 140px;
+}
+
+.add-benefaction-box{
+    height: 37px; /* Make the input fields fill the entire height of their parent div */
+    width: 80px;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
 }
 
 .add-benefaction-form{

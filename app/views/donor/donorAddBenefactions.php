@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "benefactions";?>
-<!-- <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?> -->
+<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
@@ -55,16 +55,28 @@
                                     <label for="photoBenfaction">Photos of The Item </label>
                                     <div class="benefaction-third-div-four-input-one-line">
                                             <div class="add-benefaction-first-div">
-                                                <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 1</p>
+                                                </label> 
                                             </div>
                                             <div class="add-benefaction-second-div">
-                                                <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
+                                                </label> 
                                             </div>
                                             <div class="add-benefaction-third-div">
-                                                <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
+                                                </label> 
                                             </div>
                                             <div class="add-benefaction-fourth-div">
-                                                <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 4</p>
+                                                </label> 
                                             </div>
                                     </div>
 
@@ -83,7 +95,7 @@
                                 
                                 <!-- Add Button for necessity -->
                                 <div class="add-benefaction-add-button">
-                                    <input type="submit" value="Add">
+                                    <input type="submit" value="+ Add" >
                                 </div>
                             </form>
                         </div>
@@ -91,15 +103,21 @@
 
                     <!-- Right column for chosen-photos-container -->
                     <div class="right-column">
-                        <div class="chosen-photos-container" id="chosen-photos-container1">
+                        <div class="right-column-inner">
+                            <div class="chosen-photos-container" id="chosen-photos-container1">
+                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png" alt="Placeholder Image" />
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container2">
+                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction2.png" alt="Placeholder Image" />
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container3">
+                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction3.png" alt="Placeholder Image" />
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container4">
+                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction4.png" alt="Placeholder Image" />
+                            </div>
                         </div>
-                        <div class="chosen-photos-container" id="chosen-photos-container2">
-                        </div>
-                        <div class="chosen-photos-container" id="chosen-photos-container3">
-                        </div>
-                        <div class="chosen-photos-container" id="chosen-photos-container4">
-                        </div>
-                    </div>
+                    </div>         
                 </div>
 
             </div>
@@ -143,6 +161,7 @@
         function handleFileInputChange(inputId, containerId) {
             const input = document.getElementById(inputId);
             const container = document.getElementById(containerId);
+            const placeholderImage = document.getElementById('placeholderImage');
 
             input.addEventListener('change', function() {
                 // Clear previous content
@@ -157,18 +176,20 @@
                     image.classList.add('chosen-photo');
 
                     // Apply styles to adjust image size
-                    image.style.maxWidth = '200px'; 
-                    image.style.maxHeight = '200px';
-                    image.style.transform = 'translateX(-25%)';
+                    image.style.maxWidth = '300px'; 
+                    image.style.maxHeight = '300px';
                     image.style.backgroundColor = '#F5F5F5';
-                    image.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
-                    image.style.border = '2px solid #292828';
+                    image.style.boxShadow = '0px 4px 4px rgba(142, 0, 0, 0.25)';
+                    image.style.border = '2px solid #8E0000';
                     image.style.margin = '10px';
 
 
                     // Append image to container
                     container.appendChild(image);
                 }
+
+                // Hide the placeholder image
+                placeholderImage.style.display = 'none';
             });
         }
 
