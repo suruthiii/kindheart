@@ -10,6 +10,7 @@
     position: fixed;
     width: 45%;
     height: 85vh;
+    margin-left: -45px;
 }
 
 .donor-middle-container-title-typeone{
@@ -310,6 +311,7 @@ span .donor-form-error-details{
     display: flex;
     align-items: center;
     margin-bottom: 2vh;
+    padding-left: 15px;
     box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
 }
 

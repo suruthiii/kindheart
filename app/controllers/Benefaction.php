@@ -13,7 +13,42 @@ class Benefaction extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('organization/index', $data);
+        $this->view('donor/index', $data);
+    }
+
+    public function viewAllBenefactions(){
+        $data = [
+            'title' => 'All Benefcation Posted Page'
+        ];
+        $this->view('donor/viewAllBenefactions', $data);
+    }
+
+    public function imgUpload($file){
+        $file_name = $_FILES[$file]['name'];
+        $file_size = $_FILES[$file]['size'];
+        $tmp_name = $_FILES[$file]['tmp_name'];
+        $error = $_FILES[$file]['error'];
+
+        if ($error === 0){
+            $file_ex = pathinfo($file_name, PATHINFO_EXTENSION);
+            $file_ex_lc = strtolower($file_ex);
+
+            $allowed_exs = array("jpg", "jpeg", "png");
+
+            if (in_array($file_ex_lc, $allowed_exs)){
+                // Move into benefactionUploads folder
+                $new_file_name = uniqid("IMG-", true).'.'.$file_ex_lc;
+                $file_upload_path = PUBLICROOT.'/benefactionUploads/'.$new_file_name;
+
+                move_uploaded_file($tmp_name, $file_upload_path);
+                return $new_file_name;
+            }
+
+            else{
+                $data['photoBenfaction_err'] = "You can't upload files of this type";
+                return $data;
+            }
+        }
     }
 
     public function donorAddBenefactions(){
@@ -24,10 +59,12 @@ class Benefaction extends Controller {
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
-                'photoBenfaction1' => trim($_POST['photoBenfaction1']),
-                'photoBenfaction2' => trim($_POST['photoBenfaction2']),
-                'photoBenfaction3' => trim($_POST['photoBenfaction3']),
-                'photoBenfaction4' => trim($_POST['photoBenfaction4']),
+
+                'photoBenfaction1' => $this->imgUpload('photoBenfaction1'),
+                'photoBenfaction2' => $this->imgUpload('photoBenfaction2'),
+                'photoBenfaction3' => $this->imgUpload('photoBenfaction3'),
+                'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
+
                 'availabilityStatus' => '1',
                 'availability' => 'pending',
 

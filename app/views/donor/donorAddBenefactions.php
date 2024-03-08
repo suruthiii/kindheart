@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "benefactions";?>
-<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
+<!-- <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?> -->
 
 <main class="page-container">
     <section class="section" id="main">
@@ -30,7 +30,7 @@
                     <div class="left-column">
                         <!-- Add Benefaction Form -->
                         <div class="add-benefaction-form">
-                            <form action="<?php echo URLROOT ?>/benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
+                            <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
                             
                                 <!-- Item -->
                                 <div class="benefaction-first-div">
@@ -44,10 +44,10 @@
                                 <!-- Quantity -->
                                 <div class="benefaction-second-div">
                                     <label for="quantityBenfaction">Quantity </label>
-                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php echo isset($data['quantityBenfaction']) ? $data['quantityBenfaction'] : ''; ?>">
+                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php echo isset($data['quantityBenfaction']) ? $data['quantityBenfaction'] : ''; ?>" min="1">
 
                                     <!-- Requested Amount Error Display -->
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?></span>
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
                                 </div>
                                 
                                 <!-- Images -->
@@ -55,16 +55,16 @@
                                     <label for="photoBenfaction">Photos of The Item </label>
                                     <div class="benefaction-third-div-four-input-one-line">
                                             <div class="add-benefaction-first-div">
-                                                <input type="file" id="photoBenfaction1" name="photoBenfaction1" value="<?php echo isset($data['photoBenfaction1']) ? $data['photoBenfaction1'] : ''; ?>" accept=".png, .jpg, .jpeg" onchange="preview()">
+                                                <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
                                             </div>
                                             <div class="add-benefaction-second-div">
-                                                <input type="file" id="photoBenfaction2" name="photoBenfaction2" value="<?php echo isset($data['photoBenfaction2']) ? $data['photoBenfaction2'] : ''; ?>" accept=".png, .jpg, .jpeg">
+                                                <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
                                             </div>
                                             <div class="add-benefaction-third-div">
-                                                <input type="file" id="photoBenfaction3" name="photoBenfaction3" value="<?php echo isset($data['photoBenfaction3']) ? $data['photoBenfaction3'] : ''; ?>" accept=".png, .jpg, .jpeg">
+                                                <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
                                             </div>
                                             <div class="add-benefaction-fourth-div">
-                                                <input type="file" id="photoBenfaction4" name="photoBenfaction4" value="<?php echo isset($data['photoBenfaction4']) ? $data['photoBenfaction4'] : ''; ?>" accept=".png, .jpg, .jpeg">
+                                                <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)">
                                             </div>
                                     </div>
 
@@ -126,6 +126,17 @@
             }
 
             return true;
+        }
+
+        function validateFileType(input) {
+            const file = input.files[0];
+            const fileType = file.type;
+
+            // Check if the selected file type is an image
+            if (!fileType.startsWith('image/')) {
+                alert('Please select an image file (PNG, JPEG)');
+                input.value = ''; // Clear the selected file
+            }
         }
 
         // Function to handle file input change
