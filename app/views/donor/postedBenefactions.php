@@ -38,14 +38,14 @@
 
                                         <td width="50%">
                                             <h4><?php echo $benefaction->itemName;?></h4>
-                                            <p><?php echo $benefaction->description;?></p>
+                                            <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
                                         <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
 
                                         <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-                                            <input type="text" name="view" id="view" hidden value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="view" id="view"  value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
@@ -90,14 +90,14 @@
 
                                     <td width="50%">
                                         <h4><?php echo $benefaction->itemName;?></h4>
-                                        <p><?php echo $benefaction->description;?></p>
+                                        <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                     </td>
 
                                     <td width="10%" style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-                                            <input type="text" name="view" id="view" hidden value="" />
+                                            <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>

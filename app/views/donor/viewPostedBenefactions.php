@@ -28,23 +28,31 @@
                 <div class="benefaction-info">
                     <table>
                         <tr class="benefaction-data">
-                            <th width="20%">Item Name</th>
-                            <td width="20%"><?php print_r($data['benefaction_details']->itemName); ?></td>
+                            <th>Item Name</th>
+                            <td><?php print_r($data['benefaction_details']->itemName); ?></td>
                         </tr>
                         <tr class="benefaction-data">
-                            <th width="20%">Quantity</th>
-                            <td width="20%"><?php print_r($data['benefaction_details']->itemQuantity) ?></td>
+                            <th>Quantity</th>
+                            <td><?php print_r($data['benefaction_details']->itemQuantity) ?></td>
                         </tr>
                         <tr class="benefaction-data">
-                            <th width="20%">Description</th>
-                            <td width="20%"><?php print_r($data['benefaction_details']->description) ?></td>
+                            <th>Description</th>
+                            <td><?php print_r($data['benefaction_details']->description) ?></td>
                         </tr>
-                        <tr class="benefaction-data" style="height: 100px">
-                            <th width="20%">Images</th>
-                            <td width="20%"><img src="<?php echo "img/benefactionPhotos/".$data['benefaction_details']->itemPhoto1; ?>" width="100px"></td>
-                            <td width="20%"><img src="<?php echo $data['benefaction_details']->itemPhoto2; ?>"></td>
-                            <td width="20%"><img src="<?php echo $data['benefaction_details']->itemPhoto3; ?>"></td>
-                            <td width="20%"><img src="<?php echo $data['benefaction_details']->itemPhoto4; ?>"></td>
+                        <tr class="benefaction-data-image-row">
+                            <th>Images</th>
+                            <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
+                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>"></td>
+                            <?php endif; ?>
+                            <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
+                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>"></td>
+                            <?php endif; ?>
+                            <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
+                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>"></td>
+                            <?php endif; ?>
+                            <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
+                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>"></td>
+                            <?php endif; ?>
                         </tr>
                     </table>
                 </div>
