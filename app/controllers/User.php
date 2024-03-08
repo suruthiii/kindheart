@@ -64,9 +64,9 @@ class User extends Controller {
         $this->view('super admin/user/viewOrganization', $data);
     }
 
-    public function superAdminDeleteOrganization() {
+    public function deleteUser() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->userModel->deleteUser($_POST['org_ID']);
+            $this->userModel->deleteUser($_POST['user_ID']);
 
             redirect('user/superadminorganization');
         }
@@ -85,32 +85,32 @@ class User extends Controller {
         $this->view('super admin/user/viewDonor', $data);
     }
 
-    // public function banUser() {
-    //     if($_SERVER['REQUEST_METHOD' == 'POST']) {
-    //         if($this->userModel->banUser($_POST['user_ID'])) {
-    //             $userType = $this->userModel->getUserType($_POST['user_ID']);
+    public function banUser() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->userModel->banUser($_POST['user_ID'])) {
+                $userType = $this->userModel->getUserType($_POST['user_ID']);
 
-    //             if($userType == 'student') {
-    //                 redirect('user/superadminstudent');
-    //             }
+                if($userType == 'student') {
+                    redirect('user/superadminstudent');
+                }
 
-    //             else if($userType == 'organization') {
-    //                 redirect('user/superadminorganization');
-    //             }
+                else if($userType == 'organization') {
+                    redirect('user/superadminorganization');
+                }
 
-    //             else if($userType == 'donor') {
-    //                 redirect('user/superadmindonor');
-    //             }
+                else if($userType == 'donor') {
+                    redirect('user/superadmindonor');
+                }
 
-    //             else {
-    //                 die('User Type Not Found');
-    //             }
+                else {
+                    die('User Type Not Found');
+                }
 
-    //         }
+            }
 
-    //         else {
-    //             die('User Not Found');
-    //         }
-    //     }
-    // }
+            else {
+                die('User Not Found');
+            }
+        }
+    }
 }

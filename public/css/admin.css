@@ -476,6 +476,7 @@
 
 .page-container .section .container .view-donation-btn-container .view-donation-btn:hover {
     scale: 1.05;
+    cursor: pointer;
 }
 
 

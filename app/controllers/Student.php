@@ -75,13 +75,35 @@ class Student extends Controller {
     }
 
 
+    // public function editStory(){
+    //     $data = [
+    //         'title' => 'Home page'
+    //     ];
+    //     $this->view('student/editStory', $data);
+    // }
+
+
 
     public function successstory(){
+        
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'successstories' => $this->studentModel->getSuccessStories()
         ];
+        
         $this->view('student/successstory', $data);
     }
+    public function viewSuccessStory(){
+        
+        $data = [
+            'title' => 'Home page',
+            'stories' => $this->studentModel->getUserSuccessStories()
+        ];
+        
+        $this->view('student/viewSuccessStory', $data);
+    }
+
+    
 
     public function imgUpload($file){
         $file_name = $_FILES[$file]['name'];
@@ -141,7 +163,80 @@ class Student extends Controller {
         }else{
             die('incorrect method!');
         }
+
+        // Pass data to the view 
+        $successStories = $this->studentModel->getSuccessStories();
+         $this->view('student/successstory', $successStories); 
     }
+
+    // delete success story
+
+    public function deleteStory(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+           
+
+            $data = [
+                'storyID' => $_POST['storyID']
+            ];
+            
+            $this->studentModel->deleteStory($data);
+            redirect('student/viewSuccessStory');
+        }
+    }
+
+    public function editStory(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $storyID = $_POST['storyID'];
+            $data = [
+                'storyID' => $storyID,
+                'title' => 'Home page',
+                'storyData' => $this->studentModel->getStoryEditData($storyID)
+            ];
+            
+
+      
+            
+            $this->view('student/editStory', $data);
+    
+        }
+    }
+
+    public function editSuccessStory(){  
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+           
+            $data = [
+                'title' => trim($_POST['title']),
+                'storyDescription' => trim($_POST['storyDescription']),
+                'imagePath' => $this->imgUpload('image'),
+                'storyID' => trim($_POST['storyID']),
+                'err' => ''
+            ];
+
+
+            // Make sure errors are empty
+            if (empty($data['err'])) {
+            
+                // Add Data to DB
+                if ($this->studentModel->editSuccessStory($data)) {
+                    redirect('student/successstory');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                die('Something went wrong');
+                $this->student($data);
+            }
+        }else{
+            die('incorrect method!');
+        }
+
+        // Pass data to the view 
+        $successStories = $this->studentModel->getSuccessStories();
+         $this->view('student/successstory', $successStories); 
+    }
+    
+
 
     
 
