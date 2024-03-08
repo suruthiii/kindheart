@@ -51,12 +51,12 @@
 
                 <div class="view-benefaction-btn-container">
                     <button onclick="location.href='<?php echo URLROOT ?>/benefaction/editPostedBenefactions'">
-                        <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%);">
+                        <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
                         <h5>Edit</h5>
                     </button>
 
                     <button onclick="location.href='<?php echo URLROOT ?>/benefaction/donorAddBenefactions'">
-                        <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%);">
+                        <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:15px;">
                         <h5>Delete</h5>
                     </button>
                 </div>
