@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="view-benefaction-btn-container">
-                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/editPostedBenefactions'">
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/editPostedBenefactions/<?php echo $data['benefaction_details']->benefactionID ?>'">
                         <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
                         <h5>Edit</h5>
                     </button>

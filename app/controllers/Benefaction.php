@@ -228,7 +228,16 @@ class Benefaction extends Controller {
             ];
 
             $this->view('donor/editPostedBenefactions', $data);
-        }
+        }else 
+            if(isset($_POST['view'])){
+                $benefactionID = $_POST['view'];
+                $data = [
+                    'title' => 'Edit Posted Benefactions',
+                    'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+                ];
+
+                $this->view('donor/editPostedBenefactions', $data);
+            }
     }
 
 }
