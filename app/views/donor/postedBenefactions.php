@@ -45,18 +45,18 @@
 
                                         <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-                                            <input type="hidden" name="view" id="view"  value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
+                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                             </button>
                                         </form>
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);"> 
                                         <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
-                                            <input type="text" name="edit" id="edit" hidden value="" />
+                                            <input type="hidden" name="edit" id="edit" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
+                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid">                                                
                                             </button>
                                         </form>
                                     </td>
@@ -106,7 +106,7 @@
 
                                     <td width="10%"style="transform: translateX(15%);"> 
                                         <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
-                                            <input type="text" name="edit" id="edit" hidden value="" />
+                                            <input type="hidden" name="edit" id="edit" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                             </button>

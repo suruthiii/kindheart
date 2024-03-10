@@ -89,7 +89,7 @@ class donorModel{
     }
 
     //Edit Benefaction
-    public function updateBenefaction($data){
+    public function editBenefaction($data){
         // Prepare statement
         $this->db->query('UPDATE benefaction SET itemName = :itemName, itemQuantity = :itemQuantity, itemPhoto1 = :itemPhoto1, itemPhoto2 = :itemPhoto2, itemPhoto3 = :itemPhoto3, itemPhoto4 = :itemPhoto4, description = :description, postedDate = :postedDate, donorID = :donorID, availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
 
@@ -113,7 +113,6 @@ class donorModel{
             return false;
         }
     }
-
 
     // Get user
     public function getUser(){
