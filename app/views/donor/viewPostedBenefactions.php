@@ -58,19 +58,31 @@
                 </div>
 
                 <div class="view-benefaction-btn-container">
-                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/editPostedBenefactions/<?php echo $data['benefaction_details']->benefactionID ?>'">
-                        <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
-                        <h5>Edit</h5>
-                    </button>
+                    <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
+                        <input type="hidden" name="edit" id="edit" value="<?php echo $data['benefaction_details']->benefactionID; ?>" />
+                        <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
+                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
+                            <h5>Edit</h5>
+                        </button>
+                    </form>
 
-                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/donorAddBenefactions'">
-                        <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:15px;">
-                        <h5>Delete</h5>
-                    </button>
+                    <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="delete" id="delete" value="<?php echo $data['benefaction_details']->benefactionID; ?>"/>
+                        <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
+                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:14px;">
+                            <h5>Delete</h5>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

@@ -251,24 +251,24 @@ class Benefaction extends Controller {
     }
 
 
-public function deleteBenefaction() {
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $benefactionID = $_POST['delete'];
+    public function deleteBenefactions() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $benefactionID = $_POST['delete'];
 
-        if($this->donorModel->deleteBenefaction($benefactionID)) {
-            // Fetch updated benefactions data
-            $data = [
-                'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
-                
-                'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
-            ];
+            if($this->donorModel->deleteBenefaction($benefactionID)) {
+                // Fetch updated benefactions data
+                $data = [
+                    'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+                    
+                    'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                ];
 
-            // Pass the updated data to the view
-            $this->view('donor/postedBenefactions', $data);
-        } else {
-            die('Something went wrong');
-        }     
+                // Pass the updated data to the view
+                $this->view('donor/postedBenefactions', $data);
+            } else {
+                die('Something went wrong');
+            }     
+        }
     }
-}
 
 }
