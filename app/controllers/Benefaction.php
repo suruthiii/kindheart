@@ -161,7 +161,35 @@ class Benefaction extends Controller {
     
 
     public function editPostedBenefactions(){
-        // if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
+            // Handle form submission and update benefaction
+            if($this->donorModel->updateBenefaction($_POST)) {
+                redirect('donor/postedBenefactions');
+            } else {
+                die('Something went wrong');
+            }
+        } else {
+            //Pass data to the view
+            if(isset($_POST['edit'])){
+                $benefactionID = $_POST['edit'];
+                $data = [
+                    'title' => 'Edit Posted Benefactions',
+                    'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+                ];
+
+                $this->view('donor/editPostedBenefactions', $data);
+                
+            }else if(isset($_POST['view'])){
+                    $benefactionID = $_POST['view'];
+                    $data = [
+                        'title' => 'Edit Posted Benefactions',
+                        'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+                    ];
+
+                    $this->view('donor/editPostedBenefactions', $data);
+            }
+        }
         //     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
         //     $benefactionID = $_POST['edit'];
@@ -219,25 +247,7 @@ class Benefaction extends Controller {
         //     }
         // }
 
-        //Pass data to the view
-        if(isset($_POST['edit'])){
-            $benefactionID = $_POST['edit'];
-            $data = [
-                'title' => 'Edit Posted Benefactions',
-                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
-            ];
 
-            $this->view('donor/editPostedBenefactions', $data);
-        }else 
-            if(isset($_POST['view'])){
-                $benefactionID = $_POST['view'];
-                $data = [
-                    'title' => 'Edit Posted Benefactions',
-                    'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
-                ];
-
-                $this->view('donor/editPostedBenefactions', $data);
-            }
     }
 
 
