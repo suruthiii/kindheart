@@ -120,6 +120,22 @@ class donorModel{
 
         return $this->db->resultSet();
     }
+
+
+    
+
+    public function deleteBenefaction($benefactionID) {
+        $this->db->query('DELETE FROM benefaction WHERE benefactionID = :benefactionID');
+        
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+           return false;
+        }
+    }
     
 }
 
