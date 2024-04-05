@@ -64,7 +64,7 @@ class organizationModel{
     }
 
     public function getaddedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.name,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 'Pending';");
         $result = $this->db->resultSet();
         return $result;

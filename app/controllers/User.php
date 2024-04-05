@@ -9,8 +9,10 @@ class User extends Controller {
 
     public function student(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'students' => $this->userModel->viewStudents()
         ];
+
         $this->view($_SESSION['user_type'].'/user/student', $data);
     }
 
@@ -43,14 +45,6 @@ class User extends Controller {
         $this->view($_SESSION['user_type'].'/user/viewOrganization', $data);
     }
 
-    public function deleteUser() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $this->userModel->deleteUser($_POST['user_ID']);
-
-            redirect('user/organization');
-        }
-    }
-
     public function donor(){
         $data = [
             'title' => 'Home page'
@@ -64,6 +58,30 @@ class User extends Controller {
             'title' => 'Home page'
         ];
         $this->view($_SESSION['user_type'].'/user/viewDonor', $data);
+    }
+
+    public function deleteUser() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->userModel->deleteUser($_POST['user_ID'])) {
+                $userType = $this->userModel->getUserType($_POST['user_ID']);
+
+                if($userType == 'student') {
+                    redirect('user/student');
+                }
+
+                else if($userType == 'organization') {
+                    redirect('user/organization');
+                }
+
+                else if($userType = 'donor') {
+                    redirect('user/donor');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
+        }
     }
 
     public function banUser() {
