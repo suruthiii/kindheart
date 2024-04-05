@@ -90,42 +90,42 @@ class Necessity extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity/monetary', $data);
+        $this->view('superAdmin/necessity/monetary', $data);
     }
 
     public function viewSuperAdminMonetary(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity/viewMonetary', $data);
+        $this->view('superAdmin/necessity/viewMonetary', $data);
     }
 
     public function viewSuperAdminMonetaryDonation(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity/viewMonetaryDonation', $data);
+        $this->view('superAdmin/necessity/viewMonetaryDonation', $data);
     }
 
     public function superAdminGood(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity/physicalGood', $data);
+        $this->view('superAdmin/necessity/physicalGood', $data);
     }
 
     public function viewSuperAdminGood(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity/viewGood', $data);
+        $this->view('superAdmin/necessity/viewGood', $data);
     }
 
     public function viewSuperAdminGoodDonation(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity/viewGoodDonation', $data);
+        $this->view('superAdmin/necessity/viewGoodDonation', $data);
     }
 
     //Add monetary necessity

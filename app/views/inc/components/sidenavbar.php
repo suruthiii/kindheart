@@ -106,7 +106,7 @@
                 </a>
             <?php } ?>   
 
-            <!------------------- Super Admin ------------------>
+            <!------------------- superAdmin ------------------>
             <?php if ($_SESSION['user_type'] == 'superAdmin'){ ?>
                 <a href="<?php echo URLROOT ?>/superadmin/index">
                     <?php if ($section == 'dashboard'){?>

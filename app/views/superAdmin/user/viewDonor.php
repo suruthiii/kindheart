@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/user/superadmindonor">
+                <a href="<?php echo URLROOT ?>/user/donor">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>

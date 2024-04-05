@@ -22,7 +22,7 @@
                 </a>
 
                  <!-- User 2 -->
-                 <a class="user-link" href="<?php echo URLROOT ?>/user/adminorganization">
+                 <a class="user-link" href="<?php echo URLROOT ?>/user/organization">
                     <div class="user">
                         <div class="title">Organizations</div>
                     </div>

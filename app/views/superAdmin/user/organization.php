@@ -28,7 +28,7 @@
                 <div class="tiles">
 
                     <?php foreach($data['organizations'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/user/superadminvieworganization/<?php echo $item->orgID; ?>">
+                    <a href="<?php echo URLROOT ?>/user/viewOrganization/<?php echo $item->orgID; ?>">
                         <div class="tile">
                             <table>
                                 <tr>
