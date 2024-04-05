@@ -52,7 +52,8 @@ class User extends Controller {
 
     public function donor(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'donors' => $this->userModel->viewDonors()
         ];
         
         $this->view($_SESSION['user_type'].'/user/donor', $data);
@@ -62,6 +63,7 @@ class User extends Controller {
         $data = [
             'title' => 'Home page'
         ];
+
         $this->view($_SESSION['user_type'].'/user/viewDonor', $data);
     }
 

@@ -452,4 +452,14 @@ class UserModel{
 
         return $row;
     }
+
+    public function viewDonors() {
+        $this->db->query('SELECT c.companyID AS donorID, c.companyName AS donorName, d.donorType FROM company c JOIN donor d ON c.companyID = d.donorID JOIN user u ON d.donorID = u.userID WHERE u.status != 10  
+        UNION 
+        SELECT i.individualID, CONCAT(i.fName, " ", i.lName), d.donorType FROM individual i JOIN donor d ON i.individualID = d.donorID JOIN user u ON d.donorID = u.userID WHERE u.status  != 10; ');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }
