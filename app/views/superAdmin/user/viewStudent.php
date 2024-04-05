@@ -112,15 +112,21 @@
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">NIC Front</th>
-                        <td width="70%"><?php print_r($data['student_details']->nicFrontImage); ?></td>
+                        <td width="70%">
+                            <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['student_details']->nicFrontImage); ?>" class="user-img" alt="">
+                        </td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">NIC Back</th>
-                        <td width="70%"><?php print_r($data['student_details']->nicBackImage); ?></td>
+                        <td width="70%">
+                            <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['student_details']->nicBackImage); ?> " class="user-img" alt="">
+                        </td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">GS Certificate</th>
-                        <td width="70%"><?php print_r($data['student_details']->gsCertificateImage); ?></td>
+                        <td width="70%">
+                            <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['student_details']->gsCertificateImage); ?> " class="user-img" alt="">
+                        </td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Receiving Scholarships</th>
