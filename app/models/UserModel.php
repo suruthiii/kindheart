@@ -436,4 +436,13 @@ class UserModel{
         return $row;
     }
 
+    public function viewStudents() {
+        $this->db->query('SELECT s.studentID, s.fName, s.lName FROM student s JOIN user u ON u.userID = s.studentID WHERE u.status != 10 ORDER BY studentID;');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    
 }

@@ -10,7 +10,7 @@
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
-            <h3>superAdmin Dashboard</h3>
+            <h3>Super Admin Dashboard</h3>
             <div class="cards">
                 <!-- Card 3 -->
                 <a class="card-link" href="<?php echo URLROOT ?>/superadmin/admin">
