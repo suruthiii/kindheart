@@ -444,7 +444,12 @@ class UserModel{
         return $result;
     }
 
-    // public function getStudent($student_ID) {
-    //     $this->db->query('SELECT ');
-    // }
+    public function getStudent($student_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, s.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN student s ON d.doneeID = s.studentID WHERE studentID = :studentID;');
+        $this->db->bind(':studentID', $student_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
 }

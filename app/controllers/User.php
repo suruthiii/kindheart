@@ -16,18 +16,18 @@ class User extends Controller {
         $this->view($_SESSION['user_type'].'/user/student', $data);
     }
 
-    // public function viewStudent($student_ID = null){
-    //     if(empty($student_ID)) {
-    //         redirect('pages/404');
-    //     }
+    public function viewStudent($student_ID = null){
+        if(empty($student_ID)) {
+            redirect('pages/404');
+        }
 
-    //     $data = [
-    //         'title' => 'Home page',
-    //         'student_details' => $this->userModel->getStudent($student_ID)
-    //     ];
+        $data = [
+            'title' => 'Home page',
+            'student_details' => $this->userModel->getStudent($student_ID)
+        ];
 
-    //     $this->view($_SESSION['user_type'].'/user/viewStudent', $data);
-    // }
+        $this->view($_SESSION['user_type'].'/user/viewStudent', $data);
+    }
 
     public function organization(){
         $data = [
