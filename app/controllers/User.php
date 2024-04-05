@@ -7,52 +7,31 @@ class User extends Controller {
         $this->userModel = $this->model('UserModel');
     }
 
-    public function adminStudent(){
+    public function student(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/user/student', $data);
+        $this->view($_SESSION['user_type'].'/user/student', $data);
     }
 
-    public function adminOrganization(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/user/organization', $data);
-    }
-
-    public function adminDonor(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/user/donor', $data);
-    }
-
-    public function superAdminStudent(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('super admin/user/student', $data);
-    }
-
-    public function superAdminViewStudent(){
+    public function viewStudent(){
         $data = [
             'title' => 'Home page'
         ];
 
-        $this->view('super admin/user/viewStudent', $data);
+        $this->view($_SESSION['user_type'].'/user/viewStudent', $data);
     }
 
-    public function superAdminOrganization(){
+    public function organization(){
         $data = [
             'title' => 'Home page',
             'organizations' => $this->userModel->viewOrganizations()
         ];
 
-        $this->view('super admin/user/organization', $data);
+        $this->view($_SESSION['user_type'].'/user/organization', $data);
     }
 
-    public function superAdminViewOrganization($org_ID = null){
+    public function viewOrganization($org_ID = null){
         if(empty($org_ID)) {
             redirect('pages/404');
         }
@@ -61,28 +40,30 @@ class User extends Controller {
             'title' => 'Home page',
             'organization_details' => $this->userModel->getOrganization($org_ID)
         ];
-        $this->view('super admin/user/viewOrganization', $data);
+        $this->view($_SESSION['user_type'].'/user/viewOrganization', $data);
     }
 
     public function deleteUser() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->userModel->deleteUser($_POST['user_ID']);
 
-            redirect('user/superadminorganization');
+            redirect('user/organization');
         }
     }
 
-    public function superAdminDonor(){
+    public function donor(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/user/donor', $data);
+        
+        $this->view($_SESSION['user_type'].'/user/donor', $data);
     }
-    public function superAdminViewDonor(){
+
+    public function viewDonor(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/user/viewDonor', $data);
+        $this->view($_SESSION['user_type'].'/user/viewDonor', $data);
     }
 
     public function banUser() {
@@ -91,15 +72,15 @@ class User extends Controller {
                 $userType = $this->userModel->getUserType($_POST['user_ID']);
 
                 if($userType == 'student') {
-                    redirect('user/superadminstudent');
+                    redirect('user/student');
                 }
 
                 else if($userType == 'organization') {
-                    redirect('user/superadminorganization');
+                    redirect('user/organization');
                 }
 
                 else if($userType == 'donor') {
-                    redirect('user/superadmindonor');
+                    redirect('user/donor');
                 }
 
                 else {

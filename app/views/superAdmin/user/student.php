@@ -28,7 +28,7 @@
                 <div class="tiles">
 
                     <!-- Card 1 -->
-                    <a href="<?php echo URLROOT ?>/user/superadminviewstudent">
+                    <a href="<?php echo URLROOT ?>/user/viewStudent">
                         <div class="tile">
                             <table>
                                 <tr>

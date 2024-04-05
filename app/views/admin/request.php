@@ -22,7 +22,7 @@
                 </a>
 
                  <!-- Necessity 2 -->
-                 <a class="user-link" href="<?php echo URLROOT ?>/request/adminorganizationrequest">
+                 <a class="user-link" href="<?php echo URLROOT ?>/request/organizationrequest">
                     <div class="user">
                         <div class="title">Organizations</div>
                     </div>
