@@ -47,8 +47,8 @@
                         <td width="70%"><?php print_r($data['organization_details']->orgNumber); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%"><?php print_r($data['organization_details']->orgType); ?></th>
-                        <td width="70%">School</td>
+                        <th width="30%">Organization Type</th>
+                        <td width="70%"><?php print_r($data['organization_details']->orgType); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Bank Account Number</th>
@@ -69,6 +69,10 @@
                     <tr class="necessity-data">
                         <th width="30%">Address</th>
                         <td width="70%"><?php print_r($data['organization_details']->address); ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Letter Image</th>
+                        <td width="70%"><?php print_r($data['organization_details']->letterImage); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Phone Number</th>
