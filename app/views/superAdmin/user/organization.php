@@ -32,7 +32,8 @@
                         <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="50%" class="tile-name"><?php echo $item->orgName; ?></td>
+                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" class="user-image" alt=""></td>
+                                    <td width="40%" class="tile-name"><?php echo $item->orgName; ?></td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>/user/deleteUser" method="post" class="delete-form">
                                             <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->orgID; ?>" />
