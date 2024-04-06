@@ -59,12 +59,34 @@ class User extends Controller {
         $this->view($_SESSION['user_type'].'/user/donor', $data);
     }
 
-    public function viewDonor(){
-        $data = [
-            'title' => 'Home page'
-        ];
+    public function viewDonor($donor_ID = null){
+        if(empty($donor_ID)) {
+            redirect('pages/404');
+        }
 
-        $this->view($_SESSION['user_type'].'/user/viewDonor', $data);
+        $donorType = $this->userModel->getDonorType($donor_ID);
+
+        if ($donorType == 'individual') {
+            $data = [
+                'title' => 'Home page',
+                'donor_details' => $this->userModel->getDonorInd($donor_ID)
+            ];
+
+            $this->view($_SESSION['user_type'].'/user/viewDonorInd', $data);
+        }
+
+        else if ($donorType == 'company') {
+            $data = [
+                'title' => 'Home page',
+                'donor_details' => $this->userModel->getDonorCom($donor_ID)
+            ];
+
+            $this->view($_SESSION['user_type'].'/user/viewDonorCom', $data);
+        }
+
+        else {
+            die('Donor Type Not Found');
+        }
     }
 
     public function deleteUser() {
