@@ -111,6 +111,12 @@
                         <td width="70%"><?php print_r($data['student_details']->phoneNumber); ?></td>
                     </tr>
                     <tr class="necessity-data">
+                        <th width="30%">School/ University Letter</th>
+                        <td width="70%">
+                            <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['student_details']->letterImage); ?>" class="user-img" alt="">
+                        </td>
+                    </tr>
+                    <tr class="necessity-data">
                         <th width="30%">NIC Front</th>
                         <td width="70%">
                             <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['student_details']->nicFrontImage); ?>" class="user-img" alt="">

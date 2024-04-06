@@ -352,7 +352,7 @@ class UserModel{
 
     // User Ban Functionality
     public function banUser($user_ID) {
-        $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID');
+        $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID;');
         $this->db->bind(':userID', $user_ID);
         $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));
 
@@ -364,7 +364,7 @@ class UserModel{
     }
 
     public function getUserType($user_ID) {
-        $this->db->query('SELECT userType FROM user WHERE userID = :userID');
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
         $this->db->bind(':userID', $user_ID);
 
         $result = $this->db->single();
@@ -437,7 +437,7 @@ class UserModel{
     }
 
     public function viewStudents() {
-        $this->db->query('SELECT s.studentID, s.fName, s.lName FROM student s JOIN user u ON u.userID = s.studentID WHERE u.status != 10 ORDER BY studentID;');
+        $this->db->query('SELECT s.studentID, CONCAT(s.fName, " ", s.lName) AS name FROM student s JOIN user u ON u.userID = s.studentID WHERE u.status != 10 ORDER BY studentID;');
 
         $result = $this->db->resultSet();
 
@@ -461,5 +461,32 @@ class UserModel{
         $result = $this->db->resultSet();
 
         return $result;
+    }
+
+    public function getDonorType($donor_ID) {
+        $this->db->query('SELECT donorType FROM donor WHERE donorID = :donorID;');
+        $this->db->bind(':donorID', $donor_ID);
+
+        $result = $this->db->single();
+
+        return $result->donorType;
+    }
+
+    public function getDonorInd($donor_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, i.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN individual i ON d.donorID = i.individualID WHERE donorID = :donorID;');
+        $this->db->bind(':donorID', $donor_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getDonorCom($donor_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, c.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN company c ON d.donorID = c.companyID WHERE donorID = :donorID;');
+        $this->db->bind(':donorID', $donor_ID);
+
+        $row = $this->db->single();
+
+        return $row;
     }
 }

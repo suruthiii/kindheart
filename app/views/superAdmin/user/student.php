@@ -32,8 +32,7 @@
                         <div class="tile">
                             <table>
                                 <tr>
-                                    <td width="6%" class="tile-name"><?php echo $item->fName; ?></td>
-                                    <td width="6%" class="tile-name"><?php echo $item->lName; ?></td>
+                                    <td width="50%" class="tile-name"><?php echo $item->name; ?></td>
                                     <td width="50%" class="option">
                                         <form action="<?php echo URLROOT ?>/user/deleteUser" method="post" class="delete-form">
                                             <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->studentID; ?>" />
