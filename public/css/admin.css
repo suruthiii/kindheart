@@ -183,6 +183,10 @@
     color: black;
 }
 
+.page-container .section .container .tile-list .tiles .tile table tr .user-image {
+    width: 65%;
+}
+
 .page-container .section .container .tile-list .tiles .tile table tr .option{
     margin-left: 10px;
     display: flex;
