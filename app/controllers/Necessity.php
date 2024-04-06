@@ -45,13 +45,21 @@ class Necessity extends Controller {
     //     }
     // }
 
-    public function postedmonetarynecessity(){
+    public function monetary(){
         if ($_SESSION['user_type'] == 'admin') {
-            // $this->view('admin/necessity/monetary');
+            $data = [
+                'necessities' => $this->necessityModel->getAllMonetaryNecessities()
+            ];
+
+            $this->view('admin/necessity/monetary', $data);
         }
 
         else if ($_SESSION['user_type'] == 'superAdmin') {
+            $data = [
+                'necessities' => $this->necessityModel->getAllMonetaryNecessities()
+            ];
 
+            $this->view('superAdmin/necessity/monetary', $data);
         }
 
         else if ($_SESSION['user_type'] == 'student') {
@@ -75,17 +83,21 @@ class Necessity extends Controller {
         }
     }
 
-    public function postedphysicalgoodsnecessity(){
-        $data = [
-            'tablerow' => $this->necessityModel->getaddedGoodsNecessities()
-        ];
-
+    public function physicalGood(){
         if ($_SESSION['user_type'] == 'admin') {
+            $data = [
+                'necessities' => $this->necessityModel->getAllPhysicalGoods()
+            ];
 
+            $this->view('admin/necessity/physicalgood', $data);
         }
 
         else if ($_SESSION['user_type'] == 'superAdmin') {
+            $data = [
+                'necessities' => $this->necessityModel->getAllPhysicalGoods()
+            ];
 
+            $this->view('superAdmin/necessity/physicalgood', $data);
         }
 
         else if ($_SESSION['user_type'] == 'student') {
@@ -93,6 +105,10 @@ class Necessity extends Controller {
         }
 
         else if ($_SESSION['user_type'] == 'organization') {
+            $data = [
+                'tablerow' => $this->necessityModel->getaddedGoodsNecessities()
+            ];
+
             $this->view('organization/postedphysicalgoodsnecessity', $data);
         }
 
@@ -108,7 +124,7 @@ class Necessity extends Controller {
 
     //Add monetary necessity
     public function addmonetarynecessity(){
-        if($_SESSION['user_type'] != 'student' || $_SESSION['user_type'] != 'organization') {
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         }
 
@@ -175,7 +191,7 @@ class Necessity extends Controller {
                 //check whether there any errors
                 if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err'])){
                     if($this->necessityModel->addmonetarynecessitytodb($data)){
-                        redirect('necessity/postedmonetarynecessity');
+                        redirect('necessity/monetary');
                     }else{
                         error_log('Error: Failed to insert data into the database.');
                         die('something went wrong');
@@ -232,7 +248,7 @@ class Necessity extends Controller {
 
     //Add Physical goods Necessity
     public function addGoodsNecessity(){
-        if($_SESSION['user_type'] != 'student' || $_SESSION['user_type'] != 'organization') {
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         }
 
@@ -271,7 +287,7 @@ class Necessity extends Controller {
                 //check whether there any errors
                 if(empty($data['necessitygoods_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
                     if($this->necessityModel->addgoodsnecessitytodb($data)){
-                        redirect('necessity/postedphysicalgoodsnecessity');
+                        redirect('necessity/physicalgood');
                     }else{
                         error_log('Error: Failed to insert data into the database.');
                         die('something went wrong');
