@@ -38,24 +38,6 @@ class Organization extends Controller {
         $this->view('organization/addgoodsnecessity', $data);
     }
 
-    public function postedmonetarynecessity(){
-        $tablerow= $this->organizationModel->getaddedMonetaryNecessities();
-
-        $data = [
-            'tablerow' => $tablerow
-        ];
-        $this->view('organization/postedmonetarynecessity', $data);
-    }
-
-    public function postedphysicalgoodsnecessity(){
-        $tablerow= $this->organizationModel->getaddedGoodsNecessities();
-
-        $data = [
-            'tablerow' => $tablerow
-        ];
-        $this->view('organization/postedphysicalgoodsnecessity', $data);
-    }
-
     public function editprofile(){
         $data = [
             'title' => 'Home page'
@@ -90,13 +72,4 @@ class Organization extends Controller {
         ];
         $this->view('organization/viewdonors', $data);
     }
-
-
-    // public function about(){
-    //     $users = $this->pagesModel->getUser();
-    //     $data = [
-    //         'users' => $users
-    //     ];
-    //     $this->view('about', $data);
-    // }
 }
