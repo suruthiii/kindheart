@@ -28,13 +28,13 @@
                 <!-- choose necessity button -->
                 <div class="choose-necessity-buttons-container">
                     <div class="choose-necessity-button">
-                        <button onclick="location.href ='<?php echo URLROOT ?>/organization/postedmonetarynecessity'">
+                        <button onclick="location.href ='<?php echo URLROOT ?>/necessity/postedmonetarynecessity'">
                             <img src="<?php echo URLROOT ?>/img/icon _Coins_.png">
                             <p>Monetary Funding</p>
                         </button>
                     </div>
                     <div class="choose-necessity-button">
-                        <button onclick="location.href ='<?php echo URLROOT ?>/organization/postedphysicalgoodsnecessity'">
+                        <button onclick="location.href ='<?php echo URLROOT ?>/necessity/postedphysicalgoodsnecessity'">
                             <img src="<?php echo URLROOT ?>/img/icon _Box Open_.png">
                             <p>Physical Goods</p>
                         </button>
