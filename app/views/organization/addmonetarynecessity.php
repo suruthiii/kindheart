@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/postedmonetarynecessity'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/monetary'">Go Back</button>
                 </div>
 
                 <!-- main title -->

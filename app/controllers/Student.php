@@ -45,18 +45,18 @@ class Student extends Controller {
         $this->view('student/neccessities', $data);
     }
 
-    public function postedmonetarynecessity(){
+    public function monetarynecessity(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('student/necessity/postedmonetarynecessity', $data);
+        $this->view('student/necessity/monetarynecessity', $data);
     }
 
-    public function postedphysicalgoodsnecessity(){
+    public function physicalgood(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('student/necessity/postedphysicalgoodsnecessity', $data);
+        $this->view('student/necessity/physicalgood', $data);
     }
 
 
