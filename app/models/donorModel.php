@@ -91,13 +91,6 @@ class donorModel{
         // Fetch result set
         return $row;
     }
-
-    // Get user
-    public function getUser(){
-        $this->db->query('SELECT * FROM user');
-
-        return $this->db->resultSet();
-    }
     
 }
 
