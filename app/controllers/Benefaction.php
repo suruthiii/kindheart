@@ -17,6 +17,8 @@ class Benefaction extends Controller {
     }
 
     public function donorAddBenefactions(){
+        //other actors' redirection
+        
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $data = [
                 'itemBenefaction' => trim($_POST['itemBenefaction']),

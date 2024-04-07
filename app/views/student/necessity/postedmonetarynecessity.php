@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/student/choosethenecessityType'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/student/necessities'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="add-necessity-button-for-post">
-                    <button onclick="location.href='<?php echo URLROOT ?>/student/addmonetarynecessity'">
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/addmonetarynecessity'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
                         <h5>Add Necessities</h5>
                     </button>

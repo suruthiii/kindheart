@@ -1,6 +1,5 @@
 <?php
 
-
 class Necessity extends Controller {
     private $middleware;
     private $organizationModel;
@@ -12,38 +11,6 @@ class Necessity extends Controller {
         $this->necessityModel = $this->model('NecessityModel');
         $this->organizationModel = $this->model('organizationModel');
     }
-
-    // public function monetary(){
-    //     $data = [
-    //         'title' => 'Home page'
-    //     ];
-
-    //     $userType = $_SESSION['user_type'];
-
-    //     if($userType == 'admin') {
-    //         $this->view('admin/necessity/monetary', $data);
-    //     }
-
-    //     else if($userType == 'superAdmin') {
-    //         $this->view('superAdmin/necessity/monetary', $data);
-    //     }
-
-    //     else if($userType == 'student') {
-    //         $this->view('student/necessity/monetary', $data);
-    //     }
-
-    //     else if($userType == 'organization') {
-    //         $this->view('organization/necessity/monetary', $data);
-    //     }
-
-    //     else if($userType == 'donor') {
-    //         $this->view('donor/necessity/monetary', $data);
-    //     }
-
-    //     else {
-    //         die('User Type Not Found');
-    //     }
-    // }
 
     public function monetary(){
         if ($_SESSION['user_type'] == 'admin') {
@@ -63,7 +30,11 @@ class Necessity extends Controller {
         }
 
         else if ($_SESSION['user_type'] == 'student') {
+            $data = [
+                'tablerow' => $this->necessityModel->getaddedMonetaryNecessities()
+            ];
 
+            $this->view('student/necessity/postedmonetarynecessity', $data);
         }
 
         else if ($_SESSION['user_type'] == 'organization') {
@@ -101,7 +72,11 @@ class Necessity extends Controller {
         }
 
         else if ($_SESSION['user_type'] == 'student') {
+            $data = [
+                'tablerow' => $this->necessityModel->getaddedGoodsNecessities()
+            ];
 
+            $this->view('student/necessity/postedphysicalgoodsnecessity', $data);
         }
 
         else if ($_SESSION['user_type'] == 'organization') {
@@ -118,8 +93,7 @@ class Necessity extends Controller {
         
         else {
             die('User Type Not Found');
-        }
-        
+        }   
     }
 
     //Add monetary necessity
@@ -199,7 +173,7 @@ class Necessity extends Controller {
                 }else{
 
                     if ($_SESSION['user_type'] == 'student') {
-
+                        $this->view('student/necessity/addmonetarynecessity', $data);
                     }
             
                     else if ($_SESSION['user_type'] == 'organization') {
@@ -231,7 +205,7 @@ class Necessity extends Controller {
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/addmonetarynecessity', $data);
                 }
         
                 else if ($_SESSION['user_type'] == 'organization') {
@@ -295,7 +269,7 @@ class Necessity extends Controller {
                 }else{
 
                     if ($_SESSION['user_type'] == 'student') {
-
+                        $this->view('student/necessity/addmonetarynecessity', $data);
                     }
             
                     else if ($_SESSION['user_type'] == 'organization') {
@@ -318,7 +292,7 @@ class Necessity extends Controller {
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/addmonetarynecessity', $data);
                 }
         
                 else if ($_SESSION['user_type'] == 'organization') {
@@ -332,13 +306,6 @@ class Necessity extends Controller {
         }
     }    
 
-    public function adminMonetary(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/monetary', $data);
-    }
-
     public function viewAdminMonetary(){
         $data = [
             'title' => 'Home page'
@@ -351,13 +318,6 @@ class Necessity extends Controller {
             'title' => 'Home page'
         ];
         $this->view('admin/necessity/viewMonetaryDonation', $data);
-    }
-
-    public function adminGood(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/physicalGood', $data);
     }
 
     public function viewAdminGood(){
@@ -374,13 +334,6 @@ class Necessity extends Controller {
         $this->view('admin/necessity/viewGoodDonation', $data);
     }
 
-    public function superAdminMonetary(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/monetary', $data);
-    }
-
     public function viewSuperAdminMonetary(){
         $data = [
             'title' => 'Home page'
@@ -393,13 +346,6 @@ class Necessity extends Controller {
             'title' => 'Home page'
         ];
         $this->view('superAdmin/necessity/viewMonetaryDonation', $data);
-    }
-
-    public function superAdminGood(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/physicalGood', $data);
     }
 
     public function viewSuperAdminGood(){
