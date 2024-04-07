@@ -21,7 +21,7 @@
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
-                    <h3>Add Benefactions</h3>
+                    <h3>Edit Posted Benefactions</h3>
                     <p>Enter correct information and add your benefactions.</p>
                 </div>
 
@@ -30,7 +30,7 @@
                     <div class="left-column">
                         <!-- Add Benefaction Form -->
                         <div class="add-benefaction-form">
-                            <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/donorAddBenefactions" method="POST" onsubmit="return validateForm()">
+                            <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="POST" onsubmit="return validateForm()">
                             
                                 <!-- Item -->
                                 <div class="benefaction-first-div">
@@ -44,10 +44,10 @@
                                 <!-- Quantity -->
                                 <div class="benefaction-second-div">
                                     <label for="quantityBenfaction">Quantity </label>
-                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php echo isset($data['quantityBenfaction']) ? $data['quantityBenfaction'] : ''; ?>" min="1">
+                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php echo isset($data['quantityBenfaction']) ? $data['quantityBenfaction'] : ''; ?>">
 
                                     <!-- Requested Amount Error Display -->
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?></span>
                                 </div>
                                 
                                 <!-- Images -->
@@ -55,28 +55,16 @@
                                     <label for="photoBenfaction">Photos of The Item </label>
                                     <div class="benefaction-third-div-four-input-one-line">
                                             <div class="add-benefaction-first-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 1</p>
-                                                </label> 
+                                                <input type="file" id="photoBenfaction1" name="photoBenfaction1" value="<?php echo isset($data['photoBenfaction1']) ? $data['photoBenfaction1'] : ''; ?>" accept=".png, .jpg, .jpeg" onchange="preview()">
                                             </div>
                                             <div class="add-benefaction-second-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
-                                                </label> 
+                                                <input type="file" id="photoBenfaction2" name="photoBenfaction2" value="<?php echo isset($data['photoBenfaction2']) ? $data['photoBenfaction2'] : ''; ?>" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <div class="add-benefaction-third-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
-                                                </label> 
+                                                <input type="file" id="photoBenfaction3" name="photoBenfaction3" value="<?php echo isset($data['photoBenfaction3']) ? $data['photoBenfaction3'] : ''; ?>" accept=".png, .jpg, .jpeg">
                                             </div>
                                             <div class="add-benefaction-fourth-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 4</p>
-                                                </label> 
+                                                <input type="file" id="photoBenfaction4" name="photoBenfaction4" value="<?php echo isset($data['photoBenfaction4']) ? $data['photoBenfaction4'] : ''; ?>" accept=".png, .jpg, .jpeg">
                                             </div>
                                     </div>
 
@@ -95,7 +83,7 @@
                                 
                                 <!-- Add Button for necessity -->
                                 <div class="add-benefaction-add-button">
-                                    <input type="submit" value="+ Add" >
+                                    <input type="submit" value="Add">
                                 </div>
                             </form>
                         </div>
@@ -103,21 +91,15 @@
 
                     <!-- Right column for chosen-photos-container -->
                     <div class="right-column">
-                        <div class="right-column-inner">
-                            <div class="chosen-photos-container" id="chosen-photos-container1">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png" alt="Placeholder Image" />
-                            </div>
-                            <div class="chosen-photos-container" id="chosen-photos-container2">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction2.png" alt="Placeholder Image" />
-                            </div>
-                            <div class="chosen-photos-container" id="chosen-photos-container3">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction3.png" alt="Placeholder Image" />
-                            </div>
-                            <div class="chosen-photos-container" id="chosen-photos-container4">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction4.png" alt="Placeholder Image" />
-                            </div>
+                        <div class="chosen-photos-container" id="chosen-photos-container1">
                         </div>
-                    </div>         
+                        <div class="chosen-photos-container" id="chosen-photos-container2">
+                        </div>
+                        <div class="chosen-photos-container" id="chosen-photos-container3">
+                        </div>
+                        <div class="chosen-photos-container" id="chosen-photos-container4">
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -146,22 +128,10 @@
             return true;
         }
 
-        function validateFileType(input) {
-            const file = input.files[0];
-            const fileType = file.type;
-
-            // Check if the selected file type is an image
-            if (!fileType.startsWith('image/')) {
-                alert('Please select an image file (PNG, JPEG)');
-                input.value = ''; // Clear the selected file
-            }
-        }
-
         // Function to handle file input change
         function handleFileInputChange(inputId, containerId) {
             const input = document.getElementById(inputId);
             const container = document.getElementById(containerId);
-            const placeholderImage = document.getElementById('placeholderImage');
 
             input.addEventListener('change', function() {
                 // Clear previous content
@@ -176,20 +146,18 @@
                     image.classList.add('chosen-photo');
 
                     // Apply styles to adjust image size
-                    image.style.maxWidth = '300px'; 
-                    image.style.maxHeight = '300px';
+                    image.style.maxWidth = '200px'; 
+                    image.style.maxHeight = '200px';
+                    image.style.transform = 'translateX(-25%)';
                     image.style.backgroundColor = '#F5F5F5';
-                    image.style.boxShadow = '0px 4px 4px rgba(142, 0, 0, 0.25)';
-                    image.style.border = '2px solid #8E0000';
+                    image.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
+                    image.style.border = '2px solid #292828';
                     image.style.margin = '10px';
 
 
                     // Append image to container
                     container.appendChild(image);
                 }
-
-                // Hide the placeholder image
-                placeholderImage.style.display = 'none';
             });
         }
 
