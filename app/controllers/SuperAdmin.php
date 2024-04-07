@@ -6,6 +6,7 @@ class SuperAdmin extends Controller {
         // Only superAdmin is allowed to access superadmin pages
         $this->middleware->checkAccess(['superAdmin']);
         $this->userModel = $this->model('UserModel');
+        $this->successStoryModel = $this->model('SuccessStoryModel');
     }
 
     public function index(){
@@ -54,8 +55,10 @@ class SuperAdmin extends Controller {
 
     public function successStory(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'successstories' => $this->successStoryModel->getSuccessStories()
         ];
+        
         $this->view('superAdmin/successStory', $data);
     }
 

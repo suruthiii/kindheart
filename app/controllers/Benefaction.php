@@ -9,13 +9,6 @@ class Benefaction extends Controller {
         $this->donorModel = $this->model('DonorModel');
     }
 
-    public function index(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('organization/index', $data);
-    }
-
     public function donorAddBenefactions(){
         //other actors' redirection
         

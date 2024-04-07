@@ -4,6 +4,8 @@ class Admin extends Controller {
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
         $this->middleware->checkAccess(['admin']);
+        $this->userModel = $this->model('UserModel');
+        $this->successStoryModel = $this->model('SuccessStoryModel');
     }
 
     public function index(){
@@ -43,8 +45,10 @@ class Admin extends Controller {
 
     public function successStory() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'successstories' => $this->successStoryModel->getSuccessStories()
         ];
+        
         $this->view('admin/successStory', $data);
     }
 
