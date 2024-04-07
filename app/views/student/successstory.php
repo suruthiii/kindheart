@@ -61,7 +61,7 @@
                             <h3>Add success Stories</h3>
                         </div>
                         <!-- add image box -->
-                        <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" onsubmit="return validateFileType()">
+                        <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/successstory/addSuccessStory" onsubmit="return validateFileType()">
                             <div >
                                 
                                 <label for ="image-browser" class="add-photo-box">
@@ -91,12 +91,9 @@
 
                         <!-- last-title for this -->
 
-                        <div class="view-posted-stories" onclick="location.href='<?php echo URLROOT ?>/student/viewSuccessStory'">
+                        <div class="view-posted-stories" onclick="location.href='<?php echo URLROOT ?>/successstory/viewSuccessStory'">
                                 <h3>Your Success Stories</h3>
-                         </div>
-
-                     
-
+                        </div>
                     </div>
                 </div> 
 
