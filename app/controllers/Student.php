@@ -17,63 +17,33 @@ class Student extends Controller {
         $this->view('student/index', $data);
     }
 
-    public function necessityRequest(){
+    // public function necessityRequest(){
+    //     $data = [
+    //         'title' => 'Home page'
+    //     ];
+    //     $this->view('student/necessityRequest', $data);
+    // }
+
+    // public function monetoryfundingRequest(){
+    //     $data = [
+    //         'title' => 'Home page'
+    //     ];
+    //     $this->view('student/monetoryfundingRequest', $data);
+    // }
+
+    // public function physicalgoodsRequest(){
+    //     $data = [
+    //         'title' => 'Home page'
+    //     ];
+    //     $this->view('student/physicalgoodsRequest', $data);
+    // }
+
+    public function necessities(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('student/necessityRequest', $data);
+        $this->view('student/necessities', $data);
     }
-
-    public function monetoryfundingRequest(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/monetoryfundingRequest', $data);
-    }
-
-    public function physicalgoodsRequest(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/physicalgoodsRequest', $data);
-    }
-
-    public function neccessities(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/neccessities', $data);
-    }
-
-    public function postedmonetarynecessity(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/necessity/postedmonetarynecessity', $data);
-    }
-
-    public function postedphysicalgoodsnecessity(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/necessity/postedphysicalgoodsnecessity', $data);
-    }
-
-
-    public function  addmonetarynecessity(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/necessity/addmonetarynecessity', $data);
-    }
-
-    public function addgoodsnecessity(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('student/necessity/addgoodsnecessity', $data);
-    }
-
 
     // public function editStory(){
     //     $data = [
@@ -81,8 +51,6 @@ class Student extends Controller {
     //     ];
     //     $this->view('student/editStory', $data);
     // }
-
-
 
     public function successstory(){
         

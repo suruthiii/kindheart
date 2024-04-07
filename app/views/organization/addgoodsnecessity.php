@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/organization/postedphysicalgoodsnecessity'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/physicalgood'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -27,7 +27,7 @@
 
                 <!-- Add goods Necessity Form -->
                 <div class="add-necessity-form">
-                    <form action="<?php echo URLROOT ?>/Necessity/addingGoodsNecessity" method="post">
+                    <form action="<?php echo URLROOT ?>/Necessity/addGoodsNecessity" method="post">
                         <!-- Necessity -->
                         <div class="add-necessity-one-line-input">
                             <label for="necessitygoods">Necessity </label>

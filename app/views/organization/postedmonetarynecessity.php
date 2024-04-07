@@ -35,7 +35,7 @@
                     <?php foreach($data['tablerow'] as $tablerow): ?>
                         <tr>
                             <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4 class="pending-postednecessityTitle"><?php echo $tablerow->name?></h4>
+                            <td><h4 class="pending-postednecessityTitle"><?php echo $tablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $tablerow->description?></p>
                             </td>
                             <td><p>Rs.<?php echo $tablerow->requestedAmount?></p></td>
@@ -64,7 +64,7 @@
                 </div>
 
                 <div class="add-necessity-button-for-post">
-                    <button onclick="location.href='<?php echo URLROOT ?>/organization/addmonetarynecessity'">
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/addmonetarynecessity'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
                         <h5>Add Necessities</h5>
                     </button>

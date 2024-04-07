@@ -352,7 +352,7 @@ class UserModel{
 
     // User Ban Functionality
     public function banUser($user_ID) {
-        $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID');
+        $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID;');
         $this->db->bind(':userID', $user_ID);
         $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));
 
@@ -364,7 +364,7 @@ class UserModel{
     }
 
     public function getUserType($user_ID) {
-        $this->db->query('SELECT userType FROM user WHERE userID = :userID');
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
         $this->db->bind(':userID', $user_ID);
 
         $result = $this->db->single();
@@ -428,7 +428,7 @@ class UserModel{
     }
 
     public function getOrganization($org_ID) {
-        $this->db->query('SELECT u.email, u.username, d.address, d.phoneNumber, d.accNumber, d.accountHoldersName, d.bankName, d.branchName, o.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN organization o ON d.doneeID = o.orgID WHERE orgID = :orgID;');
+        $this->db->query('SELECT u.email, u.username, d.*, o.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN organization o ON d.doneeID = o.orgID WHERE orgID = :orgID;');
         $this->db->bind(':orgID', $org_ID);
 
         $row = $this->db->single();
@@ -436,4 +436,57 @@ class UserModel{
         return $row;
     }
 
+    public function viewStudents() {
+        $this->db->query('SELECT s.studentID, CONCAT(s.fName, " ", s.lName) AS name FROM student s JOIN user u ON u.userID = s.studentID WHERE u.status != 10 ORDER BY studentID;');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getStudent($student_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, s.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN student s ON d.doneeID = s.studentID WHERE studentID = :studentID;');
+        $this->db->bind(':studentID', $student_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function viewDonors() {
+        $this->db->query('SELECT c.companyID AS donorID, c.companyName AS donorName, d.donorType FROM company c JOIN donor d ON c.companyID = d.donorID JOIN user u ON d.donorID = u.userID WHERE u.status != 10  
+        UNION 
+        SELECT i.individualID, CONCAT(i.fName, " ", i.lName), d.donorType FROM individual i JOIN donor d ON i.individualID = d.donorID JOIN user u ON d.donorID = u.userID WHERE u.status  != 10; ');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getDonorType($donor_ID) {
+        $this->db->query('SELECT donorType FROM donor WHERE donorID = :donorID;');
+        $this->db->bind(':donorID', $donor_ID);
+
+        $result = $this->db->single();
+
+        return $result->donorType;
+    }
+
+    public function getDonorInd($donor_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, i.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN individual i ON d.donorID = i.individualID WHERE donorID = :donorID;');
+        $this->db->bind(':donorID', $donor_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getDonorCom($donor_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, c.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN company c ON d.donorID = c.companyID WHERE donorID = :donorID;');
+        $this->db->bind(':donorID', $donor_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
 }

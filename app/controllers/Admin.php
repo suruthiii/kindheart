@@ -87,7 +87,7 @@ class Admin extends Controller {
                 }
 
                 else if($userType == 'organization') {
-                    redirect('user/adminOrganization');
+                    redirect('user/organization');
                 }
 
                 else if($userType == 'donor') {
