@@ -2,14 +2,13 @@
 
 class Necessity extends Controller {
     private $middleware;
-    private $organizationModel;
+    private $necessityModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
         $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
         $this->necessityModel = $this->model('NecessityModel');
-        $this->organizationModel = $this->model('organizationModel');
     }
 
     public function monetary(){
@@ -39,7 +38,8 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'organization') {
             $data = [
-                'tablerow' => $this->necessityModel->getaddedMonetaryNecessities()
+                'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
+                'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities()
             ];
 
             $this->view('organization/postedmonetarynecessity', $data);
@@ -174,13 +174,9 @@ class Necessity extends Controller {
 
                     if ($_SESSION['user_type'] == 'student') {
                         $this->view('student/necessity/addmonetarynecessity', $data);
-                    }
-            
-                    else if ($_SESSION['user_type'] == 'organization') {
+                    }else if ($_SESSION['user_type'] == 'organization') {
                         $this->view('organization/addmonetarynecessity', $data);
-                    }
-                    
-                    else {
+                    }else {
                         die('User Type Not Found');
                     }
                     
@@ -206,13 +202,9 @@ class Necessity extends Controller {
 
                 if ($_SESSION['user_type'] == 'student') {
                     $this->view('student/necessity/addmonetarynecessity', $data);
-                }
-        
-                else if ($_SESSION['user_type'] == 'organization') {
+                }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/addmonetarynecessity', $data);
-                }
-                
-                else {
+                }else {
                     die('User Type Not Found');
                 }
             }
@@ -270,13 +262,9 @@ class Necessity extends Controller {
 
                     if ($_SESSION['user_type'] == 'student') {
                         $this->view('student/necessity/addmonetarynecessity', $data);
-                    }
-            
-                    else if ($_SESSION['user_type'] == 'organization') {
+                    }else if ($_SESSION['user_type'] == 'organization') {
                         $this->view('organization/addgoodsnecessity', $data);
-                    }
-                    
-                    else {
+                    }else {
                         die('User Type Not Found');
                     }
                 }
@@ -293,13 +281,9 @@ class Necessity extends Controller {
 
                 if ($_SESSION['user_type'] == 'student') {
                     $this->view('student/necessity/addmonetarynecessity', $data);
-                }
-        
-                else if ($_SESSION['user_type'] == 'organization') {
+                }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/addgoodsnecessity', $data);
-                }
-                
-                else {
+                }else {
                     die('User Type Not Found');
                 }
             }
