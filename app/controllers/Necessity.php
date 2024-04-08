@@ -73,7 +73,7 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'student') {
             $data = [
-                'tablerow' => $this->necessityModel->getaddedGoodsNecessities()
+                'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities()
             ];
 
             $this->view('student/necessity/postedphysicalgoodsnecessity', $data);
@@ -81,7 +81,8 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'organization') {
             $data = [
-                'tablerow' => $this->necessityModel->getaddedGoodsNecessities()
+                'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities(),
+                'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities()
             ];
 
             $this->view('organization/postedphysicalgoodsnecessity', $data);
