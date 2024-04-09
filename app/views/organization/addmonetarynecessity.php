@@ -60,6 +60,18 @@
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span>
                             </div>
                         </div>
+
+                        <!-- funding duration -->
+                        <div class="add-necessity-one-line-input-for-radio-buttons">
+                            <label for="fundingDurations">Funding Duration</label><br>
+                            <input type="radio" id="weekly" name="fundingDurations" value="weekly">
+                            <label for="weekly">Weekly</label>
+                            <input type="radio" id="monthly" name="fundingDurations" value="monthly">
+                            <label for="weekly">Monthly</label>
+                            <input type="radio" id="yearly" name="fundingDurations" value="yearly">
+                            <label for="weekly">Yearly</label>
+                        </div>
+
                         <!-- Description about requested necessity -->
                         <div class="add-necessity-text-area-input-to-oneline">
                             <label for="monetarynecessitydes">Description</label>
