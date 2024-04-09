@@ -14,7 +14,7 @@
             <p style="margin-left: 10px">Last 30 days</p>
             <div class="list">
                 <div class="list-title">
-                    <h4>Ongoing Projects</h4>
+                    <h4>Need Funding</h4>
                 </div>
                 
                 <div class="card-list">
@@ -160,7 +160,7 @@
 
             <div class="list">
                 <div class="list-title">
-                    <h4>Completed</h4>
+                    <h4>Ongoing</h4>
                 </div>
                 
                 <div class="card-list">
