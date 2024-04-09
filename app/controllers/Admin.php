@@ -28,9 +28,9 @@ class Admin extends Controller {
     public function project() {
         $data = [
             'title' => 'Home page',
-            // 'pending' => $this->projectModel->getAllPendingProjects(),
-            // 'confirmed' => $this->projectModel->getAllConfirmedProjects(),
-            // 'ongoing' => $this->projectModel->getAllOngoingProjects()
+            'pending' => $this->projectModel->getAllPendingProjects(),
+            'confirmed' => $this->projectModel->getAllConfirmedProjects(),
+            'ongoing' => $this->projectModel->getAllOngoingProjects()
         ];
         $this->view('admin/project', $data);
     }
