@@ -13,7 +13,7 @@
 
             <!-- Middle container -->
             <div class="middle-container">
-                    <a href="<?php echo URLROOT ?>/student/successstory">
+                    <a href="<?php echo URLROOT ?>/successstory/viewSuccessStory">
                         <table>
                             <tr>
                                 <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="edit-story">
-                        <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/editSuccessStory" onsubmit="return validateFileType()">
+                        <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/successstory/editSuccessStory" onsubmit="return validateFileType()">
                             <div >
                                 
                                 <label for ="image-browser" class="add-photo-box">
@@ -67,7 +67,7 @@
 
 <script>
 
-history.pushState(null, null, '/kindheart/student/viewSuccessStory');
+// history.pushState(null, null, '/kindheart/student/viewSuccessStory');
 
 
 </script>

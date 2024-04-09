@@ -106,7 +106,7 @@
                 </a>
             <?php } ?>   
 
-            <!------------------- Super Admin ------------------>
+            <!------------------- superAdmin ------------------>
             <?php if ($_SESSION['user_type'] == 'superAdmin'){ ?>
                 <a href="<?php echo URLROOT ?>/superadmin/index">
                     <?php if ($section == 'dashboard'){?>
@@ -232,8 +232,8 @@
                 </a>
 
 
-                <a href="<?php echo URLROOT ?>/student/neccessities">
-                    <?php if ($section == 'student'){?>
+                <a href="<?php echo URLROOT ?>/student/necessities">
+                    <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }
                     else{ ?>

@@ -33,20 +33,20 @@
                         <div class="tiles-new">
 
                             <?php foreach($data['stories'] as $item){?>
-                                <a href="<?php echo URLROOT ?>student/SuccessStory/<?php echo $item->storyID?>">
+                                <a href="<?php echo URLROOT ?>/student/SuccessStory/<?php echo $item->storyID?>">
                                     <div class="tile-new">
                                         <table>
                                             <tr>
                                                 <td width="50%" class="tile-name"><?php echo $item->title;?></td>
                                                 <td width="50%" class="option-new">
-                                                    <form action="<?php echo URLROOT ?>/student/editStory" method="POST" class="edit-form-new " >
+                                                    <form action="<?php echo URLROOT ?>/successstory/editStory" method="GET" class="edit-form-new " >
                                                         <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
                                                         <button type="submit" class="edit" >
                                                             <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" alt="">
                                                         </button>
                                                     </form>
                                                     
-                                                    <form action="<?php echo URLROOT ?>/student/deleteStory" method="post" class="delete-form-new " onsubmit="return confirmDelete();">
+                                                    <form action="<?php echo URLROOT ?>/successstory/deleteStory" method="post" class="delete-form-new " onsubmit="return confirmDelete();">
                                                         <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
                                                         <button type="submit" class="delete">
                                                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
@@ -72,7 +72,7 @@
                         <h3>Add success Stories</h3>
                     </div>
                     <!-- add image box -->
-                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/student/addSuccessStory" onsubmit="return validateFileType()">
+                    <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/successstory/addSuccessStory" onsubmit="return validateFileType()">
                     <div >
                         
                     <label for ="image-browser" class="add-photo-box">
@@ -156,9 +156,7 @@ const form = document.querySelector('.add-form');
 // Call initially on page load 
 adjustCardHeights(); 
 
-history.pushState(null, null, '/kindheart/student/viewSuccessStory');
-
-
+// history.pushState(null, null, '/kindheart/student/viewSuccessStory');
 
 function confirmDelete() {
         return confirm("Are you sure you want to delete this story?");

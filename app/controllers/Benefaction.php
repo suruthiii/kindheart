@@ -52,6 +52,8 @@ class Benefaction extends Controller {
     }
 
     public function donorAddBenefactions(){
+        //other actors' redirection
+        
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
@@ -159,7 +161,6 @@ class Benefaction extends Controller {
         }
     }
     
-
     public function editPostedBenefactions(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 

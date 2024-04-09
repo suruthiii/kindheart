@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/user/superadminorganization">
+                <a href="<?php echo URLROOT ?>/user/donor">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -21,72 +21,64 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Organization</h3>
-            <p style="margin-left: 10px">View information about the organization</p>
+            <h3 style="margin-top: 25px">View Donor</h3>
+            <p style="margin-left: 10px">View information about the donor</p>
             
             <div class="necessity-info">
                 <table>
                     <tr class="necessity-data">
-                        <th width="30%">Organization ID</th>
-                        <td width="70%"><?php print_r($data['organization_details']->orgID); ?></td>
+                        <th width="30%">Donor ID</th>
+                        <td width="70%"><?php print_r($data['donor_details']->donorID); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Organization Username</th>
-                        <td width="70%"><?php print_r($data['organization_details']->username); ?></td>
+                        <th width="30%">Donor Username</th>
+                        <td width="70%"><?php print_r($data['donor_details']->username); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Organization Email</th>
-                        <td width="70%"><?php print_r($data['organization_details']->email); ?></td>
+                        <th width="30%">Donor Email</th>
+                        <td width="70%"><?php print_r($data['donor_details']->email); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Organization Name</th>
-                        <td width="70%"><?php print_r($data['organization_details']->orgName); ?></td>
+                        <th width="30%">Donor Type</th>
+                        <td width="70%"><?php print_r($data['donor_details']->donorType); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Organization Number</th>
-                        <td width="70%"><?php print_r($data['organization_details']->orgNumber); ?></td>
+                        <th width="30%">First Name</th>
+                        <td width="70%"><?php print_r($data['donor_details']->fName); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%"><?php print_r($data['organization_details']->orgType); ?></th>
-                        <td width="70%">School</td>
+                        <th width="30%">Last Name</th>
+                        <td width="70%"><?php print_r($data['donor_details']->lName); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Bank Account Number</th>
-                        <td width="70%"><?php print_r($data['organization_details']->accNumber); ?></td>
+                        <th width="30%">NIC Number</th>
+                        <td width="70%"><?php print_r($data['donor_details']->nicNo); ?></td>
                     </tr>
                     <tr class="necessity-data">
-                        <th width="30%">Account Holder's Name</th>
-                        <td width="70%"><?php print_r($data['organization_details']->accountHoldersName); ?></td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Bank Name</th>
-                        <td width="70%"><?php print_r($data['organization_details']->bankName); ?></td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Branch Name</th>
-                        <td width="70%"><?php print_r($data['organization_details']->branchName); ?></td>
+                        <th width="30%">Gender</th>
+                        <td width="70%"><?php print_r($data['donor_details']->gender); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Address</th>
-                        <td width="70%"><?php print_r($data['organization_details']->address); ?></td>
+                        <td width="70%"><?php print_r($data['donor_details']->address); ?></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Phone Number</th>
-                        <td width="70%"><?php print_r($data['organization_details']->phoneNumber); ?></td>
+                        <td width="70%"><?php print_r($data['donor_details']->phoneNumber); ?></td>
                     </tr>
                 </table>
             </div>
 
             <div class="view-donation-btn-container" style="display: flex;">
                 <form action="<?php echo URLROOT ?>/user/deleteUser" method="post" class="delete-form">
-                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['donor_details']->donorID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
                         Delete
                     </button>
                 </form>
                 &nbsp;
                 <form action="<?php echo URLROOT ?>/user/banUser" method="post" class="delete-form">
-                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['donor_details']->donorID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
                         Ban
                     </button>

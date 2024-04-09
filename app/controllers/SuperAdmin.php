@@ -3,16 +3,17 @@
 class SuperAdmin extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
-        // Only super admin is allowed to access superadmin pages
+        // Only superAdmin is allowed to access superadmin pages
         $this->middleware->checkAccess(['superAdmin']);
         $this->userModel = $this->model('UserModel');
+        $this->successStoryModel = $this->model('SuccessStoryModel');
     }
 
     public function index(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/index', $data);
+        $this->view('superAdmin/index', $data);
     }
 
     public function admin($other_data = null){
@@ -21,70 +22,72 @@ class SuperAdmin extends Controller {
             'admins' => $this->userModel->viewAdmins()
         ];
 
-        $this->view('super admin/admin', $data, $other_data);
+        $this->view('superAdmin/admin', $data, $other_data);
     }
 
     public function necessity() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/necessity', $data);
+        $this->view('superAdmin/necessity', $data);
     }
 
     public function project() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/project', $data);
+        $this->view('superAdmin/project', $data);
     }
 
     public function scholarship() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/scholarship', $data);
+        $this->view('superAdmin/scholarship', $data);
     }
 
     public function benefaction() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/benefaction', $data);
+        $this->view('superAdmin/benefaction', $data);
     }
 
     public function successStory(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'successstories' => $this->successStoryModel->getSuccessStories()
         ];
-        $this->view('super admin/successStory', $data);
+        
+        $this->view('superAdmin/successStory', $data);
     }
 
     public function user(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/user', $data);
+        $this->view('superAdmin/user', $data);
     }
 
     public function request() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/request', $data);
+        $this->view('superAdmin/request', $data);
     }
 
     public function report() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/report', $data);
+        $this->view('superAdmin/report', $data);
     }
 
     public function complaint(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('super admin/complaint', $data);
+        $this->view('superAdmin/complaint', $data);
     }
 
     public function createAdmin(){
@@ -169,7 +172,7 @@ class SuperAdmin extends Controller {
             'admin_details' => $this->userModel->getAdmin($admin_ID)
         ];
 
-        $this->view('super admin/admin/viewAdmin', $data);
+        $this->view('superAdmin/admin/viewAdmin', $data);
     }
 
     public function editAdmin() {
@@ -222,7 +225,7 @@ class SuperAdmin extends Controller {
                     'err' => $data['err']
                 ];
                 
-                $this->view('super admin/admin/editAdmin', $admin_data);
+                $this->view('superAdmin/admin/editAdmin', $admin_data);
             }
         }
         else{
@@ -242,7 +245,7 @@ class SuperAdmin extends Controller {
                 ]
             ];
     
-            $this->view('super admin/admin/editAdmin', $data);
+            $this->view('superAdmin/admin/editAdmin', $data);
         }
     }
 
