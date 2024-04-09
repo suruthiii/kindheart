@@ -217,7 +217,7 @@
             
             <div class="list">
                 <div class="list-title">
-                    <h4>Received</h4>
+                    <h4>Ongoing</h4>
                 </div>
                 
                 <div class="card-list">

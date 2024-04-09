@@ -59,7 +59,7 @@
 
             <div class="list">
                 <div class="list-title">
-                    <h4>Completed</h4>
+                    <h4>Ongoing</h4>
                 </div>
                 
                 <div class="card-list">

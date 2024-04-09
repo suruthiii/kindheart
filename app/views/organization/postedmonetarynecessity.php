@@ -38,7 +38,7 @@
                             <td><h4 class="pending-postednecessityTitle"><?php echo $tablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $tablerow->description?></p>
                             </td>
-                            <td><p>Rs.<?php echo $tablerow->requestedAmount?></p></td>
+                            <td><p>Rs.<?php echo $tablerow->amount?></p></td>
                             <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
                             <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
                             <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>

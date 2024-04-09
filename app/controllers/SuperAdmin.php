@@ -7,6 +7,9 @@ class SuperAdmin extends Controller {
         $this->middleware->checkAccess(['superAdmin']);
         $this->userModel = $this->model('UserModel');
         $this->successStoryModel = $this->model('SuccessStoryModel');
+        $this->scholarshipModel = $this->model('ScholarshipModel');
+        $this->projectModel = $this->model('ProjectModel');
+        $this->benefactionModel = $this->model('BenefactionModel');
     }
 
     public function index(){
@@ -34,7 +37,10 @@ class SuperAdmin extends Controller {
 
     public function project() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'pending' => $this->projectModel->getAllPendingProjects(),
+            'confirmed' => $this->projectModel->getAllConfirmedProjects(),
+            'ongoing' => $this->projectModel->getAllOngoingProjects()
         ];
         $this->view('superAdmin/project', $data);
     }
