@@ -161,96 +161,88 @@ class Benefaction extends Controller {
         }
     }
     
-    public function editPostedBenefactions(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+    // public function editPostedBenefactions(){
+    //     if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-            // Handle form submission and update benefaction
-            if($this->donorModel->updateBenefaction($_POST)) {
-                redirect('donor/postedBenefactions');
-            } else {
-                die('Something went wrong');
-            }
-        } else {
-            //Pass data to the view
-            if(isset($_POST['edit'])){
-                $benefactionID = $_POST['edit'];
-                $data = [
-                    'title' => 'Edit Posted Benefactions',
-                    'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
-                ];
+    //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
-                $this->view('donor/editPostedBenefactions', $data);
-                
-            }else if(isset($_POST['view'])){
-                    $benefactionID = $_POST['view'];
-                    $data = [
-                        'title' => 'Edit Posted Benefactions',
-                        'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
-                    ];
+    //         $data = [
+    //             'itemBenefaction' => trim($_POST['itemBenefaction']),
+    //             'quantityBenfaction' => trim($_POST['quantityBenfaction']),
+    //             'benefactionDescription' => trim($_POST['benefactionDescription']),
 
-                    $this->view('donor/editPostedBenefactions', $data);
-            }
-        }
-        //     $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+    //             // 'photoBenfaction1' => $this->imgUpload('photoBenfaction1'),                
+    //             // 'photoBenfaction2' => $this->imgUpload('photoBenfaction2'),
+    //             // 'photoBenfaction3' => $this->imgUpload('photoBenfaction3'),
+    //             // 'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
 
-        //     $benefactionID = $_POST['edit'];
-        //     $data = [
-        //         'itemBenefaction' => trim($_POST['itemBenefaction']),
-        //         'quantityBenfaction' => trim($_POST['quantityBenfaction']),
-        //         'benefactionDescription' => trim($_POST['benefactionDescription']),
+    //             'itemBenefaction_err' => '',
+    //             'quantityBenfaction_err' => '',
+    //             'benefactionDescription_err' => '',
+    //             'photoBenfaction_err' => ''
+    //         ];
+    //         // die(print_r($this->imgUpload('photoBenfaction1')));
 
-        //         'photoBenfaction1' => isset($_POST['photoBenfaction1']) ? $this->imgUpload('photoBenfaction1') : null,                
-        //         'photoBenfaction2' => isset($_POST['photoBenfaction2']) ? $this->imgUpload('photoBenfaction2') : null,
-        //         'photoBenfaction3' => isset($_POST['photoBenfaction3']) ? $this->imgUpload('photoBenfaction3') : null,
-        //         'photoBenfaction4' => isset($_POST['photoBenfaction4']) ? $this->imgUpload('photoBenfaction4') : null,
+    //         //validate the input fields seperately
+    //         if(empty($data['itemBenefaction'])){
+    //             $data['itemBenefaction_err']='Please enter the Item';
+    //         }
 
-        //         'availabilityStatus' => '1',
-        //         'availability' => 'pending',
+    //         if(empty($data['quantityBenfaction'])){
+    //             $data['quantityBenfaction_err']='Please enter the Quantity';
+    //         }
 
-        //         'itemBenefaction_err' => '',
-        //         'quantityBenfaction_err' => '',
-        //         'benefactionDescription_err' => '',
-        //         'photoBenfaction_err' => ''
-        //     ];
-        //     // die(print_r($_POST));
-        //     // die(print_r($this->imgUpload('photoBenfaction1')));
+    //         if(empty($data['benefactionDescription'])){
+    //             $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
+    //         }
 
-        //     //validate the input fields seperately
-        //     if(empty($data['itemBenefaction'])){
-        //         $data['itemBenefaction_err']='Please enter the Item';
-        //     }
-
-        //     if(empty($data['quantityBenfaction'])){
-        //         $data['quantityBenfaction_err']='Please enter the Quantity';
-        //     }
-
-        //     if(empty($data['benefactionDescription'])){
-        //         $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
-        //     }
-
-        //     $uploadedFields = array_filter([$data['photoBenfaction1'], $data['photoBenfaction2'], $data['photoBenfaction3'], $data['photoBenfaction4']]);
+    //         // $uploadedFields = array_filter([$data['photoBenfaction1'], $data['photoBenfaction2'], $data['photoBenfaction3'], $data['photoBenfaction4']]);
            
-        //     if (count($uploadedFields) < 2) {
-        //         $data['photoBenfaction_err'] = 'Please upload at least 2 photos of the item';
-        //     }
+    //         // if (count($uploadedFields) < 2) {
+    //         //     $data['photoBenfaction_err'] = 'Please upload at least 2 photos of the item';
+    //         // }
 
-        //     if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
-        //         if($this->donorModel->editBenefaction($data)){
-        //             // die(print_r(123));
-        //             // die(print_r($this->imgUpload('photoBenfaction1')));
-        //             $this->view('donor/viewPostedBenefactions', $data);
-        //         }else{
-        //             die('Something Went Wrong');
-        //         }
-        //     }else{
-        //         //Load View
-        //         $this->view('donor/editPostedBenefactions', $data);
-        //     }
-        // }
+    //         if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err'])){
+    //             if($this->donorModel->updateBenefaction($data)){
+    //                 $this->view('donor/postedBenefactions', $data);
+    //             }else{
+    //                 die('Something Went Wrong');
+    //             }
+    //         }else{
+    //             //Pass data to the view
+    //             if(isset($_POST['edit'])){
+    //                 $benefactionID = $_POST['edit'];
+                    
+    //             }else if(isset($_POST['view'])){
+    //                 $benefactionID = $_POST['view'];
+    //             }
 
+    //             $data = [
+    //                 'title' => 'Edit Posted Benefactions',
+    //                 'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+    //             ];
 
-    }
+    //             $this->view('donor/editPostedBenefactions', $data);
+    //         }
 
+    //     } else {
+    //         //Pass data to the view
+    //         if(isset($_POST['edit'])){
+    //             $benefactionID = $_POST['edit'];
+                
+    //         }else if(isset($_POST['view'])){
+    //             $benefactionID = $_POST['view'];
+    //         }
+
+    //         $data = [
+    //             'title' => 'Edit Posted Benefactions',
+    //             'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+    //         ];
+
+    //         $this->view('donor/editPostedBenefactions', $data);
+    //     }
+
+    // }
 
     public function deleteBenefactions() {
 

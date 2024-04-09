@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postedBenefactions'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -105,16 +105,16 @@
                     <div class="right-column">
                         <div class="right-column-inner">
                             <div class="chosen-photos-container" id="chosen-photos-container1">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png" alt="Placeholder Image" />
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container2">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction2.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction2.png" alt="Placeholder Image" />
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container3">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction3.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction3.png" alt="Placeholder Image" />
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container4">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction4.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction4.png" alt="Placeholder Image" />
                             </div>
                         </div>
                     </div>         

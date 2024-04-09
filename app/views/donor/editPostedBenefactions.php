@@ -106,22 +106,22 @@
                         <div class="right-column-inner">
                             <div class="chosen-photos-container" id="chosen-photos-container1">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
-                                    <img id="placeholderImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container2">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
-                                    <img id="placeholderImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container3">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
-                                    <img id="placeholderImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container4">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
-                                    <img id="placeholderImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
                                 <?php endif; ?>
                             </div>                            
                         </div>
@@ -169,7 +169,7 @@
         function handleFileInputChange(inputId, containerId) {
             const input = document.getElementById(inputId);
             const container = document.getElementById(containerId);
-            const placeholderImage = document.getElementById('placeholderImage');
+            const placeholderImage = document.getElementById('benefactionImage');
 
             input.addEventListener('change', function() {
                 // Clear previous content

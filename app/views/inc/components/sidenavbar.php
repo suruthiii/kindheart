@@ -379,6 +379,15 @@
 
             <!------------------- Donor ------------------>
             <?php if ($_SESSION['user_type'] == 'donor'){ ?>
+                <a href="<?php echo URLROOT ?>/donor/index">
+                    <?php if ($section == 'dashboard'){?>
+                        <div class="selected-item">Dashboard</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Dashboard</div>
+                    <?php } ?>
+                </a>
+
                 <a href="<?php echo URLROOT ?>/donor/necessity">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
@@ -406,7 +415,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/benefaction/viewAllBenefactions">
+                <a href="<?php echo URLROOT ?>/benefaction/postedBenefactions">
                     <?php if ($section == 'benefactions'){?>
                         <div class="selected-item">Benefactions</div>
                     <?php }

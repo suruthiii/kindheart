@@ -14,10 +14,10 @@
             <!-- Middle container -->
             <div class="donor-middle-container">
                 <!-- Go Back Button -->
-                <div class="donor-goback-button">
+                <!-- <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
                     <button onclick="location.href='<?php echo URLROOT ?>/donor/donorPostDonations'">Go Back</button>
-                </div>
+                </div> -->
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
