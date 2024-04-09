@@ -253,23 +253,31 @@ class Benefaction extends Controller {
 
 
     public function deleteBenefactions() {
-        if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $benefactionID = $_POST['delete'];
 
-            if($this->donorModel->deleteBenefaction($benefactionID)) {
-                // Fetch updated benefactions data
-                $data = [
-                    'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
-                    
-                    'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
-                ];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['delete'])) {
+                $benefactionID = $_POST['delete'];
+                
+                // Call model method to delete benefaction
+                if ($this->donorModel->deleteBenefaction($benefactionID)) {
+                    // Deletion successful, redirect or reload data
 
-                // Pass the updated data to the view
-                $this->view('donor/postedBenefactions', $data);
-            } else {
-                die('Something went wrong');
-            }     
+                    // Fetch updated benefactions data
+                    $data = [
+                        'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+                        
+                        'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                    ];
+
+                    // Pass the updated data to the view
+                    $this->view('donor/postedBenefactions', $data);
+                } else {
+                    // Handle deletion failure (e.g., show error message)
+                    die('Failed to delete benefaction.');
+                }
+            }
         }
     }
+
 
 }

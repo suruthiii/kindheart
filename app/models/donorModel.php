@@ -113,5 +113,18 @@ class donorModel{
             return false;
         }
     }
-}
 
+    //Delete benefaction
+    public function deleteBenefaction($benefactionID){
+        // Prepare statement
+        $this->db->query('UPDATE benefaction SET availabilityStatus = 10 WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
