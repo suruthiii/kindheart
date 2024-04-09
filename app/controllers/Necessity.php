@@ -30,7 +30,7 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'student') {
             $data = [
-                'tablerow' => $this->necessityModel->getaddedMonetaryNecessities()
+                'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities()
             ];
 
             $this->view('student/necessity/postedmonetarynecessity', $data);
