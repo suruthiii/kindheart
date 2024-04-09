@@ -13,7 +13,7 @@ class Request extends Controller {
         $this->view('admin/request/studentRequest', $data);
     }
 
-    public function organizationRequest(){
+    public function adminOrganizationRequest(){
         $data = [
             'title' => 'Home page'
         ];
@@ -26,7 +26,6 @@ class Request extends Controller {
         ];
         $this->view('superAdmin/request/studentRequest', $data);
     }
-
     public function organizationRequest(){
         $data = [
             'title' => 'Home page'
