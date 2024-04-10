@@ -23,33 +23,68 @@
 
             <h3 style="margin-top: 25px">Student Requests</h3>
             <p style="margin-left: 10px">View the list of student requests</p>
-            <div class="req-list">
+            <div class="list">
                 <div class="list-title">
-                    <h4>Student name</h4>
+                    <h4>Unassigned</h4>
                 </div>
-                <div class="list-items">
-                    <table>
-                        <!-- Request 1 -->
-                        <tr>
-                            <td class="name">
-                                <h4>A.L.M.Callister</h4>
-                            </td>
-                            <td class="btn">
-                                <button class="rev-btn">Review</button>
-                            </td>
-                        </tr>
+                
+                <div class="card-list">
+                    <?php foreach($data['unassigned'] as $item) {?>
+                    <a href="<?php echo URLROOT ?>/requet/viewstudentrequest/<?php echo $item->userID ?>">
+                        <div class="card">
+                            <table>
+                                <tr>
+                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
+                                    <td width="50%" class="content">
+                                        <h4><?php echo $item->username ?></h4>
+                                    </td>
+                                    <td width="40%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
+                                            <input type="text" name="name" id="name" hidden value="<?php echo $item->userID ?>" />
+                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                                Assign
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
+                    <?php }?>
+                </div>
+            </div>
 
-                        <!-- Request 2 -->
-                        <tr>
-                            <td class="name">
-                                <h4>A.L.M.Callister</h4>
-                            </td>
-                            <td class="btn">
-                                <button class="rev-btn">Review</button>
-                            </td>
-                        </tr>
-                    </table>
+            <div class="list">
+                <div class="list-title">
+                    <h4>Assigned To Me</h4>
                 </div>
+                
+                <div class="card-list">
+
+                    <?php foreach($data['assigned'] as $item) {?>
+                    <a href="<?php echo URLROOT ?>/request/viewstudentrequest/<?php echo $item->userID ?>">
+                        <div class="card">
+                            <table>
+                                <tr>
+                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
+                                    <td width="30%" class="content">
+                                        <h4><?php echo $item->username ?></h4>
+                                    </td>
+                                    <td width="40%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
+                                            <input type="text" name="name" id="name" hidden value="" />
+                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                                Unassign
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
+                    <?php }?>
+                </div>
+
             </div>
         </div>
     </section>

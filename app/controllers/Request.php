@@ -4,32 +4,27 @@ class Request extends Controller {
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
         $this->middleware->checkAccess(['admin', 'superAdmin']);
-    }
-
-    public function adminStudentRequest(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        
-    }
-
-    public function adminOrganizationRequest(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/request/organizationRequest', $data);
+        $this->requestModel = $this->model('RequestModel');
     }
 
     public function studentRequest(){
-        $data = [
-            'title' => 'Home page'
-        ];
-
         if($_SESSION['user_type'] == 'admin') {
+            $data = [
+                'title' => 'Home page',
+                'unassigned' => $this->requestModel->getAllUnassignedStudentRequests(),
+                'assigned' => $this->requestModel->getAssignedStudentRequests()
+            ];
+
             $this->view('admin/request/studentRequest', $data);
         }
 
         else if($_SESSION['user_type'] == 'superAdmin') {
+            $data = [
+                'title' => 'Home page',
+                'unassigned' => $this->requestModel->getAllUnassignedStudentRequests(),
+                'assigned' => $this->requestModel->getAllAssignedStudentRequests()
+            ];
+
             $this->view('superAdmin/request/studentRequest', $data);
         }
 
@@ -38,15 +33,23 @@ class Request extends Controller {
         }
     }
     public function organizationRequest(){
-        $data = [
-            'title' => 'Home page'
-        ];
-
         if($_SESSION['user_type'] == 'admin') {
+            $data = [
+                'title' => 'Home page',
+                'unassigned' => $this->requestModel->getAllUnassignedOrganizationRequests(),
+                'assigned' => $this->requestModel->getAssignedOrganizationRequests()
+            ];
+
             $this->view('admin/request/organizationRequest', $data);
         }
 
         else if($_SESSION['user_type'] == 'superAdmin') {
+            $data = [
+                'title' => 'Home page',
+                'unassigned' => $this->requestModel->getAllUnassignedOrganizationRequests(),
+                'assigned' => $this->requestModel->getAllAssignedOrganizationRequests()
+            ];
+
             $this->view('superAdmin/request/organizationRequest', $data);
         }
 
