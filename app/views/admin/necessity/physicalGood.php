@@ -31,7 +31,7 @@
                 <div class="card-list">
 
                     <?php foreach($data['pending'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadmingood/<?php echo $item->necessityID ?>">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood/<?php echo $item->necessityID ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -65,7 +65,7 @@
                 <div class="card-list">
 
                     <?php foreach($data['confirmed'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadmingood/<?php echo $item->necessityID ?>">
+                    <a href="<?php echo URLROOT ?>/necessity/viewadmingood/<?php echo $item->necessityID ?>">
                         <div class="card">
                             <table>
                                 <tr>

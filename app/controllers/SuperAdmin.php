@@ -47,7 +47,10 @@ class SuperAdmin extends Controller {
 
     public function scholarship() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'pending' => $this->scholarshipModel->getAllPendingScholarships(),
+            'confirmed' => $this->scholarshipModel->getAllConfirmedScholarships(),
+            'ongoing' => $this->scholarshipModel->getAllOngoingScholarships()
         ];
         $this->view('superAdmin/scholarship', $data);
     }
