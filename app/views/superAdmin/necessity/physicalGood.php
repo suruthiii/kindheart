@@ -40,7 +40,7 @@
                                         <h4><?php echo $item->necessityName ?></h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description ?></p>
                                     </td>
-                                    <td width="30%" class="amount"><?php echo $item->quantity ?></td>
+                                    <td width="30%" class="amount"><?php echo $item->quantity ?>&nbsp;items</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -74,7 +74,7 @@
                                         <h4><?php echo $item->necessityName ?></h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description ?></p>
                                     </td>
-                                    <td width="30%" class="amount"><?php echo $item->quantity ?></td>
+                                    <td width="30%" class="amount"><?php echo $item->quantity ?>&nbsp;items</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
