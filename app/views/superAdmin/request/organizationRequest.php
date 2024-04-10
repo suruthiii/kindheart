@@ -70,7 +70,7 @@
                                     <td width="30%" class="content">
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
-                                    <td width="30%" class="amount"><?php echo $item->adminID ?></td>
+                                    <td width="30%" class="amount"><?php echo $item->adminName ?></td>
                                     <td width="30%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
                                             <input type="text" name="name" id="name" hidden value="" />
