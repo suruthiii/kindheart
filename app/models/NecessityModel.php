@@ -6,6 +6,7 @@ class NecessityModel{
         $this->db = new Database();
     }
 
+    
     public function addmonetarynecessitytodb($data){
         //sql statement for adding monetary necessity, necessity table
         $this->db->query('INSERT INTO necessity(necessityName,necessityType,fulfillmentStatus,description,doneeID) 
