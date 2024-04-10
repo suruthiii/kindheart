@@ -3,14 +3,14 @@ class Request extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only admins are allowed to access admin pages
-        // $this->middleware->checkAccess(['admin']);
+        $this->middleware->checkAccess(['admin', 'superAdmin']);
     }
 
     public function adminStudentRequest(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('admin/request/studentRequest', $data);
+        
     }
 
     public function adminOrganizationRequest(){
@@ -24,13 +24,37 @@ class Request extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/request/studentRequest', $data);
+
+        if($_SESSION['user_type'] == 'admin') {
+            $this->view('admin/request/studentRequest', $data);
+        }
+
+        else if($_SESSION['user_type'] == 'superAdmin') {
+            $this->view('superAdmin/request/studentRequest', $data);
+        }
+
+        else {
+            die('User Type Not Found');
+        }
     }
     public function organizationRequest(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/request/organizationRequest', $data);
+
+        if($_SESSION['user_type'] == 'admin') {
+            $this->view('admin/request/organizationRequest', $data);
+        }
+
+        else if($_SESSION['user_type'] == 'superAdmin') {
+            $this->view('superAdmin/request/organizationRequest', $data);
+        }
+
+        else {
+            die('User Type Not Found');
+        }
+
+        
     }
 
 }
