@@ -119,6 +119,8 @@
                         </div>
                     </a>
                     <?php }?>
+                </div>
+                </div>
 
             <div class="right-content">
                 <div class="right-cards">
