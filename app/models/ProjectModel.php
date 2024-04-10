@@ -15,7 +15,7 @@ class ProjectModel{
     }
 
     public function getAllConfirmedProjects() {
-        $this->db->query('SELECT projectID, title, (budget - receivedAmount) AS amount, description FROM project WHERE status = 1; ');
+        $this->db->query('SELECT projectID, title, budget AS amount, description FROM project WHERE status = 1; ');
         
         $result = $this->db->resultSet();
         
@@ -23,7 +23,7 @@ class ProjectModel{
     }
 
     public function getAllOngoingProjects() {
-        $this->db->query('SELECT projectID, title, (budget - receivedAmount) AS amount, description FROM project WHERE status = 3; ');
+        $this->db->query('SELECT projectID, title, budget AS amount, description FROM project WHERE status = 3; ');
         
         $result = $this->db->resultSet();
         

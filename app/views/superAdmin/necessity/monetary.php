@@ -29,7 +29,7 @@
                 </div>
                 
                 <div class="card-list">
-                    <?php foreach($data['necessities'] as $item) { ?>
+                    <?php foreach($data['pending'] as $item) { ?>
                     <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary/<?php echo $item->necessityID; ?>">
                         <div class="card">
                             <table>
@@ -59,20 +59,21 @@
 
             <div class="list">
                 <div class="list-title">
-                    <h4>Ongoing</h4>
+                    <h4>Confirmed</h4>
                 </div>
                 
                 <div class="card-list">
-                <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
+                    <?php foreach($data['confirmed'] as $item) { ?>
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary/<?php echo $item->necessityID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
                                     <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
                                     <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
+                                        <h4><?php echo $item->necessityName; ?></h4>
+                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description; ?></p>
                                     </td>
-                                    <td width="30%" class="amount">Rs. 34,000.00</td>
+                                    <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="10%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                                             <input type="text" name="name" id="name" hidden value="" />
@@ -85,146 +86,39 @@
                             </table>
                         </div>
                     </a>
-
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
-                                    </td>
-                                    <td width="30%" class="amount">Rs. 34,000.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-                    
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
-                                    </td>
-                                    <td width="30%" class="amount">Rs. 34,000.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
-                                    </td>
-                                    <td width="30%" class="amount">Rs. 34,000.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
-                                    </td>
-                                    <td width="30%" class="amount">Rs. 34,000.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">80 Page CR Book</p>
-                                    </td>
-                                    <td width="30%" class="amount">Rs. 34,000.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
-
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary">
-                        <div class="card">
-                            <table>
-                                <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
-                                        <h4>Stationary</h4>
-                                        <p>80 Page CR Book</p>
-                                    </td>
-                                    <td width="30%" class="amount">Rs. 34,567.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </a>
+                    <?php }?>
                 </div>
-            </div>
+                </div>
+
+                <div class="list">
+                <div class="list-title">
+                    <h4>Ongoing</h4>
+                </div>
+                <div class="card-list">
+                    <?php foreach($data['ongoing'] as $item) { ?>
+                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary/<?php echo $item->necessityID; ?>">
+                        <div class="card">
+                            <table>
+                                <tr>
+                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
+                                    <td width="50%" class="content">
+                                        <h4><?php echo $item->necessityName; ?></h4>
+                                        <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description; ?></p>
+                                    </td>
+                                    <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
+                                    <td width="10%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                            <input type="text" name="name" id="name" hidden value="" />
+                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </a>
+                    <?php }?>
 
             <div class="right-content">
                 <div class="right-cards">
