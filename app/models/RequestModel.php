@@ -7,7 +7,7 @@ class RequestModel{
     }
 
     public function getAllUnassignedStudentRequests() {
-        $this->db->query("SELECT r.userID, u.username FROM request r JOIN user u ON r.userID = u.userID WHERE assignedStatus = 0 AND userType = 'student';");
+        $this->db->query("SELECT u.userID, u.username FROM user u JOIN donee d ON u.userID = d.doneeID WHERE u.status = 0 AND d.adminID = 0 AND d.doneeType = 'student';");
 
         $result = $this->db->resultSet();
 
@@ -15,7 +15,7 @@ class RequestModel{
     }
 
     public function getAllAssignedStudentRequests() {
-        $this->db->query("SELECT r.userID, r.adminID, u.username FROM request r JOIN user u ON r.userID = u.userID WHERE assignedStatus = 1 AND userType = 'student';");
+        $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.adminID != 0 AND d.doneeType = 'student';");
 
         $result = $this->db->resultSet();
 
@@ -23,7 +23,7 @@ class RequestModel{
     }
 
     public function getAllUnassignedOrganizationRequests() {
-        $this->db->query("SELECT r.userID, u.username FROM request r JOIN user u ON r.userID = u.userID WHERE assignedStatus = 0 AND userType = 'organization';");
+        $this->db->query("SELECT u.userID, u.username FROM user u JOIN donee d ON u.userID = d.doneeID WHERE u.status = 0 AND d.adminID = 0 AND d.doneeType = 'organization';");
 
         $result = $this->db->resultSet();
 
@@ -31,7 +31,7 @@ class RequestModel{
     }
 
     public function getAllAssignedOrganizationRequests() {
-        $this->db->query("SELECT r.userID, r.adminID, u.username FROM request r JOIN user u ON r.userID = u.userID WHERE assignedStatus = 1 AND userType = 'organization';");
+        $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.adminID != 0 AND d.doneeType = 'organization';");
 
         $result = $this->db->resultSet();
 
@@ -39,7 +39,7 @@ class RequestModel{
     }
 
     public function getAssignedStudentRequests() {
-        $this->db->query("SELECT r.userID, u.username FROM request r JOIN user u ON r.userID = u.userID WHERE assignedStatus = 0 AND userType = 'student' AND adminID = :adminID;");
+        $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.doneeType = 'student' AND d.adminID = :adminID;");
         $this->db->bind(':adminID', $_SESSION['user_id']);
 
         $result = $this->db->resultSet();
@@ -48,7 +48,7 @@ class RequestModel{
     }
 
     public function getAssignedOrganizationRequests() {
-        $this->db->query("SELECT r.userID, r.adminID, u.username FROM request r JOIN user u ON r.userID = u.userID WHERE assignedStatus = 1 AND userType = 'organization' AND adminID = :adminID;");
+        $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.doneeType = 'organization' AND d.adminID = :adminID;");
         $this->db->bind(':adminID', $_SESSION['user_id']);
 
         $result = $this->db->resultSet();
