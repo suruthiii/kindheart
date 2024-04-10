@@ -75,7 +75,7 @@ class NecessityModel{
     }
 
     public function getAllConfirmedMonetaryNecessities(){
-        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, (m.requestedAmount - m.receivedAmount) AS amount FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, requestedAmount AS amount FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 1;");
         
         $result = $this->db->resultSet();
@@ -83,7 +83,7 @@ class NecessityModel{
     }
 
     public function getAllOngoingMonetaryNecessities(){
-        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, (m.requestedAmount - m.receivedAmount) AS amount FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, requestedAmount AS amount FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 3;");
         
         $result = $this->db->resultSet();
