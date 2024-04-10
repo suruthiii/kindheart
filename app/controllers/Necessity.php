@@ -23,7 +23,9 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'superAdmin') {
             $data = [
-                'necessities' => $this->necessityModel->getAllMonetaryNecessities()
+                'pending' => $this->necessityModel->getAllPendingMonetaryNecessities(),
+                'confirmed' => $this->necessityModel->getAllConfirmedMonetaryNecessities(),
+                'ongoing' => $this->necessityModel->getAllOngoingMonetaryNecessities()
             ];
 
             $this->view('superAdmin/necessity/monetary', $data);
@@ -65,7 +67,8 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'superAdmin') {
             $data = [
-                'necessities' => $this->necessityModel->getAllPhysicalGoods()
+                'pending' => $this->necessityModel->getAllPendingPhysicalGoods(),
+                'confirmed' => $this->necessityModel->getAllConfirmedPhysicalGoods()
             ];
 
             $this->view('superAdmin/necessity/physicalgood', $data);
