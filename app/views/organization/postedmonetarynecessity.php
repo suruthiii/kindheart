@@ -40,11 +40,8 @@
                                 </td>
                                 <td><p>Rs.<?php echo $pendingtablerow->requestedAmount?></p></td>
                                 <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
-
-                                
                                 <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
                                 <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
-                                <?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     </table>

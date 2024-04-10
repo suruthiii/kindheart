@@ -32,7 +32,32 @@
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-first-div">
                                 <label for="necessityMonetary">Necessity</label>
-                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
+                                <select id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
+                                    <option value="EducationalSuppliesandTools" class="tooltip">Educational Supplies and Tools</option>
+                                        <!-- <span class="tooltiptext">
+                                            <ul>
+                                                <li>Pencils</li>
+                                                <li>Pens</li>
+                                                <li>Notebooks</li>
+                                                <li>Textbooks</li>
+                                                <li>Calculators</li>
+                                                <li>Educational software</li>
+                                                <li>Interactive whiteboards</li>
+                                                <li>Microscopes</li>
+                                                <li>Lab equipment</li>
+                                                <li>Robotics kits</li>
+                                                <li>Coding software</li>
+                                                <li>Laptops</li>
+                                                <li>3D printers</li>
+                                            </ul>
+                                        </span> -->
+                                    <option value="ClothingandAccessories">Clothing and Accessories</option>
+                                    <option value="RecreationandSportsEquipment">Recreation and Sports Equipment</option>
+                                    <option value="HealthandWellnessProducts">Health and Wellness Products</option>
+                                    <option value="TransportationandMobility">Transportation and Mobility</option>
+                                    <option value="LiteratureandReadingMaterials">Literature and Reading Materials</option>
+                                    <option value="othernecessitycato">Other</option>
+                                </select>
                                 <!-- Monetary necessity Error display -->
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityMonetary_err']) ? $data['necessityMonetary_err']: ''; ?></span>
                             </div>
