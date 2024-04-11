@@ -155,6 +155,52 @@
                     necessityTypeSelect.addEventListener('change', toggleRecurringFields);
                 });
 
+                // Function to calculate the number of days between two dates
+                function calculateDateRange(startDate, endDate) {
+                    const start = new Date(startDate);
+                    const end = new Date(endDate);
+                    const diffTime = Math.abs(end - start);
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                    return diffDays;
+                }
+
+                // Function to disable radio buttons based on the number of days
+                function disableRadioButtons() {
+                    const startDate = document.getElementById('recurringstartdate').value;
+                    const endDate = document.getElementById('recurringenddate').value;
+                    const dateRange = calculateDateRange(startDate, endDate);
+
+                    const weekly = document.getElementById('weekly');
+                    const monthly = document.getElementById('monthly');
+                    const yearly = document.getElementById('yearly');
+
+                    if (dateRange < 7) {
+                        weekly.disabled = true;
+                        monthly.disabled = true;
+                        yearly.disabled = true;
+                    } else if (dateRange >= 7 && dateRange < 30) {
+                        monthly.disabled = true;
+                        yearly.disabled = true;
+                        weekly.disabled = false;
+                    } else if (dateRange >= 30 && dateRange < 365) {
+                        yearly.disabled = true;
+                        weekly.disabled = false;
+                        monthly.disabled = false;
+                    } else {
+                        weekly.disabled = false;
+                        monthly.disabled = false;
+                        yearly.disabled = false;
+                    }
+                }
+
+                // Add event listeners to start and end date inputs
+                document.getElementById('recurringstartdate').addEventListener('change', disableRadioButtons);
+                document.getElementById('recurringenddate').addEventListener('change', disableRadioButtons);
+
+                // Call the function initially to set the initial state of radio buttons
+                disableRadioButtons();
+
+
             </script>
             <!-- ---------------------------------------------------------------------------------------------- -->
 
