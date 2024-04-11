@@ -29,9 +29,11 @@
                         <img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $item->itemPhoto1; ?>" alt="<?php echo $item->description; ?>">
                         <div class="card-content">
                             <h3><?php echo $item->itemName; ?></h3>
-                            <p>posted by <?php echo $item->donorID; ?></p>
-                            <a href="" class="btn">View</a>
-                            <a href="" class="btn">Apply</a>
+                            <p>posted by <?php echo $item->username; ?></p>
+                            <form action="<?php echo URLROOT ?>/student/benefactionview" method="GET" class="btn" >
+                                <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
+                                <button type="submit" class="btn" > view </button>
+                            </form>
                         </div> 
                     </div>   
                     <?php } ?>
