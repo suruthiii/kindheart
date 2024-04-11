@@ -24,16 +24,16 @@
                             <table>
                                 <tr>
                                     <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
+                                    <td width="30%" class="content">
                                         <h4><?php echo $item->title; ?></h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description; ?></p>
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                    <td width="30%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
                                             <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                                Manage
                                             </button>
                                         </form>
                                     </td>
@@ -57,16 +57,16 @@
                             <table>
                                 <tr>
                                     <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
+                                    <td width="30%" class="content">
                                         <h4><?php echo $item->title; ?></h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description; ?></p>
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                    <td width="30%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
                                             <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                                Manage
                                             </button>
                                         </form>
                                     </td>
@@ -90,16 +90,16 @@
                             <table>
                                 <tr>
                                     <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="50%" class="content">
+                                    <td width="30%" class="content">
                                         <h4><?php echo $item->title; ?></h4>
                                         <p style="width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><?php echo $item->description; ?></p>
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
-                                    <td width="10%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                                    <td width="30%" class="option">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
                                             <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="delete" onclick="return confirmSubmit();">
-                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                                Manage
                                             </button>
                                         </form>
                                     </td>
