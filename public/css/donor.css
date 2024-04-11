@@ -286,8 +286,32 @@ span .donor-form-error-details{
 .posted-benefactions-pending-table{
     position: fixed;
     width: 45%;
-    height: 24vh;
+    height: 15vh;
     margin-top: 24vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-benefaction-onProgress-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 45vh;
+}
+
+.posted-benefaction-onProgress-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 49vh;
+    background-color: #DEDEDE;
+}
+
+.posted-benefactions-onProgress-table{
+    position: fixed;
+    width: 45%;
+    height: 15vh;
+    margin-top: 51vh;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -296,28 +320,29 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 50vh;
+    margin-top: 72vh;
 }
 
 .posted-benefaction-Completed-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 54vh;
+    margin-top: 76vh;
     background-color: #DEDEDE;
 }
 
 .posted-benefactions-Completed-table{
     position: fixed;
     width: 45%;
-    height: 24vh;
-    margin-top: 56vh;
+    height: 15vh;
+    margin-top: 76vh;
     overflow: hidden;
     overflow-y: scroll;
 }
 
 .posted-benefaction-pending-table-caption p, 
-.posted-benefaction-Completed-table-caption p{
+.posted-benefaction-Completed-table-caption p,
+.posted-benefaction-onProgress-table-caption p{
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: #262A41;
@@ -326,12 +351,14 @@ span .donor-form-error-details{
 }
 
 .posted-benefactions-pending-table table,
-.posted-benefactions-Completed-table table{
+.posted-benefactions-Completed-table table,
+.posted-benefactions-onProgress-table table{
     width: 95%;
 }
 
 .posted-benefactions-pending-table table tr,
-.posted-benefactions-Completed-table table tr{
+.posted-benefactions-Completed-table table tr,
+.posted-benefactions-onProgress-table table tr{
     width: 100%;
     height: 10vh;
     background-color: #F5F5F5;
@@ -344,7 +371,8 @@ span .donor-form-error-details{
 }
 
 .posted-benefactions-pending-table table tr:hover,
-.posted-benefactions-Completed-table table tr:hover{
+.posted-benefactions-Completed-table table tr:hover,
+.posted-benefactions-onProgress-table table tr:hover{
     background-color: #fffdfd;
     transition: 0.2s;
     cursor: pointer;

@@ -77,6 +77,58 @@
                         <?php }?>
                     </div>
 
+                <!-- On Progress table -->
+                <div class="posted-benefaction-onProgress-table-caption">
+                    <p>On Progress</p>
+                </div>
+                <div class="posted-benefaction-onProgress-table-grey-line"></div>
+                    <div class="posted-benefactions-onProgress-table">
+                        <?php foreach($data['onProgressBenefaction'] as $benefaction){?>
+                            <table>
+                                    <tr>
+                                        <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png"></td>
+
+                                        <td width="50%">
+                                            <h4><?php echo $benefaction->itemName;?></h4>
+                                            <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-55%);" >
+                                            <p><?php echo $benefaction->itemQuantity;?> Out of <?php echo $benefaction->itemQuantity;?> Items Remain</p>
+                                        </td>
+                                        <!-- here have to edit with requested quatity of student -->
+
+                                        <td width="10%"style="transform: translateX(15%);"> 
+                                            <!-- <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
+                                                <input type="text" name="edit" id="edit" hidden value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
+                                                </button>
+                                            </form> -->
+                                        </td>
+
+                                        <td width="10%"style="transform: translateX(15%);">
+                                            <!-- <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
+                                                <input type="hidden" name="delete" id="delete" value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
+                                                </button>
+                                            </form> -->
+                                            <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
+                                                <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                                </button>
+                                            </form>
+                                        </td>
+
+                                    </tr>
+
+                            </table>
+                            
+                        <?php }?>
+                    </div>
+
                 <!-- Completed Table -->
                 <div class="posted-benefaction-Completed-table-caption">
                     <p>Completed</p>

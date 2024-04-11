@@ -109,6 +109,8 @@ class Benefaction extends Controller {
                     // die(print_r($this->imgUpload('photoBenfaction1')));
                     $data = [
                         'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+
+                        'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
                         
                         'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
                     ];
@@ -146,6 +148,8 @@ class Benefaction extends Controller {
         // Load the view with data
         $data = [
             'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+
+            'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
             
             'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
         ];
@@ -274,6 +278,8 @@ class Benefaction extends Controller {
                     // Fetch updated benefactions data
                     $data = [
                         'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+
+                        'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
                         
                         'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
                     ];

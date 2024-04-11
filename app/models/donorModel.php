@@ -63,6 +63,19 @@ class donorModel{
         return $this->db->resultSet();
     }
 
+    // Get onProgress benefactions
+    public function getOnProgressBenefaction() {
+        // Prepare statement
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 1');
+        
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
+        return $this->db->resultSet();
+    }
+    
+
     // Get completed benefactions
     public function getCompletedBenefaction() {
         // Prepare statement
