@@ -10,6 +10,16 @@ class SuccessStory extends Controller {
         $this->successStoryModel = $this->model('SuccessStoryModel');
     }
 
+
+    public function story($other_data = null){
+        $data = [
+            'title' => 'Home page',
+            'story' => $this->SuccessStoryModel->getStoryEditData()
+        ];
+
+        $this->view('student/successstory', $data, $other_data);
+    }
+
     public function imgUpload($file){
         $file_name = $_FILES[$file]['name'];
         $file_size = $_FILES[$file]['size'];
@@ -72,7 +82,8 @@ class SuccessStory extends Controller {
                     }
                 } else {
                     // Load view with errors
-                    die('Something went wrong');
+                    // die('Something went wrong');
+                    $this->story($data);
                 }
             }else{
                 die('incorrect method!');
@@ -184,7 +195,22 @@ class SuccessStory extends Controller {
                 }
             } else {
                 // Load view with errors
-                die('Something went wrong');
+                // die('Something went wrong');
+                $backend_data = $this->SuccessStoryModel->getStoryEditData($data['storyID']);
+
+                $story_data = [
+                    'title' => 'Edit Admin',
+                    'story_details' => [
+                        'storyID' => $backend_data->storyID,
+                        'title' => $backend_data->title, 
+                        'description' => $backend_data->description,
+                        'username' => $backend_data->username
+
+                    ],
+                    'err' => $data['err']
+                ];
+                
+                $this->view('student/editStory', $story_data);
             }
         }else{
             die('incorrect method!');

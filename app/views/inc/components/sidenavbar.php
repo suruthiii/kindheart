@@ -243,7 +243,7 @@
             
 
 
-                <a href="#2">
+                <a href="<?php echo URLROOT ?>/student/scholarships">
                     <?php if ($section == 'scholarships'){?>
                         <div class="selected-item">Scholarships</div>
                     <?php }
@@ -254,7 +254,7 @@
 
 
 
-                <a href="#3">
+                <a href="<?php echo URLROOT ?>/student/benefactions">
                     <?php if ($section == 'benefactions'){?>
                         <div class="selected-item">Benefactions</div>
                     <?php }
