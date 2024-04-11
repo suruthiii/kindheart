@@ -63,19 +63,20 @@
 
                         <!-- funding duration -->
                         <div class="add-necessity-one-line-input-for-radio-buttons">
-                            <label for="fundingDurations">Frequency</label><br>
-                            <input type="radio" id="weekly" name="fundingDurations" value="weekly">
+                            <label for="frequency">Frequency</label><br>
+                            <input type="radio" id="weekly" name="frequency" value="weekly">
                             <label for="weekly">Weekly</label>
-                            <input type="radio" id="monthly" name="fundingDurations" value="monthly">
+                            <input type="radio" id="monthly" name="frequency" value="monthly">
                             <label for="weekly">Monthly</label>
-                            <input type="radio" id="yearly" name="fundingDurations" value="yearly">
-                            <label for="weekly">Yearly</label>
+                            <input type="radio" id="yearly" name="frequency" value="yearly">
+                            <label for="weekly">Yearly</label><br>
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['frequency_err']) ? $data['frequency_err']: ''; ?></span>
                         </div>
 
                         <!-- Description about requested necessity -->
                         <div class="add-necessity-text-area-input-to-oneline">
                             <label for="monetarynecessitydes">Description</label>
-                            <textarea name="monetarynecessitydes" id="monetarynecessitydes" cols="30" rows="10"><?php echo isset($data['monetarynecessitydes']) ? $data['monetarynecessitydes'] : ''; ?></textarea>
+                            <textarea name="monetarynecessitydes" id="monetarynecessitydes" cols="30" rows="10" title="An explanation of why funding is necessary"><?php echo isset($data['monetarynecessitydes']) ? $data['monetarynecessitydes'] : ''; ?></textarea>
                             <!-- Neccessity description error display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['monetarynecessitydes_err']) ? $data['monetarynecessitydes_err']: ''; ?></span>
                         </div>
@@ -83,7 +84,7 @@
                         <!-- Requested Amount in Rupees -->
                         <div class="add-necessity-one-line-input">
                             <label for="requestedamount">Requested Amount in Rupees </label>
-                            <input type="number" id="requestedamount" name="requestedamount" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
+                            <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
                             <!-- Requested Amount Error Display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['requestedamount_err']) ? $data['requestedamount_err']: ''; ?></span>
                         </div>
@@ -109,22 +110,13 @@
                     function toggleRecurringFields() {
                         var recurringStartDateInput = document.getElementById('recurringstartdate');
                         var recurringEndDateInput = document.getElementById('recurringenddate');
-                        var weekly = document.getElementById('weekly');
-                        var monthly = document.getElementById('monthly');
-                        var yearly = document.getElementById('yearly');
 
                         if (necessityTypeSelect.value === 'onetime') {
                             recurringStartDateInput.disabled = true;
                             recurringEndDateInput.disabled = true;
-                            weekly.disabled=true;
-                            monthly.disabled=true;
-                            yearly.disabled=true;
                         } else {
                             recurringStartDateInput.disabled = false;
                             recurringEndDateInput.disabled = false;
-                            weekly.disabled=false;
-                            monthly.disabled=false;
-                            yearly.disabled=false;
                         }
                     }
 

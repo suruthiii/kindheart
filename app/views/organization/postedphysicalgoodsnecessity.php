@@ -34,7 +34,9 @@
                     <table>
                         <?php foreach($data['pendingtablerow'] as $pendingtablerow): ?>
                             <tr>
-                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td>
+                                    
+                                </td>
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
