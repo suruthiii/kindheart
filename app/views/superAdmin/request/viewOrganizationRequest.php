@@ -21,7 +21,7 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Organization</h3>
+            <h3 style="margin-top: 25px">View Organization Request</h3>
             <p style="margin-left: 10px">View information about the organization</p>
             
             <div class="necessity-info">
@@ -84,17 +84,17 @@
             </div>
 
             <div class="view-donation-btn-container" style="display: flex;">
-                <form action="<?php echo URLROOT ?>/user/deleteUser" method="post" class="delete-form">
+                <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                     <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Delete
+                        Accept
                     </button>
                 </form>
                 &nbsp;
-                <form action="<?php echo URLROOT ?>/user/banUser" method="post" class="delete-form">
+                <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
                     <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Ban
+                        Reject
                     </button>
                 </form>
                 
