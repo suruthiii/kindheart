@@ -40,7 +40,7 @@
                                     </td>
                                     <td width="40%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="name" id="name" hidden value="<?php echo $item->userID ?>" />
+                                            <input type="text" name="name" id="name" hidden value="<?php echo $item->userID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
                                                 Assign
                                             </button>
@@ -71,8 +71,8 @@
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
                                     <td width="40%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/request/unassignadmin" method="post" class="assign-manage-form">
+                                            <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->userID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
                                                 Unassign
                                             </button>
