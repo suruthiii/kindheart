@@ -249,19 +249,26 @@ class Necessity extends Controller {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
-                    'necessitygoods' => trim($_POST['necessitygoods']),
+                    'necessityCategory' => trim($_POST['necessityCategory']),
                     'requestedgoodsquantity' => trim($_POST['requestedgoodsquantity']),
                     'goodsnecessitydes' => trim($_POST['goodsnecessitydes']),
-                    'necessitygoods_err' => '',
+                    'neccessityitem' => trim($_POST['neccessityitem']),
+                    'necessityCategory_err' => '',
                     'requestedgoodsquantity_err' => '',
-                    'goodsnecessitydes_err' => ''
+                    'goodsnecessitydes_err' => '',
+                    'neccessityitem_err' => ''
                 ];
 
                 //check wheather field are empty or not
 
-                //necessity good field
-                if(empty($data['necessitygoods'])){
-                    $data['necessitygoods_err']='Please enter the Necessity about Goods';
+                //necessity category field
+                if(empty($data['necessityCategory'])){
+                    $data['necessityCategory_err']='Please Select the Necessity Category';
+                }
+
+                //necessity item field
+                if(empty($data['neccessityitem'])){
+                    $data['neccessityitem_err']='Please make sure the appropriate need is entered in the appropriate category.';
                 }
 
                 //requested goods quantity
@@ -277,7 +284,7 @@ class Necessity extends Controller {
                 }
 
                 //check whether there any errors
-                if(empty($data['necessitygoods_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
+                if(empty($data['necessityCategory_err']) && empty($data['neccessityitem_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
                     if($this->necessityModel->addgoodsnecessitytodb($data)){
                         redirect('necessity/physicalgood');
                     }else{
@@ -297,12 +304,14 @@ class Necessity extends Controller {
 
             }else{
                 $data = [
-                    'necessitygoods' => '',
+                    'necessityCategory' => '',
                     'requestedgoodsquantity' => '',
                     'goodsnecessitydes' => '',
-                    'necessitygoods_err' => '',
+                    'neccessityitem' => '',
+                    'necessityCategory_err' => '',
                     'requestedgoodsquantity_err' => '',
-                    'goodsnecessitydes_err' => ''
+                    'goodsnecessitydes_err' => '',
+                    'neccessityitem_err' => ''
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
