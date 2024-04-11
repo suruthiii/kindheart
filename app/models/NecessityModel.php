@@ -31,8 +31,8 @@ class NecessityModel{
             $_SESSION['monetaryNecessityID'] = $monetaryNecessityID;
 
             //sql statement for adding monetary necessity, money table
-            $this->db->query('INSERT INTO money(monetaryNecessityID ,requestedAmount,monetaryNecessityType,startDate,endDate) 
-            VALUES (:monetaryNecessityID, :requestedamount, :necessityType, :recurringstartdate, :recurringenddate)');
+            $this->db->query('INSERT INTO money(monetaryNecessityID ,requestedAmount,monetaryNecessityType,startDate,endDate,frequency) 
+            VALUES (:monetaryNecessityID, :requestedamount, :necessityType, :recurringstartdate, :recurringenddate, :frequency)');
 
             // Binding values with array value
             $this->db->bind(':monetaryNecessityID', $_SESSION['monetaryNecessityID']);
@@ -40,6 +40,7 @@ class NecessityModel{
             $this->db->bind(':necessityType', $data['necessityType']);
             $this->db->bind(':recurringstartdate', $data['recurringstartdate']);
             $this->db->bind(':recurringenddate', $data['recurringenddate']);
+            $this->db->bind(':frequency', $data['frequency']);
 
             $result2 = $this->db->execute();
 
@@ -59,7 +60,7 @@ class NecessityModel{
     }
     
     public function getaddedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -68,7 +69,7 @@ class NecessityModel{
     }
 
     public function getaddedCompletedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -101,7 +102,7 @@ class NecessityModel{
     }
 
     public function getaddedGoodsNecessities(){
-        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
+        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity,physicalgood.itemCategory FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
         WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
@@ -109,7 +110,7 @@ class NecessityModel{
     }
 
     public function getaddedCompletedGoodsNecessities(){
-        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
+        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity,physicalgood.itemCategory FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
         WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
@@ -133,14 +134,15 @@ class NecessityModel{
     }
 
     public function addgoodsnecessitytodb($data){
+        print_r($data);
         //sql statement for adding Goods necessity, necessity table
         $this->db->query('INSERT INTO necessity(necessityName,necessityType,fulfillmentStatus,description,doneeID) 
-        VALUES (:necessitygoods, :necessityType,:fulfillmentStatus, :goodsnecessitydes, :doneeID)');
+        VALUES (:neccessityitem, :necessityType,:fulfillmentStatus, :goodsnecessitydes, :doneeID)');
 
         // Binding values with array value
-        $this->db->bind(':necessitygoods', $data['necessitygoods']);
+        $this->db->bind(':neccessityitem', $data['neccessityitem']);
         $this->db->bind(':necessityType', 'Physical Goods');
-        $this->db->bind(':fulfillmentStatus','Pending');
+        $this->db->bind(':fulfillmentStatus', 0);
         $this->db->bind(':goodsnecessitydes', $data['goodsnecessitydes']);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -156,12 +158,13 @@ class NecessityModel{
             $_SESSION['goodNecessityID'] = $goodNecessityID;
 
             //sql statement for adding monetary necessity, money table
-            $this->db->query('INSERT INTO physicalgood(goodNecessityID ,requestedQuantity) 
-            VALUES (:goodNecessityID, :requestedgoodsquantity)');
+            $this->db->query('INSERT INTO physicalgood(goodNecessityID ,itemCategory, requestedQuantity) 
+            VALUES (:goodNecessityID,:necessityCategory, :requestedgoodsquantity)');
 
             // Binding values with array value
             $this->db->bind(':goodNecessityID', $_SESSION['goodNecessityID']);
             $this->db->bind(':requestedgoodsquantity', $data['requestedgoodsquantity']);
+            $this->db->bind(':necessityCategory', $data['necessityCategory']);
 
             $result2 = $this->db->execute();
 
