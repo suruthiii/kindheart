@@ -21,7 +21,7 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Organization Registration Request</h3>
+            <h3 style="margin-top: 25px">View Organization RegistrationRequest</h3>
             <p style="margin-left: 10px">View information about the organization</p>
             
             <div class="necessity-info">
