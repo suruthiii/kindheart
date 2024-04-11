@@ -56,25 +56,25 @@
                                     <div class="benefaction-third-div-four-input-one-line">
                                             <div class="add-benefaction-first-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 1</p>
                                                 </label> 
                                             </div>
                                             <div class="add-benefaction-second-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 2</p>
                                                 </label> 
                                             </div>
                                             <div class="add-benefaction-third-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 2</p>
                                                 </label> 
                                             </div>
                                             <div class="add-benefaction-fourth-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 4</p>
                                                 </label> 
                                             </div>
@@ -146,6 +146,11 @@
             return true;
         }
 
+        function handleImageType(input){
+            validateFileType(input);
+            imageBox(input);
+        }
+
         function validateFileType(input) {
             const file = input.files[0];
             const fileType = file.type;
@@ -156,6 +161,14 @@
                 input.value = ''; // Clear the selected file
             }
         }
+
+        function imageBox(input) {
+            document .querySelector (".add-benefaction-box").style.border = '1px dashed red';
+            document .querySelector (".add-benefaction-box").style.backgroundColor= 'rgb(249, 224, 209)';
+            document .querySelector (".add-benefaction-box").style.color= 'rgb(213, 83, 7)';
+
+        }
+
 
         // Function to handle file input change
         function handleFileInputChange(inputId, containerId) {

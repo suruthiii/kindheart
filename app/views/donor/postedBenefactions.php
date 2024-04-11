@@ -14,10 +14,10 @@
             <!-- Middle container -->
             <div class="donor-middle-container">
                 <!-- Go Back Button -->
-                <!-- <div class="donor-goback-button">
+                <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/donorPostDonations'">Go Back</button>
-                </div> -->
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/donorSelectDonation'">Go Back</button>
+                </div>
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
@@ -96,19 +96,19 @@
                                     <td width="10%" style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
 
                                     <td width="10%"style="transform: translateX(15%);">
+                                        <!-- <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
+                                            <input type="hidden" name="edit" id="edit" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">
+                                            </button>
+                                        </form> -->
+                                    </td>
+
+                                    <td width="10%"style="transform: translateX(15%);"> 
                                         <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
                                             <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
-                                            </button>
-                                        </form>
-                                    </td>
-
-                                    <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
-                                            <input type="hidden" name="edit" id="edit" value="<?php echo $benefaction->benefactionID; ?>" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">
                                             </button>
                                         </form>
                                     </td>

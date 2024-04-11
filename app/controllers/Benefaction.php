@@ -16,6 +16,13 @@ class Benefaction extends Controller {
         $this->view('donor/index', $data);
     }
 
+    public function donorSelectDonation(){
+        $data = [
+            'title' => 'Donation Selection Page'
+        ];
+        $this->view('donor/donorSelectDonation', $data);
+    }
+
     public function viewAllBenefactions(){
         $data = [
             'title' => 'All Benefcation Posted Page'
@@ -67,7 +74,7 @@ class Benefaction extends Controller {
                 'photoBenfaction3' => $this->imgUpload('photoBenfaction3'),
                 'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
 
-                'availabilityStatus' => '1',
+                'availabilityStatus' => '0',
                 'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
@@ -100,7 +107,13 @@ class Benefaction extends Controller {
                 if($this->donorModel->addBenefaction($data)){
                     // die(print_r(123));
                     // die(print_r($this->imgUpload('photoBenfaction1')));
-                    $this->view('donor/donorPostDonations', $data);
+                    $data = [
+                        'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+                        
+                        'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                    ];
+
+                    $this->view('donor/postedBenefactions', $data);
                 }else{
                     die('Something Went Wrong');
                 }

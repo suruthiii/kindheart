@@ -54,7 +54,7 @@ class donorModel{
     // Get pending benefactions
     public function getPendingBenefaction() {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 1');
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 0');
         
         // Execute
         $this->db->execute();
@@ -66,7 +66,7 @@ class donorModel{
     // Get completed benefactions
     public function getCompletedBenefaction() {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 0');
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 2');
         
         // Execute
         $this->db->execute();
