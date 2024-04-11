@@ -21,7 +21,7 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Student Request</h3>
+            <h3 style="margin-top: 25px">View Student Registration Request</h3>
             <p style="margin-left: 10px">View information about the student</p>
             
             <div class="necessity-info">
