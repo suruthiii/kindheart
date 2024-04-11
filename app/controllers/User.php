@@ -102,7 +102,7 @@ class User extends Controller {
                     redirect('user/organization');
                 }
 
-                else if($userType = 'donor') {
+                else if($userType == 'donor') {
                     redirect('user/donor');
                 }
 
