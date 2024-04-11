@@ -109,13 +109,22 @@
                     function toggleRecurringFields() {
                         var recurringStartDateInput = document.getElementById('recurringstartdate');
                         var recurringEndDateInput = document.getElementById('recurringenddate');
+                        var weekly = document.getElementById('weekly');
+                        var monthly = document.getElementById('monthly');
+                        var yearly = document.getElementById('yearly');
 
                         if (necessityTypeSelect.value === 'onetime') {
                             recurringStartDateInput.disabled = true;
                             recurringEndDateInput.disabled = true;
+                            weekly.disabled=true;
+                            monthly.disabled=true;
+                            yearly.disabled=true;
                         } else {
                             recurringStartDateInput.disabled = false;
                             recurringEndDateInput.disabled = false;
+                            weekly.disabled=false;
+                            monthly.disabled=false;
+                            yearly.disabled=false;
                         }
                     }
 
