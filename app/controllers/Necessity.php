@@ -132,6 +132,7 @@ class Necessity extends Controller {
                 } else {
                     $data['recurringstartdate'] = null;
                     $data['recurringenddate'] = null;
+                    $data['fundingDurations'] = null;
                 }
 
 
@@ -198,6 +199,7 @@ class Necessity extends Controller {
                     'necessityType' => '',
                     'recurringstartdate' => '',
                     'recurringenddate' => '',
+                    'fundingDurations' => '',
                     'monetarynecessitydes' => '',
                     'requestedamount' => '',
                     'necessityMonetary_err' => '',

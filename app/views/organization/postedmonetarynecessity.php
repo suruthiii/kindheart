@@ -66,9 +66,9 @@
                             <tr>
                                 <td>
                                     <?php
-                                        if ($pendingtablerow->monetaryNecessityType == "recurring"){
+                                        if ($completetablerow->monetaryNecessityType == "recurring"){
                                             echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="55" height="55">'; 
-                                        }elseif($pendingtablerow->monetaryNecessityType == "onetime"){
+                                        }elseif($completetablerow->monetaryNecessityType == "onetime"){
                                             echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="55" height="55">';
                                         }
                                     ?>
