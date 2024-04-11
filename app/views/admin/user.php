@@ -15,7 +15,7 @@
             <div class="user-types">
 
                 <!-- User 1 -->
-                <a class="user-link" href="<?php echo URLROOT ?>/user/adminstudent">
+                <a class="user-link" href="<?php echo URLROOT ?>/user/student">
                     <div class="user">
                         <div class="title">Students</div>
                     </div>
@@ -29,7 +29,7 @@
                 </a>
 
                  <!-- User 3 -->
-                 <a class="user-link" href="<?php echo URLROOT ?>/user/admindonor">
+                 <a class="user-link" href="<?php echo URLROOT ?>/user/donor">
                     <div class="user">
                         <div class="title">Donors</div>
                     </div>
