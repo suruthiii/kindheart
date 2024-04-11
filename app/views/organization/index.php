@@ -4,4 +4,6 @@
 
 <h1>Organization Dashboard</h1>
 
+<button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">enter the button</button>
+
 <?php require APPROOT.'/views/inc/footer.php'; ?>

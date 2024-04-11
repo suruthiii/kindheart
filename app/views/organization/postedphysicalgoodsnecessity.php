@@ -32,18 +32,22 @@
                 <div class="posted-necessity-pending-table-grey-line"></div>
                 <div class="posted-necessities-pending-table">
                     <table>
-                    <?php foreach($data['tablerow'] as $tablerow): ?>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4 class="pending-postednecessityTitle"><?php echo $tablerow->necessityName?></h4>
-                                <p class="pending-postednecessitydescription"><?php echo $tablerow->description?></p>
-                            </td>
-                            <td><p><?php echo $tablerow->quantity?></p></td>
-                            <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
-                            <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
-                            <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
-                        </tr>
-                    <?php endforeach; ?>
+                        <?php foreach($data['pendingtablerow'] as $pendingtablerow): ?>
+                            <tr>
+                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
+                                </td>
+                                <td><p><?php echo $pendingtablerow->requestedQuantity?></p></td>
+                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
+
+                                <td><button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">
+                                    <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                                    </button>
+                                </td>
+                                <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
 
@@ -54,12 +58,16 @@
                 <div class="posted-necessity-Completed-table-grey-line"></div>
                 <div class="posted-necessities-Completed-table">
                     <table>
-                        <tr>
-                            <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
-                            <td><h4>Stationary</h4><p>80 Pages CR books</p></td>
-                            <td></td>
-                            <td><p>Rs. 2000,00</p></td>
-                        </tr>
+                        <?php foreach($data['completetablerow'] as $completetablerow): ?>
+                            <tr>
+                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
+                                </td>
+                                <td></td>
+                                <td><p><?php echo $completetablerow->requestedQuantity?></p></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
                 
