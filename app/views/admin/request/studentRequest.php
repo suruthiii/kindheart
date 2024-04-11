@@ -72,7 +72,7 @@
                                     </td>
                                     <td width="40%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
+                                            <input type="text" name="name" id="name" hidden value="<?php echo $item->userID ?>" />
                                             <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
                                                 Unassign
                                             </button>

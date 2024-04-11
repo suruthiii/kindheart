@@ -15,7 +15,7 @@ class RequestModel{
     }
 
     public function getAllAssignedStudentRequests() {
-        $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.adminID != 0 AND d.doneeType = 'student';");
+        $this->db->query("SELECT u.userID, u.username, d.adminID, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.adminID != 0 AND d.doneeType = 'student';");
 
         $result = $this->db->resultSet();
 
@@ -31,7 +31,7 @@ class RequestModel{
     }
 
     public function getAllAssignedOrganizationRequests() {
-        $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.adminID != 0 AND d.doneeType = 'organization';");
+        $this->db->query("SELECT u.userID, u.username, d.adminID, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.adminID != 0 AND d.doneeType = 'organization';");
 
         $result = $this->db->resultSet();
 
@@ -74,5 +74,25 @@ class RequestModel{
         return $row;
     }
 
+    public function getDoneeType($donee_ID) {
+        $this->db->query('SELECT doneeType FROM donee WHERE doneeID = :doneeID;');
+        $this->db->bind(':doneeID', $donee_ID);
 
+        $result = $this->db->single();
+
+        return $result;
+    }
+
+    public function unassignAdmin($donee_ID) {
+        $this->db->query('UPDATE donee SET adminID = 0 WHERE doneeID = :doneeID');
+        $this->db->bind(':doneeID', $donee_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 }    
