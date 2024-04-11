@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "benefactions";?>
-<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
+<!-- <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?> -->
 
 <main class="page-container">
     <section class="section" id="main">
@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postedBenefactions'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -30,7 +30,7 @@
                     <div class="left-column">
                         <!-- Add Benefaction Form -->
                         <div class="add-benefaction-form">
-                            <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="POST" onsubmit="return validateForm()">
+                            <form enctype="multipart/form-data" action="" method="POST" onsubmit="return validateForm()">
                             
                                 <!-- Item -->
                                 <div class="benefaction-first-div">
