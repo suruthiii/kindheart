@@ -40,7 +40,7 @@ class NecessityModel{
             $this->db->bind(':necessityType', $data['necessityType']);
             $this->db->bind(':recurringstartdate', $data['recurringstartdate']);
             $this->db->bind(':recurringenddate', $data['recurringenddate']);
-            $this->db->bind(':frequency', $data['fundingDurations']);
+            $this->db->bind(':frequency', $data['frequency']);
 
             $result2 = $this->db->execute();
 

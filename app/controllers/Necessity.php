@@ -121,18 +121,33 @@ class Necessity extends Controller {
                     'necessityMonetary_err' => '',
                     'monetarynecessitydes_err' => '',
                     'requestedamount_err' => '',
-                    'recurringdate_err' => ''
+                    'recurringdate_err' => '',
+                    'frequency_err' => ''
                 ];
 
                 //change the getting input according to necessity type
                 if ($data['necessityType'] === 'recurring') {
                     $data['recurringstartdate'] = trim($_POST['recurringstartdate']);
                     $data['recurringenddate'] = trim($_POST['recurringenddate']);
-                    $data['fundingDurations'] = trim($_POST['fundingDurations']);
                 } else {
                     $data['recurringstartdate'] = null;
                     $data['recurringenddate'] = null;
-                    $data['fundingDurations'] = null;
+                }
+
+                if ($data['necessityType'] === 'recurring') {
+                    $startDate = new DateTime($data['recurringstartdate']);
+                    $endDate = new DateTime($data['recurringenddate']);
+                    
+                    // Calculate the difference in days
+                    $dateDiff = $startDate->diff($endDate)->days;
+                
+                    if ($dateDiff < 7) {
+                        $data['frequency_err'] = 'please enter dates at least have 7days difference';
+                    } else {
+                        $data['frequency'] = trim($_POST['frequency']);
+                    }
+                } else {
+                    $data['frequency'] = null;
                 }
 
 
@@ -156,7 +171,7 @@ class Necessity extends Controller {
 
                     if(empty($data['recurringenddate'])){
                         $data['recurringenddate_err']='Please enter the Recurring End Date';
-                    }  
+                    }
                 }
 
                 //recurring start and end date check
@@ -172,7 +187,7 @@ class Necessity extends Controller {
                 }
 
                 //check whether there any errors
-                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err'])){
+                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err']) && empty($data['frequency_err'])){
                     if($this->necessityModel->addmonetarynecessitytodb($data)){
                         redirect('necessity/monetary');
                     }else{
@@ -199,7 +214,7 @@ class Necessity extends Controller {
                     'necessityType' => '',
                     'recurringstartdate' => '',
                     'recurringenddate' => '',
-                    'fundingDurations' => '',
+                    'frequency' => '',
                     'monetarynecessitydes' => '',
                     'requestedamount' => '',
                     'necessityMonetary_err' => '',
@@ -207,7 +222,8 @@ class Necessity extends Controller {
                     'requestedamount_err' => '',
                     'recurringstartdate_err' => '',
                     'recurringenddate_err' => '',
-                    'recurringdate_err' => ''
+                    'recurringdate_err' => '',
+                    'frequency_err' =>''
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
