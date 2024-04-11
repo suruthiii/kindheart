@@ -59,7 +59,7 @@ class NecessityModel{
     }
     
     public function getaddedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -68,7 +68,7 @@ class NecessityModel{
     }
 
     public function getaddedCompletedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         

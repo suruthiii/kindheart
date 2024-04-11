@@ -128,6 +128,7 @@ class Necessity extends Controller {
                 if ($data['necessityType'] === 'recurring') {
                     $data['recurringstartdate'] = trim($_POST['recurringstartdate']);
                     $data['recurringenddate'] = trim($_POST['recurringenddate']);
+                    $data['fundingDurations'] = trim($_POST['fundingDurations']);
                 } else {
                     $data['recurringstartdate'] = null;
                     $data['recurringenddate'] = null;

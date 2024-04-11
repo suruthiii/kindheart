@@ -34,7 +34,15 @@
                     <table>
                         <?php foreach($data['pendingtablerow'] as $pendingtablerow): ?>
                             <tr>
-                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td>
+                                    <?php
+                                        if ($pendingtablerow->monetaryNecessityType == "recurring"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="55" height="55">'; 
+                                        }elseif($pendingtablerow->monetaryNecessityType == "onetime"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="55" height="55">';
+                                        }
+                                    ?>
+                                </td>
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
@@ -56,7 +64,15 @@
                     <table>
                         <?php foreach($data['completetablerow'] as $completetablerow): ?>
                             <tr>
-                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td>
+                                    <?php
+                                        if ($pendingtablerow->monetaryNecessityType == "recurring"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="55" height="55">'; 
+                                        }elseif($pendingtablerow->monetaryNecessityType == "onetime"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="55" height="55">';
+                                        }
+                                    ?>
+                                </td>
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
