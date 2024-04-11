@@ -15,7 +15,7 @@
             <div class="user-types">
 
                 <!-- Necessity 1 -->
-                <a class="user-link" href="<?php echo URLROOT ?>/request/adminstudentrequest">
+                <a class="user-link" href="<?php echo URLROOT ?>/request/studentrequest">
                     <div class="user">
                         <div class="title">Students</div>
                     </div>

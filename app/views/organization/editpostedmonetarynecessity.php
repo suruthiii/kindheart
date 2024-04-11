@@ -32,32 +32,7 @@
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-first-div">
                                 <label for="necessityMonetary">Necessity</label>
-                                <select id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
-                                    <option value="EducationalSuppliesandTools" class="tooltip">Educational Supplies and Tools</option>
-                                        <!-- <span class="tooltiptext">
-                                            <ul>
-                                                <li>Pencils</li>
-                                                <li>Pens</li>
-                                                <li>Notebooks</li>
-                                                <li>Textbooks</li>
-                                                <li>Calculators</li>
-                                                <li>Educational software</li>
-                                                <li>Interactive whiteboards</li>
-                                                <li>Microscopes</li>
-                                                <li>Lab equipment</li>
-                                                <li>Robotics kits</li>
-                                                <li>Coding software</li>
-                                                <li>Laptops</li>
-                                                <li>3D printers</li>
-                                            </ul>
-                                        </span> -->
-                                    <option value="ClothingandAccessories">Clothing and Accessories</option>
-                                    <option value="RecreationandSportsEquipment">Recreation and Sports Equipment</option>
-                                    <option value="HealthandWellnessProducts">Health and Wellness Products</option>
-                                    <option value="TransportationandMobility">Transportation and Mobility</option>
-                                    <option value="LiteratureandReadingMaterials">Literature and Reading Materials</option>
-                                    <option value="othernecessitycato">Other</option>
-                                </select>
+                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
                                 <!-- Monetary necessity Error display -->
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityMonetary_err']) ? $data['necessityMonetary_err']: ''; ?></span>
                             </div>
@@ -85,18 +60,6 @@
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span>
                             </div>
                         </div>
-
-                        <!-- funding duration -->
-                        <div class="add-necessity-one-line-input-for-radio-buttons">
-                            <label for="fundingDurations">Funding Duration</label><br>
-                            <input type="radio" id="weekly" name="fundingDurations" value="weekly">
-                            <label for="weekly">Weekly</label>
-                            <input type="radio" id="monthly" name="fundingDurations" value="monthly">
-                            <label for="weekly">Monthly</label>
-                            <input type="radio" id="yearly" name="fundingDurations" value="yearly">
-                            <label for="weekly">Yearly</label>
-                        </div>
-
                         <!-- Description about requested necessity -->
                         <div class="add-necessity-text-area-input-to-oneline">
                             <label for="monetarynecessitydes">Description</label>

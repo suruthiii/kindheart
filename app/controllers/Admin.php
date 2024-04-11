@@ -6,6 +6,9 @@ class Admin extends Controller {
         $this->middleware->checkAccess(['admin']);
         $this->userModel = $this->model('UserModel');
         $this->successStoryModel = $this->model('SuccessStoryModel');
+        $this->scholarshipModel = $this->model('ScholarshipModel');
+        $this->projectModel = $this->model('ProjectModel');
+        $this->benefactionModel = $this->model('BenefactionModel');
     }
 
     public function index(){
@@ -24,14 +27,20 @@ class Admin extends Controller {
 
     public function project() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'pending' => $this->projectModel->getAllPendingProjects(),
+            'confirmed' => $this->projectModel->getAllConfirmedProjects(),
+            'ongoing' => $this->projectModel->getAllOngoingProjects()
         ];
         $this->view('admin/project', $data);
     }
 
     public function scholarship() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'pending' => $this->scholarshipModel->getAllPendingScholarships(),
+            'confirmed' => $this->scholarshipModel->getAllConfirmedScholarships(),
+            'ongoing' => $this->scholarshipModel->getAllOngoingScholarships()
         ];
         $this->view('admin/scholarship', $data);
     }

@@ -33,7 +33,7 @@
                         <div class="tiles-new">
 
                             <?php foreach($data['stories'] as $item){?>
-                                <a href="<?php echo URLROOT ?>/student/SuccessStory/<?php echo $item->storyID?>">
+                                <!-- <a href="<?php echo URLROOT ?>/student/SuccessStory/<?php echo $item->storyID?>"> -->
                                     <div class="tile-new">
                                         <table>
                                             <tr>
@@ -56,7 +56,9 @@
                                             </tr>
                                         </table>
                                     </div>
-                                </a>
+                                <!-- 
+                                    
+                                 -->
                             <?php }?>
                         </div>
                     </div>

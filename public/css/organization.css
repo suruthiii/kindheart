@@ -825,6 +825,8 @@
     width: 80%;
     height: 69vh;
     margin-top: 16vh;
+    overflow: hidden;
+    overflow-y: scroll;
 }
 
 
@@ -834,6 +836,13 @@
     height: 12vh;
     display: flex;
     flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.add-necessity-one-line-input-for-radio-buttons{
+    position: relative;
+    width: 100%;
+    height: 10vh;
     margin-bottom: 3vh;
 }
 
@@ -871,7 +880,8 @@
 .add-necessity-one-line-input label,
 .add-necessity-text-area-input label,
 .add-necessity-text-area-input-to-oneline label,
-.add-necessity-one-line-second-type-input label{
+.add-necessity-one-line-second-type-input label,
+.add-necessity-one-line-input-for-radio-buttons label{
     color: #8692A6;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -882,7 +892,7 @@
 }
 
 .add-necessity-one-line-input input,
-.add-necessity-one-line-second-type-input .necessity-first-div input,
+.add-necessity-one-line-second-type-input .necessity-first-div select,
 .add-necessity-one-line-second-type-input .necessity-third-div input,
 .add-necessity-one-line-second-type-input .necessity-fourth-div input,
 .add-necessity-one-line-second-type-input .necessity-second-div select{
@@ -916,7 +926,7 @@
 .add-necessity-one-line-input input:focus,
 .add-necessity-text-area-input textarea:focus,
 .add-necessity-text-area-input-to-oneline textarea:focus,
-.add-necessity-one-line-second-type-input .necessity-first-div input:focus,
+.add-necessity-one-line-second-type-input .necessity-first-div select:focus,
 .add-necessity-one-line-second-type-input .necessity-third-div input:focus,
 .add-necessity-one-line-second-type-input .necessity-fourth-div input:focus,
 .add-necessity-one-line-second-type-input .necessity-second-div select:focus{

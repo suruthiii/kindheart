@@ -29,16 +29,21 @@
                     </div>
 
                     <div class="edit-story">
+                    <?php if (!empty($other_data)){?>
+                    <div class="error-msg">
+                        <span class="form-invalid"><?php echo $other_data["err"] ?></span>
+                    </div>
+                <?php } else { ?>
                         <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/successstory/editSuccessStory" onsubmit="return validateFileType()">
                             <div >
                                 
-                                <label for ="image-browser" class="add-photo-box">
+                                <!-- <label for ="image-browser" class="add-photo-box">
                                         <input onchange="display_image_name(this.files[0].name)" id="image-browser" type="file" name ="image"  style="display:none;" />
                                         <p class='file_info'>+ Add Photo</p>
                                 </label> 
                                 <small class="error-message"></small> 
-                            
-                                <br><br>
+                             -->
+                                <!-- <br><br> -->
                                     
                             </div> 
 
@@ -56,6 +61,7 @@
 
                             </div>                  
                         </form>
+                        <?php }?>
 
                     </div>
             
