@@ -84,6 +84,20 @@ class Student extends Controller {
         $this->view('student/scholarships', $data);
     }
 
+    public function benefactionview(){
+
+        $benefactionID = $_GET['benefactionID'];
+
+        $data = [
+            'title' => 'Home page',
+            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID)
+        ];
+
+
+
+        $this->view('student/benefactionview', $data);
+    }
+
     
 
 
