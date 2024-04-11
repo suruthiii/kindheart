@@ -146,6 +146,19 @@
             return true;
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+        // Select all file input elements with class 'file-input'
+        const fileInputs = document.querySelectorAll('.add-benefaction-box input[type="file"]');
+
+        // Loop through each file input element
+        fileInputs.forEach(function(input) {
+            // Add onchange event listener to each file input element
+            input.addEventListener('change', function() {
+                handleImageType(this); // Call handleImageType function with the current input element
+            });
+        });
+    });
+
         function handleImageType(input){
             validateFileType(input);
             imageBox(input);
@@ -153,21 +166,35 @@
 
         function validateFileType(input) {
             const file = input.files[0];
-            const fileType = file.type;
+            const fileType = file ? file.type : '';
 
             // Check if the selected file type is an image
             if (!fileType.startsWith('image/')) {
-                alert('Please select an image file (PNG, JPEG)');
+                alert('Please select an image file (PNG, JPEG, JPG)');
                 input.value = ''; // Clear the selected file
             }
         }
 
         function imageBox(input) {
-            document .querySelector (".add-benefaction-box").style.border = '1px dashed red';
-            document .querySelector (".add-benefaction-box").style.backgroundColor= 'rgb(249, 224, 209)';
-            document .querySelector (".add-benefaction-box").style.color= 'rgb(213, 83, 7)';
+        const parentLabel = input.parentElement;
+        const parentDiv = parentLabel.parentElement;
 
+        // Get the file from the input element
+        const file = input.files[0];
+
+        // Check if file type is valid (starts with 'image/')
+        if (file && file.type.startsWith('image/')) {
+            // Apply styling to the parent label (add-benefaction-box)
+            parentLabel.style.border = '1px dashed red';
+            parentLabel.style.backgroundColor = 'rgb(249, 224, 209)';
+            parentLabel.style.color = 'rgb(213, 83, 7)';
+        } else {
+            // Apply default styling to the parent label (add-benefaction-box)
+            parentLabel.style.border = '1px dashed red';
+            parentLabel.style.backgroundColor = 'white';
+            parentLabel.style.color = 'rgb(255, 0, 0)';
         }
+    }
 
 
         // Function to handle file input change

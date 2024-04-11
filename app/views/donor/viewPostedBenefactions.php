@@ -24,37 +24,58 @@
                     <h3>Posted Benefaction</h3>
                     <p>Last 30 Days</p>
                 </div>
-            
-                <div class="benefaction-info">
-                    <table>
-                        <tr class="benefaction-data">
-                            <th>Item Name</th>
-                            <td><?php print_r($data['benefaction_details']->itemName); ?></td>
-                        </tr>
-                        <tr class="benefaction-data">
-                            <th>Quantity</th>
-                            <td><?php print_r($data['benefaction_details']->itemQuantity) ?></td>
-                        </tr>
-                        <tr class="benefaction-data">
-                            <th>Description</th>
-                            <td><?php print_r($data['benefaction_details']->description) ?></td>
-                        </tr>
-                        <tr class="benefaction-data-image-row">
-                            <th>Images</th>
-                            <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
-                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>"></td>
-                            <?php endif; ?>
-                            <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
-                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>"></td>
-                            <?php endif; ?>
-                            <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
-                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>"></td>
-                            <?php endif; ?>
-                            <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
-                                <td><img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>"></td>
-                            <?php endif; ?>
-                        </tr>
-                    </table>
+
+                <div class="two-column-container">
+                    <!-- Left column for view-benefaction-form -->
+                    <div class="view-benefaction-left-column">
+                        <!-- Benefaction Details -->
+                        <div class="benefaction-info">
+                            <table>
+                                <tr class="benefaction-data">
+                                    <th>Item Name</th>
+                                    <td><?php print_r($data['benefaction_details']->itemName); ?></td>
+                                </tr>
+                                <tr class="benefaction-data">
+                                    <th>Category</th>
+                                    <td></td>
+                                </tr>
+                                <tr class="benefaction-data">
+                                    <th>Quantity</th>
+                                    <td><?php print_r($data['benefaction_details']->itemQuantity) ?></td>
+                                </tr>
+                                <tr class="benefaction-data">
+                                    <th>Description</th>
+                                    <td><?php print_r($data['benefaction_details']->description) ?></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Right column for photos container -->                    
+                    <div class="view-benefaction-right-column">
+                        <div class="view-benefaction-right-column-inner">
+                            <div class="chosen-photos-container" id="chosen-photos-container1">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
+                                <?php endif; ?>
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container2">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
+                                <?php endif; ?>
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container3">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
+                                <?php endif; ?>
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container4">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
+                                <?php endif; ?>
+                            </div>                            
+                        </div>
+                    </div> 
                 </div>
 
                 <div class="view-benefaction-btn-container">
@@ -75,6 +96,9 @@
                     </form>
                 </div>
             </div>
+
+            <!-- right side bar for success story/ choose or add necessity -->
+            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
         </div>
     </section>
 </main>
