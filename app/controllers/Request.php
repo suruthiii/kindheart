@@ -60,4 +60,28 @@ class Request extends Controller {
         
     }
 
+    public function viewStudentRequest($student_ID = null) {
+        if(empty($student_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'student_details' => $this->requestModel->getStudent($student_ID)
+        ];
+
+        $this->view($_SESSION['user_type'].'/request/viewStudentRequest', $data);
+    }
+
+    public function viewOrganizationRequest($org_ID = null){
+        if(empty($org_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'organization_details' => $this->requestModel->getOrganization($org_ID)
+        ];
+        $this->view($_SESSION['user_type'].'/request/viewOrganizationRequest', $data);
+    }
 }
