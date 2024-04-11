@@ -4,7 +4,7 @@
 <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "benefactions";?>
+<?php $section = "donations";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">

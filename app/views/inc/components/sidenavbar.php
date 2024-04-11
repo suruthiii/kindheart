@@ -406,21 +406,12 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/donor/scholarship">
-                    <?php if ($section == 'scholarships'){?>
-                        <div class="selected-item">Scholarships</div>
+                <a href="<?php echo URLROOT ?>/benefaction/donorSelectDonation">
+                    <?php if ($section == 'donations'){?>
+                        <div class="selected-item">Donations</div>
                     <?php }
                     else{ ?>
-                        <div class="item">Scholarships</div>
-                    <?php } ?>
-                </a>
-
-                <a href="<?php echo URLROOT ?>/benefaction/postedBenefactions">
-                    <?php if ($section == 'benefactions'){?>
-                        <div class="selected-item">Benefactions</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Benefactions</div>
+                        <div class="item">Donations</div>
                     <?php } ?>
                 </a>
 
