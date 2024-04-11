@@ -67,6 +67,15 @@ class NecessityModel{
         return $result;
     }
 
+    public function getaddedCompletedMonetaryNecessities(){
+        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
     public function getAllPendingMonetaryNecessities(){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, (m.requestedAmount - m.receivedAmount) AS amount FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0;");
@@ -94,6 +103,14 @@ class NecessityModel{
     public function getaddedGoodsNecessities(){
         $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
         WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $result = $this->db->resultSet();
+        return $result;
+    }
+
+    public function getaddedCompletedGoodsNecessities(){
+        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
+        WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
         return $result;
