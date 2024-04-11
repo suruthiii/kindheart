@@ -9,6 +9,7 @@ class Student extends Controller {
         $this->middleware->checkAccess(['student']);
         $this->studentModel = $this->model('StudentModel');
         $this->successStoryModel = $this->model('SuccessStoryModel');
+        $this->BenefactionModel = $this->model('BenefactionModel');
     }
 
     public function index(){
@@ -62,6 +63,28 @@ class Student extends Controller {
         
         $this->view('student/successstory', $data);
     }
+
+    public function benefactions(){
+
+        $data = [
+            'title' => 'Home page',
+            'benefactions' => $this->BenefactionModel->getBenefactions()
+        ];
+
+        $this->view('student/benefactions', $data);
+    }
+
+    public function scholarships(){
+
+        $data = [
+            'title' => 'Home page'
+            // 'benefactions' => $this->BenefactionModel->getBenefactions()
+        ];
+
+        $this->view('student/scholarships', $data);
+    }
+
+    
 
 
     
