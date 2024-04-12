@@ -708,7 +708,8 @@
 
 .posted-necessities-pending-table table tr td:nth-child(4) button,
 .posted-necessities-pending-table table tr td:nth-child(5) button,
-.posted-necessities-pending-table table tr td:nth-child(6) button{
+.posted-necessities-pending-table table tr td:nth-child(6) button,
+.posted-necessities-Completed-table table tr td:nth-child(4) button{
     border: none;
     cursor: pointer;
     background-color: #F5F5F5;
@@ -716,13 +717,15 @@
 
 .posted-necessities-pending-table table tr td:nth-child(4) button img,
 .posted-necessities-pending-table table tr td:nth-child(5) button img,
-.posted-necessities-pending-table table tr td:nth-child(6) button img{
+.posted-necessities-pending-table table tr td:nth-child(6) button img,
+.posted-necessities-Completed-table table tr td:nth-child(4) button img{
     transition: transform 0.3s ease-in-out;
 }
 
 .posted-necessities-pending-table table tr td:nth-child(4) button img:hover,
 .posted-necessities-pending-table table tr td:nth-child(5) button img:hover,
-.posted-necessities-pending-table table tr td:nth-child(6) button img:hover{
+.posted-necessities-pending-table table tr td:nth-child(6) button img:hover,
+.posted-necessities-Completed-table table tr td:nth-child(4) button img:hover{
     transform: scale(1.1);
 }
 
@@ -761,12 +764,12 @@
 }
 
 .posted-necessities-Completed-table table tr td:nth-child(1){
-    width: 13%;
+    width: 15%;
     padding-left: 15px;
 }
 
 .posted-necessities-Completed-table table tr td:nth-child(2){
-    width: 35%;
+    width: 40%;
     padding-left: 14px;
 }
 

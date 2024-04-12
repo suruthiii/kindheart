@@ -47,7 +47,11 @@
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
                                 <td><p>Rs.<?php echo $pendingtablerow->requestedAmount?></p></td>
-                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
+                                <td>
+                                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/viewOrganizationPendingMonetarynecessity'">
+                                        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                    </button>
+                                </td>
                                 <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
                                 <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
                             </tr>
@@ -76,8 +80,8 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td></td>
                                 <td><p>Rs.<?php echo $completetablerow->requestedAmount?></p></td>
+                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
