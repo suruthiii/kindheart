@@ -382,4 +382,20 @@ class Necessity extends Controller {
         ];
         $this->view('superAdmin/necessity/viewGoodDonation', $data);
     }
+
+    public function manageMonetary($necessity_ID = null) {
+        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($necessity_ID)) {
+            redirect('pages/404');
+        }
+
+        else {
+            $data = [
+                'title' => 'Home Page'
+                // 'necessity_details' => $this->necessityModel->getMonetaryDetails($necessity_ID),
+                // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
+            ];
+
+            $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+        }
+    }
 }
