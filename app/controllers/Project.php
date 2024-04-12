@@ -17,7 +17,7 @@ class Project extends Controller {
             $data = [
                 'title' => 'Home Page'
                 // 'project_details' => $this->projectModel->getMonetaryDetails($project_ID),
-                // 'comments' => $this->projectModel->getAllComments($necessity_ID)
+                // 'comments' => $this->projectModel->getAllComments($project_ID)
             ];
 
             $this->view($_SESSION['user_type'].'/project/manageproject', $data);
