@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "benefactions";?>
-<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
+<!-- <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?> -->
 
 <main class="page-container">
     <section class="section" id="main">
@@ -16,13 +16,13 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postedBenefactions'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
                 </div>
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Edit Posted Benefactions</h3>
-                    <p>Enter correct information and add your benefactions.</p>
+                    <p>Edit Your Benefactions</p>
                 </div>
 
                 <div class="two-column-container">
@@ -30,12 +30,12 @@
                     <div class="left-column">
                         <!-- Add Benefaction Form -->
                         <div class="add-benefaction-form">
-                            <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="POST" onsubmit="return validateForm()">
+                            <form enctype="multipart/form-data" action="" method="POST" onsubmit="return validateForm()">
                             
                                 <!-- Item -->
                                 <div class="benefaction-first-div">
                                     <label for="itemBenefaction">Item</label>
-                                    <input type="text" id="itemBenefaction" name="itemBenefaction" value="<?php echo isset($data['itemBenefaction']) ? $data['itemBenefaction'] : ''; ?>">
+                                    <input type="text" id="itemBenefaction" name="itemBenefaction" value="<?php print_r($data['benefaction_details']->itemName); ?>">
 
                                     <!-- Monetary necessity Error display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['itemBenefaction_err']) ? $data['itemBenefaction_err']: ''; ?></span>
@@ -44,10 +44,10 @@
                                 <!-- Quantity -->
                                 <div class="benefaction-second-div">
                                     <label for="quantityBenfaction">Quantity </label>
-                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php echo isset($data['quantityBenfaction']) ? $data['quantityBenfaction'] : ''; ?>">
+                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php print_r($data['benefaction_details']->itemQuantity) ?>" min="1">
 
                                     <!-- Requested Amount Error Display -->
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?></span>
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
                                 </div>
                                 
                                 <!-- Images -->
@@ -55,16 +55,28 @@
                                     <label for="photoBenfaction">Photos of The Item </label>
                                     <div class="benefaction-third-div-four-input-one-line">
                                             <div class="add-benefaction-first-div">
-                                                <input type="file" id="photoBenfaction1" name="photoBenfaction1" value="<?php echo isset($data['photoBenfaction1']) ? $data['photoBenfaction1'] : ''; ?>" accept=".png, .jpg, .jpeg" onchange="preview()">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 1</p>
+                                                </label> 
                                             </div>
                                             <div class="add-benefaction-second-div">
-                                                <input type="file" id="photoBenfaction2" name="photoBenfaction2" value="<?php echo isset($data['photoBenfaction2']) ? $data['photoBenfaction2'] : ''; ?>" accept=".png, .jpg, .jpeg">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
+                                                </label> 
                                             </div>
                                             <div class="add-benefaction-third-div">
-                                                <input type="file" id="photoBenfaction3" name="photoBenfaction3" value="<?php echo isset($data['photoBenfaction3']) ? $data['photoBenfaction3'] : ''; ?>" accept=".png, .jpg, .jpeg">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
+                                                </label> 
                                             </div>
                                             <div class="add-benefaction-fourth-div">
-                                                <input type="file" id="photoBenfaction4" name="photoBenfaction4" value="<?php echo isset($data['photoBenfaction4']) ? $data['photoBenfaction4'] : ''; ?>" accept=".png, .jpg, .jpeg">
+                                                <label class="add-benefaction-box">
+                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <p class='file_info' style="font-size:13px; ">Image 4</p>
+                                                </label> 
                                             </div>
                                     </div>
 
@@ -75,7 +87,7 @@
                                 <!-- Description about requested necessity -->
                                 <div class="add-benefaction-text-area-input-to-oneline">
                                     <label for="benefactionDescription">Description</label>
-                                    <textarea name="benefactionDescription" id="benefactionDescription" cols="30" rows="10"><?php echo isset($data['benefactionDescription']) ? $data['benefactionDescription'] : ''; ?></textarea>
+                                    <textarea name="benefactionDescription" id="benefactionDescription" cols="30" rows="10"><?php print_r($data['benefaction_details']->description) ?></textarea>
 
                                     <!-- Neccessity description error display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionDescription_err']) ? $data['benefactionDescription_err']: ''; ?></span>
@@ -83,7 +95,7 @@
                                 
                                 <!-- Add Button for necessity -->
                                 <div class="add-benefaction-add-button">
-                                    <input type="submit" value="Add">
+                                    <input type="submit" value="Update" >
                                 </div>
                             </form>
                         </div>
@@ -91,15 +103,29 @@
 
                     <!-- Right column for chosen-photos-container -->
                     <div class="right-column">
-                        <div class="chosen-photos-container" id="chosen-photos-container1">
+                        <div class="right-column-inner">
+                            <div class="chosen-photos-container" id="chosen-photos-container1">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
+                                <?php endif; ?>
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container2">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
+                                <?php endif; ?>
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container3">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
+                                <?php endif; ?>
+                            </div>
+                            <div class="chosen-photos-container" id="chosen-photos-container4">
+                                <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
+                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
+                                <?php endif; ?>
+                            </div>                            
                         </div>
-                        <div class="chosen-photos-container" id="chosen-photos-container2">
-                        </div>
-                        <div class="chosen-photos-container" id="chosen-photos-container3">
-                        </div>
-                        <div class="chosen-photos-container" id="chosen-photos-container4">
-                        </div>
-                    </div>
+                    </div>         
                 </div>
 
             </div>
@@ -128,10 +154,22 @@
             return true;
         }
 
+        function validateFileType(input) {
+            const file = input.files[0];
+            const fileType = file.type;
+
+            // Check if the selected file type is an image
+            if (!fileType.startsWith('image/')) {
+                alert('Please select an image file (PNG, JPEG)');
+                input.value = ''; // Clear the selected file
+            }
+        }
+
         // Function to handle file input change
         function handleFileInputChange(inputId, containerId) {
             const input = document.getElementById(inputId);
             const container = document.getElementById(containerId);
+            const placeholderImage = document.getElementById('benefactionImage');
 
             input.addEventListener('change', function() {
                 // Clear previous content
@@ -146,18 +184,20 @@
                     image.classList.add('chosen-photo');
 
                     // Apply styles to adjust image size
-                    image.style.maxWidth = '200px'; 
-                    image.style.maxHeight = '200px';
-                    image.style.transform = 'translateX(-25%)';
+                    image.style.maxWidth = '300px'; 
+                    image.style.maxHeight = '300px';
                     image.style.backgroundColor = '#F5F5F5';
-                    image.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
-                    image.style.border = '2px solid #292828';
+                    image.style.boxShadow = '0px 4px 4px rgba(142, 0, 0, 0.25)';
+                    image.style.border = '2px solid #8E0000';
                     image.style.margin = '10px';
 
 
                     // Append image to container
                     container.appendChild(image);
                 }
+
+                // Hide the placeholder image
+                placeholderImage.style.display = 'none';
             });
         }
 

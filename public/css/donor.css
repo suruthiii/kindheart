@@ -89,7 +89,6 @@ span .donor-form-error-details{
 .left-column {   
     flex: 70; 
     min-width: 70%;
-    border: #000;
 }
 
 .right-column {
@@ -120,7 +119,7 @@ span .donor-form-error-details{
     height: 37px; /* Make the input fields fill the entire height of their parent div */
     width: 80px;
     border-radius: 6px;
-    border: 1px solid #707070;
+    border: 1px dashed #707070;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -286,8 +285,32 @@ span .donor-form-error-details{
 .posted-benefactions-pending-table{
     position: fixed;
     width: 45%;
-    height: 24vh;
+    height: 15vh;
     margin-top: 24vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-benefaction-onProgress-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 45vh;
+}
+
+.posted-benefaction-onProgress-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 49vh;
+    background-color: #DEDEDE;
+}
+
+.posted-benefactions-onProgress-table{
+    position: fixed;
+    width: 45%;
+    height: 15vh;
+    margin-top: 51vh;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -296,28 +319,29 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 50vh;
+    margin-top: 72vh;
 }
 
 .posted-benefaction-Completed-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 54vh;
+    margin-top: 76vh;
     background-color: #DEDEDE;
 }
 
 .posted-benefactions-Completed-table{
     position: fixed;
     width: 45%;
-    height: 24vh;
-    margin-top: 56vh;
+    height: 15vh;
+    margin-top: 76vh;
     overflow: hidden;
     overflow-y: scroll;
 }
 
 .posted-benefaction-pending-table-caption p, 
-.posted-benefaction-Completed-table-caption p{
+.posted-benefaction-Completed-table-caption p,
+.posted-benefaction-onProgress-table-caption p{
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     color: #262A41;
@@ -326,12 +350,14 @@ span .donor-form-error-details{
 }
 
 .posted-benefactions-pending-table table,
-.posted-benefactions-Completed-table table{
+.posted-benefactions-Completed-table table,
+.posted-benefactions-onProgress-table table{
     width: 95%;
 }
 
 .posted-benefactions-pending-table table tr,
-.posted-benefactions-Completed-table table tr{
+.posted-benefactions-Completed-table table tr,
+.posted-benefactions-onProgress-table table tr{
     width: 100%;
     height: 10vh;
     background-color: #F5F5F5;
@@ -344,7 +370,8 @@ span .donor-form-error-details{
 }
 
 .posted-benefactions-pending-table table tr:hover,
-.posted-benefactions-Completed-table table tr:hover{
+.posted-benefactions-Completed-table table tr:hover,
+.posted-benefactions-onProgress-table table tr:hover{
     background-color: #fffdfd;
     transition: 0.2s;
     cursor: pointer;
@@ -422,22 +449,55 @@ span .donor-form-error-details{
 
 
 /* ----------------View Posted Benfactions------------------ */
+.view-benefaction-right-column {
+    flex: 30;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: #4d3131;
+    align-items: center;
+}
+
+.view-benefaction-right-column-inner{
+    width: 100%;    
+    max-height: 50vh;
+    overflow-x: hidden;
+    overflow-y: auto;    
+    margin-right: 180px;
+    margin-top: 150px;
+
+}
+
+.view-benefaction-left-column {   
+    flex: 70; 
+    min-width: 70%;
+    max-height: 50vh;
+    margin-top: 150px;
+}
 
 .benefaction-info table {
-    width: 700px;
+    width: 400px;
     height: 8vh;
-    margin-top: 20vh;
+    table-layout: fixed;
 }
 
 .benefaction-data {
     width: 100%;
     height: 35px;
+    font-size: 15px;
 }
 
 /* css to th */
 .benefaction-data th {
     min-width:100px; 
     width:100px;
+}
+
+.benefaction-data td {
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding: 8px;
 }
 
 .benefaction-data-image-row img{
@@ -462,7 +522,8 @@ span .donor-form-error-details{
     display: flex;
     align-items: center;
     height: 5vh;
-    width: 25%;
+    width: 100px;
+    margin-right: 5px;
     background-color: #8E0000;
     border: none;
     border-radius: 10px;
@@ -489,4 +550,89 @@ span .donor-form-error-details{
     font-weight: 400;
 }
 
+.request-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 85vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
 
+.request-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.request-right-side-bar-type-requests{
+    width: 250px;
+    height: 80px;
+    padding: 10px;
+    background-color: #8e0000;
+    border-radius: 10px;
+    color: white;
+}
+
+.request-right-side-bar-type-requests h4{
+    padding-left: 5px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.request-right-side-bar-type-requests p{
+    padding-left: 5px;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+
+/* ---------------------Choose necessity type--------------------------- */
+.choose-benefaction-buttons-container{
+    position: fixed;
+    width: 30%;
+    height: 50vh;
+    margin-top: 25vh;
+}
+
+.choose-benefaction-button{
+    width: 100%;
+    height: 20vh;
+    margin-bottom: 2vh;
+}
+
+.choose-benefaction-button button{
+    width: 100%;
+    height: 18vh;
+    background-color: #8E0000;
+    margin-bottom: 2vh;
+    border: none;
+    border-radius: 20px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-benefaction-button button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.choose-benefaction-button button img{
+    padding-right: 50px;
+}
+
+.choose-benefaction-button button p{
+    color: #ffffff;
+    font-size: 16px;
+    font-family: 'Inter', sans-serif;
+}
