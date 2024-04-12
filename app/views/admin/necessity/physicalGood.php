@@ -42,9 +42,9 @@
                                     </td>
                                     <td width="30%" class="amount"><?php echo $item->quantity ?>&nbsp;items</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                        <form action="<?php echo URLROOT ?>/necessity/managegood/<?php echo $item->necessityID ?>" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" hidden value="" />
+                                            <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
                                         </form>
@@ -76,9 +76,9 @@
                                     </td>
                                     <td width="30%" class="amount"><?php echo $item->quantity ?>&nbsp;items</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
-                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                        <form action="<?php echo URLROOT ?>/necessity/managegood/<?php echo $item->necessityID ?>" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" hidden value="" />
+                                            <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
                                         </form>
