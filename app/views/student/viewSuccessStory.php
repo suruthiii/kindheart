@@ -54,28 +54,18 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                            <!-- The Modal -->
 
                                         </table>
                                     </div>
-                                <!-- Modal for Edit -->
-<div id="editModal" class="modal">
-    <div class="modal-content">
-    <p>Some text in the Modal..</p>
-    </div>
-</div>
+                               
 
-<!-- Modal for Delete
-<div id="deleteModal" class="modal">
-    <div class="modal-content"> -->
-        <!-- Add your delete confirmation content here -->
-    <!-- </div>
-</div>
+
+
                             <?php }?>
                         </div>
                     </div>
-                 </div>
-                  -->
+                            </div>
+                 
             
 
             <!-- right side bar for success story -->
@@ -175,10 +165,7 @@ adjustCardHeights();
 function confirmDelete() {
         return confirm("Are you sure you want to delete this story?");
     }
-    function openModal(modalId) {
-        var modal = document.getElementById(modalId);
-        modal.style.display = "block";
-    }
+    
 
 </script>
 
