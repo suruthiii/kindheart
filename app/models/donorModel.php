@@ -54,7 +54,7 @@ class donorModel{
     // Get pending benefactions
     public function getPendingBenefaction() {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 1');
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 0');
         
         // Execute
         $this->db->execute();
@@ -63,10 +63,23 @@ class donorModel{
         return $this->db->resultSet();
     }
 
+    // Get onProgress benefactions
+    public function getOnProgressBenefaction() {
+        // Prepare statement
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 1');
+        
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
+        return $this->db->resultSet();
+    }
+    
+
     // Get completed benefactions
     public function getCompletedBenefaction() {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 0');
+        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 2');
         
         // Execute
         $this->db->execute();
@@ -96,14 +109,14 @@ class donorModel{
         // Bind values
         $this->db->bind(':itemName', $data['itemBenefaction']);
         $this->db->bind(':itemQuantity', $data['quantityBenfaction']);
-        $this->db->bind(':itemPhoto1', $data['photoBenfaction1']);
-        $this->db->bind(':itemPhoto2', $data['photoBenfaction2']);
-        $this->db->bind(':itemPhoto3', $data['photoBenfaction3']);
-        $this->db->bind(':itemPhoto4', $data['photoBenfaction4']);
+        $this->db->bind(':itemPhoto1', isset($data['photoBenfaction1']) ? $data['photoBenfaction1'] : null);
+        $this->db->bind(':itemPhoto2', isset($data['photoBenfaction2']) ? $data['photoBenfaction2'] : null);
+        $this->db->bind(':itemPhoto3', isset($data['photoBenfaction3']) ? $data['photoBenfaction3'] : null);
+        $this->db->bind(':itemPhoto4', isset($data['photoBenfaction4']) ? $data['photoBenfaction4'] : null);
         $this->db->bind(':description', $data['benefactionDescription']);
-        $this->db->bind(':postedDate', date('Y-m-d')); // Automatically set the posted date
+        // $this->db->bind(':postedDate', date('Y-m-d')); // Automatically set the posted date
         $this->db->bind(':donorID', $_SESSION['user_id']);
-        $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
+        // $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
         $this->db->bind(':benefactionID', $data['benefactionID']);
 
         // Execute
@@ -113,5 +126,18 @@ class donorModel{
             return false;
         }
     }
-}
 
+    //Delete benefaction
+    public function deleteBenefaction($benefactionID){
+        // Prepare statement
+        $this->db->query('UPDATE benefaction SET availabilityStatus = 10 WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}

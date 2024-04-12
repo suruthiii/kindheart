@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/donor/postedBenefactions'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -56,25 +56,25 @@
                                     <div class="benefaction-third-div-four-input-one-line">
                                             <div class="add-benefaction-first-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 1</p>
                                                 </label> 
                                             </div>
                                             <div class="add-benefaction-second-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 2</p>
                                                 </label> 
                                             </div>
                                             <div class="add-benefaction-third-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 2</p>
                                                 </label> 
                                             </div>
                                             <div class="add-benefaction-fourth-div">
                                                 <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
+                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                                     <p class='file_info' style="font-size:13px; ">Image 4</p>
                                                 </label> 
                                             </div>
@@ -105,16 +105,16 @@
                     <div class="right-column">
                         <div class="right-column-inner">
                             <div class="chosen-photos-container" id="chosen-photos-container1">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png" alt="Placeholder Image" />
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container2">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction2.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction2.png" alt="Placeholder Image" />
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container3">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction3.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction3.png" alt="Placeholder Image" />
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container4">
-                            <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction4.png" alt="Placeholder Image" />
+                                <img id="placeholderImage" src="<?php echo URLROOT ?>/img/placeholder-benefaction4.png" alt="Placeholder Image" />
                             </div>
                         </div>
                     </div>         
@@ -146,16 +146,56 @@
             return true;
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+        // Select all file input elements with class 'file-input'
+        const fileInputs = document.querySelectorAll('.add-benefaction-box input[type="file"]');
+
+        // Loop through each file input element
+        fileInputs.forEach(function(input) {
+            // Add onchange event listener to each file input element
+            input.addEventListener('change', function() {
+                handleImageType(this); // Call handleImageType function with the current input element
+            });
+        });
+    });
+
+        function handleImageType(input){
+            validateFileType(input);
+            imageBox(input);
+        }
+
         function validateFileType(input) {
             const file = input.files[0];
-            const fileType = file.type;
+            const fileType = file ? file.type : '';
 
             // Check if the selected file type is an image
             if (!fileType.startsWith('image/')) {
-                alert('Please select an image file (PNG, JPEG)');
+                alert('Please select an image file (PNG, JPEG, JPG)');
                 input.value = ''; // Clear the selected file
             }
         }
+
+        function imageBox(input) {
+        const parentLabel = input.parentElement;
+        const parentDiv = parentLabel.parentElement;
+
+        // Get the file from the input element
+        const file = input.files[0];
+
+        // Check if file type is valid (starts with 'image/')
+        if (file && file.type.startsWith('image/')) {
+            // Apply styling to the parent label (add-benefaction-box)
+            parentLabel.style.border = '1px dashed red';
+            parentLabel.style.backgroundColor = 'rgb(249, 224, 209)';
+            parentLabel.style.color = 'rgb(213, 83, 7)';
+        } else {
+            // Apply default styling to the parent label (add-benefaction-box)
+            parentLabel.style.border = '1px dashed red';
+            parentLabel.style.backgroundColor = 'white';
+            parentLabel.style.color = 'rgb(255, 0, 0)';
+        }
+    }
+
 
         // Function to handle file input change
         function handleFileInputChange(inputId, containerId) {

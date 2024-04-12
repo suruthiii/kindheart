@@ -179,4 +179,13 @@ class NecessityModel{
             return false;
         }
     }
+
+    public function getAllComments($necessity_ID) {
+        $this->db->query('SELECT postID, adminID, comment FROM comment WHERE postID = :postID ORDER BY time DESC;');
+        $this->db->bind(':postID', $necessity_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }

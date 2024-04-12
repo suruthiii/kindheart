@@ -393,7 +393,7 @@
     line-height: 1.3;
 }
 
-.benefaction-card-container .card-content .button{
+.benefaction-card-container .card-content .btn1{
     display: inline-block;
     padding: 8px 16px;
     background-color: #8e0000;
@@ -402,8 +402,6 @@
     margin-right: 15px;
     color: #ffffff;
     align-content: center;
+    border-color: transparent;
 }
-
-
-
 

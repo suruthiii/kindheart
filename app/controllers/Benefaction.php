@@ -16,6 +16,13 @@ class Benefaction extends Controller {
         $this->view('donor/index', $data);
     }
 
+    public function donorSelectDonation(){
+        $data = [
+            'title' => 'Donation Selection Page'
+        ];
+        $this->view('donor/donorSelectDonation', $data);
+    }
+
     public function viewAllBenefactions(){
         $data = [
             'title' => 'All Benefcation Posted Page'
@@ -67,7 +74,7 @@ class Benefaction extends Controller {
                 'photoBenfaction3' => $this->imgUpload('photoBenfaction3'),
                 'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
 
-                'availabilityStatus' => '1',
+                'availabilityStatus' => '0',
                 'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
@@ -100,7 +107,15 @@ class Benefaction extends Controller {
                 if($this->donorModel->addBenefaction($data)){
                     // die(print_r(123));
                     // die(print_r($this->imgUpload('photoBenfaction1')));
-                    $this->view('donor/donorPostDonations', $data);
+                    $data = [
+                        'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+
+                        'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
+                        
+                        'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                    ];
+
+                    $this->view('donor/postedBenefactions', $data);
                 }else{
                     die('Something Went Wrong');
                 }
@@ -133,6 +148,8 @@ class Benefaction extends Controller {
         // Load the view with data
         $data = [
             'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+
+            'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
             
             'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
         ];
@@ -162,25 +179,29 @@ class Benefaction extends Controller {
     }
     
     public function editPostedBenefactions(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
             $data = [
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
-                'photoBenfaction1' => trim($_POST['photoBenfaction1']),
-                'photoBenfaction2' => trim($_POST['photoBenfaction2']),
-                'photoBenfaction3' => trim($_POST['photoBenfaction3']),
-                'photoBenfaction4' => trim($_POST['photoBenfaction4']),
-                'availabilityStatus' => '1',
-                'availability' => 'pending',
+
+                'photoBenfaction1' => $this->imgUpload('photoBenfaction1'),                
+                'photoBenfaction2' => $this->imgUpload('photoBenfaction2'),
+                'photoBenfaction3' => $this->imgUpload('photoBenfaction3'),
+                'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
 
                 'itemBenefaction_err' => '',
                 'quantityBenfaction_err' => '',
                 'benefactionDescription_err' => '',
                 'photoBenfaction_err' => ''
             ];
+        
+
+            // die(print_r($this->imgUpload('photoBenfaction1')));
 
             //validate the input fields seperately
             if(empty($data['itemBenefaction'])){
@@ -195,63 +216,81 @@ class Benefaction extends Controller {
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if(empty($data['photoBenfaction1']) && empty($data['photoBenfaction2'])){
-                $data['photoBenfaction_err']='Please upload at least 2 photos of the item';
+            $uploadedFields = array_filter([$data['photoBenfaction1'], $data['photoBenfaction2'], $data['photoBenfaction3'], $data['photoBenfaction4']]);
+           
+            if (count($uploadedFields) < 2) {
+                $data['photoBenfaction_err'] = 'Please upload at least 2 photos of the item';
             }
 
             if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
+                die(print_r($data));
                 if($this->donorModel->updateBenefaction($data)){
-                    $this->view('donor/viewPostedBenefactions', $data);
-                    // die(print_r(123));
+                    $this->view('donor/postedBenefactions', $data);
                 }else{
                     die('Something Went Wrong');
                 }
             }else{
-                //Load View
-                $backend_data = $this->donorModel->getBenefaction($benefactionID);
+                //Pass data to the view
+                if(isset($_POST['edit'])){
+                    $benefactionID = $_POST['edit'];
+                    
+                }else if(isset($_POST['view'])){
+                    $benefactionID = $_POST['view'];
+                }
 
                 $data = [
-                    'itemBenefaction' => $backend_data->itemName,
-                    'quantityBenfaction' => $backend_data->itemQuantity,
-                    'benefactionDescription' => $backend_data->description,
-                    'photoBenfaction1' => $backend_data->itemPhoto1,
-                    'photoBenfaction2' => $backend_data->itemPhoto2,
-                    'photoBenfaction3' => $backend_data->itemPhoto3,
-                    'photoBenfaction4' => $backend_data->itemPhoto4,
-        
-                    'itemBenefaction_err' => '',
-                    'quantityBenfaction_err' => '',
-                    'benefactionDescription_err' => '',
-                    'photoBenfaction_err' => ''
+                    'title' => 'Edit Posted Benefactions',
+                    'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
                 ];
-
 
                 $this->view('donor/editPostedBenefactions', $data);
             }
 
-        }else{
-            $backend_data = $this->donorModel->getBenefaction($benefactionID);
+        } else {
+            //Pass data to the view
+            if(isset($_POST['edit'])){
+                $benefactionID = $_POST['edit'];
+                
+            }else if(isset($_POST['view'])){
+                $benefactionID = $_POST['view'];
+            }
 
             $data = [
-                'itemBenefaction' => $backend_data->itemName,
-                'quantityBenfaction' => $backend_data->itemQuantity,
-                'benefactionDescription' => $backend_data->description,
-                'photoBenfaction1' => $backend_data->itemPhoto1,
-                'photoBenfaction2' => $backend_data->itemPhoto2,
-                'photoBenfaction3' => $backend_data->itemPhoto3,
-                'photoBenfaction4' => $backend_data->itemPhoto4,
-    
-                'itemBenefaction_err' => '',
-                'quantityBenfaction_err' => '',
-                'benefactionDescription_err' => '',
-                'photoBenfaction_err' => ''
+                'title' => 'Edit Posted Benefactions',
+                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
             ];
-
 
             $this->view('donor/editPostedBenefactions', $data);
         }
+
     }
 
+    public function deleteBenefactions() {
 
- 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['delete'])) {
+                $benefactionID = $_POST['delete'];
+                
+                // Call model method to delete benefaction
+                if ($this->donorModel->deleteBenefaction($benefactionID)) {
+                    // Deletion successful, redirect or reload data
+
+                    // Fetch updated benefactions data
+                    $data = [
+                        'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+
+                        'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
+                        
+                        'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                    ];
+
+                    // Pass the updated data to the view
+                    $this->view('donor/postedBenefactions', $data);
+                } else {
+                    // Handle deletion failure (e.g., show error message)
+                    die('Failed to delete benefaction.');
+                }
+            }
+        }
+    }
 }

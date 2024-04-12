@@ -21,7 +21,7 @@
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Choose the<br>necessity type</h3>
+                    <h3>Post Nessities</h3>
                     <p>Select the type of Necessity you want to post</p>
                 </div>
 
