@@ -325,7 +325,14 @@ class Necessity extends Controller {
                 }
             }
         }
-    }    
+    } 
+    
+    // public function viewOrganizationMonetarynecessity(){
+    //     $data = [
+    //         'title' => 'Home page'
+    //     ];
+    //     $this->view('organization/viewOrganizationMonetarynecessity', $data);
+    // }
 
     public function viewAdminMonetary(){
         $data = [

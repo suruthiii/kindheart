@@ -57,7 +57,11 @@
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
                                 <td><p><?php echo $pendingtablerow->requestedQuantity?></p></td>
-                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
+                                <td>
+                                    <button onclick="location.href='<?php echo URLROOT ?>/organization/viewOrganizationMonetarynecessity'">
+                                        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                    </button>
+                                </td>
 
                                 <td><button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">
                                     <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
