@@ -341,6 +341,15 @@ class Necessity extends Controller {
         $this->view('admin/necessity/viewMonetary', $data);
     }
 
+    // public function viewOrganizationPendingMonetarynecessity(){
+    //     $data = [
+    //         'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities(),
+    //         'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities()
+    //     ];
+
+    //     $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+    // }
+
     public function viewAdminMonetaryDonation(){
         $data = [
             'title' => 'Home page'

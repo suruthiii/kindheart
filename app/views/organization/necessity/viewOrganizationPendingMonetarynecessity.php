@@ -16,16 +16,28 @@
                 <!-- Go Back Button -->
                 <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/physicalgood'">Go Back</button>
-                </div>>
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/monetary'">Go Back</button>
+                </div>
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>View Donors</h3>
-                    <p>View the list of donors</p>
+                    <h3>View Necessity</h3>
+                    <p>View information about posted necessity and the donation received.</p>
                 </div>
 
+
+
+
+
             </div> 
+
+            <!-- right side bar for success story/ choose or add necessity -->
+            <div class="rightside-bar-type-one">
+                <div class="right-side-bar">
+                    
+
+                </div>
+            </div>
 
         </div>
     </section>

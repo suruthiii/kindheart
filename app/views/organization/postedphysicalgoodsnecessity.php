@@ -58,7 +58,7 @@
                                 </td>
                                 <td><p><?php echo $pendingtablerow->requestedQuantity?></p></td>
                                 <td>
-                                    <button onclick="location.href='<?php echo URLROOT ?>/organization/viewOrganizationMonetarynecessity'">
+                                    <button onclick="location.href='<?php echo URLROOT ?>/organization/'">
                                         <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                     </button>
                                 </td>
