@@ -582,6 +582,45 @@
     cursor: pointer;
 }
 
+/* --------------------------------- Comment Form -------------------------------- */
 
+.page-container .section .container .comment-form {
+    margin-top: 50px;
+    width: 550px;
+    height: 220px;
+    margin-left: 10px;
+}
+
+.page-container .section .container .comment-form label {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.page-container .section .container .comment-form .comment-textarea {
+    width: 400px;
+    height: 150px;
+}
+
+.page-container .section .container .comment-form .comment-textarea:focus {
+    border: 1px solid rgba(0, 0, 0, 0.727);
+}
+
+.page-container .section .container .comment-form input[type=submit] {
+    margin-left: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #8e0000;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    width: 70px;
+    padding: 6px 5px 6px 5px;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.page-container .section .container .comment-form input[type=submit]:hover {
+    scale: 1.05;
+}
 
 
