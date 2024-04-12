@@ -27,32 +27,45 @@
 
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
 
-                <table class="posted-necessity-view-tables-forpending-and-complete" style="margin: 15%;">
-                    <tr>
-                        <td>Necessity Name</td>
-                    </tr>
-                    <tr>
-                        <td>Description</td>
-                    </tr>
-                    <tr>
-                        <td>Requested amount</td>
-                    </tr>
-                    <tr>
-                        <td>Received amount</td>
-                    </tr>
-                    <tr>
-                        <td>amountdue</td>
-                    </tr>
-                    <tr>
-                        <td>Start date</td>
-                    </tr>
-                    <tr>
-                        <td>End date</td>
-                    </tr>
-                    <tr>
-                        <td>frequency</td>
-                    </tr>
-                </table>
+                <div class="posted-necessity-view-tables-css-for-pending-and-complete">
+                    <table>
+                        <tr>
+                            <td><p>Necessity Name</P></td>
+                            <td><?php echo $data['pendingNecessityDetails']->necessityName; ?></td>
+                        </tr>
+                        <tr>
+                            <td><p>Description</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->description; ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Requested Amount</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->requestedAmount; ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Received Amount/<p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->receivedAmount; ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Amount Due</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->amount_due; ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Donation Starting Date</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->startDate !== null ? $data['pendingNecessityDetails']->startDate : '---'; ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Donation Ending Date</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->endDate !== null ? $data['pendingNecessityDetails']->endDate : '---'; ?></p></td>
+                        </tr>
+                        <tr>
+                            <td><p>Frequency of Funding</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->frequency !== null ? $data['pendingNecessityDetails']->frequency : '---'; ?></p></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
+
+                </div>
 
 
             </div> 

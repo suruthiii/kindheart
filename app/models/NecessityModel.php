@@ -86,7 +86,7 @@ class NecessityModel{
     }
 
     public function getPendingMonetaryNecessities($necessityID){
-        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.endDate, m.frequency 
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.endDate, m.frequency, n.fulfillmentStatus 
             FROM necessity n 
             JOIN money m ON n.necessityID = m.monetaryNecessityID 
             WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
