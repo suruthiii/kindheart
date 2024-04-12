@@ -32,7 +32,7 @@
                             <p>posted by <?php echo $item->username; ?></p>
                             <form action="<?php echo URLROOT ?>/student/benefactionview" method="GET" class="btn" >
                                 <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
-                                <button type="submit" class="btn" > view </button>
+                                <button type="submit" class="btn1" > view </button>
                             </form>
                         </div> 
                     </div>   

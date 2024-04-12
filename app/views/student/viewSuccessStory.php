@@ -36,7 +36,7 @@
                                 <!-- <a href="<?php echo URLROOT ?>/student/SuccessStory/<?php echo $item->storyID?>"> -->
                                     <div class="tile-new">
                                         <table>
-                                            <tr>
+                                            <tr id="myBtn">
                                                 <td width="50%" class="tile-name"><?php echo $item->title;?></td>
                                                 <td width="50%" class="option-new">
                                                     <form action="<?php echo URLROOT ?>/successstory/editStory" method="GET" class="edit-form-new " >
@@ -54,16 +54,28 @@
                                                     </form>
                                                 </td>
                                             </tr>
+                                            <!-- The Modal -->
+
                                         </table>
                                     </div>
-                                <!-- 
-                                    
-                                 -->
+                                <!-- Modal for Edit -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+    <p>Some text in the Modal..</p>
+    </div>
+</div>
+
+<!-- Modal for Delete
+<div id="deleteModal" class="modal">
+    <div class="modal-content"> -->
+        <!-- Add your delete confirmation content here -->
+    <!-- </div>
+</div>
                             <?php }?>
                         </div>
                     </div>
                  </div>
-                 
+                  -->
             
 
             <!-- right side bar for success story -->
@@ -162,6 +174,10 @@ adjustCardHeights();
 
 function confirmDelete() {
         return confirm("Are you sure you want to delete this story?");
+    }
+    function openModal(modalId) {
+        var modal = document.getElementById(modalId);
+        modal.style.display = "block";
     }
 
 </script>
