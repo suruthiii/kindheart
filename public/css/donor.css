@@ -136,12 +136,13 @@ span .donor-form-error-details{
 
 .benefaction-first-div,
 .benefaction-second-div,
-.benefaction-third-div{
+.benefaction-third-div,
+.benefaction-forth-div{
     position: relative;
     height: 12vh;
     display: flex;
     flex-direction: column;
-    margin-bottom: 3vh;
+    margin-bottom: 0.5vh;
     width: 68%;
     float: left;
 }
@@ -176,14 +177,15 @@ span .donor-form-error-details{
 .benefaction-first-div label,
 .benefaction-second-div label,
 .benefaction-third-div label,
+.benefaction-forth-div label,
 .add-benefaction-text-area-input-to-oneline label{
     color: #8692A6;
     font-family: 'Inter', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
-    margin-bottom: 1.5vh;
+    margin-bottom: 0.5vh;
 }
 
 .add-benefaction-text-area-input-to-oneline{
@@ -256,6 +258,79 @@ span .donor-form-error-details{
     box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
     padding: 0px 14px; /* Adjust padding */
 }
+
+.select-box {
+    height: 38px; /* Make the input fields fill the entire height of their parent div */
+    width: 300px;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px; /* Adjust padding */
+}
+
+/* select button */
+
+.select-box select{
+    display: none;
+}
+
+.select-selected {
+    /* margin-left: -20px; */
+    height: 20px; /* Make the input fields fill the entire height of their parent div */
+    width: 250px;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+    position: absolute;
+    content: "";
+    margin-top: 5px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #000000 transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #000000 transparent;
+    margin-top: 0px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div,.select-selected {    
+    color: black;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+    position: absolute;
+    background-color: #FCFCFC;
+    margin-top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+/* ------------------------------------------------- */
 
 .add-benefaction-first-div input:focus,
 .add-benefaction-second-div input:focus,

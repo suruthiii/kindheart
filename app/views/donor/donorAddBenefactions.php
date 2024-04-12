@@ -41,6 +41,49 @@
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['itemBenefaction_err']) ? $data['itemBenefaction_err']: ''; ?></span>
                                 </div>
 
+                                <!-- Category -->
+                                <div class="benefaction-forth-div">
+                                    <label for="benefactionCategory">Category </label>
+                                    <div class="select-box">
+                                        <select id="benefactionCategory" name="benefactionCategory" value="<?php echo isset($data['benefactionCategory']) ? $data['benefactionCategory'] : ''; ?>">
+                                            <option value="0" >
+                                                Select Category
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="1" title="Pencils&#13Pens&#13Notebooks&#13Textbooks&#13Calculators&#13Educational software&#13Interactive whiteboards&#13Microscopes&#13Lab equipment&#13Robotics kits&#13Coding software&#13Coding software&#13Laptops&#13 3D printers">
+                                                Educational Supplies and Tools
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="2" title="School Uniforms&#13T-shirts&#13Pants&#13Shoes&#13Backpacks&#13Hats">
+                                                Clothing and Accessories
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="3" title="Soccer balls&#13Basketballs&#13Gymnastics mats&#13Tennis rackets&#13Bicycles&#13Skateboards">
+                                                Recreation and Sports Equipment
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="4" title="Hygiene products (e.g., soap, toothpaste)&#13Hand sanitizer&#13Yoga mats">
+                                                Health and Wellness Products
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="5" title="Bicycles&#13Wheelchairs&#13Scooters&#13Crutches&#13Walking canes">
+                                                Transportation and Mobility
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="6" title="Fiction books&#13Non-fiction books&#13Language learning materials&#13Dictionaries&#13E-readers&#13Audiobooks">
+                                                Literature and Reading Materials
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="other">
+                                                Other
+                                            </option>
+                                        </select>                                        
+                                    </div>
+ 
+                                    <!-- Requested Amount Error Display -->
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
+                                </div>
+
                                 <!-- Quantity -->
                                 <div class="benefaction-second-div">
                                     <label for="quantityBenfaction">Quantity </label>
@@ -238,6 +281,91 @@
         handleFileInputChange('photoBenfaction2', 'chosen-photos-container2');
         handleFileInputChange('photoBenfaction3', 'chosen-photos-container3');
         handleFileInputChange('photoBenfaction4', 'chosen-photos-container4');
+
+
+        // Select Box Customization
+        var x, i, j, l, ll, selElmnt, a, b, c;
+
+        /*look for any elements with the class "select-box":*/
+        x = document.getElementsByClassName("select-box");
+        l = x.length;
+
+        for (i = 0; i < l; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            ll = selElmnt.length;
+
+            /*for each element, create a new DIV that will act as the selected item:*/
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+
+            /*for each element, create a new DIV that will contain the option list:*/
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+
+            for (j = 1; j < ll; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function(e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h, sl, yl;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    sl = s.length;
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < sl; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            yl = y.length;
+                            for (k = 0; k < yl; k++) {
+                            y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function(e) {
+                /*when the select box is clicked, close any other select boxes,
+                and open/close the current select box:*/
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+                });
+        }
+
+        function closeAllSelect(elmnt) {
+            /*a function that will close all select boxes in the document,except the current select box:*/
+            var x, y, i, xl, yl, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            xl = x.length;
+            yl = y.length;
+            for (i = 0; i < yl; i++) {
+                if (elmnt == y[i]) {
+                arrNo.push(i)
+                } else {
+                y[i].classList.remove("select-arrow-active");
+                }
+            }
+            for (i = 0; i < xl; i++) {
+                if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+                }
+            }
+        }
+        /*if the user clicks anywhere outside the select box,then close all select boxes:*/
+        document.addEventListener("click", closeAllSelect);
 
 
 </script>

@@ -98,6 +98,16 @@ class Student extends Controller {
         $this->view('student/benefactionview', $data);
     }
 
+    public function ApplyForBenefaction(){
+
+        $data = [
+            'title' => 'Home page'
+            // 'benefactions' => $this->BenefactionModel->getBenefactions()
+        ];
+
+        $this->view('student/ApplyForBenefaction', $data);
+    }
+
     
 
 

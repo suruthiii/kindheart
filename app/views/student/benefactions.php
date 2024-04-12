@@ -30,10 +30,16 @@
                         <div class="card-content">
                             <h3><?php echo $item->itemName; ?></h3>
                             <p>posted by <?php echo $item->username; ?></p>
+                            <div class="btn-container">
                             <form action="<?php echo URLROOT ?>/student/benefactionview" method="GET" class="btn" >
                                 <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
-                                <button type="submit" class="btn1" > view </button>
+                                <button type="submit" class="btn1" > View </button>
                             </form>
+                            <form action="<?php echo URLROOT ?>/student/ApplyForBenefaction" method="GET" class="btn" >
+                                <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
+                                <button type="submit" class="btn1" > Apply</button>
+                            </form>
+                    </div>
                         </div> 
                     </div>   
                     <?php } ?>
