@@ -72,8 +72,8 @@
                                     </td>
                                     <td width="30%" class="amount"><?php echo $item->adminName ?></td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="name" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/request/unassignadmin" method="post" class="assign-manage-form">
+                                            <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->userID ?>" />
                                             <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
                                                 Unassign
                                             </button>

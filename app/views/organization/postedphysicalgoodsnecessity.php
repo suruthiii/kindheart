@@ -34,7 +34,25 @@
                     <table>
                         <?php foreach($data['pendingtablerow'] as $pendingtablerow): ?>
                             <tr>
-                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td>
+                                    <?php
+                                        if ($pendingtablerow->itemCategory == "Educational Supplies and Tools"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
+                                        }elseif($pendingtablerow->itemCategory == "Clothing and Accessories"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
+                                        }elseif($pendingtablerow->itemCategory == "Recreationand Sports Equipment"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
+                                        }elseif($pendingtablerow->itemCategory == "Health and Wellness Products"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
+                                        }elseif($pendingtablerow->itemCategory == "Transportation and Mobility"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
+                                        }elseif($pendingtablerow->itemCategory == "Literature and Reading Materials"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
+                                        }elseif($pendingtablerow->itemCategory == "other"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
+                                        }
+                                    ?>
+                                </td>
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
@@ -60,7 +78,25 @@
                     <table>
                         <?php foreach($data['completetablerow'] as $completetablerow): ?>
                             <tr>
-                                <td><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                <td>
+                                    <?php
+                                        if ($completetablerow->itemCategory == "Educational Supplies and Tools"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
+                                        }elseif($completetablerow->itemCategory == "Clothing and Accessories"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
+                                        }elseif($completetablerow->itemCategory == "Recreationand Sports Equipment"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
+                                        }elseif($completetablerow->itemCategory == "Health and Wellness Products"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
+                                        }elseif($completetablerow->itemCategory == "Transportation and Mobility"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
+                                        }elseif($completetablerow->itemCategory == "Literature and Reading Materials"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
+                                        }elseif($completetablerow->itemCategory == "other"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
+                                        }
+                                    ?>
+                                </td>
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>

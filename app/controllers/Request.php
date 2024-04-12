@@ -32,6 +32,7 @@ class Request extends Controller {
             die('User Type Not Found');
         }
     }
+
     public function organizationRequest(){
         if($_SESSION['user_type'] == 'admin') {
             $data = [
@@ -56,8 +57,71 @@ class Request extends Controller {
         else {
             die('User Type Not Found');
         }
-
-        
     }
 
+    public function viewStudentRequest($student_ID = null) {
+        if(empty($student_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'student_details' => $this->requestModel->getStudent($student_ID)
+        ];
+
+        $this->view($_SESSION['user_type'].'/request/viewStudentRequest', $data);
+    }
+
+    public function viewOrganizationRequest($org_ID = null){
+        if(empty($org_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'organization_details' => $this->requestModel->getOrganization($org_ID)
+        ];
+        $this->view($_SESSION['user_type'].'/request/viewOrganizationRequest', $data);
+    }
+
+    public function unassignAdmin() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->requestModel->unassignAdmin($_POST['user_ID'])) {
+                $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
+
+                if($doneeType == 'student') {
+                    redirect('request/studentrequest');
+                }
+
+                else if($doneeType == 'organization') {
+                    redirect('request/organizationrequest');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
+            
+        }
+    }
+
+    public function assignMe() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->requestModel->assignMe($_POST['user_ID'])) {
+                $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
+
+                if($doneeType == 'student') {
+                    redirect('request/studentrequest');
+                }
+
+                else if($doneeType == 'organization') {
+                    redirect('request/organizationrequest');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
 }

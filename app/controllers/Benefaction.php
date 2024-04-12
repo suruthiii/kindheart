@@ -293,6 +293,4 @@ class Benefaction extends Controller {
             }
         }
     }
-
-
 }

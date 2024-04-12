@@ -121,7 +121,8 @@ class Necessity extends Controller {
                     'necessityMonetary_err' => '',
                     'monetarynecessitydes_err' => '',
                     'requestedamount_err' => '',
-                    'recurringdate_err' => ''
+                    'recurringdate_err' => '',
+                    'frequency_err' => ''
                 ];
 
                 //change the getting input according to necessity type
@@ -131,6 +132,24 @@ class Necessity extends Controller {
                 } else {
                     $data['recurringstartdate'] = null;
                     $data['recurringenddate'] = null;
+                }
+
+                if ($data['necessityType'] === 'recurring') {
+                    $startDate = new DateTime($data['recurringstartdate']);
+                    $endDate = new DateTime($data['recurringenddate']);
+                    
+                    // Calculate the difference in days
+                    $dateDiff = $startDate->diff($endDate)->days;
+                
+                    if ($dateDiff < 7) {
+                        $data['frequency_err'] = 'please enter dates at least have 7days difference';
+                    } else {
+                        $data['frequency'] = trim($_POST['frequency']);
+                    }
+                } elseif($data['necessityType'] === 'onetime' && !empty($data['necessityMonetary'])){
+                    $data['frequency'] = null;
+                }else {
+                    $data['frequency'] = null;
                 }
 
 
@@ -154,7 +173,7 @@ class Necessity extends Controller {
 
                     if(empty($data['recurringenddate'])){
                         $data['recurringenddate_err']='Please enter the Recurring End Date';
-                    }  
+                    }
                 }
 
                 //recurring start and end date check
@@ -170,7 +189,7 @@ class Necessity extends Controller {
                 }
 
                 //check whether there any errors
-                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err'])){
+                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err']) && empty($data['frequency_err'])){
                     if($this->necessityModel->addmonetarynecessitytodb($data)){
                         redirect('necessity/monetary');
                     }else{
@@ -197,6 +216,7 @@ class Necessity extends Controller {
                     'necessityType' => '',
                     'recurringstartdate' => '',
                     'recurringenddate' => '',
+                    'frequency' => '',
                     'monetarynecessitydes' => '',
                     'requestedamount' => '',
                     'necessityMonetary_err' => '',
@@ -204,7 +224,8 @@ class Necessity extends Controller {
                     'requestedamount_err' => '',
                     'recurringstartdate_err' => '',
                     'recurringenddate_err' => '',
-                    'recurringdate_err' => ''
+                    'recurringdate_err' => '',
+                    'frequency_err' =>''
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
@@ -230,19 +251,26 @@ class Necessity extends Controller {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
 
                 $data = [
-                    'necessitygoods' => trim($_POST['necessitygoods']),
+                    'necessityCategory' => trim($_POST['necessityCategory']),
                     'requestedgoodsquantity' => trim($_POST['requestedgoodsquantity']),
                     'goodsnecessitydes' => trim($_POST['goodsnecessitydes']),
-                    'necessitygoods_err' => '',
+                    'neccessityitem' => trim($_POST['neccessityitem']),
+                    'necessityCategory_err' => '',
                     'requestedgoodsquantity_err' => '',
-                    'goodsnecessitydes_err' => ''
+                    'goodsnecessitydes_err' => '',
+                    'neccessityitem_err' => ''
                 ];
 
                 //check wheather field are empty or not
 
-                //necessity good field
-                if(empty($data['necessitygoods'])){
-                    $data['necessitygoods_err']='Please enter the Necessity about Goods';
+                //necessity category field
+                if(empty($data['necessityCategory'])){
+                    $data['necessityCategory_err']='Please Select the Necessity Category';
+                }
+
+                //necessity item field
+                if(empty($data['neccessityitem'])){
+                    $data['neccessityitem_err']='Please make sure the appropriate need is entered in the appropriate category.';
                 }
 
                 //requested goods quantity
@@ -258,7 +286,7 @@ class Necessity extends Controller {
                 }
 
                 //check whether there any errors
-                if(empty($data['necessitygoods_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
+                if(empty($data['necessityCategory_err']) && empty($data['neccessityitem_err']) && empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
                     if($this->necessityModel->addgoodsnecessitytodb($data)){
                         redirect('necessity/physicalgood');
                     }else{
@@ -278,12 +306,14 @@ class Necessity extends Controller {
 
             }else{
                 $data = [
-                    'necessitygoods' => '',
+                    'necessityCategory' => '',
                     'requestedgoodsquantity' => '',
                     'goodsnecessitydes' => '',
-                    'necessitygoods_err' => '',
+                    'neccessityitem' => '',
+                    'necessityCategory_err' => '',
                     'requestedgoodsquantity_err' => '',
-                    'goodsnecessitydes_err' => ''
+                    'goodsnecessitydes_err' => '',
+                    'neccessityitem_err' => ''
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
