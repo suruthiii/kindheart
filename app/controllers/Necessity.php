@@ -379,6 +379,45 @@ class Necessity extends Controller {
             }
         }
     }
+
+    public function viewCompletedMonetarynecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+    
+                    // Get pending necessity details
+                    $pendingNecessityDetails = $this->necessityModel->getCompletedMonetaryNecessities($necessityID);
+    
+                    // Prepare data to pass to the view
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'pendingNecessityDetails' => $pendingNecessityDetails
+                    ];
+    
+                    // Pass data to the view
+                    $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, prepare empty data and pass it to the view
+                $data = [
+                    'necessityID' => '',
+                    'pendingNecessityDetails' => [] // Assuming this should be an array
+                ];
+                $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+            }
+        }
+    }
     
 
     public function viewAdminMonetaryDonation(){
