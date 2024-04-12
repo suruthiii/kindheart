@@ -64,7 +64,8 @@
                     </table>
                 </div>
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-
+                    <button>Edit</button>
+                    <button>Delete</button>
                 </div>
 
 
