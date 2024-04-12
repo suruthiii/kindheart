@@ -84,7 +84,7 @@
                         <!-- Requested Amount in Rupees -->
                         <div class="add-necessity-one-line-input">
                             <label for="requestedamount">Requested Amount in Rupees </label>
-                            <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
+                            <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
                             <!-- Requested Amount Error Display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['requestedamount_err']) ? $data['requestedamount_err']: ''; ?></span>
                         </div>
