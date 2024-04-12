@@ -146,7 +146,9 @@ class Necessity extends Controller {
                     } else {
                         $data['frequency'] = trim($_POST['frequency']);
                     }
-                } else {
+                } elseif($data['necessityType'] === 'onetime' && !empty($data['necessityMonetary'])){
+                    $data['frequency'] = null;
+                }else {
                     $data['frequency'] = null;
                 }
 
