@@ -95,4 +95,18 @@ class RequestModel{
             return false;
         }
     }
+
+    public function assignMe($donee_ID) {
+        $this->db->query('UPDATE donee SET adminID = :adminID WHERE doneeID = :doneeID;');
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+        $this->db->bind(':doneeID', $donee_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 }    
