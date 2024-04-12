@@ -48,9 +48,12 @@
                                 </td>
                                 <td><p>Rs.<?php echo $pendingtablerow->requestedAmount?></p></td>
                                 <td>
-                                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/viewOrganizationPendingMonetarynecessity'">
-                                        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
-                                    </button>
+                                    <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form>
                                 </td>
                                 <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
                                 <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
@@ -109,3 +112,12 @@
 </main>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
+
+
+<!-- <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
+    <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+    <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+    </button>
+    
+</form> -->

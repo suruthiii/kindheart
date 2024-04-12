@@ -25,8 +25,34 @@
                     <p>View information about posted necessity and the donation received.</p>
                 </div>
 
+                <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
 
-
+                <table class="posted-necessity-view-tables-forpending-and-complete" style="margin: 15%;">
+                    <tr>
+                        <td>Necessity Name</td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                        <td>Requested amount</td>
+                    </tr>
+                    <tr>
+                        <td>Received amount</td>
+                    </tr>
+                    <tr>
+                        <td>amountdue</td>
+                    </tr>
+                    <tr>
+                        <td>Start date</td>
+                    </tr>
+                    <tr>
+                        <td>End date</td>
+                    </tr>
+                    <tr>
+                        <td>frequency</td>
+                    </tr>
+                </table>
 
 
             </div> 
