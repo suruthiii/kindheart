@@ -76,8 +76,8 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td></td>
                                 <td><p>Rs.<?php echo $completetablerow->requestedAmount?></p></td>
+                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
