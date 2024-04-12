@@ -456,7 +456,6 @@ span .donor-form-error-details{
     justify-content: center;
     border: #4d3131;
     align-items: center;
-    background-color:#113575;
 }
 
 .view-benefaction-right-column-inner{
@@ -464,9 +463,9 @@ span .donor-form-error-details{
     max-height: 50vh;
     overflow-x: hidden;
     overflow-y: auto;    
-    margin-right: 200px;
+    margin-right: 180px;
     margin-top: 150px;
-    background-color: bisque;
+
 }
 
 .view-benefaction-left-column {   
@@ -474,12 +473,12 @@ span .donor-form-error-details{
     min-width: 70%;
     max-height: 50vh;
     margin-top: 150px;
-    background-color:#8692A6;
 }
 
 .benefaction-info table {
-    width: 700px;
+    width: 400px;
     height: 8vh;
+    table-layout: fixed;
 }
 
 .benefaction-data {
@@ -492,6 +491,13 @@ span .donor-form-error-details{
 .benefaction-data th {
     min-width:100px; 
     width:100px;
+}
+
+.benefaction-data td {
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding: 8px;
 }
 
 .benefaction-data-image-row img{
@@ -542,6 +548,49 @@ span .donor-form-error-details{
     font-size: 12px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+}
+
+.request-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 85vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.request-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.request-right-side-bar-type-requests{
+    width: 250px;
+    height: 80px;
+    padding: 10px;
+    background-color: #8e0000;
+    border-radius: 10px;
+    color: white;
+}
+
+.request-right-side-bar-type-requests h4{
+    padding-left: 5px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.request-right-side-bar-type-requests p{
+    padding-left: 5px;
+    font-size: 12px;
+    margin-top: -5px;
 }
 
 

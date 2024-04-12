@@ -97,8 +97,27 @@
                 </div>
             </div>
 
-            <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <!-- right side bar for Requests -->
+            <div class="request-right-side-bar">
+                <div class="request-right-side-bar-inner">
+                    <!-- Topic -->
+                    <div class="request-right-side-bar-topic">
+                        <h3>Requests</h3>
+                    </div>
+                    <!-- Requests -->
+                        <div class="request-right-side-bar-type-requests">
+                            <h4>Name</h4>
+                            <p>Description</p>
+                        </div>
+                    <!-- <?php foreach($data['benefaction_details'] as $benefaction){?> -->
+                        <!-- <a href="pop up including applicanmt details"> -->
+                        <!-- <div class="request-right-side-bar-requests">
+                            <h4><?php echo $benefaction->itemName; ?></h4>
+                            <p><?php echo $benefaction->description; ?></p>
+                        </div>
+                    <?php }?> -->
+                </div>
+            </div>
         </div>
     </section>
 </main>
