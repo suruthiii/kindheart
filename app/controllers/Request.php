@@ -32,7 +32,7 @@ class Request extends Controller {
             die('User Type Not Found');
         }
     }
-    
+
     public function organizationRequest(){
         if($_SESSION['user_type'] == 'admin') {
             $data = [
@@ -102,6 +102,26 @@ class Request extends Controller {
                 }
             }
             
+        }
+    }
+
+    public function assignMe() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->requestModel->assignMe($_POST['user_ID'])) {
+                $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
+
+                if($doneeType == 'student') {
+                    redirect('request/studentrequest');
+                }
+
+                else if($doneeType == 'organization') {
+                    redirect('request/organizationrequest');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
         }
     }
 }
