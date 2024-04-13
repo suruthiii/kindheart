@@ -22,12 +22,12 @@
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
                     <h3>View Necessity</h3>
-                    <p>View information about posted necessity and the donation received.</p>
+                    <p>View information about posted necessity that completed.</p>
                 </div>
 
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
 
-                <div class="posted-necessity-view-tables-css-for-pending-and-complete">
+                <div class="posted-necessity-view-tables-css-for-pending-and-complete-type-two">
                     <table>
                         <tr>
                             <td><p>Necessity Name</P></td>
@@ -51,21 +51,17 @@
                         </tr>
                         <tr>
                             <td><p>Donation Starting Date</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->startDate !== null ? date('Y-m-d', strtotime($data['pendingNecessityDetails']->startDate)) : '---'; ?></p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->startDate !== null ? $data['pendingNecessityDetails']->startDate : '---'; ?></p></td>
                         </tr>
                         <tr>
                             <td><p>Donation Ending Date</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->endDate !== null ? date('Y-m-d', strtotime($data['pendingNecessityDetails']->endDate)) : '---'; ?></p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->endDate !== null ? $data['pendingNecessityDetails']->endDate : '---'; ?></p></td>
                         </tr>
                         <tr>
                             <td><p>Frequency of Funding</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->frequency !== null ? $data['pendingNecessityDetails']->frequency : '---'; ?></p></td>
                         </tr>
                     </table>
-                </div>
-                <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-                    <button>Edit</button>
-                    <button>Delete</button>
                 </div>
 
             </div> 
