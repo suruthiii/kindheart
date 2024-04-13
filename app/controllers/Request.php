@@ -149,4 +149,24 @@ class Request extends Controller {
             }
         }
     }
+
+    public function acceptDonee() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->requestModel->acceptDonee($_POST['user_ID'])) {
+                $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
+
+                if($doneeType == 'student') {
+                    redirect('request/studentrequest');
+                }
+
+                else if($doneeType == 'organization') {
+                    redirect('request/organizationrequest');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
 }
