@@ -84,7 +84,7 @@
             </div>
 
             <div class="view-donation-btn-container" style="display: flex;">
-                <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                <form action="<?php echo URLROOT ?>/request/acceptdonee" method="post" class="delete-form">
                     <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
                         Accept
