@@ -59,7 +59,7 @@ class Request extends Controller {
         }
     }
 
-    public function viewStudentRequest($student_ID = null) {
+    public function viewUnassignedStudentRequest($student_ID = null) {
         if(empty($student_ID)) {
             redirect('pages/404');
         }
@@ -69,10 +69,23 @@ class Request extends Controller {
             'student_details' => $this->requestModel->getStudent($student_ID)
         ];
 
-        $this->view($_SESSION['user_type'].'/request/viewStudentRequest', $data);
+        $this->view($_SESSION['user_type'].'/request/viewUnassignedStudentRequest', $data);
     }
 
-    public function viewOrganizationRequest($org_ID = null){
+    public function viewAssignedStudentRequest($student_ID = null) {
+        if(empty($student_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'student_details' => $this->requestModel->getStudent($student_ID)
+        ];
+
+        $this->view($_SESSION['user_type'].'/request/viewAssignedStudentRequest', $data);
+    }
+
+    public function viewUnassignedOrganizationRequest($org_ID = null){
         if(empty($org_ID)) {
             redirect('pages/404');
         }
@@ -81,7 +94,19 @@ class Request extends Controller {
             'title' => 'Home page',
             'organization_details' => $this->requestModel->getOrganization($org_ID)
         ];
-        $this->view($_SESSION['user_type'].'/request/viewOrganizationRequest', $data);
+        $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data);
+    }
+
+    public function viewAssignedOrganizationRequest($org_ID = null){
+        if(empty($org_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'organization_details' => $this->requestModel->getOrganization($org_ID)
+        ];
+        $this->view($_SESSION['user_type'].'/request/viewAssignedOrganizationRequest', $data);
     }
 
     public function unassignAdmin() {

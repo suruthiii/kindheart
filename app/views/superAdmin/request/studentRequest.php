@@ -30,7 +30,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['unassigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/request/viewstudentrequest/<?php echo $item->userID ?>">
+                    <a href="<?php echo URLROOT ?>/request/viewunassignedstudentrequest/<?php echo $item->userID ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -62,20 +62,19 @@
                 <div class="card-list">
 
                     <?php foreach($data['assigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/request/viewstudentrequest/<?php echo $item->userID ?>">
+                    <a href="<?php echo URLROOT ?>/request/viewassignedstudentrequest/<?php echo $item->userID ?>">
                         <div class="card">
                             <table>
                                 <tr>
                                     <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png" alt=""></td>
-                                    <td width="30%" class="content">
+                                    <td width="50%" class="content">
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
-                                    <td width="30%" class="amount"><?php echo $item->adminName ?></td>
-                                    <td width="30%" class="option">
+                                    <td width="40%" class="option">
                                         <form action="<?php echo URLROOT ?>/request/unassignadmin" method="post" class="assign-manage-form">
                                             <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->userID ?>" />
                                             <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
-                                                Unassign
+                                                <?php echo $item->adminName ?>
                                             </button>
                                         </form>
                                     </td>
