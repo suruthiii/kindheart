@@ -461,4 +461,29 @@ class Necessity extends Controller {
             $this->view($_SESSION['user_type'].'/necessity/managegood', $data);
         }
     }
+
+    public function addComment() {
+        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin')) {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $data = [
+                    'comment' => trim($_POST['comment']),
+                    'err' => ''
+                ];
+
+                if(empty($data['comment'])) {
+                    $data['err'] = 'Please enter your comment';
+                }
+
+                else {
+                    if($this->necessityModel->addComment($data)) {
+                        // redirect('necessity/')
+                    }
+                }
+            }
+        }
+    }
 }

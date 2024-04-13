@@ -587,7 +587,7 @@
 .page-container .section .container .comment-form {
     margin-top: 50px;
     width: 550px;
-    height: 220px;
+    height: 150px;
     margin-left: 10px;
 }
 
@@ -598,7 +598,7 @@
 
 .page-container .section .container .comment-form .comment-textarea {
     width: 400px;
-    height: 150px;
+    height: 100px;
 }
 
 .page-container .section .container .comment-form .comment-textarea:focus {
