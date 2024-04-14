@@ -342,7 +342,7 @@ class Necessity extends Controller {
     }
 
     public function viewPendingMonetarynecessity(){
-        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
             redirect('pages/404');
         } else {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -395,7 +395,7 @@ class Necessity extends Controller {
     }
 
     public function viewCompletedMonetarynecessity(){
-        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
             redirect('pages/404');
         } else {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
