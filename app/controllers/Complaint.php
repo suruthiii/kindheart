@@ -31,5 +31,10 @@ class Complaint extends Controller {
 
     public function viewComplaint() {
         
+        
     }
+
+
+
+
 }
