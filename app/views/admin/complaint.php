@@ -60,7 +60,7 @@
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
                                     <td width="40%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
+                                        <form action="<?php echo URLROOT ?>/complaint/unassignadmin" method="post" class="assign-manage-form">
                                             <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Unassign
