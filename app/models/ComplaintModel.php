@@ -57,4 +57,9 @@ class ComplaintModel{
             return false;
         }
     }
+
+    public function getPastComplaints($complaint_ID) {
+        // $this->db->query('SELECT c.complaintID, c.description,  FROM ');
+
+    }
 }    
