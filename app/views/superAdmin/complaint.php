@@ -19,7 +19,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['unassigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/complaint/viewunassignedcomplaint/<?php echo $item->userID ?>">
+                    <a href="<?php echo URLROOT ?>/complaint/viewunassignedcomplaint/<?php echo $item->complaintID ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -29,8 +29,8 @@
                                     </td>
                                     <td width="40%" class="option">
                                         <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->userID ?>" />
-                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
+                                            <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
+                                            <button type="submit" class="assign-manage" onclick="">
                                                 Assign
                                             </button>
                                         </form>
@@ -51,7 +51,7 @@
                 <div class="card-list">
 
                     <?php foreach($data['assigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/complaint/viewunassignedcomplaint/<?php echo $item->userID ?>">
+                    <a href="<?php echo URLROOT ?>/complaint/viewunassignedcomplaint/<?php echo $item->complaintID ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -60,10 +60,10 @@
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
                                     <td width="40%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $item->userID ?>" />
-                                            <button type="submit" class="assign-manage" onclick="return confirmSubmit();">
-                                                Unassign
+                                        <form action="<?php echo URLROOT ?>/complaint/unassignadmin" method="post" class="assign-manage-form">
+                                            <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
+                                            <button type="submit" class="assign-manage" onclick="">
+                                                <?php echo $item->adminName ?>
                                             </button>
                                         </form>
                                     </td>

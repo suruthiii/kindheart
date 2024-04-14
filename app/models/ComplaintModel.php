@@ -7,7 +7,7 @@ class ComplaintModel{
     }
 
     public function getAllUnassignedComplaints() {
-        $this->db->query('SELECT c.complaintID, c.complainerID, u.username FROM complaint c JOIN user u WHERE c.complainerID = u.userID AND c.adminID = 0;');
+        $this->db->query('SELECT c.complaintID, c.complainerID, u.username FROM complaint c JOIN user u ON c.complainerID = u.userID WHERE c.adminID = 0;');
         
         $result = $this->db->resultSet();
 
@@ -15,10 +15,23 @@ class ComplaintModel{
     }
 
     public function getAllAssignedComplaints() {
-        $this->db->query('SELECT c.complaintID, c.complainerID, u.username FROM complaint c JOIN user u WHERE c.complainerID = u.userID AND c.adminID != 0;');
+        $this->db->query('SELECT c.complaintID, c.complainerID, u.username, a.adminName FROM complaint c JOIN user u ON c.complainerID = u.userID JOIN admin a ON c.adminID = a.adminId WHERE c.adminID != 0;');
         
         $result = $this->db->resultSet();
 
         return $result;
+    }
+
+    public function unassignAdmin($complaint_ID) {
+        $this->db->query('UPDATE complaint SET adminID = 0 WHERE complaintID = :complaintID;');
+        $this->db->bind(':complaintID', $complaint_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }    
