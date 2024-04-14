@@ -17,7 +17,7 @@ class Complaint extends Controller {
 
     public function assignMe() {
         if($_SESSION['user_type'] != 'admin') {
-        redirect('pages/404');
+            redirect('pages/404');
         }
 
         else {
@@ -29,9 +29,14 @@ class Complaint extends Controller {
         }    
     }
 
-    public function viewComplaint() {
-        
-        
+    public function viewUnassignedComplaint($complaint_ID) {
+        $data = [
+            'title' => 'Home Page',
+            // 'complaint_details' => $this->complaintModel->getComplaintDetails($complaint_ID),
+            // 'past_complaints' => $this->complaintModel->getPastComplaints($complaint_ID)
+        ];
+
+        $this->view($_SESSION['user_type'].'/complaint/viewUnassignedComplaint', $data);
     }
 
 
