@@ -113,12 +113,12 @@ class Request extends Controller {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($this->requestModel->unassignAdmin($_POST['user_ID'])) {
                 $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
-
-                if($doneeType == 'student') {
+                
+                if($doneeType == "student") {
                     redirect('request/studentrequest');
                 }
 
-                else if($doneeType == 'organization') {
+                else if($doneeType == "organization") {
                     redirect('request/organizationrequest');
                 }
 

@@ -80,7 +80,7 @@ class RequestModel{
 
         $result = $this->db->single();
 
-        return $result;
+        return $result->doneeType;
     }
 
     public function unassignAdmin($donee_ID) {
