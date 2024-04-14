@@ -362,7 +362,13 @@ class Necessity extends Controller {
                     ];
     
                     // Pass data to the view
-                    $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
     
                 } else {
                     // display an error message here
@@ -370,12 +376,20 @@ class Necessity extends Controller {
                 }
     
             } else {
-                // If it's not a POST request, prepare empty data and pass it to the view
+                // If it's not a POST request, then empty data pass to the view
                 $data = [
                     'necessityID' => '',
-                    'pendingNecessityDetails' => [] // Assuming this should be an array
+                    'pendingNecessityDetails' => [] // this is an array
                 ];
-                $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+                }else {
+                    die('User Type Not Found');
+                }
             }
         }
     }
@@ -400,8 +414,15 @@ class Necessity extends Controller {
                         'pendingNecessityDetails' => $pendingNecessityDetails
                     ];
     
+
                     // Pass data to the view
-                    $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
     
                 } else {
                     // display an error message here
@@ -409,12 +430,20 @@ class Necessity extends Controller {
                 }
     
             } else {
-                // If it's not a POST request, prepare empty data and pass it to the view
+                // If it's not a POST request, then empty data pass to the view
                 $data = [
                     'necessityID' => '',
-                    'pendingNecessityDetails' => [] // Assuming this should be an array
+                    'pendingNecessityDetails' => [] // this is an array
                 ];
-                $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                }else {
+                    die('User Type Not Found');
+                }
             }
         }
     }
