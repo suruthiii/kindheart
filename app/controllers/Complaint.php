@@ -15,6 +15,20 @@ class Complaint extends Controller {
         }
     }
 
+    public function assignMe() {
+        if($_SESSION['user_type'] != 'admin') {
+        redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->complaintModel->assignMe($_POST['complaint_ID'])) {
+                    redirect('admin/complaint');
+                }
+            }
+        }    
+    }
+
     public function viewComplaint() {
         
     }

@@ -28,7 +28,7 @@
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
                                     <td width="40%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
+                                        <form action="<?php echo URLROOT ?>/complaint/assignme" method="post" class="assign-manage-form">
                                             <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Assign
@@ -45,7 +45,7 @@
 
             <div class="list">
                 <div class="list-title">
-                    <h4>Assigned</h4>
+                    <h4>Assigned To Me</h4>
                 </div>
                 
                 <div class="card-list">
@@ -60,7 +60,7 @@
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
                                     <td width="40%" class="option">
-                                        <form action="<?php echo URLROOT ?>/complaint/unassignadmin" method="post" class="assign-manage-form">
+                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
                                             <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Unassign

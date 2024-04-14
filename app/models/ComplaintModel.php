@@ -31,6 +31,20 @@ class ComplaintModel{
         return $result;
     }
 
+    public function assignMe($complaint_ID) {
+        $this->db->query('UPDATE complaint SET adminID = :adminID WHERE complaintID = :complaintID;');
+        $this->db->bind(':complaintID', $complaint_ID);
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
     public function unassignAdmin($complaint_ID) {
         $this->db->query('UPDATE complaint SET adminID = 0 WHERE complaintID = :complaintID;');
         $this->db->bind(':complaintID', $complaint_ID);
