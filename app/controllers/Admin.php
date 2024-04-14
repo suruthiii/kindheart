@@ -9,6 +9,7 @@ class Admin extends Controller {
         $this->scholarshipModel = $this->model('ScholarshipModel');
         $this->projectModel = $this->model('ProjectModel');
         $this->benefactionModel = $this->model('BenefactionModel');
+        $this->complaintModel = $this->model('ComplaintModel');
     }
 
     public function index(){
@@ -84,8 +85,12 @@ class Admin extends Controller {
 
     public function complaint() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'title' => 'Home page',
+            'unassigned' => $this->complaintModel->getAllUnassignedComplaints(),
+            'assigned' => $this->complaintModel->getAssignedComplaints()
         ];
+        
         $this->view('admin/complaint', $data);
     }
 
