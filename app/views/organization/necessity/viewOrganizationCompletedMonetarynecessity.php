@@ -38,11 +38,15 @@
                             <td><p><?php echo $data['pendingNecessityDetails']->description; ?></p></td>
                         </tr>
                         <tr>
+                            <td><p>Necessity Type</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->monetaryNecessityType; ?></p></td>
+                        </tr>
+                        <tr>
                             <td><p>Requested Amount</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->requestedAmount; ?></p></td>
                         </tr>
                         <tr>
-                            <td><p>Received Amount/<p></td>
+                            <td><p>Received Amount</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->receivedAmount; ?></p></td>
                         </tr>
                         <tr>
