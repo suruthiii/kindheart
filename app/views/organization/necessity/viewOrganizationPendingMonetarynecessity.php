@@ -38,11 +38,15 @@
                             <td><p><?php echo $data['pendingNecessityDetails']->description; ?></p></td>
                         </tr>
                         <tr>
+                            <td><p>Necessity Type</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->monetaryNecessityType; ?></p></td>
+                        </tr>
+                        <tr>
                             <td><p>Requested Amount</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->requestedAmount; ?></p></td>
                         </tr>
                         <tr>
-                            <td><p>Received Amount/<p></td>
+                            <td><p>Received Amount</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->receivedAmount; ?></p></td>
                         </tr>
                         <tr>
@@ -64,8 +68,21 @@
                     </table>
                 </div>
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <form action="<?php echo URLROOT ?>" method="post">
+                        <input type="hidden" name="edit" id="edit" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>" />
+                        <button type="submit">
+                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" class="ncessity-view-table-edit-button-img">
+                            <p>Edit</p>
+                        </button>
+                    </form>
+
+                    <form action="<?php echo URLROOT ?>" method="post" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="delete" id="delete" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>"/>
+                        <button type="submit">
+                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" class="ncessity-view-table-delete-button-img">
+                            <p>Delete</p>
+                        </button>
+                    </form>
                 </div>
 
             </div> 
@@ -81,5 +98,11 @@
         </div>
     </section>
 </main>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
