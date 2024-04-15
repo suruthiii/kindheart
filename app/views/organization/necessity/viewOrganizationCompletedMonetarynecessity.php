@@ -27,7 +27,7 @@
 
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
 
-                <div class="posted-necessity-view-tables-css-for-pending-and-complete-type-two">
+                <div class="posted-necessity-view-tables-css-for-pending-and-complete">
                     <table>
                         <tr>
                             <td><p>Necessity Name</P></td>
@@ -66,6 +66,16 @@
                             <td><p><?php echo $data['pendingNecessityDetails']->frequency !== null ? $data['pendingNecessityDetails']->frequency : '---'; ?></p></td>
                         </tr>
                     </table>
+                </div>
+
+                <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
+                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="post" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>"/>
+                        <button type="submit">
+                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" class="ncessity-view-table-delete-button-img">
+                            <p>Delete</p>
+                        </button>
+                    </form>
                 </div>
 
             </div> 
