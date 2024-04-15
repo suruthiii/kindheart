@@ -66,6 +66,7 @@ class Benefaction extends Controller {
 
             $data = [
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
+                'benefactionCategory' => trim($_POST['benefactionCategory']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
 
@@ -78,6 +79,7 @@ class Benefaction extends Controller {
                 'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
+                'benefactionCategory' => '',
                 'quantityBenfaction_err' => '',
                 'benefactionDescription_err' => '',
                 'photoBenfaction_err' => ''
@@ -87,6 +89,10 @@ class Benefaction extends Controller {
             //validate the input fields seperately
             if(empty($data['itemBenefaction'])){
                 $data['itemBenefaction_err']='Please enter the Item';
+            }
+
+            if(empty($data['benefactionCategory'])){
+                $data['benefactionCategory_err']='Please select the Category';
             }
 
             if(empty($data['quantityBenfaction'])){
