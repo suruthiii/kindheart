@@ -341,6 +341,7 @@ class Necessity extends Controller {
         $this->view('admin/necessity/viewMonetary', $data);
     }
 
+    // View pending necessity's further information
     public function viewPendingMonetarynecessity(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
             redirect('pages/404');
@@ -394,6 +395,7 @@ class Necessity extends Controller {
         }
     }
 
+    //view completed necessity's further information
     public function viewCompletedMonetarynecessity(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
             redirect('pages/404');
@@ -448,6 +450,68 @@ class Necessity extends Controller {
         }
     }
     
+    //Delete pending Necessity
+    public function deleteNecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+    
+                    //  if the Deleting necessity is succed   
+                    if($this->necessityModel->deleteNecessity($necessityID)){
+
+                        //update necessity data
+                        $data = [
+                            'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
+                            'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities()
+                        ];
+
+                        // Pass data to the view
+                        if ($_SESSION['user_type'] == 'student') {
+
+                        }else if ($_SESSION['user_type'] == 'organization') {
+                            $this->view('organization/postedmonetarynecessity', $data);
+                        }else {
+                            die('User Type Not Found');
+                        }
+
+                    }else{
+
+                        // Handle deletion failure (e.g., show error message)
+                        die('Failed to delete benefaction.');
+                    }
+    
+                } else {
+                    // display an error message here
+                    print_r($_POST);
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'pendingtablerow' => [] ,
+                    'completetablerow' => [] // this is an array
+                ];
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/postedmonetarynecessity', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    } 
 
     public function viewAdminMonetaryDonation(){
         $data = [

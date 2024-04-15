@@ -108,6 +108,19 @@ class NecessityModel{
         $result = $this->db->single();
         return $result;
     }
+
+    public function deleteNecessity($necessityID){
+        // Query statement
+        $this->db->query('UPDATE necessity SET fulfillmentStatus = 10 WHERE necessityID = :necessityID');
+        $this->db->bind(':necessityID', $necessityID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
     
 
     public function getAllConfirmedMonetaryNecessities(){
