@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form action="<?php echo URLROOT ?>/Necessity/addmonetarynecessity" method="POST">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/addmonetarynecessity" method="POST" onsubmit="return validateForm()">
                         <!-- First line of form -->
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-first-div">

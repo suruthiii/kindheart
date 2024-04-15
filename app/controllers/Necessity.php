@@ -511,6 +511,141 @@ class Necessity extends Controller {
                 }
             }
         }
+    }
+
+    //edit monetary necessity
+    public function editmonetarynecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                $data = [
+                    'necessityMonetary' => trim($_POST['necessityMonetary']),
+                    'necessityType' => trim($_POST['necessityType']),
+                    'monetarynecessitydes' => trim($_POST['monetarynecessitydes']),
+                    'requestedamount' => trim($_POST['requestedamount']),
+                    'necessityMonetary_err' => '',
+                    'monetarynecessitydes_err' => '',
+                    'requestedamount_err' => '',
+                    'recurringdate_err' => '',
+                    'frequency_err' => ''
+                ];
+
+                //change the getting input according to necessity type
+                if ($data['necessityType'] === 'recurring') {
+                    $data['recurringstartdate'] = trim($_POST['recurringstartdate']);
+                    $data['recurringenddate'] = trim($_POST['recurringenddate']);
+                } else {
+                    $data['recurringstartdate'] = null;
+                    $data['recurringenddate'] = null;
+                }
+
+                if ($data['necessityType'] === 'recurring') {
+                    $startDate = new DateTime($data['recurringstartdate']);
+                    $endDate = new DateTime($data['recurringenddate']);
+                    
+                    // Calculate the difference in days
+                    $dateDiff = $startDate->diff($endDate)->days;
+                
+                    if ($dateDiff < 7) {
+                        $data['frequency_err'] = 'please enter dates at least have 7days difference';
+                    } else {
+                        $data['frequency'] = trim($_POST['frequency']);
+                    }
+                } elseif($data['necessityType'] === 'onetime' && !empty($data['necessityMonetary'])){
+                    $data['frequency'] = null;
+                }else {
+                    $data['frequency'] = null;
+                }
+
+
+                //check wheather field are empty or not
+
+                //necessity field
+                if(empty($data['necessityMonetary'])){
+                    $data['necessityMonetary_err']='Please enter the Necessity about Monetary';
+                }
+
+                //necessity description field
+                if(empty($data['monetarynecessitydes'])){
+                    $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
+                }
+
+                //necessity type field
+                if($data['necessityType']== 'recurring'){
+                    if(empty($data['recurringstartdate'])){
+                        $data['recurringstartdate_err']='Please enter the Recurring Start Date';
+                    }
+
+                    if(empty($data['recurringenddate'])){
+                        $data['recurringenddate_err']='Please enter the Recurring End Date';
+                    }
+                }
+
+                //recurring start and end date check
+                if($data['recurringstartdate'] > $data['recurringenddate']){
+                    $data['recurringdate_err']="Please give a valid dates.";
+                }
+
+                //necessity requested amount field
+                if(empty($data['requestedamount'])){
+                    $data['requestedamount_err']='Please enter the Requested Amount';
+                }elseif($data['requestedamount']<0){// check the validity of inserted value
+                    $data['requestedamount_err']='Please enter Valid Amount';
+                }
+
+                //check whether there any errors
+                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err']) && empty($data['frequency_err'])){
+                    if($this->necessityModel->editmonetarynecessitytodb($data)){
+                        redirect('necessity/monetary');
+                    }else{
+                        error_log('Error: Failed to insert data into the database.');
+                        die('something went wrong');
+                    }
+                }else{
+
+                    if ($_SESSION['user_type'] == 'student') {
+                        $this->view('student/necessity/', $data);
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/editpostedmonetarynecessity', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+                    
+                }
+
+            }else{
+                $data = [
+                    'necessityMonetary' => '',
+                    'necessityType' => '',
+                    'recurringstartdate' => '',
+                    'recurringenddate' => '',
+                    'frequency' => '',
+                    'monetarynecessitydes' => '',
+                    'requestedamount' => '',
+                    'necessityMonetary_err' => '',
+                    'monetarynecessitydes_err' => '',
+                    'requestedamount_err' => '',
+                    'recurringstartdate_err' => '',
+                    'recurringenddate_err' => '',
+                    'recurringdate_err' => '',
+                    'frequency_err' =>''
+                ];
+
+                if ($_SESSION['user_type'] == 'student') {
+                    $this->view('student/necessity/', $data);
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/editpostedmonetarynecessity', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+
+        }
     } 
 
     public function viewAdminMonetaryDonation(){
