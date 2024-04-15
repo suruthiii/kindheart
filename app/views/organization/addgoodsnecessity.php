@@ -27,7 +27,7 @@
 
                 <!-- Add goods Necessity Form -->
                 <div class="add-necessity-form">
-                    <form action="<?php echo URLROOT ?>/Necessity/addGoodsNecessity" method="post">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/addGoodsNecessity" method="post" onsubmit="return validateForm()">
                         <!-- Necessity -->
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-third-div">
