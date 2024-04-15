@@ -69,15 +69,15 @@
                 </div>
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
                     <form action="<?php echo URLROOT ?>" method="post">
-                        <input type="hidden" name="edit" id="edit" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>" />
+                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>" />
                         <button type="submit">
                             <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" class="ncessity-view-table-edit-button-img">
                             <p>Edit</p>
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>" method="post" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="delete" id="delete" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>"/>
+                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="post" onsubmit="return confirmDelete();">
+                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>"/>
                         <button type="submit">
                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" class="ncessity-view-table-delete-button-img">
                             <p>Delete</p>
