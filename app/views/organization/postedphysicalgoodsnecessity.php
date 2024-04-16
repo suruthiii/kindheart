@@ -58,17 +58,19 @@
                                 </td>
                                 <td><p><?php echo $pendingtablerow->requestedQuantity?></p></td>
                                 <td>
-                                    <button onclick="location.href='<?php echo URLROOT ?>/organization/'">
-                                        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
-                                    </button>
+                                    <form action="<?php echo URLROOT ?>/necessity/viewPendingPhysicalGoodsnecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form>
                                 </td>
-
                                 <td><button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">
                                     <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST">
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
@@ -122,7 +124,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST">
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
@@ -155,5 +157,11 @@
         </div>
     </section>
 </main>
+
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

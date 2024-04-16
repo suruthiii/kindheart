@@ -80,4 +80,10 @@
     </section>
 </main>
 
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>
+
 <?php require APPROOT.'/views/inc/footer.php'; ?>

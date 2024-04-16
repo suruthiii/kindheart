@@ -16,19 +16,23 @@
                 <!-- Go Back Button -->
                 <div class="goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/monetary'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/physicalgood'">Go Back</button>
                 </div>
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
                     <h3>View Necessity</h3>
-                    <p>View information about posted necessity that completed.</p>
+                    <p>View information about posted necessity and the donation received.</p>
                 </div>
 
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
 
                 <div class="posted-necessity-view-tables-css-for-pending-and-complete">
-                    <table>
+                <table>
+                        <tr>
+                            <td><p>Necessity Category</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->itemCategory; ?></p></td>
+                        </tr>
                         <tr>
                             <td><p>Necessity Name</P></td>
                             <td><?php echo $data['pendingNecessityDetails']->necessityName; ?></td>
@@ -38,38 +42,29 @@
                             <td><p><?php echo $data['pendingNecessityDetails']->description; ?></p></td>
                         </tr>
                         <tr>
-                            <td><p>Necessity Type</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->monetaryNecessityType; ?></p></td>
+                            <td><p>Requested Quantity</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->requestedQuantity; ?></p></td>
                         </tr>
                         <tr>
-                            <td><p>Requested Amount</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->requestedAmount; ?></p></td>
+                            <td><p>Received Quantity</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->receivedQuantity; ?></p></td>
                         </tr>
                         <tr>
-                            <td><p>Received Amount</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->receivedAmount; ?></p></td>
-                        </tr>
-                        <tr>
-                            <td><p>Amount Due</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->amount_due; ?></p></td>
-                        </tr>
-                        <tr>
-                            <td><p>Donation Starting Date</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->startDate !== null ? $data['pendingNecessityDetails']->startDate : '---'; ?></p></td>
-                        </tr>
-                        <tr>
-                            <td><p>Donation Ending Date</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->endDate !== null ? $data['pendingNecessityDetails']->endDate : '---'; ?></p></td>
-                        </tr>
-                        <tr>
-                            <td><p>Frequency of Funding</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->frequency !== null ? $data['pendingNecessityDetails']->frequency : '---'; ?></p></td>
+                            <td><p>Quantity Due</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->quantity_due; ?></p></td>
                         </tr>
                     </table>
                 </div>
-
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="post" onsubmit="return confirmDelete();">
+                    <form action="<?php echo URLROOT ?>" method="post">
+                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>" />
+                        <button type="submit">
+                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" class="ncessity-view-table-edit-button-img">
+                            <p>Edit</p>
+                        </button>
+                    </form>
+
+                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="post" onsubmit="return confirmDelete();">
                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>"/>
                         <button type="submit">
                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" class="ncessity-view-table-delete-button-img">
