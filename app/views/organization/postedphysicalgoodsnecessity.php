@@ -67,7 +67,14 @@
                                     <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
                                     </button>
                                 </td>
-                                <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
@@ -106,6 +113,15 @@
                                 </td>
                                 <td><p><?php echo $completetablerow->requestedQuantity?></p></td>
                                 <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
+                                <td></td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>

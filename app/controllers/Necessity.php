@@ -532,15 +532,15 @@ class Necessity extends Controller {
 
                         //update necessity data
                         $data = [
-                            'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
-                            'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities()
+                            'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities(),
+                            'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities()
                         ];
 
                         // Pass data to the view
                         if ($_SESSION['user_type'] == 'student') {
 
                         }else if ($_SESSION['user_type'] == 'organization') {
-                            $this->view('organization/postedmonetarynecessity', $data);
+                            $this->view('organization/postedphysicalgoodsnecessity', $data);
                         }else {
                             die('User Type Not Found');
                         }
