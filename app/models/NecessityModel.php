@@ -151,6 +151,7 @@ class NecessityModel{
     //     }
     // }
 
+    // Deleting necessities
     public function deleteNecessity($necessityID){
         // Query statement
         $this->db->query('UPDATE necessity SET fulfillmentStatus = 10 WHERE necessityID = :necessityID');
