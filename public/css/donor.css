@@ -669,7 +669,7 @@ span .donor-form-error-details{
 }
 
 
-/* ---------------------Choose necessity type--------------------------- */
+/* ---------------------Choose Benefaction type--------------------------- */
 .choose-benefaction-buttons-container{
     position: fixed;
     width: 30%;
@@ -710,4 +710,142 @@ span .donor-form-error-details{
     color: #ffffff;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
+}
+
+/* ------------------Add Scholarship--------------- */
+
+.add-scholarship-form{
+    position: relative;
+    width: 100%;
+    height: 69vh;
+    margin-top: 16vh;
+}
+
+.scholarship-first-div,
+.scholarship-second-div,
+.scholarship-third-div,
+.scholarship-forth-div{
+    position: relative;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5vh;
+    width: 68%;
+    float: left;
+}
+
+.scholarship-first-div input,
+.scholarship-second-div input,
+.scholarship-forth-div input{
+    height: 5vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+}
+
+.scholarship-first-div input:focus,
+.scholarship-second-div input:focus,
+.scholarship-forth-div input:focus,
+.add-scholarship-text-area-input-to-oneline textarea:focus{
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
+.add-scholarship-text-area-input-to-oneline textarea{
+    height: 6vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding-left: 14px;
+    padding-right: 14px;
+}
+
+.scholarship-first-div label,
+.scholarship-second-div label,
+.scholarship-third-div label,
+.scholarship-forth-div label,
+.add-scholarship-text-area-input-to-oneline label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 0.5vh;
+}
+
+.add-scholarship-text-area-input-to-oneline{
+    position: relative;
+    width: 70%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3vh;
+}
+
+.add-scholarship-add-button{
+    position: relative;
+    width: 100%;
+    height: 5vh;
+}
+
+.add-scholarship-add-button input{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-scholarship-add-button input:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-scholarship-add-button input[type="submit"] {
+    color: #ffffff;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.scholarship-third-div-two-input-one-line {
+    display: flex; /* Set display to flex to align items horizontally */
+    justify-content: space-between; /* Add space between the elements */
+    height: 5vh;
+}
+
+.add-scholarship-first-div,
+.add-scholarship-second-div{
+    display: inline-block; /* Change display to inline-block */
+    width: 300px; /* Adjust width to 25% of the container width with some spacing */
+    /* margin-right: 10px; Add margin to create spacing between the elements */
+    vertical-align: top; /* Align elements to the top */
+}
+
+.add-scholarship-first-div input,
+.add-scholarship-second-div input {
+    height: 100%; /* Make the input fields fill the entire height of their parent div */
+    width: 86%;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px; /* Adjust padding */
+}
+
+.add-scholarship-first-div input:focus,
+.add-scholarship-second-div input:focus {
+    outline: none !important;
+    border: #8E0000 solid;
 }
