@@ -321,7 +321,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="#2">
+                <a href="<?php echo URLROOT ?>/project/postedprojects">
                     <?php if ($section == 'projects'){?>
                         <div class="selected-item">Projects</div>
                     <?php }
