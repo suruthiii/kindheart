@@ -79,11 +79,28 @@ class Benefaction extends Controller {
                 'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
-                'benefactionCategory' => '',
+                'benefactionCategory_err' => '',
                 'quantityBenfaction_err' => '',
                 'benefactionDescription_err' => '',
                 'photoBenfaction_err' => ''
             ];
+
+            // Map category value to category string
+            if (!empty($_POST['benefactionCategory']) && $_POST['benefactionCategory'] != '0') {
+                $categoryMap = [
+                    '1' => 'Educational Supplies and Tools',
+                    '2' => 'Clothing and Accessories',
+                    '3' => 'Recreation and Sports Equipment',
+                    '4' => 'Furniture and Appliances',
+                    '5' => 'Health and Wellness Products',
+                    '6' => 'Transportation and Mobility',
+                    '7' => 'Literature and Reading Materials',
+                    '8' => 'Others'
+                ];
+
+                $selectedCategoryId = $_POST['benefactionCategory'];
+                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId] ?? ''; // Get corresponding category string
+            }
             // die(print_r($this->imgUpload('photoBenfaction1')));
 
             //validate the input fields seperately
@@ -91,8 +108,8 @@ class Benefaction extends Controller {
                 $data['itemBenefaction_err']='Please enter the Item';
             }
 
-            if(empty($data['benefactionCategory'])){
-                $data['benefactionCategory_err']='Please select the Category';
+            if (empty($_POST['benefactionCategory']) || $_POST['benefactionCategory'] == '0') {
+                $data['benefactionCategory_err'] = 'Please select a category.';
             }
 
             if(empty($data['quantityBenfaction'])){
@@ -109,7 +126,7 @@ class Benefaction extends Controller {
                 $data['photoBenfaction_err'] = 'Please upload at least 2 photos of the item';
             }
 
-            if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
+            if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err']) && empty($data['benefactionCategory_err'])){
                 if($this->donorModel->addBenefaction($data)){
                     // die(print_r(123));
                     // die(print_r($this->imgUpload('photoBenfaction1')));
@@ -133,6 +150,7 @@ class Benefaction extends Controller {
         }else{
             $data = [
                 'itemBenefaction' => '',
+                'benefactionCategory' => '',
                 'quantityBenfaction' => '',
                 'benefactionDescription' => '',
                 'photoBenfaction1' => '',
@@ -141,6 +159,7 @@ class Benefaction extends Controller {
                 'photoBenfaction4' => '',
 
                 'itemBenefaction_err' => '',
+                'benefactionCategory_err' => '',
                 'quantityBenfaction_err' => '',
                 'benefactionDescription_err' => '',
                 'photoBenfaction_err' => ''
@@ -192,6 +211,7 @@ class Benefaction extends Controller {
 
             $data = [
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
+                'benefactionCategory' => trim($_POST['benefactionCategory']),
                 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
 
@@ -201,6 +221,7 @@ class Benefaction extends Controller {
                 'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
 
                 'itemBenefaction_err' => '',
+                'benefactionCategory_err' => '',
                 'quantityBenfaction_err' => '',
                 'benefactionDescription_err' => '',
                 'photoBenfaction_err' => ''
@@ -212,6 +233,10 @@ class Benefaction extends Controller {
             //validate the input fields seperately
             if(empty($data['itemBenefaction'])){
                 $data['itemBenefaction_err']='Please enter the Item';
+            }
+
+            if (empty($_POST['benefactionCategory']) || $_POST['benefactionCategory'] == '0') {
+                $data['benefactionCategory_err'] = 'Please select a category.';
             }
 
             if(empty($data['quantityBenfaction'])){
@@ -228,7 +253,7 @@ class Benefaction extends Controller {
                 $data['photoBenfaction_err'] = 'Please upload at least 2 photos of the item';
             }
 
-            if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err'])){
+            if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err']) && empty($data['benefactionCategory_err'])){
                 die(print_r($data));
                 if($this->donorModel->updateBenefaction($data)){
                     $this->view('donor/postedBenefactions', $data);

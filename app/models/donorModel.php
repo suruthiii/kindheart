@@ -8,11 +8,12 @@ class donorModel{
 
     public function addBenefaction($data){
             // Prepare statement
-            $this->db->query('INSERT INTO benefaction (itemName, itemQuantity, itemPhoto1, itemPhoto2, itemPhoto3, itemPhoto4, description, postedDate, donorID, availabilityStatus) VALUES (:itemName, :itemQuantity, :itemPhoto1, :itemPhoto2, :itemPhoto3, :itemPhoto4, :description, :postedDate, :donorID, :availabilityStatus)');
+            $this->db->query('INSERT INTO benefaction (itemName, itemCategory, itemQuantity, itemPhoto1, itemPhoto2, itemPhoto3, itemPhoto4, description, postedDate, donorID, availabilityStatus) VALUES (:itemName, :itemCategory, :itemQuantity, :itemPhoto1, :itemPhoto2, :itemPhoto3, :itemPhoto4, :description, :postedDate, :donorID, :availabilityStatus)');
 
             // Bind values
             $this->db->bind(':itemName', $data['itemBenefaction']);
-            $this->db->bind(':itemQuantity', $data['quantityBenfaction']);
+            $this->db->bind(':itemCategory', $data['benefactionCategory']);
+            $this->db->bind(':itemQuantity', $data['quantityBenfaction']);            
             $this->db->bind(':itemPhoto1', isset($data['photoBenfaction1']) ? $data['photoBenfaction1'] : null);
             $this->db->bind(':itemPhoto2', isset($data['photoBenfaction2']) ? $data['photoBenfaction2'] : null);
             $this->db->bind(':itemPhoto3', isset($data['photoBenfaction3']) ? $data['photoBenfaction3'] : null);
