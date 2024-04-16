@@ -489,4 +489,28 @@ class UserModel{
 
         return $row;
     }
+
+    public function getAdminCount() {
+        $this->db->query('SELECT COUNT(*) AS adminCount FROM admin a JOIN user u ON a.adminID = u.userID WHERE u.status != 0;');
+
+        $row = $this->db->single();
+
+        return $row->adminCount;
+    }
+
+    public function getRequestCount() {
+        $this->db->query('SELECT COUNT(*) AS requestCount FROM donee d JOIN user u ON d.doneeID = u.userID WHERE u.status = 0;');
+
+        $row = $this->db->single();
+
+        return $row->requestCount;
+    }
+
+    public function getComplaintCount() {
+        $this->db->query('SELECT COUNT(*) AS complaintCount FROM complaint;');
+
+        $row = $this->db->single();
+
+        return $row->complaintCount;
+    }
 }

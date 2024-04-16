@@ -16,23 +16,23 @@
                 <a class="card-link" href="<?php echo URLROOT ?>/superadmin/admin">
                     <div class="card">
                         <div class="title">Admins</div>
-                        <div class="value">10</div>
+                        <div class="value"><?php echo $data['admins'] ?></div>
                     </div>
                 </a>
 
                 <!-- Card 3 -->
-                <a class="card-link" href="">
+                <a class="card-link" href="<?php echo URLROOT ?>/superadmin/request">
                     <div class="card">
-                        <div class="title">Monthly Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
+                        <div class="title">Requests</div>
+                        <div class="value"><?php echo $data['requests'] ?></div>
                     </div>
                 </a>
-
+                
                 <!-- Card 3 -->
-                <a class="card-link" href="">
+                <a class="card-link" href="<?php echo URLROOT ?>/superadmin/complaint">
                     <div class="card">
-                        <div class="title">Monthly Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
+                        <div class="title">Complaints</div>
+                        <div class="value"><?php echo $data['complaints'] ?></div>
                     </div>
                 </a>
 
