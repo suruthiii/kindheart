@@ -15,8 +15,12 @@ class SuperAdmin extends Controller {
 
     public function index(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'admins' => $this->userModel->getAdminCount(),
+            'requests' => $this->userModel->getRequestCount(),
+            'complaints' => $this->userModel->getComplaintCount()
         ];
+
         $this->view('superAdmin/index', $data);
     }
 
