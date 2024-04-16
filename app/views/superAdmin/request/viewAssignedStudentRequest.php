@@ -142,20 +142,12 @@
             </div>
 
             <div class="view-donation-btn-container" style="display: flex;">
-                <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+                <form action="<?php echo URLROOT ?>/request/unassignadmin" method="post" class="delete-form">
                     <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['student_details']->studentID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Accept
+                        Unassign
                     </button>
                 </form>
-                &nbsp;
-                <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
-                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['student_details']->studentID; ?>" />
-                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Reject
-                    </button>
-                </form>
-                
             </div>
         </div>
     </section>

@@ -59,7 +59,7 @@ class Request extends Controller {
         }
     }
 
-    public function viewStudentRequest($student_ID = null) {
+    public function viewUnassignedStudentRequest($student_ID = null) {
         if(empty($student_ID)) {
             redirect('pages/404');
         }
@@ -69,10 +69,23 @@ class Request extends Controller {
             'student_details' => $this->requestModel->getStudent($student_ID)
         ];
 
-        $this->view($_SESSION['user_type'].'/request/viewStudentRequest', $data);
+        $this->view($_SESSION['user_type'].'/request/viewUnassignedStudentRequest', $data);
     }
 
-    public function viewOrganizationRequest($org_ID = null){
+    public function viewAssignedStudentRequest($student_ID = null) {
+        if(empty($student_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'student_details' => $this->requestModel->getStudent($student_ID)
+        ];
+
+        $this->view($_SESSION['user_type'].'/request/viewAssignedStudentRequest', $data);
+    }
+
+    public function viewUnassignedOrganizationRequest($org_ID = null){
         if(empty($org_ID)) {
             redirect('pages/404');
         }
@@ -81,19 +94,31 @@ class Request extends Controller {
             'title' => 'Home page',
             'organization_details' => $this->requestModel->getOrganization($org_ID)
         ];
-        $this->view($_SESSION['user_type'].'/request/viewOrganizationRequest', $data);
+        $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data);
+    }
+
+    public function viewAssignedOrganizationRequest($org_ID = null){
+        if(empty($org_ID)) {
+            redirect('pages/404');
+        }
+
+        $data = [
+            'title' => 'Home page',
+            'organization_details' => $this->requestModel->getOrganization($org_ID)
+        ];
+        $this->view($_SESSION['user_type'].'/request/viewAssignedOrganizationRequest', $data);
     }
 
     public function unassignAdmin() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($this->requestModel->unassignAdmin($_POST['user_ID'])) {
                 $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
-
-                if($doneeType == 'student') {
+                
+                if($doneeType == "student") {
                     redirect('request/studentrequest');
                 }
 
-                else if($doneeType == 'organization') {
+                else if($doneeType == "organization") {
                     redirect('request/organizationrequest');
                 }
 
@@ -108,6 +133,46 @@ class Request extends Controller {
     public function assignMe() {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if($this->requestModel->assignMe($_POST['user_ID'])) {
+                $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
+
+                if($doneeType == 'student') {
+                    redirect('request/studentrequest');
+                }
+
+                else if($doneeType == 'organization') {
+                    redirect('request/organizationrequest');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    public function acceptDonee() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->requestModel->acceptDonee($_POST['user_ID'])) {
+                $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
+
+                if($doneeType == 'student') {
+                    redirect('request/studentrequest');
+                }
+
+                else if($doneeType == 'organization') {
+                    redirect('request/organizationrequest');
+                }
+
+                else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    public function rejectDonee() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->requestModel->rejectDonee($_POST['user_ID'])) {
                 $doneeType = $this->requestModel->getDoneeType($_POST['user_ID']);
 
                 if($doneeType == 'student') {

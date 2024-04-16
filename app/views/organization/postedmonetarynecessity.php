@@ -47,9 +47,30 @@
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
                                 <td><p>Rs.<?php echo $pendingtablerow->requestedAmount?></p></td>
-                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
-                                <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg"></button></td>
-                                <td><button><img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt=""></button></td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
@@ -76,8 +97,24 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td></td>
                                 <td><p>Rs.<?php echo $completetablerow->requestedAmount?></p></td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/viewCompletedMonetarynecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
+                                        </button>
+                                    </form>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     </table>
@@ -105,3 +142,12 @@
 </main>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
+
+
+<!-- <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
+    <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+    <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+    </button>
+    
+</form> -->

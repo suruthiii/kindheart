@@ -60,7 +60,7 @@ class NecessityModel{
     }
     
     public function getaddedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityID, necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -69,7 +69,7 @@ class NecessityModel{
     }
 
     public function getaddedCompletedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT necessity.necessityID,necessity.necessityName,necessity.description,money.requestedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -84,6 +84,88 @@ class NecessityModel{
         $result = $this->db->resultSet();
         return $result;
     }
+
+    public function getPendingMonetaryNecessities($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.endDate, m.frequency, m.monetaryNecessityType, n.fulfillmentStatus 
+            FROM necessity n 
+            JOIN money m ON n.necessityID = m.monetaryNecessityID 
+            WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
+            
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
+        return $result;
+    }
+
+    public function getCompletedMonetaryNecessities($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.endDate, m.frequency,m.monetaryNecessityType, n.fulfillmentStatus 
+            FROM necessity n 
+            JOIN money m ON n.necessityID = m.monetaryNecessityID 
+            WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND n.necessityID = :necessityID");
+            
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
+        return $result;
+    }
+
+    // public function updatemonetarynecessitytodb($data){
+    //     if (!isset($data['necessityMonetary'], $data['monetarynecessitydes'], $data['requestedamount'], $data['recurringstartdate'], $data['recurringenddate'], $data['frequency'], $data['necessityID'])) {
+    //         // If any key is missing, return false or handle the error as needed
+    //         return false;
+    //     }
+
+    //     //sql statement for update monetary necessity, necessity table
+    //     $this->db->query('UPDATE necessity SET necessityName = :necessityMonetary, description = :monetarynecessitydes
+    //     WHERE necessityID = :necessityID');
+
+    //     // Binding values with array value
+    //     $this->db->bind(':necessityMonetary', $data['necessityMonetary']);
+    //     $this->db->bind(':monetarynecessitydes', $data['monetarynecessitydes']);
+    //     $this->db->bind(':necessityID', $data['necessityID']);
+        
+    //     // execut query
+    //     $result1 = $this->db->execute();
+
+    //     //Update the money table
+    //     $this->db->query('UPDATE money SET requestedAmount = :requestedamount, startDate = :recurringstartdate, endDate = :recurringenddate, frequency = :frequency
+    //     WHERE monetaryNecessityID = :monetaryNecessityID');
+
+    //     // Binding values with array value
+    //     $this->db->bind(':requestedamount', $data['requestedamount']);
+    //     $this->db->bind(':recurringstartdate', $data['recurringstartdate']);
+    //     $this->db->bind(':recurringenddate', $data['recurringenddate']);
+    //     $this->db->bind(':frequency', $data['frequency']);
+    //     $this->db->bind(':monetaryNecessityID', $data['necessityID']);
+
+    //     // execut query
+    //     $result2 = $this->db->execute();
+
+    //     //if both updates were successfull
+    //     if($result1 && $result2){
+    //         return true;
+    //     }else{
+    //         // Print error message for debugging
+    //         printf("Error: %s\n", $this->db->getError());
+    //         return false;
+    //     }
+    // }
+
+    public function deleteNecessity($necessityID){
+        // Query statement
+        $this->db->query('UPDATE necessity SET fulfillmentStatus = 10 WHERE necessityID = :necessityID');
+        $this->db->bind(':necessityID', $necessityID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    
+    
 
     public function getAllConfirmedMonetaryNecessities(){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, requestedAmount AS amount FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
@@ -181,11 +263,27 @@ class NecessityModel{
     }
 
     public function getAllComments($necessity_ID) {
-        $this->db->query('SELECT postID, adminID, comment FROM comment WHERE postID = :postID ORDER BY time DESC;');
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'necessity' ORDER BY time DESC;");
         $this->db->bind(':postID', $necessity_ID);
 
         $result = $this->db->resultSet();
 
         return $result;
+    }
+
+    public function addComment($data) {
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'necessity', :comment;)");
+        // $this->db->bind(':postID', $necessity_ID);
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+        $this->db->bind(':time', date("Y-m-d H:i:s"));
+        $this->db->bind(':comment', $data['comment']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }

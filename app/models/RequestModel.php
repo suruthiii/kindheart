@@ -80,7 +80,7 @@ class RequestModel{
 
         $result = $this->db->single();
 
-        return $result;
+        return $result->doneeType;
     }
 
     public function unassignAdmin($donee_ID) {
@@ -100,6 +100,32 @@ class RequestModel{
         $this->db->query('UPDATE donee SET adminID = :adminID WHERE doneeID = :doneeID;');
         $this->db->bind(':adminID', $_SESSION['user_id']);
         $this->db->bind(':doneeID', $donee_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function acceptDonee($donee_ID) {
+        $this->db->query('UPDATE user SET status = 1 WHERE userID = :userID');
+        $this->db->bind(':userID', $donee_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function rejectDonee($donee_ID) {
+        $this->db->query('UPDATE user SET status = 10 WHERE userID = :userID');
+        $this->db->bind(':userID', $donee_ID);
 
         if($this->db->execute()) {
             return true;

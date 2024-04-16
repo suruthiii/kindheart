@@ -10,12 +10,17 @@ class SuperAdmin extends Controller {
         $this->scholarshipModel = $this->model('ScholarshipModel');
         $this->projectModel = $this->model('ProjectModel');
         $this->benefactionModel = $this->model('BenefactionModel');
+        $this->complaintModel = $this->model('ComplaintModel');
     }
 
     public function index(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'admins' => $this->userModel->getAdminCount(),
+            'requests' => $this->userModel->getRequestCount(),
+            'complaints' => $this->userModel->getComplaintCount()
         ];
+
         $this->view('superAdmin/index', $data);
     }
 
@@ -94,8 +99,11 @@ class SuperAdmin extends Controller {
 
     public function complaint(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'unassigned' => $this->complaintModel->getAllUnassignedComplaints(),
+            'assigned' => $this->complaintModel->getAllAssignedComplaints()
         ];
+
         $this->view('superAdmin/complaint', $data);
     }
 
