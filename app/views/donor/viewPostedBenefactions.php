@@ -37,7 +37,7 @@
                                 </tr>
                                 <tr class="benefaction-data">
                                     <th>Category</th>
-                                    <td></td>
+                                    <td><?php print_r($data['benefaction_details']->itemCategory); ?></td>
                                 </tr>
                                 <tr class="benefaction-data">
                                     <th>Quantity</th>

@@ -81,7 +81,7 @@
                                     </div>
  
                                     <!-- Requested Amount Error Display -->
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionCategory_err']) ? $data['benefactionCategory_err']: ''; ?> </span>
                                 </div>
 
                                 <!-- Quantity -->
