@@ -34,7 +34,28 @@
                         <?php foreach($data['pendingBenefaction'] as $benefaction){?>
                             <table>
                                     <tr>
-                                        <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                        <td width="10%">
+                                            <?php
+                                                if($benefaction->itemCategory == "Educational Supplies and Tools"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
+                                                }elseif($benefaction->itemCategory == "Clothing and Accessories"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Recreation and Sports Equipment"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Health and Wellness Products"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Transportation and Mobility"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Literature and Reading Materials"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Other"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
+                                                }else{
+                                                    echo '<img src="' . URLROOT . '/img/house.png" width="55" height="55">';
+                                                }
+
+                                            ?>
+                                        </td>
 
                                         <td width="50%">
                                             <h4><?php echo $benefaction->itemName;?></h4>
