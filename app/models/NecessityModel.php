@@ -109,6 +109,48 @@ class NecessityModel{
         return $result;
     }
 
+    // public function updatemonetarynecessitytodb($data){
+    //     if (!isset($data['necessityMonetary'], $data['monetarynecessitydes'], $data['requestedamount'], $data['recurringstartdate'], $data['recurringenddate'], $data['frequency'], $data['necessityID'])) {
+    //         // If any key is missing, return false or handle the error as needed
+    //         return false;
+    //     }
+
+    //     //sql statement for update monetary necessity, necessity table
+    //     $this->db->query('UPDATE necessity SET necessityName = :necessityMonetary, description = :monetarynecessitydes
+    //     WHERE necessityID = :necessityID');
+
+    //     // Binding values with array value
+    //     $this->db->bind(':necessityMonetary', $data['necessityMonetary']);
+    //     $this->db->bind(':monetarynecessitydes', $data['monetarynecessitydes']);
+    //     $this->db->bind(':necessityID', $data['necessityID']);
+        
+    //     // execut query
+    //     $result1 = $this->db->execute();
+
+    //     //Update the money table
+    //     $this->db->query('UPDATE money SET requestedAmount = :requestedamount, startDate = :recurringstartdate, endDate = :recurringenddate, frequency = :frequency
+    //     WHERE monetaryNecessityID = :monetaryNecessityID');
+
+    //     // Binding values with array value
+    //     $this->db->bind(':requestedamount', $data['requestedamount']);
+    //     $this->db->bind(':recurringstartdate', $data['recurringstartdate']);
+    //     $this->db->bind(':recurringenddate', $data['recurringenddate']);
+    //     $this->db->bind(':frequency', $data['frequency']);
+    //     $this->db->bind(':monetaryNecessityID', $data['necessityID']);
+
+    //     // execut query
+    //     $result2 = $this->db->execute();
+
+    //     //if both updates were successfull
+    //     if($result1 && $result2){
+    //         return true;
+    //     }else{
+    //         // Print error message for debugging
+    //         printf("Error: %s\n", $this->db->getError());
+    //         return false;
+    //     }
+    // }
+
     public function deleteNecessity($necessityID){
         // Query statement
         $this->db->query('UPDATE necessity SET fulfillmentStatus = 10 WHERE necessityID = :necessityID');
@@ -121,6 +163,8 @@ class NecessityModel{
             return false;
         }
     }
+
+    
     
 
     public function getAllConfirmedMonetaryNecessities(){
