@@ -16,7 +16,7 @@
                 <a class="card-link" href="<?php echo URLROOT ?>/admin/request">
                     <div class="card">
                         <div class="title">Requests</div>
-                        <div class="value">6</div>
+                        <div class="value"><?php echo $data['requests'] ?></div>
                     </div>
                 </a>
 
@@ -24,7 +24,7 @@
                 <a class="card-link" href="<?php echo URLROOT ?>/admin/complaint">
                     <div class="card">
                         <div class="title">Complaints</div>
-                        <div class="value">45</div>
+                        <div class="value"><?php echo $data['complaints'] ?></div>
                     </div>
                 </a>
 
