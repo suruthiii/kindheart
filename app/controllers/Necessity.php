@@ -395,7 +395,7 @@ class Necessity extends Controller {
         }
     }
 
-    //view completed necessity's further information
+    //view completed Monetary necessity's further information
     public function viewCompletedMonetarynecessity(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
             redirect('pages/404');
@@ -443,6 +443,61 @@ class Necessity extends Controller {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    //view completed Physical Goods necessity's further information
+    public function viewCompletedPhysicalGoodsnecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+    
+                    // Get pending necessity details
+                    $pendingNecessityDetails = $this->necessityModel->getCompletedGoodsNecessities($necessityID);
+    
+                    // Prepare data to pass to the view
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'pendingNecessityDetails' => $pendingNecessityDetails
+                    ];
+    
+
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/viewOrganizationCompletedphysicalgoodsnecessity', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'necessityID' => '',
+                    'pendingNecessityDetails' => [] // this is an array
+                ];
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/viewOrganizationCompletedphysicalgoodsnecessity', $data);
                 }else {
                     die('User Type Not Found');
                 }

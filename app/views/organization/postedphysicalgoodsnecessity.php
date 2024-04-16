@@ -112,7 +112,14 @@
                                     <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
                                 <td><p><?php echo $completetablerow->requestedQuantity?></p></td>
-                                <td><button><img src="<?php echo URLROOT ?>/img/eye-solid.svg"></button></td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/necessity/viewCompletedPhysicalGoodsnecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form>
+                                </td>
                                 <td></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST">

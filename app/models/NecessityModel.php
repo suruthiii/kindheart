@@ -200,6 +200,30 @@ class NecessityModel{
         return $result;
     }
 
+    public function getPendingGoodsNecessities($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName,n.necessityType, n.description, n.fulfillmentStatus,(p.requestedQuantity - p.receivedQuantity) AS quantity_due,p.requestedQuantity,p.receivedQuantity,p.itemCategory
+            FROM necessity n 
+            JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
+            WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
+            
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
+        return $result;
+    }
+
+    public function getCompletedGoodsNecessities($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName,n.necessityType, n.description, n.fulfillmentStatus,(p.requestedQuantity - p.receivedQuantity) AS quantity_due,p.requestedQuantity,p.receivedQuantity,p.itemCategory
+            FROM necessity n 
+            JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
+            WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 2 AND n.necessityID = :necessityID");
+            
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
+        return $result;
+    }
+
     public function getAllPendingPhysicalGoods(){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, (p.requestedQuantity - p.receivedQuantity) AS quantity FROM necessity n JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
         WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 0;");
