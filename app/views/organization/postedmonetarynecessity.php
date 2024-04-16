@@ -64,7 +64,7 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST">
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
@@ -108,7 +108,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST">
+                                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
@@ -141,13 +141,11 @@
     </section>
 </main>
 
+<script>
+    function confirmDelete() {
+        return confirm("Are you sure you want to delete this?");
+    }
+</script>
+
 <?php require APPROOT.'/views/inc/footer.php'; ?>
 
-
-<!-- <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-    <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
-    <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-        <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
-    </button>
-    
-</form> -->

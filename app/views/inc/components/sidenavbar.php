@@ -303,6 +303,15 @@
 
             <!------------------- Organization ------------------>
             <?php if ($_SESSION['user_type'] == 'organization'){ ?>
+                <a href="<?php echo URLROOT ?>/organization/index">
+                    <?php if ($section == 'dashboard'){?>
+                        <div class="selected-item">Dashboard</div>
+                    <?php }
+                    else{ ?>
+                        <div class="item">Dashboard</div>
+                    <?php } ?>
+                </a>
+
                 <a href="<?php echo URLROOT ?>/organization/choosethenecessityType">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>

@@ -151,6 +151,7 @@ class NecessityModel{
     //     }
     // }
 
+    // Deleting necessities
     public function deleteNecessity($necessityID){
         // Query statement
         $this->db->query('UPDATE necessity SET fulfillmentStatus = 10 WHERE necessityID = :necessityID');
@@ -184,7 +185,7 @@ class NecessityModel{
     }
 
     public function getaddedGoodsNecessities(){
-        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity,physicalgood.itemCategory FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
+        $this->db->query("SELECT necessity.necessityID,necessity.necessityName,necessity.necessityType, necessity.description,necessity.fulfillmentStatus,physicalgood.requestedQuantity,physicalgood.receivedQuantity,physicalgood.itemCategory FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
         WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
@@ -192,10 +193,34 @@ class NecessityModel{
     }
 
     public function getaddedCompletedGoodsNecessities(){
-        $this->db->query("SELECT necessity.necessityName, necessity.description,physicalgood.requestedQuantity,physicalgood.itemCategory FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
+        $this->db->query("SELECT necessity.necessityID,necessity.necessityName,necessity.necessityType, necessity.description,necessity.fulfillmentStatus,physicalgood.requestedQuantity,physicalgood.receivedQuantity,physicalgood.itemCategory FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID 
         WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
+        return $result;
+    }
+
+    public function getPendingGoodsNecessities($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName,n.necessityType, n.description, n.fulfillmentStatus,(p.requestedQuantity - p.receivedQuantity) AS quantity_due,p.requestedQuantity,p.receivedQuantity,p.itemCategory
+            FROM necessity n 
+            JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
+            WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
+            
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
+        return $result;
+    }
+
+    public function getCompletedGoodsNecessities($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName,n.necessityType, n.description, n.fulfillmentStatus,(p.requestedQuantity - p.receivedQuantity) AS quantity_due,p.requestedQuantity,p.receivedQuantity,p.itemCategory
+            FROM necessity n 
+            JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
+            WHERE necessityType = 'Physical Goods' AND fulfillmentStatus = 2 AND n.necessityID = :necessityID");
+            
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
         return $result;
     }
 
