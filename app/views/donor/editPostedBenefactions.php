@@ -5,7 +5,7 @@
 
 <!--  SIDE NAVIGATION  -->
 <?php $section = "benefactions";?>
-<!-- <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?> -->
+<?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
@@ -30,7 +30,9 @@
                     <div class="left-column">
                         <!-- Add Benefaction Form -->
                         <div class="add-benefaction-form">
-                            <form enctype="multipart/form-data" action="" method="POST" onsubmit="return validateForm()">
+                            <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="POST" onsubmit="return validateForm()">
+
+                            <input type="text" name="benefactionID" value="<?php echo $data['benefactionID']?>" hidden required>
                             
                                 <!-- Item -->
                                 <div class="benefaction-first-div">
@@ -40,6 +42,53 @@
                                     <!-- Monetary necessity Error display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['itemBenefaction_err']) ? $data['itemBenefaction_err']: ''; ?></span>
                                 </div>
+                                
+                                <!-- Category -->
+                                <div class="benefaction-forth-div">
+                                    <label for="benefactionCategory">Category </label>
+                                    <div class="select-box">
+                                        <select id="benefactionCategory" name="benefactionCategory" value="<?php print_r($data['benefaction_details']->itemCategory); ?>">
+                                            <option value="0" >
+                                                Select Category
+                                            </option>
+                                            <!-- Add selected attribute to the correct category -->
+                                            <option value="1" <?php echo ($data['benefaction_details']->itemCategory == 'Educational Supplies and Tools') ? 'selected' : ''; ?>>
+                                                Educational Supplies and Tools
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="1" <?php echo ($data['benefaction_details']->itemCategory == 'Educational Supplies and Tools') ? 'selected' : ''; ?>>
+                                                Educational Supplies and Tools
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="2" <?php echo ($data['benefaction_details']->itemCategory == 'Clothing and Accessories') ? 'selected' : ''; ?>>
+                                                Clothing and Accessories
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="3" <?php echo ($data['benefaction_details']->itemCategory == 'Recreation and Sports Equipment') ? 'selected' : ''; ?>>
+                                                Recreation and Sports Equipment
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="4" <?php echo ($data['benefaction_details']->itemCategory == 'Health and Wellness Products') ? 'selected' : ''; ?>>
+                                                Health and Wellness Products
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="5" <?php echo ($data['benefaction_details']->itemCategory == 'Transportation and Mobility') ? 'selected' : ''; ?>>
+                                                Transportation and Mobility
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="6" <?php echo ($data['benefaction_details']->itemCategory == 'Literature and Reading Materials') ? 'selected' : ''; ?>>
+                                                Literature and Reading Materials
+                                            </option>
+                                            <!-- &#13 -> use for break the content of title attribute -->
+                                            <option value="other" <?php echo ($data['benefaction_details']->itemCategory == 'Other') ? 'selected' : ''; ?>>
+                                                Other
+                                            </option>
+                                        </select>                                        
+                                    </div>
+ 
+                                    <!-- Requested Amount Error Display -->
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionCategory_err']) ? $data['benefactionCategory_err']: ''; ?> </span>
+                                </div>                                
 
                                 <!-- Quantity -->
                                 <div class="benefaction-second-div">
@@ -48,40 +97,6 @@
 
                                     <!-- Requested Amount Error Display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
-                                </div>
-                                
-                                <!-- Images -->
-                                <div class="benefaction-third-div">
-                                    <label for="photoBenfaction">Photos of The Item </label>
-                                    <div class="benefaction-third-div-four-input-one-line">
-                                            <div class="add-benefaction-first-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction1" name="photoBenfaction1" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 1</p>
-                                                </label> 
-                                            </div>
-                                            <div class="add-benefaction-second-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction2" name="photoBenfaction2" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
-                                                </label> 
-                                            </div>
-                                            <div class="add-benefaction-third-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction3" name="photoBenfaction3" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 2</p>
-                                                </label> 
-                                            </div>
-                                            <div class="add-benefaction-fourth-div">
-                                                <label class="add-benefaction-box">
-                                                    <input type="file" id="photoBenfaction4" name="photoBenfaction4" accept="image/png, image/jpeg, image/jpg" onchange="validateFileType(this)" style="display:none;" />
-                                                    <p class='file_info' style="font-size:13px; ">Image 4</p>
-                                                </label> 
-                                            </div>
-                                    </div>
-
-                                        <!-- Requested Amount Error Display -->
-                                        <span class="donor-form-error-details" id="photoBenfaction_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['photoBenfaction_err']) ? $data['photoBenfaction_err']: ''; ?></span>
                                 </div>
 
                                 <!-- Description about requested necessity -->
@@ -136,76 +151,92 @@
         </div>
     </section>
 </main>
+
 <script>
-        function validateForm() {
-            var fileInput = document.getElementById('photoBenfaction');
-            var errorMessage = document.getElementById('photoBenfaction_err');
-            var fileName = fileInput.value;
-            var acceptedExtensions = ['png', 'jpg', 'jpeg'];
 
-            if (fileName) {
-                var fileExtension = fileName.split('.').pop().toLowerCase();
-                if (acceptedExtensions.indexOf(fileExtension) === -1) {
-                    errorMessage.textContent = 'Please upload a PNG, JPG, or JPEG file.';
-                    return false;
+        // Select Box Customization
+        var x, i, j, l, ll, selElmnt, a, b, c;
+
+        /*look for any elements with the class "select-box":*/
+        x = document.getElementsByClassName("select-box");
+        l = x.length;
+
+        for (i = 0; i < l; i++) {
+            selElmnt = x[i].getElementsByTagName("select")[0];
+            ll = selElmnt.length;
+
+            /*for each element, create a new DIV that will act as the selected item:*/
+            a = document.createElement("DIV");
+            a.setAttribute("class", "select-selected");
+            a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+            x[i].appendChild(a);
+
+            /*for each element, create a new DIV that will contain the option list:*/
+            b = document.createElement("DIV");
+            b.setAttribute("class", "select-items select-hide");
+
+            for (j = 1; j < ll; j++) {
+                /*for each option in the original select element,
+                create a new DIV that will act as an option item:*/
+                c = document.createElement("DIV");
+                c.innerHTML = selElmnt.options[j].innerHTML;
+                c.addEventListener("click", function(e) {
+                    /*when an item is clicked, update the original select box,
+                    and the selected item:*/
+                    var y, i, k, s, h, sl, yl;
+                    s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+                    sl = s.length;
+                    h = this.parentNode.previousSibling;
+                    for (i = 0; i < sl; i++) {
+                        if (s.options[i].innerHTML == this.innerHTML) {
+                            s.selectedIndex = i;
+                            h.innerHTML = this.innerHTML;
+                            y = this.parentNode.getElementsByClassName("same-as-selected");
+                            yl = y.length;
+                            for (k = 0; k < yl; k++) {
+                            y[k].removeAttribute("class");
+                            }
+                            this.setAttribute("class", "same-as-selected");
+                            break;
+                        }
+                    }
+                    h.click();
+                });
+                b.appendChild(c);
+            }
+            x[i].appendChild(b);
+            a.addEventListener("click", function(e) {
+                /*when the select box is clicked, close any other select boxes,
+                and open/close the current select box:*/
+                e.stopPropagation();
+                closeAllSelect(this);
+                this.nextSibling.classList.toggle("select-hide");
+                this.classList.toggle("select-arrow-active");
+                });
+        }
+
+        function closeAllSelect(elmnt) {
+            /*a function that will close all select boxes in the document,except the current select box:*/
+            var x, y, i, xl, yl, arrNo = [];
+            x = document.getElementsByClassName("select-items");
+            y = document.getElementsByClassName("select-selected");
+            xl = x.length;
+            yl = y.length;
+            for (i = 0; i < yl; i++) {
+                if (elmnt == y[i]) {
+                arrNo.push(i)
+                } else {
+                y[i].classList.remove("select-arrow-active");
                 }
             }
-
-            return true;
-        }
-
-        function validateFileType(input) {
-            const file = input.files[0];
-            const fileType = file.type;
-
-            // Check if the selected file type is an image
-            if (!fileType.startsWith('image/')) {
-                alert('Please select an image file (PNG, JPEG)');
-                input.value = ''; // Clear the selected file
+            for (i = 0; i < xl; i++) {
+                if (arrNo.indexOf(i)) {
+                x[i].classList.add("select-hide");
+                }
             }
         }
-
-        // Function to handle file input change
-        function handleFileInputChange(inputId, containerId) {
-            const input = document.getElementById(inputId);
-            const container = document.getElementById(containerId);
-            const placeholderImage = document.getElementById('benefactionImage');
-
-            input.addEventListener('change', function() {
-                // Clear previous content
-                container.innerHTML = '';
-
-                // Loop through selected files
-                for (const file of input.files) {
-                    // Create image element
-                    const image = document.createElement('img');
-                    image.src = URL.createObjectURL(file);
-                    image.alt = 'Chosen Photo';
-                    image.classList.add('chosen-photo');
-
-                    // Apply styles to adjust image size
-                    image.style.maxWidth = '300px'; 
-                    image.style.maxHeight = '300px';
-                    image.style.backgroundColor = '#F5F5F5';
-                    image.style.boxShadow = '0px 4px 4px rgba(142, 0, 0, 0.25)';
-                    image.style.border = '2px solid #8E0000';
-                    image.style.margin = '10px';
-
-
-                    // Append image to container
-                    container.appendChild(image);
-                }
-
-                // Hide the placeholder image
-                placeholderImage.style.display = 'none';
-            });
-        }
-
-        // Call the function for each file input
-        handleFileInputChange('photoBenfaction1', 'chosen-photos-container1');
-        handleFileInputChange('photoBenfaction2', 'chosen-photos-container2');
-        handleFileInputChange('photoBenfaction3', 'chosen-photos-container3');
-        handleFileInputChange('photoBenfaction4', 'chosen-photos-container4');
+        /*if the user clicks anywhere outside the select box,then close all select boxes:*/
+        document.addEventListener("click", closeAllSelect);
 
 
 </script>

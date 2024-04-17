@@ -415,7 +415,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/benefaction/donorSelectDonation">
+                <a href="<?php echo URLROOT ?>/donor/donorSelectDonation">
                     <?php if ($section == 'donations'){?>
                         <div class="selected-item">Donations</div>
                     <?php }

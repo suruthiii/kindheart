@@ -13,6 +13,13 @@ class Donor extends Controller {
         $this->view('donor/index', $data);
     }
 
+    public function donorSelectDonation(){
+        $data = [
+            'title' => 'Donation Selection Page'
+        ];
+        $this->view('donor/donorSelectDonation', $data);
+    }
+
     public function about(){
         $users = $this->pagesModel->getUser();
         $data = [

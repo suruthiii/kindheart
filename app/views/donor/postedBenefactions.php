@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/donorSelectDonation'">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/donor/donorSelectDonation'">Go Back</button>
                 </div>
 
                 <!-- main title -->
@@ -74,8 +74,8 @@
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
-                                            <input type="text" name="edit" id="edit" hidden value="<?php echo $benefaction->benefactionID; ?>" />
+                                        <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="get" class="edit-form">
+                                            <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
                                             </button>
