@@ -178,9 +178,9 @@ class Benefaction extends Controller {
 
     public function viewPostedBenefactions() {
         // Check if benefactionID is set in the POST request
-        if(isset($_POST['view'])) {
+        if(isset($_GET['view'])) {
             // Get the benefactionID from the POST request
-            $benefactionID = $_POST['view'];            
+            $benefactionID = $_GET['view'];            
 
             // Load the view with data
             $data = [
