@@ -54,7 +54,28 @@
                     <div class="right-side-bar">
                         <!-- title for rightside bar -->
                         <div class="rightside-bar-title">
+
                             <h3>Applied Benefactions</h3>
+
+                            <?php foreach ($data['appliedBenefactions'] as $item) { ?>
+                            <div class="applied-benefaction-cards">
+                                <div class="left">
+                                    <h3><?php echo $item->itemName; ?><h3>
+                                    <p><?php echo $item->requestedQuantity; ?></p>
+                                    <!-- <h3>Shoes<h3>
+                                    <p>2</p> -->
+                                
+                                </div>
+                                <div class="right">
+                                    <div class="status">
+                                        <p>pending</p>
+                                    </div>                                
+                                </div>
+                            </div>
+                            <!-- <?php } ?> -->
+
+
+
                             <!-- <p>View states of applied benefactions</p> -->
                         </div>
 
