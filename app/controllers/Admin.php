@@ -15,8 +15,8 @@ class Admin extends Controller {
     public function index(){
         $data = [
             'title' => 'Home page',
-            'requests' => $this->userModel->getRequestCount(),
-            'complaints' => $this->userModel->getComplaintCount()
+            'requests' => $this->userModel->getAdminRequestCount(),
+            'complaints' => $this->userModel->getAdminComplaintCount()
         ];
         $this->view('admin/index', $data);
     }
