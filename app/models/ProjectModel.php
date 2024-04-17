@@ -29,4 +29,20 @@ class ProjectModel{
         
         return $result;
     }
+
+    public function getaddedongoingprojects(){
+        $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 0; ');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getaddedcompletedprojects(){
+        $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 2; ');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }    

@@ -11,8 +11,11 @@ class Project extends Controller {
 
     public function postedprojects(){
             $data = [
-                'title' => 'Home Page'
+                'title' => 'Home Page',
+                'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
+                'completetablerow' => $this->projectModel->getaddedcompletedprojects()
             ];
+      
             $this->view('organization/project/postedprojects', $data);
     }
 
