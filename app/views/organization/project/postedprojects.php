@@ -13,11 +13,19 @@
 
             <!-- Middle container -->
             <div class="middle-container">
+
+                <!-- Go Back Button -->
+                <!-- <div class="goback-button">
+                    <img src="<?php echo URLROOT ?>/img/back-arrow.png">
+                    <button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">Go Back</button>
+                </div> -->
+
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
                     <h3>Posted  Projects</h3>
                     <p>Last 30 Days</p>
                 </div>
+
 
                 <!-- Pending table -->
                 <div class="posted-necessity-pending-table-caption">
@@ -105,6 +113,14 @@
                         <h5>Add Projects</h5>
                     </button>
                 </div>
+
+                <!-- <div class="add-necessity-button-for-post">
+                    <button onclick="location.href='<?php echo URLROOT ?>/necessity/addgoodsnecessity'">
+                        <img src="<?php echo URLROOT ?>/img/Plus.png">
+                        <h5>Add Necessities</h5>
+                    </button>
+                </div> -->
+
                 
 
             </div>

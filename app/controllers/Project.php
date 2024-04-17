@@ -15,6 +15,7 @@ class Project extends Controller {
                 'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
                 'completetablerow' => $this->projectModel->getaddedcompletedprojects()
             ];
+      
             $this->view('organization/project/postedprojects', $data);
     }
 
