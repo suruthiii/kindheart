@@ -68,7 +68,8 @@ class Student extends Controller {
 
         $data = [
             'title' => 'Home page',
-            'benefactions' => $this->BenefactionModel->getBenefactions()
+            'benefactions' => $this->BenefactionModel->getBenefactions(),
+            'appliedBenefactions' => $this->BenefactionModel->getAppliedBenefactions(),
         ];
 
         $this->view('student/benefactions', $data);
@@ -100,16 +101,18 @@ class Student extends Controller {
 
     public function ApplyForBenefaction(){
 
+        $benefactionID = $_GET['benefactionID'];
+
         $data = [
-            'title' => 'Home page'
-            // 'benefactions' => $this->BenefactionModel->getBenefactions()
+            'title' => 'Home page',
+            'benefactionID' => $benefactionID
         ];
 
         $this->view('student/ApplyForBenefaction', $data);
     }
 
-    
 
+    
 
     
     
