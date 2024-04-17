@@ -84,11 +84,10 @@
                 </div>
 
                 <div class="view-benefaction-btn-container">
-                    <form action="<?php echo URLROOT ?>/student/ApplyForBenefaction" method="post" class="edit-form">
-                        <input type="hidden" name="edit" id="edit" value="<?php echo $data['benefactions']->benefactionID; ?>" />
-                        <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
-                            <h5>Apply</h5>
-                        </button>
+
+                    <form action="<?php echo URLROOT ?>/student/ApplyForBenefaction" method="GET" class="edit-form" >
+                        <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo  $data['benefactions']->benefactionID;?>" />
+                        <button type="submit" class="view-benefaction_button" > Apply</button>
                     </form>
 
                     
