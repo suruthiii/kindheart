@@ -513,4 +513,22 @@ class UserModel{
 
         return $row->complaintCount;
     }
+
+    public function getAdminRequestCount() {
+        $this->db->query('SELECT COUNT(*) AS requestCount FROM donee d JOIN user u ON d.doneeID = u.userID WHERE u.status = 0 AND d.adminID = 0 OR d.adminID = :adminID;');
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+
+        $row = $this->db->single();
+
+        return $row->requestCount;
+    }
+
+    public function getAdminComplaintCount() {
+        $this->db->query('SELECT COUNT(*) AS complaintCount FROM complaint WHERE adminID = 0 OR adminID = :adminID;');
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+
+        $row = $this->db->single();
+
+        return $row->complaintCount;
+    }
 }
