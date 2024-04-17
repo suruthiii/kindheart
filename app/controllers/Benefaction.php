@@ -5,8 +5,10 @@ class Benefaction extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only organizations are allowed to access organization pages
-        $this->middleware->checkAccess(['donor']);
+        $this->middleware->checkAccess(['student','donor']);
+
         $this->donorModel = $this->model('DonorModel');
+        $this->BenefactionModel = $this->model('BenefactionModel');
     }
 
     public function index(){
@@ -322,6 +324,54 @@ class Benefaction extends Controller {
                     die('Failed to delete benefaction.');
                 }
             }
+        }
+    }
+
+
+    public function addAppliedBenefaction(){  
+        // die(print_r($_POST));
+
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+                $data = [
+                    'requestedQuantity' => trim($_POST['requestedQuantity']),
+                    'reason' => trim($_POST['reason']),
+                    'benefactionID' => trim($_POST['benefactionID']),
+                    'err' => ''
+                ];
+
+                // Make sure errors are empty
+                if (empty($data['err'])) {
+                    
+                
+                    // Add Data to DB
+                    if ($this->BenefactionModel->addAppliedBenefaction($data)) {
+                        if($_SESSION['user_type'] == 'student') {
+                            redirect('student/benefactions');
+                        }
+                        else if ($_SESSION['user_type'] == 'organization') {
+                        }
+                        else {
+                            die('User Type Not Found');
+                        }
+                    } else {
+                        die('Something went wrong1');
+
+                    }
+                } else {
+                    // Load view with errors
+                    die('Something went wrong2');
+                    $this->story($data);
+                }
+            }else{
+                die('incorrect method!');
+            }
+
         }
     }
 }

@@ -28,8 +28,24 @@
                         <p>Apply for the benefaction posted by the donor</p>
                         
                     </div>
+
+                    <div class="application-form-data">
+                        <form class="add-form" method="POST" action="<?php echo URLROOT ?>/Benefaction/addAppliedBenefaction">
+
+                            <label for="requestedQuantity">Needed Quantity</label><br>
+                            <input type="text" id="requestedQuantity" name="requestedQuantity" required><br><br>
+
+                            <label for="reason">Reason</label><br>
+                            <input type="textarea" id="reason" name="reason" required><br><br>
+
+                            <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $data["benefactionID"]?>" />
+
+
+                            <input type="submit" value="Apply">
+                        </form>
                        
-                 </div>
+                    </div>
+            </div>
 
             
 
@@ -38,8 +54,9 @@
                 <div class="right-side-bar">
                     <!-- title for rightside bar -->
                     <div class="rightside-bar-title">
-                        <h3>applied Benefactions</h3>
+                        <h3>Applied Benefactions</h3>
                     </div>
+
                     
 
                    
