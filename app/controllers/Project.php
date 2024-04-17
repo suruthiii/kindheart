@@ -18,6 +18,15 @@ class Project extends Controller {
             $this->view('organization/project/postedprojects', $data);
     }
 
+    public function addprojects(){
+        $data = [
+            'title' => 'Home Page',
+            'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
+            'completetablerow' => $this->projectModel->getaddedcompletedprojects()
+        ];
+        $this->view('organization/project/addprojects', $data);
+}
+
     public function manageProject($project_ID = null) {
         if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($project_ID)) {
             redirect('pages/404');

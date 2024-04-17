@@ -100,7 +100,7 @@
                 
                 
                 <div class="add-necessity-button-for-post">
-                    <button onclick="location.href='<?php echo URLROOT ?>/'">
+                    <button onclick="location.href='<?php echo URLROOT ?>/project/addprojects'">
                         <img src="<?php echo URLROOT ?>/img/Plus.png">
                         <h5>Add Projects</h5>
                     </button>
