@@ -348,7 +348,7 @@ class NecessityModel{
     }
 
     public function addComment($data) {
-        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'necessity', :comment;)");
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'necessity', :comment);");
         $this->db->bind(':postID', $data['necessity_ID']);
         $this->db->bind(':adminID', $_SESSION['user_id']);
         $this->db->bind(':time', date("Y-m-d H:i:s"));
