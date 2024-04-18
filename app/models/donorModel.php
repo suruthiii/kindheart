@@ -102,20 +102,40 @@ class donorModel{
         return $row;
     }
 
+    //View Benefaction Requests
+    public function getBenefactionRequests($benefactionID) {
+        
+        // Prepare statement
+        $this->db->query('  SELECT db.*, CONCAT(s.fname, " ", s.lname) AS studentName, o.orgName, u.userType
+                            FROM donee_benefaction db 
+                            LEFT JOIN student s ON db.doneeID = s.studentID 
+                            LEFT JOIN organization o ON db.doneeID = o.orgID
+                            LEFT JOIN user u ON db.doneeID = u.userID
+                            WHERE db.benefactionID = :benefactionID');
+        // $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefactionID);
+        
+        // Execute
+        $results = $this->db->resultSet();
+
+        // Check if results were retrieved
+        if ($results) {
+            return $results;
+        } else {
+            return []; // Return empty array if no results found
+        }
+    }
+
     //Edit Benefaction
     public function updateBenefaction($data){
         // Prepare statement
-        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemQuantity = :itemQuantity, itemPhoto1 = :itemPhoto1, itemPhoto2 = :itemPhoto2, itemPhoto3 = :itemPhoto3, itemPhoto4 = :itemPhoto4, description = :description, postedDate = :postedDate, donorID = :donorID, availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
+        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemCategory = :itemCategory, itemQuantity = :itemQuantity, description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
 
         // Bind values
         $this->db->bind(':itemName', $data['itemBenefaction']);
-        $this->db->bind(':itemQuantity', $data['quantityBenfaction']);
-        $this->db->bind(':itemPhoto1', isset($data['photoBenfaction1']) ? $data['photoBenfaction1'] : null);
-        $this->db->bind(':itemPhoto2', isset($data['photoBenfaction2']) ? $data['photoBenfaction2'] : null);
-        $this->db->bind(':itemPhoto3', isset($data['photoBenfaction3']) ? $data['photoBenfaction3'] : null);
-        $this->db->bind(':itemPhoto4', isset($data['photoBenfaction4']) ? $data['photoBenfaction4'] : null);
+        $this->db->bind(':itemCategory', $data['benefactionCategory']);
+        $this->db->bind(':itemQuantity', $data['quantityBenfaction']);            
         $this->db->bind(':description', $data['benefactionDescription']);
-        // $this->db->bind(':postedDate', date('Y-m-d')); // Automatically set the posted date
         $this->db->bind(':donorID', $_SESSION['user_id']);
         // $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
         $this->db->bind(':benefactionID', $data['benefactionID']);

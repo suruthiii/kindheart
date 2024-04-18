@@ -16,7 +16,15 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
+                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button> -->
+                    <button onclick="goBack()">Go Back</button>
+
+                    <script>
+                        function goBack() {
+                            // Use history.back() to navigate to the previous page in history
+                            history.back();
+                        }
+                    </script>
                 </div>
 
                 <!-- main title -->
@@ -79,8 +87,8 @@
                 </div>
 
                 <div class="view-benefaction-btn-container">
-                    <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">
-                        <input type="hidden" name="edit" id="edit" value="<?php echo $data['benefaction_details']->benefactionID; ?>" />
+                    <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="get" class="edit-form">
+                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefaction_details']->benefactionID; ?>" />
                         <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
                             <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
                             <h5>Edit</h5>
@@ -105,17 +113,29 @@
                         <h3>Requests</h3>
                     </div>
                     <!-- Requests -->
-                        <div class="request-right-side-bar-type-requests">
+                     <div class="request-right-side-bar-type-requests">
                             <h4>Name</h4>
                             <p>Description</p>
                         </div>
-                    <!-- <?php foreach($data['benefaction_details'] as $benefaction){?> -->
+
+                        <!-- <?php echo $data['benefaction_requests']; ?> -->
+
+                    <?php foreach($data['benefaction_requests'] as $request): ?>
                         <!-- <a href="pop up including applicanmt details"> -->
-                        <!-- <div class="request-right-side-bar-requests">
-                            <h4><?php echo $benefaction->itemName; ?></h4>
-                            <p><?php echo $benefaction->description; ?></p>
+                        <div class="request-right-side-bar-type-requests">
+                            <!-- <h4>                    
+                                <?php
+                                    if ($request->user_type === 'student') {
+                                        echo htmlspecialchars($request->student_name);
+                                    } elseif ($request->user_type === 'organization') {
+                                        echo htmlspecialchars($request->orgName);
+                                    }
+                                ?>
+                            </h4> -->
+                            <p><?php echo $request->itemName; ?></p>
+                            <p><?php echo $request->requestedQuantity; ?> Items Requested</p>
                         </div>
-                    <?php }?> -->
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

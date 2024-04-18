@@ -16,7 +16,15 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/donorSelectDonation'">Go Back</button>
+                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/donor/donorSelectDonation'">Go Back</button> -->
+                    <button onclick="goBack()">Go Back</button>
+
+                    <script>
+                        function goBack() {
+                            // Use history.back() to navigate to the previous page in history
+                            history.back();
+                        }
+                    </script>
                 </div>
 
                 <!-- main title -->
@@ -34,18 +42,50 @@
                         <?php foreach($data['pendingBenefaction'] as $benefaction){?>
                             <table>
                                     <tr>
-                                        <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                        <td width="10%">
+                                            <?php
+                                                if($benefaction->itemCategory == "Educational Supplies and Tools"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
+                                                }elseif($benefaction->itemCategory == "Clothing and Accessories"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Recreation and Sports Equipment"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Health and Wellness Products"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Transportation and Mobility"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Literature and Reading Materials"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Other"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
+                                                }else{
+                                                    echo '<img src="' . URLROOT . '/img/house.png" width="55" height="55">';
+                                                }
 
-                                        <td width="50%">
+                                            ?>
+                                        </td>
+
+                                        <td width="50%" style="transform: translateX(5%);">
                                             <h4><?php echo $benefaction->itemName;?></h4>
                                             <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
+                                        
+                                        <td width="20%" style="transform: translateX(-60%);">
+                                            <p>
+                                                <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-25%);" >
+                                            <p>
+                                                <?php echo $benefaction->receivedQuantity;?> Items Requested
+                                            </p>
+                                        </td>
 
                                         <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-                                            <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                        <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                             </button>
@@ -53,8 +93,8 @@
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
-                                            <input type="text" name="edit" id="edit" hidden value="<?php echo $benefaction->benefactionID; ?>" />
+                                        <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="get" class="edit-form">
+                                            <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
                                             </button>
@@ -63,7 +103,7 @@
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="delete" id="delete" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
                                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                             </button>
@@ -86,15 +126,44 @@
                         <?php foreach($data['onProgressBenefaction'] as $benefaction){?>
                             <table>
                                     <tr>
-                                        <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                    <td width="10%">
+                                            <?php
+                                                if($benefaction->itemCategory == "Educational Supplies and Tools"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
+                                                }elseif($benefaction->itemCategory == "Clothing and Accessories"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Recreation and Sports Equipment"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Health and Wellness Products"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Transportation and Mobility"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Literature and Reading Materials"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
+                                                }elseif($benefaction->itemCategory == "Other"){
+                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
+                                                }else{
+                                                    echo '<img src="' . URLROOT . '/img/house.png" width="55" height="55">';
+                                                }
+                                            ?>
+                                        </td>
 
-                                        <td width="50%">
+                                        <td width="50%" style="transform: translateX(5%);">
                                             <h4><?php echo $benefaction->itemName;?></h4>
                                             <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-55%);" >
-                                            <p><?php echo $benefaction->itemQuantity;?> Out of <?php echo $benefaction->itemQuantity;?> Items Remain</p>
+                                        
+                                        <td width="20%" style="transform: translateX(-70%);">
+                                            <p>
+                                                <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-40%);" >
+                                            <p>
+                                                <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->receivedQuantity; echo $remainingQuantity;?> Remains
+                                            </p>
                                         </td>
                                         <!-- here have to edit with requested quatity of student -->
 
@@ -114,8 +183,8 @@
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                                 </button>
                                             </form> -->
-                                            <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-                                                <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
+                                                <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                                 <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                     <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                                 </button>
@@ -138,7 +207,28 @@
                     <?php foreach($data['completedBenefaction'] as $benefaction){?>
                         <table>
                                 <tr>
-                                    <td width="10%"><img src="<?php echo URLROOT ?>/img/house.png"></td>
+                                    <td width="10%">
+                                        <?php
+                                            if($benefaction->itemCategory == "Educational Supplies and Tools"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
+                                            }elseif($benefaction->itemCategory == "Clothing and Accessories"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
+                                            }elseif($benefaction->itemCategory == "Recreation and Sports Equipment"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
+                                            }elseif($benefaction->itemCategory == "Health and Wellness Products"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
+                                            }elseif($benefaction->itemCategory == "Transportation and Mobility"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
+                                            }elseif($benefaction->itemCategory == "Literature and Reading Materials"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
+                                            }elseif($benefaction->itemCategory == "Other"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
+                                            }else{
+                                                echo '<img src="' . URLROOT . '/img/house.png" width="55" height="55">';
+                                            }
+
+                                        ?>
+                                    </td>
 
                                     <td width="50%">
                                         <h4><?php echo $benefaction->itemName;?></h4>
@@ -157,8 +247,8 @@
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="post" class="view-form">
-                                            <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                        <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
@@ -167,7 +257,7 @@
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="delete" id="delete" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                             </button>

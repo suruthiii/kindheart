@@ -34,7 +34,7 @@
                         </button>
                     </div>
                     <div class="choose-benefaction-button">
-                        <button onclick="location.href ='<?php echo URLROOT ?>/benefaction/postedScholarships'">
+                        <button onclick="location.href ='<?php echo URLROOT ?>/scholarship/donorAddScholarships'">
                             <img src="<?php echo URLROOT ?>/img/icon _Box Open_.png">
                             <p>Scholarship</p>
                         </button>
