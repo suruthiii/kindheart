@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/addmonetarynecessity" method="POST" onsubmit="return validateForm()">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST" onsubmit="return validateForm()">
                         <!-- Project title -->
                         <div class="add-necessity-one-line-input">
                             <label for="projectTitle">Project Title</label>
@@ -43,23 +43,27 @@
                             <!-- Neccessity description error display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectdescription_err']) ? $data['projectdescription_err']: ''; ?></span>
                         </div>
+                        
+                        <div id="form-container">
+                            <!-- First line of form -->
+                            <div class="add-projects-add-more-field-input" id="add-more-milestone" name="add-more-milestone">
+                                <div class="project-first-div">
+                                    <label for="projectsmilestones"> Project MileStones</label>
+                                    <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones']) ? $data['projectsmilestones'] : ''; ?>">
+                                    <!-- Monetary necessity Error display -->
+                                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectsmilestones_err']) ? $data['projectsmilestones_err']: ''; ?></span>
+                                </div>
+                                <div class="project-second-div">
+                                    <label for="milestonebudget">MileStone Budget</label>
+                                    <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget']) ? $data['milestonebudget'] : ''; ?>" min="25">
+                                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['milestonebudget_err']) ? $data['milestonebudget_err']: ''; ?></span>
+                                </div>
+                            </div>
+                        </div>
 
-                        <!-- First line of form -->
-                        <div class="add-necessity-one-line-second-type-input">
-                            <div class="necessity-first-div">
-                                <label for="necessityMonetary">Necessity</label>
-                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
-                                <!-- Monetary necessity Error display -->
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityMonetary_err']) ? $data['necessityMonetary_err']: ''; ?></span>
-                            </div>
-                            <div class="necessity-second-div">
-                                <label for="necessityType">Necessity Type</label>
-                                <select name="necessityType" id="necessityType" value="<?php echo isset($data['necessityType']) ? $data['necessityType'] : '(Select)'; ?>">
-                                    <option value="recurring">Recurring</option>
-                                    <option value="onetime">One-Time</option>
-                                </select>
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityType_err']) ? $data['necessityType_err']: ''; ?></span>
-                            </div>
+                        <div class="add-more-project-milestones">
+                            <button id="add-milestones-button" name="add-milestones-button">Add MileStone</button>
+                            <button id="remove-milestones-button" name="remove-milestones-button">Remove MileStone</button>
                         </div>
 
                         <!-- Add Button for necessity -->
@@ -79,5 +83,71 @@
         </div>
     </section>
 </main>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to add a new milestone field
+        function addMilestoneField() {
+            const formContainer = document.getElementById('form-container');
+            const newField = document.createElement('div');
+            newField.className = 'add-projects-add-more-field-input';
+            newField.innerHTML = `
+                <div class="project-first-div">
+                    <label for="projectsmilestones">Project Milestones</label>
+                    <input type="text" name="projectsmilestones[]" value="">
+                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
+                </div>
+                <div class="project-second-div">
+                    <label for="milestonebudget">Milestone Budget</label>
+                    <input type="number" name="milestonebudget[]" value="" min="25">
+                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
+                </div>
+            `;
+            formContainer.appendChild(newField);
+            checkMilestoneFieldCount();
+        }
+
+        function removeLastMilestoneField() {
+            const formContainer = document.getElementById('form-container');
+            const milestoneFields = formContainer.getElementsByClassName('add-projects-add-more-field-input');
+            const lastField = milestoneFields[milestoneFields.length - 1];
+            if (lastField !== null) {
+                formContainer.removeChild(lastField);
+            }
+            checkMilestoneFieldCount();
+        }
+
+        // Event listener for adding milestone fields
+        document.getElementById('add-milestones-button').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent form submission
+            addMilestoneField();
+        });
+
+
+        // Event listener for removing the last added milestone field
+        document.getElementById('remove-milestones-button').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent form submission
+            removeLastMilestoneField();
+        });
+
+        // Function to check the number of added milestone fields and disable the "remove MileStone" button if there are none
+        function checkMilestoneFieldCount() {
+            const milestoneFieldsCount = document.getElementsByClassName('add-projects-add-more-field-input').length;
+            const removeButton = document.getElementById('remove-milestones-button');
+            if (milestoneFieldsCount === 1) {
+                removeButton.disabled = true;
+            } else {
+                removeButton.disabled = false;
+            }
+        }
+
+        // Call the checkMilestoneFieldCount function to disable the "remove MileStone" button initially if there are no added fields
+        checkMilestoneFieldCount();
+        
+    });
+</script>
+
+
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
