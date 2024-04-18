@@ -607,6 +607,7 @@
 
 .page-container .section .container .comment-form input[type=submit] {
     margin-left: 20px;
+    transform: translateY(-10px);
     border-radius: 5px;
     border: none;
     background-color: #8e0000;
