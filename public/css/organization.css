@@ -990,14 +990,13 @@
 .add-projects-add-more-field-input{
     position: relative;
     width: 90%;
-    height: 12vh;
-    margin-bottom: 3vh;
-    display: flex; /* Use flexbox */
+    height: 11vh;
+    display: flex
 }
 
 .add-projects-add-more-field-input .project-first-div{
     position: relative;
-    width: 50%;
+    width: 60%;
     height: 12vh;
 }
 
@@ -1007,29 +1006,21 @@
     height: 12vh;
 }
 
-.add-projects-add-more-field-input .project-third-div{
-    position: relative;
-    width: 10%;
-    height: 12vh;
-}
-
 .add-projects-add-more-field-input .project-first-div label,
-.add-projects-add-more-field-input .project-second-div label,
-.add-projects-add-more-field-input .project-third-div label{
+.add-projects-add-more-field-input .project-second-div label{
     color: #8692A6;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 28px;
-    margin-bottom: 1.5vh;
+    margin-bottom: 1.8vh;
 }
 
 .add-projects-add-more-field-input .project-first-div input,
-.add-projects-add-more-field-input .project-second-div input,
-.add-projects-add-more-field-input .project-third-div input{
+.add-projects-add-more-field-input .project-second-div input{
     height: 5vh;
-    width: 85%;
+    width: 87%;
     border-radius: 6px;
     border: 1px solid #707070;
     background: #FCFCFC;
@@ -1038,10 +1029,32 @@
 }
 
 .add-projects-add-more-field-input .project-first-div input:focus,
-.add-projects-add-more-field-input .project-second-div input:focus,
-.add-projects-add-more-field-input .project-third-div input:focus{
+.add-projects-add-more-field-input .project-second-div input:focus{
     outline: none !important;
     border: #8E0000 solid;
+}
+
+
+.add-more-project-milestones{
+    position: relative;
+    width: 90%;
+    height: 5vh;
+    margin-bottom: 6vh;
+    display: flex;
+    align-items: center;
+
+}
+
+.add-more-project-milestones button{
+    border: none;
+    background: none;
+    color: #8692A6;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.add-more-project-milestones button:hover{
+    color: #8E0000;
 }
 
 /*-----------posted-necessity-view-tables-css-for-pending-and-complete----------------*/
