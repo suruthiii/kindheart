@@ -1066,7 +1066,6 @@ class Necessity extends Controller {
                                 'title' => 'Home Page',
                                 'necessity_ID' => $_POST['necessity_ID'],
                                 'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_POST['necessity_ID'])
-                                // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                             ];
                         }
 
@@ -1075,7 +1074,6 @@ class Necessity extends Controller {
                                 'title' => 'Home Page',
                                 'necessity_ID' => $_POST['necessity_ID'],
                                 'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_POST['necessity_ID'])
-                                // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                             ];
                         }
             
@@ -1090,7 +1088,6 @@ class Necessity extends Controller {
                                 'title' => 'Home Page',
                                 'necessity_ID' => $_POST['necessity_ID'],
                                 'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_POST['necessity_ID'])
-                                // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                             ];
 
                         }
@@ -1100,7 +1097,6 @@ class Necessity extends Controller {
                                 'title' => 'Home Page',
                                 'necessity_ID' => $_POST['necessity_ID'],
                                 'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_POST['necessity_ID'])
-                                // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                             ];
                         }
 
@@ -1112,6 +1108,8 @@ class Necessity extends Controller {
                     else {
                         die('Monetary Necessity Type Not Found');
                     }
+
+                    $data['comments'] = $this->necessityModel->getAllComments($_POST['necessity_ID']);
 
                     $data['err'] = 'Please enter your comment';
 
@@ -1146,7 +1144,6 @@ class Necessity extends Controller {
                             'title' => 'Home Page',
                             'necessity_ID' => $_GET['necessity_ID'],
                             'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID'])
-                            // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                         ];
 
 
@@ -1157,7 +1154,6 @@ class Necessity extends Controller {
                             'title' => 'Home Page',
                             'necessity_ID' => $_GET['necessity_ID'],
                             'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID'])
-                            // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                         ];
                     }
     
@@ -1172,9 +1168,7 @@ class Necessity extends Controller {
                             'title' => 'Home Page',
                             'necessity_ID' => $_GET['necessity_ID'],
                             'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID'])
-                            // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                         ];
-
                     }
 
                     else if($donee_type == 'organization') {
@@ -1182,7 +1176,6 @@ class Necessity extends Controller {
                             'title' => 'Home Page',
                             'necessity_ID' => $_GET['necessity_ID'],
                             'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID'])
-                            // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
                         ];
                     }
 
@@ -1194,6 +1187,8 @@ class Necessity extends Controller {
                 else {
                     die('Monetary Necessity Type Not Found');
                 }
+
+                $data['comments'] = $this->necessityModel->getAllComments($data['necessity_ID']);
 
                 $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
             }

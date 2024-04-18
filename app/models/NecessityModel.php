@@ -339,7 +339,7 @@ class NecessityModel{
     }
 
     public function getAllComments($necessity_ID) {
-        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'necessity' ORDER BY time DESC;");
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID ORDER BY time DESC;");
         $this->db->bind(':postID', $necessity_ID);
 
         $result = $this->db->resultSet();

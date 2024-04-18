@@ -66,16 +66,13 @@
                 </div>
                 <div class="right-cards">  
 
-                    <!-- <?php foreach($data['comments'] as $item) {?> -->
-                    <div class="right-card">
-                        <div class="title">Admin
-                            <!-- <?php echo $item->adminName ?> -->
+                    <?php foreach($data['comments'] as $item) {?>
+                        <div class="right-card">
+                            <div class="title"><?php echo $item->adminName ?></div>
+                            <div class="value"><?php echo $item->comment ?></div>
                         </div>
-                        <div class="value">Comment
-                            <!-- <?php echo $item->comment ?> -->
-                        </div>
-                    </div>
-                    <!-- <?php }?> -->
+                    <?php }?>
+
                 </div>
             </div>
 
