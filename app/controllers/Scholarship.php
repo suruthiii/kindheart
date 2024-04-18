@@ -63,9 +63,14 @@ class Scholarship extends Controller {
 
             if (empty($data['startDateScholarship'])) {
                 $data['startDateScholarship_err'] = 'Please select the Start Date';
-            } elseif (strtotime($data['startDateScholarship']) < time()) {
-                $data['startDateScholarship_err'] = 'Start Date cannot be in the past';
-            }
+            } else {
+                $selectedStartDate = strtotime($data['startDateScholarship']);
+                $today = strtotime('today');
+            
+                if ($selectedStartDate < $today) {
+                    $data['startDateScholarship_err'] = 'Start Date cannot be in the past';
+                }
+            }            
 
             if (empty($data['durationScholarship'])) {
                 $data['durationScholarship_err'] = 'Please enter the Duration (in months)';
@@ -75,7 +80,9 @@ class Scholarship extends Controller {
 
             if (empty($data['deadlineScholarship'])) {
                 $data['deadlineScholarship_err'] = 'Please select the Deadline';
-            } elseif (strtotime($data['deadlineScholarship']) < time()) {
+            } elseif (strtotime($data['deadlineScholarship']) < strtotime($data['startDateScholarship'])) {
+                $data['deadlineScholarship_err'] = 'Deadline cannot be before the Start Date';
+            } elseif (strtotime($data['deadlineScholarship']) < strtotime('today')) {
                 $data['deadlineScholarship_err'] = 'Deadline cannot be in the past';
             }
 
@@ -127,5 +134,19 @@ class Scholarship extends Controller {
 
             $this->view('donor/donorAddScholarships', $data);
         }
+    }
+
+    public function postedScholarships(){
+        // Load the view with data
+        $data = [
+            'pendingScholarship' => $this->scholarshipModel->getPendingScholarship(),
+
+            'onProgressScholarship' => $this->scholarshipModel->getOnProgressScholarship(),
+            
+            'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
+        ];
+
+        //Load View
+        $this->view('donor/postedScholarships', $data);
     }
 }

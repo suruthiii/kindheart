@@ -55,4 +55,41 @@ class ScholarshipModel{
             return false;
         }
     }
+
+    // Get pending Scholarships
+    public function getPendingScholarship() {
+        // Prepare statement
+        $this->db->query('SELECT * FROM scholarship WHERE availabilityStatus = 0');
+        
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
+        return $this->db->resultSet();
+    }
+
+    // Get onProgress Scholarships
+    public function getOnProgressScholarship() {
+        // Prepare statement
+        $this->db->query('SELECT * FROM scholarship WHERE availabilityStatus = 1');
+        
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
+        return $this->db->resultSet();
+    }
+    
+
+    // Get completed Scholarships
+    public function getCompletedScholarship() {
+        // Prepare statement
+        $this->db->query('SELECT * FROM scholarship WHERE availabilityStatus = 2');
+        
+        // Execute
+        $this->db->execute();
+
+        // Fetch result set
+        return $this->db->resultSet();
+    }
 }

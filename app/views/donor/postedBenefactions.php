@@ -84,31 +84,31 @@
                                         </td>
 
                                         <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
-                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
-                                            </button>
-                                        </form>
-                                    </td>
+                                            <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
+                                                <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                                </button>
+                                            </form>
+                                        </td>
 
-                                    <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="get" class="edit-form">
-                                            <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $benefaction->benefactionID; ?>" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
-                                            </button>
-                                        </form>
-                                    </td>
+                                        <td width="10%"style="transform: translateX(15%);"> 
+                                            <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="get" class="edit-form">
+                                                <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
+                                                </button>
+                                            </form>
+                                        </td>
 
-                                    <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
-                                            <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
-                                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
-                                            </button>
-                                        </form>
-                                    </td>
+                                        <td width="10%"style="transform: translateX(15%);">
+                                            <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
+                                                <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
+                                                </button>
+                                            </form>
+                                        </td>
 
                                     </tr>
 

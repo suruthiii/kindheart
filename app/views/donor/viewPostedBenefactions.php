@@ -132,7 +132,7 @@
                                     }
                                 ?>
                             </h4> -->
-                            <p><?php echo $request->itemName; ?></p>
+                            <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p>
                             <p><?php echo $request->requestedQuantity; ?> Items Requested</p>
                         </div>
                     <?php endforeach; ?>

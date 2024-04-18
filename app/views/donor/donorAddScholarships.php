@@ -79,7 +79,7 @@
                         <!-- Deadline -->
                         <div class="scholarship-forth-div">
                             <label for="deadlineScholarship">Application Deadline </label>
-                            <input type="date" id="deadlineScholarship" name="deadlineScholarship" value="<?php echo isset($data['deadlineScholarship']) ? $data['deadlineScholarship'] : ''; ?>" >
+                            <input type="datetime-local" id="deadlineScholarship" name="deadlineScholarship" value="<?php echo isset($data['deadlineScholarship']) ? $data['deadlineScholarship'] : ''; ?>" >
 
                             <!-- Deadline Error Display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deadlineScholarship_err']) ? $data['deadlineScholarship_err']: ''; ?> </span>
