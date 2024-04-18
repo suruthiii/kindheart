@@ -992,6 +992,61 @@ class Necessity extends Controller {
 //         }
 //     } 
 
+    public function viewMonetary() {
+        $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
+        $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
+                
+        if ($necessity_type == 'onetime') {
+            if($donee_type == 'student') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else if($donee_type == 'organization') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else {
+                die('Donee Type Not Found');
+            }
+        }
+
+        else if($necessity_type == 'recurring') {
+            if($donee_type == 'student') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else if($donee_type == 'organization') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else {
+                die('Donee Type Not Found');
+            }
+        }
+
+        else {
+            die('Monetary Necessity Type Not Found');
+        }
+
+        $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data);
+    }
+
     public function viewAdminMonetaryDonation(){
         $data = [
             'title' => 'Home page'
