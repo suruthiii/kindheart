@@ -814,17 +814,15 @@
 /* ------------------Add Good Necessities--------------- */
 .add-necessity-form{
     position: relative;
-    width: 80%;
+    width: 85%;
     height: 69vh;
     margin-top: 16vh;
     overflow: hidden;
     overflow-y: scroll;
 }
-
-
 .add-necessity-one-line-input{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 12vh;
     display: flex;
     flex-direction: column;
@@ -833,21 +831,21 @@
 
 .add-necessity-one-line-input-for-radio-buttons{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 10vh;
     margin-bottom: 3vh;
 }
 
 .add-necessity-one-line-second-type-input{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 12vh;
     margin-bottom: 3vh;
 }
 
 .add-necessity-text-area-input{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -856,7 +854,7 @@
 
 .add-necessity-text-area-input-to-oneline{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 15vh;
     display: flex;
     flex-direction: column;
@@ -865,7 +863,7 @@
 
 .add-necessity-add-button{
     position: relative;
-    width: 100%;
+    width: 90%;
     height: 5vh;
 }
 
