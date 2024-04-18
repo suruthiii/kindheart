@@ -888,6 +888,7 @@
 .add-necessity-one-line-second-type-input .necessity-third-div select,
 .add-necessity-one-line-second-type-input .necessity-third-div input,
 .add-necessity-one-line-second-type-input .necessity-fourth-div input,
+.add-necessity-one-line-second-type-input .necessity-second-div input,
 .add-necessity-one-line-second-type-input .necessity-second-div select{
     height: 5vh;
     border-radius: 6px;
@@ -924,6 +925,7 @@
 .add-necessity-one-line-second-type-input .necessity-third-div select:focus,
 .add-necessity-one-line-second-type-input .necessity-third-div input:focus,
 .add-necessity-one-line-second-type-input .necessity-fourth-div input:focus,
+.add-necessity-one-line-second-type-input .necessity-second-div input:focus,
 .add-necessity-one-line-second-type-input .necessity-second-div select:focus{
     outline: none !important;
     border: #8E0000 solid;
@@ -983,6 +985,63 @@
 .necessity-fourth-div{
     width: 50%;
     float: right;
+}
+
+.add-projects-add-more-field-input{
+    position: relative;
+    width: 90%;
+    height: 12vh;
+    margin-bottom: 3vh;
+    display: flex; /* Use flexbox */
+}
+
+.add-projects-add-more-field-input .project-first-div{
+    position: relative;
+    width: 50%;
+    height: 12vh;
+}
+
+.add-projects-add-more-field-input .project-second-div{
+    position: relative;
+    width: 40%;
+    height: 12vh;
+}
+
+.add-projects-add-more-field-input .project-third-div{
+    position: relative;
+    width: 10%;
+    height: 12vh;
+}
+
+.add-projects-add-more-field-input .project-first-div label,
+.add-projects-add-more-field-input .project-second-div label,
+.add-projects-add-more-field-input .project-third-div label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 1.5vh;
+}
+
+.add-projects-add-more-field-input .project-first-div input,
+.add-projects-add-more-field-input .project-second-div input,
+.add-projects-add-more-field-input .project-third-div input{
+    height: 5vh;
+    width: 85%;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+}
+
+.add-projects-add-more-field-input .project-first-div input:focus,
+.add-projects-add-more-field-input .project-second-div input:focus,
+.add-projects-add-more-field-input .project-third-div input:focus{
+    outline: none !important;
+    border: #8E0000 solid;
 }
 
 /*-----------posted-necessity-view-tables-css-for-pending-and-complete----------------*/
@@ -1083,18 +1142,3 @@
     transform: scale(0.99);
 }
 
-
-
-/* .posted-necessities-pending-table table tr td:nth-child(4) button img,
-.posted-necessities-pending-table table tr td:nth-child(5) button img,
-.posted-necessities-pending-table table tr td:nth-child(6) button img,
-.posted-necessities-Completed-table table tr td:nth-child(4) button img{
-    transition: transform 0.3s ease-in-out;
-}
-
-.posted-necessities-pending-table table tr td:nth-child(4) button img:hover,
-.posted-necessities-pending-table table tr td:nth-child(5) button img:hover,
-.posted-necessities-pending-table table tr td:nth-child(6) button img:hover,
-.posted-necessities-Completed-table table tr td:nth-child(4) button img:hover{
-    transform: scale(1.1);
-} */

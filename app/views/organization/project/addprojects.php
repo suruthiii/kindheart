@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/addmonetarynecessity" method="POST" onsubmit="return validateForm()">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST" onsubmit="return validateForm()">
                         <!-- Project title -->
                         <div class="add-necessity-one-line-input">
                             <label for="projectTitle">Project Title</label>
@@ -45,20 +45,20 @@
                         </div>
 
                         <!-- First line of form -->
-                        <div class="add-necessity-one-line-second-type-input">
-                            <div class="necessity-first-div">
-                                <label for="necessityMonetary">Necessity</label>
-                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
+                        <div class="add-projects-add-more-field-input">
+                            <div class="project-first-div">
+                                <label for="projectsmilestones"> Project MileStones</label>
+                                <input type="text" id="projectsmilestones" name="projectsmilestones" value="<?php echo isset($data['projectsmilestones']) ? $data['projectsmilestones'] : ''; ?>">
                                 <!-- Monetary necessity Error display -->
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityMonetary_err']) ? $data['necessityMonetary_err']: ''; ?></span>
+                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectsmilestones_err']) ? $data['projectsmilestones_err']: ''; ?></span>
                             </div>
-                            <div class="necessity-second-div">
-                                <label for="necessityType">Necessity Type</label>
-                                <select name="necessityType" id="necessityType" value="<?php echo isset($data['necessityType']) ? $data['necessityType'] : '(Select)'; ?>">
-                                    <option value="recurring">Recurring</option>
-                                    <option value="onetime">One-Time</option>
-                                </select>
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityType_err']) ? $data['necessityType_err']: ''; ?></span>
+                            <div class="project-second-div">
+                                <label for="milestonebudget">MileStone Budget</label>
+                                <input type="number" id="milestonebudget" name="milestonebudget" value="<?php echo isset($data['milestonebudget']) ? $data['milestonebudget'] : ''; ?>" min="25">
+                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['milestonebudget_err']) ? $data['milestonebudget_err']: ''; ?></span>
+                            </div>
+                            <div class="project-third-div">
+                                <button>Add</button>
                             </div>
                         </div>
 
