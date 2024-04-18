@@ -178,21 +178,24 @@ class Benefaction extends Controller {
 
     public function viewPostedBenefactions() {
         // Check if benefactionID is set in the POST request
-        if(isset($_GET['view'])) {
+        if(isset($_GET['benefactionID'])) {
             // Get the benefactionID from the POST request
-            $benefactionID = $_GET['view'];            
+            $benefactionID = $_GET['benefactionID'];            
 
             // Load the view with data
             $data = [
                 'title' => 'View Posted Benefactions',
-                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
+                'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
             ];
+            
     
             // Load View
             $this->view('donor/viewPostedBenefactions', $data);
         } else {
             // Handle the case where benefactionID is not set
             // Redirect or show an error message
+            echo "Benefaction ID is missing.";
         }
     }
     
@@ -218,8 +221,6 @@ class Benefaction extends Controller {
                 'benefactionDescription_err' => ''
             ];
             
-                
-
             // Map category value to category string
             if (!empty($_POST['benefactionCategory']) && $_POST['benefactionCategory'] != '0') {
                 $categoryMap = [
@@ -268,14 +269,6 @@ class Benefaction extends Controller {
                     die('Something Went Wrong');
                 }
             }else{
-                //Pass data to the view
-                if(isset($_POST['edit'])){
-                    $benefactionID = $_POST['edit'];
-                    
-                }else if(isset($_POST['view'])){
-                    $benefactionID = $_POST['view'];
-                }
-
                 $data = [
                     'title' => 'Edit Posted Benefactions',
                     'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
@@ -300,8 +293,8 @@ class Benefaction extends Controller {
     public function deleteBenefactions() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['delete'])) {
-                $benefactionID = $_POST['delete'];
+            if (isset($_POST['benefactionID'])) {
+                $benefactionID = $_POST['benefactionID'];
                 
                 // Call model method to delete benefaction
                 if ($this->donorModel->deleteBenefaction($benefactionID)) {

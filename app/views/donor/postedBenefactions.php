@@ -57,16 +57,27 @@
                                             ?>
                                         </td>
 
-                                        <td width="50%">
+                                        <td width="50%" style="transform: translateX(5%);">
                                             <h4><?php echo $benefaction->itemName;?></h4>
                                             <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
+                                        
+                                        <td width="20%" style="transform: translateX(-60%);">
+                                            <p>
+                                                <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-25%);" >
+                                            <p>
+                                                <?php echo $benefaction->receivedQuantity;?> Items Requested
+                                            </p>
+                                        </td>
 
                                         <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
-                                            <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                             </button>
@@ -84,7 +95,7 @@
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="delete" id="delete" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
                                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                             </button>
@@ -129,13 +140,22 @@
                                             ?>
                                         </td>
 
-                                        <td width="50%">
+                                        <td width="50%" style="transform: translateX(5%);">
                                             <h4><?php echo $benefaction->itemName;?></h4>
                                             <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-55%);" >
-                                            <p><?php echo $benefaction->itemQuantity;?> Out of <?php echo $benefaction->itemQuantity;?> Items Remain</p>
+                                        
+                                        <td width="20%" style="transform: translateX(-70%);">
+                                            <p>
+                                                <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-40%);" >
+                                            <p>
+                                                <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->receivedQuantity; echo $remainingQuantity;?> Remains
+                                            </p>
                                         </td>
                                         <!-- here have to edit with requested quatity of student -->
 
@@ -156,7 +176,7 @@
                                                 </button>
                                             </form> -->
                                             <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
-                                                <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                                <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                                 <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                     <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                                 </button>
@@ -220,7 +240,7 @@
 
                                     <td width="10%"style="transform: translateX(15%);"> 
                                         <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
-                                            <input type="hidden" name="view" id="view" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
@@ -229,7 +249,7 @@
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="delete" id="delete" value="<?php echo $benefaction->benefactionID; ?>" />
+                                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
                                             <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                             </button>

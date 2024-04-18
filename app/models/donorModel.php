@@ -102,6 +102,30 @@ class donorModel{
         return $row;
     }
 
+    //View Benefaction Requests
+    public function getBenefactionRequests($benefactionID) {
+        
+        // Prepare statement
+        $this->db->query('  SELECT db.*, CONCAT(s.fname, " ", s.lname) AS studentName, o.orgName, u.userType
+                            FROM donee_benefaction db 
+                            LEFT JOIN student s ON db.doneeID = s.studentID 
+                            LEFT JOIN organization o ON db.doneeID = o.orgID
+                            LEFT JOIN user u ON db.doneeID = u.userID
+                            WHERE db.benefactionID = :benefactionID');
+        // $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefactionID);
+        
+        // Execute
+        $results = $this->db->resultSet();
+
+        // Check if results were retrieved
+        if ($results) {
+            return $results;
+        } else {
+            return []; // Return empty array if no results found
+        }
+    }
+
     //Edit Benefaction
     public function updateBenefaction($data){
         // Prepare statement
