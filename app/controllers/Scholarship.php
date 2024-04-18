@@ -80,8 +80,6 @@ class Scholarship extends Controller {
 
             if (empty($data['deadlineScholarship'])) {
                 $data['deadlineScholarship_err'] = 'Please select the Deadline';
-            } elseif (strtotime($data['deadlineScholarship']) < strtotime($data['startDateScholarship'])) {
-                $data['deadlineScholarship_err'] = 'Deadline cannot be before the Start Date';
             } elseif (strtotime($data['deadlineScholarship']) < strtotime('today')) {
                 $data['deadlineScholarship_err'] = 'Deadline cannot be in the past';
             }
@@ -92,19 +90,13 @@ class Scholarship extends Controller {
 
             if(empty($data['titleScholarship_err']) && empty($data['amountScholarship_err']) && empty($data['startDateScholarship_err']) && empty($data['durationScholarship_err']) && empty($data['deadlineScholarship_err']) && empty($data['scholarshipDescription_err'])){
                 if($this->scholarshipModel->addScholarship($data)){
-                    // $data = [
-                    //     // 'pendingScholarship' => $this->donorModel->getPendingScholarship(), //get all the pending scholarships
-
-                    //     // 'onProgressScholarship' => $this->donorModel->getOnProgressScholarship(), //get all the on progress scholarships
-
-                    //     // 'completedScholarship' => $this->donorModel->getCompletedScholarship() //get all the completed scholarships
-
-                    //     'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
-
-                    //     'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
+                    $data = [
+                        'pendingScholarship' => $this->scholarshipModel->getPendingScholarship(),
+            
+                        'onProgressScholarship' => $this->scholarshipModel->getOnProgressScholarship(),
                         
-                    //     'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
-                    // ];
+                        'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
+                    ];
 
                     $this->view('donor/postedScholarships', $data);
                 }else{
@@ -148,5 +140,28 @@ class Scholarship extends Controller {
 
         //Load View
         $this->view('donor/postedScholarships', $data);
+    }
+
+    public function viewPostedScholarships() {
+        // Check if scholarshipID is set in the POST request
+        if(isset($_GET['scholarshipID'])) {
+            // Get the scholarshipID from the POST request
+            $scholarshipID = $_GET['scholarshipID'];            
+
+            // Load the view with data
+            $data = [
+                'title' => 'View Posted Scholarships',
+                'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID)
+                // 'scholarship_applications' => $this->donorModel->getScholarshipApplications($scholarshipID)
+            ];
+            
+    
+            // Load View
+            $this->view('donor/viewPostedscholarships', $data);
+        } else {
+            // Handle the case where scholarshipID is not set
+            // Redirect or show an error message
+            echo "scholarship ID is missing.";
+        }
     }
 }

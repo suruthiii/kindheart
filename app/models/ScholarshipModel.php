@@ -92,4 +92,41 @@ class ScholarshipModel{
         // Fetch result set
         return $this->db->resultSet();
     }
+
+    // View Scholarship
+    public function getScholarship($scholarshipID) {
+        // Prepare statement
+        $this->db->query('SELECT * FROM scholarship WHERE scholarshipID = :scholarshipID');
+        $this->db->bind(':scholarshipID', $scholarshipID);
+        
+        // Execute
+        $row = $this->db->single();
+
+        // Fetch result set
+        return $row;
+    }
+
+    //View Scholarship Requests
+    // public function getScholarshipApplications($scholarshipID) {
+        
+    //     // Prepare statement
+    //     $this->db->query('  SELECT db.*, CONCAT(s.fname, " ", s.lname) AS studentName, o.orgName, u.userType
+    //                         FROM donee_scholarship db 
+    //                         LEFT JOIN student s ON db.doneeID = s.studentID 
+    //                         LEFT JOIN organization o ON db.doneeID = o.orgID
+    //                         LEFT JOIN user u ON db.doneeID = u.userID
+    //                         WHERE db.scholarshipID = :scholarshipID');
+    //     // $this->db->query('SELECT * FROM donee_scholarship WHERE scholarshipID = :scholarshipID');
+    //     $this->db->bind(':scholarshipID', $scholarshipID);
+        
+    //     // Execute
+    //     $results = $this->db->resultSet();
+
+    //     // Check if results were retrieved
+    //     if ($results) {
+    //         return $results;
+    //     } else {
+    //         return []; // Return empty array if no results found
+    //     }
+    // }
 }

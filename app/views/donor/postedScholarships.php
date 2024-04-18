@@ -51,7 +51,7 @@
                                             <p><?php echo substr($scholarship->description, 0, 20) . (strlen($scholarship->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $scholarship->amount;?> LKR </p></td>
+                                        <td width="15%"  style="transform: translateX(-80%);" ><p>LKR <?php echo $scholarship->amount;?></p></td>
 
                                         <td width="10%"style="transform: translateX(15%);">
                                             <form action="<?php echo URLROOT ?>/scholarship/viewPostedScholarships" method="get" class="view-form">
@@ -105,7 +105,7 @@
                                             <p><?php echo substr($scholarship->description, 0, 20) . (strlen($scholarship->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $scholarship->amount;?> LKR </p></td>
+                                        <td width="15%"  style="transform: translateX(-80%);" ><p>LKR <?php echo $scholarship->amount;?></p></td>
                                         <!-- here have to edit with requested quatity of student -->
 
                                         <td width="10%"style="transform: translateX(15%);"> 
@@ -166,7 +166,7 @@
                                         <p><?php echo substr($scholarship->description, 0, 20) . (strlen($scholarship->description) > 20 ? '...' : ''); ?></p>
                                     </td>
 
-                                    <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $scholarship->amount;?> LKR </p></td>
+                                    <td width="15%"  style="transform: translateX(-80%);" ><p>LKR <?php echo $scholarship->amount;?></p></td>
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <!-- <form action="<?php echo URLROOT ?>/donor/editScholarship" method="post" class="edit-form">

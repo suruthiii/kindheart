@@ -59,7 +59,7 @@
                         <div class="scholarship-third-div">
                             <div class="scholarship-third-div-two-input-one-line">
                                 <div class="add-scholarship-first-div">
-                                    <label for="startDateScholarship">Start Date</label>
+                                    <label for="startDateScholarship">Scholarship Starting Date</label>
                                     <input type="date" id="startDateScholarship" name="startDateScholarship" value="<?php echo isset($data['startDateScholarship']) ? $data['startDateScholarship'] : ''; ?>">
 
                                     <!-- Satrt Date Error display -->
