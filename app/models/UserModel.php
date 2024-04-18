@@ -301,7 +301,7 @@ class UserModel{
 
     // View admins
     public function viewAdmins(){
-        $this->db->query('SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 ORDER BY adminName');
+        $this->db->query("SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 AND admin.adminName != 'Super Admin' ORDER BY adminName");
 
         $result =  $this->db->resultSet();
 
@@ -508,6 +508,24 @@ class UserModel{
 
     public function getComplaintCount() {
         $this->db->query('SELECT COUNT(*) AS complaintCount FROM complaint;');
+
+        $row = $this->db->single();
+
+        return $row->complaintCount;
+    }
+
+    public function getAdminRequestCount() {
+        $this->db->query('SELECT COUNT(*) AS requestCount FROM donee d JOIN user u ON d.doneeID = u.userID WHERE u.status = 0 AND d.adminID = 0 OR d.adminID = :adminID;');
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+
+        $row = $this->db->single();
+
+        return $row->requestCount;
+    }
+
+    public function getAdminComplaintCount() {
+        $this->db->query('SELECT COUNT(*) AS complaintCount FROM complaint WHERE adminID = 0 OR adminID = :adminID;');
+        $this->db->bind(':adminID', $_SESSION['user_id']);
 
         $row = $this->db->single();
 

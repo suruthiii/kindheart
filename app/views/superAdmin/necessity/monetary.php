@@ -30,7 +30,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['pending'] as $item) { ?>
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary/<?php echo $item->necessityID; ?>">
+                    <a href="<?php echo URLROOT ?>/necessity/viewmonetary?necessity_ID=<?php echo $item->necessityID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -41,8 +41,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary/<?php echo $item->necessityID; ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="necessity_ID" hidden value="<?php echo $item->necessityID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
@@ -64,7 +64,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['confirmed'] as $item) { ?>
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary/<?php echo $item->necessityID; ?>">
+                    <a href="<?php echo URLROOT ?>/necessity/viewmonetary?necessity_ID=<?php echo $item->necessityID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -75,8 +75,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary/<?php echo $item->necessityID; ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="necessity_ID" hidden value="<?php echo $item->necessityID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="card-list">
                     <?php foreach($data['ongoing'] as $item) { ?>
-                    <a href="<?php echo URLROOT ?>/necessity/viewsuperadminmonetary/<?php echo $item->necessityID; ?>">
+                    <a href="<?php echo URLROOT ?>/necessity/viewmonetary?necessity_ID=<?php echo $item->necessityID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -107,8 +107,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary/<?php echo $item->necessityID; ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="necessity_ID" hidden value="<?php echo $item->necessityID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>

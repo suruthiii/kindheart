@@ -11,6 +11,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    overflow: auto;
 }
 
 .rightside-bar-title{
@@ -417,6 +418,124 @@
 
    
 }
+
+/*------------benefactions application form ------------>*/
+.application-form-data{
+    margin-top: 25%;
+    
+}
+
+
+.application-form-data label {
+    margin-bottom: 4px;
+    margin-top: 4px;
+    color: rgba(0, 0, 0, 0.777);
+}
+ 
+.application-form-data input[type=text]{
+    width: 75%;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #707070;
+    border-radius: 6px;
+    outline: none;
+    padding: 5px;
+    max-width: 90%;
+    /* width:calc(100% - 60px); */
+}
+
+.application-form-data input[type=textarea]{
+    width: 75%;
+    height: 20vh;
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid #707070;
+    background: #ffffff;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 30px;
+    vertical-align: top;
+    cursor: pointer;
+}
+
+.application-form-data input[type=submit] {
+    /* margin-left: 30px; 
+    margin-top: 15px; */
+    border-radius: 6px;
+    border: none;
+    background-color: #8e0000;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    width:30%;
+    padding: 6px 6px 6px 6px;
+    text-align: center;
+    transition: 0.2s;
+    height: 40px;
+}
+
+.application-form-data input[type=submit]:hover {
+    scale: 1.05;
+}
+
+
+
+
+
+
+/*------------Applied benefaction cards ------------>*/
+
+
+.applied-benefaction-cards{
+    background-color: #8e0000;
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    border-radius: 6px;
+}
+
+.applied-benefaction-cards .left{
+    /* background-color: #707070; */
+    width: 50%;
+    color: #ffffff;
+    margin-left: 10px;
+   
+
+}
+
+.applied-benefaction-cards .left h3{
+    color: #ffffff;
+    font-size: 20px;
+    margin-bottom: 10px;
+
+
+}
+
+
+.applied-benefaction-cards .left p{
+    color: #ffffff;
+    font-weight: 100;
+    font-size: 15px;
+    margin-bottom: 10px;
+
+}
+
+.applied-benefaction-cards .right{
+    align-content: center;
+    margin-bottom: 10px;
+
+}
+
+.applied-benefaction-cards .right p{
+    background-color: #ffffff;
+    margin-left: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 300;
+
+}
+
+
+
 
 
 

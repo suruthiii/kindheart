@@ -992,6 +992,61 @@ class Necessity extends Controller {
 //         }
 //     } 
 
+    public function viewMonetary() {
+        $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
+        $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
+                
+        if ($necessity_type == 'onetime') {
+            if($donee_type == 'student') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else if($donee_type == 'organization') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else {
+                die('Donee Type Not Found');
+            }
+        }
+
+        else if($necessity_type == 'recurring') {
+            if($donee_type == 'student') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else if($donee_type == 'organization') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $_GET['necessity_ID'],
+                    'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID'])
+                ];
+            }
+
+            else {
+                die('Donee Type Not Found');
+            }
+        }
+
+        else {
+            die('Monetary Necessity Type Not Found');
+        }
+
+        $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data);
+    }
+
     public function viewAdminMonetaryDonation(){
         $data = [
             'title' => 'Home page'
@@ -1041,19 +1096,157 @@ class Necessity extends Controller {
         $this->view('superAdmin/necessity/viewGoodDonation', $data);
     }
 
-    public function manageMonetary($necessity_ID = null) {
-        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($necessity_ID)) {
+    public function manageMonetary() {
+        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin' || (empty($_GET['necessity_ID']) && empty($_POST['necessity_ID'])))) {
             redirect('pages/404');
         }
 
         else {
-            $data = [
-                'title' => 'Home Page'
-                // 'necessity_details' => $this->necessityModel->getMonetaryDetails($necessity_ID),
-                // 'comments' => $this->necessityModel->getAllComments($necessity_ID)
-            ];
+            // When we submit comments
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $data = [
+                    'comment' => trim($_POST['comment']),
+                    'necessity_ID' => trim($_POST['necessity_ID']),
+                    'err' => ''
+                ];
 
-            $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+                // If the comment is empty display view with errors
+                if(empty($data['comment'])) {
+                    $necessity_type = $this->necessityModel->getMonetaryNecessityType($_POST['necessity_ID']);
+                    $donee_type = $this->necessityModel->getDoneeType($_POST['necessity_ID']);
+                    
+                    if ($necessity_type == 'onetime') {
+                        if($donee_type == 'student') {
+                            $data = [
+                                'title' => 'Home Page',
+                                'necessity_ID' => $_POST['necessity_ID'],
+                                'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_POST['necessity_ID'])
+                            ];
+                        }
+
+                        else if($donee_type == 'organization') {
+                            $data = [
+                                'title' => 'Home Page',
+                                'necessity_ID' => $_POST['necessity_ID'],
+                                'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_POST['necessity_ID'])
+                            ];
+                        }
+            
+                        else {
+                            die('Donee Type Not Found');
+                        }
+                    }
+
+                    else if($necessity_type == 'recurring') {
+                        if($donee_type == 'student') {
+                            $data = [
+                                'title' => 'Home Page',
+                                'necessity_ID' => $_POST['necessity_ID'],
+                                'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_POST['necessity_ID'])
+                            ];
+
+                        }
+
+                        else if($donee_type == 'organization') {
+                            $data = [
+                                'title' => 'Home Page',
+                                'necessity_ID' => $_POST['necessity_ID'],
+                                'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_POST['necessity_ID'])
+                            ];
+                        }
+
+                        else {
+                            die('Donee Type Not Found');
+                        }
+                    }
+
+                    else {
+                        die('Monetary Necessity Type Not Found');
+                    }
+
+                    $data['comments'] = $this->necessityModel->getAllComments($_POST['necessity_ID']);
+
+                    $data['err'] = 'Please enter your comment';
+
+                    $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+                }
+
+                // If the comment is not empty insert comment to the database and redirect to Manage Montary view
+                else {
+                    if($this->necessityModel->addComment($data)) {
+                        $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);
+
+                        if($necessityType == 'Monetary Funding') {
+                            redirect('necessity/managemonetary?necessity_ID='.$data['necessity_ID']);
+                        }
+
+                        else {
+                            die('Necessity Type Not Found');
+                        }
+                    }
+                }
+            }
+            
+            // Loading normal view when called with GET method
+            else{
+                $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
+                $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
+                
+
+                if ($necessity_type == 'onetime') {
+                    if($donee_type == 'student') {
+                        $data = [
+                            'title' => 'Home Page',
+                            'necessity_ID' => $_GET['necessity_ID'],
+                            'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID'])
+                        ];
+
+
+                    }
+
+                    else if($donee_type == 'organization') {
+                        $data = [
+                            'title' => 'Home Page',
+                            'necessity_ID' => $_GET['necessity_ID'],
+                            'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID'])
+                        ];
+                    }
+    
+                    else {
+                        die('Donee Type Not Found');
+                    }
+                }
+
+                else if($necessity_type == 'recurring') {
+                    if($donee_type == 'student') {
+                        $data = [
+                            'title' => 'Home Page',
+                            'necessity_ID' => $_GET['necessity_ID'],
+                            'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID'])
+                        ];
+                    }
+
+                    else if($donee_type == 'organization') {
+                        $data = [
+                            'title' => 'Home Page',
+                            'necessity_ID' => $_GET['necessity_ID'],
+                            'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID'])
+                        ];
+                    }
+
+                    else {
+                        die('Donee Type Not Found');
+                    }
+                }
+
+                else {
+                    die('Monetary Necessity Type Not Found');
+                }
+
+                $data['comments'] = $this->necessityModel->getAllComments($data['necessity_ID']);
+
+                $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+            }
         }
     }
 
@@ -1070,31 +1263,6 @@ class Necessity extends Controller {
             ];
 
             $this->view($_SESSION['user_type'].'/necessity/managegood', $data);
-        }
-    }
-
-    public function addComment() {
-        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin')) {
-            redirect('pages/404');
-        }
-
-        else {
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $data = [
-                    'comment' => trim($_POST['comment']),
-                    'err' => ''
-                ];
-
-                if(empty($data['comment'])) {
-                    $data['err'] = 'Please enter your comment';
-                }
-
-                else {
-                    if($this->necessityModel->addComment($data)) {
-                        // redirect('necessity/')
-                    }
-                }
-            }
         }
     }
 }
