@@ -284,7 +284,7 @@ class NecessityModel{
         }
     }
 
-    public function getNecessityType($necessity_ID) {
+    public function getMonetaryNecessityType($necessity_ID) {
         $this->db->query('SELECT monetaryNecessityType FROM money WHERE monetaryNecessityID = :monetaryNecessityID;');
         $this->db->bind(':monetaryNecessityID', $necessity_ID);
 
@@ -339,7 +339,7 @@ class NecessityModel{
     }
 
     public function getAllComments($necessity_ID) {
-        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'necessity' ORDER BY time DESC;");
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID ORDER BY time DESC;");
         $this->db->bind(':postID', $necessity_ID);
 
         $result = $this->db->resultSet();
@@ -348,8 +348,8 @@ class NecessityModel{
     }
 
     public function addComment($data) {
-        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'necessity', :comment;)");
-        // $this->db->bind(':postID', $necessity_ID);
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'necessity', :comment);");
+        $this->db->bind(':postID', $data['necessity_ID']);
         $this->db->bind(':adminID', $_SESSION['user_id']);
         $this->db->bind(':time', date("Y-m-d H:i:s"));
         $this->db->bind(':comment', $data['comment']);
@@ -361,5 +361,14 @@ class NecessityModel{
         else {
             return false;
         }
+    }
+
+    public function getNecessityType($necessity_ID) {
+        $this->db->query('SELECT necessityType FROM necessity WHERE necessityID = :necessityID;');
+        $this->db->bind(':necessityID', $necessity_ID);
+
+        $row = $this->db->single();
+
+        return $row->necessityType;
     }
 }

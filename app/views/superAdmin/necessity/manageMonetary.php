@@ -41,11 +41,14 @@
             </div>
 
             <div class="comment-form">
-                <form action = "<?php echo URLROOT; ?>/necessity/addcomment" method = "post">
+                <form action = "<?php echo URLROOT; ?>/necessity/managemonetary" method = "post">
                     <label for="comment">Comment</label><br><br>
-                    <textarea class="comment-textarea" name="comment" required></textarea>
-
-                    <!-- <input type="submit" name="necessity_ID" value="Add" hidden value="<?php echo $item->necessityID ?>"> -->
+                    <?php if(!empty($data['err'])){?>
+                        <p><?php echo $data['err']?></p>
+                    <?php }?>
+                    <textarea class="comment-textarea" required name="comment" ></textarea>
+                    <input type="text" name="necessity_ID" hidden value="<?php echo $data['necessity_ID'] ?>">
+                    <input type="submit" value="Add">
                 </form>
             </div>
 
@@ -63,21 +66,22 @@
                 </div>
                 <div class="right-cards">  
 
-                    <!-- <?php foreach($data['comments'] as $item) {?> -->
-                    <div class="right-card">
-                        <div class="title">Admin
-                            <!-- <?php echo $item->adminName ?> -->
+                    <?php foreach($data['comments'] as $item) {?>
+                        <div class="right-card">
+                            <div class="title"><?php echo $item->adminName ?></div>
+                            <div class="value"><?php echo $item->comment ?></div>
                         </div>
-                        <div class="value">Comment
-                            <!-- <?php echo $item->comment ?> -->
-                        </div>
-                    </div>
-                    <!-- <?php }?> -->
+                    <?php }?>
+
                 </div>
             </div>
 
         </div>
     </section>
 </main>
+
+<script>
+    history.pushState(null, null, '/kindheart/necessity/managemonetary?necessity_ID=<?php echo $data['necessity_ID']?>');
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
