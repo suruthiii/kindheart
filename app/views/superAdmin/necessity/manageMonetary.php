@@ -44,8 +44,7 @@
                 <form action = "<?php echo URLROOT; ?>/necessity/addcomment" method = "post">
                     <label for="comment">Comment</label><br><br>
                     <textarea class="comment-textarea" name="comment" required></textarea>
-
-                    <!-- <input type="submit" name="necessity_ID" value="Add" hidden value="<?php echo $item->necessityID ?>"> -->
+                    <input type="submit" name="necessity_ID" value="Add" hidden value="<?php echo $data['necessity_ID'] ?>">
                 </form>
             </div>
 

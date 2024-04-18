@@ -1047,7 +1047,7 @@ class Necessity extends Controller {
         }
 
         else {
-            $necessity_type = $this->necessityModel->getNecessityType($_GET['necessity_ID']);
+            $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
             $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
 
             if ($necessity_type == 'onetime') {
@@ -1136,6 +1136,7 @@ class Necessity extends Controller {
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $data = [
                     'comment' => trim($_POST['comment']),
+                    'necessity_ID' => trim($_POST['necessity_ID']),
                     'err' => ''
                 ];
 
@@ -1145,7 +1146,19 @@ class Necessity extends Controller {
 
                 else {
                     if($this->necessityModel->addComment($data)) {
-                        // redirect('necessity/')
+                        $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);
+
+                        if($necessityType == 'Monetary Funding') {
+                            redirect('necessity/manageMonetary');
+                        }
+
+                        else if($necessityType == 'Physical Goods') {
+                            redirect('necessity/manageGood');
+                        }
+
+                        else {
+                            die('Necessity Type Not Found');
+                        }
                     }
                 }
             }

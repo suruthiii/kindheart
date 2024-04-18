@@ -612,14 +612,15 @@
     background-color: #8e0000;
     color: white;
     font-weight: 500;
-    cursor: pointer;
-    width: 70px;
+    width: 50px;
+    height: 30px;
     padding: 6px 5px 6px 5px;
     text-align: center;
     transition: 0.2s;
 }
 
 .page-container .section .container .comment-form input[type=submit]:hover {
+    cursor: pointer;
     scale: 1.05;
 }
 
