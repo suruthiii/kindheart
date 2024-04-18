@@ -301,7 +301,7 @@ class UserModel{
 
     // View admins
     public function viewAdmins(){
-        $this->db->query('SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 ORDER BY adminName');
+        $this->db->query("SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 AND admin.adminName != 'Super Admin' ORDER BY adminName");
 
         $result =  $this->db->resultSet();
 
