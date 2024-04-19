@@ -24,11 +24,39 @@
             <h3 style="margin-top: 25px">Manage Scholarship</h3>
             <p style="margin-left: 10px">Add comments to scholarship</p>
             
-            <div class="comment-form">
-                <form action = "">
-                    <label for="comment">Comment</label><br><br>
-                    <textarea class="comment-textarea" name="comment"></textarea>
+            <div class="necessity-info">
+                <table>
+                        <tr class="necessity-data">
+                            <th width="30%">Scholarship Title</th>
+                            <td width="70%"><?php echo $data['scholarship_details']->title ?></td>
+                        </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Donor Name</th>
+                            <td width="70%"><?php echo $data['scholarship_details']->name ?></td>
+                        </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Amount</th>
+                            <td width="70%"><?php echo $data['scholarship_details']->amount ?></td>
+                        </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Start Date</th>
+                            <td width="70%"><?php echo $data['scholarship_details']->startDate ?></td>
+                        </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Description</th>
+                            <td width="70%"><?php echo $data['scholarship_details']->description ?></td>
+                        </tr>
+                </table>
+            </div>
 
+            <div class="comment-form">
+                <form action = "<?php echo URLROOT; ?>/scholarship/managescholarship" method = "post">
+                    <label for="comment">Comment</label><br><br>
+                    <?php if(!empty($data['err'])){?>
+                        <p><?php echo $data['err']?></p>
+                    <?php }?>
+                    <textarea class="comment-textarea" required name="comment" ></textarea>
+                    <input type="text" name="scholarship_ID" hidden value="<?php echo $data['scholarship_ID'] ?>">
                     <input type="submit" value="Add">
                 </form>
             </div>
@@ -47,11 +75,13 @@
                 </div>
                 <div class="right-cards">  
 
-                    <div class="right-card">
-                        <div class="title">Admin</div>
-                        <div class="value">Comment</div>
-                    </div>
-    
+                    <?php foreach($data['comments'] as $item) {?>
+                        <div class="right-card">
+                            <div class="title"><?php echo $item->adminName ?></div>
+                            <div class="value"><?php echo $item->comment ?></div>
+                        </div>
+                    <?php }?>
+
                 </div>
             </div>
 
