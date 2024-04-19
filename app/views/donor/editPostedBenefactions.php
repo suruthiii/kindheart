@@ -40,7 +40,7 @@
                         <div class="add-benefaction-form">
                             <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="POST" onsubmit="return validateForm()">
 
-                            <input type="text" name="benefactionID" value="<?php echo $data['benefactionID']?>" hidden required>
+                                <input type="text" name="benefactionID" value="<?php echo $data['benefactionID']?>" hidden required>
                             
                                 <!-- Item -->
                                 <div class="benefaction-first-div">

@@ -523,7 +523,7 @@ span .donor-form-error-details{
 }
 
 
-/* ----------------View Posted Benfactions------------------ */
+/* ----------------View Posted Benefactions------------------ */
 .view-benefaction-right-column {
     flex: 30;
     display: flex;
@@ -849,3 +849,282 @@ span .donor-form-error-details{
     outline: none !important;
     border: #8E0000 solid;
 }
+
+
+/* ----------Posted Scholarship ----------- */
+
+.posted-scholarship-pending-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 18vh;
+}
+
+.posted-scholarship-pending-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 22vh;
+    background-color: #DEDEDE;
+}
+
+.posted-scholarships-pending-table{
+    position: fixed;
+    width: 45%;
+    height: 15vh;
+    margin-top: 24vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-scholarship-onProgress-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 45vh;
+}
+
+.posted-scholarship-onProgress-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 49vh;
+    background-color: #DEDEDE;
+}
+
+.posted-scholarships-onProgress-table{
+    position: fixed;
+    width: 45%;
+    height: 15vh;
+    margin-top: 51vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-scholarship-Completed-table-caption{
+    position: fixed;
+    width: 45%;
+    height: 3vh;
+    margin-top: 72vh;
+}
+
+.posted-scholarship-Completed-table-grey-line{
+    position: fixed;
+    width: 45%;
+    height: 0.3vh;
+    margin-top: 76vh;
+    background-color: #DEDEDE;
+}
+
+.posted-scholarships-Completed-table{
+    position: fixed;
+    width: 45%;
+    height: 15vh;
+    margin-top: 76vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.posted-scholarship-pending-table-caption p, 
+.posted-scholarship-Completed-table-caption p,
+.posted-scholarship-onProgress-table-caption p{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #262A41;
+    margin-top: -0.1vh;
+    font-weight: 600;
+}
+
+.posted-scholarships-pending-table table,
+.posted-scholarships-Completed-table table,
+.posted-scholarships-onProgress-table table{
+    width: 95%;
+}
+
+.posted-scholarships-pending-table table tr,
+.posted-scholarships-Completed-table table tr,
+.posted-scholarships-onProgress-table table tr{
+    width: 100%;
+    height: 10vh;
+    background-color: #F5F5F5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 2vh;
+    padding-left: 15px;
+    box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.09);
+}
+
+.posted-scholarships-pending-table table tr:hover,
+.posted-scholarships-Completed-table table tr:hover,
+.posted-scholarships-onProgress-table table tr:hover{
+    background-color: #fffdfd;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.add-scholarship-button-for-post{
+    position: fixed;
+    width: 45%;
+    height: 5vh;
+    margin-top: 82vh;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-scholarship-button-for-post button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 25%;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-scholarship-button-for-post button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.add-scholarship-button-for-post button img{
+    padding-right: 8px;
+}
+
+.add-scholarship-button-for-post button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+
+/* ----------------View Posted Scholarships------------------ */
+.scholarship-info table {
+    width: 400px;
+    height: 8vh;
+    table-layout: fixed;
+    margin-top: 150px;
+}
+
+.scholarship-data {
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+}
+
+/* css to th */
+.scholarship-data th {
+    min-width:100px; 
+    width:200px;
+}
+
+.scholarship-data td {
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding: 8px;
+}
+
+.scholarship-data-image-row img{
+    max-height: 250px;
+    max-width: 250px;    
+}
+
+.view-scholarship-btn-container{
+    position: fixed;
+    width: 25%;
+    height: 5vh;
+    margin-top:10vh;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.view-scholarship-btn-container button:first-child {
+    margin-right: 10px;
+}
+
+.view-scholarship-btn-container button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 100px;
+    margin-right: 5px;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-scholarship-btn-container button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.view-scholarship-btn-container button img{
+    padding-right: 8px;
+}
+
+.view-scholarship-btn-container button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+.application-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 85vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.application-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.application-right-side-bar-type-applications{
+    width: 250px;
+    height: 80px;
+    padding: 10px;
+    background-color: #008e2d;
+    border-radius: 10px;
+    color: white;
+}
+
+.application-right-side-bar-type-applications h4{
+    padding-left: 5px;
+    font-size: 15px;
+    margin-top: 5px;
+}
+
+.application-right-side-bar-type-applications p{
+    padding-left: 5px;
+    font-size: 12px;
+    margin-top: -5px;
+}
+
+/* -------Edit Posted Scholarship----------- */
+
+
+
