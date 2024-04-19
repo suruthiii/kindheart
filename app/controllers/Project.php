@@ -29,18 +29,47 @@ class Project extends Controller {
 }
 
     public function manageProject($project_ID = null) {
-        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($project_ID)) {
+        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') ||  empty($_GET['project_ID']) && empty($_POST['project_ID'])) {
             redirect('pages/404');
         }
 
         else {
-            $data = [
-                'title' => 'Home Page'
-                // 'project_details' => $this->projectModel->getMonetaryDetails($project_ID),
-                // 'comments' => $this->projectModel->getAllComments($project_ID)
-            ];
+            // When we submit comments
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $data = [
+                    'comment' => trim($_POST['comment']),
+                    'project_ID' => trim($_POST['project_ID']),
+                    'err' => ''
+                ];
 
-            $this->view($_SESSION['user_type'].'/project/manageproject', $data);
+                // If the comment is empty load view with errors
+                if(empty($data['comment'])) {
+                    $data['err'] = 'Please Enter Your Comment';
+                    $data['comments'] = $this->projectModel->getAllComments($data['project_ID']);
+
+                    $this->view($_SESSION['user_type'].'/project/manageproject', $data);
+                }
+
+                // If the comment is not empty insert comment to the database and redirect to Manage Montary view
+                else {
+                    if($this->projectModel->addComment($data)) {
+                        redirect('project/manageproject?project_ID='.$data['project_ID']);
+                    }
+                }
+            }
+            
+            // Loading normal view when called with GET method
+            else {
+                $data = [
+                    'project_ID' => $_GET['project_ID'],
+                    'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
+                    'comments' => $this->projectModel->getAllComments($_GET['project_ID'])
+                ];
+    
+                $this->view($_SESSION['user_type'].'/project/manageproject', $data);
+            }
         }
-    }
+}
+
+
 }
