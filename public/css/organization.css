@@ -989,9 +989,10 @@
 
 .add-projects-add-more-field-input{
     position: relative;
-    width: 90%;
+    width: 95%;
     height: 11vh;
-    display: flex
+    display: flex;
+    margin-top: 4vh;
 }
 
 .add-projects-add-more-field-input .project-first-div{
@@ -1002,7 +1003,7 @@
 
 .add-projects-add-more-field-input .project-second-div{
     position: relative;
-    width: 40%;
+    width: 33%;
     height: 12vh;
 }
 
@@ -1055,6 +1056,18 @@
 
 .add-more-project-milestones button:hover{
     color: #8E0000;
+}
+
+.dynamic-input-block{
+    position: relative;
+    width: 90%;
+    height: 25vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
 }
 
 /*-----------posted-necessity-view-tables-css-for-pending-and-complete----------------*/
