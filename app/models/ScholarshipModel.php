@@ -80,7 +80,6 @@ class ScholarshipModel{
         return $this->db->resultSet();
     }
     
-
     // Get completed Scholarships
     public function getCompletedScholarship() {
         // Prepare statement
@@ -129,4 +128,26 @@ class ScholarshipModel{
     //         return []; // Return empty array if no results found
     //     }
     // }
+
+    //Edit Benefaction
+    public function updateScholarship($data){
+        // Prepare statement
+        $this->db->query('UPDATE scholarship SET title = :title, amount = :amount, startDate = :startDate, duration = :duration, deadline = :deadline, description = :description WHERE scholarshipID = :scholarshipID');
+
+        // Bind values
+        $this->db->bind(':title', $data['titleScholarship']);
+        $this->db->bind(':amount', $data['amountScholarship']);
+        $this->db->bind(':startDate', $data['startDateScholarship']);
+        $this->db->bind(':duration', $data['durationScholarship']);
+        $this->db->bind(':deadline', $data['deadlineScholarship']);
+        $this->db->bind(':description', $data['scholarshipDescription']);
+        $this->db->bind(':scholarshipID', $data['scholarshipID']);
+        
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button> -->
+                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/scholarship/postedScholarships'">Go Back</button> -->
                     <button onclick="goBack()">Go Back</button>
 
                     <script>
@@ -29,18 +29,20 @@
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
-                    <h3>Add Scholarships</h3>
-                    <p>Enter correct information and add your scholarship.</p>
+                    <h3>Edit Posted Scholarships</h3>
+                    <p>Edit Your Scholarships</p>
                 </div>
 
-                <!-- Add Benefaction Form -->
+                <!-- Add Scholarship Form -->
                 <div class="add-scholarship-form">
-                    <form action="<?php echo URLROOT ?>/scholarship/donorAddScholarships" method="POST">
+                    <form action="<?php echo URLROOT ?>/scholarship/editPostedScholarships" method="POST">
+
+                        <input type="text" name="scholarshipID" value="<?php echo $data['scholarshipID']?>" hidden required>
                     
                         <!-- Title -->
                         <div class="scholarship-first-div">
                             <label for="titleScholarship">Scholarship Title</label>
-                            <input type="text" id="titleScholarship" name="titleScholarship" value="<?php echo isset($data['titleScholarship']) ? $data['titleScholarship'] : ''; ?>">
+                            <input type="text" id="titleScholarship" name="titleScholarship" value="<?php print_r($data['scholarship_details']->title); ?>">
 
                             <!-- Scholarship Title Error display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['titleScholarship_err']) ? $data['titleScholarship_err']: ''; ?></span>
@@ -49,7 +51,7 @@
                         <!-- Amount -->
                         <div class="scholarship-second-div">
                             <label for="amountScholarship">Scholarship Amount (In LKR)</label>
-                            <input type="text" id="amountScholarship" name="amountScholarship" value="<?php echo isset($data['amountScholarship']) ? $data['amountScholarship'] : ''; ?>">
+                            <input type="text" id="amountScholarship" name="amountScholarship" value="<?php print_r($data['scholarship_details']->amount); ?>">
 
                             <!-- Scholarship Amount Error Display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['amountScholarship_err']) ? $data['amountScholarship_err']: ''; ?> </span>
@@ -60,7 +62,11 @@
                             <div class="scholarship-third-div-two-input-one-line">
                                 <div class="add-scholarship-first-div">
                                     <label for="startDateScholarship">Scholarship Starting Date</label>
-                                    <input type="date" id="startDateScholarship" name="startDateScholarship" value="<?php echo isset($data['startDateScholarship']) ? $data['startDateScholarship'] : ''; ?>">
+                                    <?php
+                                        // Format the startDate value for display in the input field
+                                        $startDateFormatted = !empty($data['scholarship_details']->startDate) ? date('Y-m-d', strtotime($data['scholarship_details']->startDate)) : '';
+                                    ?>
+                                    <input type="date" id="startDateScholarship" name="startDateScholarship" value="<?php print_r($startDateFormatted); ?>">
 
                                     <!-- Satrt Date Error display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['startDateScholarship_err']) ? $data['startDateScholarship_err']: ''; ?></span>                                                
@@ -68,7 +74,7 @@
 
                                 <div class="add-scholarship-second-div">
                                     <label for="durationScholarship">Duration (In Months)</label>
-                                    <input type="number" id="durationScholarship" name="durationScholarship" value="<?php echo isset($data['durationScholarship']) ? $data['durationScholarship'] : ''; ?>" min="1">
+                                    <input type="number" id="durationScholarship" name="durationScholarship" value="<?php print_r($data['scholarship_details']->duration); ?>">
 
                                     <!-- Duration Error display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['durationScholarship_err']) ? $data['durationScholarship_err']: ''; ?></span> 
@@ -79,7 +85,7 @@
                         <!-- Deadline -->
                         <div class="scholarship-forth-div">
                             <label for="deadlineScholarship">Application Deadline </label>
-                            <input type="datetime-local" id="deadlineScholarship" name="deadlineScholarship" value="<?php echo isset($data['deadlineScholarship']) ? $data['deadlineScholarship'] : ''; ?>" >
+                            <input type="datetime-local" id="deadlineScholarship" name="deadlineScholarship" value="<?php print_r($data['scholarship_details']->deadline); ?>" >
 
                             <!-- Deadline Error Display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deadlineScholarship_err']) ? $data['deadlineScholarship_err']: ''; ?> </span>
@@ -88,7 +94,7 @@
                         <!-- Description about scholarship -->
                         <div class="add-scholarship-text-area-input-to-oneline">
                             <label for="scholarshipDescription">Description</label>
-                            <textarea name="scholarshipDescription" id="scholarshipDescription" cols="30" rows="10"><?php echo isset($data['scholarshipDescription']) ? $data['scholarshipDescription'] : ''; ?></textarea>
+                            <textarea name="scholarshipDescription" id="scholarshipDescription" cols="30" rows="10"><?php print_r($data['scholarship_details']->description); ?></textarea>
 
                             <!-- Scholarship description error display -->
                             <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['scholarshipDescription_err']) ? $data['scholarshipDescription_err']: ''; ?></span>
@@ -96,7 +102,7 @@
                         
                         <!-- Add Button for scholarship -->
                         <div class="add-scholarship-add-button">
-                            <input type="submit" value="+ Add" >
+                            <input type="submit" value="Update" >
                         </div>
                     </form>
                 </div>
