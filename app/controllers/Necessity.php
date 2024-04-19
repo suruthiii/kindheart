@@ -1047,6 +1047,32 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data);
     }
 
+    public function viewGood() {
+        $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
+                
+        if($donee_type == 'student') {
+            $data = [
+                'title' => 'Home Page',
+                'necessity_ID' => $_GET['necessity_ID'],
+                'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID'])
+            ];
+        }
+
+        else if($donee_type == 'organization') {
+            $data = [
+                'title' => 'Home Page',
+                'necessity_ID' => $_GET['necessity_ID'],
+                'necessity_details' => $this->necessityModel->getOrganizationGoodDetails($_GET['necessity_ID'])
+            ];
+        }
+
+        else {
+            die('Donee Type Not Found');
+        }
+    
+        $this->view($_SESSION['user_type'].'/necessity/viewgood', $data);
+    }
+
     public function viewAdminMonetaryDonation(){
         $data = [
             'title' => 'Home page'
@@ -1321,8 +1347,6 @@ class Necessity extends Controller {
                         'necessity_ID' => $_GET['necessity_ID'],
                         'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID'])
                     ];
-
-
                 }
 
                 else if($donee_type == 'organization') {
