@@ -96,7 +96,7 @@
                     </form>
 
                     <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="delete" id="delete" value="<?php echo $data['benefaction_details']->benefactionID; ?>"/>
+                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefaction_details']->benefactionID; ?>"/>
                         <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:14px;">
                             <h5>Delete</h5>

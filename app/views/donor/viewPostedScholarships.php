@@ -73,7 +73,7 @@
                     </form>
 
                     <form action="<?php echo URLROOT ?>/scholarship/deleteScholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="delete" id="delete" value="<?php echo $data['scholarship_details']->scholarshipID; ?>"/>
+                        <input type="hidden" name="scholarshipID" id="scholarshipID" value="<?php echo $data['scholarship_details']->scholarshipID; ?>"/>
                         <button type="submit" class="view-scholarship_button" style="cursor: pointer;">
                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:14px;">
                             <h5>Delete</h5>
