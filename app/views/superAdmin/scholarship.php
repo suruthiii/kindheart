@@ -19,7 +19,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['pending'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/scholarship/viewscholarship?scholarship_ID=<?php echo $item->scholarshipID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -52,7 +52,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['confirmed'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/scholarship/viewscholarship?scholarship_ID=<?php echo $item->scholarshipID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -85,7 +85,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['ongoing'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/scholarship/viewscholarship?scholarship_ID=<?php echo $item->scholarshipID; ?>">
                         <div class="card">
                             <table>
                                 <tr>

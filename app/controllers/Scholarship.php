@@ -92,6 +92,39 @@ class Scholarship extends Controller {
         }
     }    
 
+
+    public function viewScholarship() {
+        if($_SESSION['user_type'] == 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            $donor_type = $this->scholarshipModel->getDonorType($_GET['scholarship_ID']);
+                
+                if($donor_type == 'company') {
+                    $data = [
+                        'title' => 'Home Page',
+                        'scholarship_ID' => $_GET['scholarship_ID'],
+                        'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
+                    ];
+                }
+
+                else if($donor_type == 'individual') {
+                    $data = [
+                        'title' => 'Home Page',
+                        'scholarship_ID' => $_GET['scholarship_ID'],
+                        'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
+                    ];
+                }
+
+                else {
+                    die('Donor Type Not Found');
+                }
+        }
+
+        $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
+    }
+
     public function donorAddScholarships(){
         //other actors' redirection
         
