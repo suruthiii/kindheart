@@ -123,8 +123,6 @@ class Benefaction extends Controller {
 
             if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err']) && empty($data['benefactionCategory_err'])){
                 if($this->donorModel->addBenefaction($data)){
-                    // die(print_r(123));
-                    // die(print_r($this->imgUpload('photoBenfaction1')));
                     $data = [
                         'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
 

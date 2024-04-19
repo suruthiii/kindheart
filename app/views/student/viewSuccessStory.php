@@ -33,12 +33,15 @@
                         <div class="tiles-new">
 
                             <?php foreach($data['stories'] as $item){?>
-                                <!-- <a href="<?php echo URLROOT ?>/student/SuccessStory/<?php echo $item->storyID?>"> -->
+                                
+                                <a href="<?php echo URLROOT ?>/SuccessStory/viewOwnSuccessStory/<?php echo $item->storyID?>">
+                               
                                     <div class="tile-new">
                                         <table>
                                             <tr id="myBtn">
                                                 <td width="50%" class="tile-name"><?php echo $item->title;?></td>
                                                 <td width="50%" class="option-new">
+
                                                     <form action="<?php echo URLROOT ?>/successstory/editStory" method="GET" class="edit-form-new " >
                                                         <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
                                                         <button type="submit" class="edit" >
@@ -49,8 +52,9 @@
                                                     <form action="<?php echo URLROOT ?>/successstory/deleteStory" method="post" class="delete-form-new " onsubmit="return confirmDelete();">
                                                         <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
                                                         <button type="submit" class="delete">
-                                                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="transform:translateY(2px)" alt="">
+                                                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg"  alt="">
                                                         </button>
+                                                        
                                                     </form>
                                                 </td>
                                             </tr>
@@ -165,6 +169,8 @@ adjustCardHeights();
 function confirmDelete() {
         return confirm("Are you sure you want to delete this story?");
     }
+
+
     
 
 </script>

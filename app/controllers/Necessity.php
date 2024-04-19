@@ -1047,53 +1047,30 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data);
     }
 
-    public function viewAdminMonetaryDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewMonetaryDonation', $data);
-    }
+    public function viewGood() {
+        $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
+                
+        if($donee_type == 'student') {
+            $data = [
+                'title' => 'Home Page',
+                'necessity_ID' => $_GET['necessity_ID'],
+                'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID'])
+            ];
+        }
 
-    public function viewAdminGood(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewGood', $data);
-    }
+        else if($donee_type == 'organization') {
+            $data = [
+                'title' => 'Home Page',
+                'necessity_ID' => $_GET['necessity_ID'],
+                'necessity_details' => $this->necessityModel->getOrganizationGoodDetails($_GET['necessity_ID'])
+            ];
+        }
 
-    public function viewAdminGoodDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewGoodDonation', $data);
-    }
-
-    public function viewSuperAdminMonetary(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewMonetary', $data);
-    }
-
-    public function viewSuperAdminMonetaryDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewMonetaryDonation', $data);
-    }
-
-    public function viewSuperAdminGood(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewGood', $data);
-    }
-
-    public function viewSuperAdminGoodDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewGoodDonation', $data);
+        else {
+            die('Donee Type Not Found');
+        }
+    
+        $this->view($_SESSION['user_type'].'/necessity/viewgood', $data);
     }
 
     public function manageMonetary() {
@@ -1321,8 +1298,6 @@ class Necessity extends Controller {
                         'necessity_ID' => $_GET['necessity_ID'],
                         'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID'])
                     ];
-
-
                 }
 
                 else if($donee_type == 'organization') {

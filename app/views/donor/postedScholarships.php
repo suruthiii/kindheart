@@ -47,38 +47,38 @@
                                         </td>
 
                                         <td width="50%">
-                                            <h4><?php echo $scholarship->itemName;?></h4>
+                                            <h4><?php echo $scholarship->title;?></h4>
                                             <p><?php echo substr($scholarship->description, 0, 20) . (strlen($scholarship->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="10%"  style="transform: translateX(-150%);" ><p><?php echo $scholarship->itemQuantity;?> Items </p></td>
+                                        <td width="15%"  style="transform: translateX(-80%);" ><p>LKR <?php echo $scholarship->amount;?></p></td>
 
                                         <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/scholarship/viewPostedScholarships" method="post" class="view-form">
-                                            <input type="hidden" name="view" id="view" value="<?php echo $scholarship->scholarshipID; ?>" />
-                                            <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
-                                            </button>
-                                        </form>
-                                    </td>
+                                            <form action="<?php echo URLROOT ?>/scholarship/viewPostedScholarships" method="get" class="view-form">
+                                                <input type="hidden" name="scholarshipID" id="scholarshipID" value="<?php echo $scholarship->scholarshipID; ?>" />
+                                                <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                                </button>
+                                            </form>
+                                        </td>
 
-                                    <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/scholarship/editPostedScholarships" method="post" class="edit-form">
-                                            <input type="text" name="edit" id="edit" hidden value="<?php echo $scholarship->scholarshipID; ?>" />
-                                            <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
-                                                <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
-                                            </button>
-                                        </form>
-                                    </td>
+                                        <td width="10%"style="transform: translateX(15%);"> 
+                                            <form action="<?php echo URLROOT ?>/scholarship/editPostedScholarships" method="get" class="edit-form">
+                                                <input type="text" name="scholarshipID" id="scholarshipID" hidden value="<?php echo $scholarship->scholarshipID; ?>" />
+                                                <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
+                                                </button>
+                                            </form>
+                                        </td>
 
-                                    <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/scholarship/deletescholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="delete" id="delete" value="<?php echo $scholarship->scholarshipID; ?>" />
-                                            <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
-                                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
-                                            </button>
-                                        </form>
-                                    </td>
+                                        <td width="10%"style="transform: translateX(15%);">
+                                            <form action="<?php echo URLROOT ?>/scholarship/deleteScholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
+                                                <input type="hidden" name="scholarshipID" id="scholarshipID" value="<?php echo $scholarship->scholarshipID; ?>" />
+                                                <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
+                                                <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
+                                                </button>
+                                            </form>
+                                        </td>
 
                                     </tr>
 
@@ -93,43 +93,32 @@
                 </div>
                 <div class="posted-scholarship-onProgress-table-grey-line"></div>
                     <div class="posted-scholarships-onProgress-table">
-                        <?php foreach($data['onProgressscholarship'] as $scholarship){?>
+                        <?php foreach($data['onProgressScholarship'] as $scholarship){?>
                             <table>
                                     <tr>
-                                    <td width="10%">
-                                            <?php
-                                                if($scholarship->itemCategory == "Educational Supplies and Tools"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
-                                                }elseif($scholarship->itemCategory == "Clothing and Accessories"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
-                                                }elseif($scholarship->itemCategory == "Recreation and Sports Equipment"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
-                                                }elseif($scholarship->itemCategory == "Health and Wellness Products"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
-                                                }elseif($scholarship->itemCategory == "Transportation and Mobility"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
-                                                }elseif($scholarship->itemCategory == "Literature and Reading Materials"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
-                                                }elseif($scholarship->itemCategory == "Other"){
-                                                    echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
-                                                }else{
-                                                    echo '<img src="' . URLROOT . '/img/house.png" width="55" height="55">';
-                                                }
-                                            ?>
+                                        <td width="10%">
+                                            <img src="<?php echo URLROOT ?>/img/necessity-icons/stationary.png" width="55" height="55">
                                         </td>
 
                                         <td width="50%">
-                                            <h4><?php echo $scholarship->itemName;?></h4>
+                                            <h4><?php echo $scholarship->title;?></h4>
                                             <p><?php echo substr($scholarship->description, 0, 20) . (strlen($scholarship->description) > 20 ? '...' : ''); ?></p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-55%);" >
-                                            <p><?php echo $scholarship->itemQuantity;?> Out of <?php echo $scholarship->itemQuantity;?> Items Remain</p>
-                                        </td>
+                                        <td width="15%"  style="transform: translateX(-80%);" ><p>LKR <?php echo $scholarship->amount;?></p></td>
                                         <!-- here have to edit with requested quatity of student -->
 
                                         <td width="10%"style="transform: translateX(15%);"> 
-                                            <!-- <form action="<?php echo URLROOT ?>/scholarship/editPostedscholarships" method="post" class="edit-form">
+                                            <!-- <form action="<?php echo URLROOT ?>/scholarship/editPostedScholarships" method="post" class="edit-form">
+                                                <input type="text" name="edit" id="edit" hidden value="<?php echo $scholarship->scholarshipID; ?>" />
+                                                <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
+                                                    <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
+                                                </button>
+                                            </form> -->
+                                        </td>
+                                        
+                                        <td width="10%"style="transform: translateX(15%);"> 
+                                            <!-- <form action="<?php echo URLROOT ?>/scholarship/editPostedScholarships" method="post" class="edit-form">
                                                 <input type="text" name="edit" id="edit" hidden value="<?php echo $scholarship->scholarshipID; ?>" />
                                                 <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                     <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
@@ -138,14 +127,14 @@
                                         </td>
 
                                         <td width="10%"style="transform: translateX(15%);">
-                                            <!-- <form action="<?php echo URLROOT ?>/scholarship/deletescholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
+                                            <!-- <form action="<?php echo URLROOT ?>/scholarship/deleteScholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
                                                 <input type="hidden" name="delete" id="delete" value="<?php echo $scholarship->scholarshipID; ?>" />
                                                 <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                                 </button>
                                             </form> -->
-                                            <form action="<?php echo URLROOT ?>/scholarship/viewPostedscholarships" method="post" class="view-form">
-                                                <input type="hidden" name="view" id="view" value="<?php echo $scholarship->scholarshipID; ?>" />
+                                            <form action="<?php echo URLROOT ?>/scholarship/viewPostedScholarships" method="get" class="view-form">
+                                                <input type="hidden" name="scholarshipID" id="scholarshipID" value="<?php echo $scholarship->scholarshipID; ?>" />
                                                 <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                     <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                                 </button>
@@ -165,41 +154,22 @@
                 </div>
                 <div class="posted-scholarship-Completed-table-grey-line"></div>
                     <div class="posted-scholarships-Completed-table">
-                    <?php foreach($data['completedscholarship'] as $scholarship){?>
+                    <?php foreach($data['completedScholarship'] as $scholarship){?>
                         <table>
                                 <tr>
                                     <td width="10%">
-                                        <?php
-                                            if($scholarship->itemCategory == "Educational Supplies and Tools"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/stationary.png" width="55" height="55">'; 
-                                            }elseif($scholarship->itemCategory == "Clothing and Accessories"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/clothings.png" width="55" height="55">';
-                                            }elseif($scholarship->itemCategory == "Recreation and Sports Equipment"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/sports.png" width="55" height="55">';
-                                            }elseif($scholarship->itemCategory == "Health and Wellness Products"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/health.png" width="55" height="55">';
-                                            }elseif($scholarship->itemCategory == "Transportation and Mobility"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/transport.png" width="55" height="55">';
-                                            }elseif($scholarship->itemCategory == "Literature and Reading Materials"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/books.png" width="55" height="55">';
-                                            }elseif($scholarship->itemCategory == "Other"){
-                                                echo '<img src="' . URLROOT . '/img/necessity-icons/other.png" width="55" height="55">';
-                                            }else{
-                                                echo '<img src="' . URLROOT . '/img/house.png" width="55" height="55">';
-                                            }
-
-                                        ?>
-                                    </td>
+                                            <img src="<?php echo URLROOT ?>/img/necessity-icons/stationary.png" width="55" height="55">
+                                        </td>
 
                                     <td width="50%">
-                                        <h4><?php echo $scholarship->itemName;?></h4>
+                                        <h4><?php echo $scholarship->title;?></h4>
                                         <p><?php echo substr($scholarship->description, 0, 20) . (strlen($scholarship->description) > 20 ? '...' : ''); ?></p>
                                     </td>
 
-                                    <td width="10%" style="transform: translateX(-150%);" ><p><?php echo $scholarship->itemQuantity;?> Items </p></td>
+                                    <td width="15%"  style="transform: translateX(-80%);" ><p>LKR <?php echo $scholarship->amount;?></p></td>
 
                                     <td width="10%"style="transform: translateX(15%);">
-                                        <!-- <form action="<?php echo URLROOT ?>/donor/editscholarship" method="post" class="edit-form">
+                                        <!-- <form action="<?php echo URLROOT ?>/donor/editScholarship" method="post" class="edit-form">
                                             <input type="hidden" name="edit" id="edit" value="<?php echo $scholarship->scholarshipID; ?>" />
                                             <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">
@@ -208,8 +178,8 @@
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);"> 
-                                        <form action="<?php echo URLROOT ?>/scholarship/viewPostedscholarships" method="post" class="view-form">
-                                            <input type="hidden" name="view" id="view" value="<?php echo $scholarship->scholarshipID; ?>" />
+                                        <form action="<?php echo URLROOT ?>/scholarship/viewPostedScholarships" method="get" class="view-form">
+                                            <input type="hidden" name="scholarshipID" id="scholarshipID" value="<?php echo $scholarship->scholarshipID; ?>" />
                                             <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                 <img src="<?php echo URLROOT ?>/img/eye-solid.svg" alt="">
                                             </button>
@@ -217,8 +187,8 @@
                                     </td>
 
                                     <td width="10%"style="transform: translateX(15%);">
-                                        <form action="<?php echo URLROOT ?>/scholarship/deletescholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                                            <input type="hidden" name="delete" id="delete" value="<?php echo $scholarship->scholarshipID; ?>" />
+                                        <form action="<?php echo URLROOT ?>/scholarship/deleteScholarships" method="post" class="delete-form" onsubmit="return confirmDelete();">
+                                            <input type="hidden" name="scholarshipID" id="scholarshipID" value="<?php echo $scholarship->scholarshipID; ?>" />
                                             <button type="submit" class="scholarship_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                             </button>

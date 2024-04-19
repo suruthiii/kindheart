@@ -26,33 +26,22 @@
             
             <div class="necessity-info">
                 <table>
-                    <tr class="necessity-data">
-                        <th width="30%">Name</th>
-                        <td width="70%">Sarah Dawson</td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Necessity Title</th>
-                        <td width="70%">Stationary</td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Description</th>
-                        <td width="70%">80 Page CR Book</td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Quantity</th>
-                        <td width="70%">34</td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Date</th>
-                        <td width="70%">11/12/2023</td>
-                    </tr>
+                    <?php foreach($data['necessity_details'] as $key => $value){
+                        if ($key == 'doneeID'){continue;} ?>
+                        
+                        <tr class="necessity-data">
+                            <th width="30%"><?php echo $key?></th>
+                            <td width="70%"><?php echo $value?></td>
+                        </tr>
+                    <?php }?>
+
                 </table>
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>/necessity/viewadmingooddonation" class="view-donation-btn">
+                <a href="<?php echo URLROOT ?>" class="view-donation-btn">
                     <!-- <button type="submit" class="view-donation-btn" > -->
-                        View Donations
+                        View Donee Profile
                     <!-- </button> -->
                 </a>
             </div>

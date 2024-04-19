@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/superadmin/project">
+                <a href="<?php echo URLROOT ?>/admin/project">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -21,8 +21,8 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">Manage Project</h3>
-            <p style="margin-left: 10px">Add comments to project</p>
+            <h3 style="margin-top: 25px">View Project</h3>
+            <p style="margin-left: 10px">View information about the projects of organizations</p>
             
             <div class="necessity-info">
                 <table>
@@ -49,40 +49,12 @@
                 </table>
             </div>
 
-            <div class="comment-form">
-                <form action = "<?php echo URLROOT; ?>/project/manageproject" method = "post">
-                    <label for="comment">Comment</label><br><br>
-                    <?php if(!empty($data['err'])){?>
-                        <p><?php echo $data['err']?></p>
-                    <?php }?>
-                    <textarea class="comment-textarea" required name="comment" ></textarea>
-                    <input type="text" name="project_ID" hidden value="<?php echo $data['project_ID'] ?>">
-                    <input type="submit" value="Add">
-                </form>
-            </div>
-
             <div class="view-donation-btn-container">
                 <a href="<?php echo URLROOT ?>" class="view-donation-btn">
                     <!-- <button type="submit" class="view-donation-btn" > -->
-                        Delete Project
+                        View Donee Profile
                     <!-- </button> -->
                 </a>
-            </div>
-
-            <div class="right-content" style="overflow-y:scroll;">
-                <div class="right-content-title-container">
-                    <h4 style="text-align:center">Comments</h4>
-                </div>
-                <div class="right-cards">  
-
-                    <?php foreach($data['comments'] as $item) {?>
-                        <div class="right-card">
-                            <div class="title"><?php echo $item->adminName ?></div>
-                            <div class="value"><?php echo $item->comment ?></div>
-                        </div>
-                    <?php }?>
-
-                </div>
             </div>
 
         </div>
