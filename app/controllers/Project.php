@@ -106,4 +106,8 @@ class Project extends Controller {
             }
         }
     }
+
+    // public function deleteProject() {
+
+    // }
 }
