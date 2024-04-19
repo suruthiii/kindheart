@@ -185,8 +185,8 @@ class Benefaction extends Controller {
             // Load the view with data
             $data = [
                 'title' => 'View Posted Benefactions',
-                'benefaction_details' => $this->donorModel->getScholarship($benefactionID),
-                'benefaction_requests' => $this->donorModel->getScholarshipApplications($benefactionID)
+                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
+                'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
             ];
             
     
@@ -358,7 +358,7 @@ class Benefaction extends Controller {
                 } else {
                     // Load view with errors
                     die('Something went wrong2');
-                    // $this->story($data);
+                    $this->story($data);
                 }
             }else{
                 die('incorrect method!');
