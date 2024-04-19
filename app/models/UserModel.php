@@ -491,7 +491,7 @@ class UserModel{
     }
 
     public function getAdminCount() {
-        $this->db->query('SELECT COUNT(*) AS adminCount FROM admin a JOIN user u ON a.adminID = u.userID WHERE u.status != 0;');
+        $this->db->query("SELECT COUNT(*) AS adminCount FROM admin a JOIN user u ON a.adminID = u.userID WHERE u.status != 0 AND u.userType != 'superAdmin';");
 
         $row = $this->db->single();
 

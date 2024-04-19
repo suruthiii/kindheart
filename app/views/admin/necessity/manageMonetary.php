@@ -24,11 +24,30 @@
             <h3 style="margin-top: 25px">Manage Necessity</h3>
             <p style="margin-left: 10px">Add comments to necessity</p>
             
-            <div class="comment-form">
-                <form action = "">
-                    <label for="comment">Comment</label><br><br>
-                    <textarea class="comment-textarea" name="comment"></textarea>
+            <div class="necessity-info">
+                <table>
+                    <?php foreach($data['necessity_details'] as $key => $value){
+                        if ($key == 'doneeID'){continue;}
+                        else if($key == 'Start Date' || $key == 'End Date'){
+                            $value = date('Y-m-d', strtotime($value));
+                        }?>
+                        
+                        <tr class="necessity-data">
+                            <th width="30%"><?php echo $key?></th>
+                            <td width="70%"><?php echo $value?></td>
+                        </tr>
+                    <?php }?>
+                </table>
+            </div>
 
+            <div class="comment-form">
+                <form action = "<?php echo URLROOT; ?>/necessity/managemonetary" method = "post">
+                    <label for="comment">Comment</label><br><br>
+                    <?php if(!empty($data['err'])){?>
+                        <p><?php echo $data['err']?></p>
+                    <?php }?>
+                    <textarea class="comment-textarea" required name="comment" ></textarea>
+                    <input type="text" name="necessity_ID" hidden value="<?php echo $data['necessity_ID'] ?>">
                     <input type="submit" value="Add">
                 </form>
             </div>
@@ -47,16 +66,22 @@
                 </div>
                 <div class="right-cards">  
 
-                    <div class="right-card">
-                        <div class="title">Admin</div>
-                        <div class="value">Comment</div>
-                    </div>
-    
+                    <?php foreach($data['comments'] as $item) {?>
+                        <div class="right-card">
+                            <div class="title"><?php echo $item->adminName ?></div>
+                            <div class="value"><?php echo $item->comment ?></div>
+                        </div>
+                    <?php }?>
+
                 </div>
             </div>
 
         </div>
     </section>
 </main>
+
+<script>
+    history.pushState(null, null, '/kindheart/necessity/managemonetary?necessity_ID=<?php echo $data['necessity_ID']?>');
+</script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

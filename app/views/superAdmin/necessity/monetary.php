@@ -88,9 +88,9 @@
                     </a>
                     <?php }?>
                 </div>
-                </div>
+            </div>
 
-                <div class="list">
+            <div class="list">
                 <div class="list-title">
                     <h4>Ongoing</h4>
                 </div>
@@ -120,7 +120,7 @@
                     </a>
                     <?php }?>
                 </div>
-                </div>
+            </div>
 
             <div class="right-content">
                 <div class="right-cards">
