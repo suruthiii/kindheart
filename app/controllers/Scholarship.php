@@ -239,7 +239,11 @@ class Scholarship extends Controller {
                         'scholarshipID' => $_POST['scholarshipID'],
                         'scholarship_details' => $this->scholarshipModel->getScholarship($_POST['scholarshipID']),
                     ];
+                    
                     $this->view('donor/editPostedScholarships', $data);
+
+                    header('Location: ' . URLROOT . '/scholarship/editPostedScholarships?success=true');
+                    exit();
 
                 }else{
                     die('Something Went Wrong');
