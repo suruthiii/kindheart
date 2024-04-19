@@ -238,7 +238,10 @@ class Scholarship extends Controller {
                         'title' => 'Edit Posted Scholarships',
                         'scholarshipID' => $_POST['scholarshipID'],
                         'scholarship_details' => $this->scholarshipModel->getScholarship($_POST['scholarshipID']),
+                        'success' => true
                     ];
+
+                    
                     $this->view('donor/editPostedScholarships', $data);
 
                 }else{

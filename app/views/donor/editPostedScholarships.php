@@ -6,13 +6,33 @@
 <!--  SIDE NAVIGATION  -->
 <?php $section = "donations";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
+<!-- <style>
+    .swal2-popup {
+        font-family: "Arial", sans-serif;
+        width: 400px !important;
+        height: 60px !important;
+        border: 2px solid #54e080 !important;
+        background-color: #f9f9f9;
+    }
 
+    .swal2-title {
+        font-size: 15px !important;
+    }
+
+    .swal2-icon {
+        height: 40px !important;
+        width: 40px !important;
+    }
+    
+
+</style> -->
 <main class="page-container">
     <section class="section" id="main">
         <div class="donor-right-side-container">
 
             <!-- Middle container -->
             <div class="donor-middle-container">
+
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
@@ -114,5 +134,53 @@
         </div>
     </section>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<?php if (isset($data['success']) && $data['success']) : ?>
+    <script>
+        Swal.fire({
+            position: "top",
+            title: "Scholarship Updated Successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+
+            didOpen: () => {
+                // Apply custom CSS styles using JavaScript
+                const swalContainer = document.querySelector('.swal2-popup');
+                if (swalContainer) {
+                    swalContainer.style.border = '3px solid #00FF80';
+                    swalContainer.style.backgroundColor = '#f9f9f9';
+                }
+                const swalTitle = document.querySelector('.swal2-title');
+                if (swalTitle) {
+                    swalTitle.style.fontSize = '15px';
+                }
+            }
+        });
+    </script>
+
+<?php else : ?>
+    <script>
+        Swal.fire({
+            position: "top",
+            title: "Scholarship Update Failed !",
+            showConfirmButton: false,
+            timer: 1500,
+
+            didOpen: () => {
+                // Apply custom CSS styles using JavaScript
+                const swalContainer = document.querySelector('.swal2-popup');
+                if (swalContainer) {
+                    swalContainer.style.border = '3px solid red'; // Customize error border color
+                    swalContainer.style.backgroundColor = '#f9f9f9';
+                }
+                const swalTitle = document.querySelector('.swal2-title');
+                if (swalTitle) {
+                    swalTitle.style.fontSize = '15px';
+                }
+            }
+        });
+    </script>
+<?php endif; ?>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
