@@ -129,7 +129,7 @@ class ScholarshipModel{
     //     }
     // }
 
-    //Edit Benefaction
+    //Edit Scholarship
     public function updateScholarship($data){
         // Prepare statement
         $this->db->query('UPDATE scholarship SET title = :title, amount = :amount, startDate = :startDate, duration = :duration, deadline = :deadline, description = :description WHERE scholarshipID = :scholarshipID');
@@ -143,6 +143,20 @@ class ScholarshipModel{
         $this->db->bind(':description', $data['scholarshipDescription']);
         $this->db->bind(':scholarshipID', $data['scholarshipID']);
         
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    //Delete Scholarship
+    public function deleteScholarship($scholarshipID){
+        // Prepare statement
+        $this->db->query('UPDATE scholarship SET availabilityStatus = 10 WHERE scholarshipID = :scholarshipID');
+        $this->db->bind(':scholarshipID', $scholarshipID);
+
         // Execute
         if($this->db->execute()){
             return true;

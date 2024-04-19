@@ -152,7 +152,7 @@ class Scholarship extends Controller {
             $data = [
                 'title' => 'View Posted Scholarships',
                 'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID)
-                // 'scholarship_applications' => $this->donorModel->getScholarshipApplications($scholarshipID)
+                // 'scholarship_applications' => $this->scholarshipModel->getScholarshipApplications($scholarshipID)
             ];
             
     
@@ -266,5 +266,34 @@ class Scholarship extends Controller {
             $this->view('donor/editPostedScholarships', $data);
         }
 
+    }
+
+    public function deleteScholarships() {
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['scholarshipID'])) {
+                $scholarshipID = $_POST['scholarshipID'];
+                
+                // Call model method to delete scholarship
+                if ($this->scholarshipModel->deleteScholarship($scholarshipID)) {
+                    // Deletion successful, redirect or reload data
+
+                    // Fetch updated scholarships data
+                    $data = [
+                        'pendingScholarship' => $this->scholarshipModel->getPendingScholarship(),
+
+                        'onProgressScholarship' => $this->scholarshipModel->getOnProgressScholarship(),
+                        
+                        'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
+                    ];
+
+                    // Pass the updated data to the view
+                    $this->view('donor/postedScholarships', $data);
+                } else {
+                    // Handle deletion failure (e.g., show error message)
+                    die('Failed to delete Scholarship.');
+                }
+            }
+        }
     }
 }
