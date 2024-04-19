@@ -1073,55 +1073,6 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewgood', $data);
     }
 
-    public function viewAdminMonetaryDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewMonetaryDonation', $data);
-    }
-
-    public function viewAdminGood(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewGood', $data);
-    }
-
-    public function viewAdminGoodDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewGoodDonation', $data);
-    }
-
-    public function viewSuperAdminMonetary(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewMonetary', $data);
-    }
-
-    public function viewSuperAdminMonetaryDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewMonetaryDonation', $data);
-    }
-
-    public function viewSuperAdminGood(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewGood', $data);
-    }
-
-    public function viewSuperAdminGoodDonation(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('superAdmin/necessity/viewGoodDonation', $data);
-    }
-
     public function manageMonetary() {
         if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin' || (empty($_GET['necessity_ID']) && empty($_POST['necessity_ID'])))) {
             redirect('pages/404');
