@@ -19,7 +19,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['pending'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/project/viewproject?project_ID=<?php echo $item->projectID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -52,7 +52,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['confirmed'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/project/viewproject?project_ID=<?php echo $item->projectID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -85,7 +85,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['ongoing'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/project/viewproject?project_ID=<?php echo $item->projectID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
