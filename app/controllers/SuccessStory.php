@@ -131,6 +131,32 @@ class SuccessStory extends Controller {
         }
     }
 
+
+    public function viewOwnSuccessStory($storyID = null){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            $data = [
+                'title' => 'Home page',
+                'stories' => $this->successStoryModel->getStoryEditData($storyID)
+            ];
+
+            if ($_SESSION['user_type'] == 'student') {
+                $this->view('student/viewStory', $data);
+            }
+            
+            else if ($_SESSION['user_type'] == 'organization') {
+
+            }
+
+            else {
+                die('User Type Not Found');
+            }
+        }
+    }
+
     // view edit successstory page
     public function editStory(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {

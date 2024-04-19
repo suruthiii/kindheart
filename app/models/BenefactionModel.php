@@ -8,15 +8,7 @@ class BenefactionModel{
 
 
 // viewbenefaction
-public function getBenefactions($criteria = null) { 
-        
-    $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3 , b.itemPhoto4, b.donorID, b.postedDate, availabilityStatus, u.username FROM benefaction b JOIN user u ON u.userID = b.donorID WHERE availabilityStatus = 0;');
-    $result = $this->db->resultSet();
-    // die(print_r($result));
-    // Return an array of story data
-    return array_reverse($result); 
-  
-    }
+
 
     public function getBenefaction($benefactionID) {
         // Prepare statement
@@ -35,14 +27,15 @@ public function getBenefactions($criteria = null) {
 
     public function addAppliedBenefaction($data){
         // Prepare statement
-        $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, reason, requestedQuantity, status) VALUES (:benefactionID, :doneeID, :reason, :requestedQuantity, :status)');
+        $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, reason, requestedQuantity, receivedQuantity, verificationStatus) VALUES (:benefactionID, :doneeID, :reason, :requestedQuantity, :receivedQuantity,  :verificationStatus)');
 
         // Bind values
         $this->db->bind(':benefactionID', $data['benefactionID']);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $this->db->bind(':requestedQuantity', $data['requestedQuantity']);
+        $this->db->bind(':receivedQuantity', 0);
         $this->db->bind(':reason', $data['reason']);
-        $this->db->bind(':status', 1);
+        $this->db->bind(':verificationStatus', 0);
     
         // Execute
         if ($this->db->execute()){
@@ -55,13 +48,24 @@ public function getBenefactions($criteria = null) {
 
     public function getAppliedBenefactions($criteria = null) { 
         
-        $this->db->query('SELECT b.benefactionID, b.itemName, d.requestedQuantity FROM benefaction b JOIN donee_benefaction d ON b.benefactionID = d.benefactionID WHERE doneeID = :doneeID');
+        $this->db->query('SELECT b.benefactionID, b.itemName, d.requestedQuantity, d.verificationStatus FROM benefaction b JOIN donee_benefaction d ON b.benefactionID = d.benefactionID WHERE doneeID = :doneeID');
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
         // die(print_r($result));
         // Return an array of story data
         return array_reverse($result); 
       
+        }
+
+
+        public function getBenefactions($criteria = null) { 
+        
+            $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3 , b.itemPhoto4, b.donorID, b.postedDate, availabilityStatus, u.username, db.requestedQuantity, db.doneeID FROM benefaction b JOIN user u ON u.userID = b.donorID LEFT JOIN donee_benefaction db ON db.benefactionID = b.benefactionID WHERE availabilityStatus = 0;');
+            $result = $this->db->resultSet();
+            // die(print_r($result));
+            // Return an array of story data
+            return array_reverse($result); 
+          
         }
     
 
