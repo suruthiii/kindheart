@@ -320,6 +320,24 @@ class NecessityModel{
         return $row;
     }
 
+    public function getStudentGoodDetails($necessity_ID) {
+        $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, CONCAT(s.fName, ' ', s.lName) AS 'Student Name', p.itemCategory AS 'Item Category', p.requestedQuantity AS 'Requested Quantity', p.receivedQuantity AS 'Received Quantity' FROM necessity n JOIN physicalgood p ON n.necessityID = p.goodNecessityID JOIN student s ON n.doneeID = s.studentID WHERE n.necessityID = :necessityID;");
+        $this->db->bind(':necessityID', $necessity_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getOrganizationGoodDetails($necessity_ID) {
+        $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, o.orgName AS 'Organization Name', p.itemCategory AS 'Item Category', p.requestedQuantity AS 'Requested Quantity', p.receivedQuantity AS 'Received Quantity' FROM necessity n JOIN physicalgood p ON n.necessityID = p.goodNecessityID JOIN organization o ON n.doneeID = o.orgID WHERE n.necessityID = :necessityID;");
+        $this->db->bind(':necessityID', $necessity_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
     public function getOrganizationRecurringMonetaryDetails($necessity_ID) {
         $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, o.orgName AS 'Organization Name', m.monetaryNecessityType AS 'Necessity Type', m.requestedAmount AS 'Requested Amount', m.receivedAmount AS 'Received Amount', m.startDate AS 'Start Date', m.endDate AS 'End Date', m.frequency AS 'Frequency' FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID JOIN organization o ON n.doneeID = o.orgID WHERE m.monetaryNecessityType = 'recurring' AND n.necessityID = :necessityID;");
         $this->db->bind(':necessityID', $necessity_ID);

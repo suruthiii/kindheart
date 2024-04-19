@@ -55,6 +55,37 @@
                     <!-- title for rightside bar -->
                     <div class="rightside-bar-title">
                         <h3>Applied Benefactions</h3>
+                        <?php foreach ($data['appliedBenefactions'] as $item) { ?>
+                            <div class="applied-benefaction-cards">
+                                <div class="left">
+                                    <h3><?php echo $item->itemName; ?><h3>
+                                    <p>Req Amount: <?php echo $item->requestedQuantity; ?></p>
+                                    <!-- <h3>Shoes<h3>
+                                    <p>2</p> -->
+                                
+                                </div>
+                                <div class="right">
+                                    
+                                        <p><?php 
+                                        $status = $item->verificationStatus;
+
+                                        // Echo different divs based on the status
+                                        if ($status === 0) {
+                                            echo '<div class="status_pending"><p>Pending</p></div>';
+                                        } elseif ($status === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                        } elseif ($status === 2) {
+                                            echo '<div class="status_rejected"><p>Rejected</p></div>';
+                                        } else {
+                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                        }
+                                        ?></p>
+                                                                  
+                                </div>
+                            </div>
+                            <?php } ?>
+
+
                     </div>
 
                     
