@@ -30,6 +30,59 @@ class ScholarshipModel{
         return $result;
     }
 
+    public function getComScholarshipDetails($scholarship_ID) {
+        $this->db->query('SELECT s.title, s.amount, s.startDate, s.description, c.companyName  AS name FROM scholarship s JOIN company c ON s.donorID = c.companyID WHERE s.scholarshipID = :scholarshipID;');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getIndScholarshipDetails($scholarship_ID) {
+        $this->db->query('SELECT s.title, s.amount, s.startDate, s.description, CONCAT(i.fName, " ", i.lName) AS name FROM scholarship s JOIN individual i ON s.donorID = i.individualID WHERE s.scholarshipID = :scholarshipID;');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getDonorType($scholarship_ID) {
+        $this->db->query('SELECT donorType FROM donor d JOIN scholarship s ON d.donorID = s.donorID WHERE s.scholarshipID = :scholarshipID;');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+
+        $row = $this->db->single();
+
+        return $row->donorType;
+    }
+
+    public function getAllComments($scholarship_ID) {
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'scholarship' ORDER BY time DESC;");
+        $this->db->bind(':postID', $scholarship_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function addComment($data) {
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'scholarship', :comment);");
+        $this->db->bind(':postID', $data['scholarship_ID']);
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+        $this->db->bind(':time', date("Y-m-d H:i:s"));
+        $this->db->bind(':comment', $data['comment']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+
     // ----------------------Donor Controllers------------------
 
     //Add Scholarship
