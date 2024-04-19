@@ -52,6 +52,49 @@
                                     <th>Description</th>
                                     <td><?php print_r($data['benefactions']->description) ?></td>
                                 </tr>
+                                <tr class="benefaction-data">
+                                    <th>Recieved Amount</th>
+                                    <td><?php print_r($data['benefactions']->receivedQuantity) ?></td>
+                                </tr>
+                                <tr class="benefaction-data">
+                                    <th>status</th>
+                                    <td><?php 
+                                        $status = $data['benefactions']->availabilityStatus;
+
+                                        // Echo different divs based on the status
+                                        if ($status === 0) {
+                                            echo '<div class="status_pending"><p>Pending</p></div>';
+                                        } elseif ($status === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                        } elseif ($status === 2) {
+                                            echo '<div class="status_rejected"><p>Completed</p></div>';
+                                        } else {
+                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                        }
+                                        ?></td>
+                                </tr>
+                                <tr class="benefaction-data">
+                                  
+                                    <td><?php 
+                                        $status = $data['benefactions']->availabilityStatus;
+
+                                        // Echo different divs based on the status
+                                        
+                                        if ($status === 1) {
+                                            echo '<div class="status_accepted">
+                                                        <div class="button-container">
+                                                            <button>send acknowledgement</button>
+                                                            <button>did not recieved</button>
+                                                        </div>
+                                                    </div>';
+                                        } else {
+                                            echo '<div class="status_rejected"></div>';
+                                        }
+                                        
+                                        ?></td>
+                                </tr>
+
+                                
                             </table>
                         </div>
                     </div>
@@ -83,19 +126,7 @@
                     </div> 
                 </div>
 
-                <div class="view-benefaction-btn-container">
-
-                    <!-- <form action="<?php echo URLROOT ?>/student/ApplyForBenefaction" method="GET" class="edit-form" >
-                        <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo  $data['benefactions']->benefactionID;?>" />
-                        <?php if ($data['benefactions']->doneeID == $_SESSION['user_id']){?>
-                                    <label> Already Applied</label>
-                                <?php } else{?>
-                                    <button type="submit" class="btn1" > Apply</button>
-                                <?php }?>
-                    </form> -->
-
-                    
-                </div>
+                
             </div>
 
 

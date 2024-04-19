@@ -99,7 +99,7 @@
 
                         <!-- last-title for this -->
 
-                        <div class="view-posted-stories" onclick="location.href='<?php echo URLROOT ?>/successstory/viewSuccessStory'">
+                        <div class="view-posted-stories" onclick="location.href='<?php echo URLROOT ?>/SuccessStory/viewSuccessStory'">
                                 <h3>Your Success Stories</h3>
                         </div>
                     </div>

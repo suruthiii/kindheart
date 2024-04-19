@@ -46,7 +46,7 @@ class SuccessStoryModel{
        }
 
     public function getUserSuccessStories($criteria = null) { 
-        $this->db->query('SELECT title,storyID FROM successstory WHERE doneeID = :doneeID');
+        $this->db->query('SELECT title,storyID,image,description FROM successstory WHERE doneeID = :doneeID');
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
         
