@@ -35,32 +35,31 @@
                             <!-- Requested Amount Error Display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectTitle_err']) ? $data['projectTitle_err']: ''; ?></span>
                         </div>
-
-                        <!-- Description about requested necessity -->
-                        <div class="add-necessity-text-area-input-to-oneline">
-                            <label for="projectdescription">Description</label>
-                            <textarea name="projectdescription" id="projectdescription" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['projectdescription']) ? $data['projectdescription'] : ''; ?></textarea>
-                            <!-- Neccessity description error display -->
-                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectdescription_err']) ? $data['projectdescription_err']: ''; ?></span>
-                        </div>
                         
                         <div id="form-container">
-                            <!-- First line of form -->
-                            <div class="add-projects-add-more-field-input" id="add-more-milestone" name="add-more-milestone">
-                                <div class="project-first-div">
-                                    <label for="projectsmilestones"> Project MileStones</label>
-                                    <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones']) ? $data['projectsmilestones'] : ''; ?>">
-                                    <!-- Monetary necessity Error display -->
-                                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectsmilestones_err']) ? $data['projectsmilestones_err']: ''; ?></span>
+                            <div class="dynamic-input-block">
+                                <!-- First line of form -->
+                                <div class="add-projects-add-more-field-input" id="add-more-milestone" name="add-more-milestone">
+                                    <div class="project-first-div">
+                                        <label for="projectsmilestones"> Project MileStones</label>
+                                        <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones']) ? $data['projectsmilestones'] : ''; ?>">
+                                        <!-- Monetary necessity Error display -->
+                                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectsmilestones_err']) ? $data['projectsmilestones_err']: ''; ?></span>
+                                    </div>
+                                    <div class="project-second-div">
+                                        <label for="milestonebudget">MileStone Budget</label>
+                                        <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget']) ? $data['milestonebudget'] : ''; ?>" min="25">
+                                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['milestonebudget_err']) ? $data['milestonebudget_err']: ''; ?></span>
+                                    </div>
                                 </div>
-                                <div class="project-second-div">
-                                    <label for="milestonebudget">MileStone Budget</label>
-                                    <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget']) ? $data['milestonebudget'] : ''; ?>" min="25">
-                                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['milestonebudget_err']) ? $data['milestonebudget_err']: ''; ?></span>
+                                <!-- Description about each project mile stone -->
+                                <div class="add-necessity-text-area-input-to-oneline">
+                                    <label for="milestonedescription">Milestone Description</label>
+                                    <textarea name="milestonedescription" id="milestonedescription" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['milestonedescription']) ? $data['milestonedescription'] : ''; ?></textarea>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="add-more-project-milestones">
                             <button id="add-milestones-button" name="add-milestones-button">Add MileStone</button>
                             <button id="remove-milestones-button" name="remove-milestones-button">Remove MileStone</button>
@@ -85,68 +84,71 @@
 </main>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Function to add a new milestone field
-        function addMilestoneField() {
+        document.addEventListener('DOMContentLoaded', function () {
             const formContainer = document.getElementById('form-container');
-            const newField = document.createElement('div');
-            newField.className = 'add-projects-add-more-field-input';
-            newField.innerHTML = `
-                <div class="project-first-div">
-                    <label for="projectsmilestones">Project Milestones</label>
-                    <input type="text" name="projectsmilestones[]" value="">
-                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
-                </div>
-                <div class="project-second-div">
-                    <label for="milestonebudget">Milestone Budget</label>
-                    <input type="number" name="milestonebudget[]" value="" min="25">
-                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
-                </div>
-            `;
-            formContainer.appendChild(newField);
-            checkMilestoneFieldCount();
-        }
 
-        function removeLastMilestoneField() {
-            const formContainer = document.getElementById('form-container');
-            const milestoneFields = formContainer.getElementsByClassName('add-projects-add-more-field-input');
-            const lastField = milestoneFields[milestoneFields.length - 1];
-            if (lastField !== null) {
-                formContainer.removeChild(lastField);
+            // Function to create a new milestone block
+            function createMilestoneBlock() {
+                const milestoneBlock = document.createElement('div');
+                milestoneBlock.className = 'dynamic-input-block';
+
+                // First line of form
+                const firstLine = document.createElement('div');
+                firstLine.className = 'add-projects-add-more-field-input';
+                firstLine.innerHTML = `
+                    <div class="project-first-div">
+                        <label for="projectsmilestones"> Project MileStones</label>
+                        <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="">
+                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
+                    </div>
+                    <div class="project-second-div">
+                        <label for="milestonebudget">MileStone Budget</label>
+                        <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="" min="25">
+                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
+                    </div>
+                `;
+                milestoneBlock.appendChild(firstLine);
+
+                // Description about each project mile stone
+                const descriptionLine = document.createElement('div');
+                descriptionLine.className = 'add-necessity-text-area-input-to-oneline';
+                descriptionLine.innerHTML = `
+                    <label for="milestonedescription">Milestone Description</label>
+                    <textarea name="milestonedescription" id="milestonedescription" cols="30" rows="10" title="An explanation of project"></textarea>
+                `;
+                milestoneBlock.appendChild(descriptionLine);
+
+                return milestoneBlock;
             }
-            checkMilestoneFieldCount();
-        }
 
-        // Event listener for adding milestone fields
-        document.getElementById('add-milestones-button').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent form submission
-            addMilestoneField();
-        });
-
-
-        // Event listener for removing the last added milestone field
-        document.getElementById('remove-milestones-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission
-            removeLastMilestoneField();
-        });
-
-        // Function to check the number of added milestone fields and disable the "remove MileStone" button if there are none
-        function checkMilestoneFieldCount() {
-            const milestoneFieldsCount = document.getElementsByClassName('add-projects-add-more-field-input').length;
-            const removeButton = document.getElementById('remove-milestones-button');
-            if (milestoneFieldsCount === 1) {
-                removeButton.disabled = true;
-            } else {
-                removeButton.disabled = false;
+            // Function to add a new milestone block
+            function addMilestoneBlock() {
+                const newBlock = createMilestoneBlock();
+                formContainer.appendChild(newBlock);
             }
-        }
 
-        // Call the checkMilestoneFieldCount function to disable the "remove MileStone" button initially if there are no added fields
-        checkMilestoneFieldCount();
-        
-    });
-</script>
+            // Event listener for adding milestone block
+            document.getElementById('add-milestones-button').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent form submission
+                addMilestoneBlock();
+            });
 
+            // Function to remove the last milestone field
+            function removeLastMilestoneBlock() {
+                const milestoneBlocks = document.querySelectorAll('.dynamic-input-block');
+                if (milestoneBlocks.length > 1) {
+                    const lastBlock = milestoneBlocks[milestoneBlocks.length - 1];
+                    formContainer.removeChild(lastBlock);
+                }
+            }
+
+            // Event listener for removing last added milestone block
+            document.getElementById('remove-milestones-button').addEventListener('click', function (event) {
+                event.preventDefault();
+                removeLastMilestoneBlock();
+            });
+        });
+    </script>
 
 
 
