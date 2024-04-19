@@ -69,7 +69,41 @@ class Project extends Controller {
                 $this->view($_SESSION['user_type'].'/project/manageproject', $data);
             }
         }
-}
+    }
 
+    public function viewProject() {
+        if(($_SESSION['user_type'] == 'student')) {
+            redirect('pages/404');
+        }
 
+        else {
+            $data = [
+                'title' => 'Home Page',
+                'project_ID' => $_GET['project_ID'],
+                'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID'])
+            ];
+
+            $userType = $this->projectModel->getUserType($_SESSION['user_id']);
+
+            if($userType == 'admin') {
+                $this->view('admin/project/viewProject', $data);
+            }
+
+            else if($userType == 'superAdmin') {
+                $this->view('superAdmin/project/viewProject', $data);
+            }
+
+            else if($userType == 'organization') {
+
+            }
+
+            else if($userType == 'donor') {
+
+            }
+
+            else {
+                die('User Type Not Found');
+            }
+        }
+    }
 }

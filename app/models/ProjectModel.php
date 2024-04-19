@@ -79,4 +79,14 @@ class ProjectModel{
             return false;
         }
     }
+
+    public function getUserType($user_ID) {
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $row = $this->db->single();
+
+        return $row->userType;
+    }
+
 }    
