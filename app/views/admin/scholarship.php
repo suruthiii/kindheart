@@ -12,6 +12,7 @@
         <div class="container">
             <h3>Scholarships</h3>
             <p style="margin-left: 10px">Last 30 days</p>
+
             <div class="list">
                 <div class="list-title">
                     <h4>Available</h4>
@@ -19,7 +20,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['pending'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/scholarship/viewscholarship?scholarship_ID=<?php echo $item->scholarshipID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -30,8 +31,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/scholarship/managescholarship/<?php echo $item->scholarshipID ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/scholarship/managescholarship" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="scholarship_ID" hidden value="<?php echo $item->scholarshipID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
@@ -52,7 +53,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['confirmed'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/scholarship/viewscholarship?scholarship_ID=<?php echo $item->scholarshipID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -63,8 +64,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/scholarship/managescholarship/<?php echo $item->scholarshipID ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/scholarship/managescholarship" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="scholarship_ID" hidden value="<?php echo $item->scholarshipID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
@@ -85,7 +86,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['ongoing'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/scholarship/viewscholarship?scholarship_ID=<?php echo $item->scholarshipID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -96,8 +97,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/scholarship/managescholarship/<?php echo $item->scholarshipID ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/scholarship/managescholarship" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="scholarship_ID" hidden value="<?php echo $item->scholarshipID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
