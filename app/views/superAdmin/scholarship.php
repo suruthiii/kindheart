@@ -12,6 +12,7 @@
         <div class="container">
             <h3>Scholarships</h3>
             <p style="margin-left: 10px">Last 30 days</p>
+            
             <div class="list">
                 <div class="list-title">
                     <h4>Available</h4>
