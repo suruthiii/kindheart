@@ -58,14 +58,17 @@
                                     <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['milestonedescription']) ? $data['milestonedescription'] : ''; ?></textarea>
                                 </div>
                                 <!-- Adding Images -->
+                                <div class="project-milestones-images">
+                                    <label>Add Images</label>
+                                </div>
                                 <div class="add-project-one-line-second-type-input">
                                     <div class="projects-first-div">
-                                        <input type="file" id="firstprojectImages" name="firstprojectImages" title="Add Image" accept="image/png, image/jpeg, image/jpg" onchange="display_image_name(this.files[0].name)">
+                                        <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
                                         <!-- Recurring start date error display -->
                                         <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span> -->
                                     </div>
                                     <div class="projects-second-div">
-                                        <input type="file" id="seconprojectImages" name="seconprojectImages" title="Add Image" accept="image/png, image/jpeg, image/jpg">
+                                        <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
                                         <!-- Recurring End date error display -->
                                         <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span> -->
                                     </div>
@@ -136,14 +139,12 @@
                 ImageLine.className = 'add-project-one-line-second-type-input';
                 ImageLine.innerHTML = `
                 <div class="projects-first-div">
-                    <label for="firstprojectImages">First Image</label>
-                    <input type="file" id="firstprojectImages" name="firstprojectImages" title="Add Image" accept="image/png, image/jpeg, image/jpg" onchange="display_image_name(this.files[0].name)" >
+                    <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
                     <!-- Recurring start date error display -->
                     <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span> -->
                 </div>
                 <div class="projects-second-div">
-                    <label for="recurringenddate">Second Image</label>
-                    <input type="file" id="seconprojectImages" name="seconprojectImages" title="Add Image" accept="image/png, image/jpeg, image/jpg">
+                    <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
                     <!-- Recurring End date error display -->
                     <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span> -->
                 </div>
@@ -179,41 +180,18 @@
                 event.preventDefault();
                 removeLastMilestoneBlock();
             });
+
         });
 
-
-        // // Image added
-        // function display_image_name (file_name)
-        // {
-        //     document .querySelector (".file_info").innerHTML = ' <b>Selected file:</b> <br>' + file_name;
-        //     document .querySelector (".add-photo-box").style.border = '1px dashed red';
-        //     document .querySelector (".add-photo-box").style.backgroundColor= 'rgb(249, 224, 209';
-        //     document .querySelector (".add-photo-box").style.color= 'rgb(213, 83, 7)';
-
-        // }   
-
-        // function validateFileType() {
-        //     const fileInput = document.getElementById("image-browser");
-        //     const filePath = fileInput.value;
-        //     const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;  
-
-        //     const errorMessageElement = document.querySelector('.error-message');
-
-        //     if (!allowedExtensions.exec(filePath)) {
-        //         errorMessageElement.textContent = 'Invalid file type. Please choose a JPG, JPEG, or PNG file.';
-        //         errorMessageElement.style.color = 'red'; 
-        //         fileInput.value = ''; // Clear the invalid file selection
-        //         return false; 
-        //     } else {
-        //         errorMessageElement.textContent = ''; // Clear error if valid
-        //         return true;
-        //     }
-        // }
-
-    
-
+        function display_image_name(input, index) {
+            if (input.files && input.files[0]) {
+                var filename = input.files[0].name;
+                var parentBlock = input.closest('.dynamic-input-block');
+                var label = parentBlock.querySelectorAll('.project-file-upload-label')[index];
+                label.querySelector('.project-file-upload-label-icon-text').innerText = filename;
+            }
+        }
     </script>
-
 
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
