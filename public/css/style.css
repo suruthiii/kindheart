@@ -348,3 +348,22 @@ a{
     scale: 1.05;
 }
 
+
+/* -------------404 css--------------- */
+
+
+
+/* Error container */
+.error-container {
+    background-image: url('http://localhost/kindheart/img/404image.png'); /* Path to your background image */
+    background-size: cover; /* Cover the whole screen */
+    background-position: center; /* Center the background image */
+    color: #fff; /* White text color */
+    text-align: center;
+    height: 100vh; /* Set height to cover the entire viewport */
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Align content vertically */
+    
+}
