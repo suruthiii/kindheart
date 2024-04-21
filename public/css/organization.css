@@ -989,16 +989,29 @@
 
 .add-projects-add-more-field-input{
     position: relative;
-    width: 95%;
+    width: 90%;
     height: 11vh;
-    display: flex;
     margin-top: 4vh;
+    display: flex;
+    margin-left: 30px;
+}
+
+.add-projects-text-area-input-to-oneline{
+    position: relative;
+    width: 90%;
+    height: 11vh;
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 30px;
 }
 
 .add-projects-add-more-field-input .project-first-div{
     position: relative;
     width: 60%;
     height: 12vh;
+    margin-right: 5px;
 }
 
 .add-projects-add-more-field-input .project-second-div{
@@ -1008,7 +1021,9 @@
 }
 
 .add-projects-add-more-field-input .project-first-div label,
-.add-projects-add-more-field-input .project-second-div label{
+.add-projects-add-more-field-input .project-second-div label,
+.add-projects-text-area-input-to-oneline label,
+.project-milestones-images label{
     color: #8692A6;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -1021,7 +1036,73 @@
 .add-projects-add-more-field-input .project-first-div input,
 .add-projects-add-more-field-input .project-second-div input{
     height: 5vh;
-    width: 87%;
+    width: 89%;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+}
+
+.project-milestones-images{
+    position: relative;
+    width: 90%;
+    height: 4vh;
+    margin-top: 1vh;
+    margin-left: 30px;
+}
+
+.add-project-one-line-second-type-input{
+    position: relative;
+    width: 90%;
+    height: 12vh;
+    margin-top: 1vh;
+    display: flex;
+    flex: 1;
+}
+
+.add-project-one-line-second-type-input .projects-first-div{
+    width: 50%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+}
+
+.add-project-one-line-second-type-input .projects-second-div{
+    width:50%;
+    margin-left: 10px;
+}
+
+.add-project-one-line-second-type-input .projects-first-div input,
+.add-project-one-line-second-type-input .projects-second-div input{
+    width: 100%;
+    height: 5vh;
+    margin-top: 2vh;
+    border-radius: 6px;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+}
+
+.add-project-one-line-second-type-input .projects-first-div input:focus,
+.add-project-one-line-second-type-input .projects-second-div input:focus{
+    background-color: #F5F5F5;
+}
+
+.add-project-one-line-second-type-input .projects-first-div input::-webkit-file-upload-button,
+.add-project-one-line-second-type-input .projects-second-div input::-webkit-file-upload-button {
+    height: 5vh;
+    width: 40%;
+    border-radius: 6px;
+    border: none;
+    background-color: rgba(139, 40, 40, 0.823);
+    color: #ffe4e4;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+}
+
+.add-projects-text-area-input-to-oneline textarea{
+    height: 5vh;
+    width: 90%;
     border-radius: 6px;
     border: 1px solid #707070;
     background: #FCFCFC;
@@ -1030,7 +1111,8 @@
 }
 
 .add-projects-add-more-field-input .project-first-div input:focus,
-.add-projects-add-more-field-input .project-second-div input:focus{
+.add-projects-add-more-field-input .project-second-div input:focus,
+.add-projects-text-area-input-to-oneline textarea:focus{
     outline: none !important;
     border: #8E0000 solid;
 }
@@ -1040,7 +1122,7 @@
     position: relative;
     width: 90%;
     height: 5vh;
-    margin-bottom: 6vh;
+    margin-bottom: 3vh;
     display: flex;
     align-items: center;
 
@@ -1061,9 +1143,8 @@
 .dynamic-input-block{
     position: relative;
     width: 90%;
-    height: 25vh;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    height: 40vh;
+    margin-top: 1vh;
     background-color: #F5F5F5;
     border: none;
     border-radius: 10px;

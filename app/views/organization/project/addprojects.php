@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST" onsubmit="return validateForm()">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST" onsubmit="return validateFileType()">
                         <!-- Project title -->
                         <div class="add-necessity-one-line-input">
                             <label for="projectTitle">Project Title</label>
@@ -53,9 +53,25 @@
                                     </div>
                                 </div>
                                 <!-- Description about each project mile stone -->
-                                <div class="add-necessity-text-area-input-to-oneline">
+                                <div class="add-projects-text-area-input-to-oneline" name="add-projects-text-area-input-to-oneline" id="add-projects-text-area-input-to-oneline">
                                     <label for="milestonedescription">Milestone Description</label>
-                                    <textarea name="milestonedescription" id="milestonedescription" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['milestonedescription']) ? $data['milestonedescription'] : ''; ?></textarea>
+                                    <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['milestonedescription']) ? $data['milestonedescription'] : ''; ?></textarea>
+                                </div>
+                                <!-- Adding Images -->
+                                <div class="project-milestones-images">
+                                    <label>Add Images</label>
+                                </div>
+                                <div class="add-project-one-line-second-type-input">
+                                    <div class="projects-first-div">
+                                        <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
+                                        <!-- Recurring start date error display -->
+                                        <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span> -->
+                                    </div>
+                                    <div class="projects-second-div">
+                                        <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
+                                        <!-- Recurring End date error display -->
+                                        <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span> -->
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -111,12 +127,29 @@
 
                 // Description about each project mile stone
                 const descriptionLine = document.createElement('div');
-                descriptionLine.className = 'add-necessity-text-area-input-to-oneline';
+                descriptionLine.className = 'add-projects-text-area-input-to-oneline';
                 descriptionLine.innerHTML = `
                     <label for="milestonedescription">Milestone Description</label>
                     <textarea name="milestonedescription" id="milestonedescription" cols="30" rows="10" title="An explanation of project"></textarea>
                 `;
                 milestoneBlock.appendChild(descriptionLine);
+
+                // Image about each project mile stone
+                const ImageLine = document.createElement('div');
+                ImageLine.className = 'add-project-one-line-second-type-input';
+                ImageLine.innerHTML = `
+                <div class="projects-first-div">
+                    <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
+                    <!-- Recurring start date error display -->
+                    <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span> -->
+                </div>
+                <div class="projects-second-div">
+                    <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
+                    <!-- Recurring End date error display -->
+                    <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span> -->
+                </div>
+                `;
+                milestoneBlock.appendChild(ImageLine);
 
                 return milestoneBlock;
             }
@@ -147,9 +180,18 @@
                 event.preventDefault();
                 removeLastMilestoneBlock();
             });
-        });
-    </script>
 
+        });
+
+        function display_image_name(input, index) {
+            if (input.files && input.files[0]) {
+                var filename = input.files[0].name;
+                var parentBlock = input.closest('.dynamic-input-block');
+                var label = parentBlock.querySelectorAll('.project-file-upload-label')[index];
+                label.querySelector('.project-file-upload-label-icon-text').innerText = filename;
+            }
+        }
+    </script>
 
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

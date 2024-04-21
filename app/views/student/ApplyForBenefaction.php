@@ -32,8 +32,8 @@
                     <div class="application-form-data">
                         <form class="add-form" method="POST" action="<?php echo URLROOT ?>/Benefaction/addAppliedBenefaction">
 
-                            <label for="requestedQuantity">Needed Quantity</label><br>
-                            <input type="text" id="requestedQuantity" name="requestedQuantity" required><br><br>
+                            <label for="requestedQuantity">Requested amount</label><br>
+                            <input type="number" id="requestedQuantity" name="requestedQuantity" min="1" max="<?php echo $data['benefactions']->itemQuantity;?>" required><br><br>
 
                             <label for="reason">Reason</label><br>
                             <input type="textarea" id="reason" name="reason" required><br><br>
@@ -56,12 +56,11 @@
                     <div class="rightside-bar-title">
                         <h3>Applied Benefactions</h3>
                         <?php foreach ($data['appliedBenefactions'] as $item) { ?>
+                                <a href="<?php echo URLROOT ?>/Student/viewAppliedBenefaction/<?php echo $item->benefactionID?>">
                             <div class="applied-benefaction-cards">
                                 <div class="left">
                                     <h3><?php echo $item->itemName; ?><h3>
                                     <p>Req Amount: <?php echo $item->requestedQuantity; ?></p>
-                                    <!-- <h3>Shoes<h3>
-                                    <p>2</p> -->
                                 
                                 </div>
                                 <div class="right">
@@ -75,7 +74,7 @@
                                         } elseif ($status === 1) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
                                         } elseif ($status === 2) {
-                                            echo '<div class="status_rejected"><p>Rejected</p></div>';
+                                            echo '<div class="status_rejected"><p>Completed</p></div>';
                                         } else {
                                             echo '<div class="status_unknown"><p>Unknown status</p></div>';
                                         }
@@ -83,7 +82,7 @@
                                                                   
                                 </div>
                             </div>
-                            <?php } ?>
+                            <?php } ?> 
 
 
                     </div>
