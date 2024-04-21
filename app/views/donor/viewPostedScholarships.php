@@ -33,34 +33,36 @@
                     <p>Last 30 Days</p>
                 </div>
 
-                <!-- Scholarship Details -->
-                <div class="scholarship-info">
-                    <table>
-                        <tr class="scholarship-data">
-                            <th>Title</th>
-                            <td><?php print_r($data['scholarship_details']->title); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Scholarship Amount</th>
-                            <td>LKR <?php print_r($data['scholarship_details']->amount); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Scholarship Starting Date</th>
-                            <td><?php print_r($data['scholarship_details']->startDate) ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Duration</th>
-                            <td><?php print_r($data['scholarship_details']->duration) ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Description</th>
-                            <td><?php print_r($data['scholarship_details']->description); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Application Deadline</th>
-                            <td><?php print_r($data['scholarship_details']->deadline) ?></td>
-                        </tr>
-                    </table>
+                <div class="scholarship-left-column">
+                    <!-- Scholarship Details -->
+                    <div class="scholarship-info">
+                        <table>
+                            <tr class="scholarship-data">
+                                <th>Title</th>
+                                <td><?php print_r($data['scholarship_details']->title); ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Scholarship Amount</th>
+                                <td>LKR <?php print_r($data['scholarship_details']->amount); ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Scholarship Starting Date</th>
+                                <td><?php print_r($data['scholarship_details']->startDate) ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Duration</th>
+                                <td><?php print_r($data['scholarship_details']->duration) ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Description</th>
+                                <td><?php print_r($data['scholarship_details']->description); ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Application Deadline</th>
+                                <td><?php print_r($data['scholarship_details']->deadline) ?></td>
+                            </tr>
+                        </table>
+                    </div>                    
                 </div>
 
                 <div class="view-scholarship-btn-container">

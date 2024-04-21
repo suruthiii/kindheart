@@ -160,26 +160,25 @@ class ScholarshipModel{
 
     //View Scholarship Requests
     // public function getScholarshipApplications($scholarshipID) {
-        
-    //     // Prepare statement
-    //     $this->db->query('  SELECT db.*, CONCAT(s.fname, " ", s.lname) AS studentName, o.orgName, u.userType
-    //                         FROM donee_scholarship db 
-    //                         LEFT JOIN student s ON db.doneeID = s.studentID 
-    //                         LEFT JOIN organization o ON db.doneeID = o.orgID
-    //                         LEFT JOIN user u ON db.doneeID = u.userID
-    //                         WHERE db.scholarshipID = :scholarshipID');
-    //     // $this->db->query('SELECT * FROM donee_scholarship WHERE scholarshipID = :scholarshipID');
-    //     $this->db->bind(':scholarshipID', $scholarshipID);
-        
-    //     // Execute
-    //     $results = $this->db->resultSet();
 
-    //     // Check if results were retrieved
-    //     if ($results) {
-    //         return $results;
-    //     } else {
-    //         return []; // Return empty array if no results found
-    //     }
+    //     $this->db->query('SELECT o.orgID AS organizationID, o.orgName AS organizationName
+    //                         FROM organization o
+    //                         JOIN donee_benefaction db ON o.orgID = db.doneeID
+    //                         JOIN user u ON db.doneeID = u.userID
+    //                         WHERE db.scholarshipID = :scholarshipID
+    //                         UNION
+    //                         SELECT s.studentID, CONCAT(s.fname, " ", s.lname) AS studentName
+    //                         FROM student s
+    //                         JOIN donee_benefaction db ON s.studentID = db.doneeID
+    //                         JOIN user u ON db.doneeID = u.userID
+    //                         WHERE db.scholarshipID = :scholarshipID;
+    //                     ');
+                        
+    //     $this->db->bind(':scholarshipID', $scholarshipID);
+
+    //     $result = $this->db->resultSet();
+
+    //     return $result;
     // }
 
     //Edit Scholarship

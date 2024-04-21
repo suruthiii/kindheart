@@ -102,28 +102,45 @@ class donorModel{
         return $row;
     }
 
-    //View Benefaction Requests
+    //View Benefaction Requests for a certain beenfaction
     public function getBenefactionRequests($benefactionID) {
         
         // Prepare statement
-        $this->db->query('  SELECT db.*, CONCAT(s.fname, " ", s.lname) AS studentName, o.orgName, u.userType
-                            FROM donee_benefaction db 
-                            LEFT JOIN student s ON db.doneeID = s.studentID 
-                            LEFT JOIN organization o ON db.doneeID = o.orgID
-                            LEFT JOIN user u ON db.doneeID = u.userID
-                            WHERE db.benefactionID = :benefactionID');
-        // $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID');
-        $this->db->bind(':benefactionID', $benefactionID);
+        // $this->db->query('SELECT o.orgID AS doneeID, o.orgName AS doneeName FROM organization o JOIN donee_benefaction db ON o.orgID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 AND db.benefactionID = :benefactionID
+        //                     UNION
+        //                     SELECT s.studentID, CONCAT(s.fname, " ", s.lname) FROM student s JOIN donee_benefaction db ON s.studentID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 AND db.benefactionID = :benefactionID;');
         
-        // Execute
-        $results = $this->db->resultSet();
 
-        // Check if results were retrieved
-        if ($results) {
-            return $results;
-        } else {
-            return []; // Return empty array if no results found
-        }
+        $this->db->query('SELECT u.userType AS userType,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentID
+                                WHEN u.userType = "organization" THEN o.orgID
+                            END AS doneeID,
+                            CASE
+                                WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
+                                WHEN u.userType = "organization" THEN o.orgName
+                            END AS doneeName,
+                            db.reason,
+                            db.requestedQuantity,
+                            db.benefactionID,
+                            db.verificationStatus
+                        FROM 
+                            donee_benefaction db
+                        JOIN 
+                            user u ON db.doneeID = u.userID
+                        LEFT JOIN 
+                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                        LEFT JOIN 
+                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                        WHERE 
+                            u.status != 10
+                            AND db.benefactionID = :benefactionID;)');   
+
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
     }
 
     //Edit Benefaction
@@ -161,4 +178,53 @@ class donorModel{
             return false;
         }
     }
+
+    //View Benefaction Request Deatils of a ceratin donee of a certain benefaction
+    public function getBenefactionRequestDetails($benefactionID, $doneeID) {
+        $this->db->query('SELECT u.userType AS userType,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentID
+                                WHEN u.userType = "organization" THEN o.orgID
+                            END AS doneeID,
+                            CASE
+                                WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
+                                WHEN u.userType = "organization" THEN o.orgName
+                            END AS doneeName,
+                            db.reason,
+                            db.requestedQuantity
+                        FROM 
+                            donee_benefaction db
+                        JOIN 
+                            user u ON db.doneeID = u.userID
+                        LEFT JOIN 
+                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                        LEFT JOIN 
+                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                        WHERE 
+                            u.status != 10
+                            AND db.doneeID = :doneeID
+                            AND db.benefactionID = :benefactionID;)');   
+
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function updateBenefactionRequestStatus($doneeID, $benefactionID, $newStatus) {
+        $this->db->query('UPDATE donee_benefaction SET verificationStatus = :newStatus WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
+        $this->db->bind(':newStatus', $newStatus);
+    
+        // Execute the query
+        if ($this->db->execute()) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
+    
 }
