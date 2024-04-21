@@ -18,6 +18,9 @@ class Benefaction extends Controller {
         $this->view('donor/index', $data);
     }
 
+    // ------------Donor--------------------
+
+    // View all benefactions
     public function viewAllBenefactions(){
         $data = [
             'title' => 'All Benefcation Posted Page'
@@ -25,6 +28,7 @@ class Benefaction extends Controller {
         $this->view('donor/viewAllBenefactions', $data);
     }
 
+    // IMage Uploads Fro Benfaction
     public function imgUpload($file){
         $file_name = $_FILES[$file]['name'];
         $file_size = $_FILES[$file]['size'];
@@ -53,6 +57,7 @@ class Benefaction extends Controller {
         }
     }
 
+    // Add Benefactions
     public function donorAddBenefactions(){
         //other actors' redirection
         
@@ -162,6 +167,7 @@ class Benefaction extends Controller {
         }
     }
 
+    // Get Details of Posted Benefaction
     public function postedBenefactions(){
         // Load the view with data
         $data = [
@@ -176,6 +182,7 @@ class Benefaction extends Controller {
         $this->view('donor/postedBenefactions', $data);
     }
 
+    // Get Details of One Selected Benefaction
     public function viewPostedBenefactions() {
         // Check if benefactionID is set in the POST request
         if(isset($_GET['benefactionID'])) {
@@ -187,8 +194,9 @@ class Benefaction extends Controller {
                 'title' => 'View Posted Benefactions',
                 'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
                 'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
-            ];
-            
+            ];           
+
+            // die(print_r($data['benefaction_requests']));
     
             // Load View
             $this->view('donor/viewPostedBenefactions', $data);
@@ -198,7 +206,8 @@ class Benefaction extends Controller {
             echo "Benefaction ID is missing.";
         }
     }
-    
+
+    // Edit Posted Benefactions
     public function editPostedBenefactions(){
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -290,6 +299,7 @@ class Benefaction extends Controller {
 
     }
 
+    // Delete Benefactions
     public function deleteBenefactions() {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -319,6 +329,48 @@ class Benefaction extends Controller {
         }
     }
 
+    //Get Details of One Selected Benefaction Request
+    public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($benefactionID))) {
+            redirect('pages/404');           
+        }
+
+        // die(print_r($benefactionID));
+
+        $data = [
+            'title' => 'View Benefaction Request',
+            'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+        ];
+
+        // die(print_r($data['benefactionRequest_details']));
+
+        $this->view('donor/viewBenefactionRequest', $data);
+    }
+
+    // public function declineBenefactionRequest() {
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ids'])) {
+    //         $ids = $_POST['ids'];
+    //         list($benefactionID, $doneeID) = explode('-', $ids);
+            
+    //         // Update the status of the benefaction request
+    //         $this->donorModel->updateBenefactionRequestStatus($doneeID, $benefactionID, 10);
+            
+    //         // Redirect to a suitable page after processing
+    //         redirect('benefaction/viewPostedBenefactions');
+    //     } else {
+    //         // Handle cases where form is not submitted or doneeID is missing
+    //         // Redirect or display an error message
+    //         redirect('pages/error');
+    //     }
+    // }
+    
+
+    
+    public function temporyStudentProfile() {
+        $this->view('donor/temporyStudentProfile');
+    }
+
+    // ---------------------Student--------------------------
 
     public function addAppliedBenefaction(){  
         // die(print_r($_POST));
