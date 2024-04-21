@@ -524,11 +524,37 @@
     align-content: center;
     margin-bottom: 10px;
 
+
+
 }
 
 .applied-benefaction-cards .right .status_pending p{
+
     background-color: #ffffff;
     margin-left: 30px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 300;
+    color: #000;
+
+}
+
+.applied-benefaction-cards .right .status_rejected p{
+    background-color: #ff0000;
+    margin-left: 30px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 300;
+    color: #ffffff;
+
+}
+
+.applied-benefaction-cards .right .status_accepted p{
+    background-color: #8ff693;
+    margin-left: 30px;
+    margin-right: 10px;
     margin-right: 10px;
     padding: 10px;
     border-radius: 10px;
@@ -557,6 +583,25 @@
     font-weight: 300;
     color: #000;
 
+}
+
+
+/*------------Applied benefaction view ------------>*/
+
+.button-container{
+    
+    width: 100%;
+   
+}
+
+.button-container button{
+    background-color: #960101;
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 10px;
+    border-color: transparent;
 }
 
 
