@@ -78,9 +78,13 @@ class Scholarship extends Controller {
                 $data['durationScholarship_err'] = 'Duration must be a valid positive number';
             }
 
+            date_default_timezone_set('Asia/Colombo');
+
+            $dateObject = new DateTime(date('Y-m-d H:i:s'));
+
             if (empty($data['deadlineScholarship'])) {
                 $data['deadlineScholarship_err'] = 'Please select the Deadline';
-            } elseif (strtotime($data['deadlineScholarship']) < strtotime('today')) {
+            } elseif (strtotime($data['deadlineScholarship']) < strtotime($dateObject->format('Y-m-d\TH:i'))) {
                 $data['deadlineScholarship_err'] = 'Deadline cannot be in the past';
             }
 
@@ -151,9 +155,11 @@ class Scholarship extends Controller {
             // Load the view with data
             $data = [
                 'title' => 'View Posted Scholarships',
-                'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID)
-                // 'scholarship_applications' => $this->scholarshipModel->getScholarshipApplications($scholarshipID)
+                // 'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID),
+                'scholarship_applications' => $this->scholarshipModel->getScholarshipApplications($scholarshipID)
             ];
+
+            die(print_r($data));
             
     
             // Load View

@@ -115,7 +115,7 @@
                     <!-- Requests -->
                      <div class="request-right-side-bar-type-requests">
                             <h4>Name</h4>
-                            <p>Description</p>
+                            <p>Quantity</p>
                         </div>
 
                         <!-- <?php echo $data['benefaction_requests']; ?> -->
