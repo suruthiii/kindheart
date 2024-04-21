@@ -74,6 +74,8 @@ class Student extends Controller {
 
         // die(print_r($data['benefactions']));
 
+        // die(print_r($data['benefactions']));
+
         $this->view('student/benefactions', $data);
     }
 
