@@ -546,8 +546,13 @@ span .donor-form-error-details{
 .view-benefaction-left-column {   
     flex: 70; 
     min-width: 70%;
+    height: 50vh;
     max-height: 50vh;
     margin-top: 150px;
+
+    
+    border-collapse: collapse; /* Optional: Ensure borders collapse properly */
+    overflow-y: auto;
 }
 
 .benefaction-info table {
@@ -1028,11 +1033,23 @@ span .donor-form-error-details{
 
 
 /* ----------------View Posted Scholarships------------------ */
+
+.scholarship-left-column {   
+    flex: 70; 
+    min-width: 70%;
+    height: 50vh;
+    max-height: 50vh;
+    margin-top: 150px;
+
+    
+    border-collapse: collapse; /* Optional: Ensure borders collapse properly */
+    overflow-y: auto;
+}
+
 .scholarship-info table {
     width: 400px;
     height: 8vh;
     table-layout: fixed;
-    margin-top: 150px;
 }
 
 .scholarship-data {
@@ -1052,11 +1069,6 @@ span .donor-form-error-details{
     overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
     white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
     padding: 8px;
-}
-
-.scholarship-data-image-row img{
-    max-height: 250px;
-    max-width: 250px;    
 }
 
 .view-scholarship-btn-container{
@@ -1147,7 +1159,89 @@ span .donor-form-error-details{
     margin-top: -5px;
 }
 
-/* -------Edit Posted Scholarship----------- */
+/* ----------------View Benefaction Request Deatils------------------ */
+
+.benefactionRequest-left-column {   
+    flex: 70; 
+    min-width: 70%;
+    height: 50vh;
+    max-height: 50vh;
+    margin-top: 150px;
+
+    border-collapse: collapse; /* Optional: Ensure borders collapse properly */
+    overflow-y: auto;
+}
+
+.benefactionRequest-info table {
+    width: 400px;
+    height: 8vh;
+    table-layout: fixed;
+}
+
+.benefactionRequest-data {
+    width: 100%;
+    height: 35px;
+    font-size: 15px;
+}
+
+/* css to th */
+.benefactionRequest-data th {
+    min-width:100px; 
+    width:200px;
+}
+
+.benefactionRequest-data td {
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding: 8px;
+    width:300px;
+}
+
+.view-benefactionRequest-btn-container{
+    position: fixed;
+    width: 25%;
+    height: 5vh;
+    margin-top:10vh;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.view-benefactionRequest-btn-container button:first-child {
+    margin-right: 10px;
+}
+
+.view-benefactionRequest-btn-container button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 100px;
+    margin-right: 5px;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-benefactionRequest-btn-container button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.view-benefactionRequest-btn-container button img{
+    padding-right: 8px;
+}
+
+.view-benefactionRequest-btn-container button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
 
 
 

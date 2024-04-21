@@ -33,27 +33,29 @@
                     <p>Last 30 Days</p>
                 </div>
 
-                <!-- benefaction Request Details -->
-                <div class="benefactionRequest-info">
-                    <table>
-                        <tr class="benefactionRequest-data">
-                            <th>Donee Name</th>
-                            <?php var_dump($data['benefactionRequest_details']); ?>
-                            <td><?php print_r($data['benefactionRequest_details']->doneeName); ?></td>
-                        </tr>
-                        <tr class="benefactionRequest-data">
-                            <th>Donee Type</th>
-                            <td><?php print_r($data['benefactionRequest_details']->userType); ?></td>
-                        </tr>
-                        <tr class="benefactionRequest-data">
-                            <th>Requested Amount</th>
-                            <td><?php print_r($data['benefactionRequest_details']->requestedQuantity); ?></td>
-                        </tr>
-                        <tr class="benefactionRequest-data">
-                            <th>Reason</th>
-                            <td><?php print_r($data['benefactionRequest_details']->reason) ?></td>
-                        </tr>
-                    </table>
+                <div class="benefactionRequest-left-column">
+                    <!-- benefaction Request Details -->
+                    <div class="benefactionRequest-info">
+                        <table>
+                            <tr class="benefactionRequest-data">
+                                <th>Donee Name</th>
+                                <?php var_dump($data['benefactionRequest_details']); ?>
+                                <td><?php print_r($data['benefactionRequest_details']->doneeName); ?></td>
+                            </tr>
+                            <tr class="benefactionRequest-data">
+                                <th>Donee Type</th>
+                                <td><?php print_r($data['benefactionRequest_details']->userType); ?></td>
+                            </tr>
+                            <tr class="benefactionRequest-data">
+                                <th>Requested Amount</th>
+                                <td><?php print_r($data['benefactionRequest_details']->requestedQuantity); ?></td>
+                            </tr>
+                            <tr class="benefactionRequest-data">
+                                <th>Reason</th>
+                                <td><?php print_r($data['benefactionRequest_details']->reason) ?></td>
+                            </tr>
+                        </table>                    
+                    </div>                    
                 </div>
 
                 <!-- <div class="view-benefactionRequest-btn-container">
