@@ -106,10 +106,34 @@ class donorModel{
     public function getBenefactionRequests($benefactionID) {
         
         // Prepare statement
-        $this->db->query('SELECT o.orgID AS doneeID, o.orgName AS doneeName FROM organization o JOIN donee_benefaction db ON o.orgID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 && db.benefactionID = :benefactionID
-                            UNION
-                            SELECT s.studentID, CONCAT(s.fname, " ", s.lname) FROM student s JOIN donee_benefaction db ON s.studentID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 && db.benefactionID = :benefactionID;');
+        // $this->db->query('SELECT o.orgID AS doneeID, o.orgName AS doneeName FROM organization o JOIN donee_benefaction db ON o.orgID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 AND db.benefactionID = :benefactionID
+        //                     UNION
+        //                     SELECT s.studentID, CONCAT(s.fname, " ", s.lname) FROM student s JOIN donee_benefaction db ON s.studentID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 AND db.benefactionID = :benefactionID;');
         
+
+        $this->db->query('SELECT u.userType AS userType,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentID
+                                WHEN u.userType = "organization" THEN o.orgID
+                            END AS doneeID,
+                            CASE
+                                WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
+                                WHEN u.userType = "organization" THEN o.orgName
+                            END AS doneeName,
+                            db.reason,
+                            db.requestedQuantity
+                        FROM 
+                            donee_benefaction db
+                        JOIN 
+                            user u ON db.doneeID = u.userID
+                        LEFT JOIN 
+                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                        LEFT JOIN 
+                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                        WHERE 
+                            u.status != 10
+                            AND db.benefactionID = :benefactionID;)');   
+
         $this->db->bind(':benefactionID', $benefactionID);
 
         $result = $this->db->resultSet();

@@ -111,31 +111,18 @@
                     <!-- Topic -->
                     <div class="request-right-side-bar-topic">
                         <h3>Requests</h3>
+                        <div class="request-right-side-bar-grey-line"></div>
                     </div>
                     <!-- Requests -->
-                     <div class="request-right-side-bar-type-requests">
-                            <h4>Name</h4>
-                            <p>Quantity</p>
-                        </div>
-
-                        <!-- <?php echo $data['benefaction_requests']; ?> -->
-
-                    <?php foreach($data['benefaction_requests'] as $request): ?>
-                        <!-- <a href="pop up including applicanmt details"> -->
-                        <div class="request-right-side-bar-type-requests">
-                            <!-- <h4>                    
-                                <?php
-                                    if ($request->user_type === 'student') {
-                                        echo htmlspecialchars($request->student_name);
-                                    } elseif ($request->user_type === 'organization') {
-                                        echo htmlspecialchars($request->orgName);
-                                    }
-                                ?>
-                            </h4> -->
-                            <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p>
-                            <p><?php echo $request->requestedQuantity; ?> Items Requested</p>
-                        </div>
-                    <?php endforeach; ?>
+                    <div class="request-right-side-bar-all-requests">
+                        <?php foreach($data['benefaction_requests'] as $request): ?>
+                            <div class="request-right-side-bar-type-requests">
+                                <h4> <?php echo $request->doneeName; ?></h4>
+                                <p><?php echo $request->requestedQuantity; ?> Items Requested</p>
+                                <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p>                             -->
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
             </div>
         </div>

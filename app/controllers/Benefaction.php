@@ -185,11 +185,11 @@ class Benefaction extends Controller {
             // Load the view with data
             $data = [
                 'title' => 'View Posted Benefactions',
-                // 'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
+                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
                 'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
             ];
 
-            die(print_r($data['benefaction_requests']));            
+            // die(print_r($data));            
     
             // Load View
             $this->view('donor/viewPostedBenefactions', $data);
