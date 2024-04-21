@@ -155,11 +155,11 @@ class Scholarship extends Controller {
             // Load the view with data
             $data = [
                 'title' => 'View Posted Scholarships',
-                // 'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID),
-                'scholarship_applications' => $this->scholarshipModel->getScholarshipApplications($scholarshipID)
+                'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID)
+                // 'scholarship_applications' => $this->scholarshipModel->getScholarshipApplications($scholarshipID)
             ];
 
-            die(print_r($data));
+            // die(print_r($data));
             
     
             // Load View

@@ -116,11 +116,13 @@
                     <!-- Requests -->
                     <div class="request-right-side-bar-all-requests">
                         <?php foreach($data['benefaction_requests'] as $request): ?>
-                            <div class="request-right-side-bar-type-requests">
-                                <h4> <?php echo $request->doneeName; ?></h4>
-                                <p><?php echo $request->requestedQuantity; ?> Items Requested</p>
-                                <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p>                             -->
-                            </div>
+                            <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
+                                <div class="request-right-side-bar-type-requests">
+                                    <h4> <?php echo $request->doneeName; ?></h4>
+                                    <p>Requested Amount:<?php echo $request->requestedQuantity; ?></p>
+                                    <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p>                             -->
+                                </div>
+                            </a>                                
                         <?php endforeach; ?>
                     </div>
                 </div>
