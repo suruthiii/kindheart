@@ -80,16 +80,13 @@
                 </div>
                 <div class="right-cards">  
 
-                    <!-- <?php foreach($data['past_complaints'] as $item) {?> -->
+                    <?php foreach($data['past_complaints'] as $item) {?>
                     <div class="right-card">
-                        <div class="title">Complainer Name
-                            <!-- <?php echo $item->name ?> -->
-                        </div>
-                        <div class="value">Complaint
-                            <!-- <?php echo $item->description ?> -->
-                        </div>
+                        <div class="title"><?php echo $item->complainerName ?></div>
+                        <div class="value"><?php echo $item->description ?></div>
                     </div>
-                    <!-- <?php }?> -->
+                    <?php }?>
+                    
                 </div>
             </div>
 
