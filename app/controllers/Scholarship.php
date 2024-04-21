@@ -246,8 +246,7 @@ class Scholarship extends Controller {
                         'scholarship_details' => $this->scholarshipModel->getScholarship($_POST['scholarshipID']),
                         'success' => true
                     ];
-
-                    
+                                        
                     $this->view('donor/editPostedScholarships', $data);
 
                 }else{

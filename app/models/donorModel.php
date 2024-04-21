@@ -211,4 +211,19 @@ class donorModel{
 
         return $result;
     }
+
+    public function updateBenefactionRequestStatus($doneeID, $benefactionID, $newStatus) {
+        $this->db->query('UPDATE donee_benefaction SET verificationStatus = :newStatus WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
+        $this->db->bind(':newStatus', $newStatus);
+    
+        // Execute the query
+        if ($this->db->execute()) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
+    
 }

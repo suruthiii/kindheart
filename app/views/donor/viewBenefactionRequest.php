@@ -75,9 +75,9 @@
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="decline-request">
-                        <input type="hidden" name="doneeID" id="doneeID" value=""/>
-                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
+                    <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request">
+                    <!-- <input type="hidden" name="ids" id="ids" value="<?php echo $data['benefactionRequest_details']->benefactionID . '-' . $data['benefactionRequest_details']->doneeID; ?>" /> -->
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline()" >
                             <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
                             <h5>Decline Request</h5>
                         </button>
@@ -92,7 +92,24 @@
     </section>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
+    function confirmDecline() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to decline this request. This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, decline it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form asynchronously
+                document.getElementById('declineForm').submit();
+            }
+        });
+    }
 </script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

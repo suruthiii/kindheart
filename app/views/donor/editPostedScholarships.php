@@ -6,26 +6,7 @@
 <!--  SIDE NAVIGATION  -->
 <?php $section = "donations";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
-<!-- <style>
-    .swal2-popup {
-        font-family: "Arial", sans-serif;
-        width: 400px !important;
-        height: 60px !important;
-        border: 2px solid #54e080 !important;
-        background-color: #f9f9f9;
-    }
 
-    .swal2-title {
-        font-size: 15px !important;
-    }
-
-    .swal2-icon {
-        height: 40px !important;
-        width: 40px !important;
-    }
-    
-
-</style> -->
 <main class="page-container">
     <section class="section" id="main">
         <div class="donor-right-side-container">
