@@ -49,8 +49,6 @@
                         <button class="dropbtn">Assign</button>
                         <div class="dropdown-content">
                             <?php for ($i = 0; $i < sizeof($data['admins']) - 1; $i++) {?>
-                                <!-- <a href="<?php echo URLROOT ?>/complaint/assignadmin/<?php echo $data['admins'][$i]->adminID ?>"><?php echo $data['admins'][$i]->adminName ?></a> -->
-
                                 <form action="<?php echo URLROOT ?>/complaint/assignadmin" method="post" class="delete-form">
                                     <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $data['complaint_ID']; ?>" />
                                     <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $data['admins'][$i]->adminID ?>" />
@@ -61,10 +59,7 @@
                             <?php } ?>
                         </div>
                     </div>
-
-
-
-                   
+    
                 <?php } 
                 else {?>
                     <form action="<?php echo URLROOT ?>/complaint/unassignadmin" method="post" class="delete-form">

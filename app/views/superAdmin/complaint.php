@@ -28,12 +28,22 @@
                                         <h4><?php echo $item->username ?></h4>
                                     </td>
                                     <td width="40%" class="option">
-                                        <form action="<?php echo URLROOT ?>" method="post" class="assign-manage-form">
-                                            <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
-                                            <button type="submit" class="assign-manage" onclick="">
-                                                Assign
-                                            </button>
-                                        </form>
+                                        <!-- Dropdown Menu -->
+                                        <div class="dropdown">
+                                            <button class="dropbtn">Assign</button>
+                                            <div class="dropdown-content">
+                                                <?php for ($i = 0; $i < sizeof($data['admins']) - 1; $i++) {?>
+                                                    <form action="<?php echo URLROOT ?>/complaint/assignadmin" method="post" class="delete-form">
+                                                        <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $item->complaintID ?>" />
+                                                        <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $data['admins'][$i]->adminID ?>" />
+                                                        <button type="submit" class="dropdown-item" onclick="">
+                                                            <?php echo $data['admins'][$i]->adminName ?>
+                                                        </button>
+                                                    </form>
+                                                <?php } ?>
+                                            </div>
+                                        </div>
+
                                     </td>
                                 </tr>
                             </table>
