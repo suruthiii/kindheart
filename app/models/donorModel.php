@@ -122,7 +122,8 @@ class donorModel{
                             END AS doneeName,
                             db.reason,
                             db.requestedQuantity,
-                            db.benefactionID
+                            db.benefactionID,
+                            db.verificationStatus
                         FROM 
                             donee_benefaction db
                         JOIN 

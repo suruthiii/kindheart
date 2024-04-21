@@ -108,25 +108,65 @@
             <!-- right side bar for Requests -->
             <div class="request-right-side-bar">
                 <div class="request-right-side-bar-inner">
+                    <?php
+                        // Determine which section to display based on availability status
+                        $availabilityStatus = $data['benefaction_details']->availabilityStatus;
+
+                        // $verificationStatus = $data['benefaction_requests']->verificationStatus;
+
+                        switch ($availabilityStatus) {
+                            case 0:
+                                $sectionTitle = 'Requests';
+                                break;
+                            case 1:
+                                $sectionTitle = 'Accepted Requests';
+                                break;
+                            case 2:
+                                $sectionTitle = 'Completed Requests';
+                                break;
+                            default:
+                                $sectionTitle = 'Requests';
+                                break;
+                        }
+
+                        // switch ($verificationStatus) {
+                        //     case 0:
+                        //         // Unverified requests (verificationStatus = 0)
+                        //         $sectionTitle = 'Requests';
+                        //         break;
+                        //     case 1:
+                        //     case 3:
+                        //         // Verified requests (verificationStatus = 1 or 3)
+                        //         $sectionTitle = 'Accepted Requests';
+                        //         break;
+                        //     case 2:
+                        //         // Completed requests (verificationStatus = 2)
+                        //         $sectionTitle = 'Completed Requests';
+                        //         break;
+                        //     default:
+                        //         // Default to availability status if verification status doesn't match known cases
+                        //         break;
+                        // }
+                    ?>
                     <!-- Topic -->
                     <div class="request-right-side-bar-topic">
-                        <h3>Requests</h3>
-                        <div class="request-right-side-bar-grey-line"></div>
+                        <h3><?php echo $sectionTitle; ?></h3>
+                        <div class="request-right-side-bar-grey-line"> </div>
                     </div>
+
+                    <!-- Display requests or no requests message -->
                     <?php if (empty($data['benefaction_requests'])) : ?>
-                        <!-- Display this if there are no requests -->
                         <div class="request-right-side-bar-no-requests">
                             <p>No Requests Yet</p>
                         </div>
                     <?php else : ?>
-                        <!-- Display requests if there are any -->
                         <div class="request-right-side-bar-all-requests">
                             <?php foreach($data['benefaction_requests'] as $request): ?>
                                 <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
                                     <div class="request-right-side-bar-type-requests">
                                         <h4> <?php echo $request->doneeName; ?></h4>
                                         <p>Requested Amount:<?php echo $request->requestedQuantity; ?></p>
-                                        <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p>                             -->
+                                        <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p> -->
                                     </div>
                                 </a>                                
                             <?php endforeach; ?>
