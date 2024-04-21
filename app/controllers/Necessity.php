@@ -334,13 +334,6 @@ class Necessity extends Controller {
     //     $this->view('organization/viewOrganizationMonetarynecessity', $data);
     // }
 
-    public function viewAdminMonetary(){
-        $data = [
-            'title' => 'Home page'
-        ];
-        $this->view('admin/necessity/viewMonetary', $data);
-    }
-
     // View pending necessity's further information
     public function viewPendingMonetarynecessity(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {

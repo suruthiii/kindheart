@@ -9,19 +9,120 @@ class Scholarship extends Controller {
     }
 
     public function manageScholarship($scholarship_ID = null) {
-        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($scholarship_ID)) {
+        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($_GET['scholarship_ID']) && empty($_POST['scholarship_ID'])) {
             redirect('pages/404');
         }
 
         else {
-            $data = [
-                'title' => 'Home Page'
-                // 'scholarship_details' => $this->scholarshipModel->getScholarshipDetails($scholarship_ID),
-                // 'comments' => $this->scholarshipModel->getAllComments($scholarship_ID)
-            ];
+            // When we submit comments
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $data = [
+                    'comment' => trim($_POST['comment']),
+                    'scholarship_ID' => trim($_POST['scholarship_ID']),
+                    'err' => ''
+                ];
+
+                // If the comment is empty load view with errors
+                if(empty($data['comment'])) {
+                    $donor_type = $this->scholarshipModel->getDonorType($_POST['scholarship_ID']);
+                    
+                    if($donor_type == 'company') {
+                        $data = [
+                            'title' => 'Home Page',
+                            'scholarship_ID' => $_POST['scholarship_ID'],
+                            'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_POST['scholarship_ID'])
+                        ];
+                    }
+
+                    else if($donor_type == 'individual') {
+                        $data = [
+                            'title' => 'Home Page',
+                            'scholarship_ID' => $_POST['scholarship_ID'],
+                            'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_POST['scholarship_ID'])
+                        ];
+                    }
+        
+                    else {
+                        die('Donor Type Not Found');
+                    }
+
+                    $data['comments'] = $this->scholarshipModel->getAllComments($_POST['scholarship_ID']);
+
+                    $data['err'] = 'Please enter your comment';
+
+                    $this->view($_SESSION['user_type'].'/scholarship/managescholarship', $data);
+                }
+
+                // If the comment is not empty insert comment to the database and redirect to Manage Montary view
+                else {
+                    if($this->scholarshipModel->addComment($data)) {
+                        redirect('scholarship/managescholarship?scholarship_ID='.$data['scholarship_ID']);
+                    }
+                }
+            }    
+            
+            // Loading normal view when called with GET method
+            else {
+                $donor_type = $this->scholarshipModel->getDonorType($_GET['scholarship_ID']);
+                
+                if($donor_type == 'company') {
+                    $data = [
+                        'title' => 'Home Page',
+                        'scholarship_ID' => $_GET['scholarship_ID'],
+                        'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
+                    ];
+                }
+
+                else if($donor_type == 'individual') {
+                    $data = [
+                        'title' => 'Home Page',
+                        'scholarship_ID' => $_GET['scholarship_ID'],
+                        'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
+                    ];
+                }
+
+                else {
+                    die('Donor Type Not Found');
+                }
+            }
+
+            $data['comments'] = $this->scholarshipModel->getAllComments($data['scholarship_ID']);
 
             $this->view($_SESSION['user_type'].'/scholarship/managescholarship', $data);
         }
+    }    
+
+
+    public function viewScholarship() {
+        if($_SESSION['user_type'] == 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            $donor_type = $this->scholarshipModel->getDonorType($_GET['scholarship_ID']);
+                
+            if($donor_type == 'company') {
+                $data = [
+                    'title' => 'Home Page',
+                    'scholarship_ID' => $_GET['scholarship_ID'],
+                    'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
+                ];
+            }
+
+            else if($donor_type == 'individual') {
+                $data = [
+                    'title' => 'Home Page',
+                    'scholarship_ID' => $_GET['scholarship_ID'],
+                    'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
+                ];
+            }
+
+            else {
+                die('Donor Type Not Found');
+            }
+        }
+
+        $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
     }
 
     public function donorAddScholarships(){
@@ -300,3 +401,4 @@ class Scholarship extends Controller {
         }
     }
 }
+  

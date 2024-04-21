@@ -15,50 +15,36 @@
             <p style="margin-left: 10px">View the success stories of students who benefited from donations</p>
 
             <div class="story-cards">
-                        <div class="story-card">
-                            <div class="profile">
-                                <div class="profile-img">
-                                    <img class="pro-pic" src="<?php echo URLROOT?>/img/logo.jpg" alt="">
-                                </div>
-                                <div class="profile-content">
-                                    <h4 class="name">Suruthi</h4>
-                                    <p class="date">5 days ago</p>
-                                </div>
+                
+                <?php foreach ($data['successstories'] as $item) { ?>
+                    <div class="story-card">
+                        <div class="profile">
+                            <div class="profile-img">
+                                <img class="pro-pic" src="<?php echo URLROOT?>/img/logo.jpg" alt="">
                             </div>
-                            <div class="story-img-container">
-                                <img class="story-img" src="<?php echo URLROOT?>/img/logo.jpg" alt="">
+                            <div class="profile-content">
+                                <h4 class="name"><?php echo $item->username; ?></h4>
+                                <p class="date"><?php echo $item->addDate; ?></p>
                             </div>
-                            <div class="story-desc">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dolore error distinctio omnis sed officiis, qui, vitae voluptates ea exercitationem eligendi incidunt? Accusantium repellat vel, quis quibusdam sapiente sit eum? 
-                                <a class="more-desc-link" href="">Read more</a>
-                            </div>
-                            <div class="story-btn-container">
-                                <button class="del-btn">Delete</button>
-                            </div>
-                        </div>    
+                        </div>
 
-                        <div class="story-card">
-                            <div class="profile">
-                                <div class="profile-img">
-                                    <img class="pro-pic" src="<?php echo URLROOT?>/img/logo.jpg" alt="">
-                                </div>
-                                <div class="profile-content">
-                                    <h4 class="name">Suruthi</h4>
-                                    <p class="date">5 days ago</p>
-                                </div>
-                            </div>
+                        <div class="successstory-title" style="transform: translate(30px, -50px)">
+                                <h3><?php echo $item->title; ?></h3>
+                        </div>
+
+                        <!-- Added image show box -->
+                        <?php if ($item->image !== null) { ?>
                             <div class="story-img-container">
-                                <img class="story-img" src="<?php echo URLROOT?>/img/logo.jpg" alt="">
+                                <img class="story-img" src="<?php echo URLROOT ?>/uploads/<?php echo $item->image; ?>" alt="<?php echo $item->storyTitle; ?>">
                             </div>
-                            <div class="story-desc">
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatum dolore error distinctio omnis sed officiis, qui, vitae voluptates ea exercitationem eligendi incidunt? Accusantium repellat vel, quis quibusdam sapiente sit eum? 
-                                <a class="more-desc-link" href="">Read more</a>
-                            </div>
-                            <div class="story-btn-container">
-                                <button class="del-btn">Delete</button>
-                            </div>
-                        </div> 
-                        
+                        <?php } ?>
+                        <div class="story-desc">
+                            <?php echo $item->description; ?>
+                            <a class="more-desc-link" href="">Read more</a>
+                        </div>
+
+                    </div> 
+                <?php }?>       
             </div>
 
             <div class="right-content">
