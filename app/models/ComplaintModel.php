@@ -141,29 +141,17 @@ class ComplaintModel{
         return $details;
     }
 
-    public function getComplaineeType($complaint_ID) {
-        $this->db->query('SELECT complaineeType FROM complaint WHERE complaintID = :complaintID');
-        $this->db->bind(':complaintID', $complaint_ID);
+    public function getPastComplaints($complainee_ID){
+        $this->db->query('SELECT * FROM complaint WHERE complaineeID = :complaineeID');
+        $this->db->bind(':complaineeID', $complainee_ID);
 
-        $complaineeType = $this->db->single();
+        $result = $this->db->resultSet();
 
-        return $complaineeType;
-    }
+        foreach($result as $item){
+            $item->complainerName = $this->getName($item->complainerID)->name;
+        }
 
-    public function getPastComplaintsOthers($complainee_ID){
-        // complaineeType = getComplaineeType($complainee_ID)
-
-        // if complaineeType == 'student' OR complaineeType == 'organization'
-        // SELECT c.complaint, CONCAT(i.fName, " ", i.lName) AS name FROM complaint c JOIN individual i ON c.complainerID = i.individualID WHERE c.complaineeID = :complaineeID
-        // SELECT c.complaint, cn.companyName AS name FROM complaint c JOIN company cn ON c.complainerID = cn.companyID WHERE c.complaineeID = :complaineeID 
-
-        // else if complaineeType == 'donor'
-        // SELECT c.complaint, CONCAT(s.fName, " ", s.lName) AS name FROM complaint c JOIN student s ON c.complainerID = s.studentID WHERE c.complaineeID = :complaineeID
-        // SELECT c.complaint, o.orgName AS name FROM complaint c JOIN organization o ON c.complainerID = o.orgID WHERE c.complaineeID = :complaineeID 
-
-        // $history = $this->db->resultSet();
-
-        // return $history;
+        return $result;
     }
 }    
 

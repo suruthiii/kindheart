@@ -55,8 +55,8 @@ class Complaint extends Controller {
             'complainer_name' => $this->complaintModel->getName($complainerID)->name,
             'complaint_description' => $this->complaintModel->getComplaintDetails($_GET['complaint_ID'])->description,
             'complaint_adminID' => $this->complaintModel->getComplaintDetails($_GET['complaint_ID'])->adminID,
-            'admins' => $this->userModel->viewAdmins()
-            // 'past_complaints' =>  $this->complaintModel->getPastComplaints($complaineeID)
+            'admins' => $this->userModel->viewAdmins(),
+            'past_complaints' =>  $this->complaintModel->getPastComplaints($complaineeID)
         ];
 
         $this->view($_SESSION['user_type'].'/complaint/viewComplaint', $data);
