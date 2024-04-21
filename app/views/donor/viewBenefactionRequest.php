@@ -58,23 +58,31 @@
                     </div>                    
                 </div>
 
-                <!-- <div class="view-benefactionRequest-btn-container">
-                    <form action="<?php echo URLROOT ?>/benefactionRequest/editPostedbenefactionRequests" method="get" class="edit-form">
-                        <input type="hidden" name="benefactionRequestID" id="benefactionRequestID" value="<?php echo $data['benefactionRequest_details']->benefactionRequestID; ?>" />
-                        <button type="submit" class="view-benefactionRequest_button" style="cursor: pointer;">
-                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
-                            <h5>Edit</h5>
+                <div class="view-benefactionRequest-btn-container">
+                    <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
+                        <input type="hidden" name="doneeID" id="doneeID" value="" />
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
+                            <img src="<?php echo URLROOT ?>/img/profile2.png" style="filter: invert(100%); width:15px;">
+                            <h5>View Donee Profile</h5>
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/benefactionRequest/deletebenefactionRequests" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="benefactionRequestID" id="benefactionRequestID" value="<?php echo $data['benefactionRequest_details']->benefactionRequestID; ?>"/>
-                        <button type="submit" class="view-benefactionRequest_button" style="cursor: pointer;">
-                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:14px;">
-                            <h5>Delete</h5>
+                    <form action="<?php echo URLROOT ?>/benefaction/" method="get" class="accept-request">
+                        <input type="hidden" name="doneeID" id="doneeID" value="" />
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
+                            <img src="<?php echo URLROOT ?>/img/check.png" style="filter: invert(100%); width:18px;">
+                            <h5>Accept Request</h5>
                         </button>
                     </form>
-                </div> -->
+
+                    <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="decline-request">
+                        <input type="hidden" name="doneeID" id="doneeID" value=""/>
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
+                            <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
+                            <h5>Decline Request</h5>
+                        </button>
+                    </form>
+                </div>
             </div>
 
             <!-- right side bar for success story/ choose or add necessity -->
@@ -85,9 +93,6 @@
 </main>
 
 <script>
-    function confirmDelete() {
-        return confirm("Are you sure you want to delete this?");
-    }
 </script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

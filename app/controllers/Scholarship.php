@@ -251,6 +251,10 @@ class Scholarship extends Controller {
                     $this->view('donor/editPostedScholarships', $data);
 
                 }else{
+                    $data = [
+                        'fail' => true
+                    ];
+                    
                     die('Something Went Wrong');
                 }
             }else{

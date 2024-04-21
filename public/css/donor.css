@@ -1215,8 +1215,8 @@ span .donor-form-error-details{
     display: flex;
     align-items: center;
     height: 5vh;
-    width: 100px;
-    margin-right: 5px;
+    width: 170px;
+    margin-right: 10px;
     background-color: #8E0000;
     border: none;
     border-radius: 10px;

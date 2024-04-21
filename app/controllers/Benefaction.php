@@ -349,6 +349,11 @@ class Benefaction extends Controller {
         $this->view('donor/viewBenefactionRequest', $data);
     }
 
+    
+    public function temporyStudentProfile() {
+        $this->view('donor/temporyStudentProfile');
+    }
+
     // ---------------------Student--------------------------
 
     public function addAppliedBenefaction(){  

@@ -136,6 +136,7 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
 <?php if (isset($data['success']) && $data['success']) : ?>
     <script>
         Swal.fire({
@@ -159,7 +160,7 @@
         });
     </script>
 
-<?php else : ?>
+<?php elseif (isset($data['fail']) && $data['fail']): ?>
     <script>
         Swal.fire({
             position: "top",
