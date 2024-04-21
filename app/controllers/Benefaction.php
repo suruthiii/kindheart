@@ -359,8 +359,7 @@ class Benefaction extends Controller {
                     }
                 } else {
                     // Load view with errors
-                    die('Something went wrong2');
-                    // $this->story($data);
+                    die(print_r($data));
                 }
             }else{
                 die('incorrect method!');

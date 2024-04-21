@@ -108,9 +108,9 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactionID' => $benefactionID,
-            'appliedBenefactions' => $this->BenefactionModel->getAppliedBenefactions()
+            'appliedBenefactions' => $this->BenefactionModel->getAppliedBenefactions(),
+            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID)
         ];
-
         $this->view('student/ApplyForBenefaction', $data);
     }
 
@@ -120,9 +120,8 @@ class Student extends Controller {
 
         $data = [
             'title' => 'Home page',
-            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID)
+            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID),
         ];
-
 
 
         $this->view('student/viewAppliedBenefaction', $data);

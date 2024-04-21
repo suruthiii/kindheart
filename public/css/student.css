@@ -432,7 +432,7 @@
     color: rgba(0, 0, 0, 0.777);
 }
  
-.application-form-data input[type=text]{
+.application-form-data input[type=number]{
     width: 75%;
     font-family: 'Inter', sans-serif;
     border: 1px solid #707070;
@@ -490,6 +490,7 @@
     display: flex;
     flex-direction: row;
     border-radius: 6px;
+    margin: 10px;
 
 }
 
