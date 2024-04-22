@@ -472,15 +472,10 @@ class Scholarship extends Controller {
                 }
             }
         }
+        
     }
-  
-    //Get Details of One Selected Scholarship Application
-    public function viewScholarshipApplication($doneeID = null, $benefactionID = null) {
-        if (empty($doneeID || empty($scholarshipID))) {
-            redirect('pages/404');           
-        }
 
-        // die(print_r($benefactionID));
+
 
         $data = [
             'title' => 'View Scholarship Application',
@@ -503,9 +498,8 @@ class Scholarship extends Controller {
         }
 
         else {
-            $donorType = $this->userModel->getDonorType($donor_ID);
-
-            if($donorType == 'company') {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
                 $data = [
                     'title' => 'Home Page',
                     'scholarship_ID' => $scholarship_ID,
@@ -540,4 +534,14 @@ class Scholarship extends Controller {
             }
         }
     }
+
+
+
+
+
 }
+
+
+
+
+  
