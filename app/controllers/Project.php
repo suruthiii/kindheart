@@ -86,8 +86,13 @@ class Project extends Controller {
                     }
                 }
 
+                // Calculate total milestone budget
+                $totalMilestoneBudget = array_sum($data['milestonebudget']);
+
                 //check whether there any errors
                 if(empty($data['MilestoneInputblock_err']) && empty($data['projectTitle_err']) && !empty($data['projectsmilestones']) && !empty($data['milestonebudget']) && !empty($data['milestonedescription']) && !empty($data['firstprojectImagesPath']) && !empty($data['seconprojectImagesPath'])){
+                    $data['totalMilestoneBudget'] = $totalMilestoneBudget;
+
                     if($this->projectModel->addprojectstodb($data)){
                         redirect('project/postedprojects');
                     }else{
