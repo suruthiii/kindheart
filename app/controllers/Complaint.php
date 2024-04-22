@@ -46,17 +46,19 @@ class Complaint extends Controller {
 
     public function viewComplaint() {
         $complaint_people = $this->complaintModel->getIDs($_GET['complaint_ID']);
-        $complainerID = $complaint_people->complainerID;
-        $complaineeID = $complaint_people->complaineeID;
+        $complainer_ID = $complaint_people->complainerID;
+        $complainee_ID = $complaint_people->complaineeID;
         
         $data = [
             'complaint_ID' => $_GET['complaint_ID'],
-            'complainee_name' => $this->complaintModel->getName($complaineeID)->name,
-            'complainer_name' => $this->complaintModel->getName($complainerID)->name,
+            'complainer_ID' => $complainer_ID,
+            'complainee_ID' => $complainee_ID,
+            'complainee_name' => $this->complaintModel->getName($complainee_ID)->name,
+            'complainer_name' => $this->complaintModel->getName($complainer_ID)->name,
             'complaint_description' => $this->complaintModel->getComplaintDetails($_GET['complaint_ID'])->description,
             'complaint_adminID' => $this->complaintModel->getComplaintDetails($_GET['complaint_ID'])->adminID,
             'admins' => $this->userModel->viewAdmins(),
-            'past_complaints' =>  $this->complaintModel->getPastComplaints($complaineeID)
+            'past_complaints' =>  $this->complaintModel->getPastComplaints($complainee_ID)
         ];
 
         $this->view($_SESSION['user_type'].'/complaint/viewComplaint', $data);
@@ -68,5 +70,54 @@ class Complaint extends Controller {
        }
     }
 
+    public function viewComplainerProfile() {
+        $complainerType = $this->complaintModel->getUserType($_GET['complainer_ID']);
+
+        $data = [
+            'title' => 'Home Page',
+            'details' => $this->complaintModel->getUserDetails($_GET['complainer_ID'], $complainerType),
+        ];
+
+        if ($complainerType == 'student') {
+            $this->view($_SESSION['user_type'].'/complaint/viewStudentProfile', $data);
+        }
+
+        else if ($complainerType == 'organization') {
+            $this->view($_SESSION['user_type'].'/complaint/viewOrganizationProfile', $data);
+        }
+        
+        else if ($complainerType == 'company') {
+            $this->view($_SESSION['user_type'].'/complaint/viewDonorComProfile', $data);
+        }
+
+        else if ($complainerType == 'individual') {
+            $this->view($_SESSION['user_type'].'/complaint/viewDonorIndProfile', $data);
+        }
+    }
+
+    public function viewComplaineeProfile() {
+        $complaineeType = $this->complaintModel->getUserType($_GET['complainee_ID']);
+
+        $data = [
+            'title' => 'Home Page',
+            'details' => $this->complaintModel->getUserDetails($_GET['complainee_ID'], $complaineeType)
+        ];
+
+        if ($complaineeType == 'student') {
+            $this->view($_SESSION['user_type'].'/complaint/viewStudentProfile', $data);
+        }
+
+        else if ($complaineeType == 'organization') {
+            $this->view($_SESSION['user_type'].'/complaint/viewOrganizationProfile', $data);
+        }
+        
+        else if ($complaineeType == 'company') {
+            $this->view($_SESSION['user_type'].'/complaint/viewDonorComProfile', $data);
+        }
+
+        else if ($complaineeType == 'individual') {
+            $this->view($_SESSION['user_type'].'/complaint/viewDonorIndProfile', $data);
+        }
+    }
 
 }

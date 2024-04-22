@@ -98,36 +98,58 @@ class ComplaintModel{
         return $userType;
     }
 
+    public function getUserDetails($user_ID) {
+        $userType = $this->getUserType($user_ID);
+
+        if ($userType == 'company'){
+            $this->db->query('SELECT u.email, u.username, d.*, c.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN company c ON d.donorID = c.companyID WHERE donorID = :donorID;');
+            $this->db->bind(':donorID', $user_ID);
+        }
+
+        else if ($userType == 'individual'){
+            $this->db->query('SELECT u.email, u.username, d.*, i.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN individual i ON d.donorID = i.individualID WHERE donorID = :donorID;');
+            $this->db->bind(':donorID', $user_ID);
+        }
+
+        else if ($userType == 'organization'){
+            $this->db->query('SELECT u.email, u.username, d.*, o.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN organization o ON d.doneeID = o.orgID WHERE orgID = :orgID;');
+            $this->db->bind(':orgID', $user_ID);
+        }
+
+        else if ($userType == 'student'){
+            $this->db->query('SELECT u.email, u.username, d.*, s.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN student s ON d.doneeID = s.studentID WHERE studentID = :studentID;');
+            $this->db->bind(':studentID', $user_ID);
+        }
+
+        $userDetails = $this->db->single();
+
+        return $userDetails;
+    }
+
     public function getName($user_ID){
         $userType = $this->getUserType($user_ID);
 
         if ($userType == 'company'){
             $this->db->query('SELECT companyName AS name FROM company WHERE companyID = :companyID;');
             $this->db->bind(':companyID', $user_ID);
-
-            $name = $this->db->single();
         }
 
         else if ($userType == 'individual'){
             $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM individual WHERE individualID = :individualID;');
             $this->db->bind(':individualID', $user_ID);
-
-            $name = $this->db->single();
         }
 
         else if ($userType == 'organization'){
             $this->db->query('SELECT orgName AS name FROM organization WHERE orgID = :orgID;');
             $this->db->bind(':orgID', $user_ID);
-
-            $name = $this->db->single();
         }
 
         else if ($userType == 'student'){
             $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM student WHERE studentID = :studentID;');
-            $this->db->bind(':studentID', $user_ID);
-
-            $name = $this->db->single();
+            $this->db->bind(':studentID', $user_ID); 
         }
+
+        $name = $this->db->single();
 
         return $name;
     }
