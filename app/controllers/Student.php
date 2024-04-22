@@ -102,6 +102,9 @@ class Student extends Controller {
         $this->view('student/benefactions', $data, $other_data);
     }
 
+
+
+
     public function scholarships(){
 
         $data = [
@@ -133,6 +136,7 @@ class Student extends Controller {
 
         $this->view('student/benefactionview', $data, $other_data);
     }
+
 
     public function ApplyForBenefaction(){
 

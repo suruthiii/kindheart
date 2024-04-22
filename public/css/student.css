@@ -429,13 +429,13 @@
 .application-form-data label {
     margin-bottom: 4px;
     margin-top: 4px;
-    color: rgba(0, 0, 0, 0.777);
+    color: rgba(52, 52, 52, 0.777);
 }
  
 .application-form-data input[type=number]{
     width: 75%;
     font-family: 'Inter', sans-serif;
-    border: 1px solid #707070;
+    border: 1px solid #686868;
     border-radius: 6px;
     outline: none;
     padding: 5px;
@@ -622,5 +622,117 @@
     padding: 10px;
     border-color: transparent;
 }
+
+
+/*------------Scholarship cards ------------>*/
+
+.scholarship-card-container{
+    position: fixed;
+    width: 30%;
+    height: 73vh;
+    margin-top: 15vh;
+    padding-left: 10%;
+    padding-top: 100px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+
+}
+
+.scholarship-card-container .card{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 20%;
+    width: 100%;
+}
+
+.scholarship-card-container  .card .course{
+    background-color: #f9eaea;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0,0,0,.2);
+    display: flex;
+    overflow: hidden;
+    transform: translate(-50%,-50%);
+}
+
+.scholarship-card-container  .card .course h6{
+    opacity: .6;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+.scholarship-card-container  .card .course h2{
+    letter-spacing: 1px;
+
+    word-wrap: break-word;
+    line-break: strict;
+}
+.scholarship-card-container  .card .course h4{
+    opacity: .4;
+    letter-spacing: 1px;
+    text-decoration: wavy;
+
+}
+
+.scholarship-card-container  .card .course .preview{
+    background-color: #6e0303;
+    color: #fff;
+    width: 20% !important;
+    max-width: 20% !important;
+    min-width: 20%;
+    padding-right: 30px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.scholarship-card-container  .card .course .info{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+
+}
+.scholarship-card-container  .card .course .info p{
+
+    font-weight: bold;
+
+}
+
+
+.scholarship-card-container  .card .course .info .btn{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+
+
+}
+
+.scholarship-card-container  .card .course .info .btn button{
+    background-color: #8e0000;
+    border: solid transparent;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 10px 10px;
+    /* position:absolute; */
+    bottom: 30px;
+    right: 30px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    border-radius: 10px;
+   
+    display: flex;
+    margin-right: 5px;
+    text-align: center;
+
+}  
+
+
 
 
