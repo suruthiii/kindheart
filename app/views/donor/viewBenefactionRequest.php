@@ -39,20 +39,19 @@
                         <table>
                             <tr class="benefactionRequest-data">
                                 <th>Donee Name</th>
-                                <?php var_dump($data['benefactionRequest_details']); ?>
-                                <td><?php print_r($data['benefactionRequest_details']->doneeName); ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->doneeName); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Donee Type</th>
-                                <td><?php print_r($data['benefactionRequest_details']->userType); ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->userType); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Requested Amount</th>
-                                <td><?php print_r($data['benefactionRequest_details']->requestedQuantity); ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->requestedQuantity); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Reason</th>
-                                <td><?php print_r($data['benefactionRequest_details']->reason) ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->reason) ?></td>
                             </tr>
                         </table>                    
                     </div>                    

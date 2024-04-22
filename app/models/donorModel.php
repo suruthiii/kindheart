@@ -123,7 +123,8 @@ class donorModel{
                             db.reason,
                             db.requestedQuantity,
                             db.benefactionID,
-                            db.verificationStatus
+                            db.verificationStatus,
+                            db.receivedQuantity
                         FROM 
                             donee_benefaction db
                         JOIN 
