@@ -143,4 +143,18 @@ class ProjectModel{
      
     }
 
+    // Deleting projects
+    public function deleteProjects($projectID){
+        // Query statement
+        $this->db->query('UPDATE project SET status = 10 WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $projectID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }    

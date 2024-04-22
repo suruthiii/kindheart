@@ -46,7 +46,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
-                                <td><p>Rs.<?php echo $pendingtablerow->requestedAmount?></p></td>
+                                <td><p>Rs. <?php echo $pendingtablerow->requestedAmount?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
@@ -97,7 +97,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td><p>Rs.<?php echo $completetablerow->requestedAmount?></p></td>
+                                <td><p>Rs. <?php echo $completetablerow->requestedAmount?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewCompletedMonetarynecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
