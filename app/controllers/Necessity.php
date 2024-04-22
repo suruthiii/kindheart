@@ -588,7 +588,7 @@ class Necessity extends Controller {
                     }else{
 
                         // Handle deletion failure (e.g., show error message)
-                        die('Failed to delete benefaction.');
+                        die('Failed to delete Necessity.');
                     }
     
                 } else {

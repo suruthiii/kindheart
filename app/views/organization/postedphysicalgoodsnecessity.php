@@ -56,7 +56,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
-                                <td><p><?php echo $pendingtablerow->requestedQuantity?></p></td>
+                                <td><p><?php echo $pendingtablerow->requestedQuantity?> items</p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewPendingPhysicalGoodsnecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
@@ -113,7 +113,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td><p><?php echo $completetablerow->requestedQuantity?></p></td>
+                                <td><p><?php echo $completetablerow->requestedQuantity?> items</p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewCompletedPhysicalGoodsnecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">

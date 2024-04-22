@@ -39,13 +39,11 @@
                                 <td>
                                     
                                 </td>
-                                <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4>
-                                    <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
-                                </td>
-                                <td><p><?php echo $pendingtablerow->budget?></p></td>
+                                <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4></td>
+                                <td><p>Rs. <?php echo $pendingtablerow->budget?></p></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/viewPendingPhysicalGoodsnecessity" method="POST">
-                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                    <form action="<?php echo URLROOT ?>" method="POST">
+                                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                         </button>
@@ -56,8 +54,8 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST" onsubmit="return confirmDelete();">
-                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                    <form action="<?php echo URLROOT ?>/project/deleteProjects" method="POST" onsubmit="return confirmDelete();">
+                                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                         </button>
@@ -80,13 +78,11 @@
                                 <td>
                                     
                                 </td>
-                                <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4>
-                                    <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
-                                </td>
-                                <td><p><?php echo $completetablerow->budget?></p></td>
+                                <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4></td>
+                                <td><p>Rs. <?php echo $completetablerow->budget?></p></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/viewCompletedPhysicalGoodsnecessity" method="POST">
-                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
+                                    <form action="<?php echo URLROOT ?>" method="POST">
+                                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $completetablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                         </button>
@@ -94,8 +90,8 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/necessity/deleteGoodsNecessity" method="POST" onsubmit="return confirmDelete();">
-                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
+                                    <form action="<?php echo URLROOT ?>/project/deleteProjects" method="POST" onsubmit="return confirmDelete();">
+                                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $completetablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
                                         </button>

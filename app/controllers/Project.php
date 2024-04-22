@@ -86,8 +86,13 @@ class Project extends Controller {
                     }
                 }
 
+                // Calculate total milestone budget
+                $totalMilestoneBudget = array_sum($data['milestonebudget']);
+
                 //check whether there any errors
                 if(empty($data['MilestoneInputblock_err']) && empty($data['projectTitle_err']) && !empty($data['projectsmilestones']) && !empty($data['milestonebudget']) && !empty($data['milestonedescription']) && !empty($data['firstprojectImagesPath']) && !empty($data['seconprojectImagesPath'])){
+                    $data['totalMilestoneBudget'] = $totalMilestoneBudget;
+
                     if($this->projectModel->addprojectstodb($data)){
                         redirect('project/postedprojects');
                     }else{
@@ -203,7 +208,61 @@ class Project extends Controller {
         }
     }
 
-    // public function deleteProject() {
+    //Delete  ongoing and completed projects 
+    public function deleteProjects(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
 
-    // }
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'projectID' from POST data
+                    $projectID = trim($_POST['projectID']);
+    
+                    //  if the Deleting project is succed   
+                    if($this->projectModel->deleteProjects($projectID)){
+
+                        //update project data
+                        $data = [
+                            'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
+                            'completetablerow' => $this->projectModel->getaddedcompletedprojects()
+                        ];
+
+                        // Pass data to the view
+                        if ($_SESSION['user_type'] == 'organization') {
+                            $this->view('organization/project/postedprojects', $data);
+                        }else {
+                            die('User Type Not Found');
+                        }
+
+                    }else{
+                        // Handle deletion failure (e.g., show error message)
+                        die('Failed to delete Projects.');
+                    }
+    
+                } else {
+                    // display an error message here
+                    print_r($_POST);
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'pendingtablerow' => [] ,
+                    'completetablerow' => [] // this is an array
+                ];
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/postedprojects', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
 }

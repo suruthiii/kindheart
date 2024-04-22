@@ -89,4 +89,72 @@ class ProjectModel{
         return $row->userType;
     }
 
+    public function addprojectstodb($data){
+        //sql statement for adding projects to projects table
+        $this->db->query('INSERT INTO project(title,budget,status,orgID) 
+        VALUES (:title, :budget, :status, :doneeID)');
+
+        // Binding values with array value
+        $this->db->bind(':title', $data['projectTitle']);
+        $this->db->bind(':budget', $data['totalMilestoneBudget']);
+        $this->db->bind(':status', 0);
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        
+        //execute querry to add project
+        $result = $this->db->execute();
+
+        if($result){
+            //get the last Inserted Id from the database
+            $result1 = $this->db->query('SELECT LAST_INSERT_ID() as last_id;');
+            $row = $this->db->single();
+            $projectID  = $row->last_id;
+
+            echo $projectID;
+            //store monetaryId in the session
+            $_SESSION['projectID'] = $projectID ;
+
+            foreach ($data['projectsmilestones'] as $key => $projectsmilestones){
+                //sql statement for adding monetary necessity, money table
+                $this->db->query('INSERT INTO milestone(milestoneName ,description,amount,img1,img2,status,projectID ) 
+                VALUES (:milestoneName, :description, :amount, :img1, :img2, :status, :projectID)');
+
+                // Binding values with array value
+                $this->db->bind(':milestoneName', $projectsmilestones);
+                $this->db->bind(':description', $data['milestonedescription'][$key]);
+                $this->db->bind(':amount', $data['milestonebudget'][$key]);
+                $this->db->bind(':img1', $data['firstprojectImagesPath'][$key]);
+                $this->db->bind(':img2', $data['seconprojectImagesPath'][$key]);
+                $this->db->bind(':status', 0);
+                $this->db->bind(':projectID', $_SESSION['projectID']);
+
+                $result2 = $this->db->execute();
+
+                if (!$result2) {
+                    // Print error message for debugging
+                    printf("Error: %s\n", $this->db->getError());
+                    return false;
+                }
+            }
+            
+            return true;
+        }else{
+            return false;
+        }
+     
+    }
+
+    // Deleting projects
+    public function deleteProjects($projectID){
+        // Query statement
+        $this->db->query('UPDATE project SET status = 10 WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $projectID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }    
