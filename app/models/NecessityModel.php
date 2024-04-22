@@ -314,6 +314,24 @@ class NecessityModel{
         return $row->doneeType;
     }
 
+    public function getOrganizationDetails($org_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, o.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN organization o ON d.doneeID = o.orgID WHERE orgID = :orgID;');
+        $this->db->bind(':orgID', $org_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getStudentDetails($student_ID) {
+        $this->db->query('SELECT u.email, u.username, d.*, s.* FROM user u JOIN donee d ON u.userID = d.doneeID JOIN student s ON d.doneeID = s.studentID WHERE studentID = :studentID;');
+        $this->db->bind(':studentID', $student_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+    
     public function getAllComments($necessity_ID) {
         $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'necessity' ORDER BY time DESC;");
         $this->db->bind(':postID', $necessity_ID);

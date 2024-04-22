@@ -96,14 +96,11 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/users/logout">
-                    <?php if ($section == 'logOut'){?>
-                        <div class="selected-item">Log Out</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Log Out</div>
-                    <?php } ?>
-                </a>
+                <div class="item">
+                    <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
+                        Log Out
+                    </a>
+                </div>
             <?php } ?>   
 
             <!------------------- superAdmin ------------------>
@@ -207,19 +204,14 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/users/logOut">
-                    <?php if ($section == 'logOut'){?>
-                        <div class="selected-item">Log Out</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Log Out</div>
-                    <?php } ?>
-                </a>
+                <div class="logout item">
+                    <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
+                        Log Out
+                    </a>
+                </div>
             <?php } ?>
             
             <!------------------- Student ------------------>
-
-
 
             <?php if ($_SESSION['user_type'] == 'student'){ ?>
                 <a href="<?php echo URLROOT ?>/student/index">
@@ -290,15 +282,11 @@
                     <?php } ?>
                 </a>
 
-                
-                <a href="<?php echo URLROOT ?>/users/logOut">
-                    <?php if ($section == 'logOut'){?>
-                        <div class="selected-item">Log Out</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Log Out</div>
-                    <?php } ?>
-                </a>
+                <div class="item">
+                    <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
+                        Log Out
+                    </a>
+                </div>
             <?php } ?>
 
             <!------------------- Organization ------------------>
@@ -376,14 +364,11 @@
                 </a>
 
                 
-                <a href="<?php echo URLROOT ?>/users/logOut">
-                    <?php if ($section == 'logOut'){?>
-                        <div class="selected-item">Log Out</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Log Out</div>
-                    <?php } ?>
-                </a>
+                <div class="item">
+                    <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
+                        Log Out
+                    </a>
+                </div>
             <?php } ?>
 
             <!------------------- Donor ------------------>
@@ -460,14 +445,11 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/users/logout">
-                    <?php if ($section == 'logOut'){?>
-                        <div class="selected-item">Log Out</div>
-                    <?php }
-                    else{ ?>
-                        <div class="item">Log Out</div>
-                    <?php } ?>
-                </a>
+                <div class="item">
+                    <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
+                        Log Out
+                    </a>
+                </div>
             <?php } ?>  
         </div>
     </div>
@@ -479,6 +461,26 @@
         var element;
         element = document.querySelector('.sidenav');
         element.classList.toggle("sidenav-toggled");
+    }
+
+    function confirmLogout(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Use SweetAlert for confirmation
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to logout.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the logout URL
+                window.location.href = event.target.href;
+            }
+        });
     }
 </script>            
 
