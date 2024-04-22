@@ -18,17 +18,18 @@
 
             <!-- Status container -->
             <div class="donor-div-two">
+                <h4>Status</h4>
                 <div class="status">
-
+                    <p>Donation Status</p>
                 </div>
                 <div class="status">
-
+                    <p>Donation Status</p>
                 </div>
                 <div class="status">
-
+                    <p>Donation Status</p>
                 </div>
                 <div class="status">
-
+                    <p>Donation Status</p>
                 </div>
             </div>
 
@@ -36,14 +37,14 @@
             <div class="donor-div-three">
                 <!-- Graph container -->
                 <div class="donor-right-container">
-                    <h1>Welcome Back <b>....Name.....<b></h1>
-                    <p>Here's The Latest Updates</p>
+                    <h4>Donation Summary</h4>
+                    <p>----------------</p>
                 </div>
                 
                 <!-- Donation container -->
                 <div class="donor-left-container">
-                    <h1>Welcome Back <b>....Name.....<b></h1>
-                    <p>Here's The Latest Updates</p>
+                    <h4>Recent Donations</h4>
+                    <p>------------</p>
                 </div>  
             </div>                   
         </div>

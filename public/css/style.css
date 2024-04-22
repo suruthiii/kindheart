@@ -349,6 +349,71 @@ a{
 }
 
 
+
+/* ---------------------------------- Dropdown Styles ---------------------------------- */
+.dropbtn {
+    width: 70px;
+    height: 25px;
+    background-color: #8e0000;
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    transition: 0.2s;
+  }
+  
+  .dropdown {
+    /* position: absolute; */
+    display: inline-block;
+    left: 300px;
+    top: 100px;
+    transition: 0.5s;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    /* border-radius: 10px; */
+    min-width: 100px;
+    box-shadow: 0px 0px 10px 0.1px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    /* padding: 5px 0 5px 0; */
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .dropdown-item {
+    width: 100%; 
+    outline: none; 
+    border: none; 
+    background-color: white; 
+    text-align: left; 
+    padding: 8px 8px 8px 12px;
+  }
+
+  .dropdown-item:hover {
+    cursor: pointer;
+    background-color: rgb(247, 246, 246);
+  }
+  
+  .dropdown:hover .dropbtn {
+    background-color: #7e0000;
+  }
+
 /* -------------404 css--------------- */
 
 
