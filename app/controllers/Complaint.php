@@ -66,7 +66,7 @@ class Complaint extends Controller {
 
     public function banComplainee() {
         if($this->userModel->banUser($_POST['complainee_ID'])) {
-            redirect('complaint/viewComplaint?complaint_ID='.$data['complaint_ID']);
+            redirect($_SESSION['user_type'].'/complaint');
        }
     }
 

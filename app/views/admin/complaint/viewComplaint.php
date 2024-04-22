@@ -41,7 +41,7 @@
                 </table>
             </div>
 
-            <div class="view-donation-btn-container">
+            <div class="view-donation-btn-container" style="display: flex;">
 
                 <?php if ($data['complaint_adminID'] == 0)  {?>
                     <form action="<?php echo URLROOT ?>/complaint/assignme" method="post" class="delete-form">
@@ -60,6 +60,14 @@
                             Unassign
                         </button>
                     </form>
+
+                    <form action="<?php echo URLROOT ?>/complaint/bancomplainee" method="post" class="delete-form" style="margin-left: 20px;">
+                        <input type="text" name="complainee_ID" id="complainee_ID" hidden value="<?php echo $data['complainee_ID']; ?>" />
+                        <button type="submit" class="view-donation-btn" onclick="">
+                            Ban Complainee
+                        </button>
+                    </form>
+
                 <?php }?>
             </div>
 
