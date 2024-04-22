@@ -89,7 +89,9 @@ class Necessity extends Controller {
         else if ($_SESSION['user_type'] == 'organization') {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities(),
-                'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities()
+                'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities(),
+                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount(),
+                'totalReceivedQuantity' => $this->necessityModel->getTotalReceivedQuantity()
             ];
 
             $this->view('organization/postedphysicalgoodsnecessity', $data);
