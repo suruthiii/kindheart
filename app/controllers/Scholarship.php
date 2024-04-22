@@ -308,4 +308,22 @@ class Scholarship extends Controller {
             }
         }
     }
+
+    //Get Details of One Selected Scholarship Application
+    public function viewScholarshipApplication($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($scholarshipID))) {
+            redirect('pages/404');           
+        }
+
+        // die(print_r($benefactionID));
+
+        $data = [
+            'title' => 'View Scholarship Application',
+            'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
+        ];
+
+        // die(print_r($data['benefactionRequest_details']));
+
+        $this->view('donor/viewScholarshipApplication', $data);
+    }    
 }

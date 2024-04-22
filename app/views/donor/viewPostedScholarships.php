@@ -34,35 +34,38 @@
                 </div>
 
                 <div class="scholarship-left-column">
-                    <!-- Scholarship Details -->
-                    <div class="scholarship-info">
-                        <table>
-                            <tr class="scholarship-data">
-                                <th>Title</th>
-                                <td><?php print_r($data['scholarship_details']->title); ?></td>
-                            </tr>
-                            <tr class="scholarship-data">
-                                <th>Scholarship Amount</th>
-                                <td>LKR <?php print_r($data['scholarship_details']->amount); ?></td>
-                            </tr>
-                            <tr class="scholarship-data">
-                                <th>Scholarship Starting Date</th>
-                                <td><?php print_r($data['scholarship_details']->startDate) ?></td>
-                            </tr>
-                            <tr class="scholarship-data">
-                                <th>Duration</th>
-                                <td><?php print_r($data['scholarship_details']->duration) ?></td>
-                            </tr>
-                            <tr class="scholarship-data">
-                                <th>Description</th>
-                                <td><?php print_r($data['scholarship_details']->description); ?></td>
-                            </tr>
-                            <tr class="scholarship-data">
-                                <th>Application Deadline</th>
-                                <td><?php print_r($data['scholarship_details']->deadline) ?></td>
-                            </tr>
-                        </table>
-                    </div>                    
+                    <!-- Left column for view-benefaction-form -->
+                    <div class="view-scholarship-left-column">
+                        <!-- Scholarship Details -->
+                        <div class="scholarship-info">
+                            <table>
+                                <tr class="scholarship-data">
+                                    <th>Title</th>
+                                    <td><?php print_r($data['scholarship_details']->title); ?></td>
+                                </tr>
+                                <tr class="scholarship-data">
+                                    <th>Scholarship Amount</th>
+                                    <td>LKR <?php print_r($data['scholarship_details']->amount); ?></td>
+                                </tr>
+                                <tr class="scholarship-data">
+                                    <th>Scholarship Starting Date</th>
+                                    <td><?php print_r($data['scholarship_details']->startDate) ?></td>
+                                </tr>
+                                <tr class="scholarship-data">
+                                    <th>Duration</th>
+                                    <td><?php print_r($data['scholarship_details']->duration) ?></td>
+                                </tr>
+                                <tr class="scholarship-data">
+                                    <th>Description</th>
+                                    <td><?php print_r($data['scholarship_details']->description); ?></td>
+                                </tr>
+                                <tr class="scholarship-data">
+                                    <th>Application Deadline</th>
+                                    <td><?php print_r($data['scholarship_details']->deadline) ?></td>
+                                </tr>
+                            </table>
+                        </div> 
+                    </div>                   
                 </div>
 
                 <div class="view-scholarship-btn-container">
@@ -87,34 +90,70 @@
             <!-- right side bar for applications -->
             <div class="application-right-side-bar">
                 <div class="application-right-side-bar-inner">
+                    <?php
+                        // Determine which section to display based on availability status
+                        $availabilityStatus = $data['benefaction_details']->availabilityStatus;
+
+                        // $verificationStatus = $data['benefaction_applications']->verificationStatus;
+
+                        switch ($availabilityStatus) {
+                            case 0:
+                                $sectionTitle = 'Applications';
+                                break;
+                            case 1:
+                                $sectionTitle = 'Accepted Applications';
+                                break;
+                            case 2:
+                                $sectionTitle = 'Completed Applications';
+                                break;
+                            default:
+                                $sectionTitle = 'Applications';
+                                break;
+                        }
+
+                        // switch ($verificationStatus) {
+                        //     case 0:
+                        //         // Unverified applications (verificationStatus = 0)
+                        //         $sectionTitle = 'Applications';
+                        //         break;
+                        //     case 1:
+                        //     case 3:
+                        //         // Verified applications (verificationStatus = 1 or 3)
+                        //         $sectionTitle = 'Accepted Applications';
+                        //         break;
+                        //     case 2:
+                        //         // Completed applications (verificationStatus = 2)
+                        //         $sectionTitle = 'Completed Applications';
+                        //         break;
+                        //     default:
+                        //         // Default to availability status if verification status doesn't match known cases
+                        //         break;
+                        // }
+                    ?>
                     <!-- Topic -->
                     <div class="application-right-side-bar-topic">
-                        <h3>applications</h3>
+                        <h3><?php echo $sectionTitle; ?></h3>
+                        <div class="application-right-side-bar-grey-line"> </div>
                     </div>
-                    <!-- applications -->
-                     <div class="application-right-side-bar-type-applications">
-                            <h4>Name</h4>
-                            <p>Description</p>
-                        </div>
 
-                        <!-- <?php echo $data['scholarship_applications']; ?> -->
-
-                    <?php foreach($data['scholarship_applications'] as $application): ?>
-                        <!-- <a href="pop up including applicanmt details"> -->
-                        <div class="application-right-side-bar-type-applications">
-                            <!-- <h4>                    
-                                <?php
-                                    if ($application->user_type === 'student') {
-                                        echo htmlspecialchars($application->student_name);
-                                    } elseif ($application->user_type === 'organization') {
-                                        echo htmlspecialchars($application->orgName);
-                                    }
-                                ?>
-                            </h4> -->
-                            <p><?php echo substr($application->reason, 0, 20) . (strlen($application->reason) > 20 ? '...' : ''); ?></p>
-                            <p><?php echo $application->applicationedQuantity; ?> Items applicationed</p>
+                    <!-- Display applications or no applications message -->
+                    <?php if (empty($data['benefaction_applications'])) : ?>
+                        <div class="application-right-side-bar-no-applications">
+                            <p>No Applications Yet</p>
                         </div>
-                    <?php endforeach; ?>
+                    <?php else : ?>
+                        <div class="application-right-side-bar-all-applications">
+                            <?php foreach($data['benefaction_applications'] as $application): ?>
+                                <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionapplication/<?php echo $application->doneeID?>/<?php echo $application->benefactionID?>">
+                                    <div class="application-right-side-bar-type-applications">
+                                        <h4> <?php echo $application->doneeName; ?></h4>
+                                        <!-- <p>rRequested Amount:<?php echo $application->requestedQuantity; ?></p> -->
+                                        <p><?php echo substr($application->reason, 0, 20) . (strlen($application->reason) > 20 ? '...' : ''); ?></p>
+                                    </div>
+                                </a>                                
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
