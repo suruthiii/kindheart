@@ -136,7 +136,10 @@
                         <h5>Total Donation You Recieve</h5>
                         <p>Rs. <?php echo number_format($data['totalReceivedAmount'], 2); ?></p>
                     </div>
-                    <div class="right-side-bar-type-one-detailed-view-boxes"></div>
+                    <div class="right-side-bar-type-one-detailed-view-boxes">
+                        <h5>Total number of donors who donated</h5>
+                        <p><?php echo number_format($data['totalNumberofDonors']); ?> Number of Donors</p>
+                    </div>
                     <div class="right-side-bar-type-one-detailed-view-boxes"></div>
 
                 </div>

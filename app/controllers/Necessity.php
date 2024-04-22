@@ -44,7 +44,8 @@ class Necessity extends Controller {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
-                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount()
+                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount(),
+                'totalNumberofDonors' => $this->necessityModel->getnumberofdonorsdonates()
             ];
 
             $this->view('organization/postedmonetarynecessity', $data);
