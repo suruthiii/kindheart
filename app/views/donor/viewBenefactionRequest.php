@@ -75,7 +75,8 @@
                     </form>
 
                     <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request">
-                    <!-- <input type="hidden" name="ids" id="ids" value="<?php echo $data['benefactionRequest_details']->benefactionID . '-' . $data['benefactionRequest_details']->doneeID; ?>" /> -->
+                    <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                    <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
                         <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline()" >
                             <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
                             <h5>Decline Request</h5>

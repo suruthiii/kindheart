@@ -347,22 +347,25 @@ class Benefaction extends Controller {
         $this->view('donor/viewBenefactionRequest', $data);
     }
 
-    // public function declineBenefactionRequest() {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ids'])) {
-    //         $ids = $_POST['ids'];
-    //         list($benefactionID, $doneeID) = explode('-', $ids);
-            
-    //         // Update the status of the benefaction request
-    //         $this->donorModel->updateBenefactionRequestStatus($doneeID, $benefactionID, 10);
-            
-    //         // Redirect to a suitable page after processing
-    //         redirect('benefaction/viewPostedBenefactions');
-    //     } else {
-    //         // Handle cases where form is not submitted or doneeID is missing
-    //         // Redirect or display an error message
-    //         redirect('pages/error');
-    //     }
-    // }
+    public function declineBenefactionRequest() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['benefactionID']) && isset($_POST['doneeID'])) {
+                
+                $benefactionID = $_POST['benefactionID'];
+                $doneeID = $_POST['doneeID'];
+                
+                // Update the status of the benefaction request
+                $this->donorModel->declineBenefactionRequest($doneeID, $benefactionID);
+                
+                // Redirect to a suitable page after processing
+                redirect('benefaction/viewPostedBenefactions');
+            } else {
+                // Handle cases where form is not submitted or doneeID is missing
+                // Redirect or display an error message
+                redirect('pages/error');
+            }
+        }
+    }
     
 
     
