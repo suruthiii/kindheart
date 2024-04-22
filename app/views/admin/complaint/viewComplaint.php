@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/superadmin/complaint">
+                <a href="<?php echo URLROOT ?>/admin/complaint">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -42,26 +42,18 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <?php if ($data['complaint_adminID'] == 0)  {?>
 
-                    <!-- Dropdown Menu -->
-                    <div class="dropdown">
-                        <button class="dropbtn">Assign</button>
-                        <div class="dropdown-content">
-                            <?php for ($i = 0; $i < sizeof($data['admins']) - 1; $i++) {?>
-                                <form action="<?php echo URLROOT ?>/complaint/assignadmin" method="post" class="delete-form">
-                                    <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $data['complaint_ID']; ?>" />
-                                    <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $data['admins'][$i]->adminID ?>" />
-                                    <button type="submit" class="dropdown-item" onclick="">
-                                        <?php echo $data['admins'][$i]->adminName ?>
-                                    </button>
-                                </form>
-                            <?php } ?>
-                        </div>
-                    </div>
-    
+                <?php if ($data['complaint_adminID'] == 0)  {?>
+                    <form action="<?php echo URLROOT ?>/complaint/assignme" method="post" class="delete-form">
+                        <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $data['complaint_ID']; ?>" />
+                        <button type="submit" class="view-donation-btn" onclick="">
+                            Assign
+                        </button>
+                    </form>
+
                 <?php } 
-                else {?>
+
+                else if ($data['complaint_adminID'] == $_SESSION['user_id']) {?>
                     <form action="<?php echo URLROOT ?>/complaint/unassignadmin" method="post" class="delete-form">
                         <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $data['complaint_ID']; ?>" />
                         <button type="submit" class="view-donation-btn" onclick="">
