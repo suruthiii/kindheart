@@ -352,6 +352,8 @@ class UserModel{
 
     // User Ban Functionality
     public function banUser($user_ID) {
+        date_default_timezone_set('Asia/Colombo');
+        
         $this->db->query('UPDATE user SET status = 5, banCount = banCount + 1, bannedTime = :bannedTime WHERE userID = :userID;');
         $this->db->bind(':userID', $user_ID);
         $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));

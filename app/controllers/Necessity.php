@@ -1313,30 +1313,66 @@ class Necessity extends Controller {
         }
     }
 
-    public function viewDoneeProfile() {
+    public function viewMonetaryDoneeProfile($necessity_ID = null, $donee_ID = null) {
         if($_SESSION['user_type'] == 'student' && $_SESSION['user_type'] == 'organization') {
             redirect('pages/404');
         }
 
         else {
-            $doneeType = $this->userModel->getDoneeType($_GET['doneeID']);
+            $doneeType = $this->userModel->getDoneeType($donee_ID);
 
             if ($doneeType == 'student') {
                 $data = [
                     'title' => 'Home Page',
-                    'details' => $this->necessityModel->getStudentDetails($_GET['doneeID'])
+                    'necessity_ID' => $necessity_ID,
+                    'details' => $this->necessityModel->getStudentDetails($donee_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/necessity/viewStudentProfile', $data);
+                $this->view($_SESSION['user_type'].'/necessity/viewMonetaryStudentProfile', $data);
             }
 
             else if ($doneeType == 'organization') {
                 $data = [
                     'title' => 'Home Page',
-                    'details' => $this->necessityModel->getOrganizationDetails($_GET['doneeID'])
+                    'necessity_ID' => $necessity_ID,
+                    'details' => $this->necessityModel->getOrganizationDetails($donee_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/necessity/viewOrganizationProfile', $data);
+                $this->view($_SESSION['user_type'].'/necessity/viewMonetaryOrganizationProfile', $data);
+            }
+
+            else {
+                die('Donee Type Not Found');
+            }
+        }
+    }
+
+    public function viewGoodDoneeProfile($necessity_ID = null, $donee_ID = null) {
+        if($_SESSION['user_type'] == 'student' && $_SESSION['user_type'] == 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            $doneeType = $this->userModel->getDoneeType($donee_ID);
+
+            if ($doneeType == 'student') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $necessity_ID,
+                    'details' => $this->necessityModel->getStudentDetails($donee_ID)
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewGoodStudentProfile', $data);
+            }
+
+            else if ($doneeType == 'organization') {
+                $data = [
+                    'title' => 'Home Page',
+                    'necessity_ID' => $necessity_ID,
+                    'details' => $this->necessityModel->getOrganizationDetails($donee_ID)
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewGoodOrganizationProfile', $data);
             }
 
             else {
