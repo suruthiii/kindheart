@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST" onsubmit="return validateFileType()">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST">
                         <!-- Project title -->
                         <div class="add-necessity-one-line-input">
                             <label for="projectTitle">Project Title</label>
@@ -41,21 +41,20 @@
                                 <!-- First line of form -->
                                 <div class="add-projects-add-more-field-input" id="add-more-milestone" name="add-more-milestone">
                                     <div class="project-first-div">
+                                        <!-- Get the name of the milestone -->
                                         <label for="projectsmilestones"> Project MileStones</label>
-                                        <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones']) ? $data['projectsmilestones'] : ''; ?>">
-                                        <!-- Monetary necessity Error display -->
-                                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectsmilestones_err']) ? $data['projectsmilestones_err']: ''; ?></span>
+                                        <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones[]']) ? $data['projectsmilestones[]'] : ''; ?>" required oninvalid="this.setCustomValidity('Please name the Project Milestone')" oninput="this.setCustomValidity('')">
                                     </div>
                                     <div class="project-second-div">
+                                        <!-- get the budget for each mile stone -->
                                         <label for="milestonebudget">MileStone Budget</label>
-                                        <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget']) ? $data['milestonebudget'] : ''; ?>" min="25">
-                                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['milestonebudget_err']) ? $data['milestonebudget_err']: ''; ?></span>
+                                        <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget[]']) ? $data['milestonebudget[]'] : ''; ?>" min="25" required oninvalid="this.setCustomValidity('Please enter the Budget for named Milestone')" oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                                 <!-- Description about each project mile stone -->
                                 <div class="add-projects-text-area-input-to-oneline" name="add-projects-text-area-input-to-oneline" id="add-projects-text-area-input-to-oneline">
                                     <label for="milestonedescription">Milestone Description</label>
-                                    <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['milestonedescription']) ? $data['milestonedescription'] : ''; ?></textarea>
+                                    <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project" required oninvalid="this.setCustomValidity('Please give the description about the Milestone')" oninput="this.setCustomValidity('')"><?php echo isset($data['milestonedescription[]']) ? $data['milestonedescription[]'] : ''; ?></textarea>
                                 </div>
                                 <!-- Adding Images -->
                                 <div class="project-milestones-images">
@@ -63,14 +62,10 @@
                                 </div>
                                 <div class="add-project-one-line-second-type-input">
                                     <div class="projects-first-div">
-                                        <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
-                                        <!-- Recurring start date error display -->
-                                        <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span> -->
+                                        <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
                                     </div>
                                     <div class="projects-second-div">
-                                        <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
-                                        <!-- Recurring End date error display -->
-                                        <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span> -->
+                                        <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                             </div>
@@ -83,6 +78,7 @@
 
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['MilestoneInputblock_err']) ? $data['MilestoneInputblock_err']: ''; ?></span>
                             <input type="submit" value="Add">
                         </div>
                     </form>
@@ -112,16 +108,16 @@
                 const firstLine = document.createElement('div');
                 firstLine.className = 'add-projects-add-more-field-input';
                 firstLine.innerHTML = `
-                    <div class="project-first-div">
-                        <label for="projectsmilestones"> Project MileStones</label>
-                        <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="">
-                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
-                    </div>
-                    <div class="project-second-div">
-                        <label for="milestonebudget">MileStone Budget</label>
-                        <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="" min="25">
-                        <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
-                    </div>
+                <div class="project-first-div">
+                    <!-- Get the name of the milestone -->
+                    <label for="projectsmilestones"> Project MileStones</label>
+                    <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones[]']) ? $data['projectsmilestones[]'] : ''; ?>" required oninvalid="this.setCustomValidity('Please name the Project Milestone')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="project-second-div">
+                    <!-- get the budget for each mile stone -->
+                    <label for="milestonebudget">MileStone Budget</label>
+                    <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget[]']) ? $data['milestonebudget[]'] : ''; ?>" min="25" required oninvalid="this.setCustomValidity('Please enter the Budget for named Milestone')" oninput="this.setCustomValidity('')">
+                </div>
                 `;
                 milestoneBlock.appendChild(firstLine);
 
@@ -129,8 +125,8 @@
                 const descriptionLine = document.createElement('div');
                 descriptionLine.className = 'add-projects-text-area-input-to-oneline';
                 descriptionLine.innerHTML = `
-                    <label for="milestonedescription">Milestone Description</label>
-                    <textarea name="milestonedescription" id="milestonedescription" cols="30" rows="10" title="An explanation of project"></textarea>
+                <label for="milestonedescription">Milestone Description</label>
+                <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project" required oninvalid="this.setCustomValidity('Please give the description about the Milestone')" oninput="this.setCustomValidity('')"><?php echo isset($data['milestonedescription[]']) ? $data['milestonedescription[]'] : ''; ?></textarea>
                 `;
                 milestoneBlock.appendChild(descriptionLine);
 
@@ -139,14 +135,10 @@
                 ImageLine.className = 'add-project-one-line-second-type-input';
                 ImageLine.innerHTML = `
                 <div class="projects-first-div">
-                    <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
-                    <!-- Recurring start date error display -->
-                    <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span> -->
+                    <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
                 </div>
                 <div class="projects-second-div">
-                    <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg">
-                    <!-- Recurring End date error display -->
-                    <!-- <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span> -->
+                    <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
                 </div>
                 `;
                 milestoneBlock.appendChild(ImageLine);
@@ -183,15 +175,9 @@
 
         });
 
-        function display_image_name(input, index) {
-            if (input.files && input.files[0]) {
-                var filename = input.files[0].name;
-                var parentBlock = input.closest('.dynamic-input-block');
-                var label = parentBlock.querySelectorAll('.project-file-upload-label')[index];
-                label.querySelector('.project-file-upload-label-icon-text').innerText = filename;
-            }
-        }
-    </script>
+</script>
+
+
 
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
