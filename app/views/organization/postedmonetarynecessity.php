@@ -132,7 +132,12 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
-                    
+                    <div class="right-side-bar-type-one-detailed-view-boxes-typeone">
+                        <h5>Total Donation You Recieve</h5>
+                        <p>Rs. 2000000</p>
+                    </div>
+                    <div class="right-side-bar-type-one-detailed-view-boxes"></div>
+                    <div class="right-side-bar-type-one-detailed-view-boxes"></div>
 
                 </div>
             </div>
