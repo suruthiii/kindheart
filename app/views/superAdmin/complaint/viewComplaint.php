@@ -28,11 +28,11 @@
                 <table>
                     <tr class="necessity-data">
                         <th width="30%">Complainer Name</th>
-                        <td width="70%"><a href="<?php echo URLROOT?>/complaint/viewcomplainerprofile?complainer_ID=<?php echo $data['complainer_ID'] ?>"><?php echo $data['complainer_name']; ?></a></td>
+                        <td width="70%"><a href="<?php echo URLROOT?>/complaint/viewprofile/<?php echo $data['complaint_ID'] ?>/<?php echo $data['complainer_ID'] ?>"><?php echo $data['complainer_name']; ?></a></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Complainee Name</th>
-                        <td width="70%"><a href="<?php echo URLROOT?>/complaint/viewcomplaineeprofile?complainee_ID=<?php echo $data['complainee_ID'] ?>"><?php echo $data['complainee_name']; ?></a></td>
+                        <td width="70%"><a href="<?php echo URLROOT?>/complaint/viewprofile/<?php echo $data['complaint_ID'] ?>/<?php echo $data['complainee_ID'] ?>"><?php echo $data['complainee_name']; ?></a></td>
                     </tr>
                     <tr class="necessity-data">
                         <th width="30%">Description</th>

@@ -472,6 +472,15 @@ class UserModel{
         return $result->donorType;
     }
 
+    public function getDoneeType($donee_ID) {
+        $this->db->query('SELECT doneeType FROM donee WHERE doneeID = :doneeID;');
+        $this->db->bind(':doneeID', $donee_ID);
+
+        $result = $this->db->single();
+
+        return $result->doneeType;
+    }
+
     public function getDonorInd($donor_ID) {
         $this->db->query('SELECT u.email, u.username, d.*, i.* FROM user u JOIN donor d ON u.userID = d.donorID JOIN individual i ON d.donorID = i.individualID WHERE donorID = :donorID;');
         $this->db->bind(':donorID', $donor_ID);

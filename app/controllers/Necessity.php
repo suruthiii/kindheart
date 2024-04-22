@@ -9,6 +9,7 @@ class Necessity extends Controller {
         // Only admins are allowed to access admin pages
         $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
         $this->necessityModel = $this->model('NecessityModel');
+        $this->userModel = $this->model('UserModel');
     }
 
     public function monetary(){
@@ -1309,6 +1310,38 @@ class Necessity extends Controller {
             $data['comments'] = $this->necessityModel->getAllComments($data['necessity_ID']);
 
             $this->view($_SESSION['user_type'].'/necessity/managegood', $data);
+        }
+    }
+
+    public function viewDoneeProfile() {
+        if($_SESSION['user_type'] == 'student' && $_SESSION['user_type'] == 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            $doneeType = $this->userModel->getDoneeType($_GET['doneeID']);
+
+            if ($doneeType == 'student') {
+                $data = [
+                    'title' => 'Home Page',
+                    'details' => $this->necessityModel->getStudentDetails($_GET['doneeID'])
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewStudentProfile', $data);
+            }
+
+            else if ($doneeType == 'organization') {
+                $data = [
+                    'title' => 'Home Page',
+                    'details' => $this->necessityModel->getOrganizationDetails($_GET['doneeID'])
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewOrganizationProfile', $data);
+            }
+
+            else {
+                die('Donee Type Not Found');
+            }
         }
     }
 }
