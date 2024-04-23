@@ -1030,6 +1030,23 @@
     float: right;
 }
 
+.details-about-project-milestone{
+    position: relative;
+    width: 90%;
+    height: 5vh;
+    margin-top: 4vh;
+}
+
+.details-about-project-milestone h4{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    margin-bottom: 1.5vh;
+}
+
 .add-projects-add-more-field-input{
     position: relative;
     width: 90%;
@@ -1290,5 +1307,16 @@
 .posted-necessity-view-table-edit-and-delete-buttons-row button:hover{
     background-color: #6C0000;
     transform: scale(0.99);
+}
+
+/*-----Posted projects view details -------*/
+.posted-project-table-view{
+    position: fixed;
+    width: 42%;
+    height: 55vh;
+    margin-top: 17vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: aqua;
 }
 

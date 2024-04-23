@@ -27,11 +27,13 @@ class Project extends Controller {
 
                 $data = [
                     'projectTitle' => trim($_POST['projectTitle']),
+                    'projectDescription' => trim($_POST['projectDescription']),
                     'projectsmilestones' => $_POST['projectsmilestones'],
                     'milestonebudget' => $_POST['milestonebudget'],
                     'milestonedescription' => $_POST['milestonedescription'],
                     'projectTitle_err' => '',
-                    'MilestoneInputblock_err' => ''
+                    'MilestoneInputblock_err' => '',
+                    'projectDescription_err' => ''
 
                 ];
 
@@ -77,6 +79,10 @@ class Project extends Controller {
                     $data['projectTitle_err']='Please enter the title for the project';
                 }
 
+                if(empty($data['projectDescription'])){
+                    $data['projectDescription_err']='Please enter the description about overall project';
+                }
+
                 // Check for duplicate file paths between first and second project images
                 foreach ($firstprojectImagesPath as $firstImagePath) {
                     foreach ($seconprojectImagesPath as $secondImagePath) {
@@ -90,7 +96,7 @@ class Project extends Controller {
                 $totalMilestoneBudget = array_sum($data['milestonebudget']);
 
                 //check whether there any errors
-                if(empty($data['MilestoneInputblock_err']) && empty($data['projectTitle_err']) && !empty($data['projectsmilestones']) && !empty($data['milestonebudget']) && !empty($data['milestonedescription']) && !empty($data['firstprojectImagesPath']) && !empty($data['seconprojectImagesPath'])){
+                if(empty($data['MilestoneInputblock_err']) && empty($data['projectTitle_err']) && empty($data['projectDescription_err']) && !empty($data['projectsmilestones']) && !empty($data['milestonebudget']) && !empty($data['milestonedescription']) && !empty($data['firstprojectImagesPath']) && !empty($data['seconprojectImagesPath'])){
                     $data['totalMilestoneBudget'] = $totalMilestoneBudget;
 
                     if($this->projectModel->addprojectstodb($data)){
@@ -113,13 +119,15 @@ class Project extends Controller {
 
                 $data = [
                     'projectTitle' => '',
+                    'projectDescription' => '',
                     'projectsmilestones' => [],
                     'milestonebudget' => [],
                     'milestonedescription' => [],
                     'firstprojectImagesPath' => [],
                     'seconprojectImagesPath' => [],
                     'projectTitle_err' => '',
-                    'MilestoneInputblock_err' => ''
+                    'MilestoneInputblock_err' => '',
+                    'projectDescription_err' => ''
                 ];
 
                 $this->view('organization/project/addprojects', $data);
@@ -265,4 +273,65 @@ class Project extends Controller {
             }
         }
     }
+
+    // View added project's further information
+    public function viewProjectDetails(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
+            redirect('pages/404');
+        } else {
+
+            $data = [
+                'title' => 'Home page'
+            ];
+
+            $this->view('organization/project/viewPendingprojectsdetails', $data);
+        //     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+        //         if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+        //             // Get 'necessityID' from POST data
+        //             $necessityID = trim($_POST['necessityID']);
+    
+        //             // Get pending necessity details
+        //             $pendingNecessityDetails = $this->necessityModel->getPendingMonetaryNecessities($necessityID);
+    
+        //             // Prepare data to pass to the view
+        //             $data = [
+        //                 'necessityID' => $necessityID,
+        //                 'pendingNecessityDetails' => $pendingNecessityDetails
+        //             ];
+    
+        //             // Pass data to the view
+        //             if ($_SESSION['user_type'] == 'student') {
+
+        //             }else if ($_SESSION['user_type'] == 'organization') {
+        //                 $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+        //             }else {
+        //                 die('User Type Not Found');
+        //             }
+    
+        //         } else {
+        //             // display an error message here
+        //             die('User Necessity is Not Found');
+        //         }
+    
+        //     } else {
+        //         // If it's not a POST request, then empty data pass to the view
+        //         $data = [
+        //             'necessityID' => '',
+        //             'pendingNecessityDetails' => [] // this is an array
+        //         ];
+                
+        //         // Pass data to the view
+        //         if ($_SESSION['user_type'] == 'student') {
+
+        //         }else if ($_SESSION['user_type'] == 'organization') {
+        //             $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+        //         }else {
+        //             die('User Type Not Found');
+        //         }
+        //     }
+        }
+    }
+
 }

@@ -3,6 +3,7 @@
 class Necessity extends Controller {
     private $middleware;
     private $necessityModel;
+    private $userModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
