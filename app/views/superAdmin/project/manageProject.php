@@ -65,7 +65,7 @@
                 <form action="<?php echo URLROOT ?>/project/deleteproject" method="post" class="delete-form">
                     <input type="text" name="project_ID" hidden value=<?php echo $data['project_ID'] ?>>
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Delete Necessity
+                        Delete Project
                     </button>
                 </form>
             </div>
