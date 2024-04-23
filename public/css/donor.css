@@ -80,6 +80,156 @@ span .donor-form-error-details{
     margin-top: 0.5vh;
 }
 
+
+/* ------------------Donor Dashbaord--------------- */
+
+.donor-dashboard-container{
+    position: fixed;
+    width: 75%;
+    height: 85vh;
+    margin-top: 2vh;
+    right: 0px;
+}
+
+.donor-dashboard-introduction{
+    height: 13vh;
+}
+
+.donor-dashboard-status-bar-container{
+    margin-top: -20px;
+
+}
+
+.donor-dashboard-status-topic{ 
+    margin: 0;
+}
+
+.donor-dashboard-status-bar{
+    height: 120px;
+    width: 95%;
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donor-dashboard-status{
+    background-color: #8e0000;
+    width: 200px;
+    height: 100px;
+    color: white;
+    margin: 5px;
+    text-align: center;
+    border-radius: 10px;    
+    border: 1px solid #ddd;    
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.donor-dashboard-status p{
+
+}
+
+.donor-dashboard-two-column-container{
+    display: flex;
+    width: 95%;
+    margin-top: 10px;
+}
+
+.donor-dashboard-graph-container{
+    width: 75vh;
+    height: 50vh;  
+    margin-right: 5px;
+}
+
+.donor-dashboard-donation-container{
+    width: 75vh;
+    height: 50vh;
+}
+
+.donor-dashboard-right-container{
+    width: 73vh;
+    height: 40vh;    
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;   
+
+    display: flex;
+    justify-content: center;  
+    
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.donor-dashboard-left-container{
+    width: 73vh;
+    height: 40vh;    
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;  
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.donor-dashboard-right-container table{
+    width: 32%;
+    height: 37%;
+    margin-top: 10px;
+    border-collapse: collapse; /* Remove space between table cells */
+    position: fixed;
+}
+
+/* .donor-dashboard-right-container table tr{    
+
+} */
+
+.donor-dashboard-right-container table th{
+    padding-left: 10px;
+    border: 1px solid #747474;    
+    border-radius: 5px;
+    height: 1px;
+}
+
+.donor-dashboard-right-container table td{
+    padding-left: 10px;
+    border: 1px solid #747474;
+    border-radius: 5px;
+    height: 10px;
+}
+
+.donor-dashboard-right-container table tr {
+    height: 1px; /* Set fixed height for table rows */
+}
+
+/* .donor-dashboard-right-container table tr td:nth-child(1){
+    width: 20%;
+}
+
+.donor-dashboard-right-container table tr td:nth-child(2){
+    width: 40%;
+}
+
+.donor-dashboard-right-container table tr td:nth-child(3){
+    width: 20%;
+} */
+
+
+
+
+
+
+
+
+
+
+
 /* ------------------Add Benefaction--------------- */
 
 .two-column-container {
