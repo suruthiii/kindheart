@@ -718,6 +718,19 @@ span .donor-form-error-details{
     display: flex;
 }
 
+.request-right-side-bar-type-requests-completed{
+    width: 250px;
+    height: 60px;
+    padding: 10px;
+    background-color: #2ca030;
+    border-radius: 10px;
+    color: white;
+    margin: 0;
+    margin-bottom: 10px;
+
+    display: flex;
+}
+
 .request-right-side-bar-type-requests-left{
     min-width: 60%;
     margin: 0;
@@ -761,10 +774,10 @@ span .donor-form-error-details{
     align-items: center;
 }
 
-.request-right-side-bar-type-requests-right .status_incomplte p{
-    background-color: rgb(241, 121, 29);
+.request-right-side-bar-type-requests-right .status_accepted p{
+    background-color: #8ff693;
     color: #000;
-    
+
     height: 30px;
     width: 80px;
     border-radius: 10px;
