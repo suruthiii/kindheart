@@ -774,8 +774,8 @@ span .donor-form-error-details{
     align-items: center;
 }
 
-.request-right-side-bar-type-requests-right .status_accepted p{
-    background-color: #8ff693;
+.request-right-side-bar-type-requests-right .status_incomplte p{
+    background-color: #d3731f;
     color: #000;
 
     height: 30px;
