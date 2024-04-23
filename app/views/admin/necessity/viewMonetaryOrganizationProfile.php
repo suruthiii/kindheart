@@ -21,8 +21,8 @@
                 </a>
             </div>
 
-            <h3 style="margin-top: 25px">View Profile</h3>
-            <p style="margin-left: 10px">View information about the user</p>
+            <h3 style="margin-top: 25px">View Donee Profile</h3>
+            <p style="margin-left: 10px">View information about the donee</p>
             
             <div class="necessity-info">
                 <table>
