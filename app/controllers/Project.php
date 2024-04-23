@@ -27,11 +27,13 @@ class Project extends Controller {
 
                 $data = [
                     'projectTitle' => trim($_POST['projectTitle']),
+                    'projectDescription' => trim($_POST['projectDescription']),
                     'projectsmilestones' => $_POST['projectsmilestones'],
                     'milestonebudget' => $_POST['milestonebudget'],
                     'milestonedescription' => $_POST['milestonedescription'],
                     'projectTitle_err' => '',
-                    'MilestoneInputblock_err' => ''
+                    'MilestoneInputblock_err' => '',
+                    'projectDescription_err' => ''
 
                 ];
 
@@ -77,6 +79,10 @@ class Project extends Controller {
                     $data['projectTitle_err']='Please enter the title for the project';
                 }
 
+                if(empty($data['projectDescription'])){
+                    $data['projectDescription_err']='Please enter the description about overall project';
+                }
+
                 // Check for duplicate file paths between first and second project images
                 foreach ($firstprojectImagesPath as $firstImagePath) {
                     foreach ($seconprojectImagesPath as $secondImagePath) {
@@ -90,7 +96,7 @@ class Project extends Controller {
                 $totalMilestoneBudget = array_sum($data['milestonebudget']);
 
                 //check whether there any errors
-                if(empty($data['MilestoneInputblock_err']) && empty($data['projectTitle_err']) && !empty($data['projectsmilestones']) && !empty($data['milestonebudget']) && !empty($data['milestonedescription']) && !empty($data['firstprojectImagesPath']) && !empty($data['seconprojectImagesPath'])){
+                if(empty($data['MilestoneInputblock_err']) && empty($data['projectTitle_err']) && empty($data['projectDescription_err']) && !empty($data['projectsmilestones']) && !empty($data['milestonebudget']) && !empty($data['milestonedescription']) && !empty($data['firstprojectImagesPath']) && !empty($data['seconprojectImagesPath'])){
                     $data['totalMilestoneBudget'] = $totalMilestoneBudget;
 
                     if($this->projectModel->addprojectstodb($data)){
@@ -113,13 +119,15 @@ class Project extends Controller {
 
                 $data = [
                     'projectTitle' => '',
+                    'projectDescription' => '',
                     'projectsmilestones' => [],
                     'milestonebudget' => [],
                     'milestonedescription' => [],
                     'firstprojectImagesPath' => [],
                     'seconprojectImagesPath' => [],
                     'projectTitle_err' => '',
-                    'MilestoneInputblock_err' => ''
+                    'MilestoneInputblock_err' => '',
+                    'projectDescription_err' => ''
                 ];
 
                 $this->view('organization/project/addprojects', $data);

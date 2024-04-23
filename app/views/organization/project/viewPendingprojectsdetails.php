@@ -28,6 +28,10 @@
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
                 <!-- value="<?php echo $data['pendingNecessityDetails']->projectID ; ?>" -->
 
+                <div class="posted-project-table-view">
+                    
+                </div>
+
                 
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
                     <form action="<?php echo URLROOT ?>" method="post">
