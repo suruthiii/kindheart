@@ -120,6 +120,20 @@ class Scholarship extends Controller {
         $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
     }
 
+    public function deleteScholarship() {
+        if($_SESSION['user_type'] == 'student') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->scholarshipModel->deleteScholarship($_POST['scholarship_ID'])) {
+                    redirect($_SESSION['user_type'].'/scholarship');
+                }
+            }
+        }
+    }
+
     public function donorAddScholarships(){
         //other actors' redirection
         
