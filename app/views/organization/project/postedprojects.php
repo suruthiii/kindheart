@@ -39,10 +39,13 @@
                                 <td>
                                     
                                 </td>
-                                <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4></td>
+                                <td>
+                                    <h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
+                                </td>
                                 <td><p>Rs. <?php echo $pendingtablerow->budget?></p></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>" method="POST">
+                                    <form action="<?php echo URLROOT ?>/project/viewProjectDetails" method="POST">
                                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
@@ -78,7 +81,10 @@
                                 <td>
                                     
                                 </td>
-                                <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4></td>
+                                <td>
+                                    <h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
+                                </td>
                                 <td><p>Rs. <?php echo $completetablerow->budget?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>" method="POST">
