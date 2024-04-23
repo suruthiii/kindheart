@@ -4,14 +4,14 @@
 <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "complaints"; ?>
+<?php $section = "necessities"; ?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/complaint/viewcomplaint?complaint_ID=<?php echo $data['complaint_ID'] ?>">
+                <a href="<?php echo URLROOT ?>/necessity/viewmonetary?necessity_ID=<?php echo $data['necessity_ID']?>">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>

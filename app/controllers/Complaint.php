@@ -70,52 +70,32 @@ class Complaint extends Controller {
        }
     }
 
-    public function viewComplainerProfile() {
-        $complainerType = $this->complaintModel->getUserType($_GET['complainer_ID']);
+    public function viewProfile($complaint_ID = null, $user_ID = null) {
+        if(empty($user_ID) || empty($complaint_ID)) {
+            redirect('pages/404');
+        }
+
+        $userType = $this->complaintModel->getUserType($user_ID);
 
         $data = [
             'title' => 'Home Page',
-            'details' => $this->complaintModel->getUserDetails($_GET['complainer_ID'], $complainerType),
+            'complaint_ID' => $complaint_ID,
+            'details' => $this->complaintModel->getUserDetails($user_ID, $userType),
         ];
 
-        if ($complainerType == 'student') {
+        if ($userType == 'student') {
             $this->view($_SESSION['user_type'].'/complaint/viewStudentProfile', $data);
         }
 
-        else if ($complainerType == 'organization') {
+        else if ($userType == 'organization') {
             $this->view($_SESSION['user_type'].'/complaint/viewOrganizationProfile', $data);
         }
         
-        else if ($complainerType == 'company') {
+        else if ($userType == 'company') {
             $this->view($_SESSION['user_type'].'/complaint/viewDonorComProfile', $data);
         }
 
-        else if ($complainerType == 'individual') {
-            $this->view($_SESSION['user_type'].'/complaint/viewDonorIndProfile', $data);
-        }
-    }
-
-    public function viewComplaineeProfile() {
-        $complaineeType = $this->complaintModel->getUserType($_GET['complainee_ID']);
-
-        $data = [
-            'title' => 'Home Page',
-            'details' => $this->complaintModel->getUserDetails($_GET['complainee_ID'], $complaineeType)
-        ];
-
-        if ($complaineeType == 'student') {
-            $this->view($_SESSION['user_type'].'/complaint/viewStudentProfile', $data);
-        }
-
-        else if ($complaineeType == 'organization') {
-            $this->view($_SESSION['user_type'].'/complaint/viewOrganizationProfile', $data);
-        }
-        
-        else if ($complaineeType == 'company') {
-            $this->view($_SESSION['user_type'].'/complaint/viewDonorComProfile', $data);
-        }
-
-        else if ($complaineeType == 'individual') {
+        else if ($userType == 'individual') {
             $this->view($_SESSION['user_type'].'/complaint/viewDonorIndProfile', $data);
         }
     }
