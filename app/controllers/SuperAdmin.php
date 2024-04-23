@@ -11,6 +11,7 @@ class SuperAdmin extends Controller {
         $this->projectModel = $this->model('ProjectModel');
         $this->benefactionModel = $this->model('BenefactionModel');
         $this->complaintModel = $this->model('ComplaintModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function index(){
@@ -21,7 +22,12 @@ class SuperAdmin extends Controller {
             'complaints' => $this->userModel->getComplaintCount()
         ];
 
-        $this->view('superAdmin/index', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/index', $data, $other_data);
     }
 
     public function admin($other_data = null){
@@ -29,6 +35,8 @@ class SuperAdmin extends Controller {
             'title' => 'Home page',
             'admins' => $this->userModel->viewAdmins()
         ];
+
+        $other_data['notification_count'] = $this->notificationModel->getNotificationCount();
 
         $this->view('superAdmin/admin', $data, $other_data);
     }
