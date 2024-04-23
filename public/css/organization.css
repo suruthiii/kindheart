@@ -1310,7 +1310,7 @@
 }
 
 /*-----Posted projects view details -------*/
-.posted-project-table-view{
+.posted-project-accordian-view{
     position: fixed;
     width: 42%;
     height: 55vh;
@@ -1318,5 +1318,47 @@
     overflow: hidden;
     overflow-y: scroll;
     background-color: aqua;
+}
+
+.accordian-milestone{
+    position: relative;
+    width: 100%;
+    /* height: 65vh; */
+    background-color: #8E0000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.accordian-milestone label,
+.accordian-milestone .addordian-milestone-content{
+    padding: 14px 20px;
+}
+
+.accordian-milestone label{
+    position: relative;
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.accordian-milestone label:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.accordian-milestone label::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 12px;
+    height: 6px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+    background-size: contain;
+    transition: transform 0.4s;
 }
 

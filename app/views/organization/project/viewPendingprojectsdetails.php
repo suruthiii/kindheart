@@ -28,8 +28,23 @@
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
                 <!-- value="<?php echo $data['pendingNecessityDetails']->projectID ; ?>" -->
 
-                <div class="posted-project-table-view">
-                    
+                <div class="posted-project-accordian-view">
+                    <div class="accordian-milestone">
+                        
+                        <div>
+                            <input type="radio" name="milestoneSection" id="milestoneIndex1">
+                            <label for="milestoneIndex1">Milestone #1</label>
+                            <div class="addordian-milestone-content">
+                                <p>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                    Eos sed in odit inventore suscipit numquam eius magni architecto 
+                                    consequatur soluta iure eum temporibus itaque enim consequuntur, 
+                                    repellendus quia quod culpa.
+                                </p>
+                            </div>
+                        </div>
+                            
+                    </div>
                 </div>
 
                 
