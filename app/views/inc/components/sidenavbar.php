@@ -264,7 +264,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="#5">
+                <a href="<?php echo URLROOT ?>/student/donors">
                     <?php if ($section == 'donors'){?>
                         <div class="selected-item">Donors</div>
                     <?php }
@@ -273,7 +273,7 @@
                     <?php } ?>
                 </a>
                 
-                <a href="#6">
+                <a href="<?php echo URLROOT ?>/student/editProfile">
                     <?php if ($section == 'editprofile'){?>
                         <div class="selected-item">Edit Profile</div>
                     <?php }
@@ -281,6 +281,7 @@
                         <div class="item">Edit Profile</div>
                     <?php } ?>
                 </a>
+               
 
                 <div class="item">
                     <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
