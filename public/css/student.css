@@ -736,3 +736,72 @@
 
 
 
+/*-----------edit profile  ------------>*/
+
+
+
+
+.edit-profile-form{
+    margin-top: 10%;
+    position: fixed;
+    width: 70%;
+    height: 70%; /* Set the height of the div */
+    display: flex;
+    flex-direction: column;  
+    overflow-y: scroll; /* Allow vertical scrolling */
+    
+}
+
+.edit-profile-form .lines{
+    width: 50%;
+    padding-bottom: 20px;
+
+}
+
+.edit-profile-form .lines input {
+    height: 6vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background-color: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+
+}
+
+.edit-profile-form .lines label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+
+
+
+}
+.edit-profile-form .lines textarea{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+    width: 100%;
+    height: 30%;
+}
+
+.edit-profile-form h4{
+    font-size: 20px;
+    font-weight: 300;
+    
+}
+
+
+
+
+
+
+
+

@@ -61,6 +61,23 @@
                             <td><?php print_r($data['scholarship_details']->deadline); ?></td>
                         </tr>
                         <tr class="scholarship-data">
+                                    <th>status</th>
+                                    <td><?php 
+                                        $status = $data['scholarship_details']->availabilityStatus;
+
+                                        // Echo different divs based on the status
+                                        if ($status === 0) {
+                                            echo '<div class="status_pending"><p>Pending</p></div>';
+                                        } elseif ($status === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                        } elseif ($status === 2) {
+                                            echo '<div class="status_rejected"><p>Completed</p></div>';
+                                        } else {
+                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                        }
+                                        ?></td>
+                                </tr>
+                        <tr class="scholarship-data">
                                   
                                     <td><?php 
                                         $status = $data['scholarship_details']->availabilityStatus;
@@ -96,38 +113,36 @@
 
                         <h3>Applied Scholarships</h3>
 
-<?php foreach ($data['scholarships'] as $item) { ?>
-    <a href="<?php echo URLROOT ?>/Student/ViewAppliedScholarship/<?php echo $item->scholarshipID?>">
-<div class="applied-benefaction-cards">
-    <div class="left">
-        <h3><?php echo $item->title; ?><h3>
-        <p><?php echo $item->amount; ?> LKR</p>
-    
-    </div>
-    <div class="right">
-        
-            <p><?php 
-            $status = $item->availabilityStatus;
+                            <?php foreach ($data['scholarships'] as $item) { ?>
+                            <a href="<?php echo URLROOT ?>/Student/ViewAppliedScholarship/<?php echo $item->scholarshipID?>">
+                                <div class="applied-benefaction-cards">
+                                    <div class="left">
+                                        <h3><?php echo $item->title; ?><h3>
+                                        <p><?php echo $item->amount; ?> LKR</p>
+                                
+                                    </div>
+                                    <div class="right">
+                                    
+                                        <p><?php 
+                                        $status = $item->availabilityStatus;
 
-            // Echo different divs based on the status
-            if ($status === 0) {
-                echo '<div class="status_pending"><p>Pending</p></div>';
-            } elseif ($status === 1) {
-                echo '<div class="status_accepted"><p>Accepted</p></div>';
-            } elseif ($status === 2) {
-                echo '<div class="status_rejected"><p>Completed</p></div>';
-            } else {
-                echo '<div class="status_unknown"><p>Unknown status</p></div>';
-            }
-            ?></p>
-                                      
-    </div>
-</div>
-<?php } ?> 
+                                        // Echo different divs based on the status
+                                        if ($status === 0) {
+                                            echo '<div class="status_pending"><p>Pending</p></div>';
+                                        } elseif ($status === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                        } elseif ($status === 2) {
+                                            echo '<div class="status_rejected"><p>Completed</p></div>';
+                                        } else {
+                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                        }
+                                        ?></p>
+                                                                
+                                    </div>
+                                </div>
+                            <?php } ?> 
 
-
-
-</div>
+                        </div>
 
                         
                     </div>
