@@ -61,6 +61,10 @@
                                 <th>Donated Date</th>
                                 <td>dfbvsdfb</td>
                             </tr>
+                            <tr class="benefactionRequest-data">
+                                <th>Acknowledgement</th>
+                                <td>dfbvsdfb</td>
+                            </tr>                            
                         </table>                    
                     </div>                    
                 </div>
