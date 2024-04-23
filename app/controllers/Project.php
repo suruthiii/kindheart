@@ -211,6 +211,20 @@ class Project extends Controller {
         }
     }
 
+    public function deleteProject() {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->projectModel->deleteProjects($_POST['project_ID'])) {
+                    redirect($_SESSION['user_type'].'/project');
+                }
+            }
+        }
+    }
+
     //Delete  ongoing and completed projects 
     public function deleteProjects(){
         if($_SESSION['user_type'] != 'organization') {
