@@ -35,7 +35,20 @@
                             <!-- Requested Amount Error Display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectTitle_err']) ? $data['projectTitle_err']: ''; ?></span>
                         </div>
+
+                        <!-- Description about project -->
+                        <div class="add-necessity-text-area-input-to-oneline">
+                            <label for="projectDescription">Description</label>
+                            <textarea name="projectDescription" id="projectDescription" cols="30" rows="10" title="An explanation of overall Project"><?php echo isset($data['projectDescription']) ? $data['projectDescription'] : ''; ?></textarea>
+                            <!-- Neccessity description error display -->
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectDescription_err']) ? $data['projectDescription_err']: ''; ?></span>
+                        </div>
                         
+                        <div class="details-about-project-milestone">
+                            <h4>Add Milestones</h4>
+                        </div>
+
+
                         <div id="form-container">
                             <div class="dynamic-input-block">
                                 <!-- First line of form -->

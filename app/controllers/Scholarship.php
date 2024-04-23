@@ -6,6 +6,7 @@ class Scholarship extends Controller {
         $this->middleware = new AuthMiddleware();
         $this->middleware->checkAccess(['admin', 'superAdmin', 'donor', 'student']);
         $this->scholarshipModel = $this->model('ScholarshipModel');
+        $this->userModel = $this->model('UserModel');
     }
 
     public function manageScholarship($scholarship_ID = null) {
@@ -94,35 +95,43 @@ class Scholarship extends Controller {
 
 
     public function viewScholarship() {
-        if($_SESSION['user_type'] == 'organization') {
+        $donor_type = $this->scholarshipModel->getDonorType($_GET['scholarship_ID']);
+            
+        if($donor_type == 'company') {
+            $data = [
+                'title' => 'Home Page',
+                'scholarship_ID' => $_GET['scholarship_ID'],
+                'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
+            ];
+        }
+
+        else if($donor_type == 'individual') {
+            $data = [
+                'title' => 'Home Page',
+                'scholarship_ID' => $_GET['scholarship_ID'],
+                'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
+            ];
+        }
+
+        else {
+            die('Donor Type Not Found');
+        }
+
+        $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
+    }
+
+    public function deleteScholarship() {
+        if($_SESSION['user_type'] == 'student') {
             redirect('pages/404');
         }
 
         else {
-            $donor_type = $this->scholarshipModel->getDonorType($_GET['scholarship_ID']);
-                
-            if($donor_type == 'company') {
-                $data = [
-                    'title' => 'Home Page',
-                    'scholarship_ID' => $_GET['scholarship_ID'],
-                    'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
-                ];
-            }
-
-            else if($donor_type == 'individual') {
-                $data = [
-                    'title' => 'Home Page',
-                    'scholarship_ID' => $_GET['scholarship_ID'],
-                    'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
-                ];
-            }
-
-            else {
-                die('Donor Type Not Found');
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->scholarshipModel->deleteScholarship($_POST['scholarship_ID'])) {
+                    redirect($_SESSION['user_type'].'/scholarship');
+                }
             }
         }
-
-        $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
     }
 
     public function donorAddScholarships(){
@@ -409,7 +418,7 @@ class Scholarship extends Controller {
             }
         }
     }
-
+  
     //Get Details of One Selected Scholarship Application
     public function viewScholarshipApplication($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($scholarshipID))) {
@@ -427,4 +436,38 @@ class Scholarship extends Controller {
 
         $this->view('donor/viewScholarshipApplication', $data);
     }    
+  
+    public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            $donorType = $this->userModel->getDonorType($donor_ID);
+
+            if($donorType == 'company') {
+                $data = [
+                    'title' => 'Home Page',
+                    'scholarship_ID' => $scholarship_ID,
+                    'details' => $this->userModel->getDonorCom($donor_ID)
+                ];
+
+                $this->view($_SESSION['user_type'].'/scholarship/viewDonorComProfile', $data);
+            }
+
+            else if($donorType == 'individual') {
+                $data = [
+                    'title' => 'Home Page',
+                    'scholarship_ID' => $scholarship_ID,
+                    'details' => $this->userModel->getDonorInd($donor_ID)
+                ];
+
+                $this->view($_SESSION['user_type'].'/scholarship/viewDonorIndProfile', $data);
+            }
+
+            else {
+                die('Donor Type Not Found');
+            }
+        }
+    }
 }
