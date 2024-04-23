@@ -398,21 +398,33 @@ class Benefaction extends Controller {
     
 
     
-    public function viewBenefactionRequestAccepted($doneeID = null, $benefactionID = null) {
+    public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($benefactionID))) {
             redirect('pages/404');           
         }
-
-        // die(print_r($benefactionID));
 
         $data = [
             'title' => 'View Benefaction Request',
             'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
         ];
 
-        // die(print_r($data['benefactionRequest_details']));
+        if (!$data['benefactionRequest_details'][0]) {
+            redirect('pages/404');
+        }
 
-        $this->view('donor/viewBenefactionRequestAccepted', $data);
+        // Get verificationStatus from benefactionRequest_details
+        $verificationStatus = $data['benefactionRequest_details'][0]->verificationStatus;
+
+        // Determine which view to load based on verificationStatus
+        if ($verificationStatus == 0) {
+            $this->view('donor/viewBenefactionRequestPending', $data);
+        } elseif ($verificationStatus == 1 || $verificationStatus == 3) {
+            $this->view('donor/viewBenefactionRequestOngoing', $data);
+        } elseif ($verificationStatus == 2) {
+            $this->view('donor/viewBenefactionRequestCompleted', $data);
+        } else {
+            redirect('pages/404'); // Redirect to 404 page for unknown status
+        }
     }
 
     // ---------------------Student--------------------------

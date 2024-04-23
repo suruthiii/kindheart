@@ -29,7 +29,7 @@
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
-                    <h3>Accepted Benefaction Request Details</h3>
+                    <h3>Ongoing Benefaction Request Details</h3>
                     <p>Last 30 Days</p>
                 </div>
 

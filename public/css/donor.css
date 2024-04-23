@@ -1364,14 +1364,51 @@ span .donor-form-error-details{
 /* ----------------View Benefaction Request Details Accepted------------------ */
 
 .benefactionRequestAccepted-left-column{
+    height: 70vh;
+    max-height: 70vh;
+    margin-top: 100px;
+    min-width: 100%;
+
     display: flex;
-    height: 50vh;
-    max-height: 50vh;
-    margin-top: 150px;
+    flex-direction: column;
+}
+
+.benefactionRequestAccepted-left-column-topic{
+    color: #8692A6;
+}
+
+.benefactionRequestAccepted-left-column-grey-line{
+    position: fixed;
+    width: 40%;
+    height: 0.3vh;
+    margin-top: -1vh;
+    background-color: #DEDEDE;
+}
+
+.benefactionRequestAccepted-left-column-request-detail{
+    height: 35vh;
+    max-height: 35vh;
     min-width: 100%;
 }
 
-.benefactionRequestAccepted-left-column-left-column{
+.benefactionRequestAccepted-left-column-donation-detail{
+    height: 35vh;
+    max-height: 35vh;
+    min-width: 100%;
+}
+
+.benefactionRequestAccepted-info {
+    height: 30vh;
+    max-height: 30vh;
+    
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+/* .benefactionRequestAccepted-left-column-left-column{
     flex: 50; 
     min-width: 50%;
     height: 50vh;
@@ -1390,25 +1427,24 @@ span .donor-form-error-details{
     margin-left: 30px;
     overflow-y: auto;
     scrollbar-width: none;
-}
+} */
+
 
 .benefactionRequestAccepted-info table {
     table-layout: fixed;
-}
-
-.benefactionRequestAccepted-data {
-    width: 70%;
-    height: 35px;
-    font-size: 12px;
+    width: 600px;
 }
 
 .benefactionRequestAccepted-data th {
     min-width:100px; 
-    width:150px;
+    width:150px;    
+    font-size: 15px;
 }
 
 .benefactionRequestAccepted-data td {
-    padding: 8px;
+    padding: 8px;    
+    font-size: 14px;
+    word-wrap: break-word;
 }
 
 .view-benefactionRequestAccepted-btn-container{
