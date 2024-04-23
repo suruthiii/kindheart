@@ -77,12 +77,6 @@
                                             </p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-25%);" >
-                                            <p>
-                                                <?php echo $benefaction->receivedQuantity;?> Items Requested
-                                            </p>
-                                        </td>
-
                                         <td width="10%"style="transform: translateX(15%);">
                                             <form action="<?php echo URLROOT ?>/benefaction/viewPostedBenefactions" method="get" class="view-form">
                                                 <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
@@ -154,27 +148,33 @@
                                         </td>
 
                                         
-                                        <td width="20%" style="transform: translateX(-70%);">
+                                        <td width="20%" style="transform: translateX(-50%);">
                                             <p>
                                                 <?php echo $benefaction->itemQuantity;?> Items
                                             </p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-40%);" >
+                                        <td width="30%"  style="transform: translateX(-15%);" >
+                                            <p>
+                                                <?php echo $benefaction->receivedQuantity;?> Items Requested
+                                            </p>
+                                        </td>
+
+                                        <td width="20%"  style="transform: translateX(-5%);" >
                                             <p>
                                                 <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->receivedQuantity; echo $remainingQuantity;?> Remains
                                             </p>
                                         </td>
                                         <!-- here have to edit with requested quatity of student -->
 
-                                        <td width="10%"style="transform: translateX(15%);"> 
-                                            <!-- <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
+                                        <!-- <td width="10%"style="transform: translateX(15%);"> 
+                                            <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="post" class="edit-form">
                                                 <input type="text" name="edit" id="edit" hidden value="<?php echo $benefaction->benefactionID; ?>" />
                                                 <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" >
                                                     <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="width:15px;">                                        
                                                 </button>
-                                            </form> -->
-                                        </td>
+                                            </form>
+                                        </td> -->
 
                                         <td width="10%"style="transform: translateX(15%);">
                                             <!-- <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">

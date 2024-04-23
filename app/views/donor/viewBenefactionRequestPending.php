@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewBenefactionRequest'">Go Back</button> -->
+                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewBenefactionRequestPending'">Go Back</button> -->
                     <button onclick="goBack()">Go Back</button>
 
                     <script>
@@ -29,7 +29,7 @@
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
-                    <h3>Benefaction Request</h3>
+                    <h3>Pending Benefaction Request Details</h3>
                     <p>Last 30 Days</p>
                 </div>
 
@@ -39,20 +39,19 @@
                         <table>
                             <tr class="benefactionRequest-data">
                                 <th>Donee Name</th>
-                                <?php var_dump($data['benefactionRequest_details']); ?>
-                                <td><?php print_r($data['benefactionRequest_details']->doneeName); ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->doneeName); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Donee Type</th>
-                                <td><?php print_r($data['benefactionRequest_details']->userType); ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->userType); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Requested Amount</th>
-                                <td><?php print_r($data['benefactionRequest_details']->requestedQuantity); ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->requestedQuantity); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Reason</th>
-                                <td><?php print_r($data['benefactionRequest_details']->reason) ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->reason) ?></td>
                             </tr>
                         </table>                    
                     </div>                    
@@ -75,9 +74,10 @@
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request">
-                    <!-- <input type="hidden" name="ids" id="ids" value="<?php echo $data['benefactionRequest_details']->benefactionID . '-' . $data['benefactionRequest_details']->doneeID; ?>" /> -->
-                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline()" >
+                    <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request" id="declineForm">
+                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                        <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline(event)" >
                             <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
                             <h5>Decline Request</h5>
                         </button>
@@ -94,7 +94,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    function confirmDecline() {
+    function confirmDecline(event) {
+        event.preventDefault(); // Prevent default form submission
+
         Swal.fire({
             title: 'Are you sure?',
             text: 'You are about to decline this request. This action cannot be undone.',
@@ -105,11 +107,13 @@
             confirmButtonText: 'Yes, decline it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Submit the form asynchronously
-                document.getElementById('declineForm').submit();
+                // Submit the form programmatically
+                const form = document.getElementById('declineForm');
+                form.submit(); // Submit the form
             }
         });
     }
 </script>
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
