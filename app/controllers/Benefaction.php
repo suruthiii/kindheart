@@ -355,14 +355,20 @@ class Benefaction extends Controller {
                 $doneeID = $_POST['doneeID'];
                 
                 // Update the status of the benefaction request
-                $this->donorModel->declineBenefactionRequest($doneeID, $benefactionID);
-                
-                // Redirect to a suitable page after processing
-                redirect('benefaction/viewPostedBenefactions');
-            } else {
-                // Handle cases where form is not submitted or doneeID is missing
-                // Redirect or display an error message
-                redirect('pages/error');
+                if($this->donorModel->declineBenefactionRequest($doneeID, $benefactionID)) {          
+
+                    // Load the view with data
+                    $data = [
+                        'title' => 'View Posted Benefactions',
+                        'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
+                        'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
+                    ];           
+            
+                    // Load View
+                    $this->view('donor/viewPostedBenefactions', $data);
+                } else {
+                    die('Benefaction ID or Donee ID not found.');
+                }
             }
         }
     }
