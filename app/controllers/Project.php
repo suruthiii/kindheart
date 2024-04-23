@@ -7,6 +7,7 @@ class Project extends Controller {
         $this->middleware = new AuthMiddleware();
         $this->middleware->checkAccess(['admin', 'superAdmin', 'donor', 'organization']);
         $this->projectModel = $this->model('ProjectModel');
+        $this->userModel = $this->model('UserModel');
     }
 
     public function postedprojects(){
@@ -181,38 +182,32 @@ class Project extends Controller {
     }
 
     public function viewProject() {
-        if(($_SESSION['user_type'] == 'student')) {
-            redirect('pages/404');
+        $data = [
+            'title' => 'Home Page',
+            'project_ID' => $_GET['project_ID'],
+            'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID'])
+        ];
+
+        $userType = $this->projectModel->getUserType($_SESSION['user_id']);
+
+        if($userType == 'admin') {
+            $this->view('admin/project/viewProject', $data);
+        }
+
+        else if($userType == 'superAdmin') {
+            $this->view('superAdmin/project/viewProject', $data);
+        }
+
+        else if($userType == 'organization') {
+
+        }
+
+        else if($userType == 'donor') {
+
         }
 
         else {
-            $data = [
-                'title' => 'Home Page',
-                'project_ID' => $_GET['project_ID'],
-                'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID'])
-            ];
-
-            $userType = $this->projectModel->getUserType($_SESSION['user_id']);
-
-            if($userType == 'admin') {
-                $this->view('admin/project/viewProject', $data);
-            }
-
-            else if($userType == 'superAdmin') {
-                $this->view('superAdmin/project/viewProject', $data);
-            }
-
-            else if($userType == 'organization') {
-
-            }
-
-            else if($userType == 'donor') {
-
-            }
-
-            else {
-                die('User Type Not Found');
-            }
+            die('User Type Not Found');
         }
     }
 
@@ -331,6 +326,22 @@ class Project extends Controller {
         //             die('User Type Not Found');
         //         }
         //     }
+        }
+    }
+
+    public function viewDoneeProfile($project_ID = null, $org_ID = null) {
+        if($_SESSION['user_type'] == 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            $data = [
+                'title' => 'Home Page',
+                'project_ID' => $project_ID,
+                'details' => $this->userModel->getOrganization($org_ID)
+            ];
+
+            $this->view($_SESSION['user_type'].'/project/viewOrganizationProfile', $data);
         }
     }
 

@@ -47,7 +47,7 @@ class ProjectModel{
     }
 
     public function getProjectDetails($project_ID) {
-        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
+        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
         $this->db->bind(':projectID', $project_ID);
 
         $row = $this->db->single();
