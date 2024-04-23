@@ -44,7 +44,7 @@
 
                             <?php foreach($data['donors'] as $item){?>
                                 
-                                <a href="<?php echo URLROOT ?>/Student/donorProfile">
+                                <!-- <a href="<?php echo URLROOT ?>/SuccessStory/viewOwnSuccessStory/<?php echo $item->storyID?>"> -->
                                
                                     <div class="tile-donor">
                                         <table>
@@ -67,7 +67,22 @@
 
             </div> 
              <!-- right side bar for success story -->
-             <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+              <!-- right side bar for success story -->
+            <div class="rightside-bar-type-one">
+                <div class="right-side-bar">
+                    <!-- title for rightside bar -->
+                    <div class="rightside-bar-title">
+                        <h3>Donor Details</h3>
+                    </div>
+
+
+                    <!-- Display donor details -->
+                    
+                   
+
+                </div>
+            </div> 
+
 
 
         </div>
