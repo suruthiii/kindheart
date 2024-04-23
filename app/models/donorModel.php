@@ -123,7 +123,8 @@ class donorModel{
                             db.reason,
                             db.requestedQuantity,
                             db.benefactionID,
-                            db.verificationStatus
+                            db.verificationStatus,
+                            db.receivedQuantity
                         FROM 
                             donee_benefaction db
                         JOIN 
@@ -191,7 +192,10 @@ class donorModel{
                                 WHEN u.userType = "organization" THEN o.orgName
                             END AS doneeName,
                             db.reason,
-                            db.requestedQuantity
+                            db.benefactionID,
+                            db.verificationStatus,
+                            db.requestedQuantity,
+                            db.receivedQuantity
                         FROM 
                             donee_benefaction db
                         JOIN 
@@ -213,11 +217,10 @@ class donorModel{
         return $result;
     }
 
-    public function updateBenefactionRequestStatus($doneeID, $benefactionID, $newStatus) {
-        $this->db->query('UPDATE donee_benefaction SET verificationStatus = :newStatus WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+    public function declineBenefactionRequest($doneeID, $benefactionID) {
+        $this->db->query('UPDATE donee_benefaction SET verificationStatus = 10 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
         $this->db->bind(':doneeID', $doneeID);
         $this->db->bind(':benefactionID', $benefactionID);
-        $this->db->bind(':newStatus', $newStatus);
     
         // Execute the query
         if ($this->db->execute()) {

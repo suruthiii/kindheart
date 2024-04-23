@@ -109,16 +109,15 @@
             <div class="request-right-side-bar">
                 <div class="request-right-side-bar-inner">
                     <?php
-                        // Determine which section to display based on availability status
+                        // Determine which section to display based on verificationStatus status
                         $availabilityStatus = $data['benefaction_details']->availabilityStatus;
-
-                        // $verificationStatus = $data['benefaction_requests']->verificationStatus;
 
                         switch ($availabilityStatus) {
                             case 0:
                                 $sectionTitle = 'Requests';
                                 break;
                             case 1:
+
                                 $sectionTitle = 'Accepted Requests';
                                 break;
                             case 2:
@@ -129,24 +128,14 @@
                                 break;
                         }
 
-                        // switch ($verificationStatus) {
-                        //     case 0:
-                        //         // Unverified requests (verificationStatus = 0)
-                        //         $sectionTitle = 'Requests';
-                        //         break;
-                        //     case 1:
-                        //     case 3:
-                        //         // Verified requests (verificationStatus = 1 or 3)
-                        //         $sectionTitle = 'Accepted Requests';
-                        //         break;
-                        //     case 2:
-                        //         // Completed requests (verificationStatus = 2)
-                        //         $sectionTitle = 'Completed Requests';
-                        //         break;
-                        //     default:
-                        //         // Default to availability status if verification status doesn't match known cases
-                        //         break;
-                        // }
+                        // Check if the array of requests is not empty
+                        if (!empty($data['benefaction_requests'])) {
+                            // Iterate through each request object
+                            foreach ($data['benefaction_requests'] as $request) {
+                                // Access the verificationStatus property for each request object
+                                $verificationStatus = $request->verificationStatus;
+                            }
+                        }
                     ?>
                     <!-- Topic -->
                     <div class="request-right-side-bar-topic">
@@ -155,23 +144,60 @@
                     </div>
 
                     <!-- Display requests or no requests message -->
-                    <?php if (empty($data['benefaction_requests'])) : ?>
+                    <?php if (empty($data['benefaction_requests']) || hasNoValidRequests($data['benefaction_requests'], $data['benefaction_details']->availabilityStatus)) : ?>
                         <div class="request-right-side-bar-no-requests">
                             <p>No Requests Yet</p>
                         </div>
-                    <?php else : ?>
+                    <?php elseif (!empty($data['benefaction_requests'])) : ?>
                         <div class="request-right-side-bar-all-requests">
                             <?php foreach($data['benefaction_requests'] as $request): ?>
-                                <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
-                                    <div class="request-right-side-bar-type-requests">
-                                        <h4> <?php echo $request->doneeName; ?></h4>
-                                        <p>Requested Amount:<?php echo $request->requestedQuantity; ?></p>
-                                        <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p> -->
-                                    </div>
-                                </a>                                
+                                <?php if ($data['benefaction_details']->availabilityStatus === $request->verificationStatus) : ?>
+                                    <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequestAccepted/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
+                                        <div class="request-right-side-bar-type-requests">
+                                            <h4> <?php echo $request->doneeName; ?></h4>
+
+                                            <?php
+                                                // Determine the appropriate label based on verificationStatus
+                                                switch ($request->verificationStatus) {
+                                                    case 0:
+                                                        $amountLabel = 'Requested Amount:';
+                                                        $amountQuantity = $request->requestedQuantity;
+                                                        break;
+                                                    case 1:
+                                                        $amountLabel = 'Agreed Amount:';
+                                                        $amountQuantity = $request->receivedQuantity;
+                                                        break;
+                                                    case 2:
+                                                        $amountLabel = 'Successful Donation';
+                                                        $amountQuantity = ' ';
+
+                                                        break;
+                                                    default:
+                                                        $amountLabel = 'Amount:';
+                                                        $amountQuantity = ' ';
+                                                        break;
+                                                }
+                                            ?>
+                                            <p><?php echo $amountLabel . ' ' . $amountQuantity; ?></p>
+                                            <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p> -->
+                                        </div>
+                                    </a> 
+                                <?php endif; ?>                               
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
+
+                        <?php
+                            // Helper function to check if there are no valid requests based on availabilityStatus
+                            function hasNoValidRequests($requests, $availabilityStatus) {
+                                foreach ($requests as $request) {
+                                    if ($availabilityStatus === $request->verificationStatus) {
+                                        return false; // If any request doesn't match the availabilityStatus, return false
+                                    }
+                                }
+                                return true; // If all requests match the availabilityStatus or there are no requests, return true
+                            }
+                        ?>
                 </div>
             </div>
         </div>

@@ -196,10 +196,32 @@ class Benefaction extends Controller {
                 'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
             ];           
 
-            // die(print_r($data['benefaction_requests']));
-    
-            // Load View
-            $this->view('donor/viewPostedBenefactions', $data);
+            // Determine the availability status
+            $availabilityStatus = $data['benefaction_details']->availabilityStatus;
+
+            // Define the view file based on the availability status
+            $viewFile = '';
+
+            switch ($availabilityStatus) {
+                case 0:
+                    // Pending requests view
+                    $viewFile = 'donor/viewPostedBenefactionsPending';
+                    break;
+                case 1:
+                    // Accepted requests view
+                    $viewFile = 'donor/viewPostedBenefactionsRequested';
+                    break;
+                case 2:
+                    // Completed requests view
+                    $viewFile = 'donor/viewPostedBenefactionsCompleted';
+                    break;
+                default:
+                    // Default view for unknown status
+                    $viewFile = 'donor/viewPostedBenefactionsPending';
+                    break;
+            }
+
+            $this->view($viewFile, $data);
         } else {
             // Handle the case where benefactionID is not set
             // Redirect or show an error message
@@ -330,7 +352,7 @@ class Benefaction extends Controller {
     }
 
     //Get Details of One Selected Benefaction Request
-    public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
+    public function viewBenefactionRequestPending($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($benefactionID))) {
             redirect('pages/404');           
         }
@@ -344,30 +366,65 @@ class Benefaction extends Controller {
 
         // die(print_r($data['benefactionRequest_details']));
 
-        $this->view('donor/viewBenefactionRequest', $data);
+        $this->view('donor/viewBenefactionRequestPending', $data);
     }
 
-    // public function declineBenefactionRequest() {
-    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['ids'])) {
-    //         $ids = $_POST['ids'];
-    //         list($benefactionID, $doneeID) = explode('-', $ids);
+    public function declineBenefactionRequest() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['benefactionID']) && isset($_POST['doneeID'])) {
+                
+                $benefactionID = $_POST['benefactionID'];
+                $doneeID = $_POST['doneeID'];
+                
+                // Update the status of the benefaction request
+                if($this->donorModel->declineBenefactionRequest($doneeID, $benefactionID)) {          
+
+                    // Load the view with data
+                    $data = [
+                        'title' => 'View Posted Benefactions',
+                        'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
+                        'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
+                    ];           
             
-    //         // Update the status of the benefaction request
-    //         $this->donorModel->updateBenefactionRequestStatus($doneeID, $benefactionID, 10);
-            
-    //         // Redirect to a suitable page after processing
-    //         redirect('benefaction/viewPostedBenefactions');
-    //     } else {
-    //         // Handle cases where form is not submitted or doneeID is missing
-    //         // Redirect or display an error message
-    //         redirect('pages/error');
-    //     }
-    // }
+                    // Load View
+                    $this->view('donor/viewPostedBenefactions', $data);
+                } else {
+                    die('Benefaction ID or Donee ID not found.');
+                }
+            }
+        }
+    }
+
     
 
     
-    public function temporyStudentProfile() {
-        $this->view('donor/temporyStudentProfile');
+    public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($benefactionID))) {
+            redirect('pages/404');           
+        }
+
+        $data = [
+            'title' => 'View Benefaction Request',
+            'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+        ];
+
+        if (!$data['benefactionRequest_details'][0]) {
+            redirect('pages/404');
+        }
+
+        // Get verificationStatus from benefactionRequest_details
+        $verificationStatus = $data['benefactionRequest_details'][0]->verificationStatus;
+
+        // Determine which view to load based on verificationStatus
+        if ($verificationStatus == 0) {
+            $this->view('donor/viewBenefactionRequestPending', $data);
+        } elseif ($verificationStatus == 1 || $verificationStatus == 3) {
+            $this->view('donor/viewBenefactionRequestOngoing', $data);
+        } elseif ($verificationStatus == 2) {
+            $this->view('donor/viewBenefactionRequestCompleted', $data);
+        } else {
+            redirect('pages/404'); // Redirect to 404 page for unknown status
+        }
     }
 
     // ---------------------Student--------------------------

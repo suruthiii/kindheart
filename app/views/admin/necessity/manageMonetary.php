@@ -53,11 +53,12 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>" class="view-donation-btn">
-                    <!-- <button type="submit" class="view-donation-btn" > -->
+                <form action="<?php echo URLROOT ?>/necessity/deletenecessities" method="post" class="delete-form">
+                    <input type="text" name="necessity_ID" hidden value=<?php echo $data['necessity_ID'] ?>>
+                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
                         Delete Necessity
-                    <!-- </button> -->
-                </a>
+                    </button>
+                </form>
             </div>
 
             <div class="right-content" style="overflow-y:scroll;">

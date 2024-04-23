@@ -62,11 +62,12 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>" class="view-donation-btn">
-                    <!-- <button type="submit" class="view-donation-btn" > -->
+                <form action="<?php echo URLROOT ?>/scholarship/deletescholarship" method="post" class="delete-form">
+                    <input type="text" name="scholarship_ID" hidden value=<?php echo $data['scholarship_ID'] ?>>
+                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
                         Delete Scholarship
-                    <!-- </button> -->
-                </a>
+                    </button>
+                </form>
             </div>
 
             <div class="right-content" style="overflow-y:scroll;">

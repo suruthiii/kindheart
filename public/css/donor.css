@@ -110,9 +110,11 @@ span .donor-form-error-details{
 .right-column-inner{
     width: 100%;    
     max-height: 85vh;
+    margin-right: 140px;
+
     overflow-x: hidden;
     overflow-y: auto;    
-    margin-right: 140px;
+    scrollbar-width: none;
 }
 
 .add-benefaction-box{
@@ -364,6 +366,7 @@ span .donor-form-error-details{
     margin-top: 24vh;
     overflow: hidden;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .posted-benefaction-onProgress-table-caption{
@@ -388,6 +391,7 @@ span .donor-form-error-details{
     margin-top: 51vh;
     overflow: hidden;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .posted-benefaction-Completed-table-caption{
@@ -411,7 +415,8 @@ span .donor-form-error-details{
     height: 15vh;
     margin-top: 76vh;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: scroll; 
+    scrollbar-width: none; 
 }
 
 .posted-benefaction-pending-table-caption p, 
@@ -536,10 +541,12 @@ span .donor-form-error-details{
 .view-benefaction-right-column-inner{
     width: 100%;    
     max-height: 50vh;
-    overflow-x: hidden;
-    overflow-y: auto;    
     margin-right: 180px;
     margin-top: 150px;
+
+    overflow-x: hidden;
+    overflow-y: auto;   
+    scrollbar-width: none; 
 
 }
 
@@ -553,6 +560,7 @@ span .donor-form-error-details{
     
     border-collapse: collapse; /* Optional: Ensure borders collapse properly */
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .benefaction-info table {
@@ -674,6 +682,7 @@ span .donor-form-error-details{
     height: 75vh;
     overflow: hidden;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .request-right-side-bar-topic{
@@ -696,7 +705,6 @@ span .donor-form-error-details{
     align-items: center;
 }
 
-
 .request-right-side-bar-type-requests{
     width: 250px;
     height: 60px;
@@ -708,16 +716,96 @@ span .donor-form-error-details{
     margin-bottom: 10px;
 
     display: flex;
+}
+
+.request-right-side-bar-type-requests-completed{
+    width: 250px;
+    height: 60px;
+    padding: 10px;
+    background-color: #2ca030;
+    border-radius: 10px;
+    color: white;
+    margin: 0;
+    margin-bottom: 10px;
+
+    display: flex;
+}
+
+.request-right-side-bar-type-requests-left{
+    min-width: 60%;
+    margin: 0;
+
+    display: flex;
     flex-direction: column;
     justify-content: center; 
 }
 
-.request-right-side-bar-type-requests h4 {
+.request-right-side-bar-type-requests-right{
+    min-width: 40%;
+}
+
+.request-right-side-bar-type-requests-right .status_pending p{
+    background-color: #ffffff;
+    color: #000;
+    
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.request-right-side-bar-type-requests-right .status_accepted p{
+    background-color: #8ff693;
+    color: #000;
+
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.request-right-side-bar-type-requests-right .status_incomplte p{
+    background-color: #d3731f;
+    color: #000;
+
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+/* .request-right-side-bar-type-requests-right .status_button #status_pending{
+    background-color: #ffffff;
+    color: #000;
+}
+
+.request-right-side-bar-type-requests-right .status_button #status_accepted{
+    background-color: #ffffff;
+    color: #000;
+} */
+
+
+.request-right-side-bar-type-requests-left h4 {
     margin: 0; /* Remove default margin */
     margin-bottom: 5px; /* Add margin below h4 for spacing */
 }
 
-.request-right-side-bar-type-requests p {
+.request-right-side-bar-type-requests-left p {
     margin: 0; /* Remove default margin */
     margin-top: 5px; /* Add margin above p for spacing */
 }
@@ -928,6 +1016,7 @@ span .donor-form-error-details{
     margin-top: 24vh;
     overflow: hidden;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .posted-scholarship-onProgress-table-caption{
@@ -952,6 +1041,7 @@ span .donor-form-error-details{
     margin-top: 51vh;
     overflow: hidden;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .posted-scholarship-Completed-table-caption{
@@ -976,6 +1066,7 @@ span .donor-form-error-details{
     margin-top: 76vh;
     overflow: hidden;
     overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .posted-scholarship-pending-table-caption p, 
@@ -1069,6 +1160,7 @@ span .donor-form-error-details{
     
     border-collapse: collapse; /* Optional: Ensure borders collapse properly */
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .scholarship-info table {
@@ -1184,7 +1276,7 @@ span .donor-form-error-details{
     margin-top: -5px;
 }
 
-/* ----------------View Benefaction Request Deatils------------------ */
+/* ----------------View Benefaction Request Deatils Pending------------------ */
 
 .benefactionRequest-left-column {   
     flex: 70; 
@@ -1195,6 +1287,7 @@ span .donor-form-error-details{
 
     border-collapse: collapse; /* Optional: Ensure borders collapse properly */
     overflow-y: auto;
+    scrollbar-width: none;
 }
 
 .benefactionRequest-info table {
@@ -1262,6 +1355,137 @@ span .donor-form-error-details{
 }
 
 .view-benefactionRequest-btn-container button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ----------------View Benefaction Request Details Accepted------------------ */
+
+.benefactionRequestAccepted-left-column{
+    height: 70vh;
+    max-height: 70vh;
+    margin-top: 100px;
+    min-width: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.benefactionRequestAccepted-left-column-topic{
+    color: #8692A6;
+}
+
+.benefactionRequestAccepted-left-column-grey-line{
+    position: fixed;
+    width: 40%;
+    height: 0.3vh;
+    margin-top: -1vh;
+    background-color: #DEDEDE;
+}
+
+.benefactionRequestAccepted-left-column-request-detail{
+    height: 35vh;
+    max-height: 35vh;
+    min-width: 100%;
+}
+
+.benefactionRequestAccepted-left-column-donation-detail{
+    height: 35vh;
+    max-height: 35vh;
+    min-width: 100%;
+}
+
+.benefactionRequestAccepted-info {
+    height: 30vh;
+    max-height: 30vh;
+    
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+/* .benefactionRequestAccepted-left-column-left-column{
+    flex: 50; 
+    min-width: 50%;
+    height: 50vh;
+    max-height: 50vh;
+    
+    border-collapse: collapse;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
+
+.benefactionRequestAccepted-left-column-right-column {
+    flex: 50; 
+    min-width: 50%;
+    height: 50vh;
+    max-height: 50vh;
+    margin-left: 30px;
+    overflow-y: auto;
+    scrollbar-width: none;
+} */
+
+
+.benefactionRequestAccepted-info table {
+    table-layout: fixed;
+    width: 600px;
+}
+
+.benefactionRequestAccepted-data th {
+    min-width:100px; 
+    width:150px;    
+    font-size: 15px;
+}
+
+.benefactionRequestAccepted-data td {
+    padding: 8px;    
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.view-benefactionRequestAccepted-btn-container{
+    position: fixed;
+    width: 25%;
+    height: 5vh;
+    margin-top:10vh;
+    display: flex;
+    justify-content:flex-start;
+}
+
+.view-benefactionRequestAccepted-btn-container button:first-child {
+    margin-right: 10px;
+}
+
+.view-benefactionRequestAccepted-btn-container button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 170px;
+    margin-right: 10px;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-benefactionRequestAccepted-btn-container button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.view-benefactionRequestAccepted-btn-container button img{
+    padding-right: 8px;
+}
+
+.view-benefactionRequestAccepted-btn-container button h5{
     color: #ffffff;
     font-size: 12px;
     font-family: 'Inter', sans-serif;

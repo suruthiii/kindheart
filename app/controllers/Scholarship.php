@@ -120,6 +120,20 @@ class Scholarship extends Controller {
         $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
     }
 
+    public function deleteScholarship() {
+        if($_SESSION['user_type'] == 'student') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->scholarshipModel->deleteScholarship($_POST['scholarship_ID'])) {
+                    redirect($_SESSION['user_type'].'/scholarship');
+                }
+            }
+        }
+    }
+
     public function donorAddScholarships(){
         //other actors' redirection
         
@@ -404,7 +418,25 @@ class Scholarship extends Controller {
             }
         }
     }
+  
+    //Get Details of One Selected Scholarship Application
+    public function viewScholarshipApplication($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($scholarshipID))) {
+            redirect('pages/404');           
+        }
 
+        // die(print_r($benefactionID));
+
+        $data = [
+            'title' => 'View Scholarship Application',
+            'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
+        ];
+
+        // die(print_r($data['benefactionRequest_details']));
+
+        $this->view('donor/viewScholarshipApplication', $data);
+    }    
+  
     public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
         if($_SESSION['user_type'] == 'donor') {
             redirect('pages/404');
@@ -439,4 +471,3 @@ class Scholarship extends Controller {
         }
     }
 }
-  
