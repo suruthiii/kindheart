@@ -684,6 +684,28 @@ class Necessity extends Controller {
         }
     }
 
+    public function deleteNecessities() {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->necessityModel->deleteNecessity($_POST['necessity_ID'])) {
+                    $necessityType = $this->necessityModel->getNecessityType($_POST['necessity_ID']);
+
+                    if($necessityType == 'Monetary Funding') {
+                        redirect('necessity/monetary');
+                    }
+
+                    else if($necessityType == 'Physical Goods') {
+                        redirect('necessity/physicalgood');
+                    }
+                }
+            }
+        }
+    }
+
     public function viewMonetary() {
         $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
         $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
