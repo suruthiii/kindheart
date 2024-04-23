@@ -295,6 +295,10 @@
 }
 
 
+
+
+
+
 .dash-card-container{
     height: 600px;
     width: 100%;
@@ -796,6 +800,60 @@
     font-size: 20px;
     font-weight: 300;
     
+}
+
+
+
+/*------------donor list display cards------------>*/
+  
+.tile-list-donor{
+    margin-right: 300px;
+    margin-top: 40%;
+}
+
+.tile-list-donor.tiles-donor {
+    overflow: scroll;
+    height: 600px;
+    width: 110%;
+    margin-top: 100px;
+    padding: 4px 12px;
+}
+
+
+.tile-list-donor .tiles-donor .tile-donor{
+   width: 100%;
+   height: 70px;
+   border-radius: 20px;
+   border: 1px solid white;
+   transition: 0.2s;
+   margin-top: 10px;
+   padding-top: 3px;
+   box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.171);
+   transition: 0.2s;
+}
+
+.tile-list-donor .tiles-donor .tile-donor:hover{
+    /* border: 1px solid rgba(127, 127, 127, 0.2); */
+    scale: 1.02;
+    background-color: rgba(0, 0, 0, 0.03);
+ }
+
+ .tile-list-donor .tiles-donor .tile-donor table{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 0 10px;
+ }
+
+.tile-list-donor .tiles-donor .tile-donor table tr{
+    width: 100%;
+    height: 100%;
+}
+
+.tile-list-donor .tiles-donor .tile-donor table tr .tile-name{
+    margin-top: 5px;
+    color: black;
+    width: 100%;
+    height: 100%;
 }
 
 
