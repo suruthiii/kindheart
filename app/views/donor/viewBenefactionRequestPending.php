@@ -16,7 +16,7 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewBenefactionRequest'">Go Back</button> -->
+                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewBenefactionRequestPending'">Go Back</button> -->
                     <button onclick="goBack()">Go Back</button>
 
                     <script>
@@ -29,14 +29,13 @@
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
-                    <h3>Benefaction Request</h3>
+                    <h3>Pending Benefaction Request Details</h3>
                     <p>Last 30 Days</p>
                 </div>
 
                 <div class="benefactionRequest-left-column">
                     <!-- benefaction Request Details -->
                     <div class="benefactionRequest-info">
-                        <!-- <?php print_r($data['benefactionRequest_details']) ?> -->
                         <table>
                             <tr class="benefactionRequest-data">
                                 <th>Donee Name</th>
@@ -76,8 +75,8 @@
                     </form>
 
                     <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request" id="declineForm">
-                    <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
-                    <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
+                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                        <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
                         <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline(event)" >
                             <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
                             <h5>Decline Request</h5>
@@ -111,9 +110,6 @@
                 // Submit the form programmatically
                 const form = document.getElementById('declineForm');
                 form.submit(); // Submit the form
-
-                // You can optionally handle success or redirection after form submission
-                // window.location.href = 'donor/viewPostedBenefactions'; // Redirect to success page
             }
         });
     }

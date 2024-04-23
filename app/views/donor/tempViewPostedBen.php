@@ -152,7 +152,7 @@
                         <div class="request-right-side-bar-all-requests">
                             <?php foreach($data['benefaction_requests'] as $request): ?>
                                 <?php if ($data['benefaction_details']->availabilityStatus === $request->verificationStatus) : ?>
-                                    <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
+                                    <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequestAccepted/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
                                         <div class="request-right-side-bar-type-requests">
                                             <h4> <?php echo $request->doneeName; ?></h4>
 
