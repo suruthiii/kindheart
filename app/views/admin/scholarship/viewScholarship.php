@@ -50,10 +50,8 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>" class="view-donation-btn">
-                    <!-- <button type="submit" class="view-donation-btn" > -->
+                <a href="<?php echo URLROOT ?>/scholarship/viewdonorprofile/<?php echo $data['scholarship_ID'] ?>/<?php echo $data['scholarship_details']->donorID ?>" class="view-donation-btn">
                         View Donor Profile
-                    <!-- </button> -->
                 </a>
             </div>
             

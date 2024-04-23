@@ -47,7 +47,7 @@ class ProjectModel{
     }
 
     public function getProjectDetails($project_ID) {
-        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
+        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
         $this->db->bind(':projectID', $project_ID);
 
         $row = $this->db->single();
@@ -91,12 +91,13 @@ class ProjectModel{
 
     public function addprojectstodb($data){
         //sql statement for adding projects to projects table
-        $this->db->query('INSERT INTO project(title,budget,status,orgID) 
-        VALUES (:title, :budget, :status, :doneeID)');
+        $this->db->query('INSERT INTO project(title,budget,status,description,orgID) 
+        VALUES (:title, :budget, :status, :description, :doneeID)');
 
         // Binding values with array value
         $this->db->bind(':title', $data['projectTitle']);
         $this->db->bind(':budget', $data['totalMilestoneBudget']);
+        $this->db->bind(':description', $data['projectDescription']);
         $this->db->bind(':status', 0);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         

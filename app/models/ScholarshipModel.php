@@ -31,7 +31,7 @@ class ScholarshipModel{
     }
 
     public function getComScholarshipDetails($scholarship_ID) {
-        $this->db->query('SELECT s.title, s.amount, s.startDate, s.description, c.companyName  AS name FROM scholarship s JOIN company c ON s.donorID = c.companyID WHERE s.scholarshipID = :scholarshipID;');
+        $this->db->query('SELECT s.title, s.amount, s.startDate, s.description, c.companyID AS donorID, c.companyName AS name FROM scholarship s JOIN company c ON s.donorID = c.companyID WHERE s.scholarshipID = :scholarshipID;');
         $this->db->bind(':scholarshipID', $scholarship_ID);
 
         $row = $this->db->single();
@@ -40,7 +40,7 @@ class ScholarshipModel{
     }
 
     public function getIndScholarshipDetails($scholarship_ID) {
-        $this->db->query('SELECT s.title, s.amount, s.startDate, s.description, CONCAT(i.fName, " ", i.lName) AS name FROM scholarship s JOIN individual i ON s.donorID = i.individualID WHERE s.scholarshipID = :scholarshipID;');
+        $this->db->query('SELECT s.title, s.amount, s.startDate, s.description, i.individualID AS donorID, CONCAT(i.fName, " ", i.lName) AS name FROM scholarship s JOIN individual i ON s.donorID = i.individualID WHERE s.scholarshipID = :scholarshipID;');
         $this->db->bind(':scholarshipID', $scholarship_ID);
 
         $row = $this->db->single();

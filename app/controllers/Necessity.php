@@ -3,6 +3,7 @@
 class Necessity extends Controller {
     private $middleware;
     private $necessityModel;
+    private $userModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
@@ -92,8 +93,8 @@ class Necessity extends Controller {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities(),
-                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount(),
-                'totalReceivedQuantity' => $this->necessityModel->getTotalReceivedQuantity()
+                'totalReceivedQuantity' => $this->necessityModel->getTotalReceivedQuantity(),
+                'totalNumberofDonors' => $this->necessityModel->getnumberofdonorsdonatesforphysicalgoods()
             ];
 
             $this->view('organization/postedphysicalgoodsnecessity', $data);
@@ -678,6 +679,28 @@ class Necessity extends Controller {
                     $this->view('organization/postedphysicalgoodsnecessity', $data);
                 }else {
                     die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    public function deleteNecessities() {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->necessityModel->deleteNecessity($_POST['necessity_ID'])) {
+                    $necessityType = $this->necessityModel->getNecessityType($_POST['necessity_ID']);
+
+                    if($necessityType == 'Monetary Funding') {
+                        redirect('necessity/monetary');
+                    }
+
+                    else if($necessityType == 'Physical Goods') {
+                        redirect('necessity/physicalgood');
+                    }
                 }
             }
         }
