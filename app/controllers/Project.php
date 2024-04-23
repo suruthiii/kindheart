@@ -2,6 +2,7 @@
 class Project extends Controller {
     private $middleware;
     private $projectModel;
+    private $userModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
