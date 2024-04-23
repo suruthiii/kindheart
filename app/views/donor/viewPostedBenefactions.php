@@ -144,7 +144,7 @@
                     </div>
 
                     <!-- Display requests or no requests message -->
-                    <?php if (empty($data['benefaction_requests'])) : ?>
+                    <?php if (empty($data['benefaction_requests']) || hasNoRequests($data['benefaction_requests'])): ?>
                         <div class="request-right-side-bar-no-requests">
                             <p>No Requests Yet</p>
                         </div>
@@ -186,6 +186,18 @@
                             <?php endforeach; ?>
                         </div>
                     <?php endif; ?>
+
+                    <?php
+                        // Helper function to check if there are no requests with verificationStatus != 10
+                        function hasNoRequests($requests) {
+                            foreach ($requests as $request) {
+                                if ($request->verificationStatus != 10) {
+                                    return false; // If any request has verificationStatus != 10, return false
+                                }
+                            }
+                            return true; // If all requests have verificationStatus == 10 or there are no requests, return true
+                        }
+                    ?>
                 </div>
             </div>
         </div>

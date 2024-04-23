@@ -36,6 +36,7 @@
                 <div class="benefactionRequest-left-column">
                     <!-- benefaction Request Details -->
                     <div class="benefactionRequest-info">
+                        <!-- <?php print_r($data['benefactionRequest_details']) ?> -->
                         <table>
                             <tr class="benefactionRequest-data">
                                 <th>Donee Name</th>
@@ -74,10 +75,10 @@
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request">
+                    <form action="<?php echo URLROOT ?>/benefaction/declineBenefactionRequest" method="post" class="decline-request" id="declineForm">
                     <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
                     <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
-                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline()" >
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline(event)" >
                             <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
                             <h5>Decline Request</h5>
                         </button>
@@ -94,7 +95,9 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    function confirmDecline() {
+    function confirmDecline(event) {
+        event.preventDefault(); // Prevent default form submission
+
         Swal.fire({
             title: 'Are you sure?',
             text: 'You are about to decline this request. This action cannot be undone.',
@@ -105,11 +108,16 @@
             confirmButtonText: 'Yes, decline it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                // Submit the form asynchronously
-                document.getElementById('declineForm').submit();
+                // Submit the form programmatically
+                const form = document.getElementById('declineForm');
+                form.submit(); // Submit the form
+
+                // You can optionally handle success or redirection after form submission
+                // window.location.href = 'donor/viewPostedBenefactions'; // Redirect to success page
             }
         });
     }
 </script>
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
