@@ -144,7 +144,7 @@
                     </div>
 
                     <!-- Display requests or no requests message -->
-                    <?php if (empty($data['benefaction_requests']) || hasNoRequests($data['benefaction_requests'])): ?>
+                    <?php if (empty($data['benefaction_requests']) || hasNoValidRequests($data['benefaction_requests'], $data['benefaction_details']->availabilityStatus)) : ?>
                         <div class="request-right-side-bar-no-requests">
                             <p>No Requests Yet</p>
                         </div>
@@ -187,17 +187,17 @@
                         </div>
                     <?php endif; ?>
 
-                    <?php
-                        // Helper function to check if there are no requests with verificationStatus != 10
-                        function hasNoRequests($requests) {
-                            foreach ($requests as $request) {
-                                if ($request->verificationStatus != 10) {
-                                    return false; // If any request has verificationStatus != 10, return false
+                        <?php
+                            // Helper function to check if there are no valid requests based on availabilityStatus
+                            function hasNoValidRequests($requests, $availabilityStatus) {
+                                foreach ($requests as $request) {
+                                    if ($availabilityStatus === $request->verificationStatus) {
+                                        return false; // If any request doesn't match the availabilityStatus, return false
+                                    }
                                 }
+                                return true; // If all requests match the availabilityStatus or there are no requests, return true
                             }
-                            return true; // If all requests have verificationStatus == 10 or there are no requests, return true
-                        }
-                    ?>
+                        ?>
                 </div>
             </div>
         </div>
