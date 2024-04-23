@@ -45,4 +45,116 @@ class ProjectModel{
 
         return $result;
     }
+
+    public function getProjectDetails($project_ID) {
+        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
+        $this->db->bind(':projectID', $project_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getAllComments($project_ID) {
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'project' ORDER BY time DESC;");
+        $this->db->bind(':postID', $project_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function addComment($data) {
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'project', :comment);");
+        $this->db->bind(':postID', $data['project_ID']);
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+        $this->db->bind(':time', date("Y-m-d H:i:s"));
+        $this->db->bind(':comment', $data['comment']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function getUserType($user_ID) {
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $row = $this->db->single();
+
+        return $row->userType;
+    }
+
+    public function addprojectstodb($data){
+        //sql statement for adding projects to projects table
+        $this->db->query('INSERT INTO project(title,budget,status,orgID) 
+        VALUES (:title, :budget, :status, :doneeID)');
+
+        // Binding values with array value
+        $this->db->bind(':title', $data['projectTitle']);
+        $this->db->bind(':budget', $data['totalMilestoneBudget']);
+        $this->db->bind(':status', 0);
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        
+        //execute querry to add project
+        $result = $this->db->execute();
+
+        if($result){
+            //get the last Inserted Id from the database
+            $result1 = $this->db->query('SELECT LAST_INSERT_ID() as last_id;');
+            $row = $this->db->single();
+            $projectID  = $row->last_id;
+
+            echo $projectID;
+            //store monetaryId in the session
+            $_SESSION['projectID'] = $projectID ;
+
+            foreach ($data['projectsmilestones'] as $key => $projectsmilestones){
+                //sql statement for adding monetary necessity, money table
+                $this->db->query('INSERT INTO milestone(milestoneName ,description,amount,img1,img2,status,projectID ) 
+                VALUES (:milestoneName, :description, :amount, :img1, :img2, :status, :projectID)');
+
+                // Binding values with array value
+                $this->db->bind(':milestoneName', $projectsmilestones);
+                $this->db->bind(':description', $data['milestonedescription'][$key]);
+                $this->db->bind(':amount', $data['milestonebudget'][$key]);
+                $this->db->bind(':img1', $data['firstprojectImagesPath'][$key]);
+                $this->db->bind(':img2', $data['seconprojectImagesPath'][$key]);
+                $this->db->bind(':status', 0);
+                $this->db->bind(':projectID', $_SESSION['projectID']);
+
+                $result2 = $this->db->execute();
+
+                if (!$result2) {
+                    // Print error message for debugging
+                    printf("Error: %s\n", $this->db->getError());
+                    return false;
+                }
+            }
+            
+            return true;
+        }else{
+            return false;
+        }
+     
+    }
+
+    // Deleting projects
+    public function deleteProjects($projectID){
+        // Query statement
+        $this->db->query('UPDATE project SET status = 10 WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $projectID);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }    

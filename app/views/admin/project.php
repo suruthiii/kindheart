@@ -19,7 +19,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['pending'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/project/viewproject?project_ID=<?php echo $item->projectID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -30,8 +30,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/project/manageproject/<?php echo $item->projectID ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/project/manageproject" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="project_ID" hidden value="<?php echo $item->projectID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
@@ -52,7 +52,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['confirmed'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/project/viewproject?project_ID=<?php echo $item->projectID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -63,8 +63,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/project/manageproject/<?php echo $item->projectID ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/project/manageproject" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="project_ID" hidden value="<?php echo $item->projectID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
@@ -85,7 +85,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['ongoing'] as $item) {?>
-                    <a href="">
+                    <a href="<?php echo URLROOT ?>/project/viewproject?project_ID=<?php echo $item->projectID; ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -96,8 +96,8 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/project/manageproject/<?php echo $item->projectID ?>" method="get" class="assign-manage-form">
-                                            <input type="text" id="name" hidden value="" />
+                                        <form action="<?php echo URLROOT ?>/project/manageproject" method="get" class="assign-manage-form">
+                                            <input type="text" id="name" name="project_ID" hidden value="<?php echo $item->projectID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>

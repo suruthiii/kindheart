@@ -48,7 +48,7 @@ class BenefactionModel{
 
     public function getAppliedBenefactions($criteria = null) { 
         
-        $this->db->query('SELECT b.benefactionID, b.itemName, d.requestedQuantity, d.verificationStatus FROM benefaction b JOIN donee_benefaction d ON b.benefactionID = d.benefactionID WHERE doneeID = :doneeID');
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemQuantity, d.requestedQuantity, d.verificationStatus FROM benefaction b JOIN donee_benefaction d ON b.benefactionID = d.benefactionID WHERE doneeID = :doneeID');
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
         // die(print_r($result));

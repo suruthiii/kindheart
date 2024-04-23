@@ -19,7 +19,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['unassigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/complaint/viewunassignedcomplaint/<?php echo $item->complaintID ?>">
+                    <a href="<?php echo URLROOT ?>/complaint/viewcomplaint?complaint_ID=<?php echo $item->complaintID ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -51,7 +51,7 @@
                 <div class="card-list">
 
                     <?php foreach($data['assigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/complaint/viewassignedcomplaint/<?php echo $item->complaintID ?>">
+                    <a href="<?php echo URLROOT ?>/complaint/viewcomplaint?complaint_ID=<?php echo $item->complaintID ?>">
                         <div class="card">
                             <table>
                                 <tr>

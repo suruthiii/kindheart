@@ -8,7 +8,9 @@
         
         <!-- External CSS -->
         <link rel="stylesheet" href="<?php echo URLROOT ?>/css/style.css">
-        <!-- <link rel="stylesheet" href="<?php echo URLROOT ?>/css/components/sidenavbar1.css"> -->
+
+        <!-- Sweet Alert -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
     <body>    
 

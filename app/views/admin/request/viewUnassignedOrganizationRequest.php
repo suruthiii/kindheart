@@ -83,14 +83,14 @@
                 </table>
             </div>
 
-            <!-- <div class="view-donation-btn-container" style="display: flex;">
-                <form action="<?php echo URLROOT ?>" method="post" class="delete-form">
+            <div class="view-donation-btn-container" >
+                <form action="<?php echo URLROOT ?>/request/assignme" method="post" class="delete-form">
                     <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
                     <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
                        Assign
                     </button>
                 </form>
-            </div> -->
+            </div>
         </div>
     </section>
 </main>

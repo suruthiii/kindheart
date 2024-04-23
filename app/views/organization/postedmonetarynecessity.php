@@ -46,7 +46,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
-                                <td><p>Rs.<?php echo $pendingtablerow->requestedAmount?></p></td>
+                                <td><p>Rs. <?php echo number_format($pendingtablerow->requestedAmount, 2); ?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
@@ -97,7 +97,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
                                 <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td><p>Rs.<?php echo $completetablerow->requestedAmount?></p></td>
+                                <td><p>Rs. <?php echo number_format($completetablerow->requestedAmount, 2); ?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewCompletedMonetarynecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $completetablerow->necessityID; ?>">
@@ -132,7 +132,15 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
-                    
+                    <div class="right-side-bar-type-one-detailed-view-boxes-typeone">
+                        <h5>Total Donation You Recieve</h5>
+                        <p>Rs. <?php echo number_format($data['totalReceivedAmount'], 2); ?></p>
+                    </div>
+                    <div class="right-side-bar-type-one-detailed-view-boxes">
+                        <h5>Total number of donors who donated</h5>
+                        <p><?php echo number_format($data['totalNumberofDonors']); ?> Number of Donors</p>
+                    </div>
+                    <div class="right-side-bar-type-one-detailed-view-boxes"></div>
 
                 </div>
             </div>

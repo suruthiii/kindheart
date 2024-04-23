@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST" onsubmit="return validateForm()">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST">
                         <!-- Project title -->
                         <div class="add-necessity-one-line-input">
                             <label for="projectTitle">Project Title</label>
@@ -35,32 +35,42 @@
                             <!-- Requested Amount Error Display -->
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectTitle_err']) ? $data['projectTitle_err']: ''; ?></span>
                         </div>
-
-                        <!-- Description about requested necessity -->
-                        <div class="add-necessity-text-area-input-to-oneline">
-                            <label for="projectdescription">Description</label>
-                            <textarea name="projectdescription" id="projectdescription" cols="30" rows="10" title="An explanation of project"><?php echo isset($data['projectdescription']) ? $data['projectdescription'] : ''; ?></textarea>
-                            <!-- Neccessity description error display -->
-                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectdescription_err']) ? $data['projectdescription_err']: ''; ?></span>
-                        </div>
                         
                         <div id="form-container">
-                            <!-- First line of form -->
-                            <div class="add-projects-add-more-field-input" id="add-more-milestone" name="add-more-milestone">
-                                <div class="project-first-div">
-                                    <label for="projectsmilestones"> Project MileStones</label>
-                                    <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones']) ? $data['projectsmilestones'] : ''; ?>">
-                                    <!-- Monetary necessity Error display -->
-                                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectsmilestones_err']) ? $data['projectsmilestones_err']: ''; ?></span>
+                            <div class="dynamic-input-block">
+                                <!-- First line of form -->
+                                <div class="add-projects-add-more-field-input" id="add-more-milestone" name="add-more-milestone">
+                                    <div class="project-first-div">
+                                        <!-- Get the name of the milestone -->
+                                        <label for="projectsmilestones"> Project MileStones</label>
+                                        <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones[]']) ? $data['projectsmilestones[]'] : ''; ?>" required oninvalid="this.setCustomValidity('Please name the Project Milestone')" oninput="this.setCustomValidity('')">
+                                    </div>
+                                    <div class="project-second-div">
+                                        <!-- get the budget for each mile stone -->
+                                        <label for="milestonebudget">MileStone Budget</label>
+                                        <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget[]']) ? $data['milestonebudget[]'] : ''; ?>" min="25" required oninvalid="this.setCustomValidity('Please enter the Budget for named Milestone')" oninput="this.setCustomValidity('')">
+                                    </div>
                                 </div>
-                                <div class="project-second-div">
-                                    <label for="milestonebudget">MileStone Budget</label>
-                                    <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget']) ? $data['milestonebudget'] : ''; ?>" min="25">
-                                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['milestonebudget_err']) ? $data['milestonebudget_err']: ''; ?></span>
+                                <!-- Description about each project mile stone -->
+                                <div class="add-projects-text-area-input-to-oneline" name="add-projects-text-area-input-to-oneline" id="add-projects-text-area-input-to-oneline">
+                                    <label for="milestonedescription">Milestone Description</label>
+                                    <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project" required oninvalid="this.setCustomValidity('Please give the description about the Milestone')" oninput="this.setCustomValidity('')"><?php echo isset($data['milestonedescription[]']) ? $data['milestonedescription[]'] : ''; ?></textarea>
+                                </div>
+                                <!-- Adding Images -->
+                                <div class="project-milestones-images">
+                                    <label>Add Images</label>
+                                </div>
+                                <div class="add-project-one-line-second-type-input">
+                                    <div class="projects-first-div">
+                                        <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
+                                    </div>
+                                    <div class="projects-second-div">
+                                        <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="add-more-project-milestones">
                             <button id="add-milestones-button" name="add-milestones-button">Add MileStone</button>
                             <button id="remove-milestones-button" name="remove-milestones-button">Remove MileStone</button>
@@ -68,6 +78,7 @@
 
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['MilestoneInputblock_err']) ? $data['MilestoneInputblock_err']: ''; ?></span>
                             <input type="submit" value="Add">
                         </div>
                     </form>
@@ -85,66 +96,85 @@
 </main>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Function to add a new milestone field
-        function addMilestoneField() {
+        document.addEventListener('DOMContentLoaded', function () {
             const formContainer = document.getElementById('form-container');
-            const newField = document.createElement('div');
-            newField.className = 'add-projects-add-more-field-input';
-            newField.innerHTML = `
+
+            // Function to create a new milestone block
+            function createMilestoneBlock() {
+                const milestoneBlock = document.createElement('div');
+                milestoneBlock.className = 'dynamic-input-block';
+
+                // First line of form
+                const firstLine = document.createElement('div');
+                firstLine.className = 'add-projects-add-more-field-input';
+                firstLine.innerHTML = `
                 <div class="project-first-div">
-                    <label for="projectsmilestones">Project Milestones</label>
-                    <input type="text" name="projectsmilestones[]" value="">
-                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
+                    <!-- Get the name of the milestone -->
+                    <label for="projectsmilestones"> Project MileStones</label>
+                    <input type="text" id="projectsmilestones[]" name="projectsmilestones[]" value="<?php echo isset($data['projectsmilestones[]']) ? $data['projectsmilestones[]'] : ''; ?>" required oninvalid="this.setCustomValidity('Please name the Project Milestone')" oninput="this.setCustomValidity('')">
                 </div>
                 <div class="project-second-div">
-                    <label for="milestonebudget">Milestone Budget</label>
-                    <input type="number" name="milestonebudget[]" value="" min="25">
-                    <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"></span>
+                    <!-- get the budget for each mile stone -->
+                    <label for="milestonebudget">MileStone Budget</label>
+                    <input type="number" id="milestonebudget[]" name="milestonebudget[]" value="<?php echo isset($data['milestonebudget[]']) ? $data['milestonebudget[]'] : ''; ?>" min="25" required oninvalid="this.setCustomValidity('Please enter the Budget for named Milestone')" oninput="this.setCustomValidity('')">
                 </div>
-            `;
-            formContainer.appendChild(newField);
-            checkMilestoneFieldCount();
-        }
+                `;
+                milestoneBlock.appendChild(firstLine);
 
-        function removeLastMilestoneField() {
-            const formContainer = document.getElementById('form-container');
-            const milestoneFields = formContainer.getElementsByClassName('add-projects-add-more-field-input');
-            const lastField = milestoneFields[milestoneFields.length - 1];
-            if (lastField !== null) {
-                formContainer.removeChild(lastField);
+                // Description about each project mile stone
+                const descriptionLine = document.createElement('div');
+                descriptionLine.className = 'add-projects-text-area-input-to-oneline';
+                descriptionLine.innerHTML = `
+                <label for="milestonedescription">Milestone Description</label>
+                <textarea name="milestonedescription[]" id="milestonedescription[]" cols="30" rows="10" title="An explanation of project" required oninvalid="this.setCustomValidity('Please give the description about the Milestone')" oninput="this.setCustomValidity('')"><?php echo isset($data['milestonedescription[]']) ? $data['milestonedescription[]'] : ''; ?></textarea>
+                `;
+                milestoneBlock.appendChild(descriptionLine);
+
+                // Image about each project mile stone
+                const ImageLine = document.createElement('div');
+                ImageLine.className = 'add-project-one-line-second-type-input';
+                ImageLine.innerHTML = `
+                <div class="projects-first-div">
+                    <input type="file" id="firstprojectImages[]" name="firstprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
+                </div>
+                <div class="projects-second-div">
+                    <input type="file" id="seconprojectImages[]" name="seconprojectImages[]" title="Add Image" accept="image/png, image/jpeg, image/jpg" required oninvalid="this.setCustomValidity('Please Input a Image file here')" oninput="this.setCustomValidity('')">
+                </div>
+                `;
+                milestoneBlock.appendChild(ImageLine);
+
+                return milestoneBlock;
             }
-            checkMilestoneFieldCount();
-        }
 
-        // Event listener for adding milestone fields
-        document.getElementById('add-milestones-button').addEventListener('click', function (event) {
-            event.preventDefault(); // Prevent form submission
-            addMilestoneField();
+            // Function to add a new milestone block
+            function addMilestoneBlock() {
+                const newBlock = createMilestoneBlock();
+                formContainer.appendChild(newBlock);
+            }
+
+            // Event listener for adding milestone block
+            document.getElementById('add-milestones-button').addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent form submission
+                addMilestoneBlock();
+            });
+
+            // Function to remove the last milestone field
+            function removeLastMilestoneBlock() {
+                const milestoneBlocks = document.querySelectorAll('.dynamic-input-block');
+                if (milestoneBlocks.length > 1) {
+                    const lastBlock = milestoneBlocks[milestoneBlocks.length - 1];
+                    formContainer.removeChild(lastBlock);
+                }
+            }
+
+            // Event listener for removing last added milestone block
+            document.getElementById('remove-milestones-button').addEventListener('click', function (event) {
+                event.preventDefault();
+                removeLastMilestoneBlock();
+            });
+
         });
 
-
-        // Event listener for removing the last added milestone field
-        document.getElementById('remove-milestones-button').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent form submission
-            removeLastMilestoneField();
-        });
-
-        // Function to check the number of added milestone fields and disable the "remove MileStone" button if there are none
-        function checkMilestoneFieldCount() {
-            const milestoneFieldsCount = document.getElementsByClassName('add-projects-add-more-field-input').length;
-            const removeButton = document.getElementById('remove-milestones-button');
-            if (milestoneFieldsCount === 1) {
-                removeButton.disabled = true;
-            } else {
-                removeButton.disabled = false;
-            }
-        }
-
-        // Call the checkMilestoneFieldCount function to disable the "remove MileStone" button initially if there are no added fields
-        checkMilestoneFieldCount();
-        
-    });
 </script>
 
 

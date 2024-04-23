@@ -101,7 +101,8 @@ class SuperAdmin extends Controller {
         $data = [
             'title' => 'Home page',
             'unassigned' => $this->complaintModel->getAllUnassignedComplaints(),
-            'assigned' => $this->complaintModel->getAllAssignedComplaints()
+            'assigned' => $this->complaintModel->getAllAssignedComplaints(),
+            'admins' => $this->userModel->viewAdmins()
         ];
 
         $this->view('superAdmin/complaint', $data);
