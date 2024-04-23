@@ -41,10 +41,8 @@
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>" class="view-donation-btn">
-                    <!-- <button type="submit" class="view-donation-btn" > -->
+                <a href="<?php echo URLROOT ?>/necessity/viewmonetarydoneeprofile/<?php echo $data['necessity_ID'] ?>/<?php echo $data['necessity_details']->doneeID ?>" class="view-donation-btn">
                         View Donee Profile
-                    <!-- </button> -->
                 </a>
             </div>
         </div>
