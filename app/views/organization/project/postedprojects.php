@@ -45,7 +45,7 @@
                                 </td>
                                 <td><p>Rs. <?php echo $pendingtablerow->budget?></p></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/project/viewProjectDetails" method="POST">
+                                    <form action="<?php echo URLROOT ?>/project/viewOngoingProjectDetails" method="POST">
                                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img src="<?php echo URLROOT ?>/img/eye-solid.svg">

@@ -50,10 +50,10 @@
                                 <div class="addordian-milestone-content">
                                     <div class="addordian-milestone-images">
                                         <div class="addorian-image1">
-                                            <img src="<?php echo URLROOT ?>/img/Asset_1hif_1.png">
+                                            <img src="<?php echo URLROOT ?>/projectmilestoneuploadedimages/<?php echo $milestone->img1 ; ?>">
                                         </div>
                                         <div class="addorian-image2">
-                                            <img src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png">
+                                            <img src="<?php echo URLROOT ?>/projectmilestoneuploadedimages/<?php echo $milestone->img2 ; ?>">
                                         </div>
                                     </div>
 

@@ -285,7 +285,7 @@ class Project extends Controller {
     }
 
     // View added project's further information
-    public function viewProjectDetails(){
+    public function viewOngoingProjectDetails(){
         if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         } else {

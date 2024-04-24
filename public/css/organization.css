@@ -1361,7 +1361,7 @@
 
 .accordian-milestone{
     position: relative;
-    width: 95%;
+    width: 70%;
     background-color: #8E0000;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-radius: 15px;
@@ -1376,7 +1376,6 @@
 }
 
 .accordian-milestone label{
-    height: 4vh;
     position: relative;
     display: block;
     color: #fff;

@@ -169,7 +169,7 @@ class ProjectModel{
     }
 
     public function getAllMilestoneDetails($projectID){
-        $this->db->query("SELECT milestone.milestoneID, milestone.milestoneName, milestone.description AS milestone_description, milestone.amount, milestone.status AS milestone_status
+        $this->db->query("SELECT milestone.milestoneID, milestone.milestoneName, milestone.description AS milestone_description, milestone.amount, milestone.img1, milestone.img2, milestone.status AS milestone_status
                         FROM milestone WHERE milestone.projectID = :projectID");
         $this->db->bind(':projectID', $projectID);
 
