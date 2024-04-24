@@ -16,15 +16,15 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button> -->
-                    <button onclick="goBack()">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
+                    <!-- <button onclick="goBack()">Go Back</button>
 
                     <script>
                         function goBack() {
                             // Use history.back() to navigate to the previous page in history
                             history.back();
                         }
-                    </script>
+                    </script> -->
                 </div>  
 
                 <!-- main title -->

@@ -69,14 +69,6 @@
 
                 
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-                    <form action="<?php echo URLROOT ?>" method="post">
-                        <input type="hidden" name="projectID" id="projectID"/>
-                        <button type="submit">
-                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" class="ncessity-view-table-edit-button-img">
-                            <p>Edit</p>
-                        </button>
-                    </form>
-
                     <form action="<?php echo URLROOT ?>/project/deleteProjects" method="post" onsubmit="return confirmDelete();">
                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $data['ongingProjectDetails']->projectID; ?>"/>
                         <button type="submit">

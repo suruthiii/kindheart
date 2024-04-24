@@ -52,12 +52,12 @@ class Project extends Controller {
                     $seconprojectImagesPath = [];
 
                     // Process first project milestone uploaded images
-                    foreach($_FILES['firstprojectImages']['tmp_name'] as $key => $tmp_name){
+                    foreach($_FILES['firstprojectImages']['name'] as $key => $Imagenamewithextention){
                         // Check for upload errors
                         if($_FILES['firstprojectImages']['error'][$key] === UPLOAD_ERR_OK) {
-                            $firstImagesPath = PUBLICROOT.'/projectmilestoneuploadedimages/'.$_FILES['firstprojectImages']['name'][$key];
-                            move_uploaded_file($tmp_name, $firstImagesPath);
-                            $firstprojectImagesPath[] = $firstImagesPath;
+                            $firstImagesPath = PUBLICROOT.'/projectmilestoneuploadedimages/'.$Imagenamewithextention;
+                            move_uploaded_file($_FILES['firstprojectImages']['tmp_name'][$key], $firstImagesPath);
+                            $firstprojectImagesPath[] = $Imagenamewithextention;
                         } else {
                             // Handle upload error
                             $data['upload_error'] = "Error uploading first project images";
@@ -65,12 +65,12 @@ class Project extends Controller {
                     }
 
                     // Process second project milestone uploaded images
-                    foreach($_FILES['seconprojectImages']['tmp_name'] as $key => $tmp_name){
+                    foreach($_FILES['seconprojectImages']['name'] as $key => $Imagenamewithextention){
                         // Check for upload errors
                         if($_FILES['seconprojectImages']['error'][$key] === UPLOAD_ERR_OK) {
-                            $secondImagePath  = PUBLICROOT.'/projectmilestoneuploadedimages/'.$_FILES['seconprojectImages']['name'][$key];
-                            move_uploaded_file($tmp_name, $secondImagePath);
-                            $seconprojectImagesPath[] = $secondImagePath;
+                            $secondImagePath  = PUBLICROOT.'/projectmilestoneuploadedimages/'.$Imagenamewithextention;
+                            move_uploaded_file($_FILES['seconprojectImages']['tmp_name'][$key], $secondImagePath);
+                            $seconprojectImagesPath[] = $Imagenamewithextention;
                         } else {
                             // Handle upload error
                             $data['upload_error'] = "Error uploading second project images";
@@ -325,9 +325,9 @@ class Project extends Controller {
         }
     }
 
-    // View added project's further information
-    public function viewProjectDetails(){
-        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
+    // View added ongoing project's further information
+    public function viewOngoingProjectDetails(){
+        if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         } else {
 
@@ -341,54 +341,108 @@ class Project extends Controller {
             ];
 
             $this->view('organization/project/viewPendingprojectsdetails', $data, $other_data);
-        //     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
-        //         if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
-        //             // Get 'necessityID' from POST data
-        //             $necessityID = trim($_POST['necessityID']);
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
     
-        //             // Get pending necessity details
-        //             $pendingNecessityDetails = $this->necessityModel->getPendingMonetaryNecessities($necessityID);
+                    // Get pending necessity details
+                    $ongingProjectDetails = $this->projectModel->getallProjectDetils($projectID);
+                    $ongoingmilestonedetails = $this->projectModel->getAllMilestoneDetails($projectID);
     
-        //             // Prepare data to pass to the view
-        //             $data = [
-        //                 'necessityID' => $necessityID,
-        //                 'pendingNecessityDetails' => $pendingNecessityDetails
-        //             ];
+                    // Prepare data to pass to the view
+                    $data = [
+                        'projectID' => $projectID,
+                        'ongingProjectDetails' => $ongingProjectDetails,
+                        'ongoingmilestonedetails' => $ongoingmilestonedetails
+                    ];
     
-        //             // Pass data to the view
-        //             if ($_SESSION['user_type'] == 'student') {
-
-        //             }else if ($_SESSION['user_type'] == 'organization') {
-        //                 $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
-        //             }else {
-        //                 die('User Type Not Found');
-        //             }
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/project/viewPendingprojectsdetails', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
     
-        //         } else {
-        //             // display an error message here
-        //             die('User Necessity is Not Found');
-        //         }
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
     
-        //     } else {
-        //         // If it's not a POST request, then empty data pass to the view
-        //         $data = [
-        //             'necessityID' => '',
-        //             'pendingNecessityDetails' => [] // this is an array
-        //         ];
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'projectID' => '',
+                    'ongingProjectDetails' => [],
+                    'ongoingmilestonedetails' => []
+                ];
                 
-        //         // Pass data to the view
-        //         if ($_SESSION['user_type'] == 'student') {
-
-        //         }else if ($_SESSION['user_type'] == 'organization') {
-        //             $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
-        //         }else {
-        //             die('User Type Not Found');
-        //         }
-        //     }
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/viewPendingprojectsdetails', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
         }
     }
+
+    // View added project's further information
+    public function viewCompletedProjectDetails(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
+    
+                    // Get pending necessity details
+                    $ongingProjectDetails = $this->projectModel->getallCompletedProjectDetils($projectID);
+                    $ongoingmilestonedetails = $this->projectModel->getAllMilestoneDetails($projectID);
+    
+                    // Prepare data to pass to the view
+                    $data = [
+                        'projectID' => $projectID,
+                        'ongingProjectDetails' => $ongingProjectDetails,
+                        'ongoingmilestonedetails' => $ongoingmilestonedetails
+                    ];
+    
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/project/viewCompletedprojectsdetails', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'projectID' => '',
+                    'ongingProjectDetails' => [],
+                    'ongoingmilestonedetails' => []
+                ];
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/viewCompletedprojectsdetails', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    // viewCompletedProjectDetails
 
     public function viewDoneeProfile($project_ID = null, $org_ID = null) {
         if($_SESSION['user_type'] == 'organization') {

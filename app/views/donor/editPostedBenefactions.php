@@ -16,15 +16,15 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button> -->
-                    <button onclick="goBack()">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/postedBenefactions'">Go Back</button>
+                    <!-- <button onclick="goBack()">Go Back</button>
 
                     <script>
                         function goBack() {
                             // Use history.back() to navigate to the previous page in history
                             history.back();
                         }
-                    </script>
+                    </script> -->
                 </div>
 
                 <!-- main title -->
@@ -161,7 +161,6 @@
 </main>
 
 <script>
-
         // Select Box Customization
         var x, i, j, l, ll, selElmnt, a, b, c;
 
@@ -245,8 +244,55 @@
         }
         /*if the user clicks anywhere outside the select box,then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
-
-
 </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+<?php if (isset($data['success']) && $data['success']) : ?>
+    <script>
+        Swal.fire({
+            position: "top",
+            title: "Benefaction Updated Successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+
+            didOpen: () => {
+                // Apply custom CSS styles using JavaScript
+                const swalContainer = document.querySelector('.swal2-popup');
+                if (swalContainer) {
+                    swalContainer.style.border = '3px solid #00FF80';
+                    swalContainer.style.backgroundColor = '#f9f9f9';
+                }
+                const swalTitle = document.querySelector('.swal2-title');
+                if (swalTitle) {
+                    swalTitle.style.fontSize = '15px';
+                }
+            }
+        });
+    </script>
+
+<?php elseif (isset($data['fail']) && $data['fail']): ?>
+    <script>
+        Swal.fire({
+            position: "top",
+            title: "Benefaction Update Failed !",
+            showConfirmButton: false,
+            timer: 1500,
+
+            didOpen: () => {
+                // Apply custom CSS styles using JavaScript
+                const swalContainer = document.querySelector('.swal2-popup');
+                if (swalContainer) {
+                    swalContainer.style.border = '3px solid red'; // Customize error border color
+                    swalContainer.style.backgroundColor = '#f9f9f9';
+                }
+                const swalTitle = document.querySelector('.swal2-title');
+                if (swalTitle) {
+                    swalTitle.style.fontSize = '15px';
+                }
+            }
+        });
+    </script>
+<?php endif; ?>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

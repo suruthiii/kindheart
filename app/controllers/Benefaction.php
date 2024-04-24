@@ -141,13 +141,13 @@ class Benefaction extends Controller {
             }
 
             if(empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err']) && empty($data['benefactionCategory_err'])){
-                if($this->donorModel->addBenefaction($data)){
+                if($this->benefactionModel->addBenefaction($data)){
                     $data = [
-                        'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+                        'pendingBenefaction' => $this->benefactionModel->getPendingBenefaction(),
 
-                        'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
+                        'onProgressBenefaction' => $this->benefactionModel->getOnProgressBenefaction(),
                         
-                        'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                        'completedBenefaction' => $this->benefactionModel->getCompletedBenefaction()
                     ];
 
                     $other_data = [
@@ -200,11 +200,11 @@ class Benefaction extends Controller {
     public function postedBenefactions(){
         // Load the view with data
         $data = [
-            'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+            'pendingBenefaction' => $this->benefactionModel->getPendingBenefaction(),
 
-            'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
+            'onProgressBenefaction' => $this->benefactionModel->getOnProgressBenefaction(),
             
-            'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+            'completedBenefaction' => $this->benefactionModel->getCompletedBenefaction()
         ];
 
         $other_data = [
@@ -226,14 +226,14 @@ class Benefaction extends Controller {
             // Load the view with data
             $data = [
                 'title' => 'View Posted Benefactions',
-                'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
-                'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
+                'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($benefactionID),
+                'benefaction_requests' => $this->benefactionModel->getBenefactionRequests($benefactionID)
             ];   
             
             $other_data = [
                 'notification_count' => $this->notificationModel->getNotificationCount(),
                 'notifications' => $this->notificationModel->viewNotifications()
-            ];
+            ];           
 
             // Determine the availability status
             $availabilityStatus = $data['benefaction_details']->availabilityStatus;
@@ -326,12 +326,13 @@ class Benefaction extends Controller {
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if (empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err']) && empty($data['benefactionCategory_err'])) {
-                if ($this->donorModel->updateBenefaction($data)) {
+            if (empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['benefactionCategory_err'])) {
+                if ($this->benefactionModel->updateBenefaction($data)) {
                     $data = [
                         'title' => 'Edit Posted Benefactions',
                         'benefactionID' => $_POST['benefactionID'],
-                        'benefaction_details' => $this->donorModel->getBenefaction($_POST['benefactionID']),
+                        'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($_POST['benefactionID']),
+                        'success' => true
                     ];
 
                     $other_data = [
@@ -342,12 +343,16 @@ class Benefaction extends Controller {
                     $this->view('donor/editPostedBenefactions', $data, $other_data);
 
                 }else{
+                    $data = [
+                        'fail' => true
+                    ];
+                    
                     die('Something Went Wrong');
                 }
             }else{
                 $data = [
                     'title' => 'Edit Posted Benefactions',
-                    'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
+                    'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($benefactionID)
                 ];
 
                 $other_data = [
@@ -363,7 +368,7 @@ class Benefaction extends Controller {
             $data = [
                 'title' => 'Edit Posted Benefactions',
                 'benefactionID' => $_GET['benefactionID'],
-                'benefaction_details' => $this->donorModel->getBenefaction($_GET['benefactionID']),
+                'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($_GET['benefactionID']),
             ];
 
             $other_data = [
@@ -384,16 +389,16 @@ class Benefaction extends Controller {
                 $benefactionID = $_POST['benefactionID'];
                 
                 // Call model method to delete benefaction
-                if ($this->donorModel->deleteBenefaction($benefactionID)) {
+                if ($this->benefactionModel->deleteBenefaction($benefactionID)) {
                     // Deletion successful, redirect or reload data
 
                     // Fetch updated benefactions data
                     $data = [
-                        'pendingBenefaction' => $this->donorModel->getPendingBenefaction(),
+                        'pendingBenefaction' => $this->benefactionModel->getPendingBenefaction(),
 
-                        'onProgressBenefaction' => $this->donorModel->getOnProgressBenefaction(),
+                        'onProgressBenefaction' => $this->benefactionModel->getOnProgressBenefaction(),
                         
-                        'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
+                        'completedBenefaction' => $this->benefactionModel->getCompletedBenefaction()
                     ];
 
                     $other_data = [
@@ -421,7 +426,7 @@ class Benefaction extends Controller {
 
         $data = [
             'title' => 'View Benefaction Request',
-            'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
         ];
 
         $other_data = [
@@ -442,19 +447,20 @@ class Benefaction extends Controller {
                 $doneeID = $_POST['doneeID'];
                 
                 // Update the status of the benefaction request
-                if($this->donorModel->declineBenefactionRequest($doneeID, $benefactionID)) {          
+                if($this->benefactionModel->declineBenefactionRequest($doneeID, $benefactionID)) {          
 
                     // Load the view with data
                     $data = [
                         'title' => 'View Posted Benefactions',
-                        'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
-                        'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
+                        'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($benefactionID),
+                        'benefaction_requests' => $this->benefactionModel->getBenefactionRequests($benefactionID)
                     ];         
                     
                     $other_data = [
                         'notification_count' => $this->notificationModel->getNotificationCount(),
                         'notifications' => $this->notificationModel->viewNotifications()
                     ];
+                                 
             
                     // Load View
                     $this->view('donor/viewPostedBenefactions', $data, $other_data);
@@ -464,9 +470,6 @@ class Benefaction extends Controller {
             }
         }
     }
-
-    
-
     
     public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($benefactionID))) {
@@ -475,7 +478,7 @@ class Benefaction extends Controller {
 
         $data = [
             'title' => 'View Benefaction Request',
-            'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
         ];
 
         $other_data = [
@@ -497,6 +500,8 @@ class Benefaction extends Controller {
             $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
         } elseif ($verificationStatus == 2) {
             $this->view('donor/viewBenefactionRequestCompleted', $data, $other_data);
+        } elseif ($verificationStatus == 10) {
+            $this->view('donor/viewBenefactionRequestDeclined', $data, $other_data);
         } else {
             redirect('pages/404'); // Redirect to 404 page for unknown status
         }

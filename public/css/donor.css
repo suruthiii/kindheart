@@ -80,6 +80,163 @@ span .donor-form-error-details{
     margin-top: 0.5vh;
 }
 
+
+/* ------------------Donor Dashbaord--------------- */
+
+.donor-dashboard-container{
+    position: fixed;
+    width: 75%;
+    height: 85vh;
+    margin-top: 2vh;
+    right: 0px;
+}
+
+.donor-dashboard-introduction{
+    height: 13vh;
+}
+
+.donor-dashboard-status-bar-container{
+    margin-top: -20px;
+
+}
+
+.donor-dashboard-status-topic{ 
+    margin: 0;
+}
+
+.donor-dashboard-status-bar{
+    height: 120px;
+    width: 95%;
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.donor-dashboard-status{
+    width: 200px;
+    height: 100px;
+    color: white;
+    margin: 5px;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;    
+    border: 1px solid #ddd;        
+    background-color: #8e0000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.donor-dashboard-status p{
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.donor-dashboard-status h1{
+    font-size: 25px;
+    margin-top: 2px;
+}
+
+.donor-dashboard-two-column-container{
+    display: flex;
+    width: 95%;
+    margin-top: 10px;
+}
+
+.donor-dashboard-graph-container{
+    width: 75vh;
+    height: 50vh;  
+    margin-right: 5px;
+    overflow: hidden;
+}
+
+.donor-dashboard-donation-container{
+    width: 75vh;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.donor-dashboard-left-container{
+    width: 73vh;
+    height: 40vh;    
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;  
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.donor-dashboard-right-container{
+    position: fixed;/* Position relative for positioning the scrollbar */
+    height: 40vh;
+    width: 550px;
+    overflow: auto;
+    scrollbar-width: none;    
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.donor-dashboard-right-container table{
+    width: 95%;
+    margin-left: 10px;
+    margin-top: 10px;
+    border-collapse: collapse;    
+}
+
+.donor-dashboard-right-container th{
+    background-color: #909090;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    padding: 8px 12px;
+}
+
+.donor-dashboard-right-container tbody {
+    display: block; /* Enable block layout for tbody */
+    max-height: calc(100% - 40px); /* Adjust height for tbody (minus header height) */
+}
+
+.donor-dashboard-right-container tbody tr {
+    display: table-row;
+}
+
+.donor-dashboard-right-container tbody td {
+    padding: 8px 12px;
+    height: 40px;
+    
+    border-bottom: 1px solid #991e1e; /* Add bottom border between rows */
+}
+
+.donor-dashboard-right-container table tr td:nth-child(1){
+    max-width: 40%;
+    width: 300px;
+}
+
+.donor-dashboard-right-container table tr td:nth-child(2){
+    max-width: 30%;
+    width: 200px;
+}
+
+.donor-dashboard-right-container table tr td:nth-child(3){
+    max-width: 30%;
+    width: 100px;
+}
+
+
+
+
+
+
+
+
+
+
+
 /* ------------------Add Benefaction--------------- */
 
 .two-column-container {
@@ -789,6 +946,21 @@ span .donor-form-error-details{
     align-items: center;
 }
 
+.request-right-side-bar-type-requests-right .status_declined p{
+    background-color: #7a7875;
+    color: #b9b9b9;
+
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
 /* .request-right-side-bar-type-requests-right .status_button #status_pending{
     background-color: #ffffff;
     color: #000;
@@ -1398,7 +1570,7 @@ span .donor-form-error-details{
 }
 
 .benefactionRequestAccepted-info {
-    height: 30vh;
+    height: 25vh;
     max-height: 30vh;
     
     display: flex;
@@ -1432,18 +1604,24 @@ span .donor-form-error-details{
 
 .benefactionRequestAccepted-info table {
     table-layout: fixed;
-    width: 600px;
+    margin-top: 5px;
+    width: 600px;    
 }
 
 .benefactionRequestAccepted-data th {
     min-width:100px; 
     width:150px;    
     font-size: 15px;
+    vertical-align: top;
+    text-align: left;
 }
 
 .benefactionRequestAccepted-data td {
-    padding: 8px;    
+    padding-left: 8px;    
+    padding-bottom: 8px;
     font-size: 14px;
+    vertical-align: top;
+    text-align: left;
     word-wrap: break-word;
 }
 
