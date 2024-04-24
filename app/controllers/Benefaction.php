@@ -8,7 +8,6 @@ class Benefaction extends Controller {
         $this->middleware->checkAccess(['student','donor']);
 
         $this->benefactionModel = $this->model('benefactionModel');
-        $this->BenefactionModel = $this->model('BenefactionModel');
     }
 
     public function index(){
@@ -456,7 +455,7 @@ class Benefaction extends Controller {
                     
                 
                     // Add Data to DB
-                    if ($this->BenefactionModel->addAppliedBenefaction($data)) {
+                    if ($this->benefactionModel->addAppliedBenefaction($data)) {
                         if($_SESSION['user_type'] == 'student') {
                             redirect('student/benefactions');
                         }
