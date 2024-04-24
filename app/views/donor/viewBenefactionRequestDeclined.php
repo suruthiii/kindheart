@@ -29,7 +29,7 @@
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
-                    <h3>Completed Benefaction Request Details</h3>
+                    <h3>Declined Benefaction Request Details</h3>
                     <p>Last 30 Days</p>
                 </div>
 
@@ -53,24 +53,12 @@
                                 <th>Reason</th>
                                 <td><?php print_r($data['benefactionRequest_details'][0]->reason) ?></td>
                             </tr>
-                            <tr class="benefactionRequest-data">
-                                <th>Donatated Amount</th>
-                                <td>dfghsgst</td>
-                            </tr>
-                            <tr class="benefactionRequest-data">
-                                <th>Donated Date</th>
-                                <td>dfbvsdfb</td>
-                            </tr>
-                            <tr class="benefactionRequest-data">
-                                <th>Acknowledgement</th>
-                                <td>dfbvsdfb</td>
-                            </tr>                            
                         </table>                    
                     </div>                    
                 </div>
 
-                <div class="view-benefactionRequest-btn-container">
-                    <!-- <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
+                <!-- <div class="view-benefactionRequest-btn-container">
+                    <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
                         <input type="hidden" name="doneeID" id="doneeID" value="" />
                         <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
                             <img src="<?php echo URLROOT ?>/img/profile2.png" style="filter: invert(100%); width:15px;">
@@ -93,8 +81,8 @@
                             <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
                             <h5>Decline Request</h5>
                         </button>
-                    </form> -->
-                </div>
+                    </form>
+                </div> -->
             </div>
 
             <!-- right side bar for success story/ choose or add necessity -->
@@ -103,6 +91,29 @@
         </div>
     </section>
 </main>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function confirmDecline(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to decline this request. This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, decline it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form programmatically
+                const form = document.getElementById('declineForm');
+                form.submit(); // Submit the form
+            }
+        });
+    }
+</script>
 
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
