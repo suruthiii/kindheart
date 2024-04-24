@@ -8,7 +8,6 @@ class Benefaction extends Controller {
         $this->middleware->checkAccess(['student','donor']);
 
         $this->benefactionModel = $this->model('benefactionModel');
-        $this->BenefactionModel = $this->model('BenefactionModel');
     }
 
     public function index(){
@@ -287,16 +286,22 @@ class Benefaction extends Controller {
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if (empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['photoBenfaction_err']) && empty($data['benefactionCategory_err'])) {
+            if (empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['benefactionCategory_err'])) {
                 if ($this->benefactionModel->updateBenefaction($data)) {
                     $data = [
                         'title' => 'Edit Posted Benefactions',
                         'benefactionID' => $_POST['benefactionID'],
-                        'benefaction_details' => $this->benefactionModel->getBenefaction($_POST['benefactionID']),
+                        'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($_POST['benefactionID']),
+                        'success' => true
                     ];
+
                     $this->view('donor/editPostedBenefactions', $data);
 
                 }else{
+                    $data = [
+                        'fail' => true
+                    ];
+                    
                     die('Something Went Wrong');
                 }
             }else{
@@ -313,7 +318,7 @@ class Benefaction extends Controller {
             $data = [
                 'title' => 'Edit Posted Benefactions',
                 'benefactionID' => $_GET['benefactionID'],
-                'benefaction_details' => $this->benefactionModel->getBenefaction($_GET['benefactionID']),
+                'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($_GET['benefactionID']),
             ];
 
             $this->view('donor/editPostedBenefactions', $data);
@@ -450,7 +455,7 @@ class Benefaction extends Controller {
                     
                 
                     // Add Data to DB
-                    if ($this->BenefactionModel->addAppliedBenefaction($data)) {
+                    if ($this->benefactionModel->addAppliedBenefaction($data)) {
                         if($_SESSION['user_type'] == 'student') {
                             redirect('student/benefactions');
                         }
