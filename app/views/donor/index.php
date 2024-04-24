@@ -24,18 +24,23 @@
                 <div class="donor-dashboard-status-bar">
                     <div class="donor-dashboard-status">
                         <p>Donation Status</p>
+                        <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Donation Status</p>
+                        <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Donation Status</p>
+                        <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Donation Status</p>
+                        <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Donation Status</p>
+                        <h1>12 300</h1>
                     </div>
                 </div>
             </div>

@@ -122,15 +122,21 @@ span .donor-form-error-details{
     color: white;
     margin: 5px;
     text-align: center;
+    justify-content: center;
     border-radius: 10px;    
     border: 1px solid #ddd;        
     background-color: #8e0000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-
 .donor-dashboard-status p{
+    font-size: 13px;
+    margin-top: 20px;
+}
 
+.donor-dashboard-status h1{
+    font-size: 25px;
+    margin-top: 2px;
 }
 
 .donor-dashboard-two-column-container{
