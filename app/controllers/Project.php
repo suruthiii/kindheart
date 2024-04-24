@@ -284,7 +284,7 @@ class Project extends Controller {
         }
     }
 
-    // View added project's further information
+    // View added ongoing project's further information
     public function viewOngoingProjectDetails(){
         if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
@@ -336,6 +336,61 @@ class Project extends Controller {
             }
         }
     }
+
+    // View added project's further information
+    public function viewCompletedProjectDetails(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
+    
+                    // Get pending necessity details
+                    $ongingProjectDetails = $this->projectModel->getallCompletedProjectDetils($projectID);
+                    $ongoingmilestonedetails = $this->projectModel->getAllMilestoneDetails($projectID);
+    
+                    // Prepare data to pass to the view
+                    $data = [
+                        'projectID' => $projectID,
+                        'ongingProjectDetails' => $ongingProjectDetails,
+                        'ongoingmilestonedetails' => $ongoingmilestonedetails
+                    ];
+    
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/project/viewCompletedprojectsdetails', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'projectID' => '',
+                    'ongingProjectDetails' => [],
+                    'ongoingmilestonedetails' => []
+                ];
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/viewCompletedprojectsdetails', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    // viewCompletedProjectDetails
 
     public function viewDoneeProfile($project_ID = null, $org_ID = null) {
         if($_SESSION['user_type'] == 'organization') {
