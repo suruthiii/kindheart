@@ -1,5 +1,5 @@
 .topnav{
-    overflow: hidden;
+    /* overflow-X: hidden; */
     width: 100vw;
     position: absolute;
     top: 0;
@@ -101,7 +101,6 @@
 
 .topnav .items .content .notify:hover{
     /* box-shadow: 0 0 8px 0.1px rgba(0, 0, 0, 0.2); */
-    scale: 1.05;
     cursor: pointer;
 }
 

@@ -61,7 +61,7 @@
                 
                 <h3 style="margin-top: 30px; text-align:center; margin-left: 0;">Admin Registration</h3>
 
-                <?php if (!empty($other_data)){?>
+                <?php if (sizeof($other_data) > 2){?>
                     <div class="error-msg">
                         <span class="form-invalid"><?php echo $other_data["err"] ?></span>
                     </div>
