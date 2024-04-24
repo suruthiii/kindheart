@@ -742,11 +742,28 @@
 
 /*-----------edit profile  ------------>*/
 
+.edit-profile-picture{
+  
+    height: 100px;
+    margin-top: 20%;
+    width: 80%;
+    display: flex; /* Add flexbox to center the profile picture */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border-radius: 50%; /* Make the parent div rounded */
+}
+.edit-profile-picture .profile-picture{
+    border-radius: 50%; /* Make the profile picture rounded */
+    height: 100px; /* Adjust the height of the image */
+    width: 100px; /* Adjust the width of the image */
+    
+    
 
+}
 
 
 .edit-profile-form{
-    margin-top: 10%;
+    margin-top: 20px;
     position: fixed;
     width: 70%;
     height: 70%; /* Set the height of the div */
@@ -758,7 +775,7 @@
 
 .edit-profile-form .lines{
     width: 50%;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
 
 }
 
@@ -799,6 +816,25 @@
 .edit-profile-form h4{
     font-size: 20px;
     font-weight: 300;
+    
+}
+
+.edit-profile-form .btn input{
+    background-color: #8e0000;
+    border: solid transparent;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 20px 20px;
+    /* position:absolute; */
+    bottom: 100px;
+    right: 30px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    border-radius: 10px;
+    display: flex;
+    margin-right: 5px;
+    text-align: center;
     
 }
 
@@ -854,6 +890,50 @@
     color: black;
     width: 100%;
     height: 100%;
+}
+
+
+
+
+.details-Container{
+    overflow: auto;
+    width: 90%;
+    height: 100%;
+}
+
+.details-Container table{
+    height: 100%;
+    width: 90%;
+    padding: 10px 10px 0 10px;
+    overflow-y: auto;
+}
+
+
+.details-Container table tr{
+    width: 50%;
+    height: 100%;
+
+}
+
+.details-Container table tr td .detail-name{
+
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding-top: 20px;
+    max-width: 20px;
+
+
+
+}
+.details-Container table tr td .detail-value{
+
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding-top: 20px;
+    max-width: 20px;
+
 }
 
 

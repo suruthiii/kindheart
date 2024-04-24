@@ -13,11 +13,16 @@
 
             <!-- Middle container -->
             <div class="middle-container">
+           
                 <!-- Go Back Button -->
-                <div class="goback-button">
-                    <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="">Go Back</button>
-                </div>
+                <a href="<?php echo URLROOT ?>/Student/donors">
+                        <table>
+                            <tr>
+                                <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
+                                <td width="70%">Go Back</td>
+                            </tr>
+                        </table>
+                    </a>
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
@@ -72,7 +77,19 @@
                 <div class="right-side-bar">
                     <!-- title for rightside bar -->
                     <div class="rightside-bar-title">
-                        <h3>Donor Details</h3>
+                        <h3>Donor Profile</h3>
+                    </div>
+                    <div class="details-Container">
+
+                        <table>
+                            <tr>
+                                <td width="50%" class="detail-name">Nameeeeeeeeeeeeeeeeeeeeeeeeee</td>
+                                <td width="50%" class="detail-value">hellowfghvjhvbjjkhytyrewaszxcfgvhbjkiolk,mnbhgfdrx</td>
+                            </tr>
+
+                        </table>
+                        
+                    
                     </div>
 
 
