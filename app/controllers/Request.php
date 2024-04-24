@@ -6,6 +6,7 @@ class Request extends Controller {
         $this->middleware->checkAccess(['admin', 'superAdmin']);
         $this->requestModel = $this->model('RequestModel');
         $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function studentRequest(){
@@ -16,7 +17,12 @@ class Request extends Controller {
                 'assigned' => $this->requestModel->getAssignedStudentRequests()
             ];
 
-            $this->view('admin/request/studentRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('admin/request/studentRequest', $data, $other_data);
         }
 
         else if($_SESSION['user_type'] == 'superAdmin') {
@@ -27,7 +33,12 @@ class Request extends Controller {
                 'admins' => $this->userModel->viewAdmins()
             ];
 
-            $this->view('superAdmin/request/studentRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('superAdmin/request/studentRequest', $data, $other_data);
         }
 
         else {
@@ -43,7 +54,12 @@ class Request extends Controller {
                 'assigned' => $this->requestModel->getAssignedOrganizationRequests()
             ];
 
-            $this->view('admin/request/organizationRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('admin/request/organizationRequest', $data, $other_data);
         }
 
         else if($_SESSION['user_type'] == 'superAdmin') {
@@ -54,7 +70,12 @@ class Request extends Controller {
                 'admins' => $this->userModel->viewAdmins()
             ];
 
-            $this->view('superAdmin/request/organizationRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('superAdmin/request/organizationRequest', $data, $other_data);
         }
 
         else {
@@ -73,7 +94,12 @@ class Request extends Controller {
                 'student_details' => $this->requestModel->getStudent($student_ID)
             ];
 
-            $this->view('admin/request/viewUnassignedStudentRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('admin/request/viewUnassignedStudentRequest', $data, $other_data);
         }
 
         else if($_SESSION['user_type'] == 'superAdmin') {
@@ -83,7 +109,12 @@ class Request extends Controller {
                 'admins' => $this->userModel->viewAdmins()
             ];
 
-            $this->view('superAdmin/request/viewUnassignedStudentRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('superAdmin/request/viewUnassignedStudentRequest', $data, $other_data);
         }
 
         else {
@@ -101,7 +132,12 @@ class Request extends Controller {
             'student_details' => $this->requestModel->getStudent($student_ID),
         ];
 
-        $this->view($_SESSION['user_type'].'/request/viewAssignedStudentRequest', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/request/viewAssignedStudentRequest', $data, $other_data);
     }
 
     public function viewUnassignedOrganizationRequest($org_ID = null){
@@ -115,7 +151,12 @@ class Request extends Controller {
                 'organization_details' => $this->requestModel->getOrganization($org_ID)
             ];
 
-            $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data, $other_data);
         }
         
         else if($_SESSION['user_type'] == 'superAdmin') {
@@ -126,7 +167,12 @@ class Request extends Controller {
     
             ];
 
-            $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data, $other_data);
         }
 
         else {
@@ -143,7 +189,13 @@ class Request extends Controller {
             'title' => 'Home page',
             'organization_details' => $this->requestModel->getOrganization($org_ID)
         ];
-        $this->view($_SESSION['user_type'].'/request/viewAssignedOrganizationRequest', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/request/viewAssignedOrganizationRequest', $data, $other_data);
     }
 
     public function unassignAdmin() {

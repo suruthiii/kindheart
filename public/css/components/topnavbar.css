@@ -128,3 +128,50 @@
 .topnav .items .content .profile .ico {
     width: 30px;
 }
+
+
+/* ----------------------------- notifications ------------------------------- */
+.notification-area{
+    box-shadow: 0 0 15px 0.1px rgba(128, 128, 128, 0.618); 
+    border-radius: 10px; 
+    width: 300px; 
+    position: absolute; 
+    right: 30px; 
+    top: 70px;
+    z-index: 100;
+    background-color: white;
+    /* display: none; */
+}
+
+.notification-area-active{
+    display: grid;
+}
+
+.notification-area .notification{
+    padding: 10px 12px; 
+    border-bottom: 1px solid rgba(225, 225, 225, 0.968);
+    transition: 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notification-area .notification:hover {
+    background-color: rgba(225, 225, 225, 0.5);
+}
+
+.notification-area .notification .notification-name{
+    font-size: 15px;
+}
+
+.notification-area .notification .notification-des{
+    font-size: 12px;
+}
+
+.notification-area .notification .notification-option .notification-opt-btn{
+    background-color:rgba(255, 255, 255, 0); 
+}
+
+.notification-area .notification .notification-option .notification-opt-btn:hover{
+    cursor: pointer;
+}

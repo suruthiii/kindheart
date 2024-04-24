@@ -8,6 +8,8 @@ class SuccessStory extends Controller {
         // Only students are allowed to access student pages
         $this->middleware->checkAccess(['student', 'organization', 'donor', 'admin', 'superAdmin']);
         $this->successStoryModel = $this->model('SuccessStoryModel');
+        $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
 

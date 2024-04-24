@@ -5,6 +5,7 @@ class User extends Controller {
         // Only admins are allowed to access admin/superadmin pages
         $this->middleware->checkAccess(['superAdmin', 'admin']);
         $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function student(){
@@ -13,7 +14,12 @@ class User extends Controller {
             'students' => $this->userModel->viewStudents()
         ];
 
-        $this->view($_SESSION['user_type'].'/user/student', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/user/student', $data, $other_data);
     }
 
     public function viewStudent($student_ID = null){
@@ -26,7 +32,12 @@ class User extends Controller {
             'student_details' => $this->userModel->getStudent($student_ID)
         ];
 
-        $this->view($_SESSION['user_type'].'/user/viewStudent', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/user/viewStudent', $data, $other_data);
     }
 
     public function organization(){
@@ -35,7 +46,12 @@ class User extends Controller {
             'organizations' => $this->userModel->viewOrganizations()
         ];
 
-        $this->view($_SESSION['user_type'].'/user/organization', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/user/organization', $data, $other_data);
     }
 
     public function viewOrganization($org_ID = null){
@@ -47,7 +63,13 @@ class User extends Controller {
             'title' => 'Home page',
             'organization_details' => $this->userModel->getOrganization($org_ID)
         ];
-        $this->view($_SESSION['user_type'].'/user/viewOrganization', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/user/viewOrganization', $data, $other_data);
     }
 
     public function donor(){
@@ -55,8 +77,13 @@ class User extends Controller {
             'title' => 'Home page',
             'donors' => $this->userModel->viewDonors()
         ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
         
-        $this->view($_SESSION['user_type'].'/user/donor', $data);
+        $this->view($_SESSION['user_type'].'/user/donor', $data, $other_data);
     }
 
     public function viewDonor($donor_ID = null){
@@ -72,7 +99,12 @@ class User extends Controller {
                 'donor_details' => $this->userModel->getDonorInd($donor_ID)
             ];
 
-            $this->view($_SESSION['user_type'].'/user/viewDonorInd', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/user/viewDonorInd', $data, $other_data);
         }
 
         else if ($donorType == 'company') {
@@ -81,7 +113,12 @@ class User extends Controller {
                 'donor_details' => $this->userModel->getDonorCom($donor_ID)
             ];
 
-            $this->view($_SESSION['user_type'].'/user/viewDonorCom', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/user/viewDonorCom', $data, $other_data);
         }
 
         else {

@@ -9,16 +9,22 @@ class Project extends Controller {
         $this->middleware->checkAccess(['admin', 'superAdmin', 'donor', 'organization']);
         $this->projectModel = $this->model('ProjectModel');
         $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function postedprojects(){
-            $data = [
-                'title' => 'Home Page',
-                'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
-                'completetablerow' => $this->projectModel->getaddedcompletedprojects()
-            ];
-      
-            $this->view('organization/project/postedprojects', $data);
+        $data = [
+            'title' => 'Home Page',
+            'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
+            'completetablerow' => $this->projectModel->getaddedcompletedprojects()
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+    
+        $this->view('organization/project/postedprojects', $data, $other_data);
     }
 
     public function addprojects(){
@@ -109,8 +115,13 @@ class Project extends Controller {
                     }
                 }else{
 
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
                     if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/project/addprojects', $data);
+                        $this->view('organization/project/addprojects', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -132,7 +143,12 @@ class Project extends Controller {
                     'projectDescription_err' => ''
                 ];
 
-                $this->view('organization/project/addprojects', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view('organization/project/addprojects', $data, $other_data);
 
             }
         }
@@ -153,12 +169,17 @@ class Project extends Controller {
                     'err' => ''
                 ];
 
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
                 // If the comment is empty load view with errors
                 if(empty($data['comment'])) {
                     $data['err'] = 'Please Enter Your Comment';
                     $data['comments'] = $this->projectModel->getAllComments($data['project_ID']);
 
-                    $this->view($_SESSION['user_type'].'/project/manageproject', $data);
+                    $this->view($_SESSION['user_type'].'/project/manageproject', $data, $other_data);
                 }
 
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
@@ -177,7 +198,12 @@ class Project extends Controller {
                     'comments' => $this->projectModel->getAllComments($_GET['project_ID'])
                 ];
     
-                $this->view($_SESSION['user_type'].'/project/manageproject', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/project/manageproject', $data, $other_data);
             }
         }
     }
@@ -189,14 +215,19 @@ class Project extends Controller {
             'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID'])
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         $userType = $this->projectModel->getUserType($_SESSION['user_id']);
 
         if($userType == 'admin') {
-            $this->view('admin/project/viewProject', $data);
+            $this->view('admin/project/viewProject', $data, $other_data);
         }
 
         else if($userType == 'superAdmin') {
-            $this->view('superAdmin/project/viewProject', $data);
+            $this->view('superAdmin/project/viewProject', $data, $other_data);
         }
 
         else if($userType == 'organization') {
@@ -249,9 +280,14 @@ class Project extends Controller {
                             'completetablerow' => $this->projectModel->getaddedcompletedprojects()
                         ];
 
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
                         // Pass data to the view
                         if ($_SESSION['user_type'] == 'organization') {
-                            $this->view('organization/project/postedprojects', $data);
+                            $this->view('organization/project/postedprojects', $data, $other_data);
                         }else {
                             die('User Type Not Found');
                         }
@@ -273,10 +309,15 @@ class Project extends Controller {
                     'pendingtablerow' => [] ,
                     'completetablerow' => [] // this is an array
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/project/postedprojects', $data);
+                    $this->view('organization/project/postedprojects', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -289,6 +330,17 @@ class Project extends Controller {
         if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         } else {
+
+            $data = [
+                'title' => 'Home page'
+            ];
+
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('organization/project/viewPendingprojectsdetails', $data, $other_data);
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
@@ -404,7 +456,12 @@ class Project extends Controller {
                 'details' => $this->userModel->getOrganization($org_ID)
             ];
 
-            $this->view($_SESSION['user_type'].'/project/viewOrganizationProfile', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/project/viewOrganizationProfile', $data, $other_data);
         }
     }
 

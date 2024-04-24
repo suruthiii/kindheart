@@ -80,7 +80,17 @@ class NotificationModel {
 
     }
 
-    public function deleteNotification() {
+    public function deleteNotification($notificationID) {
+        $this->db->query('DELETE FROM notification WHERE notificationID = :notificationID;');
+        $this->db->bind(":notificationID", $notificationID);
 
+        if($this->db->execute()){
+            return true;
+        }
+
+        else {
+            return false;
+        }    
     }
+    
 }

@@ -27,6 +27,8 @@ class SuperAdmin extends Controller {
             'notifications' => $this->notificationModel->viewNotifications()
         ];
 
+        // die(print_r($other_data));
+
         $this->view('superAdmin/index', $data, $other_data);
     }
 
@@ -38,6 +40,8 @@ class SuperAdmin extends Controller {
 
         $other_data['notification_count'] = $this->notificationModel->getNotificationCount();
 
+        $other_data['notifications'] = $this->notificationModel->viewNotifications();
+
         $this->view('superAdmin/admin', $data, $other_data);
     }
 
@@ -45,7 +49,13 @@ class SuperAdmin extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/necessity', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/necessity', $data, $other_data);
     }
 
     public function project() {
@@ -55,7 +65,13 @@ class SuperAdmin extends Controller {
             'confirmed' => $this->projectModel->getAllConfirmedProjects(),
             'ongoing' => $this->projectModel->getAllOngoingProjects()
         ];
-        $this->view('superAdmin/project', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/project', $data, $other_data);
     }
 
     public function scholarship() {
@@ -65,14 +81,26 @@ class SuperAdmin extends Controller {
             'confirmed' => $this->scholarshipModel->getAllConfirmedScholarships(),
             'ongoing' => $this->scholarshipModel->getAllOngoingScholarships()
         ];
-        $this->view('superAdmin/scholarship', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/scholarship', $data, $other_data);
     }
 
     public function benefaction() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/benefaction', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/benefaction', $data, $other_data);
     }
 
     public function successStory(){
@@ -80,29 +108,52 @@ class SuperAdmin extends Controller {
             'title' => 'Home page',
             'successstories' => $this->successStoryModel->getSuccessStories()
         ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
         
-        $this->view('superAdmin/successStory', $data);
+        $this->view('superAdmin/successStory', $data, $other_data);
     }
 
     public function user(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/user', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/user', $data, $other_data);
     }
 
     public function request() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/request', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/request', $data, $other_data);
     }
 
     public function report() {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('superAdmin/report', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/report', $data, $other_data);
     }
 
     public function complaint(){
@@ -113,7 +164,12 @@ class SuperAdmin extends Controller {
             'admins' => $this->userModel->viewAdmins()
         ];
 
-        $this->view('superAdmin/complaint', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/complaint', $data, $other_data);
     }
 
     public function createAdmin(){
@@ -198,7 +254,12 @@ class SuperAdmin extends Controller {
             'admin_details' => $this->userModel->getAdmin($admin_ID)
         ];
 
-        $this->view('superAdmin/admin/viewAdmin', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('superAdmin/admin/viewAdmin', $data, $other_data);
     }
 
     public function editAdmin() {
@@ -251,7 +312,13 @@ class SuperAdmin extends Controller {
                     'err' => $data['err']
                 ];
                 
-                $this->view('superAdmin/admin/editAdmin', $admin_data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+
+                $this->view('superAdmin/admin/editAdmin', $admin_data, $other_data);
             }
         }
         else{
@@ -268,10 +335,16 @@ class SuperAdmin extends Controller {
                     'adminName' => $admin_details->adminName, 
                     'email' => $admin_details->email,
                     'username' => $admin_details->username
-                ]
+                ],
+            ];
+
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications(),
+                'err' => ''
             ];
     
-            $this->view('superAdmin/admin/editAdmin', $data);
+            $this->view('superAdmin/admin/editAdmin', $data, $other_data);
         }
     }
 
