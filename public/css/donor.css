@@ -946,6 +946,21 @@ span .donor-form-error-details{
     align-items: center;
 }
 
+.request-right-side-bar-type-requests-right .status_declined p{
+    background-color: #7a7875;
+    color: #b9b9b9;
+
+    height: 30px;
+    width: 80px;
+    border-radius: 10px;
+    margin-left: 5px;
+    font-size: 12px;
+
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
 /* .request-right-side-bar-type-requests-right .status_button #status_pending{
     background-color: #ffffff;
     color: #000;

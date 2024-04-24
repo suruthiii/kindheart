@@ -117,7 +117,7 @@
                     <!-- Display requests or no requests message -->
                     <div class="request-right-side-bar-all-requests">
                         <?php foreach($data['benefaction_requests'] as $request): ?>
-                            <?php if ($request->verificationStatus == 0 || $request->verificationStatus == 1 || $request->verificationStatus == 3) : ?>
+                            <?php if ($request->verificationStatus == 0 || $request->verificationStatus == 1 || $request->verificationStatus == 3 || $request->verificationStatus == 10) : ?>
                                 <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
                                     <div class="request-right-side-bar-type-requests">
                                         <div class="request-right-side-bar-type-requests-left">
@@ -137,6 +137,9 @@
                                                         break;
                                                     case 3:
                                                         echo '<div class="status_incomplte"><p>Incomplete</p></div>';
+                                                        break;
+                                                    case 10:
+                                                        echo '<div class="status_declined"><p>Declined</p></div>';
                                                         break;
                                                     default:
                                                         echo '<div class="status_pending"><p> </p></div>';

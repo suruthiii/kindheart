@@ -394,9 +394,6 @@ class Benefaction extends Controller {
             }
         }
     }
-
-    
-
     
     public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($benefactionID))) {
@@ -422,6 +419,8 @@ class Benefaction extends Controller {
             $this->view('donor/viewBenefactionRequestOngoing', $data);
         } elseif ($verificationStatus == 2) {
             $this->view('donor/viewBenefactionRequestCompleted', $data);
+        } elseif ($verificationStatus == 10) {
+            $this->view('donor/viewBenefactionRequestDeclined', $data);
         } else {
             redirect('pages/404'); // Redirect to 404 page for unknown status
         }
