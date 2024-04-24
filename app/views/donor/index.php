@@ -47,7 +47,7 @@
                         <h4>Donation Summary</h4>
                     </div>
                     <div class="donor-dashboard-left-container">
-                        <p>----------------</p>
+                        <canvas id="donutChartContainer" width="600" height="600"></canvas>
                     </div>
                 </div>
                 
@@ -64,9 +64,9 @@
                                 <th>Status</th>
                             </tr>
                             <tr>
-                                <td>Donation</td>
-                                <td>Date</td>
-                                <td>Status</td>
+                                <td>Donation 1</td>
+                                <td>Date 1</td>
+                                <td>Status 1</td>
                             </tr>
                         </table>
                     </div>
@@ -76,6 +76,49 @@
     </section>
 </main>
 
-<h1>Donor Dashboard</h1>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+        const DATA_COUNT = 4;
+
+        const data = {
+            labels: ['Monetary', 'Physical Goods', 'Benefaction', 'Scholarship'],
+            datasets: [{
+                label: 'Dataset 1',
+                data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * 100)),
+                backgroundColor: [
+                    'red',
+                    'orange',
+                    'yellow',
+                    'green'
+                ]
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true, // Use round legend markers
+                            boxWidth: 10, // Set legend box width
+                            padding: 20 // Padding between legend items
+                        }
+                    }
+                }
+            },
+        };
+
+        // Get the canvas element
+        const canvas = document.getElementById('donutChartContainer');
+
+        // Create the doughnut chart
+        const ctx = canvas.getContext('2d');
+        const myChart = new Chart(ctx, config);
+    </script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>

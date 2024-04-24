@@ -27,4 +27,14 @@ class Donor extends Controller {
         ];
         $this->view('about', $data);
     }
+
+    // public function getDonorDashboard(){
+    //     $data = [
+    //         'graph' => $this->donor->getGraphData()
+    //     ];
+
+    //     $this->view('index', $data);
+    // }
+
+    
 }

@@ -117,14 +117,14 @@ span .donor-form-error-details{
 }
 
 .donor-dashboard-status{
-    background-color: #8e0000;
     width: 200px;
     height: 100px;
     color: white;
     margin: 5px;
     text-align: center;
     border-radius: 10px;    
-    border: 1px solid #ddd;    
+    border: 1px solid #ddd;        
+    background-color: #8e0000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
@@ -143,26 +143,13 @@ span .donor-form-error-details{
     width: 75vh;
     height: 50vh;  
     margin-right: 5px;
+    overflow: hidden;
 }
 
 .donor-dashboard-donation-container{
     width: 75vh;
     height: 50vh;
-}
-
-.donor-dashboard-right-container{
-    width: 73vh;
-    height: 40vh;    
-    background-color: #efeaea;    
-    border: 1px solid #ccc;
-    border-radius: 5px;   
-
-    display: flex;
-    justify-content: center;  
-    
-    overflow-x: hidden;
-    overflow-y: auto;
-    scrollbar-width: none;
+    overflow: hidden;
 }
 
 .donor-dashboard-left-container{
@@ -173,52 +160,66 @@ span .donor-form-error-details{
     border-radius: 5px;  
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
 
+.donor-dashboard-right-container{
+    position: fixed;/* Position relative for positioning the scrollbar */
+    height: 40vh;
+    width: 550px;
+    overflow: auto;
+    scrollbar-width: none;    
+    background-color: #efeaea;    
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .donor-dashboard-right-container table{
-    width: 32%;
-    height: 37%;
+    width: 95%;
+    margin-left: 10px;
     margin-top: 10px;
-    border-collapse: collapse; /* Remove space between table cells */
-    position: fixed;
+    border-collapse: collapse;    
 }
 
-/* .donor-dashboard-right-container table tr{    
-
-} */
-
-.donor-dashboard-right-container table th{
-    padding-left: 10px;
-    border: 1px solid #747474;    
-    border-radius: 5px;
-    height: 1px;
+.donor-dashboard-right-container th{
+    background-color: #909090;
+    position: sticky;
+    top: 0px;
+    z-index: 1;
+    padding: 8px 12px;
 }
 
-.donor-dashboard-right-container table td{
-    padding-left: 10px;
-    border: 1px solid #747474;
-    border-radius: 5px;
-    height: 10px;
+.donor-dashboard-right-container tbody {
+    display: block; /* Enable block layout for tbody */
+    max-height: calc(100% - 40px); /* Adjust height for tbody (minus header height) */
 }
 
-.donor-dashboard-right-container table tr {
-    height: 1px; /* Set fixed height for table rows */
+.donor-dashboard-right-container tbody tr {
+    display: table-row;
 }
 
-/* .donor-dashboard-right-container table tr td:nth-child(1){
-    width: 20%;
+.donor-dashboard-right-container tbody td {
+    padding: 8px 12px;
+    height: 40px;
+    
+    border-bottom: 1px solid #991e1e; /* Add bottom border between rows */
+}
+
+.donor-dashboard-right-container table tr td:nth-child(1){
+    max-width: 40%;
+    width: 300px;
 }
 
 .donor-dashboard-right-container table tr td:nth-child(2){
-    width: 40%;
+    max-width: 30%;
+    width: 200px;
 }
 
 .donor-dashboard-right-container table tr td:nth-child(3){
-    width: 20%;
-} */
+    max-width: 30%;
+    width: 100px;
+}
 
 
 
