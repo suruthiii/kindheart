@@ -11,6 +11,7 @@ class Necessity extends Controller {
         $this->middleware->checkAccess(['admin', 'superAdmin', 'student', 'organization', 'donor']);
         $this->necessityModel = $this->model('NecessityModel');
         $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function monetary(){
@@ -21,7 +22,12 @@ class Necessity extends Controller {
                 'ongoing' => $this->necessityModel->getAllOngoingMonetaryNecessities()
             ];
 
-            $this->view('admin/necessity/monetary', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('admin/necessity/monetary', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'superAdmin') {
@@ -31,7 +37,12 @@ class Necessity extends Controller {
                 'ongoing' => $this->necessityModel->getAllOngoingMonetaryNecessities()
             ];
 
-            $this->view('superAdmin/necessity/monetary', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('superAdmin/necessity/monetary', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'student') {
@@ -39,7 +50,12 @@ class Necessity extends Controller {
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities()
             ];
 
-            $this->view('student/necessity/postedmonetarynecessity', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('student/necessity/postedmonetarynecessity', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'organization') {
@@ -50,11 +66,20 @@ class Necessity extends Controller {
                 'totalNumberofDonors' => $this->necessityModel->getnumberofdonorsdonates()
             ];
 
-            $this->view('organization/postedmonetarynecessity', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('organization/postedmonetarynecessity', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'donor') {
 
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
         }
         
         else {
@@ -69,7 +94,12 @@ class Necessity extends Controller {
                 'confirmed' => $this->necessityModel->getAllConfirmedPhysicalGoods()
             ];
 
-            $this->view('admin/necessity/physicalgood', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('admin/necessity/physicalgood', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'superAdmin') {
@@ -78,7 +108,12 @@ class Necessity extends Controller {
                 'confirmed' => $this->necessityModel->getAllConfirmedPhysicalGoods()
             ];
 
-            $this->view('superAdmin/necessity/physicalgood', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('superAdmin/necessity/physicalgood', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'student') {
@@ -86,7 +121,12 @@ class Necessity extends Controller {
                 'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities()
             ];
 
-            $this->view('student/necessity/postedphysicalgoodsnecessity', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('student/necessity/postedphysicalgoodsnecessity', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'organization') {
@@ -97,11 +137,19 @@ class Necessity extends Controller {
                 'totalNumberofDonors' => $this->necessityModel->getnumberofdonorsdonatesforphysicalgoods()
             ];
 
-            $this->view('organization/postedphysicalgoodsnecessity', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('organization/postedphysicalgoodsnecessity', $data, $other_data);
         }
 
         else if ($_SESSION['user_type'] == 'donor') {
-
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
         }
         
         else {
@@ -203,11 +251,15 @@ class Necessity extends Controller {
                         die('something went wrong');
                     }
                 }else{
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
 
                     if ($_SESSION['user_type'] == 'student') {
-                        $this->view('student/necessity/addmonetarynecessity', $data);
+                        $this->view('student/necessity/addmonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/addmonetarynecessity', $data);
+                        $this->view('organization/addmonetarynecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -234,10 +286,15 @@ class Necessity extends Controller {
                     'frequency_err' =>''
                 ];
 
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
                 if ($_SESSION['user_type'] == 'student') {
-                    $this->view('student/necessity/addmonetarynecessity', $data);
+                    $this->view('student/necessity/addmonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/addmonetarynecessity', $data);
+                    $this->view('organization/addmonetarynecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -322,10 +379,15 @@ class Necessity extends Controller {
                     'neccessityitem_err' => ''
                 ];
 
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
                 if ($_SESSION['user_type'] == 'student') {
-                    $this->view('student/necessity/addmonetarynecessity', $data);
+                    $this->view('student/necessity/addmonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/addgoodsnecessity', $data);
+                    $this->view('organization/addgoodsnecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -360,12 +422,17 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'pendingNecessityDetails' => $pendingNecessityDetails
                     ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
     
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'student') {
 
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+                        $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -381,12 +448,17 @@ class Necessity extends Controller {
                     'necessityID' => '',
                     'pendingNecessityDetails' => [] // this is an array
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
+                    $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -414,13 +486,17 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'pendingNecessityDetails' => $pendingNecessityDetails
                     ];
-    
 
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+    
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'student') {
 
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                        $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -437,11 +513,16 @@ class Necessity extends Controller {
                     'pendingNecessityDetails' => [] // this is an array
                 ];
                 
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data);
+                    $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -470,12 +551,16 @@ class Necessity extends Controller {
                         'pendingNecessityDetails' => $pendingNecessityDetails
                     ];
     
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
 
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'student') {
 
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/necessity/viewOrganizationPendingPhysicalGoodsnecessity', $data);
+                        $this->view('organization/necessity/viewOrganizationPendingPhysicalGoodsnecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -491,12 +576,17 @@ class Necessity extends Controller {
                     'necessityID' => '',
                     'pendingNecessityDetails' => [] // this is an array
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/necessity/viewOrganizationPendingPhysicalGoodsnecessity', $data);
+                    $this->view('organization/necessity/viewOrganizationPendingPhysicalGoodsnecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -525,12 +615,16 @@ class Necessity extends Controller {
                         'pendingNecessityDetails' => $pendingNecessityDetails
                     ];
     
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
 
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'student') {
 
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/necessity/viewOrganizationCompletedphysicalgoodsnecessity', $data);
+                        $this->view('organization/necessity/viewOrganizationCompletedphysicalgoodsnecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -546,12 +640,17 @@ class Necessity extends Controller {
                     'necessityID' => '',
                     'pendingNecessityDetails' => [] // this is an array
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/necessity/viewOrganizationCompletedphysicalgoodsnecessity', $data);
+                    $this->view('organization/necessity/viewOrganizationCompletedphysicalgoodsnecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -582,11 +681,16 @@ class Necessity extends Controller {
                             'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities()
                         ];
 
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
                         // Pass data to the view
                         if ($_SESSION['user_type'] == 'student') {
 
                         }else if ($_SESSION['user_type'] == 'organization') {
-                            $this->view('organization/postedmonetarynecessity', $data);
+                            $this->view('organization/postedmonetarynecessity', $data, $other_data);
                         }else {
                             die('User Type Not Found');
                         }
@@ -608,12 +712,17 @@ class Necessity extends Controller {
                     'pendingtablerow' => [] ,
                     'completetablerow' => [] // this is an array
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/postedmonetarynecessity', $data);
+                    $this->view('organization/postedmonetarynecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -644,11 +753,16 @@ class Necessity extends Controller {
                             'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities()
                         ];
 
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
                         // Pass data to the view
                         if ($_SESSION['user_type'] == 'student') {
 
                         }else if ($_SESSION['user_type'] == 'organization') {
-                            $this->view('organization/postedphysicalgoodsnecessity', $data);
+                            $this->view('organization/postedphysicalgoodsnecessity', $data, $other_data);
                         }else {
                             die('User Type Not Found');
                         }
@@ -671,12 +785,17 @@ class Necessity extends Controller {
                     'pendingtablerow' => [] ,
                     'completetablerow' => [] // this is an array
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/postedphysicalgoodsnecessity', $data);
+                    $this->view('organization/postedphysicalgoodsnecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -758,7 +877,12 @@ class Necessity extends Controller {
             die('Monetary Necessity Type Not Found');
         }
 
-        $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data, $other_data);
     }
 
     public function viewGood() {
@@ -783,8 +907,13 @@ class Necessity extends Controller {
         else {
             die('Donee Type Not Found');
         }
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
     
-        $this->view($_SESSION['user_type'].'/necessity/viewgood', $data);
+        $this->view($_SESSION['user_type'].'/necessity/viewgood', $data, $other_data);
     }
 
     public function manageMonetary() {
@@ -859,7 +988,12 @@ class Necessity extends Controller {
 
                     $data['err'] = 'Please enter your comment';
 
-                    $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data, $other_data);
                 }
 
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
@@ -936,7 +1070,12 @@ class Necessity extends Controller {
 
                 $data['comments'] = $this->necessityModel->getAllComments($data['necessity_ID']);
 
-                $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data, $other_data);
             }
         }
     }
@@ -983,7 +1122,12 @@ class Necessity extends Controller {
 
                     $data['err'] = 'Please enter your comment';
 
-                    $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data);
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    $this->view($_SESSION['user_type'].'/necessity/managemonetary', $data, $other_data);
                 }
 
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
@@ -1029,7 +1173,12 @@ class Necessity extends Controller {
 
             $data['comments'] = $this->necessityModel->getAllComments($data['necessity_ID']);
 
-            $this->view($_SESSION['user_type'].'/necessity/managegood', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/necessity/managegood', $data, $other_data);
         }
     }
 
@@ -1048,7 +1197,12 @@ class Necessity extends Controller {
                     'details' => $this->necessityModel->getStudentDetails($donee_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/necessity/viewMonetaryStudentProfile', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewMonetaryStudentProfile', $data, $other_data);
             }
 
             else if ($doneeType == 'organization') {
@@ -1058,7 +1212,12 @@ class Necessity extends Controller {
                     'details' => $this->necessityModel->getOrganizationDetails($donee_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/necessity/viewMonetaryOrganizationProfile', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewMonetaryOrganizationProfile', $data, $other_data);
             }
 
             else {
@@ -1082,7 +1241,12 @@ class Necessity extends Controller {
                     'details' => $this->necessityModel->getStudentDetails($donee_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/necessity/viewGoodStudentProfile', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewGoodStudentProfile', $data, $other_data);
             }
 
             else if ($doneeType == 'organization') {
@@ -1092,7 +1256,12 @@ class Necessity extends Controller {
                     'details' => $this->necessityModel->getOrganizationDetails($donee_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/necessity/viewGoodOrganizationProfile', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/necessity/viewGoodOrganizationProfile', $data, $other_data);
             }
 
             else {

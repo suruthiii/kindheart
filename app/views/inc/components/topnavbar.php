@@ -14,13 +14,32 @@
                         <?php echo $other_data['notification_count']; ?>
                     </div>
 
-                    <div class="notification-area" style="box-shadow: 0 0 10px 0.1px gray; border-radius: 10px; padding: 10px; width: 100px; position: absolute; right: 20px; top: 70px; z-index: 100;">
+                    <div class="notification-area">
                         <?php foreach($other_data['notifications'] as $item) {?> 
-                            <div class="notification">
+                            <div class="notification" >
+                                <div class="notification-content">
+                                    <div class="notification-name"><?php echo $item->name ?></div>
+                                    <div class="notification-des"><?php echo $item->description ?></div>
+                                </div>
+                                <div class="notification-option">
+                                    <form action="" method="post">
+                                        <input type="text" name="notificationID" hidden value="<?php echo $item->notificationID ?>">
+                                        <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                            <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                        </button>
+                                    </form>
+
+                                    <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                        <input type="text" name="notificationID" hidden value="<?php echo $item->notificationID ?>">
+                                        <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                            <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                        </button>
+                                    </form>
+                                </div>
                             </div>
                         <?php }?>
                     </div>
-                    <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt="">
+                    <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt="" onclick="notificationToggle()">
                 </div>
                    
                 <div class="profile">
@@ -37,5 +56,12 @@
         var element;
         element = document.querySelector('.sidenav');
         element.classList.toggle("sidenav-toggled");
+    }
+
+    function notificationToggle() {
+        console.log("pushed")
+        var element;
+        element = document.querySelector('.notification-area');
+        element.classList.toggle("notification-area-active");
     }
 </script>

@@ -7,6 +7,7 @@ class Scholarship extends Controller {
         $this->middleware->checkAccess(['admin', 'superAdmin', 'donor', 'student']);
         $this->scholarshipModel = $this->model('ScholarshipModel');
         $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function manageScholarship($scholarship_ID = null) {
@@ -22,6 +23,7 @@ class Scholarship extends Controller {
                     'scholarship_ID' => trim($_POST['scholarship_ID']),
                     'err' => ''
                 ];
+
 
                 // If the comment is empty load view with errors
                 if(empty($data['comment'])) {
@@ -51,7 +53,12 @@ class Scholarship extends Controller {
 
                     $data['err'] = 'Please enter your comment';
 
-                    $this->view($_SESSION['user_type'].'/scholarship/managescholarship', $data);
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    $this->view($_SESSION['user_type'].'/scholarship/managescholarship', $data, $other_data);
                 }
 
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
@@ -89,7 +96,12 @@ class Scholarship extends Controller {
 
             $data['comments'] = $this->scholarshipModel->getAllComments($data['scholarship_ID']);
 
-            $this->view($_SESSION['user_type'].'/scholarship/managescholarship', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/scholarship/managescholarship', $data, $other_data);
         }
     }    
 
@@ -117,7 +129,12 @@ class Scholarship extends Controller {
             die('Donor Type Not Found');
         }
 
-        $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data, $other_data);
     }
 
     public function deleteScholarship() {
@@ -212,7 +229,12 @@ class Scholarship extends Controller {
                         'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
                     ];
 
-                    $this->view('donor/postedScholarships', $data);
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    $this->view('donor/postedScholarships', $data, $other_data);
                 }else{
                     die('Something Went Wrong');
                 }
@@ -238,7 +260,12 @@ class Scholarship extends Controller {
                 'scholarshipDescription_err' => ''
             ];
 
-            $this->view('donor/donorAddScholarships', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('donor/donorAddScholarships', $data, $other_data);
         }
     }
 
@@ -252,8 +279,13 @@ class Scholarship extends Controller {
             'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         //Load View
-        $this->view('donor/postedScholarships', $data);
+        $this->view('donor/postedScholarships', $data, $other_data);
     }
 
     public function viewPostedScholarships() {
@@ -270,10 +302,13 @@ class Scholarship extends Controller {
             ];
 
             // die(print_r($data));
-            
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
     
             // Load View
-            $this->view('donor/viewPostedscholarships', $data);
+            $this->view('donor/viewPostedscholarships', $data, $other_data);
         } else {
             // Handle the case where scholarshipID is not set
             // Redirect or show an error message
@@ -356,8 +391,13 @@ class Scholarship extends Controller {
                         'scholarship_details' => $this->scholarshipModel->getScholarship($_POST['scholarshipID']),
                         'success' => true
                     ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
                                         
-                    $this->view('donor/editPostedScholarships', $data);
+                    $this->view('donor/editPostedScholarships', $data, $other_data);
 
                 }else{
                     $data = [
@@ -372,7 +412,12 @@ class Scholarship extends Controller {
                     'scholarship_details' => $this->scholarshipModel->getScholarship($scholarshipID)
                 ];
 
-                $this->view('donor/editPostedScholarships', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view('donor/editPostedScholarships', $data, $other_data);
             }
 
         } else {
@@ -385,7 +430,12 @@ class Scholarship extends Controller {
 
             // die(print_r($data));
 
-            $this->view('donor/editPostedScholarships', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('donor/editPostedScholarships', $data, $other_data);
         }
 
     }
@@ -409,8 +459,13 @@ class Scholarship extends Controller {
                         'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
                     ];
 
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
                     // Pass the updated data to the view
-                    $this->view('donor/postedScholarships', $data);
+                    $this->view('donor/postedScholarships', $data, $other_data);
                 } else {
                     // Handle deletion failure (e.g., show error message)
                     die('Failed to delete Scholarship.');
@@ -432,9 +487,14 @@ class Scholarship extends Controller {
             'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         // die(print_r($data['benefactionRequest_details']));
 
-        $this->view('donor/viewScholarshipApplication', $data);
+        $this->view('donor/viewScholarshipApplication', $data, $other_data);
     }    
   
     public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
@@ -452,7 +512,12 @@ class Scholarship extends Controller {
                     'details' => $this->userModel->getDonorCom($donor_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/scholarship/viewDonorComProfile', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/scholarship/viewDonorComProfile', $data, $other_data);
             }
 
             else if($donorType == 'individual') {
@@ -462,7 +527,12 @@ class Scholarship extends Controller {
                     'details' => $this->userModel->getDonorInd($donor_ID)
                 ];
 
-                $this->view($_SESSION['user_type'].'/scholarship/viewDonorIndProfile', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/scholarship/viewDonorIndProfile', $data, $other_data);
             }
 
             else {

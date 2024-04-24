@@ -8,14 +8,22 @@ class Benefaction extends Controller {
         $this->middleware->checkAccess(['student','donor']);
 
         $this->donorModel = $this->model('DonorModel');
-        $this->BenefactionModel = $this->model('BenefactionModel');
+        $this->benefactionModel = $this->model('BenefactionModel');
+        $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function index(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('donor/index', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('donor/index', $data, $other_data);
     }
 
     // ------------Donor--------------------
@@ -25,7 +33,13 @@ class Benefaction extends Controller {
         $data = [
             'title' => 'All Benefcation Posted Page'
         ];
-        $this->view('donor/viewAllBenefactions', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('donor/viewAllBenefactions', $data, $other_data);
     }
 
     // IMage Uploads Fro Benfaction
@@ -136,13 +150,23 @@ class Benefaction extends Controller {
                         'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
                     ];
 
-                    $this->view('donor/postedBenefactions', $data);
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    $this->view('donor/postedBenefactions', $data, $other_data);
                 }else{
                     die('Something Went Wrong');
                 }
             }else{
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+                
                 //Load View
-                $this->view('donor/donorAddBenefactions', $data);
+                $this->view('donor/donorAddBenefactions', $data, $other_data);
             }
 
         }else{
@@ -163,7 +187,12 @@ class Benefaction extends Controller {
                 'photoBenfaction_err' => ''
             ];
 
-            $this->view('donor/donorAddBenefactions', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('donor/donorAddBenefactions', $data, $other_data);
         }
     }
 
@@ -178,8 +207,13 @@ class Benefaction extends Controller {
             'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         //Load View
-        $this->view('donor/postedBenefactions', $data);
+        $this->view('donor/postedBenefactions', $data, $other_data);
     }
 
     // Get Details of One Selected Benefaction
@@ -194,7 +228,12 @@ class Benefaction extends Controller {
                 'title' => 'View Posted Benefactions',
                 'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
                 'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
-            ];           
+            ];   
+            
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
 
             // Determine the availability status
             $availabilityStatus = $data['benefaction_details']->availabilityStatus;
@@ -221,7 +260,7 @@ class Benefaction extends Controller {
                     break;
             }
 
-            $this->view($viewFile, $data);
+            $this->view($viewFile, $data, $other_data);
         } else {
             // Handle the case where benefactionID is not set
             // Redirect or show an error message
@@ -294,7 +333,13 @@ class Benefaction extends Controller {
                         'benefactionID' => $_POST['benefactionID'],
                         'benefaction_details' => $this->donorModel->getBenefaction($_POST['benefactionID']),
                     ];
-                    $this->view('donor/editPostedBenefactions', $data);
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    $this->view('donor/editPostedBenefactions', $data, $other_data);
 
                 }else{
                     die('Something Went Wrong');
@@ -305,7 +350,12 @@ class Benefaction extends Controller {
                     'benefaction_details' => $this->donorModel->getBenefaction($benefactionID)
                 ];
 
-                $this->view('donor/editPostedBenefactions', $data);
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view('donor/editPostedBenefactions', $data, $other_data);
             }
 
         } else {
@@ -316,7 +366,12 @@ class Benefaction extends Controller {
                 'benefaction_details' => $this->donorModel->getBenefaction($_GET['benefactionID']),
             ];
 
-            $this->view('donor/editPostedBenefactions', $data);
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('donor/editPostedBenefactions', $data, $other_data);
         }
 
     }
@@ -341,8 +396,13 @@ class Benefaction extends Controller {
                         'completedBenefaction' => $this->donorModel->getCompletedBenefaction()
                     ];
 
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
                     // Pass the updated data to the view
-                    $this->view('donor/postedBenefactions', $data);
+                    $this->view('donor/postedBenefactions', $data, $other_data);
                 } else {
                     // Handle deletion failure (e.g., show error message)
                     die('Failed to delete benefaction.');
@@ -364,9 +424,14 @@ class Benefaction extends Controller {
             'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         // die(print_r($data['benefactionRequest_details']));
 
-        $this->view('donor/viewBenefactionRequestPending', $data);
+        $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
     }
 
     public function declineBenefactionRequest() {
@@ -384,10 +449,15 @@ class Benefaction extends Controller {
                         'title' => 'View Posted Benefactions',
                         'benefaction_details' => $this->donorModel->getBenefaction($benefactionID),
                         'benefaction_requests' => $this->donorModel->getBenefactionRequests($benefactionID)
-                    ];           
+                    ];         
+                    
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
             
                     // Load View
-                    $this->view('donor/viewPostedBenefactions', $data);
+                    $this->view('donor/viewPostedBenefactions', $data, $other_data);
                 } else {
                     die('Benefaction ID or Donee ID not found.');
                 }
@@ -408,6 +478,11 @@ class Benefaction extends Controller {
             'benefactionRequest_details' => $this->donorModel->getBenefactionRequestDetails($benefactionID, $doneeID)
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         if (!$data['benefactionRequest_details'][0]) {
             redirect('pages/404');
         }
@@ -417,11 +492,11 @@ class Benefaction extends Controller {
 
         // Determine which view to load based on verificationStatus
         if ($verificationStatus == 0) {
-            $this->view('donor/viewBenefactionRequestPending', $data);
+            $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
         } elseif ($verificationStatus == 1 || $verificationStatus == 3) {
-            $this->view('donor/viewBenefactionRequestOngoing', $data);
+            $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
         } elseif ($verificationStatus == 2) {
-            $this->view('donor/viewBenefactionRequestCompleted', $data);
+            $this->view('donor/viewBenefactionRequestCompleted', $data, $other_data);
         } else {
             redirect('pages/404'); // Redirect to 404 page for unknown status
         }
@@ -451,7 +526,7 @@ class Benefaction extends Controller {
                     
                 
                     // Add Data to DB
-                    if ($this->BenefactionModel->addAppliedBenefaction($data)) {
+                    if ($this->benefactionModel->addAppliedBenefaction($data)) {
                         if($_SESSION['user_type'] == 'student') {
                             redirect('student/benefactions');
                         }
