@@ -46,12 +46,12 @@ class Project extends Controller {
                     $seconprojectImagesPath = [];
 
                     // Process first project milestone uploaded images
-                    foreach($_FILES['firstprojectImages']['tmp_name'] as $key => $tmp_name){
+                    foreach($_FILES['firstprojectImages']['name'] as $key => $Imagenamewithextention){
                         // Check for upload errors
                         if($_FILES['firstprojectImages']['error'][$key] === UPLOAD_ERR_OK) {
-                            $firstImagesPath = PUBLICROOT.'/projectmilestoneuploadedimages/'.$_FILES['firstprojectImages']['name'][$key];
-                            move_uploaded_file($tmp_name, $firstImagesPath);
-                            $firstprojectImagesPath[] = $firstImagesPath;
+                            $firstImagesPath = PUBLICROOT.'/projectmilestoneuploadedimages/'.$Imagenamewithextention;
+                            move_uploaded_file($_FILES['firstprojectImages']['tmp_name'][$key], $firstImagesPath);
+                            $firstprojectImagesPath[] = $Imagenamewithextention;
                         } else {
                             // Handle upload error
                             $data['upload_error'] = "Error uploading first project images";
@@ -59,12 +59,12 @@ class Project extends Controller {
                     }
 
                     // Process second project milestone uploaded images
-                    foreach($_FILES['seconprojectImages']['tmp_name'] as $key => $tmp_name){
+                    foreach($_FILES['seconprojectImages']['name'] as $key => $Imagenamewithextention){
                         // Check for upload errors
                         if($_FILES['seconprojectImages']['error'][$key] === UPLOAD_ERR_OK) {
-                            $secondImagePath  = PUBLICROOT.'/projectmilestoneuploadedimages/'.$_FILES['seconprojectImages']['name'][$key];
-                            move_uploaded_file($tmp_name, $secondImagePath);
-                            $seconprojectImagesPath[] = $secondImagePath;
+                            $secondImagePath  = PUBLICROOT.'/projectmilestoneuploadedimages/'.$Imagenamewithextention;
+                            move_uploaded_file($_FILES['seconprojectImages']['tmp_name'][$key], $secondImagePath);
+                            $seconprojectImagesPath[] = $Imagenamewithextention;
                         } else {
                             // Handle upload error
                             $data['upload_error'] = "Error uploading second project images";
