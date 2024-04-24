@@ -26,49 +26,43 @@
                 </div>
 
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
-                <!-- value="<?php echo $data['pendingNecessityDetails']->projectID ; ?>" -->
+                <!-- value="<?php echo $data['ongingProjectDetails']->projectID ; ?>" -->
 
                 <div class="posted-project-accordian-view">
                     <!-- display project name -->
                     <div class="project-name-and-description-to-view-project-name">
-                        <h3>Project Name</h3>
+                        <h3><?php echo $data['ongingProjectDetails']->title ; ?></h3>
                     </div>
                     <!-- Display project description -->
                     <div class="project-name-and-description-to-view-project-des">
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                            Eos sed in odit inventore suscipit numquam eius magni architecto 
-                            consequatur soluta iure eum temporibus itaque enim consequuntur, 
-                            repellendus quia quod culpa.
-                        </p>
+                        <p><?php echo $data['ongingProjectDetails']->project_description ; ?></p>
                     </div>
 
                     <!-- Display the list of milestone -->
                     <div class="accordian-milestone">
                         <!-- This represent a one milestone -->
-                        <div>
-                            <input type="radio" name="milestoneSection" id="milestoneIndex1">
-                            <label for="milestoneIndex1" class="accordian-milestone-label"><h4>Milestone #1</h4></label>
-                            <div class="addordian-milestone-content">
-                                <div class="addordian-milestone-images">
-                                    <div class="addorian-image1">
-                                        <img src="<?php echo URLROOT ?>/img/Asset_1hif_1.png">
+                        <?php foreach($data['ongoingmilestonedetails'] as $index => $milestone): ?>
+                            <div>
+                                <input type="radio" name="milestoneSection" id="milestoneIndex<?php echo $index; ?>">
+                                <label for="milestoneIndex<?php echo $index; ?>" class="accordian-milestone-label">
+                                    <h4><?php echo $milestone->milestoneName ; ?></h4>
+                                </label>
+                                <div class="addordian-milestone-content">
+                                    <div class="addordian-milestone-images">
+                                        <div class="addorian-image1">
+                                            <img src="<?php echo URLROOT ?>/img/Asset_1hif_1.png">
+                                        </div>
+                                        <div class="addorian-image2">
+                                            <img src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png">
+                                        </div>
                                     </div>
-                                    <div class="addorian-image2">
-                                        <img src="<?php echo URLROOT ?>/img/placeholder-benefaction1.png">
-                                    </div>
-                                </div>
 
-                                <p>Budget for milestone</p>
-                                
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                                    Eos sed in odit inventore suscipit numquam eius magni architecto 
-                                    consequatur soluta iure eum temporibus itaque enim consequuntur, 
-                                    repellendus quia quod culpa.
-                                </p>
+                                    <p><?php echo $milestone->amount ; ?></p>
+                                    
+                                    <p><?php echo $milestone->milestone_description ; ?></p>
+                                </div>
                             </div>
-                        </div>
+                            <?php endforeach; ?>
                         <!-- This represent a one milestone -->  
                     </div>
                 </div>

@@ -286,61 +286,54 @@ class Project extends Controller {
 
     // View added project's further information
     public function viewProjectDetails(){
-        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
+        if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         } else {
-
-            $data = [
-                'title' => 'Home page'
-            ];
-
-            $this->view('organization/project/viewPendingprojectsdetails', $data);
-        //     if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        //         $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
-        //         if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
-        //             // Get 'necessityID' from POST data
-        //             $necessityID = trim($_POST['necessityID']);
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
     
-        //             // Get pending necessity details
-        //             $pendingNecessityDetails = $this->necessityModel->getPendingMonetaryNecessities($necessityID);
+                    // Get pending necessity details
+                    $ongingProjectDetails = $this->projectModel->getallProjectDetils($projectID);
+                    $ongoingmilestonedetails = $this->projectModel->getAllMilestoneDetails($projectID);
     
-        //             // Prepare data to pass to the view
-        //             $data = [
-        //                 'necessityID' => $necessityID,
-        //                 'pendingNecessityDetails' => $pendingNecessityDetails
-        //             ];
+                    // Prepare data to pass to the view
+                    $data = [
+                        'projectID' => $projectID,
+                        'ongingProjectDetails' => $ongingProjectDetails,
+                        'ongoingmilestonedetails' => $ongoingmilestonedetails
+                    ];
     
-        //             // Pass data to the view
-        //             if ($_SESSION['user_type'] == 'student') {
-
-        //             }else if ($_SESSION['user_type'] == 'organization') {
-        //                 $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
-        //             }else {
-        //                 die('User Type Not Found');
-        //             }
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/project/viewPendingprojectsdetails', $data);
+                    }else {
+                        die('User Type Not Found');
+                    }
     
-        //         } else {
-        //             // display an error message here
-        //             die('User Necessity is Not Found');
-        //         }
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
     
-        //     } else {
-        //         // If it's not a POST request, then empty data pass to the view
-        //         $data = [
-        //             'necessityID' => '',
-        //             'pendingNecessityDetails' => [] // this is an array
-        //         ];
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'projectID' => '',
+                    'ongingProjectDetails' => [],
+                    'ongoingmilestonedetails' => []
+                ];
                 
-        //         // Pass data to the view
-        //         if ($_SESSION['user_type'] == 'student') {
-
-        //         }else if ($_SESSION['user_type'] == 'organization') {
-        //             $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data);
-        //         }else {
-        //             die('User Type Not Found');
-        //         }
-        //     }
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/viewPendingprojectsdetails', $data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
         }
     }
 

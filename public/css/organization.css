@@ -1313,7 +1313,7 @@
 .posted-project-accordian-view{
     position: fixed;
     width: 42%;
-    height: 55vh;
+    height: 58vh;
     margin-top: 17vh;
     overflow: hidden;
     overflow-y: scroll;
@@ -1331,6 +1331,7 @@
     display: flex;
     align-items: center;
     padding-left: 14px;
+    margin-right: 14px;
 }
 
 .project-name-and-description-to-view-project-name h3,
@@ -1355,6 +1356,7 @@
     display: flex;
     align-items: center;
     padding-left: 14px;
+    margin-right: 14px;
 }
 
 .accordian-milestone{
@@ -1374,6 +1376,7 @@
 }
 
 .accordian-milestone label{
+    height: 4vh;
     position: relative;
     display: block;
     color: #fff;
