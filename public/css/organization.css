@@ -1309,14 +1309,150 @@
     transform: scale(0.99);
 }
 
-/*-----Posted projects view details -------*/
-.posted-project-table-view{
+/*----------------Posted projects view details --------------------*/
+.posted-project-accordian-view{
     position: fixed;
     width: 42%;
     height: 55vh;
     margin-top: 17vh;
     overflow: hidden;
     overflow-y: scroll;
-    background-color: aqua;
 }
 
+.project-name-and-description-to-view-project-name{
+    position: relative;
+    width: 92%;
+    height: 8vh;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: #F5F5F5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+
+.project-name-and-description-to-view-project-name h3,
+.project-name-and-description-to-view-project-des p{
+    font-family: 'Inter', sans-serif;
+}
+
+.project-name-and-description-to-view-project-des p,
+.addordian-milestone-content p{
+    color: #757575;
+}
+
+.project-name-and-description-to-view-project-des{
+    position: relative;
+    width: 92%;
+    height: fit-content;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: #F5F5F5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 14px;
+}
+
+.accordian-milestone{
+    position: relative;
+    width: 95%;
+    background-color: #8E0000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+.accordian-milestone label,
+.accordian-milestone .addordian-milestone-content{
+    font-family: 'Inter', sans-serif;
+    padding: 14px 20px;
+}
+
+.accordian-milestone label{
+    position: relative;
+    display: block;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.accordian-milestone label:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.accordian-milestone label::after{
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    width: 12px;
+    height: 6px;
+    background-image: url('data:image/svg+xml;utf8,<svg width="100" height="50" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 100,0 50,50" style="fill:%23FFFFFF99;" /></svg>');
+    background-size: contain;
+    transition: transform 0.4s;
+}
+
+.accordian-milestone .addordian-milestone-content{
+    background: #F5F5F5;
+    line-height: 1.6;
+    display: none;
+}
+
+.accordian-milestone input{
+    display: none;
+}
+
+.accordian-milestone input:checked ~ .addordian-milestone-content{
+    display: block;
+
+}
+
+.accordian-milestone input:checked ~ .accordian-milestone-label::after{
+    transform: translateY(-50%) rotate(0.5turn);  
+}
+
+.addordian-milestone-content .addordian-milestone-images{
+    position: relative;
+    width: 96%;
+    height: 28vh;
+    display: inline-block;
+
+}
+
+.addordian-milestone-content .addordian-milestone-images .addorian-image1{
+    position: relative;
+    width: 48%;
+    height: 28vh;
+    float: left;
+    display: flex;
+    justify-content: center;
+} 
+
+.addordian-milestone-content .addordian-milestone-images .addorian-image2{
+    position: relative;
+    width: 48%;
+    height: 28vh;
+    float: right;
+    display: flex;
+    justify-content: center;
+} 
+
+.addordian-milestone-content .addordian-milestone-images .addorian-image1 img,
+.addordian-milestone-content .addordian-milestone-images .addorian-image2 img{
+    width: 200px;
+    height: 190px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+}
+
+/* .addordian-milestone-content .addordian-milestone-images img{
+    width: 200px;
+    height: 200px;
+} */
