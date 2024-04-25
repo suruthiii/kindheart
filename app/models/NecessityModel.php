@@ -31,20 +31,24 @@ class NecessityModel{
             $_SESSION['monetaryNecessityID'] = $monetaryNecessityID;
 
             //sql statement for adding monetary necessity, money table
-            $this->db->query('INSERT INTO money(monetaryNecessityID ,requestedAmount,monetaryNecessityType,startDate,endDate,frequency) 
-            VALUES (:monetaryNecessityID, :requestedamount, :necessityType, :recurringstartdate, :recurringenddate, :frequency)');
+            $this->db->query('INSERT INTO money(monetaryNecessityID ,requestedAmount,monthlyAmount,monetaryNecessityType,startDate,duration) 
+            VALUES (:monetaryNecessityID, :requestedamount, :monthlyrequestedamount,:necessityType, :recurringstartdate, :donationduration)');
 
             // Binding values with array value
             $this->db->bind(':monetaryNecessityID', $_SESSION['monetaryNecessityID']);
-            $this->db->bind(':requestedamount', $data['requestedamount']);
+            $this->db->bind(':monthlyrequestedamount', $data['monthlyrequestedamount']);
+
+            if ($data['necessityType'] === 'recurring') {
+                $this->db->bind(':requestedamount', $data['monthlyrequestedamount'] * $data['donationduration']);
+            } else {
+                $this->db->bind(':requestedamount', $data['requestedamount']);
+            }
+            
             $this->db->bind(':necessityType', $data['necessityType']);
             $this->db->bind(':recurringstartdate', $data['recurringstartdate']);
-            $this->db->bind(':recurringenddate', $data['recurringenddate']);
-            $this->db->bind(':frequency', $data['frequency']);
+            $this->db->bind(':donationduration', $data['donationduration']);
 
             $result2 = $this->db->execute();
-
-
 
             if ($result2) {
                 return true;

@@ -179,30 +179,15 @@ class Necessity extends Controller {
                 //change the getting input according to necessity type
                 if ($data['necessityType'] === 'recurring') {
                     $data['recurringstartdate'] = trim($_POST['recurringstartdate']);
-                    $data['recurringenddate'] = trim($_POST['recurringenddate']);
-                } else {
+                    $data['donationduration'] = trim($_POST['donationduration']);
+                    $data['monthlyrequestedamount'] = trim($_POST['monthlyrequestedamount']);
+                    $data['requestedamount'] = null;
+                } else if ($data['necessityType'] === 'onetime'){
+                    $data['requestedamount'] = trim($_POST['requestedamount']);
                     $data['recurringstartdate'] = null;
-                    $data['recurringenddate'] = null;
+                    $data['donationduration'] = null;
+                    $data['monthlyrequestedamount'] = null;
                 }
-
-                if ($data['necessityType'] === 'recurring') {
-                    $startDate = new DateTime($data['recurringstartdate']);
-                    $endDate = new DateTime($data['recurringenddate']);
-                    
-                    // Calculate the difference in days
-                    $dateDiff = $startDate->diff($endDate)->days;
-                
-                    if ($dateDiff < 7) {
-                        $data['frequency_err'] = 'please enter dates at least have 7days difference';
-                    } else {
-                        $data['frequency'] = trim($_POST['frequency']);
-                    }
-                } elseif($data['necessityType'] === 'onetime' && !empty($data['necessityMonetary'])){
-                    $data['frequency'] = null;
-                }else {
-                    $data['frequency'] = null;
-                }
-
 
                 //check wheather field are empty or not
 
@@ -222,25 +207,26 @@ class Necessity extends Controller {
                         $data['recurringstartdate_err']='Please enter the Recurring Start Date';
                     }
 
-                    if(empty($data['recurringenddate'])){
-                        $data['recurringenddate_err']='Please enter the Recurring End Date';
+                    if(empty($data['donationduration'])){
+                        $data['donationduration_err']='Please enter the time duration';
+                    }
+
+                    if(empty($data['monthlyrequestedamount'])){
+                        $data['monthlyrequestedamount_err']='Please Monthly requested amount';
+                    }elseif ($data['monthlyrequestedamount']<25) {
+                        $data['monthlyrequestedamount_err']='Please enter Valid Amount';
+                    }
+                }else if($data['necessityType']== 'onetime'){
+                    //necessity requested amount field
+                    if(empty($data['requestedamount'])){
+                        $data['requestedamount_err']='Please enter the Requested Amount';
+                    }elseif($data['requestedamount']<25){// check the validity of inserted value
+                        $data['requestedamount_err']='Please enter Valid Amount';
                     }
                 }
 
-                //recurring start and end date check
-                if($data['recurringstartdate'] > $data['recurringenddate']){
-                    $data['recurringdate_err']="Please give a valid dates.";
-                }
-
-                //necessity requested amount field
-                if(empty($data['requestedamount'])){
-                    $data['requestedamount_err']='Please enter the Requested Amount';
-                }elseif($data['requestedamount']<0){// check the validity of inserted value
-                    $data['requestedamount_err']='Please enter Valid Amount';
-                }
-
                 //check whether there any errors
-                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['recurringenddate_err']) && empty($data['recurringdate_err']) && empty($data['frequency_err'])){
+                if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err']) && empty($data['recurringstartdate_err']) && empty($data['donationduration_err']) && empty($data['monthlyrequestedamount_err'])){
                     if($this->necessityModel->addmonetarynecessitytodb($data)){
                         redirect('necessity/monetary');
                     }else{

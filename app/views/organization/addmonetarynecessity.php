@@ -54,8 +54,8 @@
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span>
                             </div>
                             <div class="necessity-fourth-div">
-                                <label for="donationduration">Durations</label>
-                                <input type="number" id="donationduration" name="donationduration" value="<?php echo isset($data['donationduration']) ? $data['donationduration'] : ''; ?>" min="1" required>
+                                <label for="donationduration">Durations (Monthly)</label>
+                                <input type="number" id="donationduration" name="donationduration" value="<?php echo isset($data['donationduration']) ? $data['donationduration'] : ''; ?>" min="1">
                                 <!-- Recurring End date error display -->
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationduration_err']) ? $data['donationduration_err']: ''; ?></span>
                             </div>
