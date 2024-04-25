@@ -31,11 +31,11 @@
                             <input class="inputt" type="text" name="username" id="email" required><br><br>
                             <label for="password" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Password</label><br><br>
                             <input class="inputt" type="password" name="password" id="password" required><br><br>
-                            <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
+                            <label for="forget-password" style="margin-top: 30px !important;"><a style="color: black;" href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
                         </div>
                         <div>
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
+                            <label >
+                                <input type="checkbox" name="remember"> Remember me
                             </label>
                         </div>
                         <button type="submit" id="Login">Login</button>

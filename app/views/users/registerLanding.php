@@ -35,8 +35,11 @@
                         <span class="button-text">Donor</span>
                         <p class="description">Sign up as a donor to discover and donate for students in need</p>
                     </button>
-                </div>            
-                <p style="color: rgb(146, 141, 141); margin-top: 30px !important;">Already Registered? <a href="<?php echo URLROOT ?>/users/login">Log in here</a></p>
+                </div>   
+                <div class="registerLanding-loginText" style="margin-top: 30px !important;">
+                    <p>Already Registered?</p>
+                    <a href="<?php echo URLROOT ?>/users/login">Log in here</a>
+                </div>         
             </div>       
         </div>
     </div>
