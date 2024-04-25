@@ -21,13 +21,26 @@
                     <h3>Edit Profile</h3>
                     <p>Edit your profile details (some details cannot be change due to validation policies)</p>
                 </div>
-                <div class ="form-container">
-                    <div class="edit-profile-picture">
-                    <img class="profile-picture" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
-                    </div>
+                
+                    <!-- <div class="edit-profile-picture">
+                      <img class="profile-picture" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
+
+                    </div> -->
 
                 <div class="edit-profile-form">
                     <form action="<?php echo URLROOT ?>/student/editProfileDetails" method="post">
+
+                    <div class="lines">
+                        <div class="edit-profile-picture">
+                        <img class="profile-picture" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
+                        </div>
+                            
+                    </div>
+
+                    <div class="lines">
+                            <label for="">User Name</label>
+                            <input type="text" value="<?php print_r($_SESSION['user_name']) ?>" name="fName" readonly required>
+                        </div>
                  
                         <div class="lines">
                             <label for="">First Name</label>
@@ -97,6 +110,11 @@
                             <input type="text" value="<?php print_r($data['studentData']->caregiverOccupation) ?>" name="caregiverOccupation" required>  
                         </div>
 
+                        <div class="lines">
+                            <label for="">Currently Receiving Scholarships</label>
+                            <input type="text" value="<?php print_r($data['studentData']->caregiverOccupation) ?>" name="caregiverOccupation" required>  
+                        </div>
+
                         <h4> Bank Details</h4>
 
                         <div class="lines">
@@ -125,7 +143,7 @@
                             </div>
                         </form>
                 </div>
-</div>
+
 
 
 
