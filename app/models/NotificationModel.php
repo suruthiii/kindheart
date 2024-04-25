@@ -55,8 +55,17 @@ class NotificationModel {
     }
 
     public function getNotificationCount() {
-        $this->db->query('SELECT COUNT(*) AS count FROM notification WHERE receiverID = :receiverID;');
-        $this->db->bind(':receiverID', $_SESSION['user_id']);
+        $userType = $this->getUserType($_SESSION['user_id']);
+
+        if($userType == 'admin' || $userType == 'superAdmin') {
+            $this->db->query('SELECT COUNT(*) AS count FROM notification WHERE receiverID = 0;');
+            // $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
+
+        else {
+            $this->db->query('SELECT COUNT(*) AS count FROM notification WHERE receiverID = :receiverID;');
+            $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
 
         $result = $this->db->single();
 
@@ -64,9 +73,18 @@ class NotificationModel {
     }
 
     public function viewNotifications() {
-        $this->db->query('SELECT * FROM notification WHERE receiverID = :receiverID;');
-        $this->db->bind(':receiverID', $_SESSION['user_id']);
+        $userType = $this->getUserType($_SESSION['user_id']);
 
+        if($userType == 'admin' || $userType == 'superAdmin') {
+            $this->db->query('SELECT * FROM notification WHERE receiverID = 0 ORDER BY time DESC;');
+            // $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
+
+        else {
+            $this->db->query('SELECT * FROM notification WHERE receiverID = :receiverID ORDER BY time DESC;');
+            $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
+       
         $result = $this->db->resultSet();
 
         foreach($result as $item) {
@@ -76,13 +94,22 @@ class NotificationModel {
         return $result;
     }
 
-    public function markAsRead() {
+    public function markAsRead($notification_ID) {
+        $this->db->query('UPDATE notification SET status = 1 WHERE notificationID = :notificationID');
+        $this->db->bind(':notificationID', $notification_ID);
 
+        if($this->db->execute()){
+            return true;
+        }
+
+        else {
+            return false;
+        }   
     }
 
-    public function deleteNotification($notificationID) {
+    public function deleteNotification($notification_ID) {
         $this->db->query('DELETE FROM notification WHERE notificationID = :notificationID;');
-        $this->db->bind(":notificationID", $notificationID);
+        $this->db->bind(':notificationID', $notification_ID);
 
         if($this->db->execute()){
             return true;
@@ -92,5 +119,4 @@ class NotificationModel {
             return false;
         }    
     }
-    
 }

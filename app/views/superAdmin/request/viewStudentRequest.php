@@ -141,13 +141,35 @@
                 </table>
             </div>
 
-            <div class="view-donation-btn-container" style="display: flex;">
-                <form action="<?php echo URLROOT ?>/request/unassignadmin" method="post" class="delete-form">
-                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['student_details']->studentID; ?>" />
-                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Unassign
-                    </button>
-                </form>
+            <div class="view-donation-btn-container">
+
+                <?php if($data['student_details']->adminID == 0) {?>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown">
+                        <button class="dropbtn">Assign</button>
+                        <div class="dropdown-content">
+                            <?php for ($i = 0; $i < sizeof($data['admins']) - 1; $i++) {?>
+                                <form action="<?php echo URLROOT ?>/request/assignadmin" method="post" class="delete-form">
+                                    <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['student_details']->studentID; ?>" />
+                                    <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $data['admins'][$i]->adminID ?>" />
+                                    <button type="submit" class="dropdown-item" onclick="">
+                                        <?php echo $data['admins'][$i]->adminName ?>
+                                    </button>
+                                </form>
+                            <?php } ?>
+                        </div>
+                    </div>
+                <?php }
+
+                else {?>
+                    <form action="<?php echo URLROOT ?>/request/unassignadmin" method="post" class="delete-form">
+                        <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['student_details']->studentID; ?>" />
+                        <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                            Unassign
+                        </button>
+                    </form>  
+                <?php }?>
+                
             </div>
         </div>
     </section>
