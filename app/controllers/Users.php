@@ -121,6 +121,10 @@ class Users extends Controller{
         $this->view('users/studentRegistration/studentProfileCreation3');
     }
 
+    public function studentProfileCreation4(){
+        $this->view('users/studentRegistration/studentProfileCreation4');
+    }
+
     //------------------------------------------------
 
     public function forgetPassword1(){
