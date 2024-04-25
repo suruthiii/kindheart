@@ -170,12 +170,10 @@ class Necessity extends Controller {
                     'necessityMonetary' => trim($_POST['necessityMonetary']),
                     'necessityType' => trim($_POST['necessityType']),
                     'monetarynecessitydes' => trim($_POST['monetarynecessitydes']),
-                    'requestedamount' => trim($_POST['requestedamount']),
                     'necessityMonetary_err' => '',
                     'monetarynecessitydes_err' => '',
                     'requestedamount_err' => '',
                     'recurringdate_err' => '',
-                    'frequency_err' => ''
                 ];
 
                 //change the getting input according to necessity type

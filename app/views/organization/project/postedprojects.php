@@ -14,12 +14,6 @@
             <!-- Middle container -->
             <div class="middle-container">
 
-                <!-- Go Back Button -->
-                <!-- <div class="goback-button">
-                    <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">Go Back</button>
-                </div> -->
-
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
                     <h3>Posted  Projects</h3>
