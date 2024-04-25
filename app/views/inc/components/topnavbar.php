@@ -10,7 +10,7 @@
                     </div>
                 </div> -->
                 <div class="notify">
-                    <div class="notification-count" style="background-color: red; border-radius: 50px; color: white; padding: 4px 6px 3px 6px; font-size: 8px; position: absolute; right: 115px; top: 32px">
+                    <!-- <div class="notification-count" style="background-color: red; border-radius: 50px; color: white; padding: 4px 6px 3px 6px; font-size: 8px; position: absolute; right: 115px; top: 32px">
                         <?php echo $other_data['notification_count']; ?>
                     </div>
 
@@ -361,9 +361,48 @@
                     <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt="" onclick="notificationToggle()">
                 </div>
                    
-                <div class="profile">
-                    <img class="ico" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
+                <div class="profile" >
+                    <img class="ico" src="<?php echo URLROOT ?>/img/woman.jpg" onclick="toggleMenu()">
+            
+
                 </div>
+                
+                <?php if($_SESSION['user_type']== 'student') : ?>
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                           <img src="<?php echo URLROOT ?>/img/woman.jpg">
+                           <h2>Hello <?php print_r( $_SESSION['user_name']) ?>!</h2>
+                           <p><?php print_r( $_SESSION['user_email']) ?></p>
+                          
+                        </div>
+                        <hr>
+                        <a href="<?php echo URLROOT ?>/student/editProfile" class="sub-menu-link">
+                        <!-- <a href="#" class="sub-menu-link"> -->
+                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                            <p>Edit Profile</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                        <img src="<?php echo URLROOT ?>/img/settings.svg">
+                            <p>Settings</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                        <img src="<?php echo URLROOT ?>/img/handshake.svg">
+                            <p>Help</p>
+                            <span>></span>
+                        </a>
+                        <!-- <a href="#" class="sub-menu-link"> -->
+                        <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)"  class="sub-menu-link">
+                        <img src="<?php echo URLROOT ?>/img/logout.svg">
+                            <p>Log Out</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+                <?php endif; ?>
+             
             </div>
         </div>
     </div>

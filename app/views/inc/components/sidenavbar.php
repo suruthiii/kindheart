@@ -273,21 +273,21 @@
                     <?php } ?>
                 </a>
                 
-                <a href="<?php echo URLROOT ?>/student/editProfile">
+                <!-- <a href="<?php echo URLROOT ?>/student/editProfile">
                     <?php if ($section == 'editprofile'){?>
                         <div class="selected-item">Edit Profile</div>
                     <?php }
                     else{ ?>
                         <div class="item">Edit Profile</div>
                     <?php } ?>
-                </a>
+                </a> -->
                
 
-                <div class="item">
+                <!-- <div class="item">
                     <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
                         Log Out
                     </a>
-                </div>
+                </div> -->
             <?php } ?>
 
             <!------------------- Organization ------------------>

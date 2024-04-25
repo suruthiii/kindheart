@@ -8,7 +8,7 @@ class StudentModel{
 
 
     public function getStudentDetails($user_ID) {
-        $this->db->query('SELECT s.studentID, s.fName, s.lName, s.gender, s.dateOfBirth, s.nicNumber, s.institutionName, s.studentType, s.caregiverName, s.caregiverType, s.caregiverRelationship, s.caregiverOccupation, s.studyingYear, d.phoneNumber, d.branchName, d.bankName, d.accNumber, d.accountHoldersName, d.address FROM student s JOIN donee d ON s.studentID = d.doneeID WHERE studentID = :studentID;');
+        $this->db->query('SELECT s.studentID, s.fName, s.lName, s.gender, s.dateOfBirth, s.nicNumber, s.institutionName, s.studentType, s.caregiverName, s.caregiverType, s.caregiverRelationship, s.caregiverOccupation, s.studyingYear, d.phoneNumber, d.branchName, d.bankName, d.accNumber, d.accountHoldersName, d.address, s.receivingScholarships FROM student s JOIN donee d ON s.studentID = d.doneeID WHERE studentID = :studentID;');
         $this->db->bind(':studentID', $user_ID);
 
         $row = $this->db->single();
@@ -20,7 +20,7 @@ class StudentModel{
     public function editProfileDetails($data){
        
            // Prepare statement
-           $this->db->query('UPDATE student SET fName = :fName, lName = :lName, gender = :gender, dateOfBirth = :dateOfBirth, nicNumber = :nicNumber, institutionName = :institutionName, studentType = :studentType, caregiverName = :caregiverName, caregiverType = :caregiverType, caregiverRelationship = :caregiverRelationship, caregiverOccupation = :caregiverOccupation, studyingYear = :studyingYear WHERE studentID = :studentID;
+           $this->db->query('UPDATE student SET fName = :fName, lName = :lName, gender = :gender, dateOfBirth = :dateOfBirth, nicNumber = :nicNumber, institutionName = :institutionName, studentType = :studentType, caregiverName = :caregiverName, caregiverType = :caregiverType, caregiverRelationship = :caregiverRelationship, caregiverOccupation = :caregiverOccupation, studyingYear = :studyingYear, receivingScholarships = :receivingScholarships WHERE studentID = :studentID;
            UPDATE donee SET phoneNumber = :phoneNumber, branchName= :branchName, bankName = :bankName, accNumber = :accNumber , accountHoldersName = :accountHoldersName, address = :address WHERE doneeID = :doneeID;');
            
    
@@ -46,6 +46,8 @@ class StudentModel{
            $this->db->bind(':accountHoldersName', $data['accountHoldersName']);
            $this->db->bind(':address', $data['address']);
            $this->db->bind(':doneeID', $_SESSION['user_id']);
+           $this->db->bind(':receivingScholarships', $_SESSION['receivingScholarships']);
+           
    
            // Execute
            if ($this->db->execute()) {

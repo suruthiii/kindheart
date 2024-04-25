@@ -432,3 +432,88 @@ a{
     justify-content: center; /* Align content vertically */
     
 }
+
+
+
+/* ---------------------------------- Profile icon drpdown ---------------------------------- */
+.sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.sub-menu-wrap.open-menu {
+    max-height: 500px;
+    overflow: visible;
+    transition: max-height 0.5s;
+}
+
+.sub-menu-wrap .sub-menu{
+    background-color: #fae6e6;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.sub-menu-wrap .sub-menu .user-info{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.sub-menu-wrap .sub-menu .user-info img{
+    border-radius: 50%; /* Make the profile picture rounded */
+    height: 60px; /* Adjust the height of the image */
+    width: 60px; /* Adjust the width of the image */
+    margin-right: 20px;
+    
+    
+}
+.sub-menu-wrap .sub-menu .user-info h2{
+    font-weight: bolder;
+
+}
+
+.sub-menu-wrap .sub-menu hr{
+    border: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #ccc;
+    margin: 15px 0 10px;
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-link{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #7e0000;
+    margin: 5px 0;
+}
+.sub-menu-wrap .sub-menu .sub-menu-link p{
+    width: 100%;
+    font-size: 15px;
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-link img{
+    height: 20px; /* Adjust the height of the image */
+    width: 20px; /* Adjust the width of the image */
+    margin-right: 20px;
+    border-radius: 50%;
+    background-color: #f89292;
+    padding: 8px;
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-link span{
+    font-size: 20px;
+    transition: transform 0.5s;
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-link:hover span{
+    transform: translateX(5px);
+}
+
+.sub-menu-wrap .sub-menu .sub-menu-link:hover p{
+    font-weight: bolder;
+}
+
