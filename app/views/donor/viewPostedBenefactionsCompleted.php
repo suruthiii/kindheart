@@ -110,19 +110,19 @@
                 <div class="request-right-side-bar-inner">  
                     <!-- Topic -->
                     <div class="request-right-side-bar-topic">
-                        <h3>Completed Requests</h3>
+                        <h3>Completed Donations</h3>
                         <div class="request-right-side-bar-grey-line"> </div>
                     </div>  
                     
                     <!-- Display requests or no requests message -->
                     <div class="request-right-side-bar-all-requests">
                         <?php foreach($data['benefaction_requests'] as $request): ?>
-                            <?php if ($request->verificationStatus == 2) : ?>
+                            <?php if ($request->acceptanceStatus == 2) : ?>
                                 <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
                                     <div class="request-right-side-bar-type-requests-completed">
                                         <div class="request-right-side-bar-type-requests-left">
                                             <h4><?php echo $request->doneeName; ?></h4>
-                                            <p>Donated Amount: <?php echo $request->receivedQuantity; ?></p>
+                                            <p>Donated Amount: <?php echo $request->donatedQuantity; ?></p>
                                             <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p> -->
                                         </div>
                                     </div>

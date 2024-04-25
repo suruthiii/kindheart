@@ -106,7 +106,8 @@ class BenefactionModel{
                             db.reason,
                             db.requestedQuantity,
                             db.acceptanceStatus,
-                            db.benefactionID
+                            db.benefactionID,
+                            b.donatedQuantity
                         FROM 
                             benefaction_request db
                         JOIN 
@@ -115,6 +116,8 @@ class BenefactionModel{
                             student s ON u.userType = "student" AND s.studentID = db.doneeID
                         LEFT JOIN 
                             organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                        LEFT JOIN 
+                            benefaction b ON db.benefactionID = b.benefactionID
                         WHERE 
                             u.status != 10
                             AND db.benefactionID = :benefactionID
@@ -175,18 +178,20 @@ class BenefactionModel{
                                 WHEN u.userType = "organization" THEN o.orgName
                             END AS doneeName,
                             db.reason,
-                            db.benefactionID,
-                            db.verificationStatus,
                             db.requestedQuantity,
-                            db.receivedQuantity
+                            db.acceptanceStatus,
+                            db.benefactionID,
+                            b.donatedQuantity
                         FROM 
-                            donee_benefaction db
+                            benefaction_request db
                         JOIN 
                             user u ON db.doneeID = u.userID
                         LEFT JOIN 
                             student s ON u.userType = "student" AND s.studentID = db.doneeID
                         LEFT JOIN 
                             organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                        LEFT JOIN 
+                            benefaction b ON db.benefactionID = b.benefactionID
                         WHERE 
                             u.status != 10
                             AND db.doneeID = :doneeID

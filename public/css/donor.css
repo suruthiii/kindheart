@@ -920,8 +920,8 @@ span .donor-form-error-details{
 }
 
 .request-right-side-bar-type-requests-right .status_accepted p{
-    background-color: #8ff693;
-    color: #000;
+    background-color: #d3731f;
+    color: #ffffff;
 
     height: 30px;
     width: 80px;
@@ -935,7 +935,7 @@ span .donor-form-error-details{
 }
 
 .request-right-side-bar-type-requests-right .status_incomplte p{
-    background-color: #d3731f;
+    background-color: #fff823;
     color: #000;
 
     height: 30px;
@@ -949,9 +949,9 @@ span .donor-form-error-details{
     align-items: center;
 }
 
-.request-right-side-bar-type-requests-right .status_declined p{
-    background-color: #7a7875;
-    color: #b9b9b9;
+.request-right-side-bar-type-requests-right .status_completed p{
+    background-color: #8ff693;
+    color: #000000;
 
     height: 30px;
     width: 80px;
