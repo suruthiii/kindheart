@@ -440,6 +440,37 @@ class Benefaction extends Controller {
         $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
     }
 
+    public function acceptBenefactionRequest() {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if (isset($_POST['benefactionID']) && isset($_POST['doneeID'])) {
+                
+                $benefactionID = $_POST['benefactionID'];
+                $doneeID = $_POST['doneeID'];
+                
+                // Update the status of the benefaction request
+                if($this->benefactionModel->acceptBenefactionRequest($doneeID, $benefactionID)) {          
+
+                    // Load the view with data
+                    $data = [
+                        'title' => 'View Posted Benefactions',
+                        'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($benefactionID),
+                        'benefaction_requests' => $this->benefactionModel->getBenefactionRequests($benefactionID)
+                    ];         
+                    
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];                                
+            
+                    // Load View
+                    $this->view('donor/viewPostedBenefactionsPending', $data, $other_data);
+                } else {
+                    die('Benefaction ID or Donee ID not found.');
+                }
+            }
+        }
+    }
+
     public function declineBenefactionRequest() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['benefactionID']) && isset($_POST['doneeID'])) {
@@ -460,11 +491,10 @@ class Benefaction extends Controller {
                     $other_data = [
                         'notification_count' => $this->notificationModel->getNotificationCount(),
                         'notifications' => $this->notificationModel->viewNotifications()
-                    ];
-                                 
+                    ];                                
             
                     // Load View
-                    $this->view('donor/viewPostedBenefactions', $data, $other_data);
+                    $this->view('donor/viewPostedBenefactionsPending', $data, $other_data);
                 } else {
                     die('Benefaction ID or Donee ID not found.');
                 }
@@ -492,16 +522,16 @@ class Benefaction extends Controller {
         }
 
         // Get verificationStatus from benefactionRequest_details
-        $verificationStatus = $data['benefactionRequest_details'][0]->verificationStatus;
+        $acceptanceStatus = $data['benefactionRequest_details'][0]->acceptanceStatus;
 
         // Determine which view to load based on verificationStatus
-        if ($verificationStatus == 0) {
+        if ($acceptanceStatus == 0) {
             $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
-        } elseif ($verificationStatus == 1 || $verificationStatus == 3) {
+        } elseif ($acceptanceStatus == 1 || $acceptanceStatus == 3) {
             $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
-        } elseif ($verificationStatus == 2) {
+        } elseif ($acceptanceStatus == 2) {
             $this->view('donor/viewBenefactionRequestCompleted', $data, $other_data);
-        } elseif ($verificationStatus == 10) {
+        } elseif ($acceptanceStatus == 10) {
             $this->view('donor/viewBenefactionRequestDeclined', $data, $other_data);
         } else {
             redirect('pages/404'); // Redirect to 404 page for unknown status

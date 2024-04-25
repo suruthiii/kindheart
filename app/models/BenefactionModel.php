@@ -195,7 +195,8 @@ class BenefactionModel{
                         WHERE 
                             u.status != 10
                             AND db.doneeID = :doneeID
-                            AND db.benefactionID = :benefactionID;)');   
+                            AND db.benefactionID = :benefactionID
+                    ');   
 
         $this->db->bind(':doneeID', $doneeID);
         $this->db->bind(':benefactionID', $benefactionID);
@@ -205,8 +206,8 @@ class BenefactionModel{
         return $result;
     }
 
-    public function declineBenefactionRequest($doneeID, $benefactionID) {
-        $this->db->query('UPDATE donee_benefaction SET verificationStatus = 10 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+    public function acceptBenefactionRequest($doneeID, $benefactionID) {
+        $this->db->query('UPDATE benefaction_request SET acceptanceStatus = 1 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
         $this->db->bind(':doneeID', $doneeID);
         $this->db->bind(':benefactionID', $benefactionID);
 
@@ -217,6 +218,21 @@ class BenefactionModel{
             return false; // Update failed
         }
     }
+
+    public function declineBenefactionRequest($doneeID, $benefactionID) {
+        $this->db->query('UPDATE benefaction_request SET acceptanceStatus = 10 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        // Execute the query
+        if ($this->db->execute()) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
+
+    
 
 
 

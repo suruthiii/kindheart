@@ -58,17 +58,18 @@
                 </div>
 
                 <div class="view-benefactionRequest-btn-container">
-                    <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
+                    <!-- <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
                         <input type="hidden" name="doneeID" id="doneeID" value="" />
                         <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
                             <img src="<?php echo URLROOT ?>/img/profile2.png" style="filter: invert(100%); width:15px;">
                             <h5>View Donee Profile</h5>
                         </button>
-                    </form>
+                    </form> -->
 
-                    <form action="<?php echo URLROOT ?>/benefaction/" method="get" class="accept-request">
-                        <input type="hidden" name="doneeID" id="doneeID" value="" />
-                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
+                    <form action="<?php echo URLROOT ?>/benefaction/acceptBenefactionRequest" method="post" class="accept-request" id="acceptForm">
+                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                        <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmAccept(event)" >
                             <img src="<?php echo URLROOT ?>/img/check.png" style="filter: invert(100%); width:18px;">
                             <h5>Accept Request</h5>
                         </button>
@@ -109,6 +110,26 @@
             if (result.isConfirmed) {
                 // Submit the form programmatically
                 const form = document.getElementById('declineForm');
+                form.submit(); // Submit the form
+            }
+        });
+    }
+
+    function confirmAccept(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        Swal.fire({
+            title: 'Great!',
+            text: 'You are about to accept this request. This action cannot be undone.',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, Accept it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form programmatically
+                const form = document.getElementById('acceptForm');
                 form.submit(); // Submit the form
             }
         });
