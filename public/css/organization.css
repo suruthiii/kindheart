@@ -1454,7 +1454,41 @@
     border-radius: 15px;
 }
 
-/* .addordian-milestone-content .addordian-milestone-images img{
-    width: 200px;
-    height: 200px;
-} */
+.right-side-bar-for-display-title{
+    position: relative;
+    margin-top: 2vh;
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-side-bar-for-display-title h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.right-side-bar-for-scrolling{
+    position: relative;
+    margin-top: 2vh;
+    width: 90%;
+    height: 68vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.donated-donor-details-box{
+    position: relative;
+    width: 90%;
+    height: 18vh;
+    margin-bottom: 2vh;
+    background-color: #8E0000;
+    border-radius: 15px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.18);
+    display: flex;
+    align-items: center;
+    padding: 10px 14px;
+}
+

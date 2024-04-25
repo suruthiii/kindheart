@@ -76,9 +76,9 @@
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="post" onsubmit="return confirmDelete();">
+                    <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="post" class="delete-form" id="delete">
                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>"/>
-                        <button type="submit">
+                        <button type="submit" onclick="confirmDecline(event)">
                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" class="ncessity-view-table-delete-button-img">
                             <p>Delete</p>
                         </button>
@@ -90,7 +90,27 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
-                    
+                    <div class="right-side-bar-for-display-title">
+                        <h3>Donors Who Donated</h3>
+                    </div>
+                    <div class="right-side-bar-for-scrolling">
+                        <div class="donated-donor-details-box">
+                            <div class="donated-donor-name"></div>
+                            <div class="sendacknowladgement-button"></div>
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                    </div>
 
                 </div>
             </div>
@@ -99,10 +119,38 @@
     </section>
 </main>
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
-    function confirmDelete() {
-        return confirm("Are you sure you want to delete this?");
+    // Function to handle delete confirmation
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to delete this Pending Necessity. This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Proceed with form submission
+                const form = event.target.closest('form'); // Find the closest form element
+                if (form) {
+                    form.submit(); // Submit the form
+                }
+            }
+        });
     }
+
+    // Bind the confirmDelete function to form submission events
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('.delete-form'); // Select all delete forms
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', confirmDelete); // Attach confirmDelete to form submission
+        });
+    });
 </script>
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
