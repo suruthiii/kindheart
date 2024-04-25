@@ -55,8 +55,17 @@ class NotificationModel {
     }
 
     public function getNotificationCount() {
-        $this->db->query('SELECT COUNT(*) AS count FROM notification WHERE receiverID = :receiverID;');
-        $this->db->bind(':receiverID', $_SESSION['user_id']);
+        $userType = $this->getUserType($_SESSION['user_id']);
+
+        if($userType == 'admin' || $userType == 'superAdmin') {
+            $this->db->query('SELECT COUNT(*) AS count FROM notification WHERE receiverID = 0;');
+            // $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
+
+        else {
+            $this->db->query('SELECT COUNT(*) AS count FROM notification WHERE receiverID = :receiverID;');
+            $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
 
         $result = $this->db->single();
 
