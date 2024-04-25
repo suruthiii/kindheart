@@ -24,40 +24,26 @@ class BenefactionModel{
         $this->db->bind(':postedDate', date('Y-m-d')); // Automatically set the posted date
         $this->db->bind(':donorID', $_SESSION['user_id']);
         $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
-        // $this->db->bind(':availability', $data['availability']);
 
-        // // if the benefaction is pending it's availabitySTatus is 1
-        // if($data['availability'] == 'pending'){
-        //     $this->db->query('UPDATE benefaction SET availabilityStatus = 1 WHERE benefactionID = :benefactionID');
-        //     $this->db->bind(':benefactionID', $data['benefactionID']);
-        //     if($this->db->execute()){
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }
-        // }else{
-        //     $this->db->query('UPDATE benefaction SET availabilityStatus = 0 WHERE benefactionID = :benefactionID');
-        //     $this->db->bind(':benefactionID', $data['benefactionID']);
-        //     if($this->db->execute()){
-        //         return true;
-        //     }else{
-        //         return false;
-        //     }
-        // }
-
-            // Execute
-            if($this->db->execute()){
-                return true;
-            }else{
-                return false;
-            }
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
 
     }
 
     // Get pending benefactions
     public function getPendingBenefaction() {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 0');
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate,
+                            SUM(CASE WHEN br.acceptanceStatus IN (0, 1) THEN br.requestedQuantity ELSE 0 END) AS totalRequestedQuantity
+                            FROM benefaction b
+                            LEFT JOIN benefaction_request br ON b.benefactionID = br.benefactionID
+                            WHERE b.availabilityStatus = 0
+                            GROUP BY b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate;
+                            ');
 
         // Execute
         $this->db->execute();
@@ -108,11 +94,6 @@ class BenefactionModel{
     public function getBenefactionRequests($benefactionID) {
 
         // Prepare statement
-        // $this->db->query('SELECT o.orgID AS doneeID, o.orgName AS doneeName FROM organization o JOIN donee_benefaction db ON o.orgID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 AND db.benefactionID = :benefactionID
-        //                     UNION
-        //                     SELECT s.studentID, CONCAT(s.fname, " ", s.lname) FROM student s JOIN donee_benefaction db ON s.studentID = db.doneeID JOIN user u ON db.doneeID = u.userID WHERE u.status != 10 AND db.benefactionID = :benefactionID;');
-
-
         $this->db->query('SELECT u.userType AS userType,
                             CASE
                                 WHEN u.userType = "student" THEN s.studentID
