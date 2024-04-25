@@ -9,14 +9,21 @@ class Student extends Controller {
         $this->middleware->checkAccess(['student']);
         $this->studentModel = $this->model('StudentModel');
         $this->successStoryModel = $this->model('SuccessStoryModel');
-        $this->BenefactionModel = $this->model('BenefactionModel');
+        $this->benefactionModel = $this->model('BenefactionModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function index(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('student/index', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/index', $data, $other_data);
     }
 
     // public function necessityRequest(){
@@ -44,7 +51,13 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('student/necessities', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/necessities', $data, $other_data);
     }
 
     // public function editStory(){
@@ -60,23 +73,33 @@ class Student extends Controller {
             'title' => 'Home page',
             'successstories' => $this->successStoryModel->getSuccessStories()
         ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
         
-        $this->view('student/successstory', $data);
+        $this->view('student/successstory', $data, $other_data);
     }
 
     public function benefactions(){
 
         $data = [
             'title' => 'Home page',
-            'benefactions' => $this->BenefactionModel->getBenefactions(),
-            'appliedBenefactions' => $this->BenefactionModel->getAppliedBenefactions(),
+            'benefactions' => $this->benefactionModel->getBenefactions(),
+            'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
         ];
 
         // die(print_r($data['benefactions']));
 
         // die(print_r($data['benefactions']));
 
-        $this->view('student/benefactions', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/benefactions', $data, $other_data);
     }
 
     public function scholarships(){
@@ -86,7 +109,12 @@ class Student extends Controller {
             // 'benefactions' => $this->BenefactionModel->getBenefactions()
         ];
 
-        $this->view('student/scholarships', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/scholarships', $data, $other_data);
     }
 
     public function benefactionview(){
@@ -95,12 +123,15 @@ class Student extends Controller {
 
         $data = [
             'title' => 'Home page',
-            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID)
+            'benefactions' => $this->benefactionModel->getBenefaction($benefactionID)
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
 
-
-        $this->view('student/benefactionview', $data);
+        $this->view('student/benefactionview', $data, $other_data);
     }
 
     public function ApplyForBenefaction(){
@@ -110,23 +141,30 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactionID' => $benefactionID,
-            'appliedBenefactions' => $this->BenefactionModel->getAppliedBenefactions(),
-            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID)
+            'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
+            'benefactions' => $this->benefactionModel->getBenefaction($benefactionID)
         ];
-        $this->view('student/ApplyForBenefaction', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/ApplyForBenefaction', $data, $other_data);
     }
 
     public function viewAppliedBenefaction($benefactionID = null){
-
-      
-
         $data = [
             'title' => 'Home page',
-            'benefactions' => $this->BenefactionModel->getBenefaction($benefactionID),
+            'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
 
-        $this->view('student/viewAppliedBenefaction', $data);
+        $this->view('student/viewAppliedBenefaction', $data, $other_data);
     }
 
 

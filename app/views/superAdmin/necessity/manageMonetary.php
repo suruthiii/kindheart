@@ -28,9 +28,14 @@
                 <table>
                     <?php foreach($data['necessity_details'] as $key => $value){
                         if ($key == 'doneeID'){continue;}
-                        else if($key == 'Start Date' || $key == 'End Date'){
+                        else if($key == 'Start Date'){
                             $value = date('Y-m-d', strtotime($value));
-                        }?>
+                        }
+                        else if($key == 'Duration'){
+                            $value = 
+                        }
+                        
+                        ?>
                         
                         <tr class="necessity-data">
                             <th width="30%"><?php echo $key?></th>

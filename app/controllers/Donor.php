@@ -4,28 +4,34 @@ class Donor extends Controller {
         $this->middleware = new AuthMiddleware();
         // Only donors are allowed to access donor pages
         $this->middleware->checkAccess(['donor']);
+        $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function index(){
         $data = [
             'title' => 'Home page'
         ];
-        $this->view('donor/index', $data);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ]; 
+
+        $this->view('donor/index', $data, $other_data);
     }
 
     public function donorSelectDonation(){
         $data = [
             'title' => 'Donation Selection Page'
         ];
-        $this->view('donor/donorSelectDonation', $data);
-    }
 
-    public function about(){
-        $users = $this->pagesModel->getUser();
-        $data = [
-            'users' => $users
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
         ];
-        $this->view('about', $data);
+
+        $this->view('donor/donorSelectDonation', $data, $other_data);
     }
 
     // public function getDonorDashboard(){

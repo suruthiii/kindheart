@@ -270,7 +270,7 @@ class NecessityModel{
     }
 
     public function getStudentRecurringMonetaryDetails($necessity_ID) {
-        $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, CONCAT(s.fName, ' ', s.lName) AS 'Student Name', m.monetaryNecessityType AS 'Necessity Type', m.requestedAmount AS 'Requested Amount', m.receivedAmount AS 'Received Amount', m.startDate AS 'Start Date', m.endDate AS 'End Date', m.frequency AS 'Frequency' FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID JOIN student s ON n.doneeID = s.studentID WHERE m.monetaryNecessityType = 'recurring' AND n.necessityID = :necessityID;");
+        $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, CONCAT(s.fName, ' ', s.lName) AS 'Student Name', m.monetaryNecessityType AS 'Necessity Type', m.requestedAmount AS 'Requested Amount', m.receivedAmount AS 'Received Amount', m.monthlyAmount AS 'Monthly Amount', m.startDate AS 'Start Date', m.duration AS 'Duration' FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID JOIN student s ON n.doneeID = s.studentID WHERE m.monetaryNecessityType = 'recurring' AND n.necessityID = :necessityID;");
         $this->db->bind(':necessityID', $necessity_ID);
 
         $row = $this->db->single();
@@ -297,7 +297,7 @@ class NecessityModel{
     }
 
     public function getOrganizationRecurringMonetaryDetails($necessity_ID) {
-        $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, o.orgName AS 'Organization Name', m.monetaryNecessityType AS 'Necessity Type', m.requestedAmount AS 'Requested Amount', m.receivedAmount AS 'Received Amount', m.startDate AS 'Start Date', m.endDate AS 'End Date', m.frequency AS 'Frequency' FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID JOIN organization o ON n.doneeID = o.orgID WHERE m.monetaryNecessityType = 'recurring' AND n.necessityID = :necessityID;");
+        $this->db->query("SELECT n.necessityName AS 'Necessity Name', n.description AS 'Description', n.doneeID, o.orgName AS 'Organization Name', m.monetaryNecessityType AS 'Necessity Type', m.requestedAmount AS 'Requested Amount', m.receivedAmount AS 'Received Amount', m.monthlyAmount AS 'Monthly Amount', m.startDate AS 'Start Date', m.duration AS 'Duration' FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID JOIN organization o ON n.doneeID = o.orgID WHERE m.monetaryNecessityType = 'recurring' AND n.necessityID = :necessityID;");
         $this->db->bind(':necessityID', $necessity_ID);
 
         $row = $this->db->single(); 

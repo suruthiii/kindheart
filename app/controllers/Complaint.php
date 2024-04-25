@@ -6,6 +6,7 @@ class Complaint extends Controller {
         $this->middleware->checkAccess(['superAdmin', 'admin']);
         $this->complaintModel = $this->model('ComplaintModel');
         $this->userModel = $this->model('UserModel');
+        $this->notificationModel = $this->model('NotificationModel');
     }
 
     public function unassignAdmin() {
@@ -61,7 +62,12 @@ class Complaint extends Controller {
             'past_complaints' =>  $this->complaintModel->getPastComplaints($complainee_ID)
         ];
 
-        $this->view($_SESSION['user_type'].'/complaint/viewComplaint', $data);
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/complaint/viewComplaint', $data, $other_data);
     }
 
     public function banComplainee() {
@@ -83,20 +89,25 @@ class Complaint extends Controller {
             'details' => $this->complaintModel->getUserDetails($user_ID, $userType),
         ];
 
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
         if ($userType == 'student') {
-            $this->view($_SESSION['user_type'].'/complaint/viewStudentProfile', $data);
+            $this->view($_SESSION['user_type'].'/complaint/viewStudentProfile', $data, $other_data);
         }
 
         else if ($userType == 'organization') {
-            $this->view($_SESSION['user_type'].'/complaint/viewOrganizationProfile', $data);
+            $this->view($_SESSION['user_type'].'/complaint/viewOrganizationProfile', $data, $other_data);
         }
         
         else if ($userType == 'company') {
-            $this->view($_SESSION['user_type'].'/complaint/viewDonorComProfile', $data);
+            $this->view($_SESSION['user_type'].'/complaint/viewDonorComProfile', $data, $other_data);
         }
 
         else if ($userType == 'individual') {
-            $this->view($_SESSION['user_type'].'/complaint/viewDonorIndProfile', $data);
+            $this->view($_SESSION['user_type'].'/complaint/viewDonorIndProfile', $data, $other_data);
         }
     }
 
