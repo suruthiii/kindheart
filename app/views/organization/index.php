@@ -3,7 +3,7 @@
 <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "benefactions";?>
+<?php $section = "dashboard";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
@@ -49,7 +49,7 @@
                 <div class="donor-dashboard-graph-container">
                     <!-- Graph container -->
                     <div class="donor-dashboard-status-topic">
-                        <h4>Donation Summary</h4>
+                        <h4>Received Donation Summary</h4>
                     </div>
                     <div class="donor-dashboard-left-container">
                         <canvas id="donutChartContainer" width="600" height="600"></canvas>
@@ -59,7 +59,7 @@
                 <div class="donor-dashboard-donation-container">
                     <!-- Donation container -->
                     <div class="donor-dashboard-status-topic">
-                        <h4>Recent Donations</h4>
+                        <h4>Recent Received Donations</h4>
                     </div>
                     <div class="donor-dashboard-right-container">
                         <table>
@@ -92,10 +92,10 @@
                 label: 'Dataset 1',
                 data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * 100)),
                 backgroundColor: [
-                    'red',
-                    'orange',
-                    'yellow',
-                    'green'
+                    '#8E0000',
+                    '#bf644f',
+                    '#e5b0a3',
+                    '#f3d7d0'
                 ]
             }]
         };
