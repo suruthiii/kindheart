@@ -22,26 +22,29 @@
                     <span>Create an username and a password for your account</span> 
                 </div>
                 <div class="studentAcountCreationPage2-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage3" method="POST">
-                        <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds">                            
-                            <label for="email">Create an Username </label>
+                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage2" method="GET">
+                        <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds">
+
+                            <label for="username">Create an Username </label>
                             <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="email" name="email" id="email-field" value="" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="studentAcountCreationPage2-input" type="text" name="username" id="username-field" value="<?php echo $data['username']?>" >
+                                <span class="error-message" for="username"></span>
                             </div>
 
-                            <label for="psw">Enter Password</label>
+                            <label for="password">Enter Password</label>
                             <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="password" name="password" id="password" value="">
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="studentAcountCreationPage2-input" type="password" name="password" id="password" value="<?php echo $data['password']?>">
+                                <span class="error-message" for="password"></span>
                             </div>
 
-                            <label for="psw">Confirm Password</label>
+                            <label for="confirmPassword">Confirm Password</label>
                             <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="password" name="confirmPassword" id="confirmPassword" value="">                                
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="studentAcountCreationPage2-input" type="password" name="confirmPassword" id="confirmPassword" value="">                                
+                                <span class="error-message" for="confirmPassword"></span>
                             </div>
+
                         </div>
+
                         <div class="studentAcountCreationPage2-inner-container-form-container-buttons">
                             <button>Set Password</button>
                         </div>

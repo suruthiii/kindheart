@@ -6,6 +6,25 @@ class UserModel{
         $this->db = new Database();
     }
 
+    // Account creation
+    public function accountCreation(){
+        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, 0, 0)');
+
+        // Bind values
+        $this->db->bind(':username', $_SESSION['username']);
+        $this->db->bind(':email', $_SESSION['user_email']);
+        $this->db->bind(':password', $_SESSION['password']);
+        $this->db->bind(':userType', $_SESSION['user_type']);
+
+        // Execute
+        if ($this->db->execute()){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // Register user
     public function register($data){
         // Prepare statement
