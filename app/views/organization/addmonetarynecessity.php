@@ -54,23 +54,11 @@
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span>
                             </div>
                             <div class="necessity-fourth-div">
-                                <label for="recurringenddate">End Date (if recurring)</label>
-                                <input type="date" id="recurringenddate" name="recurringenddate" value="<?php echo isset($data['recurringenddate']) ? $data['recurringstartdate'] : ''; ?>" min="<?php echo date('Y-m-d'); ?>">
+                                <label for="donationduration">Durations (Monthly)</label>
+                                <input type="number" id="donationduration" name="donationduration" value="<?php echo isset($data['donationduration']) ? $data['donationduration'] : ''; ?>" min="1">
                                 <!-- Recurring End date error display -->
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringenddate_err']) ? $data['recurringenddate_err']: ''; ?></span>
+                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationduration_err']) ? $data['donationduration_err']: ''; ?></span>
                             </div>
-                        </div>
-
-                        <!-- funding duration -->
-                        <div class="add-necessity-one-line-input-for-radio-buttons">
-                            <label for="frequency">Frequency</label><br>
-                            <input type="radio" id="weekly" name="frequency" value="weekly">
-                            <label for="weekly">Weekly</label>
-                            <input type="radio" id="monthly" name="frequency" value="monthly">
-                            <label for="weekly">Monthly</label>
-                            <input type="radio" id="yearly" name="frequency" value="yearly">
-                            <label for="weekly">Yearly</label><br>
-                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['frequency_err']) ? $data['frequency_err']: ''; ?></span>
                         </div>
 
                         <!-- Description about requested necessity -->
@@ -82,12 +70,21 @@
                         </div>
 
                         <!-- Requested Amount in Rupees -->
-                        <div class="add-necessity-one-line-input">
-                            <label for="requestedamount">Requested Amount in Rupees </label>
-                            <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
-                            <!-- Requested Amount Error Display -->
-                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['requestedamount_err']) ? $data['requestedamount_err']: ''; ?></span>
+                        <div class="add-necessity-one-line-second-type-input">
+                            <div class="necessity-third-div">
+                                <label for="requestedamount">Requested Amount in Rupees</label>
+                                <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
+                                <!-- Requested Amount Error Display -->
+                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['requestedamount_err']) ? $data['requestedamount_err']: ''; ?></span>
+                            </div>
+                            <div class="necessity-fourth-div">
+                                <label for="monthlyrequestedamount">Monthly Requested Amount</label>
+                                <input type="number" id="monthlyrequestedamount" name="monthlyrequestedamount" title="Monthly Requested Amount" min="25" value="<?php echo isset($data['monthlyrequestedamount']) ? $data['monthlyrequestedamount'] : ''; ?>">
+                                <!-- Requested Amount Error Display -->
+                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['monthlyrequestedamount_err']) ? $data['monthlyrequestedamount_err']: ''; ?></span>
+                            </div>
                         </div>
+
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
                             <input type="submit" value="Add">
@@ -110,23 +107,20 @@
 
                     function toggleRecurringFields() {
                         var recurringStartDateInput = document.getElementById('recurringstartdate');
-                        var recurringEndDateInput = document.getElementById('recurringenddate');
-                        var weekly = document.getElementById('weekly');
-                        var monthly = document.getElementById('monthly');
-                        var yearly = document.getElementById('yearly');
+                        var donationduration = document.getElementById('donationduration');
+                        var monthlyrequestedamount = document.getElementById('monthlyrequestedamount');
+                        var requestedamount = document.getElementById('requestedamount');
 
                         if (necessityTypeSelect.value === 'onetime') {
                             recurringStartDateInput.disabled = true;
-                            recurringEndDateInput.disabled = true;
-                            weekly.disabled = true;
-                            monthly.disabled = true;
-                            yearly.disabled = true;
+                            donationduration.disabled = true;
+                            monthlyrequestedamount.disabled = true;
+                            requestedamount.disabled = false;
                         } else {
                             recurringStartDateInput.disabled = false;
-                            recurringEndDateInput.disabled = false;
-                            weekly.disabled = true;
-                            monthly.disabled = true;
-                            yearly.disabled = true;
+                            donationduration.disabled = false;
+                            monthlyrequestedamount.disabled = false;
+                            requestedamount.disabled = true;
                         }
                     }
 
@@ -136,53 +130,6 @@
                     // Add event listener to necessityType select element
                     necessityTypeSelect.addEventListener('change', toggleRecurringFields);
                 });
-
-                // Function to calculate the number of days between two dates
-                function calculateDateRange(startDate, endDate) {
-                    const start = new Date(startDate);
-                    const end = new Date(endDate);
-                    const diffTime = Math.abs(end - start);
-                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-                    return diffDays;
-                }
-
-                // Function to disable radio buttons based on the number of days
-                function disableRadioButtons() {
-                    const startDate = document.getElementById('recurringstartdate').value;
-                    const endDate = document.getElementById('recurringenddate').value;
-                    const dateRange = calculateDateRange(startDate, endDate);
-
-                    const weekly = document.getElementById('weekly');
-                    const monthly = document.getElementById('monthly');
-                    const yearly = document.getElementById('yearly');
-
-                    if (dateRange < 7) {
-                        weekly.disabled = true;
-                        monthly.disabled = true;
-                        yearly.disabled = true;
-                    } else if (dateRange >= 7 && dateRange < 30) {
-                        monthly.disabled = true;
-                        yearly.disabled = true;
-                        weekly.disabled = false;
-                    } else if (dateRange >= 30 && dateRange < 365) {
-                        yearly.disabled = true;
-                        weekly.disabled = false;
-                        monthly.disabled = false;
-                    } else {
-                        weekly.disabled = false;
-                        monthly.disabled = false;
-                        yearly.disabled = false;
-                    }
-                }
-
-                // Add event listeners to start and end date inputs
-                document.getElementById('recurringstartdate').addEventListener('change', disableRadioButtons);
-                document.getElementById('recurringenddate').addEventListener('change', disableRadioButtons);
-
-                // Call the function initially to set the initial state of radio buttons
-                disableRadioButtons();
-
-
             </script>
             <!-- ---------------------------------------------------------------------------------------------- -->
 
