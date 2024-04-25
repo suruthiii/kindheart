@@ -12,6 +12,14 @@ class Users extends Controller{
         $this->view('users/registerLanding');
     }
 
+    //---------------------------------------------
+
+    public function studentAcountCreationPage1(){
+        $this->view('users/studentRegistration/studentAcountCreationPage1');
+    }   
+
+    //------------------------------------------------
+
     public function forgetPassword1(){
         $this->view('users/forgetPassword1');
     }
@@ -91,7 +99,7 @@ class Users extends Controller{
                     $_SESSION['user_email'] = $data['email'];
                     $_SESSION['user_type'] = 'student';
 
-                    $this->view('users/accountCreationSuccessful', $data);
+                    $this->view('users/emailVerifyOTP', $data);
                     
                 }else{
                     die('Something Went Wrong');

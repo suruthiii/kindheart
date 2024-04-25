@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    height: 98vh;
+    width: 210vh;
+
+    overflow: hidden;
+    
+    display: flex;
+    justify-content: center;
+}
+
+.container .image {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+}
+
+.container .image #registerAndLogin {
+    width: 80%;
+    height: 100%;
+}
+
+.container #logo {
+    height: 150px;
+    width: 150px;
+}
+
+
+
+/* ----------------studentAcountCreationPage1------------------ */
+
+.studentAcountCreationPage1-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentAcountCreationPage1-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentAcountCreationPage1-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage1-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage1-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-left: 10px;    
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentAcountCreationPage1-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2 input{
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+    height: 45px;
+    width: 50px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #acacac;
+    column-gap: 50px;
+    margin-right: 18px;
+
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2 input:focus{
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
