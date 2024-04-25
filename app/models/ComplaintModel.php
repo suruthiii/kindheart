@@ -22,6 +22,7 @@ class ComplaintModel{
         return $result;
     }
 
+    // Complaints Assigned to Admin himself
     public function getAssignedComplaints() {
         $this->db->query('SELECT c.complaintID, u.username FROM complaint c JOIN user u ON c.complainerID = u.userID WHERE c.adminID = :adminID;');
         $this->db->bind(':adminID', $_SESSION['user_id']);

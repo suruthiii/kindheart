@@ -30,7 +30,7 @@
                 
                 <div class="card-list">
                     <?php foreach($data['unassigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/request/viewunassignedorganizationrequest/<?php echo $item->userID ?>">
+                    <a href="<?php echo URLROOT ?>/request/vieworganizationrequest/<?php echo $item->userID ?>">
                         <div class="card">
                             <table>
                                 <tr>
@@ -71,7 +71,7 @@
                 <div class="card-list">
 
                     <?php foreach($data['assigned'] as $item) {?>
-                    <a href="<?php echo URLROOT ?>/request/viewassignedorganizationrequest/<?php echo $item->userID ?>">
+                    <a href="<?php echo URLROOT ?>/request/vieworganizationrequest/<?php echo $item->userID ?>">
                         <div class="card">
                             <table>
                                 <tr>

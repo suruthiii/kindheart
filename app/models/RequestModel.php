@@ -38,6 +38,7 @@ class RequestModel{
         return $result;
     }
 
+    // Student Registration Requests Assigned to Admin himself
     public function getAssignedStudentRequests() {
         $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.doneeType = 'student' AND d.adminID = :adminID;");
         $this->db->bind(':adminID', $_SESSION['user_id']);
@@ -47,6 +48,7 @@ class RequestModel{
         return $result;
     }
 
+    // Organization Registration Requests Assigned to Admin himself
     public function getAssignedOrganizationRequests() {
         $this->db->query("SELECT u.userID, u.username, a.adminName FROM user u JOIN donee d ON u.userID = d.doneeID LEFT JOIN admin a ON d.adminID = a.adminID WHERE u.status = 0 AND d.doneeType = 'organization' AND d.adminID = :adminID;");
         $this->db->bind(':adminID', $_SESSION['user_id']);
