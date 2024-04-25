@@ -27,26 +27,17 @@
                 <div class="login-text shared-text shared-label shared-button">
                     <form action="<?php echo URLROOT ?>/users/login" method="POST">
                         <div class="login-input-field shared-input shared-margin2">
-                            <div>
-                                <label for="username">Username</label>
-                                <input class="inputt" type="text" name="username" id="email" required>
-                            </div>
-                            <div>
-                                <label for="password" >Password</label>
-                                <input class="inputt" type="password" name="password" id="password" required>
-                            </div>
-                            <div>
-                                <label for="forget-password">
-                                    <a href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a>
-                                </label>
-                            </div>       
-                            <div>
-                                <label>
-                                    <input type="checkbox" checked="checked" name="remember"> Remember me
-                                </label>
-                            </div>                     
+                            <label for="username" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Username</label><br><br>
+                            <input class="inputt" type="text" name="username" id="email" required><br><br>
+                            <label for="password" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Password</label><br><br>
+                            <input class="inputt" type="password" name="password" id="password" required><br><br>
+                            <label for="forget-password" style="margin-top: 30px !important;"><a style="color: black;" href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
                         </div>
-
+                        <div>
+                            <label >
+                                <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
                         <button type="submit" id="Login">Login</button>
                     </form>
                 </div>
