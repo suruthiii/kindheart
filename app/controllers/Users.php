@@ -18,6 +18,14 @@ class Users extends Controller{
         $this->view('users/studentRegistration/studentAcountCreationPage1');
     }   
 
+    public function studentAcountCreationPage2(){
+        $this->view('users/studentRegistration/studentAcountCreationPage2');
+    } 
+
+    public function studentAcountCreationPage3(){
+        $this->view('users/studentRegistration/studentAcountCreationPage3');
+    } 
+
     //------------------------------------------------
 
     public function forgetPassword1(){

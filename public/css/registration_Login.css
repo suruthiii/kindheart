@@ -84,7 +84,6 @@ a {
     border: none;
     padding: 9px 0;
     cursor: pointer;
-    margin-left: 10px;    
     margin-top: 20px;
     transition: all 0.2s ease;
     width: 180px;
@@ -144,5 +143,147 @@ a {
 
 .studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2 input:focus{
     box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+/* ----------------studentAcountCreationPage1------------------ */
+
+.studentAcountCreationPage2-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentAcountCreationPage2-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentAcountCreationPage2-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage2-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage2-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentAcountCreationPage2-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentAcountCreationPage2-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentAcountCreationPage2-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentAcountCreationPage2-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentAcountCreationPage2-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+
+/* ----------------studentAcountCreationPage1------------------ */
+
+.studentAcountCreationPage3-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentAcountCreationPage3-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+    padding-top: 120px;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentAcountCreationPage3-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage3-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage3-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentAcountCreationPage3-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentAcountCreationPage3-inner-container-buttons button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentAcountCreationPage3-inner-container-buttons button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
 }
 
