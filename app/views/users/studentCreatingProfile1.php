@@ -29,7 +29,7 @@
                 <h1>Creating Profile</h1>
                 <span style="color: rgb(146, 141, 141);">1 of 6</span><br><br><br>   
                 <div class="studentCreateProfile-text shared-text shared-label">
-                    <form action="<?php echo URLROOT ?>/users/studentCreatingProfile1" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation2" method="POST">
                         <div class="studentCreateProfile-input-field">
                             <div class="studentCreateProfile-horizontal-input">
                                 <div class="input-group">

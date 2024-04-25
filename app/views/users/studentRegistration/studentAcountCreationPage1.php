@@ -22,28 +22,31 @@
                     <span>Receive donations for your educational activities</span> 
                 </div>
                 <div class="studentAcountCreationPage1-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage2" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage1" method="GET">
                         <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds">      
 
                             <label for="email">Enter your email address </label>
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="email" name="email" id="email-field" value="" >
+                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" >
                                 <span class="error-message" for="verificationCode"></span>
                             </div>
 
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage">
-                                <p>Send Verification Code</p>
+                                <button type="submit">Send Verification Code</button>
                             </div>
+                    </form>
 
+                    <form action="<?php echo URLROOT ?>/users/OTPstudentAcountCreationPage1" method="GET">
+                        <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds">      
                             <label for="email">Enter the verification code</label>
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2">
-                                <input type="text" />
-                                <input type="text"  />
-                                <input type="text"  />
-                                <input type="text"  />
-                                <input type="text"  />
-                                <input type="text"  />
-                                <input type="text"  />
+                                <input type="text" name="digit-1" />
+                                <input type="text" name="digit-2" />
+                                <input type="text" name="digit-3" />
+                                <input type="text" name="digit-4" />
+                                <input type="text" name="digit-5" />
+                                <input type="text" name="digit-6" />
+                                <input type="text" name="digit-7" />
                             </div>
                         </div>
                         <div class="studentAcountCreationPage1-inner-container-form-container-buttons">

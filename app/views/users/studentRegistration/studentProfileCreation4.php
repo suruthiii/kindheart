@@ -22,7 +22,7 @@
                     <span>4 of 6</span> 
                 </div>
                 <div class="studentProfileCreation4-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation2" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation5" method="POST">
                         <div class="studentProfileCreation4-inner-container-form-container-inputfeilds">   
                             <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal">
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1">

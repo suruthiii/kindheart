@@ -22,7 +22,7 @@
                     <span>3 of 6</span> 
                 </div>
                 <div class="studentProfileCreation3-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation3" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation4" method="POST">
                         <div class="studentProfileCreation3-inner-container-form-container-inputfeilds">   
 
                             <label for="careType">Select Parent/Guardian</label>
