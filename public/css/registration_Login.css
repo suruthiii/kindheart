@@ -513,6 +513,7 @@ a {
 .studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox select{
     display: none;
 }
+
 /* Set width for select box */
 .select-selected {
     position: relative; /* Add relative positioning */
@@ -656,3 +657,108 @@ a {
     margin-bottom: 30px;
     margin-top: 10px;
 }
+
+/* ----------------studentProfileCreation3------------------ */
+
+.studentProfileCreation3-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation3-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation1-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation3-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation3-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation3-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation3-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation3-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation3-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds-selectbox {
+    height: 45px; /* Make the input fields fill the entire height of their parent div */
+    width: 240px;
+    border-radius: 6px;
+    border: 1px solid #acacac;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px; /* Adjust padding */
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds-selectbox select{
+    display: none;
+}
+
+
+
