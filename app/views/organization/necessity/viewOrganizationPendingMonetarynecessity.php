@@ -42,28 +42,28 @@
                             <td><p><?php echo $data['pendingNecessityDetails']->monetaryNecessityType; ?></p></td>
                         </tr>
                         <tr>
+                            <td><p>Monthly Requested<br>Amount</p></td>
+                            <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->monthlyAmount, 2); ?></p></td>
+                        </tr>
+                        <tr>
                             <td><p>Requested Amount</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->requestedAmount; ?></p></td>
+                            <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->requestedAmount, 2); ?></p></td>
                         </tr>
                         <tr>
                             <td><p>Received Amount</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->receivedAmount; ?></p></td>
+                            <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->receivedAmount, 2); ?></p></td>
                         </tr>
                         <tr>
                             <td><p>Amount Due</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->amount_due; ?></p></td>
+                            <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->amount_due, 2); ?></p></td>
                         </tr>
                         <tr>
                             <td><p>Donation Starting Date</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->startDate !== null ? date('Y-m-d', strtotime($data['pendingNecessityDetails']->startDate)) : '---'; ?></p></td>
                         </tr>
                         <tr>
-                            <td><p>Donation Ending Date</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->endDate !== null ? date('Y-m-d', strtotime($data['pendingNecessityDetails']->endDate)) : '---'; ?></p></td>
-                        </tr>
-                        <tr>
-                            <td><p>Frequency of Funding</p></td>
-                            <td><p><?php echo $data['pendingNecessityDetails']->frequency !== null ? $data['pendingNecessityDetails']->frequency : '---'; ?></p></td>
+                            <td><p>Duration</p></td>
+                            <td><p><?php echo $data['pendingNecessityDetails']->duration; ?> Months</p></td>
                         </tr>
                     </table>
                 </div>
