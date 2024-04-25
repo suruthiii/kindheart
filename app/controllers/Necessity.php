@@ -778,6 +778,7 @@ class Necessity extends Controller {
         }
     }
 
+
     // This is the function that pass necessity Id to edit recurring necessity page
     public function editRecuringMonetaryNecessity(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
@@ -910,7 +911,6 @@ class Necessity extends Controller {
             }
 
         }
-    }
 
     public function editOnetimeMonetaryNecessity(){
         $data = [
