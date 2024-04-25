@@ -56,12 +56,23 @@
                                     </form>
                                 </td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/" method="POST">
-                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
-                                        <button  type="submit">
-                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
-                                        </button>
-                                    </form>
+                                    <!-- if the necessity is recurring -->
+                                    <?php if($pendingtablerow->monetaryNecessityType == "recurring") { ?>
+                                        <form action="<?php echo URLROOT ?>/necessity/editRecuringMonetaryNecessity" method="POST">
+                                            <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                            <button  type="submit">
+                                                <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                                            </button>
+                                        </form>
+                                    <!-- if the necessity is onetime -->
+                                    <?php } else if($pendingtablerow->monetaryNecessityType == "onetime"){ ?>
+                                        <form action="<?php echo URLROOT ?>/necessity/editOnetimeMonetaryNecessity" method="POST">
+                                            <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
+                                            <button  type="submit">
+                                                <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                                            </button>
+                                        </form>
+                                    <?php } ?>
                                 </td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="POST" class="delete-form" id="delete">

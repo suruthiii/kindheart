@@ -403,8 +403,14 @@ class NecessityModel{
 
         $this->db->query("SELECT money.monetaryNecessityType FROM money WHERE money.monetaryNecessityID = :necessityID");
         $this->db->bind(':necessityID', $necessityID);
-    
         $result = $this->db->single();
+
+        if($result == 'recurring'){
+
+        }else if($result == 'onetime'){
+
+        }
+
         return $result;
     }
 }
