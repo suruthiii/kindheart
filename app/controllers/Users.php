@@ -24,7 +24,110 @@ class Users extends Controller{
 
     public function studentAcountCreationPage3(){
         $this->view('users/studentRegistration/studentAcountCreationPage3');
-    } 
+    }
+
+    public function login(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            // Form is submitting
+
+            // Input data
+            $data = [
+                'username' => trim($_POST['username']),
+                'password' => trim($_POST['password']),
+                'remember_me' => isset($_POST['remember_me']),
+                'err' => ''
+            ];
+
+            // Validate data
+            // Validate email
+            if (empty($data['username'])){
+                $data['err'] = 'Please enter username';
+            }
+            else{
+                if ($this->userModel->findUserByUsername($data['username'])) {
+                    if($this->userModel->checkStatus($data['username']) == 5){
+                        $details = $this->userModel->bannedDetails($data['username']);
+
+                        $duration = $details['totalDays'];
+                        $banCount = $details['banCount'];
+
+                        if (($banCount == 1 && $duration >= 1) || ($banCount == 2 && $duration >= 3)) {
+                            $this->userModel->unbanUser($data['username']);
+                        }
+
+                        else {
+                            $data['err'] = 'You have been banned'; 
+                        }
+                    }
+
+                    else if($this->userModel->checkStatus($data['username']) == 10) {
+                        $data['err'] = 'User Not Found'; 
+                    }
+
+                }
+                else{
+                    // User not found
+                    $data['err'] = 'User Not Found'; 
+                }
+            }
+
+            // Validate password
+            if (empty($data['password'])){
+                $data['err'] = 'Please enter password';
+            }
+
+            // Check if error is empty
+            if (empty($data['err'])){
+                // log the user
+                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
+                if ($loggedInUser){
+                    // Create session
+                    $this->createUserSession($loggedInUser);
+                }
+                else{
+                    $data['err'] = 'Password incorrect';
+
+                    // Load view with errors
+                    $this->view('users/login', $data);
+                }
+            }
+            else{
+                // Load view with errors
+                $this->view('users/login', $data);
+            }
+        }
+        else{
+            // Initial form load
+            $data = [
+                'username' => '',
+                'password' => '',
+                'err' => ''
+            ];
+
+            // Load view
+            $this->view('users/login', $data);
+        }
+    }
+
+    public function studentProfileCreation1(){
+        $this->view('users/studentRegistration/studentProfileCreation1');
+    }
+
+    public function studentProfileCreation2(){
+        $this->view('users/studentRegistration/studentProfileCreation2');
+    }
+
+    public function studentProfileCreation3(){
+        $this->view('users/studentRegistration/studentProfileCreation3');
+    }
+
+    public function studentProfileCreation4(){
+        $this->view('users/studentRegistration/studentProfileCreation4');
+    }
+
+    public function studentProfileCreation5(){
+        $this->view('users/studentRegistration/studentProfileCreation5');
+    }
 
     //------------------------------------------------
 
@@ -748,88 +851,7 @@ class Users extends Controller{
     //     }
     // }
 
-    public function login(){
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            // Form is submitting
 
-            // Input data
-            $data = [
-                'username' => trim($_POST['username']),
-                'password' => trim($_POST['password']),
-                'remember_me' => isset($_POST['remember_me']),
-                'err' => ''
-            ];
-
-            // Validate data
-            // Validate email
-            if (empty($data['username'])){
-                $data['err'] = 'Please enter username';
-            }
-            else{
-                if ($this->userModel->findUserByUsername($data['username'])) {
-                    if($this->userModel->checkStatus($data['username']) == 5){
-                        $details = $this->userModel->bannedDetails($data['username']);
-
-                        $duration = $details['totalDays'];
-                        $banCount = $details['banCount'];
-
-                        if (($banCount == 1 && $duration >= 1) || ($banCount == 2 && $duration >= 3)) {
-                            $this->userModel->unbanUser($data['username']);
-                        }
-
-                        else {
-                            $data['err'] = 'You have been banned'; 
-                        }
-                    }
-
-                    else if($this->userModel->checkStatus($data['username']) == 10) {
-                        $data['err'] = 'User Not Found'; 
-                    }
-
-                }
-                else{
-                    // User not found
-                    $data['err'] = 'User Not Found'; 
-                }
-            }
-
-            // Validate password
-            if (empty($data['password'])){
-                $data['err'] = 'Please enter password';
-            }
-
-            // Check if error is empty
-            if (empty($data['err'])){
-                // log the user
-                $loggedInUser = $this->userModel->login($data['username'], $data['password']);
-                if ($loggedInUser){
-                    // Create session
-                    $this->createUserSession($loggedInUser);
-                }
-                else{
-                    $data['err'] = 'Password incorrect';
-
-                    // Load view with errors
-                    $this->view('users/login', $data);
-                }
-            }
-            else{
-                // Load view with errors
-                $this->view('users/login', $data);
-            }
-        }
-        else{
-            // Initial form load
-            $data = [
-                'username' => '',
-                'password' => '',
-                'err' => ''
-            ];
-
-            // Load view
-            $this->view('users/login', $data);
-        }
-    }
 
     // Create the session
     public function createUserSession($user){
