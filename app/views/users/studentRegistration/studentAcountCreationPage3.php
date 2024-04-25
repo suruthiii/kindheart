@@ -23,7 +23,9 @@
                 </div>
 
                 <div class="studentAcountCreationPage3-inner-container-buttons">
-                    <button>Continue</button>
+                    <a href="<?php echo URLROOT ?>/users/login">
+                        <button>Continue</button>
+                    </a>
                 </div>            
             </div>            
         </div>

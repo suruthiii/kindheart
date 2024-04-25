@@ -22,7 +22,7 @@
                     <span>Create an username and a password for your account</span> 
                 </div>
                 <div class="studentAcountCreationPage2-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentRegistration" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage3" method="POST">
                         <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds">                            
                             <label for="email">Create an Username </label>
                             <div class="studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1">

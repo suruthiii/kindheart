@@ -22,7 +22,7 @@
                     <span>Receive donations for your educational activities</span> 
                 </div>
                 <div class="studentAcountCreationPage1-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentRegistration" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage2" method="POST">
                         <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds">      
 
                             <label for="email">Enter your email address </label>
