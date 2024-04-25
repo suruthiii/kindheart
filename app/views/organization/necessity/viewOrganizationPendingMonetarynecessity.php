@@ -95,20 +95,15 @@
                     </div>
                     <div class="right-side-bar-for-scrolling">
                         <div class="donated-donor-details-box">
-                            <div class="donated-donor-name"></div>
-                            <div class="sendacknowladgement-button"></div>
-                        </div>
-                        <div class="donated-donor-details-box">
-                        
-                        </div>
-                        <div class="donated-donor-details-box">
-                        
-                        </div>
-                        <div class="donated-donor-details-box">
-                        
-                        </div>
-                        <div class="donated-donor-details-box">
-                        
+                            <div class="donated-donor-name">
+                                <h4>Donors Name</h4>
+                            </div>
+                            <div class="donated-amount">
+                                <p>Rs.</p>
+                            </div>
+                            <div class="sendacknowladgement-button">
+                                <button type="submit">Accept</button>
+                            </div>
                         </div>
                     </div>
 

@@ -377,13 +377,6 @@ class Necessity extends Controller {
             }
         }
     } 
-    
-    // public function viewOrganizationMonetarynecessity(){
-    //     $data = [
-    //         'title' => 'Home page'
-    //     ];
-    //     $this->view('organization/viewOrganizationMonetarynecessity', $data);
-    // }
 
     // View pending necessity's further information
     public function viewPendingMonetarynecessity(){
@@ -787,6 +780,32 @@ class Necessity extends Controller {
             }
         }
     }
+
+    public function editRecuringMonetaryNecessity(){
+        $data = [
+           
+        ];
+
+        $this->view('organization/necessity/editpostedrecurringmonetarynecessity', $data);
+        
+    }
+
+    public function editOnetimeMonetaryNecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+
+        $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data);
+    }
+
+    public function editPhysicalgoodsNecessity(){
+        $data = [
+            'title' => 'Home page'
+        ];
+
+        $this->view('organization/necessity/editpostedmonetarynecessity', $data);
+    }
+
 
     public function deleteNecessities() {
         if($_SESSION['user_type'] == 'donor') {
