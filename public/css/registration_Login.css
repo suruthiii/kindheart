@@ -898,5 +898,90 @@ a {
     /* margin-bottom: 30px; */
 }
 
+/* ----------------studentProfileCreation5------------------ */
+
+.studentProfileCreation5-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation5-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation1-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation5-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation5-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation5-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation5-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation5-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation5-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation5-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation5-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation5-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
 
 
