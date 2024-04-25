@@ -17,6 +17,7 @@
                     <div class="notification-area">
                         <?php foreach($other_data['notifications'] as $item) {
 
+                            /* ------------------------------ Admin and Super Admin Notifications ----------------------------- */
                             if($item->notificationType == "complaint"){?> 
                                 <a href="<?php echo URLROOT?>/complaint/viewcomplaint?complaint_ID=<?php echo $item->data?>">
                                     <div class="notification" >
@@ -93,7 +94,267 @@
                                         </div>
                                     </div>
                                 </a>
-                            <?php }?>
+                            <?php }
+
+                            else if($item->notificationType == "MonetarySlipUpload"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "GoodReceiptUpload"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "ProjectFundSlipUpload"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "ScholarshipSlipUpload"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "BenefactionReceiptUpload"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "MonetaryDonationNotReceived"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "GoodDonationNotReceived"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "ProjectFundNotReceived"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "ScholarshipNotReceived"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } 
+
+                            else if($item->notificationType == "BenefactionNotReceived"){?> 
+                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                    <div class="notification" >
+                                        <div class="notification-content">
+                                            <div class="notification-name"><?php echo $item->name ?></div>
+                                            <div class="notification-des"><?php echo $item->description ?></div>
+                                        </div>
+                                        <div class="notification-option">
+                                            <form action="<?php echo URLROOT?>/notification/markasread" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translate(-30px, 10px);">
+                                                    <img class="ico" style="width: 13px;" src="<?php echo URLROOT ?>/img/check.png" alt="" >
+                                                </button>
+                                            </form>
+
+                                            <form action="<?php echo URLROOT?>/notification/deletenotification" method="post">
+                                                <input type="text" name="notification_ID" hidden value="<?php echo $item->notificationID ?>">
+                                                <button class="notification-opt-btn" type="submit" style="border: none; outline: none; transform: translateY(-8px);">
+                                                    <img class="ico" style="width: 10px;" src="<?php echo URLROOT ?>/img/close.png" alt="" >
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </a>
+                            <?php } ?>
 
                         <?php }?>
                     </div>
