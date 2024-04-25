@@ -90,7 +90,26 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
-                    
+                    <div class="right-side-bar-for-display-title">
+                        <h3>Donors Who Donated</h3>
+                    </div>
+                    <div class="right-side-bar-for-scrolling">
+                        <div class="donated-donor-details-box">
+                            <p></p>
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                        <div class="donated-donor-details-box">
+                        
+                        </div>
+                    </div>
 
                 </div>
             </div>
