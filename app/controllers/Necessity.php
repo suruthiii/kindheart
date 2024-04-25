@@ -63,7 +63,7 @@ class Necessity extends Controller {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
-                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount(),
+                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount()
             ];
 
             $other_data = [

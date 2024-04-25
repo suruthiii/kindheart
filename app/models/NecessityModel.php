@@ -43,7 +43,7 @@ class NecessityModel{
             } else {
                 $this->db->bind(':requestedamount', $data['requestedamount']);
             }
-            
+
             $this->db->bind(':necessityType', $data['necessityType']);
             $this->db->bind(':recurringstartdate', $data['recurringstartdate']);
             $this->db->bind(':donationduration', $data['donationduration']);
