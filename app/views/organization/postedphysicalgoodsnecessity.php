@@ -155,7 +155,7 @@
                     </div>
                     <div class="right-side-bar-type-one-detailed-view-boxes">
                         <h5>Total number of donors who donated</h5>
-                        <p><?php echo number_format($data['totalNumberofDonors']); ?> Number of Donors</p>
+                        <p> Number of Donors</p>
                     </div>
                     <div class="right-side-bar-type-one-detailed-view-boxes"></div>
                 </div>
