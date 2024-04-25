@@ -698,7 +698,7 @@ span .donor-form-error-details{
 .view-benefaction-right-column-inner{
     width: 100%;    
     max-height: 50vh;
-    margin-right: 180px;
+    margin-right: 100px;
     margin-top: 150px;
 
     overflow-x: hidden;
@@ -824,6 +824,9 @@ span .donor-form-error-details{
     border-radius: 30px;
     border: 1px dashed #707070;
     background-color: rgb(224, 224, 224);
+
+    position: absolute;
+    margin-left: -140px;
 
     display: flex;
     flex-direction: column;

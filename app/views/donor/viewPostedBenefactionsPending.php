@@ -64,22 +64,22 @@
                         <div class="view-benefaction-right-column-inner">
                             <div class="chosen-photos-container" id="chosen-photos-container1">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container2">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container3">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container4">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
                                 <?php endif; ?>
                             </div>                            
                         </div>
@@ -115,11 +115,45 @@
                     </div>  
                     
                     <!-- Display requests or no requests message -->
-                    <div class="request-right-side-bar-no-requests">
-                        <p>No Requests Yet</p>
+                    <div class="request-right-side-bar-all-requests">
+                        <?php if (!empty($data['benefaction_requests'])) : ?>
+                            <?php foreach($data['benefaction_requests'] as $request): ?>
+                                <?php if ($request->acceptanceStatus == 0 || $request->acceptanceStatus == 1) : ?>
+                                    <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
+                                        <div class="request-right-side-bar-type-requests">
+                                            <div class="request-right-side-bar-type-requests-left">
+                                                <h4><?php echo $request->doneeName; ?></h4>
+                                                <p>Requested Amount: <?php echo $request->requestedQuantity; ?></p>
+                                                <!-- <p><?php echo substr($request->reason, 0, 20) . (strlen($request->reason) > 20 ? '...' : ''); ?></p> -->
+                                            </div>
+                                            <div class="request-right-side-bar-type-requests-right">
+                                                <?php
+                                                    // Determine the appropriate label based on verificationStatus
+                                                    switch ($request->acceptanceStatus) {
+                                                    case 0:
+                                                        echo '<div class="status_pending"><p>Pending</p></div>';
+                                                        break;
+                                                    case 1:
+                                                        echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                                        break;
+                                                    default:
+                                                        echo '<div class="status_pending"><p> </p></div>';
+                                                        break;
+                                                    }
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </a> 
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <div class="request-right-side-bar-no-requests">
+                                <p>No Requests Yet</p>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
-            </div>              
+            </div>             
         </div>
     </section>
 </main>

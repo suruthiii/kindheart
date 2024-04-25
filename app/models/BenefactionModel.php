@@ -105,11 +105,10 @@ class BenefactionModel{
                             END AS doneeName,
                             db.reason,
                             db.requestedQuantity,
-                            db.benefactionID,
-                            db.verificationStatus,
-                            db.receivedQuantity
+                            db.acceptanceStatus,
+                            db.benefactionID
                         FROM 
-                            donee_benefaction db
+                            benefaction_request db
                         JOIN 
                             user u ON db.doneeID = u.userID
                         LEFT JOIN 
@@ -118,7 +117,8 @@ class BenefactionModel{
                             organization o ON u.userType = "organization" AND o.orgID = db.doneeID
                         WHERE 
                             u.status != 10
-                            AND db.benefactionID = :benefactionID;)');   
+                            AND db.benefactionID = :benefactionID
+                    ');   
 
         $this->db->bind(':benefactionID', $benefactionID);
 
