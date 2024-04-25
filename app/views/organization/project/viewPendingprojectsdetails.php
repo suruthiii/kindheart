@@ -77,7 +77,7 @@
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/project/deleteProjects" method="post" onsubmit="return confirmDelete();">
+                    <form action="<?php echo URLROOT ?>/project/deleteOngoingandCompleteProjects" method="post" onsubmit="return confirmDelete();">
                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $data['ongingProjectDetails']->projectID; ?>"/>
                         <button type="submit">
                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg" class="ncessity-view-table-delete-button-img">

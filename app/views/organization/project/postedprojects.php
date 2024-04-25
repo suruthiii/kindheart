@@ -57,7 +57,7 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/project/deleteProjects" method="POST" onsubmit="return confirmDelete();">
+                                    <form action="<?php echo URLROOT ?>/project/deleteOngoingandCompleteProjects" method="POST" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">
@@ -96,7 +96,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <form action="<?php echo URLROOT ?>/project/deleteProjects" method="POST" onsubmit="return confirmDelete();">
+                                    <form action="<?php echo URLROOT ?>/project/deleteOngoingandCompleteProjects" method="POST" onsubmit="return confirmDelete();">
                                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $completetablerow->projectID; ?>">
                                         <button  type="submit">
                                             <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/trash-solid.svg" alt="">

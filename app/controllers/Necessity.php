@@ -4,6 +4,7 @@ class Necessity extends Controller {
     private $middleware;
     private $necessityModel;
     private $userModel;
+    private $notificationModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
@@ -63,7 +64,6 @@ class Necessity extends Controller {
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
                 'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount(),
-                'totalNumberofDonors' => $this->necessityModel->getnumberofdonorsdonates()
             ];
 
             $other_data = [
@@ -134,7 +134,6 @@ class Necessity extends Controller {
                 'pendingtablerow' => $this->necessityModel->getaddedGoodsNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedGoodsNecessities(),
                 'totalReceivedQuantity' => $this->necessityModel->getTotalReceivedQuantity(),
-                'totalNumberofDonors' => $this->necessityModel->getnumberofdonorsdonatesforphysicalgoods()
             ];
 
             $other_data = [

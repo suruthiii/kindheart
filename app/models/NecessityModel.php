@@ -385,24 +385,4 @@ class NecessityModel{
         
         return $row->total_received;
     }
-
-    public function getnumberofdonorsdonates(){
-        $this->db->query("SELECT COUNT(DISTINCT donor.donorId) AS num_donors FROM donation JOIN donor ON donation.donorID = donor.donorId JOIN necessity ON donation.necessityID = necessity.necessityID JOIN money ON money.monetarynecessityId = necessity.necessityID  
-        WHERE necessity.doneeId = :doneeID  AND necessity.necessityType = 'Monetary'");
-
-        $this->db->bind(':doneeID', $_SESSION['user_id']);
-        $row = $this->db->single();
-        
-        return $row->num_donors;
-    }
-
-    public function getnumberofdonorsdonatesforphysicalgoods(){
-        $this->db->query("SELECT COUNT(DISTINCT donor.donorId) AS num_donors FROM donation JOIN donor ON donation.donorID = donor.donorId JOIN necessity ON donation.necessityID = necessity.necessityID JOIN physicalgood ON physicalgood.goodNecessityID = necessity.necessityID  
-        WHERE necessity.doneeId = :doneeID  AND necessity.necessityType = 'Physical Goods'");
-
-        $this->db->bind(':doneeID', $_SESSION['user_id']);
-        $row = $this->db->single();
-        
-        return $row->num_donors;
-    }
 }

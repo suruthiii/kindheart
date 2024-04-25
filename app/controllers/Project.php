@@ -3,6 +3,7 @@ class Project extends Controller {
     private $middleware;
     private $projectModel;
     private $userModel;
+    private $notificationModel;
 
     public function __construct(){
         $this->middleware = new AuthMiddleware();
@@ -258,7 +259,7 @@ class Project extends Controller {
     }
 
     //Delete  ongoing and completed projects 
-    public function deleteProjects(){
+    public function deleteOngoingandCompleteProjects(){
         if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         }
@@ -299,7 +300,6 @@ class Project extends Controller {
     
                 } else {
                     // display an error message here
-                    print_r($_POST);
                     die('User Necessity is Not Found');
                 }
     
