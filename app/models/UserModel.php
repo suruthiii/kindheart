@@ -1,10 +1,40 @@
 <?php
+
+// use PHPMailer\PHPMailer\PHPMailer;
+// use PHPMailer\PHPMailer\SMTP;
+// use PHPMailer\PHPMailer\Exception;
+
+// //Load Composer's autoloader
+// require APPROOT.'/libraries/vendor/autoload.php';
+
 class UserModel{
     private $db;
+    private $mail;
 
     public function __construct(){
         $this->db = new Database();
     }
+
+    // public function sendEmail($email, $name, $subject, $message){
+    //     $this->mail->isSMTP();                             //Send using SMTP
+    //     $this->mail->Host = 'smtp.gmail.com';              //Set the SMTP server to send through
+    //     $this->mail->SMTPAuth = true;                      //Enable SMTP authentication
+    //     $this->mail->Username = 'kindheart.donations.help@gmail.com';   //SMTP username
+    //     $this->mail->Password = 'uwxi cfzp qjrh ofmt';     //SMTP password
+    //     $this->mail->Port = 587;                           //TCP port to connect to; use 587 if you have set SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS
+
+    //     //Recipients
+    //     $this->mail->setFrom('kindheart.donations.help@gmail.com', $subject);
+    //     $this->mail->addAddress($email, $name);            //Add a recipient
+
+    //     //Content
+    //     $this->mail->isHTML(true);                     //Set email format to HTML
+    //     $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+    //     $this->mail->Body = $message;
+    //     $this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    //     $this->mail->send();
+    // }
 
     // Account creation
     public function accountCreation(){

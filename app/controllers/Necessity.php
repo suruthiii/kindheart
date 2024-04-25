@@ -911,6 +911,7 @@ class Necessity extends Controller {
             }
 
         }
+    }
 
     public function editOnetimeMonetaryNecessity(){
         $data = [
