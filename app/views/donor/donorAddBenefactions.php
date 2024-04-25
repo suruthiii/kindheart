@@ -198,17 +198,17 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-        // Select all file input elements with class 'file-input'
-        const fileInputs = document.querySelectorAll('.add-benefaction-box input[type="file"]');
+            // Select all file input elements with class 'file-input'
+            const fileInputs = document.querySelectorAll('.add-benefaction-box input[type="file"]');
 
-        // Loop through each file input element
-        fileInputs.forEach(function(input) {
-            // Add onchange event listener to each file input element
-            input.addEventListener('change', function() {
-                handleImageType(this); // Call handleImageType function with the current input element
+            // Loop through each file input element
+            fileInputs.forEach(function(input) {
+                // Add onchange event listener to each file input element
+                input.addEventListener('change', function() {
+                    handleImageType(this); // Call handleImageType function with the current input element
+                });
             });
         });
-    });
 
         function handleImageType(input){
             validateFileType(input);
