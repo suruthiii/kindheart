@@ -22,7 +22,13 @@
                 </div>
 
             <h3 style="margin-top: 25px">Monetary Necessities</h3>
-            <p style="margin-left: 10px">Last 30 days</p>
+
+            <!-- search bar -->
+            <div class="search-bar-for-view-donors" style="position:absolute; top: 60px; margin:5px;">
+                    <img src="<?php echo URLROOT ?>/img/Vector.png" alt="search">
+                    <input type="search" placeholder="Search" style="transform:translateY();">
+            </div>
+
             <div class="list">
                 <div class="list-title">
                     <h4>Pending</h4>

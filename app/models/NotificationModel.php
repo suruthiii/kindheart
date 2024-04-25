@@ -76,13 +76,22 @@ class NotificationModel {
         return $result;
     }
 
-    public function markAsRead() {
+    public function markAsRead($notification_ID) {
+        $this->db->query('UPDATE notification SET status = 1 WHERE notificationID = :notificationID');
+        $this->db->bind(':notificationID', $notification_ID);
 
+        if($this->db->execute()){
+            return true;
+        }
+
+        else {
+            return false;
+        }   
     }
 
-    public function deleteNotification($notificationID) {
+    public function deleteNotification($notification_ID) {
         $this->db->query('DELETE FROM notification WHERE notificationID = :notificationID;');
-        $this->db->bind(":notificationID", $notificationID);
+        $this->db->bind(':notificationID', $notification_ID);
 
         if($this->db->execute()){
             return true;
@@ -92,5 +101,4 @@ class NotificationModel {
             return false;
         }    
     }
-    
 }
