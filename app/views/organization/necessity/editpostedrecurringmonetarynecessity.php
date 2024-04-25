@@ -27,7 +27,9 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/" method="POST" onsubmit="return validateForm()">
+
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/necessity/UpdateRecuringMonetaryNecessity" method="POST" onsubmit="return validateForm()">
+
                         <!-- First line of form -->
                         <div class="add-necessity-one-line-input">
                             <label for="necessityMonetary">Necessity</label>
@@ -39,7 +41,9 @@
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-third-div">
                                 <label for="recurringstartdate">Start Date (if recurring) </label>
-                                <input type="date" id="recurringstartdate" name="recurringstartdate" value="<?php echo isset($data['recurringstartdate']) ? $data['recurringstartdate'] : ''; ?>" min="<?php echo date('Y-m-d'); ?>">
+
+                                <input type="date" id="recurringstartdate" name="recurringstartdate" style="background: #cfcece;" value="<?php echo isset($data['recurringstartdate']) ? date('Y-m-d', strtotime($data['recurringstartdate'])) : ''; ?>" min="<?php echo date('Y-m-d'); ?>">
+
                             </div>
                             <div class="necessity-fourth-div">
                                 <label for="donationduration">Durations (Monthly)</label>
@@ -61,11 +65,13 @@
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-third-div">
                                 <label for="requestedamount">Requested Amount in Rupees</label>
-                                <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
+
+                                <input type="number" id="requestedamount" name="requestedamount" style="background: #cfcece;" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
                             </div>
                             <div class="necessity-fourth-div">
                                 <label for="monthlyrequestedamount">Monthly Requested Amount</label>
-                                <input type="number" id="monthlyrequestedamount" name="monthlyrequestedamount" title="Monthly Requested Amount" min="25" value="<?php echo isset($data['monthlyrequestedamount']) ? $data['monthlyrequestedamount'] : ''; ?>">
+                                <input type="number" id="monthlyrequestedamount" name="monthlyrequestedamount" style="background: #cfcece;" title="Monthly Requested Amount" min="25" value="<?php echo isset($data['monthlyrequestedamount']) ? $data['monthlyrequestedamount'] : ''; ?>">
+
                                 <!-- Requested Amount Error Display -->
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['monthlyrequestedamount_err']) ? $data['monthlyrequestedamount_err']: ''; ?></span>
                             </div>
@@ -73,6 +79,9 @@
 
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
+
+                            <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['necessityID']; ?>">
+
                             <input type="submit" value="Update">
                         </div>
                     </form>
