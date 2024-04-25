@@ -21,37 +21,29 @@
 
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
-                    <h3>Add Monetary Necessities</h3>
-                    <p>Enter correct information and add your necessities.</p>
+                    <h3>Edit Monetary Necessities (Recurring)</h3>
+                    <p>Update correct information and add your necessities.</p>
                 </div>
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/addmonetarynecessity" method="POST" onsubmit="return validateForm()">
+
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/necessity/UpdateRecuringMonetaryNecessity" method="POST" onsubmit="return validateForm()">
+
                         <!-- First line of form -->
-                        <div class="add-necessity-one-line-second-type-input">
-                            <div class="necessity-first-div">
-                                <label for="necessityMonetary">Necessity</label>
-                                <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
-                                <!-- Monetary necessity Error display -->
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityMonetary_err']) ? $data['necessityMonetary_err']: ''; ?></span>
-                            </div>
-                            <div class="necessity-second-div">
-                                <label for="necessityType">Necessity Type</label>
-                                <select name="necessityType" id="necessityType" value="<?php echo isset($data['necessityType']) ? $data['necessityType'] : '(Select)'; ?>">
-                                    <option value="recurring">Recurring</option>
-                                    <option value="onetime">One-Time</option>
-                                </select>
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityType_err']) ? $data['necessityType_err']: ''; ?></span>
-                            </div>
+                        <div class="add-necessity-one-line-input">
+                            <label for="necessityMonetary">Necessity</label>
+                            <input type="text" id="necessityMonetary" name="necessityMonetary" value="<?php echo isset($data['necessityMonetary']) ? $data['necessityMonetary'] : ''; ?>">
+                            <!-- Monetary necessity Error display -->
+                            <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['necessityMonetary_err']) ? $data['necessityMonetary_err']: ''; ?></span>
                         </div>
                         <!-- Second line of form -->
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-third-div">
                                 <label for="recurringstartdate">Start Date (if recurring) </label>
-                                <input type="date" id="recurringstartdate" name="recurringstartdate" value="<?php echo isset($data['recurringstartdate']) ? $data['recurringstartdate'] : ''; ?>" min="<?php echo date('Y-m-d'); ?>">
-                                <!-- Recurring start date error display -->
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['recurringstartdate_err']) ? $data['recurringstartdate_err']: ''; ?></span>
+
+                                <input type="date" id="recurringstartdate" name="recurringstartdate" style="background: #cfcece;" value="<?php echo isset($data['recurringstartdate']) ? date('Y-m-d', strtotime($data['recurringstartdate'])) : ''; ?>" min="<?php echo date('Y-m-d'); ?>">
+
                             </div>
                             <div class="necessity-fourth-div">
                                 <label for="donationduration">Durations (Monthly)</label>
@@ -73,13 +65,13 @@
                         <div class="add-necessity-one-line-second-type-input">
                             <div class="necessity-third-div">
                                 <label for="requestedamount">Requested Amount in Rupees</label>
-                                <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
-                                <!-- Requested Amount Error Display -->
-                                <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['requestedamount_err']) ? $data['requestedamount_err']: ''; ?></span>
+
+                                <input type="number" id="requestedamount" name="requestedamount" style="background: #cfcece;" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
                             </div>
                             <div class="necessity-fourth-div">
                                 <label for="monthlyrequestedamount">Monthly Requested Amount</label>
-                                <input type="number" id="monthlyrequestedamount" name="monthlyrequestedamount" title="Monthly Requested Amount" min="25" value="<?php echo isset($data['monthlyrequestedamount']) ? $data['monthlyrequestedamount'] : ''; ?>">
+                                <input type="number" id="monthlyrequestedamount" name="monthlyrequestedamount" style="background: #cfcece;" title="Monthly Requested Amount" min="25" value="<?php echo isset($data['monthlyrequestedamount']) ? $data['monthlyrequestedamount'] : ''; ?>">
+
                                 <!-- Requested Amount Error Display -->
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['monthlyrequestedamount_err']) ? $data['monthlyrequestedamount_err']: ''; ?></span>
                             </div>
@@ -87,7 +79,10 @@
 
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
-                            <input type="submit" value="Add">
+
+                            <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['necessityID']; ?>">
+
+                            <input type="submit" value="Update">
                         </div>
                     </form>
 
@@ -98,7 +93,23 @@
             </div>
 
             <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <div class="rightside-bar-type-one">
+                <div class="right-side-bar">
+                    <!-- Image -->
+                    <div class="rightside-bar-type-one-image">
+                        <img src="<?php echo URLROOT ?>/img/Asset_1hif_1.png">
+                    </div>
+                    <!-- Ask only for what you really need -->
+                    <div class="rigntside-bar-type-one-description" style="padding-right: 10px;">
+                        <h4>Let's Update Your Necessity</h4>
+                        <p> We provide you the option to Update <b>Necessity, Duration and the Description</b> on your Necessity.
+                            Update the Duration to Increase the Donation period
+                        </p>
+                        <p>Hope this will Help you.</p>
+                    </div>
+
+                </div>
+            </div>
 
             <!-- ----------------- Javascript for disable recurring chossing date when one-time---------------- -->
             <script>
@@ -107,21 +118,12 @@
 
                     function toggleRecurringFields() {
                         var recurringStartDateInput = document.getElementById('recurringstartdate');
-                        var donationduration = document.getElementById('donationduration');
                         var monthlyrequestedamount = document.getElementById('monthlyrequestedamount');
                         var requestedamount = document.getElementById('requestedamount');
 
-                        if (necessityTypeSelect.value === 'onetime') {
-                            recurringStartDateInput.disabled = true;
-                            donationduration.disabled = true;
-                            monthlyrequestedamount.disabled = true;
-                            requestedamount.disabled = false;
-                        } else {
-                            recurringStartDateInput.disabled = false;
-                            donationduration.disabled = false;
-                            monthlyrequestedamount.disabled = false;
-                            requestedamount.disabled = true;
-                        }
+                        recurringStartDateInput.disabled = true;
+                        monthlyrequestedamount.disabled = true;
+                        requestedamount.disabled = true;
                     }
 
                     // Call toggleRecurringFields initially to set initial state

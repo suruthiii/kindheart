@@ -98,7 +98,7 @@
                                         <td width="10%"style="transform: translateX(15%);">
                                             <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" id="delete">
                                                 <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $benefaction->benefactionID; ?>" />
-                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" onclick="confirmDecline(event)">
+                                                <button type="submit" class="benefaction_button" style=" background-color: rgba(245, 245, 245, 0); cursor: pointer; border: none;" onclick="confirmDelete(event)">
                                                 <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="width:15px;">
                                                 </button>
                                             </form>

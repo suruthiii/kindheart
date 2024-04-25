@@ -1,48 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
+    <title>Student Registration</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registration_Login.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="image">
-            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Set Password" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
         </div>
-        <div class="login-formc shared-formc">
-            <div class="login-formce shared-formce">
-                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
-            
-                <h1>Welcome Back!</h1>
+        <div class="login-container">
+            <div class="login-inner-container">
+                <div class="login-inner-container-logo">
+                    <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
+                </div>
+                <div class="login-inner-container-caption">
+                    <h1>Welcome Back!</h1>
+                    <span>Login to Kindheart</span> 
+                </div>
 
-                <?php if (!empty($data['err'])) { ?>
+                <!-- <?php if (!empty($data['err'])) { ?>
                     <div class="error-msg">
                         <span class="form-invalid"><?php echo $data["err"] ?></span>
                     </div>
-                <?php } ?>
-                
-                <!-- <span style="color: rgb(146, 141, 141);">Create a password for your account</span>      -->
-                <div class="login-text shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/login" method="POST">
-                        <div class="login-input-field shared-input shared-margin2">
-                            <label for="username" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Username</label><br><br>
-                            <input class="inputt" type="text" name="username" id="email" required><br><br>
-                            <label for="password" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Password</label><br><br>
-                            <input class="inputt" type="password" name="password" id="password" required><br><br>
-                            <label for="forget-password" style="color: rgb(146, 141, 141); margin-top: 30px !important;"><a href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></label><br><br>
+                <?php } ?> -->
+
+                <div class="login-inner-container-form-container">
+                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage2" method="POST">
+                        <div class="login-inner-container-form-container-inputfeilds">      
+
+                            <label for="email">Username</label>
+                            <div class="login-inner-container-form-container-inputfeilds-feild1">
+                                <input class="inputt" type="text" name="username" id="email" required>
+                                <span class="error-message" for="verificationCode"></span>
+                            </div>
+
+                            <label for="email">Password</label>
+                            <div class="login-inner-container-form-container-inputfeilds-feild1">
+                                <input class="inputt" type="password" name="password" id="password" required>
+                                <span class="error-message" for="verificationCode"></span>
+                            </div>
+
+                            <div class="login-inner-container-form-container-inputfeilds-forgetpassword">
+                                <p><a style="color: black;" href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></p>
+                            </div>
+
+                            <div class="login-inner-container-form-container-inputfeilds-rememberme">
+                                <input type="checkbox" name="remember" id="remember">
+                                <label for="remember">Remember me</label>
+                            </div>
+
                         </div>
-                        <div>
-                            <label>
-                                <input type="checkbox" checked="checked" name="remember"> Remember me
-                            </label>
+                        <div class="login-inner-container-form-container-buttons">
+                            <button>Login</button>
                         </div>
-                        <button type="submit" id="Login">Login</button>
                     </form>
-                </div>
-               
-            </div>  
+                </div>             
+            </div>            
         </div>
     </div>
 </body>

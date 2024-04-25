@@ -1454,7 +1454,103 @@
     border-radius: 15px;
 }
 
-/* .addordian-milestone-content .addordian-milestone-images img{
-    width: 200px;
-    height: 200px;
-} */
+.right-side-bar-for-display-title{
+    position: relative;
+    margin-top: 2vh;
+    width: 90%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.right-side-bar-for-display-title h3{
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.right-side-bar-for-scrolling{
+    position: relative;
+    margin-top: 2vh;
+    width: 90%;
+    height: 68vh;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.donated-donor-details-box{
+    position: relative;
+    width: 90%;
+    height: 15vh;
+    margin-bottom: 2vh;
+    background-color: #8E0000;
+    border-radius: 15px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.donated-donor-name{
+    position: relative;
+    width: 95%;
+    height: 5vh;
+    margin-bottom: 1vh;
+}
+
+.donated-amount{
+    position: relative;
+    width: 95%;
+    height: 5vh;
+    margin-bottom: 1vh; 
+}
+
+.sendacknowladgement-button{
+    position: relative;
+    width: 95%;
+    height: 5vh;
+    margin-bottom: 1vh;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.donated-donor-name h4{
+    margin: 0;
+    font-size: 16px;
+    color: #ffc0c0;
+    margin-top: 2vh;
+
+}
+.donated-amount p{
+    margin: 0;
+    font-size: 13px;
+    color: #ffc0c0;
+}
+
+.sendacknowladgement-button button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e5b0a3;
+    border-style: none;
+    cursor: pointer;
+    outline: none;
+    width: 100px;
+    height: 5vh;
+    border-radius: 10px;
+    color: #000000;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.sendacknowladgement-button button:hover{
+    background-color: #d38a78;
+    transform: scale(0.99); 
+}
+
+
+

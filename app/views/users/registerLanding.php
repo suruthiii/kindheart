@@ -18,25 +18,28 @@
                 <h1>Register to <span style="color: #FC44A6;">Kind</span><span style="color: #FB5F1E;">Heart</span></h1>
                 <span style="color: rgb(146, 141, 141);">Who would you like to register as?</span><br><br><br>     
                 <div class="registerLanding-text"> 
-                    <a href="<?php echo URLROOT ?>/users/studentRegistration">
+                    <a href="<?php echo URLROOT ?>/users/studentAcountCreationPage1">
                     <button class="choice" id="choice1">
                         <span class="button-text">Student</span>
                         <p class="description">Sign up to receive donations for your educational activities</p>
                     </button>
                     <br>
-                    <a href="<?php echo URLROOT ?>/users/organizationRegistration">                                        
+                    <a href="<?php echo URLROOT ?>/users/organizationAcountCreationPage1">                                        
                     <button class="choice" id="choice1">
                         <span class="button-text">Organization</span>
                         <p class="description">Sign up as a university or a school to receive donations for your students</p>
                     </button>
                     <br>
-                    <a href="<?php echo URLROOT ?>/users/donorRegistration">
+                    <a href="<?php echo URLROOT ?>/users/donorAcountCreationPage1">
                     <button class="choice" id="choice1">
                         <span class="button-text">Donor</span>
                         <p class="description">Sign up as a donor to discover and donate for students in need</p>
                     </button>
-                </div>            
-                <p style="color: rgb(146, 141, 141); margin-top: 30px !important;">Already Registered? <a href="<?php echo URLROOT ?>/users/login">Log in here</a></p>
+                </div>   
+                <div class="registerLanding-loginText" style="margin-top: 30px !important;">
+                    <p>Already Registered?</p>
+                    <a href="<?php echo URLROOT ?>/users/login">Log in here</a>
+                </div>         
             </div>       
         </div>
     </div>

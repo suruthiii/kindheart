@@ -1,0 +1,1241 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    height: 98vh;
+    width: 210vh;
+
+    overflow: hidden;
+    
+    display: flex;
+    justify-content: center;
+}
+
+.container .image {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+}
+
+.container .image #registerAndLogin {
+    width: 80%;
+    height: 100%;
+}
+
+.container #logo {
+    height: 150px;
+    width: 150px;
+}
+
+
+
+/* ----------------studentAcountCreationPage1------------------ */
+
+.studentAcountCreationPage1-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentAcountCreationPage1-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentAcountCreationPage1-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage1-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage1-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentAcountCreationPage1-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2 input{
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+    height: 45px;
+    width: 50px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #acacac;
+    column-gap: 50px;
+    margin-right: 18px;
+
+}
+
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2 input:focus{
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+
+/* ----------------studentAcountCreationPage2------------------ */
+
+.studentAcountCreationPage2-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentAcountCreationPage2-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentAcountCreationPage2-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage2-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage2-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentAcountCreationPage2-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentAcountCreationPage2-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentAcountCreationPage2-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentAcountCreationPage2-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentAcountCreationPage2-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 25px;
+    margin-top: 10px;
+}
+
+
+/* ----------------studentAcountCreationPage3------------------ */
+
+.studentAcountCreationPage3-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentAcountCreationPage3-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+    padding-top: 120px;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentAcountCreationPage3-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentAcountCreationPage3-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage3-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentAcountCreationPage3-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentAcountCreationPage3-inner-container-buttons button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentAcountCreationPage3-inner-container-buttons button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+/* ----------------login------------------ */
+
+.login-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.login-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.login-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.login-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.login-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.login-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.login-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.login-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.login-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.login-inner-container-form-container-inputfeilds input[type="checkbox"]{
+    height: 15px;
+    width: 15px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.login-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.login-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.login-inner-container-form-container-inputfeilds-forgetpassword{
+    margin-bottom: 30px;
+}
+
+.login-inner-container-form-container-inputfeilds-rememberme{
+    margin-bottom: 30px;
+}
+
+/* ----------------studentProfileCreation1------------------ */
+
+.studentProfileCreation1-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation1-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation1-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation1-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation1-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation1-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation1-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation1-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation1-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal{
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup input{
+    width: 240px;    
+    margin-top: 10px;
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup label{
+    margin-top: 0;
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-feild1 label{
+    margin-bottom: 30px;
+}
+
+/* select */
+.studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox {
+    height: 45px; /* Make the input fields fill the entire height of their parent div */
+    width: 240px;
+    border-radius: 6px;
+    border: 1px solid #acacac;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px; /* Adjust padding */
+
+    margin-top: 10px;
+}
+
+/* select button */
+
+.studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox select{
+    display: none;
+}
+
+/* Set width for select box */
+.select-selected {
+    position: relative; /* Add relative positioning */
+    height: 42px; 
+    width: 230px;
+    margin-left: -10px;
+    border-radius: 6px;
+    border: 1px solid #acacac;
+    background: #FCFCFC;
+}
+
+/* Style the arrow inside the select element */
+.select-selected:after {
+    content: "";
+    margin-left: 100px; /* Adjust as needed */
+    right: 0;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #000000 transparent transparent transparent;
+}
+
+/* Style the items (options), including the selected item */
+.select-items div,
+.select-selected {
+    color: black;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.3) transparent;
+    cursor: pointer;
+    user-select: none;
+    width: 230px; /* Set the width of the dropdown options */
+}
+
+/* Position and visibility of the dropdown items */
+.select-items {
+    position: absolute;
+    background-color: #FCFCFC;
+    margin-top: 10px;
+    z-index: 99;
+    width: 230px;
+    top: 0; /* Position dropdown below the select box */
+}
+
+/* Hide the items when the select box is closed */
+.select-hide {
+    display: none;
+}
+
+/* Hover effect on dropdown options */
+.select-items div:hover,
+.same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+/* ------ */
+
+
+
+/* ----------------studentProfileCreation2------------------ */
+
+.studentProfileCreation2-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation2-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation2-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation2-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation2-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation2-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation2-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation2-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation2-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation2-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation2-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation2-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+/* ----------------studentProfileCreation3------------------ */
+
+.studentProfileCreation3-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation3-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation3-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation3-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation3-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation3-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation3-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation3-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation3-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds-selectbox {
+    height: 45px; /* Make the input fields fill the entire height of their parent div */
+    width: 240px;
+    border-radius: 6px;
+    border: 1px solid #acacac;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px; /* Adjust padding */
+
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.studentProfileCreation3-inner-container-form-container-inputfeilds-selectbox select{
+    display: none;
+}
+
+
+/* ----------------studentProfileCreation4------------------ */
+
+.studentProfileCreation4-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation4-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation4-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation4-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation4-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation4-inner-container-form-container p{
+    font-size: 10px;
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation4-inner-container-form-container label{
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation4-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation4-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds p{
+    color: rgb(0, 0, 0);
+    font-size: 13px;
+}
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal{
+    display: flex;
+    /* height: 20px; */
+    /* margin-bottom: 15px; */
+    /* justify-content: space-between; */
+}
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input2,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input3,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input4{
+
+    margin-right: 20px;
+}
+
+/* .studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1 input,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input2 input,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input3 input,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input4 input{
+    height: 100%; 
+    width: 75%;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px; 
+
+    margin-bottom: 20px;
+} */
+
+/* .studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1 input:focus,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input2 input:focus,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input3 input:focus,
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input4 input:focus{
+    outline: none !important;
+    border: #8E0000 solid;
+} */
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1-letterbox{
+    height: 50px; /* Make the input fields fill the entire height of their parent div */
+    width: 240px;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    /* margin-bottom: 30px; */
+}
+
+/* ----------------studentProfileCreation5------------------ */
+
+.studentProfileCreation5-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation5-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation5-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation5-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation5-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation5-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation5-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation5-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation5-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation5-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation5-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation5-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+
+/* ----------------studentProfileCreation6------------------ */
+
+.studentProfileCreation6-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation6-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation6-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation6-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation6-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation6-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation6-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation6-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation6-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation6-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation6-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation6-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 30px;
+    margin-top: 10px;
+}
+
+.studentProfileCreation6-inner-container-form-container-inputfeilds-verificationmessage{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation6-inner-container-form-container-inputfeilds-feild2 input{
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+    height: 45px;
+    width: 50px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #acacac;
+    column-gap: 50px;
+    margin-right: 18px;
+
+}
+
+.studentProfileCreation6-inner-container-form-container-inputfeilds-feild2 input:focus{
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------studentProfileCreation7------------------ */
+
+.studentProfileCreation7-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation7-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation7-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation7-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation7-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation7-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation7-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation7-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation7-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.studentProfileCreation7-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.studentProfileCreation7-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}
+
+/* ----------------studentProfileCreation8------------------ */
+
+.studentProfileCreation8-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.studentProfileCreation8-inner-container{
+    margin-left: 18vh;
+    margin-top: 3vh;
+    width: 80%;
+    height: 90%;
+    padding-top: 120px;
+
+    /* background-color: #c95a5a; */
+}
+
+.studentProfileCreation8-inner-container-logo img{
+    height: 100px;
+    width: 100px;
+}
+
+.studentProfileCreation8-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation8-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation8-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.studentProfileCreation8-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.studentProfileCreation8-inner-container-buttons button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.studentProfileCreation8-inner-container-buttons button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
