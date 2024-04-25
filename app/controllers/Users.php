@@ -15,26 +15,17 @@ class Users extends Controller{
     //---------------------------------------------
 
     public function studentAcountCreationPage1(){
-        // if(isset($_SESSION['account_status'])){
-        //     redirect('pages/404');
-        // }
+        if(isset($_SESSION['account_status'])){
+            redirect('pages/404');
+        }
 
         $data = [
             'email' => '',
-            'username' => '',
             'err' => ''
         ];
         
         if(isset($_SESSION['user_email'])){
             $data['email'] = $_SESSION['user_email'];
-        }
-
-        if(isset($_SESSION['username'])){
-            $data['username'] = $_SESSION['username'];
-        }
-
-        if(isset($_SESSION['password'])){
-            $data['password'] = $_SESSION['password'];
         }
 
         if(isset($_GET['email'])){
@@ -90,14 +81,14 @@ class Users extends Controller{
         }
         else{
             $data['err'] = 'Invalid OTP';
-            $this->view('users/studentRegistration/studentAcountCreationPage2', $data);
+            $this->view('users/studentRegistration/studentAcountCreationPage1', $data);
         }
     }
 
     public function studentAcountCreationPage2(){
-        // if(isset($_SESSION['account_status'])){
-        //     redirect('pages/404');
-        // }
+        if(isset($_SESSION['account_status'])){
+            redirect('pages/404');
+        }
 
         $data = [
             'username' => '',
@@ -169,6 +160,7 @@ class Users extends Controller{
 
     public function login(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
             // Form is submitting
 
             // Input data

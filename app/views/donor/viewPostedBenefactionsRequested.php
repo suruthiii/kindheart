@@ -117,7 +117,7 @@
                     <!-- Display requests or no requests message -->
                     <div class="request-right-side-bar-all-requests">
                         <?php foreach($data['benefaction_requests'] as $request): ?>
-                            <?php if ($request->verificationStatus == 0 || $request->verificationStatus == 1 || $request->verificationStatus == 3 || $request->verificationStatus == 10) : ?>
+                            <?php if ($request->acceptanceStatus == 1 || $request->acceptanceStatus == 2 || $request->acceptanceStatus == 3) : ?>
                                 <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
                                     <div class="request-right-side-bar-type-requests">
                                         <div class="request-right-side-bar-type-requests-left">
@@ -128,22 +128,19 @@
                                         <div class="request-right-side-bar-type-requests-right">
                                             <?php
                                                 // Determine the appropriate label based on verificationStatus
-                                                switch ($request->verificationStatus) {
-                                                    case 0:
-                                                        echo '<div class="status_pending"><p>Pending</p></div>';
-                                                        break;
-                                                    case 1:
-                                                        echo '<div class="status_accepted"><p>Accepted</p></div>';
-                                                        break;
-                                                    case 3:
-                                                        echo '<div class="status_incomplte"><p>Incomplete</p></div>';
-                                                        break;
-                                                    case 10:
-                                                        echo '<div class="status_declined"><p>Declined</p></div>';
-                                                        break;
-                                                    default:
-                                                        echo '<div class="status_pending"><p> </p></div>';
-                                                        break;
+                                                switch ($request->acceptanceStatus) {
+                                                case 2:
+                                                    echo '<div class="status_completed"><p>Completed</p></div>';
+                                                    break;
+                                                case 1:
+                                                    echo '<div class="status_incomplte"><p>Incomplete</p></div>';
+                                                    break;
+                                                case 3:
+                                                    echo '<div class="status_incomplte"><p>Incomplete</p></div>';
+                                                    break;
+                                                default:
+                                                    echo '<div class="status_completed"><p> </p></div>';
+                                                    break;
                                                 }
                                             ?>
                                         </div>

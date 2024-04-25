@@ -28,7 +28,7 @@
                             <label for="email">Enter your email address </label>
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1">
                                 <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <span class="error-message" for="verificationCode"><?php echo $data['err']?></span>
                             </div>
 
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage">

@@ -29,7 +29,7 @@
                 <?php } ?> -->
 
                 <div class="login-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage2" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/login" method="POST">
                         <div class="login-inner-container-form-container-inputfeilds">      
 
                             <label for="email">Username</label>
