@@ -64,9 +64,18 @@ class NotificationModel {
     }
 
     public function viewNotifications() {
-        $this->db->query('SELECT * FROM notification WHERE receiverID = :receiverID;');
-        $this->db->bind(':receiverID', $_SESSION['user_id']);
+        $userType = $this->getUserType($_SESSION['user_id']);
 
+        if($userType == 'admin' || $userType == 'superAdmin') {
+            $this->db->query('SELECT * FROM notification WHERE receiverID = 0 ORDER BY time DESC;');
+            // $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
+
+        else {
+            $this->db->query('SELECT * FROM notification WHERE receiverID = :receiverID ORDER BY time DESC;');
+            $this->db->bind(':receiverID', $_SESSION['user_id']);
+        }
+       
         $result = $this->db->resultSet();
 
         foreach($result as $item) {
