@@ -95,7 +95,8 @@
                     </div>
                     <div class="right-side-bar-for-scrolling">
                         <div class="donated-donor-details-box">
-                            <p></p>
+                            <div class="donated-donor-name"></div>
+                            <div class="sendacknowladgement-button"></div>
                         </div>
                         <div class="donated-donor-details-box">
                         
