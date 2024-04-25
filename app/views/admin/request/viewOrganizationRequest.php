@@ -83,22 +83,31 @@
                 </table>
             </div>
 
-            <div class="view-donation-btn-container">
-                <!-- Dropdown Menu -->
-                <div class="dropdown">
-                    <button class="dropbtn">Assign</button>
-                    <div class="dropdown-content">
-                        <?php for ($i = 0; $i < sizeof($data['admins']) - 1; $i++) {?>
-                            <form action="<?php echo URLROOT ?>/request/assignadmin" method="post" class="delete-form">
-                                <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
-                                <input type="text" name="admin_ID" id="admin_ID" hidden value="<?php echo $data['admins'][$i]->adminID ?>" />
-                                <button type="submit" class="dropdown-item" onclick="">
-                                    <?php echo $data['admins'][$i]->adminName ?>
-                                </button>
-                            </form>
-                        <?php } ?>
-                    </div>
-                </div>
+            <div class="view-donation-btn-container" style="display: flex;">
+                <?php if($data['organization_details']->adminID == 0) {?>
+                    <form action="<?php echo URLROOT ?>/request/assignme" method="post" class="delete-form">
+                        <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                        <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                        Assign
+                        </button>
+                    </form>
+                <?php }
+
+                else if($data['organization_details']->adminID == $_SESSION['user_id']) { ?>
+                    <form action="<?php echo URLROOT ?>/request/acceptdonee" method="post" class="delete-form">
+                        <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                        <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                            Accept
+                        </button>
+                    </form>
+                    &nbsp;
+                    <form action="<?php echo URLROOT ?>/request/rejectdonee" method="post" class="delete-form">
+                        <input type="text" name="user_ID" id="user_ID" hidden value="<?php echo $data['organization_details']->orgID; ?>" />
+                        <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                            Reject
+                        </button>
+                    </form>
+                <?php }?>
             </div>
 
         </div>

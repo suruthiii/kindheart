@@ -83,7 +83,7 @@ class Request extends Controller {
         }
     }
 
-    public function viewUnassignedStudentRequest($student_ID = null) {
+    public function viewStudentRequest($student_ID = null) {
         if(empty($student_ID)) {
             redirect('pages/404');
         }
@@ -99,7 +99,7 @@ class Request extends Controller {
                 'notifications' => $this->notificationModel->viewNotifications()
             ];
 
-            $this->view('admin/request/viewUnassignedStudentRequest', $data, $other_data);
+            $this->view('admin/request/viewStudentRequest', $data, $other_data);
         }
 
         else if($_SESSION['user_type'] == 'superAdmin') {
@@ -114,7 +114,7 @@ class Request extends Controller {
                 'notifications' => $this->notificationModel->viewNotifications()
             ];
 
-            $this->view('superAdmin/request/viewUnassignedStudentRequest', $data, $other_data);
+            $this->view('superAdmin/request/viewStudentRequest', $data, $other_data);
         }
 
         else {
@@ -122,25 +122,7 @@ class Request extends Controller {
         }
     }
 
-    public function viewAssignedStudentRequest($student_ID = null) {
-        if(empty($student_ID)) {
-            redirect('pages/404');
-        }
-
-        $data = [
-            'title' => 'Home page',
-            'student_details' => $this->requestModel->getStudent($student_ID),
-        ];
-
-        $other_data = [
-            'notification_count' => $this->notificationModel->getNotificationCount(),
-            'notifications' => $this->notificationModel->viewNotifications()
-        ];
-
-        $this->view($_SESSION['user_type'].'/request/viewAssignedStudentRequest', $data, $other_data);
-    }
-
-    public function viewUnassignedOrganizationRequest($org_ID = null){
+    public function viewOrganizationRequest($org_ID = null){
         if(empty($org_ID)) {
             redirect('pages/404');
         }
@@ -156,7 +138,7 @@ class Request extends Controller {
                 'notifications' => $this->notificationModel->viewNotifications()
             ];
 
-            $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data, $other_data);
+            $this->view($_SESSION['user_type'].'/request/viewOrganizationRequest', $data, $other_data);
         }
         
         else if($_SESSION['user_type'] == 'superAdmin') {
@@ -164,7 +146,6 @@ class Request extends Controller {
                 'title' => 'Home page',
                 'organization_details' => $this->requestModel->getOrganization($org_ID),
                 'admins' => $this->userModel->viewAdmins()
-    
             ];
 
             $other_data = [
@@ -172,30 +153,12 @@ class Request extends Controller {
                 'notifications' => $this->notificationModel->viewNotifications()
             ];
 
-            $this->view($_SESSION['user_type'].'/request/viewunassignedOrganizationRequest', $data, $other_data);
+            $this->view($_SESSION['user_type'].'/request/viewOrganizationRequest', $data, $other_data);
         }
 
         else {
             die('User Type Not Found');
         }
-    }
-
-    public function viewAssignedOrganizationRequest($org_ID = null){
-        if(empty($org_ID)) {
-            redirect('pages/404');
-        }
-
-        $data = [
-            'title' => 'Home page',
-            'organization_details' => $this->requestModel->getOrganization($org_ID)
-        ];
-
-        $other_data = [
-            'notification_count' => $this->notificationModel->getNotificationCount(),
-            'notifications' => $this->notificationModel->viewNotifications()
-        ];
-
-        $this->view($_SESSION['user_type'].'/request/viewAssignedOrganizationRequest', $data, $other_data);
     }
 
     public function unassignAdmin() {
