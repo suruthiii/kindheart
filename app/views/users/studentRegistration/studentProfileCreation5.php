@@ -22,7 +22,7 @@
                     <span>5 of 6</span> 
                 </div>
                 <div class="studentProfileCreation5-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation5" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation6" method="POST">
                         <div class="studentProfileCreation5-inner-container-form-container-inputfeilds">   
 
                             <label for="accHolderName">Account Holder's Name</label>

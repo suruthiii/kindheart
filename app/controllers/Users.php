@@ -15,12 +15,153 @@ class Users extends Controller{
     //---------------------------------------------
 
     public function studentAcountCreationPage1(){
-        $this->view('users/studentRegistration/studentAcountCreationPage1');
+        // if(isset($_SESSION['account_status'])){
+        //     redirect('pages/404');
+        // }
+
+        $data = [
+            'email' => '',
+            'username' => '',
+            'err' => ''
+        ];
+        
+        if(isset($_SESSION['user_email'])){
+            $data['email'] = $_SESSION['user_email'];
+        }
+
+        if(isset($_SESSION['username'])){
+            $data['username'] = $_SESSION['username'];
+        }
+
+        if(isset($_SESSION['password'])){
+            $data['password'] = $_SESSION['password'];
+        }
+
+        if(isset($_GET['email'])){
+            $data = [
+                'email' => trim($_GET['email']),
+                'err' => ''
+            ];
+
+            if(empty($data['email'])){
+                $data['err'] = 'Please enter email';
+            }
+
+            else{
+                if($this->userModel->findUserByEmail($data['email'])){
+                    $data['err'] = 'Email is already taken';
+                }
+            }
+
+            if(empty($data['err'])){
+                $_SESSION['user_email'] = $data['email'];
+
+                redirect('Users/studentAcountCreationPage1');
+            }
+            else{
+                $this->view('users/studentRegistration/studentAcountCreationPage1', $data);
+            }
+        }
+
+        $this->view('users/studentRegistration/studentAcountCreationPage1', $data);
     }   
 
+    public function OTPstudentAcountCreationPage1(){
+        $data = [
+            'digit-1' => trim($_GET['digit-1']),
+            'digit-2' => trim($_GET['digit-2']),
+            'digit-3' => trim($_GET['digit-3']),
+            'digit-4' => trim($_GET['digit-4']),
+            'digit-5' => trim($_GET['digit-5']),
+            'digit-6' => trim($_GET['digit-6']),
+            'digit-7' => trim($_GET['digit-7']),
+            'err' => ''
+        ];
+
+        if(empty($data['digit-1']) || empty($data['digit-2']) || empty($data['digit-3']) || empty($data['digit-4']) || empty($data['digit-5']) || empty($data['digit-6']) || empty($data['digit-7'])){
+            $data['err'] = 'Please enter the verification code';
+        }
+
+        $otp = $data['digit-1'].$data['digit-2'].$data['digit-3'].$data['digit-4'].$data['digit-5'].$data['digit-6'].$data['digit-7'];
+
+        //if($this->userModel->verifyOTP($otp)){
+        if($otp == '1234567'){
+            redirect('Users/studentAcountCreationPage2');
+        }
+        else{
+            $data['err'] = 'Invalid OTP';
+            $this->view('users/studentRegistration/studentAcountCreationPage2', $data);
+        }
+    }
+
     public function studentAcountCreationPage2(){
-        $this->view('users/studentRegistration/studentAcountCreationPage2');
-    } 
+        // if(isset($_SESSION['account_status'])){
+        //     redirect('pages/404');
+        // }
+
+        $data = [
+            'username' => '',
+            'password' => '',
+            'err' => ''
+        ];    
+        
+        if(isset($_SESSION['username'])){
+            $data['username'] = $_SESSION['username'];
+        }
+
+        if(isset($_SESSION['password'])){
+            $data['password'] = $_SESSION['password'];
+        }
+
+        if(isset($_GET['username']) && isset($_GET['password']) && isset($_GET['confirmPassword'])){   
+            $data = [
+                'username' => trim($_GET['username']),
+                'password' => trim($_GET['password']),
+                'confirmPassword' => trim($_GET['confirmPassword']),
+                'err' => ''
+            ];
+
+            if(empty($data['username'])){
+                $data['err'] = 'Please enter username';
+            }
+
+            else{
+                if($this->userModel->findUserByUsername($data['username'])){
+                    $data['err'] = 'Username is already taken';
+                }
+            }
+
+            if(empty($data['password'])){
+                $data['err'] = 'Please enter password';
+            }
+
+            else if(strlen($data['password']) < 6){
+                $data['err'] = 'Password must be at least 6 characters';
+            }
+
+            else if($data['password'] != $data['confirmPassword']){
+                $data['err'] = 'Passwords do not match';
+            }            
+
+            if(empty($data['err'])){
+                $_SESSION['username'] = $data['username'];
+                $_SESSION['password'] = $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $_SESSION['user_type'] = "student";
+
+                $_SESSION['account_status'] = 0;
+                
+                $this->userModel->accountCreation();
+
+                redirect('Users/studentAcountCreationPage3');
+            }
+            else{
+                $this->view('users/studentRegistration/studentAcountCreationPage2', $data);
+            }
+        }
+
+
+        $this->view('users/studentRegistration/studentAcountCreationPage2', $data);
+    }
 
     public function studentAcountCreationPage3(){
         $this->view('users/studentRegistration/studentAcountCreationPage3');
@@ -97,6 +238,10 @@ class Users extends Controller{
             }
         }
         else{
+            unset($_SESSION['username']);
+            unset($_SESSION['password']);
+            unset($_SESSION['user_email']);
+            
             // Initial form load
             $data = [
                 'username' => '',
@@ -129,6 +274,13 @@ class Users extends Controller{
         $this->view('users/studentRegistration/studentProfileCreation5');
     }
 
+    public function studentProfileCreation6(){
+        $this->view('users/studentRegistration/studentProfileCreation6');
+    }
+
+    public function studentProfileCreation7(){
+        $this->view('users/studentRegistration/studentProfileCreation7');
+    }
     //------------------------------------------------
 
     public function forgetPassword1(){
