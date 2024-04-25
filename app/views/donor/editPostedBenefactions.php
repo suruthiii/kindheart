@@ -129,22 +129,22 @@
                         <div class="right-column-inner">
                             <div class="chosen-photos-container" id="chosen-photos-container1">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto1)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto1; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container2">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto2)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto2; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container3">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto3)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto3; ?>">
                                 <?php endif; ?>
                             </div>
                             <div class="chosen-photos-container" id="chosen-photos-container4">
                                 <?php if (!empty($data['benefaction_details']->itemPhoto4)): ?>
-                                    <img style="max-width: 300px; max-height: 300px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
+                                    <img style="max-width: 250px; max-height: 250px; background-color: #F5F5F5; box-shadow: 0px 4px 4px rgba(142, 0, 0, 0.25); border: 2px solid #8E0000; margin: 10px;" id="benefactionImage" src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $data['benefaction_details']->itemPhoto4; ?>">
                                 <?php endif; ?>
                             </div>                            
                         </div>
@@ -251,13 +251,11 @@
 <?php if (isset($data['success']) && $data['success']) : ?>
     <script>
         Swal.fire({
-            position: "top",
             title: "Benefaction Updated Successfully!",
-            showConfirmButton: false,
-            timer: 1500,
-
+            showConfirmButton: true,
+            timer: 30000,
             didOpen: () => {
-                // Apply custom CSS styles using JavaScript
+                // Additional styling for success message
                 const swalContainer = document.querySelector('.swal2-popup');
                 if (swalContainer) {
                     swalContainer.style.border = '3px solid #00FF80';
@@ -270,20 +268,17 @@
             }
         });
     </script>
-
 <?php elseif (isset($data['fail']) && $data['fail']): ?>
     <script>
         Swal.fire({
-            position: "top",
-            title: "Benefaction Update Failed !",
-            showConfirmButton: false,
-            timer: 1500,
-
+            title: "Benefaction Update Failed!",
+            showConfirmButton: true,
+            timer: 30000,
             didOpen: () => {
-                // Apply custom CSS styles using JavaScript
+                // Additional styling for failure message
                 const swalContainer = document.querySelector('.swal2-popup');
                 if (swalContainer) {
-                    swalContainer.style.border = '3px solid red'; // Customize error border color
+                    swalContainer.style.border = '3px solid red';
                     swalContainer.style.backgroundColor = '#f9f9f9';
                 }
                 const swalTitle = document.querySelector('.swal2-title');
@@ -294,5 +289,6 @@
         });
     </script>
 <?php endif; ?>
+
 
 <?php require APPROOT.'/views/inc/footer.php'; ?>
