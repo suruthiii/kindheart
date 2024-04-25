@@ -215,6 +215,21 @@ section::after {
     /* Bold the button text */
 }
 
+.registerLanding-loginText {
+    display: flex;
+}
+
+.registerLanding-loginText p{
+    color: black;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.registerLanding-loginText a{
+    color: black;
+    font-size: 13px;
+}
+
 
 /* ----------------Login-------------- */
 

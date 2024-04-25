@@ -16,11 +16,17 @@
             <div class="studentRegistration-formce shared-formce">
                 <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
             
-                <h1>Create Your Account</h1>
+                <h1>Register As A Student</h1>
                 <span style="color: rgb(146, 141, 141); margin-top: 10px;">Receive donations for your educational activities</span>     
                 <div class="studentRegistration-text shared-text shared-label shared-button">
                     <form action="<?php echo URLROOT ?>/users/studentRegistration" method="POST">
                         <div class="studentRegistration-input-field1 shared-input shared-margin2">
+                            <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Create an Username </label><br><br>
+                            <div class="inputbox">
+                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']; ?>" ><br>
+                                <span class="error-message" for="verificationCode"><?php echo $data['email_err']; ?></span>
+                            </div><br>
+
                             <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your email address </label><br><br>
                             <div class="inputbox">
                                 <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']; ?>" ><br>
