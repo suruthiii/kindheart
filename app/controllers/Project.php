@@ -330,17 +330,6 @@ class Project extends Controller {
         if($_SESSION['user_type'] != 'organization') {
             redirect('pages/404');
         } else {
-
-            $data = [
-                'title' => 'Home page'
-            ];
-
-            $other_data = [
-                'notification_count' => $this->notificationModel->getNotificationCount(),
-                'notifications' => $this->notificationModel->viewNotifications()
-            ];
-
-            $this->view('organization/project/viewPendingprojectsdetails', $data, $other_data);
             if($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 
@@ -358,10 +347,15 @@ class Project extends Controller {
                         'ongingProjectDetails' => $ongingProjectDetails,
                         'ongoingmilestonedetails' => $ongoingmilestonedetails
                     ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
     
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/project/viewPendingprojectsdetails', $data);
+                        $this->view('organization/project/viewPendingprojectsdetails', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -378,11 +372,15 @@ class Project extends Controller {
                     'ongingProjectDetails' => [],
                     'ongoingmilestonedetails' => []
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/project/viewPendingprojectsdetails', $data);
-                }else {
+                    $this->view('organization/project/viewPendingprojectsdetails', $data, $other_data);
                     die('User Type Not Found');
                 }
             }
@@ -411,10 +409,15 @@ class Project extends Controller {
                         'ongingProjectDetails' => $ongingProjectDetails,
                         'ongoingmilestonedetails' => $ongoingmilestonedetails
                     ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
     
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/project/viewCompletedprojectsdetails', $data);
+                        $this->view('organization/project/viewCompletedprojectsdetails', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -431,10 +434,15 @@ class Project extends Controller {
                     'ongingProjectDetails' => [],
                     'ongoingmilestonedetails' => []
                 ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'organization') {
-                    $this->view('organization/project/viewCompletedprojectsdetails', $data);
+                    $this->view('organization/project/viewCompletedprojectsdetails', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
