@@ -22,7 +22,7 @@
                     <span>6 of 6</span> 
                 </div>
                 <div class="studentProfileCreation6-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentAcountCreationPage2" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation7" method="POST">
                         <div class="studentProfileCreation6-inner-container-form-container-inputfeilds">      
 
                             <label for="mobileNumber">Mobile Number </label>

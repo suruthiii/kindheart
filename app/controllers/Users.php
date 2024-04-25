@@ -15,7 +15,12 @@ class Users extends Controller{
     //---------------------------------------------
 
     public function studentAcountCreationPage1(){
-        $this->view('users/studentRegistration/studentAcountCreationPage1');
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+        }
+        else{
+            $this->view('users/studentRegistration/studentAcountCreationPage1');
+        }
     }   
 
     public function studentAcountCreationPage2(){

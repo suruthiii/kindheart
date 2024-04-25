@@ -22,7 +22,7 @@
                     <span>Select the details you want to show in your profile</span> 
                 </div>
                 <div class="studentProfileCreation7-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation7" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation8" method="POST">
                         <div class="studentProfileCreation7-inner-container-form-container-inputfeilds">   
 
                             <div class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1">
