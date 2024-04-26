@@ -26,13 +26,12 @@ class RequestModel{
         $this->mail->Port = 587;                           //TCP port to connect to; use 587 if you have set SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS
 
         //Recipients
-        $this->mail->setFrom('kindheart.donations.help@gmail.com', $senderName);
+        $this->mail->setFrom('kindheart.donations.help@gmail.com', $senderName); // Sender 
         $this->mail->addAddress($email, $receiverName);            //Add a recipient
 
         //Content
         $this->mail->isHTML(true);                     //Set email format to HTML
         $this->mail->Subject = $subject;
-        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
         $this->mail->Body = $message;
         $this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
