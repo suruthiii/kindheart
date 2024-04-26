@@ -800,7 +800,7 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'necessityMonetary' => $existingData->necessityName,
                         'recurringstartdate' => $existingData->startDate,
-                        'monetarynecessitydes' => $existingData->necessityName,
+                        'monetarynecessitydes' => $existingData->description,
                         'requestedamount' => $existingData->requestedAmount,
                         'monthlyrequestedamount' => $existingData->monthlyAmount,
                         'donationduration' => $existingData->duration 
@@ -811,7 +811,15 @@ class Necessity extends Controller {
                         'notifications' => $this->notificationModel->viewNotifications()
                     ];
 
-                    $this->view('organization/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+
+                    
                 }
             }
         }
@@ -911,13 +919,146 @@ class Necessity extends Controller {
             }
 
         }
+    }
 
+    // This is the function that pass necessity Id to edit one-time necessity page
     public function editOnetimeMonetaryNecessity(){
-        $data = [
-            'title' => 'Home page'
-        ];
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
 
-        $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data);
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+
+                    $existingData = $this->necessityModel->getALLthedetailsofNecessityByID($necessityID);
+                    
+
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'necessityMonetary' => $existingData->necessityName,
+                        'monetarynecessitydes' => $existingData->description,
+                        'requestedamount' => $existingData->requestedAmount
+                    ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+
+                    
+                }
+            }
+        }
+    }
+
+    //This function will get the details from edit recurring page and use for update
+    public function UpdateonetimeMonetaryNecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+
+
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'necessityMonetary' => isset($_POST['necessityMonetary']) ? trim($_POST['necessityMonetary']) : '',
+                        'monetarynecessitydes' => isset($_POST['monetarynecessitydes']) ? trim($_POST['monetarynecessitydes']) : '',
+                        'requestedamount' => isset($_POST['requestedamount']) ? trim($_POST['requestedamount']) : '',
+                        'necessityMonetary_err' => '',
+                        'monetarynecessitydes_err' => '',
+                        'requestedamount_err' => ''
+                    ];
+
+                    //check wheather field are empty or not
+
+                    //necessity field
+                    if(empty($data['necessityMonetary'])){
+                        $data['necessityMonetary_err']='Please enter the Necessity about Monetary';
+                    }
+
+                    //necessity description field
+                    if(empty($data['monetarynecessitydes'])){
+                        $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
+                    }
+
+                    if(empty($data['requestedamount'])){
+                        $data['requestedamount_err']='Please enter the Amount of money you need';
+                    }
+
+                    //check whether there any errors
+                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err'])){
+                        if($this->necessityModel->editonetimemonetarynecessitytodb($data)){
+                            redirect('necessity/monetary');
+                        }else{
+                            error_log('Error: Failed to insert data into the database.');
+                            die('something went wrong');
+                        }
+                    }else{
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
+                        if ($_SESSION['user_type'] == 'student') {
+
+                        }else if ($_SESSION['user_type'] == 'organization') {
+                            $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
+                        }else {
+                            die('User Type Not Found');
+                        }
+                        
+                    }
+                }else{
+                    die('Necessity is not found');
+                }
+
+            }else{
+
+                $data = [
+                    'necessityID' => '',
+                    'necessityMonetary' => '',
+                    'monetarynecessitydes' => '',
+                    'donationduration' => '',
+                    'necessityMonetary_err' => '',
+                    'monetarynecessitydes_err' => '',
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+
+        }
     }
 
     public function editPhysicalgoodsNecessity(){
