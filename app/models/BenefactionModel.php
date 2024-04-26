@@ -177,30 +177,30 @@ class BenefactionModel{
                                 WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
                                 WHEN u.userType = "organization" THEN o.orgName
                             END AS doneeName,
-                            dr.reason,
-                            dr.requestedQuantity,
-                            dr.acceptanceStatus,
-                            dr.benefactionID,
+                            br.reason,
+                            br.requestedQuantity,
+                            br.acceptanceStatus,
+                            br.benefactionID,
                             b.donatedQuantity,
                             db.receivedQuantity,
                             db.acknowledgement
 
                         FROM 
-                            benefaction_request dr
+                            benefaction_request br
                         JOIN 
-                            user u ON dr.doneeID = u.userID
+                            user u ON br.doneeID = u.userID
                         LEFT JOIN 
-                            student s ON u.userType = "student" AND s.studentID = dr.doneeID
+                            student s ON u.userType = "student" AND s.studentID = br.doneeID
                         LEFT JOIN 
-                            organization o ON u.userType = "organization" AND o.orgID = dr.doneeID
+                            organization o ON u.userType = "organization" AND o.orgID = br.doneeID
                         LEFT JOIN 
-                            benefaction b ON dr.benefactionID = b.benefactionID
+                            benefaction b ON br.benefactionID = b.benefactionID
                         LEFT JOIN 
-                            donee_benefaction db ON dr.benefactionID = db.benefactionID
+                            donee_benefaction db ON br.benefactionID = db.benefactionID
                         WHERE 
                             u.status != 10
-                            AND dr.doneeID = :doneeID
-                            AND dr.benefactionID = :benefactionID
+                            AND br.doneeID = :doneeID
+                            AND br.benefactionID = :benefactionID
                     ');   
 
         $this->db->bind(':doneeID', $doneeID);
@@ -258,19 +258,19 @@ class BenefactionModel{
                             d.address AS doneeAddress,
                             d.phoneNumber AS doneePhoneNumber
                         FROM 
-                            donee_benefaction db
+                            benefaction_request br
                         JOIN 
-                            user u ON db.doneeID = u.userID
+                            user u ON br.doneeID = u.userID
                         LEFT JOIN 
-                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                            student s ON u.userType = "student" AND s.studentID = br.doneeID
                         LEFT JOIN 
-                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                            organization o ON u.userType = "organization" AND o.orgID = br.doneeID
                         LEFT JOIN 
-                            donee d ON db.doneeID = d.doneeID
+                            donee d ON d.doneeID = br.doneeID
                         WHERE 
                             u.status != 10
-                            AND db.doneeID = :doneeID
-                            AND db.benefactionID = :benefactionID
+                            AND br.doneeID = :doneeID
+                            AND br.benefactionID = :benefactionID
                     ');   
 
         $this->db->bind(':doneeID', $doneeID);

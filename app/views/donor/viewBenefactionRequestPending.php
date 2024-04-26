@@ -86,26 +86,58 @@
                 </div>
             </div>
 
-            <!-- right side bar for Requests -->
-            <div class="request-right-side-bar">
-                <div class="request-right-side-bar-inner">  
+            <!-- right side bar for user-profile -->
+            <div class="user-profile-right-side-bar">
+                <div class="user-profile-right-side-bar-inner">  
                     <!-- Topic -->
-                    <div class="request-right-side-bar-topic">
-                        <h3>User Profile</h3>
-                        <div class="request-right-side-bar-grey-line"> </div>
+                    <div class="user-profile-right-side-bar-topic">
+                        <h3>Donee Profile</h3>
+                        <div class="user-profile-right-side-bar-grey-line"> </div>
                     </div>  
                     
-                    <!-- Display requests or no requests message -->
-                    <div class="request-right-side-bar-all-requests">
-                        <!-- <?php foreach($data['user_profile'] as $profile): ?>
-                                <div>
-                                    <h4>Donee Name: <?php echo $profile->doneeName; ?></h4>
-                                    <p>Donee Type: <?php echo $profile->userType; ?></p>
-                                    <p>Address: <?php echo $profile->address; ?></p>
-                                    <p>Email: <?php echo $profile->email; ?></p>
-                                    <p>Phone Number: <?php echo $profile->phoneNumber; ?></p>
-                                </div>
-                        <?php endforeach; ?> -->
+                    <!-- Display user-profile or no requests message -->
+                    <div class="user-profile-right-side-bar-all-user-profiles">
+                        <div class="user-profile-right-side-bar-all-user-profiles-inner">
+                            <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                            </div>
+                            <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                <table>
+                                    <tr class="user-profile-data">
+                                        <th>Name</th>
+                                        <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Donee Type</th>
+                                        <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Gender</th>
+                                        <td><?php print_r($data['user_profile'][0]->gender); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Date Of Birth</th>
+                                        <td><?php print_r($data['user_profile'][0]->dateOfBirth); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Institution Name</th>
+                                        <td><?php print_r($data['user_profile'][0]->institutionName); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Studying Year</th>
+                                        <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Address</th>
+                                        <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                    </tr>
+                                    <tr class="user-profile-data">
+                                        <th>Phone Number</th>
+                                        <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                    </tr>
+                                </table>          
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>   

@@ -424,7 +424,8 @@ class Benefaction extends Controller {
 
         $data = [
             'title' => 'View Benefaction Request',
-            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID),
+            'user_profile' => $this->benefactionModel->getUserProfile($doneeID, $benefactionID)
         ];
 
         $other_data = [

@@ -988,6 +988,16 @@ span .donor-form-error-details{
     min-width: 40%;
 }
 
+.request-right-side-bar-type-requests-left h4 {
+    margin: 0; /* Remove default margin */
+    margin-bottom: 5px; /* Add margin below h4 for spacing */
+}
+
+.request-right-side-bar-type-requests-left p {
+    margin: 0; /* Remove default margin */
+    margin-top: 5px; /* Add margin above p for spacing */
+}
+
 .request-right-side-bar-type-requests-right .status_pending p{
     background-color: #ffffff;
     color: #000;
@@ -1046,27 +1056,6 @@ span .donor-form-error-details{
     display: flex;
     justify-content: center; 
     align-items: center;
-}
-
-/* .request-right-side-bar-type-requests-right .status_button #status_pending{
-    background-color: #ffffff;
-    color: #000;
-}
-
-.request-right-side-bar-type-requests-right .status_button #status_accepted{
-    background-color: #ffffff;
-    color: #000;
-} */
-
-
-.request-right-side-bar-type-requests-left h4 {
-    margin: 0; /* Remove default margin */
-    margin-bottom: 5px; /* Add margin below h4 for spacing */
-}
-
-.request-right-side-bar-type-requests-left p {
-    margin: 0; /* Remove default margin */
-    margin-top: 5px; /* Add margin above p for spacing */
 }
 
 /* ---------------------Choose Benefaction type--------------------------- */
@@ -1618,6 +1607,110 @@ span .donor-form-error-details{
     font-size: 12px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
+}
+
+
+.user-profile-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 10vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-right-side-bar-topic{
+    margin-bottom: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-right-side-bar-grey-line{
+    /* position: fixed; */
+    width: 265px;
+    height: 0.3vh;
+    background-color: #DEDEDE;
+    /* margin-left: -40px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-right-side-bar-all-user-profiles{
+    height: 75vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner-image{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #707070;
+    background-color: rgb(255, 240, 242);
+    margin-bottom: 15px;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure the image stays within the circular boundary */
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner-image img {
+    max-width: 100%; /* Ensure the image does not exceed the container width */
+    max-height: 100%; /* Ensure the image does not exceed the container height */
+    border-radius: 50%; /* Maintain circular shape even if image size varies */
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner-details{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.user-profile-data {
+    height: 35px;
+    font-size: 13px;
+}
+
+.user-profile-data th {
+    min-width:100px; 
+    width:300px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.user-profile-data td {
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding-left: 10px;
+    width:400px;
 }
 
 /* ----------------View Benefaction Request Deatils Accepted------------------ */
