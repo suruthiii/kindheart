@@ -105,7 +105,8 @@
                         <h3>Donors Who Donated</h3>
                     </div>
                     <div class="right-side-bar-for-scrolling">
-                        <div class="donated-donor-details-box">
+                        <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'onetime') {?>
+                               <div class="donated-donor-details-box">
                             <div class="donated-donor-name">
                                 <h4>Donors Name</h4>
                             </div>
@@ -115,7 +116,9 @@
                             <div class="sendacknowladgement-button">
                                 <button type="submit">Accept</button>
                             </div>
-                        </div>
+                        </div> 
+                    <?php } ?>
+                        
                     </div>
 
                 </div>
