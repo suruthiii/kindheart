@@ -444,8 +444,8 @@ class Benefaction extends Controller {
             $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
         } elseif ($acceptanceStatus == 1) {
             $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
-        } elseif ($acceptanceStatus == 3) {
-            $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
+        // } elseif ($acceptanceStatus == 3) {
+        //     $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
         } elseif ($acceptanceStatus == 2) {
             $this->view('donor/viewBenefactionRequestCompleted', $data, $other_data);
         } elseif ($acceptanceStatus == 10) {
@@ -465,8 +465,11 @@ class Benefaction extends Controller {
 
         $data = [
             'title' => 'View Benefaction Request',
-            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID),
+            'user_profile' => $this->benefactionModel->getUserProfile($doneeID, $benefactionID)
         ];
+
+        die(print_r($data['user_profile']));
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),

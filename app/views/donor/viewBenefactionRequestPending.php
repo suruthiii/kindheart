@@ -86,8 +86,29 @@
                 </div>
             </div>
 
-            <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <!-- right side bar for Requests -->
+            <div class="request-right-side-bar">
+                <div class="request-right-side-bar-inner">  
+                    <!-- Topic -->
+                    <div class="request-right-side-bar-topic">
+                        <h3>User Profile</h3>
+                        <div class="request-right-side-bar-grey-line"> </div>
+                    </div>  
+                    
+                    <!-- Display requests or no requests message -->
+                    <div class="request-right-side-bar-all-requests">
+                        <?php foreach($data['user_profile'] as $profile): ?>
+                                <div>
+                                    <h4>Donee Name: <?php echo $profile->doneeName; ?></h4>
+                                    <p>Donee Type: <?php echo $profile->userType; ?></p>
+                                    <p>Address: <?php echo $profile->address; ?></p>
+                                    <p>Email: <?php echo $profile->email; ?></p>
+                                    <p>Phone Number: <?php echo $profile->phoneNumber; ?></p>
+                                </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>   
 
         </div>
     </section>

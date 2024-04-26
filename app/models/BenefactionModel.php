@@ -237,6 +237,50 @@ class BenefactionModel{
         }
     }
 
+    public function getUserProfile($doneeID, $benefactionID) {
+        $this->db->query('SELECT u.userType AS userType,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentID
+                                WHEN u.userType = "organization" THEN o.orgID
+                            END AS doneeID,
+                            CASE
+                                WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
+                                WHEN u.userType = "organization" THEN o.orgName
+                            END AS doneeName,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentType
+                                WHEN u.userType = "organization" THEN o.orgType
+                            END AS doneeType,
+                            s.gender,
+                            s.dateOfBirth,
+                            s.institutionName,
+                            s.studyingYear,
+                            d.address AS doneeAddress,
+                            d.phoneNumber AS doneePhoneNumber
+                        FROM 
+                            donee_benefaction db
+                        JOIN 
+                            user u ON db.doneeID = u.userID
+                        LEFT JOIN 
+                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                        LEFT JOIN 
+                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                        LEFT JOIN 
+                            donee d ON db.doneeID = d.doneeID
+                        WHERE 
+                            u.status != 10
+                            AND db.doneeID = :doneeID
+                            AND db.benefactionID = :benefactionID
+                    ');   
+
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
     
 
 
