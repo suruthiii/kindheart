@@ -65,18 +65,30 @@
                                 </div>
                                 <div class="right">
                                     
-                                        <p><?php 
-                                        $status = $item->verificationStatus;
+                                <p><?php 
+                                        $status = $item->availabilityStatus ;
+                                        $Acceptedstatus = $item->acceptanceStatus  ;
+                                        $completedStatus = $item->verificationStatus  ;
+                                        
 
                                         // Echo different divs based on the status
-                                        if ($status === 0) {
+                                        if ($status === 0 && $Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
-                                        } elseif ($status === 1) {
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
-                                        } elseif ($status === 2) {
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 3) {
+                                            echo '<div class="status_rejected"><p>Complainted</p></div>';
+
                                         } else {
-                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                            echo '<div class="status_unknown"><p>Rejected</p></div>';
                                         }
                                         ?></p>
                                                                   

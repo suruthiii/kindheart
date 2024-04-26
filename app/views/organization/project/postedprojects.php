@@ -37,7 +37,7 @@
                                     <h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
-                                <td><p>Rs. <?php echo $pendingtablerow->budget?></p></td>
+                                <td><p>Rs. <?php echo number_format($pendingtablerow->budget, 2); ?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/project/viewOngoingProjectDetails" method="POST">
                                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
@@ -46,9 +46,13 @@
                                         </button>
                                     </form>
                                 </td>
-                                <td><button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">
-                                    <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
-                                    </button>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/project/editPostedProjects" method="POST">
+                                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $pendingtablerow->projectID; ?>">
+                                        <button onclick="location.href='<?php echo URLROOT ?>/organization/choosethenecessityType'">
+                                            <img style="height: 16px;  width: 18px" src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                                        </button>
+                                    </form>
                                 </td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/project/deleteOngoingandCompleteProjects" method="POST" class="delete-form" id="delete">
@@ -79,7 +83,7 @@
                                     <h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
-                                <td><p>Rs. <?php echo $completetablerow->budget?></p></td>
+                                <td><p>Rs. <?php echo number_format($completetablerow->budget,2); ?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/project/viewCompletedProjectDetails" method="POST">
                                         <input type="hidden" name="projectID" id="projectID" value="<?php echo $completetablerow->projectID; ?>">

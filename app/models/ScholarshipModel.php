@@ -227,4 +227,57 @@ class ScholarshipModel{
             return false;
         }
     }
+
+ // ----------------------Student/organization Controllers(scolaship data retriev)------------------
+
+ public function getScholarships() {
+    // Prepare statement
+    $this->db->query('SELECT s.scholarshipID, s.title, s.amount, s.duration, s.donorID, s.postedDate, s.availabilityStatus, sr.studentID FROM scholarship s JOIN user u  ON u.userID = s.donorID LEFT JOIN scholarship_request sr ON sr.scholarshipID = s.scholarshipID WHERE availabilityStatus = 0');
+    
+    // Execute
+    $this->db->execute();
+
+    // Fetch result set
+    return $this->db->resultSet();
 }
+
+public function getApplyScholarship($scholarshipID) {
+    // Prepare statement
+    $this->db->query('SELECT s.scholarshipID, s.title, s.amount, s.startDate, s.description, s.duration, s.donorID, s.postedDate, s.availabilityStatus, s.deadline, u.username FROM scholarship s JOIN user u  ON u.userID = s.donorID WHERE scholarshipID = :scholarshipID');
+    $this->db->bind(':scholarshipID', $scholarshipID);
+    
+    // Execute
+    $row = $this->db->single();
+
+    // Fetch result set
+    return $row;
+}
+
+
+public function addAppliedScholarship($data){
+    // Prepare statement
+    $this->db->query('INSERT INTO scholarship_request (scholarshipID, studentID, reason) VALUES (:scholarshipID, :studentID, :reason)');
+
+    // Bind values
+   
+    $this->db->bind(':reason', $data['reason']);
+    $this->db->bind(':studentID', $_SESSION['user_id']);
+    $this->db->bind(':scholarshipID', $data['scholarshipID']);
+  
+
+
+    // Execute
+    if($this->db->execute()){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
+}
+
+
+
+
+

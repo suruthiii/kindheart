@@ -1,9 +1,42 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require APPROOT.'/libraries/vendor/autoload.php';
+
 class RequestModel{
     private $db;
 
+    private $mail;
+
     public function __construct(){
         $this->db = new Database();
+        $this->mail = new PHPMailer(true);
+    }
+
+    public function sendEmail($email, $receiverName, $subject, $message, $senderName){
+        $this->mail->isSMTP();                             //Send using SMTP
+        $this->mail->Host = 'smtp.gmail.com';              //Set the SMTP server to send through
+        $this->mail->SMTPAuth = true;                      //Enable SMTP authentication
+        $this->mail->Username = 'kindheart.donations.help@gmail.com';   //SMTP username
+        $this->mail->Password = 'uwxi cfzp qjrh ofmt';     //SMTP password
+        $this->mail->Port = 587;                           //TCP port to connect to; use 587 if you have set SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS
+
+        //Recipients
+        $this->mail->setFrom('kindheart.donations.help@gmail.com', $senderName);
+        $this->mail->addAddress($email, $receiverName);            //Add a recipient
+
+        //Content
+        $this->mail->isHTML(true);                     //Set email format to HTML
+        $this->mail->Subject = $subject;
+        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+        $this->mail->Body = $message;
+        $this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+        $this->mail->send();
     }
 
     public function getAllUnassignedStudentRequests() {
@@ -129,6 +162,23 @@ class RequestModel{
     public function acceptDonee($donee_ID) {
         $this->db->query('UPDATE user SET status = 1 WHERE userID = :userID');
         $this->db->bind(':userID', $donee_ID);
+
+        $name = 'Suruthi';
+        $email = 'suruthi0611@gmail.com';
+
+        $message = '
+        <div id="overview" style="margin: auto; width: 80%; font-size: 13px">
+            <p style="color: black">
+                Dear '.$name.',<br><br>
+        
+                Your land  is now verified. You can now login to your account and start using it.<br>
+                <br>
+                Best regards,<br>
+                eZpark Team
+            </p>
+        </div>';
+
+        $this->sendEmail($email, $name, 'Your Account Has Been Verified', $message, 'KindHeart');
 
         if($this->db->execute()) {
             return true;
