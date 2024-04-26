@@ -417,8 +417,68 @@ class Benefaction extends Controller {
         }
     }
 
+    public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($benefactionID))) {
+            redirect('pages/404');           
+        }
+
+        $data = [
+            'title' => 'View Benefaction Request',
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        if (!$data['benefactionRequest_details'][0]) {
+            redirect('pages/404');
+        }
+
+        // Get verificationStatus from benefactionRequest_details
+        $acceptanceStatus = $data['benefactionRequest_details'][0]->acceptanceStatus;
+
+        // Determine which view to load based on verificationStatus
+        if ($acceptanceStatus == 0) {
+            $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
+        } elseif ($acceptanceStatus == 1) {
+            $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
+        } elseif ($acceptanceStatus == 3) {
+            $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
+        } elseif ($acceptanceStatus == 2) {
+            $this->view('donor/viewBenefactionRequestCompleted', $data, $other_data);
+        } elseif ($acceptanceStatus == 10) {
+            $this->view('donor/viewBenefactionRequestDeclined', $data, $other_data);
+        } else {
+            redirect('pages/404'); // Redirect to 404 page for unknown status
+        }
+    }
+
     //Get Details of One Selected Benefaction Request
     public function viewBenefactionRequestPending($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($benefactionID))) {
+            redirect('pages/404');           
+        }
+
+        // die(print_r($benefactionID));
+
+        $data = [
+            'title' => 'View Benefaction Request',
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        // die(print_r($data['benefactionRequest_details']));
+
+        $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
+    }
+
+    public function viewBenefactionRequestAccepted($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($benefactionID))) {
             redirect('pages/404');           
         }
@@ -501,42 +561,9 @@ class Benefaction extends Controller {
             }
         }
     }
+
+
     
-    public function viewBenefactionRequest($doneeID = null, $benefactionID = null) {
-        if (empty($doneeID || empty($benefactionID))) {
-            redirect('pages/404');           
-        }
-
-        $data = [
-            'title' => 'View Benefaction Request',
-            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
-        ];
-
-        $other_data = [
-            'notification_count' => $this->notificationModel->getNotificationCount(),
-            'notifications' => $this->notificationModel->viewNotifications()
-        ];
-
-        if (!$data['benefactionRequest_details'][0]) {
-            redirect('pages/404');
-        }
-
-        // Get verificationStatus from benefactionRequest_details
-        $acceptanceStatus = $data['benefactionRequest_details'][0]->acceptanceStatus;
-
-        // Determine which view to load based on verificationStatus
-        if ($acceptanceStatus == 0) {
-            $this->view('donor/viewBenefactionRequestPending', $data, $other_data);
-        } elseif ($acceptanceStatus == 1 || $acceptanceStatus == 3) {
-            $this->view('donor/viewBenefactionRequestOngoing', $data, $other_data);
-        } elseif ($acceptanceStatus == 2) {
-            $this->view('donor/viewBenefactionRequestCompleted', $data, $other_data);
-        } elseif ($acceptanceStatus == 10) {
-            $this->view('donor/viewBenefactionRequestDeclined', $data, $other_data);
-        } else {
-            redirect('pages/404'); // Redirect to 404 page for unknown status
-        }
-    }
 
     // ---------------------Student--------------------------
 
