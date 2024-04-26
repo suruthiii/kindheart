@@ -112,7 +112,7 @@
 
                         <div class="lines">
                             <label for="">Currently Receiving Scholarships</label>
-                            <input type="text" value="<?php print_r($data['studentData']->caregiverOccupation) ?>" name="caregiverOccupation" required>  
+                            <input type="textarea" value="<?php print_r($data['studentData']->receivingScholarships) ?>" name="caregiverOccupation" required>  
                         </div>
 
                         <h4> Bank Details</h4>

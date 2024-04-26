@@ -10,7 +10,7 @@
                     </div>
                 </div> -->
                 <div class="notify">
-                    <!-- <div class="notification-count" style="background-color: red; border-radius: 50px; color: white; padding: 4px 6px 3px 6px; font-size: 8px; position: absolute; right: 115px; top: 32px">
+                    <div class="notification-count" style="background-color: red; border-radius: 50px; color: white; padding: 4px 6px 3px 6px; font-size: 8px; position: absolute; right: 115px; top: 32px">
                         <?php echo $other_data['notification_count']; ?>
                     </div>
 
@@ -367,6 +367,7 @@
 
                 </div>
                 
+                
                 <?php if($_SESSION['user_type']== 'student') : ?>
                 <div class="sub-menu-wrap" id="subMenu">
                     <div class="sub-menu">
@@ -377,8 +378,7 @@
                           
                         </div>
                         <hr>
-                        <a href="<?php echo URLROOT ?>/student/editProfile" class="sub-menu-link">
-                        <!-- <a href="#" class="sub-menu-link"> -->
+                            <a href="<?php echo URLROOT ?>/student/editProfile" class="sub-menu-link">
                             <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
                             <p>Edit Profile</p>
                             <span>></span>
@@ -393,8 +393,8 @@
                             <p>Help</p>
                             <span>></span>
                         </a>
-                        <!-- <a href="#" class="sub-menu-link"> -->
-                        <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)"  class="sub-menu-link">
+
+                        <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" class="sub-menu-link">
                         <img src="<?php echo URLROOT ?>/img/logout.svg">
                             <p>Log Out</p>
                             <span>></span>
@@ -402,6 +402,8 @@
                     </div>
                 </div>
                 <?php endif; ?>
+
+
              
             </div>
         </div>
@@ -421,5 +423,30 @@
         var element;
         element = document.querySelector('.notification-area');
         element.classList.toggle("notification-area-active");
+    }
+
+    function toggleMenu() {
+    let subMenu = document.getElementById("subMenu");
+    subMenu.classList.toggle("open-menu");
+}
+
+function confirmLogout(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Use SweetAlert for confirmation
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to logout.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the logout URL
+                window.location.href = event.target.href;
+            }
+        });
     }
 </script>

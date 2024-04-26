@@ -41,7 +41,7 @@
 
                             <?php foreach($data['donors'] as $item){?>
                                 
-                                <a href="<?php echo URLROOT ?>/Student/donorProfile">
+                                <a href="<?php echo URLROOT ?>/Student/viewDonor">
                                
                                     <div class="tile-donor">
                                         <table>
