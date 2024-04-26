@@ -896,9 +896,10 @@
 
 
 .details-Container{
-    overflow: auto;
+    overflow-y: auto;
     width: 90%;
     height: 100%;
+    background-color: #6e0303;
 }
 
 .details-Container table{

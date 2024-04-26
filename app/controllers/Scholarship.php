@@ -498,7 +498,9 @@ class Scholarship extends Controller {
         }
 
         else {
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $donorType = $this->userModel->getDonorType($donor_ID);
+            
+            if($donorType == 'company'){
             
                 $data = [
                     'title' => 'Home Page',
