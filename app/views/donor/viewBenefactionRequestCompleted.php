@@ -30,7 +30,7 @@
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Completed Benefaction Request Details</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <div class="benefactionRequest-left-column">
@@ -55,15 +55,11 @@
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Donatated Amount</th>
-                                <td>dfghsgst</td>
-                            </tr>
-                            <tr class="benefactionRequest-data">
-                                <th>Donated Date</th>
-                                <td>dfbvsdfb</td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->donatedQuantity) ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Acknowledgement</th>
-                                <td>dfbvsdfb</td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->acknowledgement) ?></td>
                             </tr>                            
                         </table>                    
                     </div>                    

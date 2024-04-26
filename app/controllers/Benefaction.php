@@ -500,6 +500,28 @@ class Benefaction extends Controller {
         $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
     }
 
+    public function viewBenefactionRequestCompleted($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($benefactionID))) {
+            redirect('pages/404');           
+        }
+
+        // die(print_r($benefactionID));
+
+        $data = [
+            'title' => 'View Benefaction Request',
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        // die(print_r($data['benefactionRequest_details']));
+
+        $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
+    }
+
     public function acceptBenefactionRequest() {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             if (isset($_POST['benefactionID']) && isset($_POST['doneeID'])) {
@@ -576,6 +598,8 @@ class Benefaction extends Controller {
                 'deliveryReceipt_err' => ''
             ];
 
+            die(print_r($data));
+
             if(empty($data['donationQunatity'])){
                 $data['donationQunatity_err']='Please enter the donating amount';
             }elseif($data['donationQunatity'] > itemQuantity){
@@ -594,6 +618,7 @@ class Benefaction extends Controller {
                         'title' => 'View Posted Benefactions',
                         'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
                     ];         
+
                     
                     $other_data = [
                         'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -606,7 +631,6 @@ class Benefaction extends Controller {
                     die('Something Went Wrong');
                 }
             }
-
         }else{
 
             $data = [
@@ -625,32 +649,6 @@ class Benefaction extends Controller {
             ];
 
             $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
-
-            // if (isset($_POST['benefactionID']) && isset($_POST['doneeID'])) {
-                
-            //     $benefactionID = $_POST['benefactionID'];
-            //     $doneeID = $_POST['doneeID'];
-                
-            //     // Update the status of the benefaction request
-            //     if($this->benefactionModel->acceptBenefactionRequest($doneeID, $benefactionID)) {          
-
-            //         // Load the view with data
-            //         $data = [
-            //             'title' => 'View Posted Benefactions',
-            //             'benefaction_details' => $this->benefactionModel->getBenefactionForDonor($benefactionID),
-            //             'benefaction_requests' => $this->benefactionModel->getBenefactionRequests($benefactionID)
-            //         ];         
-                    
-            //         $other_data = [
-            //             'notification_count' => $this->notificationModel->getNotificationCount(),
-            //             'notifications' => $this->notificationModel->viewNotifications()
-            //         ];                                
-            
-            //         // Load View
-            //         $this->view('donor/viewPostedBenefactionsPending', $data, $other_data);
-            //     } else {
-            //         die('Benefaction ID or Donee ID not found.');
-            //     }
         }
     }
 

@@ -30,7 +30,7 @@
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Accepted Benefaction Request Details</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <div class="benefactionRequest-left-column">
@@ -74,7 +74,17 @@
                                 </div>
                             </div>
                             <span class="donor-form-error-details" id="deliveryReceipt_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deliveryReceipt_err']) ? $data['deliveryReceipt_err']: ''; ?></span>
-                        </div>                    
+                        </div>   
+                        <!-- <div class="view-benefactionRequest-btn-container">
+                            <form class="submit-request" id="submitForm" style="display: none;">
+                                <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                                <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
+                                <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmSubmit(event)" >
+                                    <h5>Submit</h5>
+                                </button>
+                            </form>
+                        </div> -->
+                        
                     </form>
                 </div>
 
@@ -96,7 +106,7 @@
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/benefaction/" method="post" class="submit-request" id="submitForm" style="display: none;">
+                    <form class="submit-request" id="submitForm" style="display: none;">
                         <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
                         <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
                         <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmSubmit(event)" >

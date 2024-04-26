@@ -177,25 +177,30 @@ class BenefactionModel{
                                 WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
                                 WHEN u.userType = "organization" THEN o.orgName
                             END AS doneeName,
-                            db.reason,
-                            db.requestedQuantity,
-                            db.acceptanceStatus,
-                            db.benefactionID,
-                            b.donatedQuantity
+                            dr.reason,
+                            dr.requestedQuantity,
+                            dr.acceptanceStatus,
+                            dr.benefactionID,
+                            b.donatedQuantity,
+                            db.receivedQuantity,
+                            db.acknowledgement
+
                         FROM 
-                            benefaction_request db
+                            benefaction_request dr
                         JOIN 
-                            user u ON db.doneeID = u.userID
+                            user u ON dr.doneeID = u.userID
                         LEFT JOIN 
-                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                            student s ON u.userType = "student" AND s.studentID = dr.doneeID
                         LEFT JOIN 
-                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                            organization o ON u.userType = "organization" AND o.orgID = dr.doneeID
                         LEFT JOIN 
-                            benefaction b ON db.benefactionID = b.benefactionID
+                            benefaction b ON dr.benefactionID = b.benefactionID
+                        LEFT JOIN 
+                            donee_benefaction db ON dr.benefactionID = db.benefactionID
                         WHERE 
                             u.status != 10
-                            AND db.doneeID = :doneeID
-                            AND db.benefactionID = :benefactionID
+                            AND dr.doneeID = :doneeID
+                            AND dr.benefactionID = :benefactionID
                     ');   
 
         $this->db->bind(':doneeID', $doneeID);
