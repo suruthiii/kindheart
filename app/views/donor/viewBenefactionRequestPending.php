@@ -97,7 +97,7 @@
                     
                     <!-- Display requests or no requests message -->
                     <div class="request-right-side-bar-all-requests">
-                        <?php foreach($data['user_profile'] as $profile): ?>
+                        <!-- <?php foreach($data['user_profile'] as $profile): ?>
                                 <div>
                                     <h4>Donee Name: <?php echo $profile->doneeName; ?></h4>
                                     <p>Donee Type: <?php echo $profile->userType; ?></p>
@@ -105,7 +105,7 @@
                                     <p>Email: <?php echo $profile->email; ?></p>
                                     <p>Phone Number: <?php echo $profile->phoneNumber; ?></p>
                                 </div>
-                        <?php endforeach; ?>
+                        <?php endforeach; ?> -->
                     </div>
                 </div>
             </div>   

@@ -418,6 +418,14 @@ span .donor-form-error-details{
     padding: 0px 14px; /* Adjust padding */
 }
 
+.add-benefaction-first-div input:focus,
+.add-benefaction-second-div input:focus,
+.add-benefaction-third-div input:focus,
+.add-benefaction-fourth-div input:focus {
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
 .select-box {
     height: 38px; /* Make the input fields fill the entire height of their parent div */
     width: 300px;
@@ -489,15 +497,91 @@ span .donor-form-error-details{
 .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+
 /* ------------------------------------------------- */
 
-.add-benefaction-first-div input:focus,
-.add-benefaction-second-div input:focus,
-.add-benefaction-third-div input:focus,
-.add-benefaction-fourth-div input:focus {
-    outline: none !important;
-    border: #8E0000 solid;
+.add-benefaction-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 10vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
 }
+
+.add-benefaction-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-benefaction-right-side-bar-topic{
+    margin-bottom: 15px;
+    font-size: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-benefaction-right-side-bar-grey-line{
+    /* position: fixed; */
+    width: 265px;
+    height: 0.3vh;
+    background-color: #DEDEDE;
+    /* margin-left: -40px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions{
+    height: 75vh;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions-inner-content{
+        min-width: 50%;
+        margin: 0;  
+        margin-left: 15px;     
+
+        margin-bottom: 10px;
+        /* Adjust height to fit content */
+        height: auto; /* This allows the height to expand based on content */
+        width: 85%;
+        padding: 10px;
+
+        display: flex;
+        flex-direction: column;
+
+        background-color: rgb(243, 227, 230);
+        border: 1px solid #707070;
+        border-radius: 6px;
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions-inner-content h3 {
+    margin: 0; /* Remove default margin */
+    margin-bottom: 10px; /* Add margin below h3 for spacing */
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions-inner-content p {
+    margin: 0; /* Remove default margin */
+}
+
+
 
 /* ----------Posted Benefaction ----------- */
 

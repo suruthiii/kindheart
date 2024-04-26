@@ -75,15 +75,15 @@
                             </div>
                             <span class="donor-form-error-details" id="deliveryReceipt_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deliveryReceipt_err']) ? $data['deliveryReceipt_err']: ''; ?></span>
                         </div>   
-                        <!-- <div class="view-benefactionRequest-btn-container">
-                            <form class="submit-request" id="submitForm" style="display: none;">
+                        <div class="view-benefactionRequest-btn-container">
+                            <div class="submit-request" id="submitForm" style="display: none;">
                                 <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
                                 <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
                                 <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmSubmit(event)" >
                                     <h5>Submit</h5>
                                 </button>
-                            </form>
-                        </div> -->
+                            </div>
+                        </div>
                         
                     </form>
                 </div>
