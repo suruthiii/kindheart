@@ -30,7 +30,6 @@
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Your Posted Benefactions</h3>
-                    <p>Last 30 Days</p>
                 </div>
 
                 <!-- Pending table -->
@@ -71,9 +70,15 @@
                                         </td>
 
                                         
-                                        <td width="20%" style="transform: translateX(-60%);">
+                                        <td width="20%" style="transform: translateX(-40%);">
                                             <p>
                                                 <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-15%);" >
+                                            <p>
+                                                <?php echo $benefaction->totalRequestedQuantity;?> Items Requested
                                             </p>
                                         </td>
 
@@ -148,21 +153,16 @@
                                         </td>
 
                                         
-                                        <td width="20%" style="transform: translateX(-50%);">
+                                        <td width="20%" style="transform: translateX(-70%);">
                                             <p>
                                                 <?php echo $benefaction->itemQuantity;?> Items
                                             </p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-15%);" >
+                                        <td width="30%"  style="transform: translateX(-45%);" >
                                             <p>
-                                                <?php echo $benefaction->receivedQuantity;?> Items Requested
-                                            </p>
-                                        </td>
-
-                                        <td width="20%"  style="transform: translateX(-5%);" >
-                                            <p>
-                                                <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->receivedQuantity; echo $remainingQuantity;?> Remains
+                                                <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->donatedQuantity;
+                                                echo $remainingQuantity;?> Items Remains
                                             </p>
                                         </td>
                                         <!-- here have to edit with requested quatity of student -->
@@ -230,12 +230,22 @@
                                         ?>
                                     </td>
 
-                                    <td width="50%">
+                                    <td width="50%" style="transform: translateX(5%);">
                                         <h4><?php echo $benefaction->itemName;?></h4>
                                         <p><?php echo substr($benefaction->description, 0, 20) . (strlen($benefaction->description) > 20 ? '...' : ''); ?></p>
                                     </td>
 
-                                    <td width="10%" style="transform: translateX(-150%);" ><p><?php echo $benefaction->itemQuantity;?> Items </p></td>
+                                    <td width="20%" style="transform: translateX(-35%);">
+                                            <p>
+                                                <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="30%"  style="transform: translateX(-10%);" >
+                                            <p>
+                                                <?php echo $benefaction->donatedQuantity;?> Items Donated
+                                            </p>
+                                        </td>
 
                                     <td width="10%"style="transform: translateX(15%);">
                                         <!-- <form action="<?php echo URLROOT ?>/donor/editBenefaction" method="post" class="edit-form">

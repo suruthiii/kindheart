@@ -90,7 +90,6 @@ class Benefaction extends Controller {
                 'photoBenfaction4' => $this->imgUpload('photoBenfaction4'),
 
                 'availabilityStatus' => '0',
-                'availability' => 'pending',
 
                 'itemBenefaction_err' => '',
                 'benefactionCategory_err' => '',
@@ -206,6 +205,8 @@ class Benefaction extends Controller {
             
             'completedBenefaction' => $this->benefactionModel->getCompletedBenefaction()
         ];
+
+        // die(print_r($data['pendingBenefaction']));
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
