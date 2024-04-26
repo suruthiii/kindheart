@@ -92,10 +92,10 @@
                 label: 'Dataset 1',
                 data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * 100)),
                 backgroundColor: [
-                    'red',
-                    'orange',
-                    'yellow',
-                    'green'
+                    '#8e0000',
+                    '#bf644f',
+                    '#d38a78',
+                    '#f3d7d0'
                 ]
             }]
         };
