@@ -304,6 +304,7 @@ class Necessity extends Controller {
                     'goodsnecessitydes_err' => '',
                     'neccessityitem_err' => ''
                 ];
+                
 
                 //check wheather field are empty or not
 
@@ -339,10 +340,15 @@ class Necessity extends Controller {
                     }
                 }else{
 
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
                     if ($_SESSION['user_type'] == 'student') {
-                        $this->view('student/necessity/addmonetarynecessity', $data);
+                        $this->view('student/necessity/addmonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/addgoodsnecessity', $data);
+                        $this->view('organization/addgoodsnecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
