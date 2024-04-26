@@ -65,6 +65,7 @@
             </div>
 
             <!-- right side bar for success story/ choose or add necessity -->
+
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
                     <!-- Image -->
@@ -82,6 +83,8 @@
 
                 </div>
             </div>
+
+            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
 
         </div>
     </section>
