@@ -380,6 +380,7 @@ class Student extends Controller {
         ];
 
         $this->view('student/ApplyForBenefaction', $data, $other_data);
+        
     }
 
     public function viewAppliedBenefaction($benefactionID = null){
