@@ -45,6 +45,57 @@
                         View Donee Profile
                 </a>
             </div>
+
+            <div class="right-content" style="overflow-y:scroll;">
+                <div class="right-content-title-container">
+                    <h4 style="text-align:center">Donations</h4>
+                </div>
+                <div class="right-cards">  
+
+                        <?php if($data['necessity_type'] == 'onetime') {?>
+                            <a href="">
+                                <?php foreach($data['donation_details'] as $item) { ?>
+                                    <div class="right-card" style="display:flex;">
+                                        <div class="left-side-content" style="width:50%; padding-left:5px">
+                                            <div class="title" style=""><?php echo $item->donorName ?></div>
+                                            <div class="value" style="margin-top: 6px;">Rs.&nbsp;<?php echo $item->amount ?>.00</div>
+                                        </div>
+                                        <div class="right-side-content" style=" width:50%">
+                                            <?php if($item->verificationStatus == 1) {?>
+                                                <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
+                                            <?php }
+                                            else {?>
+                                                <div class="unverified-label" style="background-color:beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
+                                            <?php }?> 
+                                        </div>
+                                    </div>
+                                <?php }?>
+                            </a>
+                        <?php }
+
+                        else if($data['necessity_type'] == 'recurring') {?>
+                            <a href="">
+                                <?php foreach($data['donation_details'] as $item) { ?>
+                                    <div class="right-card" style="display:flex;">
+                                        <div class="left-side-content" style="width:50%; padding-left:5px">
+                                            <div class="title" style=""><?php echo $item->donorName ?></div>
+                                            <div class="value" style="margin-top: 6px;"><?php echo $item->updatedMonth ?></div>
+                                        </div>
+                                        <div class="right-side-content" style=" width:50%">
+                                            <?php if($item->verificationStatus == 1) {?>
+                                                <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
+                                            <?php }
+                                            else {?>
+                                                <div class="unverified-label" style="background-color:beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
+                                            <?php }?> 
+                                        </div>
+                                    </div>
+                                <?php }?>
+                            </a>    
+                        <?php }?>
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 </main>
