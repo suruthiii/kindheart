@@ -361,9 +361,50 @@
                     <img class="ico" src="<?php echo URLROOT ?>/img/bell-regular.svg" alt="" onclick="notificationToggle()">
                 </div>
                    
-                <div class="profile">
-                    <img class="ico" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
+                <div class="profile" >
+                    <img class="ico" src="<?php echo URLROOT ?>/img/woman.jpg" onclick="toggleMenu()">
+            
+
                 </div>
+                
+                
+                <?php if($_SESSION['user_type']== 'student') : ?>
+                <div class="sub-menu-wrap" id="subMenu">
+                    <div class="sub-menu">
+                        <div class="user-info">
+                           <img src="<?php echo URLROOT ?>/img/woman.jpg">
+                           <h2>Hello <?php print_r( $_SESSION['user_name']) ?>!</h2>
+                           <p><?php print_r( $_SESSION['user_email']) ?></p>
+                          
+                        </div>
+                        <hr>
+                            <a href="<?php echo URLROOT ?>/student/editProfile" class="sub-menu-link">
+                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg">
+                            <p>Edit Profile</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                        <img src="<?php echo URLROOT ?>/img/settings.svg">
+                            <p>Settings</p>
+                            <span>></span>
+                        </a>
+                        <a href="#" class="sub-menu-link">
+                        <img src="<?php echo URLROOT ?>/img/handshake.svg">
+                            <p>Help</p>
+                            <span>></span>
+                        </a>
+
+                        <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" class="sub-menu-link">
+                        <img src="<?php echo URLROOT ?>/img/logout.svg">
+                            <p>Log Out</p>
+                            <span>></span>
+                        </a>
+                    </div>
+                </div>
+                <?php endif; ?>
+
+
+             
             </div>
         </div>
     </div>
@@ -382,5 +423,30 @@
         var element;
         element = document.querySelector('.notification-area');
         element.classList.toggle("notification-area-active");
+    }
+
+    function toggleMenu() {
+    let subMenu = document.getElementById("subMenu");
+    subMenu.classList.toggle("open-menu");
+}
+
+function confirmLogout(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        // Use SweetAlert for confirmation
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to logout.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the logout URL
+                window.location.href = event.target.href;
+            }
+        });
     }
 </script>

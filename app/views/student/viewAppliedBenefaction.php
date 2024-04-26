@@ -53,6 +53,10 @@
                                     <td><?php print_r($data['benefactions']->description) ?></td>
                                 </tr>
                                 <tr class="benefaction-data">
+                                    <th>Requested Amount</th>
+                                    <td><?php print_r($data['benefactions']->requestedQuantity) ?></td>
+                                </tr>
+                                <tr class="benefaction-data">
                                     <th>Recieved Amount</th>
                                     <td><?php print_r($data['benefactions']->receivedQuantity) ?></td>
                                 </tr>
@@ -60,38 +64,64 @@
                                     <th>status</th>
                                     <td><?php 
                                         $status = $data['benefactions']->availabilityStatus;
+                                        $Acceptedstatus = $data['benefactions']->acceptanceStatus;
+                                        $completedStatus = $data['benefactions']->verificationStatus;
 
                                         // Echo different divs based on the status
-                                        if ($status === 0) {
+                                        if ($status === 0 && $Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
-                                        } elseif ($status === 1) {
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
-                                        } elseif ($status === 2) {
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 3) {
+                                            echo '<div class="status_rejected"><p>Complainted</p></div>';
+
                                         } else {
-                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                            echo '<div class="status_unknown"><p>Rejected</p></div>';
                                         }
+                                      
                                         ?></td>
                                 </tr>
+
+                                
                                 <tr class="benefaction-data">
                                   
                                     <td><?php 
-                                        $status = $data['benefactions']->availabilityStatus;
 
-                                        // Echo different divs based on the status
-                                        
-                                        if ($status === 1) {
-                                            echo '<div class="status_accepted">
-                                                        <div class="button-container">
-                                                            <button>send acknowledgement</button>
-                                                            <button>did not recieved</button>
-                                                        </div>
-                                                    </div>';
-                                        } else {
-                                            echo '<div class="status_rejected"></div>';
-                                        }
-                                        
-                                        ?></td>
+                                $status = $data['benefactions']->availabilityStatus;
+                                $Acceptedstatus = $data['benefactions']->acceptanceStatus;
+                                $completedStatus = $data['benefactions']->verificationStatus;
+
+                                // Echo different divs based on the status
+
+                                if (($status === 1 && $Acceptedstatus === 1) || ($status === 2 && $Acceptedstatus === 1 && $completedStatus === 1) ) {
+                                 
+                                    echo '<div class="status_accepted">
+                                                <form action="'.URLROOT.'/student/sendAknowledgement" method="GET" class="btn" >
+                                                    <input type="text" name="benefactionID" id="benefactionID" hidden value="' . $data["benefactions"]->benefactionID . '" />
+                                                    <input type="text" name="doneeID" id="doneeID" hidden value="' . $data["benefactions"]->doneeID . '" />
+                                                    <button type="submit" class="button-container" > send acknowledgement</button>
+                                                </form>
+
+                                                <form action="'.URLROOT.'/student/sendBenefactionComplain" method="GET" class="btn" >
+                                                <input type="text" name="benefactionID" id="benefactionID" hidden value="' . $data["benefactions"]->benefactionID . '" />
+                                                <input type="text" name="doneeID" id="doneeID" hidden value="' . $data["benefactions"]->doneeID . '" />
+                                                <button type="submit" class="button-container" > did not received</button>
+                                            </form>
+                                            </div>';
+                                } else {
+                                    echo '<div class="status_rejected"></div>';
+                                }
+                                ?></td>
+
+                                       
                                 </tr>
 
                                 

@@ -41,6 +41,10 @@
                                     <td><?php print_r($data['benefactions']->username); ?></td>
                                 </tr>
                                 <tr class="benefaction-data">
+                                    <th>Posted Date</th>
+                                    <td><?php print_r($data['benefactions']->postedDate); ?></td>
+                                </tr>
+                                <tr class="benefaction-data">
                                     <th>Category</th>
                                     <td><?php print_r($data['benefactions']->itemCategory); ?></td>
                                 </tr>

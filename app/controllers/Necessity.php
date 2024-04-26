@@ -304,6 +304,7 @@ class Necessity extends Controller {
                     'goodsnecessitydes_err' => '',
                     'neccessityitem_err' => ''
                 ];
+                
 
                 //check wheather field are empty or not
 
@@ -339,10 +340,15 @@ class Necessity extends Controller {
                     }
                 }else{
 
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
                     if ($_SESSION['user_type'] == 'student') {
-                        $this->view('student/necessity/addmonetarynecessity', $data);
+                        $this->view('student/necessity/addmonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
-                        $this->view('organization/addgoodsnecessity', $data);
+                        $this->view('organization/addgoodsnecessity', $data, $other_data);
                     }else {
                         die('User Type Not Found');
                     }
@@ -793,7 +799,7 @@ class Necessity extends Controller {
                     // Get 'necessityID' from POST data
                     $necessityID = trim($_POST['necessityID']);
 
-                    $existingData = $this->necessityModel->getALLthedetailsofNecessityByID($necessityID);
+                    $existingData = $this->necessityModel->getALLthedetailsofMonetaryNecessityByID($necessityID);
                     
 
                     $data = [
@@ -935,7 +941,7 @@ class Necessity extends Controller {
                     // Get 'necessityID' from POST data
                     $necessityID = trim($_POST['necessityID']);
 
-                    $existingData = $this->necessityModel->getALLthedetailsofNecessityByID($necessityID);
+                    $existingData = $this->necessityModel->getALLthedetailsofMonetaryNecessityByID($necessityID);
                     
 
                     $data = [
@@ -1061,12 +1067,138 @@ class Necessity extends Controller {
         }
     }
 
-    public function editPhysicalgoodsNecessity(){
-        $data = [
-            'title' => 'Home page'
-        ];
+    // This is the function that pass necessity Id to edit physicall goods necessity page
+    public function editYourPhysicalgoodsNecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
 
-        $this->view('organization/necessity/editpostedmonetarynecessity', $data);
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+
+                    $existingData = $this->necessityModel->getALLthedetailsofPhysicalGoodsNecessityByID($necessityID);
+                    
+
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'necessityCategory' => $existingData->itemCategory, 
+                        'neccessityitem' => $existingData->necessityName,
+                        'requestedgoodsquantity' => $existingData->requestedQuantity,
+                        'goodsnecessitydes' => $existingData->description
+                    ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/editphysicalgoodsnecessity', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+
+                    
+                }
+            }
+        }
+    }
+
+    //This function will get the details from edit physical goods page and use for update
+    public function UpdatePhysicalGoodsNecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+
+
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'requestedgoodsquantity' => isset($_POST['requestedgoodsquantity']) ? trim($_POST['requestedgoodsquantity']) : '',
+                        'goodsnecessitydes' => isset($_POST['goodsnecessitydes']) ? trim($_POST['goodsnecessitydes']) : '',
+                        'requestedgoodsquantity_err' => '',
+                        'goodsnecessitydes_err' => ''
+                    ];
+
+                    //check wheather field are empty or not
+
+                    //necessity field
+                    if(empty($data['requestedgoodsquantity'])){
+                        $data['requestedgoodsquantity_err']='Please enter the Necessity quantity you need ';
+                    }
+
+                    //necessity description field
+                    if(empty($data['goodsnecessitydes'])){
+                        $data['goodsnecessitydes_err']='Please enter the Description about Requested Necessity';
+                    }
+
+                    //check whether there any errors
+                    if(empty($data['requestedgoodsquantity_err']) && empty($data['goodsnecessitydes_err'])){
+                        if($this->necessityModel->editphysicalgoodsnecessitytodb($data)){
+                            redirect('necessity/physicalgood');
+                        }else{
+                            error_log('Error: Failed to insert data into the database.');
+                            die('something went wrong');
+                        }
+                    }else{
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
+                        if ($_SESSION['user_type'] == 'student') {
+
+                        }else if ($_SESSION['user_type'] == 'organization') {
+                            $this->view('organization/necessity/editphysicalgoodsnecessity', $data, $other_data);
+                        }else {
+                            die('User Type Not Found');
+                        }
+                        
+                    }
+                }else{
+                    die('Necessity is not found');
+                }
+
+            }else{
+
+                $data = [
+                    'necessityID' => '',
+                    'requestedgoodsquantity' => '',
+                    'goodsnecessitydes' => '',
+                    'requestedgoodsquantity_err' => '',
+                    'goodsnecessitydes_err' => ''
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/editphysicalgoodsnecessity', $data, $other_data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+
+        }
     }
 
 

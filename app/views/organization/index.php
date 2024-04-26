@@ -3,7 +3,7 @@
 <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "benefactions";?>
+<?php $section = "dashboard";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
@@ -12,7 +12,7 @@
 
             <!-- Title container -->
             <div class="donor-dashboard-introduction">
-                <h1>Welcome Back <b>....Name.....<b></h1>
+                <h1>Welcome Back <b><?php echo $_SESSION['user_name']?><b></h1>
                 <p>Here's The Latest Updates</p>
             </div>
 
@@ -92,10 +92,10 @@
                 label: 'Dataset 1',
                 data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * 100)),
                 backgroundColor: [
-                    'red',
-                    'orange',
-                    'yellow',
-                    'green'
+                    '#8e0000',
+                    '#bf644f',
+                    '#d38a78',
+                    '#f3d7d0'
                 ]
             }]
         };

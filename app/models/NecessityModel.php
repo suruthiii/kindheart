@@ -278,7 +278,6 @@ class NecessityModel{
     }
 
     public function addgoodsnecessitytodb($data){
-        print_r($data);
         //sql statement for adding Goods necessity, necessity table
         $this->db->query('INSERT INTO necessity(necessityName,necessityType,fulfillmentStatus,description,doneeID) 
         VALUES (:neccessityitem, :necessityType,:fulfillmentStatus, :goodsnecessitydes, :doneeID)');
@@ -311,6 +310,41 @@ class NecessityModel{
             $this->db->bind(':necessityCategory', $data['necessityCategory']);
 
             $result2 = $this->db->execute();
+
+            if ($result2) {
+                return true;
+            } else {
+                // Print error message for debugging
+                printf("Error: %s\n", $this->db->getError());
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public function editphysicalgoodsnecessitytodb($data){
+        //sql statement for Updating Goods necessity, necessity table
+        $this->db->query('UPDATE necessity SET description = :goodsnecessitydes WHERE necessityID = :necessityID');
+
+        // Binding values with array value
+        $this->db->bind(':necessityID', $data['necessityID']);
+        $this->db->bind(':goodsnecessitydes', $data['goodsnecessitydes']);
+        
+        $result = $this->db->execute();
+
+        if($result){
+            
+            //sql statement for Updating monetary necessity, physical goods table
+            $this->db->query('UPDATE physicalgood SET requestedQuantity = :requestedgoodsquantity WHERE goodNecessityID = :necessityID');
+
+            // Binding values with array value
+            $this->db->bind(':necessityID', $data['necessityID']);
+            $this->db->bind(':requestedgoodsquantity', $data['requestedgoodsquantity']);
+
+            $result2 = $this->db->execute();
+
+            var_dump($result2);
 
             if ($result2) {
                 return true;
@@ -468,7 +502,7 @@ class NecessityModel{
         return $row->total_received;
     }
 
-    public function getALLthedetailsofNecessityByID($necessityID){
+    public function getALLthedetailsofMonetaryNecessityByID($necessityID){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
             FROM necessity n 
             JOIN money m ON n.necessityID = m.monetaryNecessityID 
@@ -480,26 +514,26 @@ class NecessityModel{
         return $result;
     }
 
-    public function getDonordWhoDonatedForthisNecessity($necessityID){
-        // $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
-        //     FROM necessity n 
-        //     JOIN money m ON n.necessityID = m.monetaryNecessityID 
-        //     WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
+    public function getALLthedetailsofPhysicalGoodsNecessityByID($necessityID){
+        $this->db->query("SELECT n.necessityID, n.necessityName,n.necessityType, n.description, n.fulfillmentStatus,(p.requestedQuantity - p.receivedQuantity) AS quantity_due,p.requestedQuantity,p.receivedQuantity,p.itemCategory
+            FROM necessity n 
+            JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
+            WHERE n.necessityID = :necessityID");
             
-        // $this->db->bind(':necessityID', $necessityID);
-    
-        // $result = $this->db->single();
-        // return $result;
-
-        $this->db->query("SELECT money.monetaryNecessityType FROM money WHERE money.monetaryNecessityID = :necessityID");
         $this->db->bind(':necessityID', $necessityID);
+    
         $result = $this->db->single();
+        return $result;
+    }
 
-        if($result == 'recurring'){
+    public function getDonordWhoDonatedForthisNecessity($necessityID){
+        $this->db->query("SELECT user.username, onetimedonation.* FROM user
+                        INNER JOIN donor ON user.UserID = donor.donorID
+                        INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+                        WHERE onetimedonation.monetaryNecessityID = $necessityID");
+    
+        $result = $this->db->resultSet();
 
-        }else if($result == 'onetime'){
-
-        }
 
         return $result;
     }
