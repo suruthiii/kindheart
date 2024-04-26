@@ -1234,7 +1234,9 @@ class Necessity extends Controller {
                 $data = [
                     'title' => 'Home Page',
                     'necessity_ID' => $_GET['necessity_ID'],
-                    'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID'])
+                    'necessity_type' => $necessity_type,
+                    'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID']),
+                    'donation_details' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1242,7 +1244,9 @@ class Necessity extends Controller {
                 $data = [
                     'title' => 'Home Page',
                     'necessity_ID' => $_GET['necessity_ID'],
-                    'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID'])
+                    'necessity_type' => $necessity_type,
+                    'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID']),
+                    'donation_details' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1256,7 +1260,9 @@ class Necessity extends Controller {
                 $data = [
                     'title' => 'Home Page',
                     'necessity_ID' => $_GET['necessity_ID'],
-                    'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID'])
+                    'necessity_type' => $necessity_type,
+                    'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID']),
+                    'donation_details' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1264,7 +1270,9 @@ class Necessity extends Controller {
                 $data = [
                     'title' => 'Home Page',
                     'necessity_ID' => $_GET['necessity_ID'],
-                    'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID'])
+                    'necessity_type' => $necessity_type,
+                    'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID']),
+                    'donation_details' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1283,6 +1291,18 @@ class Necessity extends Controller {
         ];
 
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data, $other_data);
+    }
+
+    public function viewDonationDetails() {
+        if(isset($_GET['oneTimeDonationID'])){
+
+        }
+        else if(isset($_GET['monetaryNecessityID'])){
+            
+        }
+        else{
+            die('invalid');
+        }
     }
 
     public function viewGood() {
