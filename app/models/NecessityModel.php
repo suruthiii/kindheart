@@ -527,25 +527,13 @@ class NecessityModel{
     }
 
     public function getDonordWhoDonatedForthisNecessity($necessityID){
-        // $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
-        //     FROM necessity n 
-        //     JOIN money m ON n.necessityID = m.monetaryNecessityID 
-        //     WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
-            
-        // $this->db->bind(':necessityID', $necessityID);
+        $this->db->query("SELECT user.username, onetimedonation.* FROM user
+                        INNER JOIN donor ON user.UserID = donor.donorID
+                        INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+                        WHERE onetimedonation.monetaryNecessityID = $necessityID");
     
-        // $result = $this->db->single();
-        // return $result;
+        $result = $this->db->resultSet();
 
-        $this->db->query("SELECT money.monetaryNecessityType FROM money WHERE money.monetaryNecessityID = :necessityID");
-        $this->db->bind(':necessityID', $necessityID);
-        $result = $this->db->single();
-
-        if($result == 'recurring'){
-
-        }else if($result == 'onetime'){
-
-        }
 
         return $result;
     }
