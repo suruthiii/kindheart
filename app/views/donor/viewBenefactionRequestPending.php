@@ -98,45 +98,78 @@
                     <!-- Display user-profile or no requests message -->
                     <div class="user-profile-right-side-bar-all-user-profiles">
                         <div class="user-profile-right-side-bar-all-user-profiles-inner">
-                            <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
-                                <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
-                            </div>
-                            <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
-                                <table>
-                                    <tr class="user-profile-data">
-                                        <th>Name</th>
-                                        <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Donee Type</th>
-                                        <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Gender</th>
-                                        <td><?php print_r($data['user_profile'][0]->gender); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Date Of Birth</th>
-                                        <td><?php print_r($data['user_profile'][0]->dateOfBirth); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Institution Name</th>
-                                        <td><?php print_r($data['user_profile'][0]->institutionName); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Studying Year</th>
-                                        <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Address</th>
-                                        <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
-                                    </tr>
-                                    <tr class="user-profile-data">
-                                        <th>Phone Number</th>
-                                        <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
-                                    </tr>
-                                </table>          
-                            </div>
+                            <?php if ($data['user_profile'][0]->userType === 'student'): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Donee Type</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Gender</th>
+                                            <td><?php print_r($data['user_profile'][0]->gender); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Date Of Birth</th>
+                                            <td><?php print_r($data['user_profile'][0]->dateOfBirth); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Institution Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->institutionName); ?></td>
+                                        </tr>
+                                        <?php if ($data['user_profile'][0]->doneeType === 'School Student'): ?>
+                                            <tr class="user-profile-data">
+                                                <th>Grade</th>
+                                                <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                            </tr>
+                                        <?php elseif ($data['user_profile'][0]->doneeType === 'University Student'): ?>
+                                            <tr class="user-profile-data">
+                                                <th>Studying Year</th>
+                                                <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </table>          
+                                </div>
+                            <?php elseif ($data['user_profile'][0]->userType === 'organization'): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Donee Type</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                        </tr>
+                                    </table>          
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
