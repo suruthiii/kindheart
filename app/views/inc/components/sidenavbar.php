@@ -283,11 +283,11 @@
                 </a> -->
                
 
-                <div class="item">
+                <!-- <div class="item">
                     <a href="<?php echo URLROOT ?>/users/logout" onclick="confirmLogout(event)" style="color: rgb(184, 116, 116);">
                         Log Out
                     </a>
-                </div>
+                </div> -->
             <?php } ?>
 
             <!------------------- Organization ------------------>

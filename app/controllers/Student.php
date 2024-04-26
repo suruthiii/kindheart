@@ -13,6 +13,8 @@ class Student extends Controller {
         $this->notificationModel = $this->model('NotificationModel');
         $this->userModel= $this->model('userModel');
         $this->ScholarshipModel= $this->model('ScholarshipModel');
+        $this->userModel= $this->model('userModel');
+        $this->ScholarshipModel= $this->model('ScholarshipModel');
     }
 
     public function index(){
@@ -30,6 +32,7 @@ class Student extends Controller {
 
 
 
+
     public function necessities(){
         $data = [
             'title' => 'Home page'
@@ -43,6 +46,7 @@ class Student extends Controller {
         $this->view('student/necessities', $data, $other_data);
     }
 
+    
     
 
     public function successstory(){
@@ -169,6 +173,115 @@ class Student extends Controller {
     }
 
 
+
+
+
+
+    public function scholarships(){
+
+        $data = [
+            'title' => 'Home page',
+            'scholarships' => $this->ScholarshipModel->getScholarships()
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/scholarships', $data, $other_data);
+    }
+
+
+    public function editProfile(){
+        $userID =  $_SESSION['user_id'];
+
+        $data = [
+            'title' => 'Home page',
+            'studentData' => $this->studentModel->getStudentDetails($userID)
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/editProfile', $data, $other_data);
+    }
+
+
+    public function editProfileDetails(){  
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+           
+            $data = [
+                'fName' => trim($_POST['fName']),
+                'lName' => trim($_POST['lName']),
+                'gender' => trim($_POST['gender']),
+                'dateOfBirth' => trim($_POST['dateOfBirth']),
+                'nicNumber' => trim($_POST['nicNumber']),
+                'institutionName' => trim($_POST['institutionName']),
+                'studentType' => trim($_POST['studentType']),
+                'caregiverName' => trim($_POST['caregiverName']),
+                'caregiverType' => trim($_POST['caregiverType']),
+                'caregiverRelationship' => trim($_POST['caregiverRelationship']),
+                'caregiverOccupation' => trim($_POST['caregiverOccupation']),
+                'studyingYear' => trim($_POST['studyingYear']),
+                'phoneNumber' => trim($_POST['phoneNumber']),
+                'branchName' => trim($_POST['branchName']),
+                'bankName' => trim($_POST['bankName']),
+                'accNumber' => trim($_POST['accNumber']),
+                'accountHoldersName' => trim($_POST['accountHoldersName']),
+                'address' => trim($_POST['address']),
+                'receivingScholarships' => trim($_POST['receivingScholarships']),
+                'err' => ''
+            ];
+
+
+            // Make sure errors are empty
+            if (empty($data['err'])) {
+            
+                // Add Data to DB
+                if ($this->studentModel->editProfileDetails($data)) {
+                    if ($_SESSION['user_type'] == 'student') {
+                        redirect('student/editProfile');
+                    }
+                    
+                    else if ($_SESSION['user_type'] == 'organization') {
+        
+                    }
+        
+                    else {
+                        die('User Type Not Found');
+                    }
+                    
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                die('Something went wrong');
+                // $backend_data = $this->SuccessStoryModel->getStoryEditData($data['storyID']);
+
+                // $story_data = [
+                //     'title' => 'Edit Admin',
+                //     'story_details' => [
+                //         'storyID' => $backend_data->storyID,
+                //         'title' => $backend_data->title, 
+                //         'description' => $backend_data->description,
+                //         'username' => $backend_data->username
+
+                //     ],
+                //     'err' => $data['err']
+                // ];
+                
+                // $this->view('student/editStory', $story_data);
+            }
+        }else{
+            die('incorrect method!');
+        }
+    }
+
+
     public function benefactions(){
 
         $data = [
@@ -177,7 +290,12 @@ class Student extends Controller {
             'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
             
 
+            
+
         ];
+        //die(print_r($data['appliedBenefactions']));
+        
+        // die(print_r($data['completedBenefaction']));
         //die(print_r($data['appliedBenefactions']));
         
         // die(print_r($data['completedBenefaction']));
@@ -193,8 +311,13 @@ class Student extends Controller {
     public function benefactionview(){
 
         $benefactionID = $_GET['benefactionID'];
+    public function benefactionview(){
+
+        $benefactionID = $_GET['benefactionID'];
 
         $data = [
+            'title' => 'Home page',
+            'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
         ];
@@ -203,11 +326,15 @@ class Student extends Controller {
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications(),
             
+            'notifications' => $this->notificationModel->viewNotifications(),
+            
         ];
 
         $this->view('student/benefactionview', $data, $other_data);
+        $this->view('student/benefactionview', $data, $other_data);
     }
 
+    public function benefactionviewNotApplied(){
     public function benefactionviewNotApplied(){
 
         $benefactionID = $_GET['benefactionID'];
@@ -216,16 +343,21 @@ class Student extends Controller {
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
            
+            'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
+           
         ];
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications(),
             
+            'notifications' => $this->notificationModel->viewNotifications(),
+            
         ];
 
         $this->view('student/benefactionview', $data, $other_data);
     }
+
 
 
     public function ApplyForBenefaction(){
@@ -236,7 +368,9 @@ class Student extends Controller {
             'title' => 'Home page',
             'benefactionID' => $benefactionID,
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
+            'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
             'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
+           
            
         ];
 
@@ -253,7 +387,9 @@ class Student extends Controller {
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
 
+
         ];
+     
      
 
         $other_data = [
