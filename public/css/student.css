@@ -295,6 +295,10 @@
 }
 
 
+
+
+
+
 .dash-card-container{
     height: 600px;
     width: 100%;
@@ -429,13 +433,13 @@
 .application-form-data label {
     margin-bottom: 4px;
     margin-top: 4px;
-    color: rgba(0, 0, 0, 0.777);
+    color: rgba(52, 52, 52, 0.777);
 }
  
 .application-form-data input[type=number]{
     width: 75%;
     font-family: 'Inter', sans-serif;
-    border: 1px solid #707070;
+    border: 1px solid #686868;
     border-radius: 6px;
     outline: none;
     padding: 5px;
@@ -622,5 +626,321 @@
     padding: 10px;
     border-color: transparent;
 }
+
+
+/*------------Scholarship cards ------------>*/
+
+.scholarship-card-container{
+    position: fixed;
+    width: 30%;
+    height: 73vh;
+    margin-top: 15vh;
+    padding-left: 10%;
+    padding-top: 100px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+
+}
+
+.scholarship-card-container .card{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-left: 20%;
+    width: 100%;
+}
+
+.scholarship-card-container  .card .course{
+    background-color: #f9eaea;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px rgba(0,0,0,.2);
+    display: flex;
+    overflow: hidden;
+    transform: translate(-50%,-50%);
+}
+
+.scholarship-card-container  .card .course h6{
+    opacity: .6;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+
+}
+.scholarship-card-container  .card .course h2{
+    letter-spacing: 1px;
+
+    word-wrap: break-word;
+    line-break: strict;
+}
+.scholarship-card-container  .card .course h4{
+    opacity: .4;
+    letter-spacing: 1px;
+    text-decoration: wavy;
+
+}
+
+.scholarship-card-container  .card .course .preview{
+    background-color: #6e0303;
+    color: #fff;
+    width: 20% !important;
+    max-width: 20% !important;
+    min-width: 20%;
+    padding-right: 30px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.scholarship-card-container  .card .course .info{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-bottom: 15px;
+
+}
+.scholarship-card-container  .card .course .info p{
+
+    font-weight: bold;
+
+}
+
+
+.scholarship-card-container  .card .course .info .btn{
+    display: flex;
+    flex-direction: row;
+    width: 40%;
+
+
+}
+
+.scholarship-card-container  .card .course .info .btn button{
+    background-color: #8e0000;
+    border: solid transparent;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 10px 10px;
+    /* position:absolute; */
+    bottom: 30px;
+    right: 30px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    border-radius: 10px;
+   
+    display: flex;
+    margin-right: 5px;
+    text-align: center;
+
+}  
+
+
+
+
+/*-----------edit profile  ------------>*/
+
+.edit-profile-form .lines .edit-profile-picture{
+  
+    height: 100px;
+    width: 80%;
+    display: flex; /* Add flexbox to center the profile picture */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    border-radius: 50%; /* Make the parent div rounded */
+    overflow: auto;
+}
+.edit-profile-form .lines .edit-profile-picture .profile-picture{
+    border-radius: 50%; /* Make the profile picture rounded */
+    height: 100px; /* Adjust the height of the image */
+    width: 100px; /* Adjust the width of the image */
+    
+    
+
+}
+
+
+.edit-profile-form{
+    margin-top: 10%;
+    position: fixed;
+    width: 70%;
+    height: 70%; /* Set the height of the div */
+    display: flex;
+    flex-direction: column;  
+    overflow-y: scroll; /* Allow vertical scrolling */
+    
+}
+
+.edit-profile-form .lines{
+    width: 50%;
+    padding-bottom: 30px;
+
+}
+
+.edit-profile-form .lines input {
+    height: 6vh;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background-color: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+
+}
+
+.edit-profile-form .lines label{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+
+
+
+}
+.edit-profile-form .lines textarea{
+    color: #8692A6;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+    width: 100%;
+    height: 30%;
+}
+
+.edit-profile-form h4{
+    font-size: 20px;
+    font-weight: 300;
+    
+}
+
+.edit-profile-form .btn input{
+    background-color: #8e0000;
+    border: solid transparent;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    padding: 20px 20px;
+    /* position:absolute; */
+    bottom: 100px;
+    right: 30px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .4s ease-in-out;
+    border-radius: 10px;
+    display: flex;
+    margin-right: 5px;
+    text-align: center;
+    
+}
+
+
+
+/*------------donor list display cards------------>*/
+  
+.tile-list-donor{
+    margin-right: 300px;
+    margin-top: 40%;
+}
+
+.tile-list-donor.tiles-donor {
+    overflow: scroll;
+    height: 600px;
+    width: 110%;
+    margin-top: 100px;
+    padding: 4px 12px;
+}
+
+
+.tile-list-donor .tiles-donor .tile-donor{
+   width: 100%;
+   height: 70px;
+   border-radius: 20px;
+   border: 1px solid white;
+   transition: 0.2s;
+   margin-top: 10px;
+   padding-top: 3px;
+   box-shadow: 0 0 5px 0.1px rgba(0, 0, 0, 0.171);
+   transition: 0.2s;
+}
+
+.tile-list-donor .tiles-donor .tile-donor:hover{
+    /* border: 1px solid rgba(127, 127, 127, 0.2); */
+    scale: 1.02;
+    background-color: rgba(0, 0, 0, 0.03);
+ }
+
+ .tile-list-donor .tiles-donor .tile-donor table{
+    width: 100%;
+    height: 100%;
+    padding: 0 10px 0 10px;
+ }
+
+.tile-list-donor .tiles-donor .tile-donor table tr{
+    width: 100%;
+    height: 100%;
+}
+
+.tile-list-donor .tiles-donor .tile-donor table tr .tile-name{
+    margin-top: 5px;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+.details-Container{
+    overflow-y: auto;
+    width: 90%;
+    height: 100%;
+    background-color: #6e0303;
+}
+
+.details-Container table{
+    height: 100%;
+    width: 90%;
+    padding: 10px 10px 0 10px;
+    overflow-y: auto;
+}
+
+
+.details-Container table tr{
+    width: 50%;
+    height: 100%;
+
+}
+
+.details-Container table tr td .detail-name{
+
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding-top: 20px;
+    max-width: 20px;
+
+
+
+}
+.details-Container table tr td .detail-value{
+
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding-top: 20px;
+    max-width: 20px;
+
+}
+
+
+
+
+
+
 
 

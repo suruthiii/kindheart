@@ -31,7 +31,7 @@
                             <h3><?php echo $item->itemName; ?></h3>
                             <p>posted by <?php echo $item->username; ?></p>
                             <div class="btn-container">
-                            <form action="<?php echo URLROOT ?>/student/benefactionview" method="GET" class="btn" >
+                            <form action="<?php echo URLROOT ?>/student/benefactionviewNotApplied" method="GET" class="btn" >
                                 <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
                                 <button type="submit" class="btn1" > View </button>
                             </form>
@@ -72,17 +72,29 @@
                                 <div class="right">
                                     
                                         <p><?php 
-                                        $status = $item->verificationStatus;
+                                        $status = $item->availabilityStatus ;
+                                        $Acceptedstatus = $item->acceptanceStatus  ;
+                                        $completedStatus = $item->verificationStatus  ;
+                                        
 
                                         // Echo different divs based on the status
-                                        if ($status === 0) {
+                                        if ($status === 0 && $Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
-                                        } elseif ($status === 1) {
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
-                                        } elseif ($status === 2) {
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 1) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
+
+                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 3) {
+                                            echo '<div class="status_rejected"><p>Complainted</p></div>';
+
                                         } else {
-                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                            echo '<div class="status_unknown"><p>Rejected</p></div>';
                                         }
                                         ?></p>
                                                                   
