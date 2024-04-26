@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/Necessity/" method="POST" onsubmit="return validateForm()">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/necessity/UpdateonetimeMonetaryNecessity" method="POST" onsubmit="return validateForm()">
                         <!-- First line of form -->
                         <div class="add-necessity-one-line-input">
                             <label for="necessityMonetary">Necessity</label>
@@ -52,6 +52,7 @@
 
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
+                            <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['necessityID']; ?>">
                             <input type="submit" value="Update">
                         </div>
                     </form>
