@@ -55,23 +55,27 @@
                             </tr>
                         </table>                    
                     </div>
-                    <div class="benefactionRequest-donationinfo" style="display: none;">
-                        <div class="benefactionRequest-donationinfo1">
-                            <label for="donationQunatity">Donating Quantity</label>
-                            <div class="benefactionRequest-donationdata">
-                                <input class="benefactionRequest--input" type="number" name="donationQunatity" value="" >
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/benefactionRequestDonationSubmit" method="get">
+                        <div class="benefactionRequest-donationinfo" style="display: none;">
+                            <div class="benefactionRequest-donationinfo1">
+                                <label for="donationQunatity">Donating Quantity</label>
+                                <div class="benefactionRequest-donationdata">
+                                    <input class="benefactionRequest--input" type="number" name="donationQunatity" value="<?php echo isset($data['donationQunatity']) ? $data['donationQunatity'] : ''; ?>" >
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationQunatity_err']) ? $data['donationQunatity_err']: ''; ?> </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="benefactionRequest-donationinfo1">
-                            <label for="donationQunatity">Delivery Reciept</label>
-                            <div class="benefactionRequest-donationdata">
-                                <label for="donationQunatity" class="benefactionRequest-donationdata-image">
-                                    <p>Upload the Receipt</p>
-                                    <input type="file" id="donationQunatity" name="donationQunatity" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
-                                </label>
+                            <div class="benefactionRequest-donationinfo1">
+                                <label for="donationQunatity">Delivery Reciept</label>
+                                <div class="benefactionRequest-donationdata">
+                                    <label for="deliveryReceipt" class="benefactionRequest-donationdata-image">
+                                        <p>Upload the Receipt</p>
+                                        <input type="file" id="deliveryReceipt" name="deliveryReceipt" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
+                                    </label>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <span class="donor-form-error-details" id="deliveryReceipt_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deliveryReceipt_err']) ? $data['deliveryReceipt_err']: ''; ?></span>
+                        </div>                    
+                    </form>
                 </div>
 
                 <div class="view-benefactionRequest-btn-container">
@@ -83,20 +87,20 @@
                         </button>
                     </form> -->
 
-                    <form action="<?php echo URLROOT ?>/benefaction/" method="post" class="accept-request" id="acceptForm">
-                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
-                        <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
-                        <button type="botton" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmAccept(event)" >
+                    <form class="make-donation" id="acceptForm">
+                        <!-- <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" /> -->
+                        <!-- <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" /> -->
+                        <button type="botton" class="benefactionRequest_button" style="cursor: pointer;"onclick="showDonationInfo()" >
                             <img src="<?php echo URLROOT ?>/img/check.png" style="filter: invert(100%); width:18px;">
                             <h5>Make the Donation</h5>
                         </button>
                     </form>
 
-                    <form action="<?php echo URLROOT ?>/benefaction/" method="post" class="decline-request" id="declineForm">
+                    <form action="<?php echo URLROOT ?>/benefaction/" method="post" class="submit-request" id="submitForm" style="display: none;">
                         <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
                         <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
-                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmDecline(event)" >
-                            <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;">
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmSubmit(event)" >
+                            <!-- <img src="<?php echo URLROOT ?>/img/close.png" style="filter: invert(100%); width:11px;"> -->
                             <h5>Submit</h5>
                         </button>
                     </form>
@@ -116,14 +120,15 @@
     function showDonationInfo() {
         // Show the donation info div
         const donationInfoDiv = document.querySelector('.benefactionRequest-donationinfo');
-        donationInfoDiv.style.display = 'block';
+        donationInfoDiv.style.display = 'flex';
 
         // Disable the Make Donation button
-        const makeDonationButton = document.querySelector('.accept-request .benefactionRequest_button');
+        const makeDonationButton = document.querySelector('.make-donation .benefactionRequest_button');
         makeDonationButton.disabled = true;
+        makeDonationButton.style.backgroundColor = 'rgb(211, 211, 211)';
 
         // Show the Decline Request button
-        const declineButtonForm = document.querySelector('.decline-request');
+        const declineButtonForm = document.querySelector('.submit-request');
         declineButtonForm.style.display = 'block';
     }
 
