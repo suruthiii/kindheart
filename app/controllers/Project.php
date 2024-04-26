@@ -450,6 +450,45 @@ class Project extends Controller {
         }
     }
 
+    // This is the function that pass necessity Id to edit one-time necessity page
+    public function editPostedProjects(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
+
+                    // $existingData = $this->projectModel->getALLthedetailsofNecessityByID($projectID);
+                    
+
+                    $data = [
+                        'projectID' => $projectID,
+                        
+                    ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+
+                    if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/project/editpostedProjectsInterface', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+
+                    
+                }
+            }
+        }
+    }
+
     // viewCompletedProjectDetails
 
     public function viewDoneeProfile($project_ID = null, $org_ID = null) {

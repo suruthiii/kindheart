@@ -23,12 +23,12 @@
                 </div>
                 <div class="donor-dashboard-status-bar">
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
-                        <h1>12 300</h1>
+                        <p>Total (Monetary) Donation You Recieve</p>
+                        <h1>Rs. <?php echo number_format(isset($data['totalReceivedAmount']) ? $data['totalReceivedAmount'] : 0 , 2); ?></h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
-                        <h1>12 300</h1>
+                        <p>Total (Goods) Donation You Recieve</p>
+                        <h1><?php echo number_format($data['totalReceivedQuantity']); ?> items</h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Donation Status</p>
