@@ -65,7 +65,23 @@
             </div>
 
             <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <div class="rightside-bar-type-one">
+                <div class="right-side-bar">
+                    <!-- Image -->
+                    <div class="rightside-bar-type-one-image">
+                        <img src="<?php echo URLROOT ?>/img/Asset_1hif_1.png">
+                    </div>
+                    <!-- Ask only for what you really need -->
+                    <div class="rigntside-bar-type-one-description" style="padding-right: 10px;">
+                        <h4>Let's Update Your Project</h4>
+                        <p> We provide you the option to Update <b>Project Title, Project Description </b> on your Projects.
+                            Update the Project Title/Description to Give better understanding to Donor
+                        </p>
+                        <p>Hope this will Help you.</p>
+                    </div>
+
+                </div>
+            </div>
 
         </div>
     </section>
