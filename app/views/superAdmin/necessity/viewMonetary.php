@@ -51,10 +51,9 @@
                     <h4 style="text-align:center">Donations</h4>
                 </div>
                 <div class="right-cards">  
-
                         <?php if($data['necessity_type'] == 'onetime') {?>
-                            <a href="">
-                                <?php foreach($data['donation_details'] as $item) { ?>
+                            <?php foreach($data['donation_details'] as $item) { ?>
+                                <a href="<?php echo URLROOT?>/necessity/viewdonationdetails?oneTimeDonationID=<?php echo $item->oneTimeDonationID ?>">
                                     <div class="right-card" style="display:flex;">
                                         <div class="left-side-content" style="width:50%; padding-left:5px">
                                             <div class="title" style=""><?php echo $item->donorName ?></div>
@@ -69,13 +68,13 @@
                                             <?php }?> 
                                         </div>
                                     </div>
-                                <?php }?>
-                            </a>
+                                </a>
+                            <?php }?>
                         <?php }
 
                         else if($data['necessity_type'] == 'recurring') {?>
-                            <a href="">
-                                <?php foreach($data['donation_details'] as $item) { ?>
+                            <?php foreach($data['donation_details'] as $item) { ?>
+                                <a href="<?php echo URLROOT?>/necessity/viewdonationdetails?monetaryNecessityID=<?php echo $item->monetaryNecessityID ?>">
                                     <div class="right-card" style="display:flex;">
                                         <div class="left-side-content" style="width:50%; padding-left:5px">
                                             <div class="title" style=""><?php echo $item->donorName ?></div>
@@ -90,8 +89,8 @@
                                             <?php }?> 
                                         </div>
                                     </div>
-                                <?php }?>
-                            </a>    
+                                </a>    
+                            <?php }?>
                         <?php }?>
                     </a>
                 </div>

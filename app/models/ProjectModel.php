@@ -187,4 +187,12 @@ class ProjectModel{
         return $result;
     }
 
+    public function getMilestoneCardDetails($project_ID) {
+        $this->db->query('SELECT milestoneID, milestoneName, amount, status FROM milestone WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $project_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 }    

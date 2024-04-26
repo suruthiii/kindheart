@@ -1160,6 +1160,18 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data, $other_data);
     }
 
+    public function viewDonationDetails() {
+        if(isset($_GET['oneTimeDonationID'])){
+
+        }
+        else if(isset($_GET['monetaryNecessityID'])){
+            
+        }
+        else{
+            die('invalid');
+        }
+    }
+
     public function viewGood() {
         $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
                 

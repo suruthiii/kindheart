@@ -213,7 +213,8 @@ class Project extends Controller {
         $data = [
             'title' => 'Home Page',
             'project_ID' => $_GET['project_ID'],
-            'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID'])
+            'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
+            'milestone_details' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
         ];
 
         $other_data = [
@@ -229,14 +230,6 @@ class Project extends Controller {
 
         else if($userType == 'superAdmin') {
             $this->view('superAdmin/project/viewProject', $data, $other_data);
-        }
-
-        else if($userType == 'organization') {
-
-        }
-
-        else if($userType == 'donor') {
-
         }
 
         else {
