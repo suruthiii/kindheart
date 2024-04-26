@@ -526,15 +526,146 @@ class NecessityModel{
         return $result;
     }
 
-    public function getDonordWhoDonatedForthisNecessity($necessityID){
-        $this->db->query("SELECT user.username, onetimedonation.* FROM user
-                        INNER JOIN donor ON user.UserID = donor.donorID
-                        INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
-                        WHERE onetimedonation.monetaryNecessityID = $necessityID");
+    // public function getDonorsWhoDonatedForThisNecessity($necessityID) {
+    //     // Selecting data
+    //     $this->db->query("SELECT user.username, onetimedonation.* FROM user
+    //                         INNER JOIN donor ON user.UserID = donor.donorID
+    //                         INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+    //                         WHERE onetimedonation.monetaryNecessityID = :necessityID");
+    //     $this->db->bind(':necessityID', $necessityID);
+    //     $result = $this->db->resultSet();
     
+    //     // Create an empty array to store the rows that meet the condition
+    //     $rows = [];
+    
+    //     // Loop through each row in the result set
+    //     foreach ($result as $row) {
+    //         // Check if onetimedonation.amount is equal to or less than money.requestedAmount
+    //         $this->db->query("SELECT money.*, necessity.fulfillmentStatus
+    //                             FROM money
+    //                             INNER JOIN necessity ON money.monetaryNecessityID = necessity.necessityID
+    //                             WHERE money.monetaryNecessityID = :necessityID");
+    //         $this->db->bind(':necessityID', $necessityID);
+    //         $moneyResult = $this->db->single();
+
+    
+    //         if ($row->amount >= $moneyResult->requestedAmount) {
+    //             // Update money table as onetimedonation.amount is equal to or more than requestedAmount
+    //             $receivedAmount = $moneyResult->receivedAmount + $row->amount;
+    //             $this->db->query("UPDATE money SET receivedAmount = :receivedAmount WHERE monetaryNecessityID = :necessityID");
+    //             $this->db->bind(':receivedAmount', $receivedAmount);
+    //             $this->db->bind(':necessityID', $necessityID);
+    //             $this->db->execute();
+    
+    //             // Add the row to the result array
+    //             $rows[] = $row;
+
+    //         } else {
+    //             // Update money table as onetimedonation.amount is less than requestedAmount
+    //             $receivedAmount = $moneyResult->receivedAmount + $row->amount;
+    //             $this->db->query("UPDATE money SET receivedAmount = :receivedAmount WHERE monetaryNecessityID = :necessityID");
+    //             $this->db->bind(':receivedAmount', $receivedAmount);
+    //             $this->db->bind(':necessityID', $necessityID);
+    //             $this->db->execute();
+    
+    //             // Add the row to the result array
+    //             $rows[] = $row;
+    //         }
+
+    //         if($receivedAmount == $moneyResult->requestedAmount){
+    //             $this->db->query("UPDATE necessity SET fulfillmentStatus = 1 WHERE necessityID = :necessityID");
+    //             $this->db->bind(':necessityID', $necessityID);
+    //             $this->db->execute();
+
+    //             break;
+    //         }
+    //     }
+    
+    //     // Return the array of rows
+    //     return $rows;
+    // }
+    
+    public function getDonorsWhoDonatedForThisNecessity($necessityID){
+        // Fetching donors who donated for the specified necessity and their donation details
+        $this->db->query("SELECT user.username, onetimedonation.*, money.requestedAmount 
+                          FROM user
+                          INNER JOIN donor ON user.UserID = donor.donorID
+                          INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+                          INNER JOIN money ON onetimedonation.monetaryNecessityID = money.monetaryNecessityID
+                          WHERE onetimedonation.monetaryNecessityID = :necessityID");
+        $this->db->bind(':necessityID', $necessityID);
         $result = $this->db->resultSet();
+        
+        // Fetching the received amount for the specified necessity
+        $this->db->query("SELECT requestedAmount 
+                          FROM money
+                          WHERE monetaryNecessityID = :necessityID");
+        $this->db->bind(':necessityID', $necessityID);
+        $moneyResult = $this->db->single();
+        
+        $requestedAmount = $moneyResult->requestedAmount;
+        
+        // Array to hold the filtered results
+        $filteredResults = array();
+        $amountsum = 0;
+    
+        foreach ($result as $row) {
+            $amountsum += $row->amount;
 
+            // Comparing the total donated amount to the requested amount
+            if ($amountsum <= $requestedAmount) {
+                $filteredResults[] = $row;
+            }else{
+                $filteredResults[] = $row;
+                break;
+            }
+        }
 
-        return $result;
+        if($amountsum > $requestedAmount){
+            $this->db->query("UPDATE necessity SET fulfillmentStatus = 1 WHERE necessityID = :necessityID");
+            $this->db->bind(':necessityID', $necessityID);
+            $this->db->execute();
+        }
+        
+        return $filteredResults;
     }
+
+    public function checkthenecessityfulfillmentstatus($necessityID){
+        // Fetching donors who donated for the specified necessity and their donation details
+        $this->db->query("SELECT user.username, onetimedonation.*, money.requestedAmount 
+                          FROM user
+                          INNER JOIN donor ON user.UserID = donor.donorID
+                          INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+                          INNER JOIN money ON onetimedonation.monetaryNecessityID = money.monetaryNecessityID
+                          WHERE onetimedonation.monetaryNecessityID = :necessityID");
+        $this->db->bind(':necessityID', $necessityID);
+        $result = $this->db->resultSet();
+        
+        // Fetching the received amount for the specified necessity
+        $this->db->query("SELECT requestedAmount 
+                          FROM money
+                          WHERE monetaryNecessityID = :necessityID");
+        $this->db->bind(':necessityID', $necessityID);
+        $moneyResult = $this->db->single();
+        
+        $requestedAmount = $moneyResult->requestedAmount;
+        
+        $amountsum = 0;
+    
+        foreach ($result as $row) {     
+
+            if ($amountsum < $requestedAmount) {
+                $amountsum += $row->amount;
+            }else{
+                $this->db->query("UPDATE necessity SET fulfillmentStatus = 1 WHERE necessityID = :necessityID");
+                $this->db->bind(':necessityID', $necessityID);
+                $this->db->execute();
+                break;
+            }
+        }
+    }
+    
+    
+    
+    
 }
