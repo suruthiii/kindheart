@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
 
-                                    <p><?php echo $milestone->amount ; ?></p>
+                                    <p>Rs.<?php echo number_format($milestone->amount, 2) ; ?></p>
                                     
                                     <p><?php echo $milestone->milestone_description ; ?></p>
                                 </div>

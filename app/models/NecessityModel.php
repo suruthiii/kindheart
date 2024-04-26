@@ -99,6 +99,40 @@ class NecessityModel{
         }
     }
 
+    public function editonetimemonetarynecessitytodb($data){
+        //sql statement for Update recurring monetary necessity, necessity table
+        $this->db->query('UPDATE necessity SET necessityName = :necessityMonetary ,description =:monetarynecessitydes
+                        WHERE necessityID = :necessityID');
+
+        // Binding values with array value
+        $this->db->bind(':necessityMonetary', $data['necessityMonetary']);
+        $this->db->bind(':monetarynecessitydes', $data['monetarynecessitydes']);
+        $this->db->bind(':necessityID', $data['necessityID']);
+        
+        $result = $this->db->execute();
+
+        if($result){
+            //sql statement for Updating monetary necessity, money table
+            $this->db->query('UPDATE money SET requestedAmount = :requestedAmount  WHERE monetaryNecessityID = :monetaryNecessityID');
+
+            // Binding values with array value
+            $this->db->bind(':monetaryNecessityID', $data['necessityID']);
+            $this->db->bind(':requestedAmount', $data['requestedamount']);
+
+            $result2 = $this->db->execute();
+
+            if ($result2) {
+                return true;
+            } else {
+                // Print error message for debugging
+                printf("Error: %s\n", $this->db->getError());
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
     //get the monthlyAmount for update necessity
     public function getTheMonthlyAmount($necessityID){
         $this->db->query('SELECT money.monthlyAmount FROM money WHERE money.monetaryNecessityID = :necessityID' );
