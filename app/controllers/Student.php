@@ -318,7 +318,7 @@ class Student extends Controller {
                 // Add Data to DB
                 if ($this->benefactionModel->sendBenefactionAknowledgement($data)) {
                     if ($_SESSION['user_type'] == 'student') {
-                        redirect('student/benefactions');
+                        redirect('student/AknowledgementSuccessful');
                     }
                     
                     else if ($_SESSION['user_type'] == 'organization') {
@@ -361,7 +361,7 @@ class Student extends Controller {
                 // Add Data to DB
                 if ($this->benefactionModel->sendBenefactionComplain($data)) {
                     if ($_SESSION['user_type'] == 'student') {
-                        redirect('student/benefactions');
+                        redirect('student/AknowledgementComplain');
                     }
                     
                     else if ($_SESSION['user_type'] == 'organization') {
@@ -383,6 +383,36 @@ class Student extends Controller {
         }else{
             die('incorrect method!');
         }
+    }
+
+    public function AknowledgementSuccessful(){
+
+        $data = [
+            'title' => 'Home page',
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/AknowledgementSuccessful', $data, $other_data);
+
+    }
+
+    public function AknowledgementComplain(){
+
+        $data = [
+            'title' => 'Home page',
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/AknowledgementComplain', $data, $other_data);
+
     }
 
 
