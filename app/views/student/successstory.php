@@ -62,11 +62,11 @@
                             <h3>Add success Stories</h3>
                         </div>
 
-                        <?php if (!empty($other_data)){?>
+                        <!-- <?php if (!empty($other_data)){?>
                             <div class="error-msg">
                                 <span class="form-invalid"><?php echo $other_data["err"] ?></span>
                             </div>
-                            <?php }?>
+                            <?php }?> -->
                         <!-- add image box -->
                         <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/successstory/addSuccessStory" onsubmit="return validateFileType()">
                             <div >

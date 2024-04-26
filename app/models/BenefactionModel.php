@@ -223,10 +223,30 @@ class BenefactionModel{
 
 // -------------------Stundent----------------------
 
+public function getBenefactionNotApplied($benefactionID) {
+    // Prepare statement
+    $this->db->query('SELECT * FROM benefaction b JOIN user u WHERE benefactionID = :benefactionID');
+    $this->db->bind(':benefactionID', $benefactionID);
+
+    
+    // Execute
+    $row = $this->db->single();
+
+    // Fetch result set
+    return $row;
+}
+
     public function getBenefaction($benefactionID) {
         // Prepare statement
-        $this->db->query('SELECT * FROM benefaction b JOIN user u ON u.userID = b.donorID WHERE benefactionID = :benefactionID');
+        $this->db->query('SELECT * 
+        FROM benefaction b 
+        JOIN benefaction_request br ON br.benefactionID = b.benefactionID 
+        LEFT JOIN donee_benefaction db ON br.benefactionID = db.benefactionID 
+        JOIN user u ON u.userID = :userID
+        WHERE u.userID = :userID AND b.benefactionID = :benefactionID;
+        ');
         $this->db->bind(':benefactionID', $benefactionID);
+        $this->db->bind(':userID', $_SESSION['user_id']);
         
         // Execute
         $row = $this->db->single();
@@ -235,17 +255,19 @@ class BenefactionModel{
         return $row;
     }
 
+   
+
+            //add application details to benefaction-request table
     public function addAppliedBenefaction($data){
         // Prepare statement
-        $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, reason, requestedQuantity, receivedQuantity, verificationStatus) VALUES (:benefactionID, :doneeID, :reason, :requestedQuantity, :receivedQuantity,  :verificationStatus)');
+        $this->db->query('INSERT INTO benefaction_request (benefactionID, doneeID, reason, requestedQuantity, acceptanceStatus) VALUES (:benefactionID, :doneeID, :reason, :requestedQuantity,  :acceptanceStatus)');
 
         // Bind values
         $this->db->bind(':benefactionID', $data['benefactionID']);
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $this->db->bind(':requestedQuantity', $data['requestedQuantity']);
-        $this->db->bind(':receivedQuantity', 0);
         $this->db->bind(':reason', $data['reason']);
-        $this->db->bind(':verificationStatus', 0);
+        $this->db->bind(':acceptanceStatus', 0);
     
         // Execute
         if ($this->db->execute()){
@@ -258,7 +280,7 @@ class BenefactionModel{
 
     public function getAppliedBenefactions($criteria = null) { 
         
-        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemQuantity, d.requestedQuantity, d.verificationStatus FROM benefaction b JOIN donee_benefaction d ON b.benefactionID = d.benefactionID WHERE doneeID = :doneeID');
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemQuantity, br.requestedQuantity, br.acceptanceStatus, b.availabilityStatus, db.verificationStatus, db.receivedQuantity FROM benefaction b JOIN benefaction_request br ON br.benefactionID = b.benefactionID AND doneeID = :doneeID LEFT JOIN donee_benefaction db ON br.benefactionID = db.benefactionID ');
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
         // die(print_r($result));
@@ -270,13 +292,39 @@ class BenefactionModel{
 
         public function getBenefactions($criteria = null) { 
         
-            $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3 , b.itemPhoto4, b.donorID, b.postedDate, availabilityStatus, u.username, db.requestedQuantity, db.doneeID FROM benefaction b JOIN user u ON u.userID = b.donorID LEFT JOIN donee_benefaction db ON db.benefactionID = b.benefactionID WHERE availabilityStatus = 0;');
+            $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemCategory, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3 , b.itemPhoto4, b.donorID, b.postedDate, b.availabilityStatus, u.username, br.requestedQuantity, br.acceptanceStatus, br.doneeID FROM benefaction b JOIN user u ON u.userID = b.donorID LEFT JOIN benefaction_request br ON br.benefactionID = b.benefactionID WHERE availabilityStatus = 0;');
             $result = $this->db->resultSet();
-            // die(print_r($result));
-            // Return an array of story data
+            // Return an array of applied benefaction data
             return array_reverse($result); 
           
         }
+
+        public function sendBenefactionAknowledgement($data) {
+            $this->db->query('UPDATE donee_benefaction SET verificationStatus = 2 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+            $this->db->bind(':doneeID', $data['doneeID']);
+            $this->db->bind(':benefactionID', $data['benefactionID']);
+    
+            // Execute the query
+            if ($this->db->execute()) {
+                return true; // Update successful
+            } else {
+                return false; // Update failed
+            }
+        }
+
+        public function sendBenefactionComplain($data) {
+            $this->db->query('UPDATE donee_benefaction SET verificationStatus = 3 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+            $this->db->bind(':doneeID', $data['doneeID']);
+            $this->db->bind(':benefactionID', $data['benefactionID']);
+    
+            // Execute the query
+            if ($this->db->execute()) {
+                return true; // Update successful
+            } else {
+                return false; // Update failed
+            }
+        }
+    
     
 
 
