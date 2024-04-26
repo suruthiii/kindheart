@@ -13,7 +13,9 @@ class Organization extends Controller {
 
     public function index(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'totalReceivedAmount' => $this->organizationModel->getTotalReceivedAmount(),
+            'totalReceivedQuantity' => $this->organizationModel->getTotalReceivedQuantity()
         ];
 
         $other_data = [
