@@ -34,6 +34,20 @@ class BenefactionModel{
 
     }
 
+        
+    // Helper function to update availabilityStatus for a benefaction
+    private function updateBenefactionAvailabilityStatus($benefactionID, $newAvailabilityStatus) {
+        // Prepare statement to update availabilityStatus
+        $this->db->query('UPDATE benefaction SET availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
+    
+        // Bind values
+        $this->db->bind(':availabilityStatus', $newAvailabilityStatus);
+        $this->db->bind(':benefactionID', $benefactionID);
+    
+        // Execute the update query
+        $this->db->execute();
+    }
+
     // Get pending benefactions
     public function getPendingBenefaction() {
         // Prepare statement to select benefactions
@@ -67,43 +81,72 @@ class BenefactionModel{
     
         return $results;
     }
-    
-    // Helper function to update availabilityStatus for a benefaction
-    private function updateBenefactionAvailabilityStatus($benefactionID, $newAvailabilityStatus) {
-        // Prepare statement to update availabilityStatus
-        $this->db->query('UPDATE benefaction SET availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
-    
-        // Bind values
-        $this->db->bind(':availabilityStatus', $newAvailabilityStatus);
-        $this->db->bind(':benefactionID', $benefactionID);
-    
-        // Execute the update query
-        $this->db->execute();
-    }
 
-    // Get onProgress benefactions
+
     public function getOnProgressBenefaction() {
-        // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 1');
-
-        // Execute
+        // Prepare statement to select benefactions in progress with the sum of acknowledged donated quantity and remaining quantity
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity,
+                                db.verificationStatus,
+                                SUM(CASE WHEN db.verificationStatus IN (2) THEN db.receivedQuantity ELSE 0 END) AS acknowledgedDonatedQuantity,
+                                (b.itemQuantity - b.donatedQuantity) AS remainingQuantity
+                                FROM benefaction b
+                                LEFT JOIN donee_benefaction db ON b.benefactionID = db.benefactionID
+                                WHERE b.availabilityStatus = 1
+                                GROUP BY b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity, db.verificationStatus');
+    
+        // Execute the query
         $this->db->execute();
-
+    
         // Fetch result set
-        return $this->db->resultSet();
+        $results = $this->db->resultSet();
+    
+        // Update availabilityStatus for each benefaction
+        foreach ($results as $benefaction) {
+            // Check if remainingQuantity is zero
+            if ($benefaction->acknowledgedDonatedQuantity == $benefaction->itemQuantity) {
+                // Determine the new availabilityStatus based on verificationStatus
+                $newAvailabilityStatus = ($benefaction->verificationStatus === 2) ? 2 : 1;
+    
+                // Update the availabilityStatus in the database
+                $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
+            }
+        }
+    
+        return $results;
     }
-
-
+    
     // Get completed benefactions
     public function getCompletedBenefaction() {
-        // Prepare statement
-        $this->db->query('SELECT * FROM benefaction WHERE availabilityStatus = 2');
-
-        // Execute
+        // Prepare statement to select benefactions
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity,
+                                SUM(CASE WHEN br.acceptanceStatus IN (0, 1) THEN br.requestedQuantity ELSE 0 END) AS totalRequestedQuantity,
+                                (b.itemQuantity - b.donatedQuantity) AS remainingQuantity,
+                                db.verificationStatus
+                                FROM benefaction b
+                                LEFT JOIN benefaction_request br ON b.benefactionID = br.benefactionID
+                                LEFT JOIN donee_benefaction db ON b.benefactionID = db.benefactionID
+                                WHERE b.availabilityStatus = 2
+                                GROUP BY b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity');
+    
+        // Execute the query
         $this->db->execute();
-
+    
         // Fetch result set
-        return $this->db->resultSet();
+        $results = $this->db->resultSet();
+    
+        // Update availabilityStatus for each benefaction
+        foreach ($results as $benefaction) {
+            // Check if remainingQuantity is zero
+            if ($benefaction->remainingQuantity === 0) {
+                // Determine the new availabilityStatus based on verificationStatus
+                $newAvailabilityStatus = ($benefaction->verificationStatus === 2) ? 2 : 1;
+    
+                // Update the availabilityStatus in the database
+                $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
+            }
+        }
+    
+        return $results;
     }
 
     // View Benefaction

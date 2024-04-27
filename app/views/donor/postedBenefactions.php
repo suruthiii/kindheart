@@ -166,12 +166,11 @@
                                             </p>
                                         </td>
 
-                                        <!-- <td width="30%"  style="transform: translateX(-45%);" >
+                                        <td width="30%" style="transform: translateX(-45%);">
                                             <p>
-                                                <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->donatedQuantity;
-                                                echo $remainingQuantity;?> Not Delivered
+                                                <?php echo $benefaction->acknowledgedDonatedQuantity; ?> Not Acknowledged
                                             </p>
-                                        </td> -->
+                                        </td>
                                         <!-- here have to edit with requested quatity of student -->
 
                                         <!-- <td width="10%"style="transform: translateX(15%);"> 

@@ -1711,7 +1711,7 @@ span .donor-form-error-details{
 
 .user-profile-data td {
     word-wrap: break-word; /* Break long words and wrap onto the next line */
-    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    overflow-wrap: break-all; /* Break words at arbitrary points to prevent overflow */
     white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
     padding-left: 10px;
     width:400px;
