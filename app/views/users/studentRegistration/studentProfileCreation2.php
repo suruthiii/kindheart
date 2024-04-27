@@ -22,24 +22,24 @@
                     <span>2 of 6</span> 
                 </div>
                 <div class="studentProfileCreation2-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation3" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation2" method="GET">
                         <div class="studentProfileCreation2-inner-container-form-container-inputfeilds">   
 
                             <label for="orgName">Name of the University / School</label>
                             <div class="studentProfileCreation2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="orgName" value="" >
+                                <input class="inputt1" type="text" name="orgName" value="<?php echo $data['orgName']?>" >
                                 <span class="error-message" for="verificationCode"></span>
                             </div>
 
                             <label for="acaYear">Acadamic year/ Grade</label>
                             <div class="studentProfileCreation2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="acaYear" value="" >
+                                <input class="inputt1" type="text" name="acaYear" value="<?php echo $data['acaYear']?>" >
                                 <span class="error-message" for="verificationCode"></span>
                             </div>
 
                             <label for="schol">Mention Currently receiving scholarships(Use Commas to break)</label>
                             <div class="studentProfileCreation2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="schol" value="" >
+                                <input class="inputt1" type="text" name="schol" value="<?php echo $data['schol']?>" >
                                 <span class="error-message" for="verificationCode"></span>
                             </div>
 

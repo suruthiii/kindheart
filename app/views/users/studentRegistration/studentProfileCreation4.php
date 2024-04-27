@@ -22,7 +22,7 @@
                     <span>4 of 6</span> 
                 </div>
                 <div class="studentProfileCreation4-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation5" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation7" method="POST" enctype="multipart/form-data">
                         <div class="studentProfileCreation4-inner-container-form-container-inputfeilds">   
                             <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal">
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
@@ -33,7 +33,7 @@
                                     </label> 
                                 </div>
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input2">
-                                    <label>GS Certificate</label>
+                                    <label>University/School Letter</label>
                                     <label class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1-letterbox">
                                         <p>Upload a Photo</p>
                                         <input type="file" id="letterimage2" name="letterimage2" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
@@ -114,6 +114,8 @@
 
             return true;
         }
+
+        kalinuth me js kaalla gahala upload krl tiynwd. oww mn benefaction ekemai gaththe othanata
     </script>
 </body>
 </html>

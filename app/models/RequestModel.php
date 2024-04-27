@@ -9,7 +9,6 @@ require APPROOT.'/libraries/vendor/autoload.php';
 
 class RequestModel{
     private $db;
-
     private $mail;
 
     public function __construct(){

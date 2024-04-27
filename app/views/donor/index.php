@@ -12,7 +12,7 @@
 
             <!-- Title container -->
             <div class="donor-dashboard-introduction">
-                <h1>Welcome Back <b><?php ?><b></h1>
+                <h1><?php echo $data['title']; ?></h1>
                 <p>Here's The Latest Updates</p>
             </div>
 
@@ -23,23 +23,23 @@
                 </div>
                 <div class="donor-dashboard-status-bar">
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
+                        <p>Active Donors</p>
                         <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
+                        <p>Active Donees</p>
                         <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
+                        <p>Total Donations</p>
                         <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
+                        <p>Total Helped Students</p>
                         <h1>12 300</h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Donation Status</p>
+                        <p>Total Helped Organizations</p>
                         <h1>12 300</h1>
                     </div>
                 </div>

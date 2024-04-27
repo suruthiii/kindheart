@@ -6,6 +6,31 @@ class donorModel{
         $this->db = new Database();
     }
 
+    public function getTotalMonetaryDonations($userId) {
+        $this->db->query('SELECT SUM(m.receivedAmount) AS total FROM money m 
+                        JOIN recurringdonation rd ON m.monetaryNecessityID = rd.monetaryNecessityID 
+                        WHERE rd.donorID = :userId
+                        UNION
+                        SELECT SUM(amount) AS total FROM onetimedonation 
+                        WHERE donorID = :userId
+                        UNION
+                        SELECT SUM(amount) AS total FROM scholarship 
+                        WHERE donorID = :userId
+                        UNION
+                        SELECT SUM(amount) AS total FROM fund 
+                        WHERE donorID = :userId
+    ');
+
+        $this->db->bind(':userId', $userId);
+
+        // Execute the query
+        if ($this->db->execute()) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
+
 
     // public function getGraphData($donorID) {
     //     $this->db->query('SELECT COUNT(*) AS rowCountBenefaction FROM benefaction

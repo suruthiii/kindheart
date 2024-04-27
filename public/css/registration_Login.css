@@ -39,6 +39,12 @@ a {
     width: 150px;
 }
 
+.error-message{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+
+}
 
 
 /* ----------------studentAcountCreationPage1------------------ */
@@ -78,7 +84,7 @@ a {
     margin-top: 50px;
 }
 
-.studentAcountCreationPage1-inner-container-form-container form button{
+.studentAcountCreationPage1-inner-container-form-container-buttons button{
     color: #fff;
     font-size: 1rem;
     border: none;
@@ -94,7 +100,15 @@ a {
     box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
 }
 
-.studentAcountCreationPage1-inner-container-form-container form button:hover{
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage button{
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #9D0000;
+    background: #fff;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-buttons button:hover{
     background: #6e0a0a;
     transform: scale(1.05);
     box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
@@ -172,6 +186,13 @@ a {
 
 .studentAcountCreationPage2-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage2-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: 0px;
 }
 
 .studentAcountCreationPage2-inner-container-form-container p{

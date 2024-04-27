@@ -27,8 +27,8 @@
 
                             <label for="email">Enter your email address </label>
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" >
-                                <span class="error-message" for="verificationCode"><?php echo $data['err']?></span>
+                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" ><br>
+                                <span class="error-message" for="verificationCode"><?php echo $data['email_err']?></span>
                             </div>
 
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage">
@@ -48,6 +48,7 @@
                                 <input type="text" name="digit-6" />
                                 <input type="text" name="digit-7" />
                             </div>
+                            <span class="error-message" for="verificationCode"><?php echo $data['otp_err']?></span>
                         </div>
                         <div class="studentAcountCreationPage1-inner-container-form-container-buttons">
                             <button>Verify</button>

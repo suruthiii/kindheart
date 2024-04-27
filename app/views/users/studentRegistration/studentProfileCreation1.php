@@ -22,20 +22,20 @@
                     <span>1 of 6</span> 
                 </div>
                 <div class="studentProfileCreation1-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation2" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation1" method="GET">
                         <div class="studentProfileCreation1-inner-container-form-container-inputfeilds">   
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal">
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                     <label for="firstName">First Name</label>
                                     <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
-                                        <input class="inputt2" type="text" name="firstName" value="">
+                                        <input class="inputt2" type="text" name="firstName" value="<?php echo $data['firstName']?>">
                                         <span class="error-message"></span>
                                     </div>
                                 </div>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                     <label for="lastname">Last Name</label>
                                     <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
-                                        <input class="inputt2" type="text" name="lastName" value="">
+                                        <input class="inputt2" type="text" name="lastName" value="<?php echo $data['lastName']?>">
                                         <span class="error-message"></span>
                                     </div>
                                 </div>
@@ -43,13 +43,13 @@
 
                             <label for="address">Address</label>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="address" value="" >
+                                <input class="inputt1" type="text" name="address" value="<?php echo $data['address']?>" >
                                 <span class="error-message" for="verificationCode"></span>
                             </div>
 
                             <label for="dob">Date Of Birth</label>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="date" name="dob" value="" >
+                                <input class="inputt1" type="date" name="dob" value="<?php echo $data['dob']?>" >
                                 <span class="error-message" for="verificationCode"></span>
                             </div>
 
@@ -57,7 +57,7 @@
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                 <label for="gender">Gender</label>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox">
-                                    <select id="gender" name="gender" value="">
+                                    <select id="gender" name="gender" value="<?php echo $data['gender']?>">
                                         <option value="0" >
                                             Select Gender
                                         </option>
@@ -77,7 +77,7 @@
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                 <label for="studentType">Student Type</label>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox">
-                                    <select id="studentType" name="studentType" value="">
+                                    <select id="studentType" name="studentType" value="<?php echo $data['studentType']?>">
                                         <option value="0" >
                                             Select Student Type
                                         </option>
