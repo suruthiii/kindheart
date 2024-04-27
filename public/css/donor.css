@@ -676,6 +676,10 @@ span .donor-form-error-details{
     width: 95%;
 }
 
+.posted-benefactions-pending-table table td p{
+    font-size: 12px;
+}
+
 .posted-benefactions-pending-table table tr,
 .posted-benefactions-Completed-table table tr,
 .posted-benefactions-onProgress-table table tr{

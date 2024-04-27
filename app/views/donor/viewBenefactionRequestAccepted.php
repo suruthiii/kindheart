@@ -61,11 +61,14 @@
                             <div class="benefactionRequest-donationinfo1">
                                 <label for="donationQuantity">Donating Quantity</label>
                                 <div class="benefactionRequest-donationdata">
-                                    <?php 
-                                        $remainingQuantity = $data['benefactionRequest_details'][0]->itemQuantity - $data['benefactionRequest_details'][0]->donatedQuantity; 
-                                        ?>
-                                    <input class="benefactionRequest--input" type="number" name="donationQuantity" min="1" max="<?php echo $remainingQuantity ?>" value="<?php echo isset($data['donationQuantity']) ? $data['donationQuantity'] : ''; ?>" >
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationQuantity_err']) ? $data['donationQuantity_err']: ''; ?> </span>
+                                <?php 
+                                    $remainingQuantity = $data['benefactionRequest_details'][0]->itemQuantity - $data['benefactionRequest_details'][0]->donatedQuantity;
+                                    $requestedQuantity = $data['benefactionRequest_details'][0]->requestedQuantity;
+                                    
+                                    // Determine the maximum allowed value based on remaining and requested quantities
+                                    $maxValue = min($remainingQuantity, $requestedQuantity);
+                                ?>
+                                    <input class="benefactionRequest-input" type="number" name="donationQuantity" min="1" max="<?php echo $maxValue; ?>" >
                                 </div>
                             </div>
                             <div class="benefactionRequest-donationinfo1">
@@ -77,7 +80,6 @@
                                     </label>
                                 </div>
                             </div>
-                            <span class="donor-form-error-details" id="deliveryReceipt_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deliveryReceipt_err']) ? $data['deliveryReceipt_err']: ''; ?></span>
                         </div>   
                         <div class="view-benefactionRequest-btn-container">
                             <div class="submit-request" id="submitForm" style="display: none;">
@@ -122,7 +124,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-    function showDonationInfo() {
+function showDonationInfo() {
+    const remainingQuantity = <?php echo $remainingQuantity; ?>;
+
+    if (remainingQuantity > 0) {
         // Show the donation info div
         const donationInfoDiv = document.querySelector('.benefactionRequest-donationinfo');
         donationInfoDiv.style.display = 'flex';
@@ -139,7 +144,13 @@
         // Show the Cancel Request button
         const cancelButtonForm = document.querySelector('.cancel-request');
         cancelButtonForm.style.display = 'block';
+    } else {
+        // Hide the Make Donation button
+        const makeDonationButton = document.querySelector('.make-donation');
+        makeDonationButton.style.display = 'none';
     }
+}
+
 
     function hideDonationInfo() {
         // Show the donation info div

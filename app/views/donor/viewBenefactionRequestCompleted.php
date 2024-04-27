@@ -102,7 +102,22 @@
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Acknowledgement</th>
-                                <td><?php print_r($data['benefactionRequest_details'][0]->acknowledgement) ?></td>
+                                <?php
+                                
+                                switch ($data['benefactionRequest_details'][0]->verificationStatus) {
+                                    case 2:
+                                        $doneeAcknowledgemnt = $data['benefactionRequest_details'][0]->acknowledgement;
+                                        break;
+                                    case 3:
+                                        $doneeAcknowledgemnt = '-';
+                                        break;
+                                    default:
+                                        $doneeAcknowledgemnt = '-';
+                                        break;
+                                    }
+                                ?>
+                                
+                                <td><?php print_r($doneeAcknowledgemnt) ?></td>
                             </tr>                            
                         </table>                    
                     </div>                    
