@@ -92,7 +92,9 @@ class SuperAdmin extends Controller {
 
     public function benefaction() {
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'pending' => $this->benefactionModel->getAllPendingBenefactions(),
+            'on_progress' => $this->benefactionModel->getAllOnProgressBenefactions()
         ];
 
         $other_data = [

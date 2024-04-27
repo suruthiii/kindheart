@@ -64,6 +64,10 @@ class Scholarship extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->scholarshipModel->addComment($data)) {
+                        $donorID = $this->scholarshipModel->getDonorID($data['scholarship_ID']);
+
+                        $this->notificationModel->createNotification('Manage Scholarship', 'manageScholarship', $_SESSION['user_id'], $donorID, $data['comment'], $data['scholarship_ID']);
+
                         redirect('scholarship/managescholarship?scholarship_ID='.$data['scholarship_ID']);
                     }
                 }
@@ -472,25 +476,22 @@ class Scholarship extends Controller {
                 }
             }
         }
-        
-    }
-
-
-
-        $data = [
-            'title' => 'View Scholarship Application',
-            'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
-        ];
-
-        $other_data = [
-            'notification_count' => $this->notificationModel->getNotificationCount(),
-            'notifications' => $this->notificationModel->viewNotifications()
-        ];
-
-        // die(print_r($data['benefactionRequest_details']));
-
-        $this->view('donor/viewScholarshipApplication', $data, $other_data);
     }    
+
+        // $data = [
+        //     'title' => 'View Scholarship Application',
+        //     'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
+        // ];
+
+        // $other_data = [
+        //     'notification_count' => $this->notificationModel->getNotificationCount(),
+        //     'notifications' => $this->notificationModel->viewNotifications()
+        // ];
+
+        // // die(print_r($data['benefactionRequest_details']));
+
+        // $this->view('donor/viewScholarshipApplication', $data, $other_data);
+        
   
     public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
         if($_SESSION['user_type'] == 'donor') {

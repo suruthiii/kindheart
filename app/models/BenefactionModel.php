@@ -502,8 +502,88 @@ public function getBenefactionNotApplied($benefactionID) {
             }
         }
     
+    /* --------------------- Admin and Super Admin ----------------------------- */
+
+    public function getAllPendingBenefactions() {
+        $this->db->query('SELECT benefactionID, itemName, description, itemCategory, (itemQuantity - donatedQuantity) AS quantity FROM benefaction WHERE availabilityStatus = 0;');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getAllOnProgressBenefactions() {
+        $this->db->query('SELECT benefactionID, itemName, description, itemCategory, itemQuantity AS quantity FROM benefaction WHERE availabilityStatus = 1;');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getBenefactionDetails($benefaction_ID) {
+        $this->db->query('SELECT * FROM benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $benefactionDetails = $this->db->single();
+
+        $benefactionDetails->donorName = $this->getName($benefactionDetails->donorID);
+
+        return $benefactionDetails;
+    }
+
+    public function getDonationCardDetails($benefaction_ID) {
+        $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $donations = $this->db->resultSet();
+
+        $donations->doneeName = $this->getName($donations->doneeID);
+
+        return $donations;
+    }
+
+    public function getUserType($user_ID){
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $userType = $this->db->single()->userType;
     
+        if ($userType == 'donor') {
+            $this->db->query('SELECT donorType FROM donor WHERE donorID = :donorID;');
+            $this->db->bind(':donorID', $user_ID);
 
+            $userType =  $this->db->single()->donorType;
+        }
 
+        return $userType;
+    }
+
+    public function getName($user_ID){
+        $userType = $this->getUserType($user_ID);
+
+        if ($userType == 'company'){
+            $this->db->query('SELECT companyName AS name FROM company WHERE companyID = :companyID;');
+            $this->db->bind(':companyID', $user_ID);
+        }
+
+        else if ($userType == 'individual'){
+            $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM individual WHERE individualID = :individualID;');
+            $this->db->bind(':individualID', $user_ID);
+        }
+
+        else if ($userType == 'organization'){
+            $this->db->query('SELECT orgName AS name FROM organization WHERE orgID = :orgID;');
+            $this->db->bind(':orgID', $user_ID);
+        }
+
+        else if ($userType == 'student'){
+            $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM student WHERE studentID = :studentID;');
+            $this->db->bind(':studentID', $user_ID); 
+        }
+
+        $name = $this->db->single();
+
+        return $name;
+    }
 
 }
