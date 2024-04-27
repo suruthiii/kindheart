@@ -63,7 +63,6 @@ class Necessity extends Controller {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
-                'getstillnotcompletedrow' => $this->necessityModel->getstillnotCompleteNecessities(),
                 'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount()
             ];
 
@@ -853,7 +852,6 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'necessityMonetary' => isset($_POST['necessityMonetary']) ? trim($_POST['necessityMonetary']) : '',
                         'monetarynecessitydes' => isset($_POST['monetarynecessitydes']) ? trim($_POST['monetarynecessitydes']) : '',
-                        'donationduration' => isset($_POST['donationduration']) ? trim($_POST['donationduration']) : '',
                         'necessityMonetary_err' => '',
                         'monetarynecessitydes_err' => '',
                     ];
@@ -870,12 +868,8 @@ class Necessity extends Controller {
                         $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
                     }
 
-                    if(empty($data['donationduration'])){
-                        $data['donationduration_err']='Please enter the time duration';
-                    }
-
                     //check whether there any errors
-                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['donationduration_err'])){
+                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err'])){
                         if($this->necessityModel->editrecurringmonetarynecessitytodb($data)){
                             redirect('necessity/monetary');
                         }else{
@@ -907,7 +901,6 @@ class Necessity extends Controller {
                     'necessityID' => '',
                     'necessityMonetary' => '',
                     'monetarynecessitydes' => '',
-                    'donationduration' => '',
                     'necessityMonetary_err' => '',
                     'monetarynecessitydes_err' => '',
                 ];
