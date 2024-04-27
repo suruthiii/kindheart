@@ -4,14 +4,14 @@
 <?php require APPROOT.'/views/inc/components/topnavbar.php'; ?>
 
 <!--  SIDE NAVIGATION  -->
-<?php $section = "necessities";?>
+<?php $section = "benefactions";?>
 <?php require APPROOT.'/views/inc/components/sidenavbar.php'; ?>
 
 <main class="page-container">
     <section class="section" id="main">
         <div class="container">
             <div class="back-arrow-btn">
-                <a href="<?php echo URLROOT ?>/necessity/physicalgood">
+                <a href="<?php echo URLROOT ?>/superadmin/benefaction">
                     <table>
                         <tr>
                             <td width="30%"><img class="back-arrow-img" src="<?php echo URLROOT ?>/img/back-arrow.png" alt=""></td>
@@ -26,35 +26,47 @@
             
             <div class="necessity-info">
                 <table>
-                        <tr class="necessity-data">
-                            <th width="30%">Item Name</th>
-                            <td width="70%"><?php echo $data['benefaction_details']->itemName ?></td>
-                        </tr>
-                        <tr class="necessity-data">
-                            <th width="30%">Donor Name</th>
-                            <td width="70%"><?php echo $data['benefaction_details']->donorName ?></td>
-                        </tr>
-                        <tr class="necessity-data">
-                            <th width="30%">Item Quantity</th>
-                            <td width="70%"><?php echo $data['benefaction_details']->itemQuantity ?></td>
-                        </tr>
-                        <tr class="necessity-data">
-                            <th width="30%">Donated Quantity</th>
-                            <td width="70%"><?php echo $data['benefaction_details']->donatedQuantity ?></td>
-                        </tr>
-                        <!-- <tr class="necessity-data">
-                            <th width="30%">Start Date</th>
-                            <td width="70%"><?php echo $data['benefaction_details']->startDate ?></td>
-                        </tr>
-                        <tr class="necessity-data">
-                            <th width="30%">Description</th>
-                            <td width="70%"><?php echo $data['benefaction_details']->description ?></td>
-                        </tr> -->
+                    <tr class="necessity-data">
+                        <th width="30%">Item Name</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemName ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Item Category</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemCategory ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Donor Name</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->donorName ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Item Quantity</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemQuantity ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Donated Quantity</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->donatedQuantity ?></td>
+                    </tr>
+                    <!-- <tr class="necessity-data">
+                        <th width="30%">Item Photo 1</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto1 ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Item Photo 2</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto2 ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Item Photo 3</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto3 ?></td>
+                    </tr>
+                    <tr class="necessity-data">
+                        <th width="30%">Item Photo 4</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto4 ?></td>
+                    </tr> -->
                 </table>
             </div>
 
             <div class="view-donation-btn-container">
-                <a href="<?php echo URLROOT ?>/scholarship/viewdonorprofile/<?php echo $data['scholarship_ID'] ?>/<?php echo $data['scholarship_details']->donorID ?>" class="view-donation-btn">
+                <a href="<?php echo URLROOT ?>/benefaction/viewdonorprofile/<?php echo $data['benefaction_ID'] ?>/<?php echo $data['benefaction_details']->donorID ?>" class="view-donation-btn">
                         View Donor Profile
                 </a>
             </div>
@@ -65,8 +77,8 @@
                 </div>
                 <div class="right-cards"> 
 
-                    <?php foreach($data['donations'] as $item) { ?>
-                        <a href="<?php echo URLROOT?>/benefaction/viewdonationdetails?goodDonationID=<?php echo $item->goodDonationID ?>">
+                    <!-- <?php foreach($data['donations'] as $item) { ?>
+                        <a href="<?php echo URLROOT?>/benefaction/viewdonationdetails?ID=<?php echo $item->ID ?>">
                             <div class="right-card" style="display:flex;">
                                 <div class="left-side-content" style="width:50%; padding-left:5px">
                                     <div class="title" style=""><?php echo $item->studentName ?></div>
@@ -82,7 +94,7 @@
                                 </div>
                             </div>
                         </a>
-                    <?php }?>
+                    <?php }?> -->
                     </a>
                 </div>
             </div>
