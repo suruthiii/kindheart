@@ -1594,6 +1594,10 @@ class Necessity extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->necessityModel->addComment($data)) {
+                        $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
+
+                        $this->notificationModel->createNotification('Manage Necessity', 'manageGoodNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
+
                         $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);
 
                         if($necessityType == 'Physical Goods') {
