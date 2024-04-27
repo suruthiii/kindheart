@@ -75,6 +75,7 @@ class SuccessStory extends Controller {
                             redirect('student/successstory');
                         }
                         else if ($_SESSION['user_type'] == 'organization') {
+                            redirect('organization/successstory');
                         }
                         else {
                             die('User Type Not Found');
@@ -99,7 +100,7 @@ class SuccessStory extends Controller {
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
-
+                $this->view('organization/successstory', $successStories);
             }
 
             else {
