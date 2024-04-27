@@ -151,7 +151,35 @@
                         <h5>Total number of donors who donated</h5>
                         <p>Number of Donors</p>
                     </div>
-                    <div class="right-side-bar-type-one-detailed-view-boxes"></div>
+                    <div class="Still-not-completed-necessities">
+                        <table>
+                        <?php foreach($data['getstillnotcompletedrow'] as $getstillnotcompletedrow): ?>
+                            <tr>
+                                <td>
+                                    <?php
+                                        if ($getstillnotcompletedrow->monetaryNecessityType == "recurring"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="40" height="40">'; 
+                                        }elseif($getstillnotcompletedrow->monetaryNecessityType == "onetime"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="40" height="40">';
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <h4 class="pending-postednecessityTitle"><?php echo $getstillnotcompletedrow->necessityName?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $getstillnotcompletedrow->description?></p>
+                                </td>
+                                <td>
+                                    <!-- <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $getstillnotcompletedrow->necessityID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form> -->
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                        </table>
+                    </div>
                     
                 </div>
             </div>
