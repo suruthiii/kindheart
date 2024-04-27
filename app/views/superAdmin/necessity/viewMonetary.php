@@ -33,8 +33,30 @@
                         }?>
                         
                         <tr class="necessity-data">
-                            <th width="30%"><?php echo $key?></th>
-                            <td width="70%"><?php echo $value?></td>
+                            <?php if ($key == 'Requested Amount'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%">Rs. <?php echo $value?>.00</td>
+                            <?php  }
+
+                            else if ($key == 'Received Amount'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%">Rs. <?php echo $value?>.00</td>
+                            <?php  }
+
+                            else if ($key == 'Monthly Amount'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%">Rs. <?php echo $value?>.00</td>
+                            <?php  }
+
+                            else if ($key == 'Duration'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%"><?php echo $value?> Months</td>
+                            <?php  }
+
+                            else {?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%"><?php echo $value?></td>
+                            <?php }?>
                         </tr>
                     <?php }?>
                 </table>

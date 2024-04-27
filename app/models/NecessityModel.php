@@ -773,4 +773,13 @@ class NecessityModel{
 
         return $donationDetails;
     }
+
+    public function getDoneeID($necessity_ID) {
+        $this->db->query('SELECT doneeID FROM necessity WHERE necessityID = :necessityID;');
+        $this->db->bind(':necessityID', $necessity_ID);
+
+        $doneeID = $this->db->single()->doneeID;
+
+        return $doneeID;
+    }
 }
