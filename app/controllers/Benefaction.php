@@ -507,6 +507,8 @@ class Benefaction extends Controller {
     public function benefactionRequestDonationSubmit($doneeID = null, $benefactionID = null){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
+                'benefactionID' => $benefactionID,
+                'doneeID' => $doneeID,
                 'donationQuantity' => trim($_POST['donationQuantity']),
                 'deliveryReceipt' => $this->imgUpload('deliveryReceipt'),
 

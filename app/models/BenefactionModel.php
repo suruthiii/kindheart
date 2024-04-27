@@ -281,31 +281,39 @@ class BenefactionModel{
         return $result;
     }
 
-    public function benefactionRequestDonationSubmit(){
+    public function benefactionRequestDonationSubmit($data) {
         // Prepare statement
         $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, receivedQuantity, deliveryReceipt, verificationStatus) VALUES (:benefactionID, :doneeID, :receivedQuantity, :deliveryReceipt, :verificationStatus)');
-
+    
         // Bind values
         $this->db->bind(':benefactionID', $data['benefactionID']);
         $this->db->bind(':doneeID', $data['doneeID']);
-        $this->db->bind(':receivedQuantity', $data['receivedQuantity']);            
-        $this->db->bind(':deliveryReceipt', isset($data['deliveryReceipt']) ? $data['deliveryReceipt'] : null);
-        // $this->db->bind(':postedDate', date('Y-m-d')); 
-        $this->db->bind(':verificationStatus', 0);
-
-        // Execute
-        if($this->db->execute()){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
+        $this->db->bind(':receivedQuantity', $data['donationQuantity']);
+        $this->db->bind(':deliveryReceipt', $data['deliveryReceipt'] ?? null); // Use the null coalescing operator to handle the case where deliveryReceipt is not set
+        $this->db->bind(':verificationStatus', 0); // Assuming verificationStatus is always 0 for new entries
     
 
+        // Execute the INSERT query
+        if ($this->db->execute()) {
+            // If INSERT was successful, update donatedQuantity in benefaction table
+            $this->db->query('UPDATE benefaction SET donatedQuantity = donatedQuantity + :donationQuantity WHERE benefactionID = :benefactionID');
 
+            // Bind parameters for UPDATE query
+            $this->db->bind(':donationQuantity', $data['donationQuantity']);
+            $this->db->bind(':benefactionID', $data['benefactionID']);
 
-
+            // Execute the UPDATE query
+            if ($this->db->execute()) {
+                return true; // Insertion and update successful
+            } else {
+                return false; // Update failed
+            }
+            
+        } else {
+            return false; // Insertion failed
+        }
+    }
+    
 // -------------------Stundent----------------------
 
 public function getBenefactionNotApplied($benefactionID) {
