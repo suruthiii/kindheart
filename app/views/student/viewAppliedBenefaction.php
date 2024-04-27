@@ -128,6 +128,7 @@
                             </table>
                         </div>
                     </div>
+                    
 
                     <!-- Right column for photos container -->                    
                     <div class="view-benefaction-right-column">
