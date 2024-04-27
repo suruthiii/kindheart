@@ -513,8 +513,6 @@ class Benefaction extends Controller {
                 'donationQuantity_err' => '',
                 'deliveryReceipt_err' => ''                              
             ];   
-
-            die(print_r($data));
             
             if (empty($data['donationQuantity'])) {
                 $data['donationQuantity_err'] = 'Please enter the quantity of donation.';

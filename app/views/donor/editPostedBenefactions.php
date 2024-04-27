@@ -98,14 +98,7 @@
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionCategory_err']) ? $data['benefactionCategory_err']: ''; ?> </span>
                                 </div>                                
 
-                                <!-- Quantity -->
-                                <div class="benefaction-second-div">
-                                    <label for="quantityBenfaction">Quantity </label>
-                                    <input type="number" id="quantityBenfaction" name="quantityBenfaction" value="<?php print_r($data['benefaction_details']->itemQuantity) ?>" min="1">
 
-                                    <!-- Requested Amount Error Display -->
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['quantityBenfaction_err']) ? $data['quantityBenfaction_err']: ''; ?> </span>
-                                </div>
 
                                 <!-- Description about requested necessity -->
                                 <div class="add-benefaction-text-area-input-to-oneline">

@@ -133,12 +133,11 @@ class BenefactionModel{
     //Edit Benefaction
     public function updateBenefaction($data){
         // Prepare statement
-        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemCategory = :itemCategory, itemQuantity = :itemQuantity, description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
+        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemCategory = :itemCategory, description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
 
         // Bind values
         $this->db->bind(':itemName', $data['itemBenefaction']);
-        $this->db->bind(':itemCategory', $data['benefactionCategory']);
-        $this->db->bind(':itemQuantity', $data['quantityBenfaction']);            
+        $this->db->bind(':itemCategory', $data['benefactionCategory']);         
         $this->db->bind(':description', $data['benefactionDescription']);
         $this->db->bind(':donorID', $_SESSION['user_id']);
         // $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
@@ -181,6 +180,7 @@ class BenefactionModel{
                             br.requestedQuantity,
                             br.acceptanceStatus,
                             br.benefactionID,
+                            b.itemQuantity,
                             b.donatedQuantity,
                             db.receivedQuantity,
                             db.acknowledgement
@@ -279,6 +279,26 @@ class BenefactionModel{
         $result = $this->db->resultSet();
 
         return $result;
+    }
+
+    public function benefactionRequestDonationSubmit(){
+        // Prepare statement
+        $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, receivedQuantity, deliveryReceipt, verificationStatus) VALUES (:benefactionID, :doneeID, :receivedQuantity, :deliveryReceipt, :verificationStatus)');
+
+        // Bind values
+        $this->db->bind(':benefactionID', $data['benefactionID']);
+        $this->db->bind(':doneeID', $data['doneeID']);
+        $this->db->bind(':receivedQuantity', $data['receivedQuantity']);            
+        $this->db->bind(':deliveryReceipt', isset($data['deliveryReceipt']) ? $data['deliveryReceipt'] : null);
+        // $this->db->bind(':postedDate', date('Y-m-d')); 
+        $this->db->bind(':verificationStatus', 0);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
     }
 
     
