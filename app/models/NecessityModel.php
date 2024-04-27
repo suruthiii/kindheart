@@ -717,4 +717,60 @@ class NecessityModel{
 
         return $result;
     }
+
+    // Getting Monetary Necessity ID using One Time Donation ID
+    public function getMonetaryNecessityID($oneTimeDonation_ID) {
+        $this->db->query('SELECT monetaryNecessityID FROM oneTimeDonation WHERE oneTimeDonationID = :oneTimeDonationID');
+        $this->db->bind(':oneTimeDonationID', $oneTimeDonation_ID);
+
+        $necessity_ID = $this->db->single()->monetaryNecessityID;
+
+        return $necessity_ID;
+    }
+
+    public function getOneTimeDonationDetails($oneTimeDonation_ID) {
+        $this->db->query('SELECT donorID, amount, paymentSlip, verificationStatus, acknowledgement FROM oneTimeDonation WHERE oneTimeDonationID = :oneTimeDonationID;');
+        $this->db->bind(':oneTimeDonationID', $oneTimeDonation_ID);
+
+        $donationDetails = $this->db->single();
+
+        $donationDetails->donorName = $this->getDonorName($donationDetails->donorID);
+
+        return $donationDetails;
+    }
+
+    public function getRecurringDonationDetails($monetaryNecessity_ID) {
+        $this->db->query("SELECT r.donorID, r.paymentSlip, r.verificationStatus, r.acknowledgement, m.monthlyAmount AS 'Monthly Amount' FROM recurringDonation r JOIN money m ON r.monetaryNecessityID = m.monetaryNecessityID WHERE monetaryNecessityID = :monetaryNecessityID;");
+        $this->db->bind(':monetaryNecessityID', $monetaryNecessity_ID);
+
+        $donationDetails = $this->db->single();
+
+        $donationDetails->donorName = $this->getDonorName($donationDetails->donorID);
+
+        return $donationDetails;
+    }
+
+    public function getGoodDonationCardDetails($goodNecessity_ID) {
+        $this->db->query('SELECT goodDonationID, quantity, donorID, verificationStatus FROM goodDonation WHERE goodNecessityID = :goodNecessityID;');
+        $this->db->bind(':goodNecessityID', $goodNecessity_ID);
+
+        $result = $this->db->resultSet();
+
+        foreach($result as $item) {
+            $item->donorName = $this->getDonorName($item->donorID);
+        }
+
+        return $result;
+    }
+
+    public function getGoodDonationDetails($goodDonation_ID) {
+        $this->db->query('SELECT donorID, quantity, deliveryReceipt, verificationStatus, acknowledgement FROM goodDonation WHERE goodDonationID = :goodDonationID;');
+        $this->db->bind(':goodDonationID', $goodDonation_ID);
+
+        $donationDetails = $this->db->single();
+
+        $donationDetails->donorName = $this->getDonorName($donationDetails->donorID);
+
+        return $donationDetails;
+    }
 }
