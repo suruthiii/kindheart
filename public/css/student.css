@@ -366,18 +366,19 @@
 }
 
 .benefaction-card-container .card{
-    width:200px;
+    width:175px;
     background-color: #f5f3f3;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    height: 300px;
+    margin-right : 20px;
+    margin-top: 20px;
+    height: 250px;
 }
 
 .benefaction-card-container .card img{
     width: 200px;
-    height: 150px;
+    height: 100px;
     background-color: #ffffff;
     object-fit: cover;
 }
@@ -864,11 +865,11 @@
   }
   
   .edit-profile-form .form-field .form-field-visibility input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #790604;
   }
   
   .edit-profile-form .form-field .form-field-visibility input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #790604;
   }
   
   .edit-profile-form .form-field .form-field-visibility input:checked + .slider:before {
