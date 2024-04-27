@@ -47,7 +47,7 @@
                         <!-- Requested Amount in Rupees -->
                         <div class="add-necessity-one-line-input">
                             <label for="requestedamount">Requested Amount in Rupees</label>
-                            <input type="number" id="requestedamount" name="requestedamount" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
+                            <input type="number" id="requestedamount" name="requestedamount" style="background: #cfcece;" title="Full Requested Amount" min="25" value="<?php echo isset($data['requestedamount']) ? $data['requestedamount'] : ''; ?>">
                         </div>
 
                         <!-- Add Button for necessity -->
@@ -83,17 +83,13 @@
             </div>
 
             <!-- ----------------- Javascript for disable recurring chossing date when one-time---------------- -->
-            <!-- <script>
+            <script>
                 document.addEventListener('DOMContentLoaded', function() {
                     var necessityTypeSelect = document.getElementById('necessityType');
 
                     function toggleRecurringFields() {
-                        var recurringStartDateInput = document.getElementById('recurringstartdate');
-                        var monthlyrequestedamount = document.getElementById('monthlyrequestedamount');
                         var requestedamount = document.getElementById('requestedamount');
 
-                        recurringStartDateInput.disabled = true;
-                        monthlyrequestedamount.disabled = true;
                         requestedamount.disabled = true;
                     }
 
@@ -103,7 +99,7 @@
                     // Add event listener to necessityType select element
                     necessityTypeSelect.addEventListener('change', toggleRecurringFields);
                 });
-            </script> -->
+            </script>
             <!-- ---------------------------------------------------------------------------------------------- -->
 
         </div>

@@ -289,6 +289,8 @@ class SuperAdmin extends Controller {
                 $data['err'] = 'Please enter name';
             }
 
+            // die(print_r($data));
+
             // Make sure errors are empty
             if (empty($data['err'])) {
 
@@ -299,18 +301,14 @@ class SuperAdmin extends Controller {
                 }
             } else {
                 // Load view with errors
-                $backend_data = $this->userModel->getAdmin($data['user_id']);
-
-                $admin_data = [
-                    'title' => 'Edit Admin',
-                    'admin_details' => [
-                        'adminID' => $backend_data->adminID,
-                        'adminName' => $backend_data->adminName, 
-                        'email' => $backend_data->email,
-                        'username' => $backend_data->username
-                    ],
-                    'err' => $data['err']
+                $data['admin_details'] = [
+                    'adminID' => $data['user_id'],
+                    'adminName' => $data['name'],
+                    'username' => $data['username'],
+                    'email' => $_POST['email']
                 ];
+
+                // die(print_r($data));
                 
                 $other_data = [
                     'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -318,7 +316,7 @@ class SuperAdmin extends Controller {
                 ];
 
 
-                $this->view('superAdmin/admin/editAdmin', $admin_data, $other_data);
+                $this->view('superAdmin/admin/editAdmin', $data, $other_data);
             }
         }
         else{

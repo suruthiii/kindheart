@@ -228,9 +228,9 @@ a{
 }
 
 .page-container .section .container .right-content .right-cards .right-card {
-    width: 230px;
-    height: 70px;
-    margin: 10px;
+    width: 245px;
+    height: 50px;
+    margin: 15px 2px 15px 2px;
     padding: 10px;
     background-color: #8e0000;
     border-radius: 10px;

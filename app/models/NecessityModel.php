@@ -527,24 +527,65 @@ class NecessityModel{
     }
 
     public function getDonordWhoDonatedForthisNecessity($necessityID){
-        // $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
-        //     FROM necessity n 
-        //     JOIN money m ON n.necessityID = m.monetaryNecessityID 
-        //     WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND n.necessityID = :necessityID");
-            
-        // $this->db->bind(':necessityID', $necessityID);
+        $this->db->query("SELECT user.username, onetimedonation.* FROM user
+                        INNER JOIN donor ON user.UserID = donor.donorID
+                        INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+                        WHERE onetimedonation.monetaryNecessityID = $necessityID");
     
-        // $result = $this->db->single();
-        // return $result;
+        $result = $this->db->resultSet();
 
-        $this->db->query("SELECT money.monetaryNecessityType FROM money WHERE money.monetaryNecessityID = :necessityID");
-        $this->db->bind(':necessityID', $necessityID);
-        $result = $this->db->single();
 
-        if($result == 'recurring'){
+        return $result;
+    }
 
-        }else if($result == 'onetime'){
+    public function getDonorType($donor_ID) {
+        $this->db->query('SELECT donorType FROM donor WHERE donorID = :donorID');
+        $this->db->bind(':donorID', $donor_ID);
 
+        $donorType = $this->db->single()->donorType;
+
+        return $donorType;
+    }
+
+    public function getDonorName($donor_ID) {
+        $donorType = $this->getDonorType($donor_ID);
+
+        if ($donorType == 'individual') {
+            $this->db->query('SELECT fName, lName AS name FROM individual WHERE individualID = :individualID');
+            $this->db->bind(':individualID', $donor_ID);
+        }
+
+        else if ($donorType == 'company') {
+            $this->db->query('SELECT companyName AS name FROM company WHERE companyID = :companyID');
+            $this->db->bind(':companyID', $donor_ID);
+        }
+
+        $donorName = $this->db->single()->name;
+
+        return $donorName;
+    }
+
+    public function getOneTimeDonationCardDetails($necessity_ID) {
+        $this->db->query('SELECT oneTimeDonationID, amount, donorID, verificationStatus FROM oneTimeDonation WHERE monetaryNecessityID = :monetaryNecessityID;');
+        $this->db->bind(':monetaryNecessityID', $necessity_ID);
+
+        $result = $this->db->resultSet();
+
+        foreach($result as $item) {
+            $item->donorName = $this->getDonorName($item->donorID);
+        }
+
+        return $result;
+    }
+
+    public function getRecurringDonationCardDetails($necessity_ID) {
+        $this->db->query('SELECT updatedMonth, donorID, verificationStatus FROM recurringDonation WHERE monetaryNecessityID = :monetaryNecessityID;');
+        $this->db->bind(':monetaryNecessityID', $necessity_ID);
+
+        $result = $this->db->resultSet();
+
+        foreach($result as $item) {
+            $item->donorName = $this->getDonorName($item->donorID);
         }
 
         return $result;
