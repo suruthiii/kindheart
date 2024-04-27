@@ -53,7 +53,7 @@
                 <div class="right-cards">  
                         <?php if($data['necessity_type'] == 'onetime') {?>
                             <?php foreach($data['donation_details'] as $item) { ?>
-                                <a href="<?php echo URLROOT?>/necessity/viewdonationdetails?oneTimeDonationID=<?php echo $item->oneTimeDonationID ?>">
+                                <a href="<?php echo URLROOT?>/necessity/viewmonetarydonationdetails?oneTimeDonationID=<?php echo $item->oneTimeDonationID ?>">
                                     <div class="right-card" style="display:flex;">
                                         <div class="left-side-content" style="width:50%; padding-left:5px">
                                             <div class="title" style=""><?php echo $item->donorName ?></div>
@@ -74,7 +74,7 @@
 
                         else if($data['necessity_type'] == 'recurring') {?>
                             <?php foreach($data['donation_details'] as $item) { ?>
-                                <a href="<?php echo URLROOT?>/necessity/viewdonationdetails?monetaryNecessityID=<?php echo $item->monetaryNecessityID ?>">
+                                <a href="<?php echo URLROOT?>/necessity/viewmonetarydonationdetails?monetaryNecessityID=<?php echo $item->monetaryNecessityID ?>">
                                     <div class="right-card" style="display:flex;">
                                         <div class="left-side-content" style="width:50%; padding-left:5px">
                                             <div class="title" style=""><?php echo $item->donorName ?></div>

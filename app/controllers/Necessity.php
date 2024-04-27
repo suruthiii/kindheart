@@ -1292,7 +1292,7 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data, $other_data);
     }
 
-    public function viewDonationDetails() {
+    public function viewMonetaryDonationDetails() {
         if(isset($_GET['oneTimeDonationID'])){
 
         }
