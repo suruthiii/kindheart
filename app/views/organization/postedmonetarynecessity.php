@@ -151,6 +151,21 @@
                         <h5>Total number of donors who donated</h5>
                         <p>Number of Donors</p>
                     </div>
+
+                    <div class="Still-not-completed-necessities">
+                        <table>
+                            <!-- <td>
+                                    <?php
+                                        if ($completetablerow->monetaryNecessityType == "recurring"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="55" height="55">'; 
+                                        }elseif($completetablerow->monetaryNecessityType == "onetime"){
+                                            echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="55" height="55">';
+                                        }
+                                    ?>
+                            </td> -->
+                            <td>Necessity Name and description</td>
+                        </table>
+                    </div>
                     
                 </div>
             </div>
