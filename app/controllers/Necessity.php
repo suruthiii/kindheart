@@ -72,6 +72,7 @@ class Necessity extends Controller {
             ];
 
             $this->view('organization/postedmonetarynecessity', $data, $other_data);
+
         }
 
         else if ($_SESSION['user_type'] == 'donor') {
@@ -396,7 +397,7 @@ class Necessity extends Controller {
     
                     // Get pending necessity details
                     $pendingNecessityDetails = $this->necessityModel->getPendingMonetaryNecessities($necessityID);
-                    $donorswhodonated = $this->necessityModel->getDonordWhoDonatedForthisNecessity($necessityID);
+                    $donorswhodonated = $this->necessityModel->getDonorsWhoDonatedForThisNecessity($necessityID);
     
                     // Prepare data to pass to the view
                     $data = [
