@@ -255,6 +255,16 @@
     box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
 }
 
+.Still-not-completed-necessities{
+    position: relative;
+    width: 90%;
+    height: 45vh;
+    margin-top: 2vh;
+    background-color: #788a6a;
+    border-radius: 15px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
 .rightside-bar-title{
     margin-top: 4vh;
 }
