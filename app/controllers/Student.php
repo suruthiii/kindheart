@@ -316,19 +316,16 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
-            'title' => 'Home page',
-            'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
+            
         ];
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications(),
-            
-            'notifications' => $this->notificationModel->viewNotifications(),
+          
             
         ];
 
-        $this->view('student/benefactionview', $data, $other_data);
         $this->view('student/benefactionview', $data, $other_data);
     }
 
@@ -341,7 +338,6 @@ class Student extends Controller {
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
            
-            'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
            
         ];
 
@@ -349,7 +345,6 @@ class Student extends Controller {
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications(),
             
-            'notifications' => $this->notificationModel->viewNotifications(),
             
         ];
 
@@ -365,7 +360,6 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactionID' => $benefactionID,
-            'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
             'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
            
@@ -417,12 +411,18 @@ class Student extends Controller {
 
     }
 
-    public function viewDonor(){
+    public function viewDonor($donorID = null){
+
+        
 
         $data = [
             'title' => 'Home page',
-            'donors' => $this->userModel->viewDonors()
+            'donors' => $this->userModel->viewDonors(),
+            'donorDetailsInd' => $this->userModel->getDonorInd($donorID),
+            'donorDetailsOrg' => $this->userModel->getDonorCom($donorID)
         ];
+         //die(print_r($data));
+        
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
