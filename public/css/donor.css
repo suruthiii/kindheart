@@ -1553,7 +1553,7 @@ span .donor-form-error-details{
 /* css to th */
 .benefactionRequest-data th {
     min-width:100px; 
-    width:200px;
+    width:260px;
 }
 
 .benefactionRequest-data td {

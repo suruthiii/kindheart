@@ -183,7 +183,8 @@ class BenefactionModel{
                             b.itemQuantity,
                             b.donatedQuantity,
                             db.receivedQuantity,
-                            db.acknowledgement
+                            db.acknowledgement,
+                            db.verificationStatus
 
                         FROM 
                             benefaction_request br
@@ -282,37 +283,48 @@ class BenefactionModel{
     }
 
     public function benefactionRequestDonationSubmit($data) {
-        // Prepare statement
+        // Prepare statement to insert into donee_benefaction
         $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, receivedQuantity, deliveryReceipt, verificationStatus) VALUES (:benefactionID, :doneeID, :receivedQuantity, :deliveryReceipt, :verificationStatus)');
     
-        // Bind values
+        // Bind parameters for the INSERT query
         $this->db->bind(':benefactionID', $data['benefactionID']);
         $this->db->bind(':doneeID', $data['doneeID']);
         $this->db->bind(':receivedQuantity', $data['donationQuantity']);
-        $this->db->bind(':deliveryReceipt', $data['deliveryReceipt'] ?? null); // Use the null coalescing operator to handle the case where deliveryReceipt is not set
+        $this->db->bind(':deliveryReceipt', $data['deliveryReceipt'] ?? null); // Handle the case where deliveryReceipt is not set
         $this->db->bind(':verificationStatus', 0); // Assuming verificationStatus is always 0 for new entries
     
-
         // Execute the INSERT query
         if ($this->db->execute()) {
-            // If INSERT was successful, update donatedQuantity in benefaction table
+            // Update donatedQuantity in benefaction table
             $this->db->query('UPDATE benefaction SET donatedQuantity = donatedQuantity + :donationQuantity WHERE benefactionID = :benefactionID');
-
-            // Bind parameters for UPDATE query
+    
+            // Bind parameters for the UPDATE query
             $this->db->bind(':donationQuantity', $data['donationQuantity']);
             $this->db->bind(':benefactionID', $data['benefactionID']);
-
+    
             // Execute the UPDATE query
             if ($this->db->execute()) {
-                return true; // Insertion and update successful
+                // Update acceptance state in benefaction-request table
+                $this->db->query('UPDATE benefaction_request SET acceptanceStatus = 2 WHERE benefactionID = :benefactionID AND doneeID = :doneeID');
+    
+                // Bind parameters for the UPDATE query
+                $this->db->bind(':benefactionID', $data['benefactionID']);
+                $this->db->bind(':doneeID', $data['doneeID']);
+    
+                // Execute the UPDATE query
+                if ($this->db->execute()) {
+                    return true; // Insertion, donation quantity update, and acceptance state update successful
+                } else {
+                    return false; // Acceptance state update failed
+                }
             } else {
-                return false; // Update failed
+                return false; // Donation quantity update failed
             }
-            
         } else {
             return false; // Insertion failed
         }
     }
+    
     
 // -------------------Stundent----------------------
 

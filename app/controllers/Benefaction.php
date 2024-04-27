@@ -504,6 +504,28 @@ class Benefaction extends Controller {
         $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
     }
 
+    public function viewBenefactionRequestCompleted($doneeID = null, $benefactionID = null) {
+        if (empty($doneeID || empty($benefactionID))) {
+            redirect('pages/404');           
+        }
+
+        // die(print_r($benefactionID));
+
+        $data = [
+            'title' => 'View Benefaction Request',
+            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        // die(print_r($data['benefactionRequest_details']));
+
+        $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
+    }
+
     public function benefactionRequestDonationSubmit($doneeID = null, $benefactionID = null){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $data = [
@@ -570,28 +592,6 @@ class Benefaction extends Controller {
 
         }
 
-    }
-
-    public function viewBenefactionRequestCompleted($doneeID = null, $benefactionID = null) {
-        if (empty($doneeID || empty($benefactionID))) {
-            redirect('pages/404');           
-        }
-
-        // die(print_r($benefactionID));
-
-        $data = [
-            'title' => 'View Benefaction Request',
-            'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
-        ];
-
-        $other_data = [
-            'notification_count' => $this->notificationModel->getNotificationCount(),
-            'notifications' => $this->notificationModel->viewNotifications()
-        ];
-
-        // die(print_r($data['benefactionRequest_details']));
-
-        $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
     }
 
     public function acceptBenefactionRequest() {
