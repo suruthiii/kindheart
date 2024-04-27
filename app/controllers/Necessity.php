@@ -1237,7 +1237,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1247,7 +1247,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1263,7 +1263,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1273,7 +1273,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1294,13 +1294,31 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data, $other_data);
     }
 
-    public function viewDonationDetails() {
-        if(isset($_GET['oneTimeDonationID'])){
+    public function viewMonetaryDonationDetails() {
+        $necessity_ID = $this->necessityModel->getMonetaryNecessityID($_GET['oneTimeDonationID']);
 
+        if(isset($_GET['oneTimeDonationID'])){
+            $data = [
+                'necessity_ID' => $necessity_ID,
+                'necessity_type' => $this->necessityModel->getMonetaryNecessityType($necessity_ID),
+                'donation_details' => $this->necessityModel->getOneTimeDonationDetails($_GET['oneTimeDonationID'])
+            ];
         }
         else if(isset($_GET['monetaryNecessityID'])){
-            
+            $data = [
+                'necessity_ID' => $_GET['monetaryNecessityID'],
+                'necessity_type' => $this->necessityModel->getMonetaryNecessityType($_GET['monetaryNecessity_ID']),
+                'donation_details' => $this->necessityModel->getRecurringDonationDetails($_GET['monetaryNecessityID'])
+            ];
+
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view($_SESSION['user_type'].'/necessity/viewMonetaryDonationDetails', $data, $other_data);
         }
+
         else{
             die('invalid');
         }
@@ -1313,7 +1331,8 @@ class Necessity extends Controller {
             $data = [
                 'title' => 'Home Page',
                 'necessity_ID' => $_GET['necessity_ID'],
-                'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID'])
+                'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID']),
+                'donations' => $this->necessityModel->getGoodDonationCardDetails($_GET['necessity_ID'])
             ];
         }
 
@@ -1321,7 +1340,8 @@ class Necessity extends Controller {
             $data = [
                 'title' => 'Home Page',
                 'necessity_ID' => $_GET['necessity_ID'],
-                'necessity_details' => $this->necessityModel->getOrganizationGoodDetails($_GET['necessity_ID'])
+                'necessity_details' => $this->necessityModel->getOrganizationGoodDetails($_GET['necessity_ID']),
+                'donations' => $this->necessityModel->getGoodDonationCardDetails($_GET['necessity_ID'])
             ];
         }
 
@@ -1335,6 +1355,22 @@ class Necessity extends Controller {
         ];
     
         $this->view($_SESSION['user_type'].'/necessity/viewgood', $data, $other_data);
+    }
+
+    public function viewGoodDonationDetails() {
+        $necessity_ID = $this->necessityModel->getGoodNecessityID($_GET['goodDonationID']);
+
+        $data = [
+            'necessity_ID' => $necessity_ID,
+            'donation_details' => $this->necessityModel->getGoodDonationDetails($_GET['goodDonationID'])
+        ];
+       
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/necessity/viewgooddonation', $data, $other_data);
     }
 
     public function manageMonetary() {
@@ -1420,6 +1456,10 @@ class Necessity extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->necessityModel->addComment($data)) {
+                        $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
+
+                        $this->notificationModel->createNotification('Manage Necessity', 'manageMonetaryNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
+
                         $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);
 
                         if($necessityType == 'Monetary Funding') {

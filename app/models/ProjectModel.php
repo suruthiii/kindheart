@@ -195,4 +195,8 @@ class ProjectModel{
 
         return $result;
     }
+
+    public function getMilestoneDetails($project_ID) {
+        $this->db->query('SELECT milestoneName, description, amount, receivedAmount,  ');
+    }
 }    

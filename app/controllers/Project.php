@@ -214,7 +214,7 @@ class Project extends Controller {
             'title' => 'Home Page',
             'project_ID' => $_GET['project_ID'],
             'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
-            'milestone_details' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
+            'milestones' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
         ];
 
         $other_data = [
@@ -235,6 +235,10 @@ class Project extends Controller {
         else {
             die('User Type Not Found');
         }
+    }
+
+    public function viewMilestoneDetails() {
+        
     }
 
     public function deleteProject() {
