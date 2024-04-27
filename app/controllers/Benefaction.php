@@ -206,7 +206,7 @@ class Benefaction extends Controller {
             'completedBenefaction' => $this->benefactionModel->getCompletedBenefaction()
         ];
 
-        // die(print_r($data['pendingBenefaction']));
+        // die(print_r($data['onProgressBenefaction'][0]->acknowledgedDonatedQuantity));
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -548,21 +548,9 @@ class Benefaction extends Controller {
 
             if (empty($data['donationQuantity_err']) && empty($data['deliveryReceipt_err'])) {
                 if ($this->benefactionModel->benefactionRequestDonationSubmit($data)) {
-                    // Load the view with data
-                    $viewData  = [
-                        'title' => 'View Benefaction Request',
-                        'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
-                    ];         
-
-                    $other_data = [
-                        'notification_count' => $this->notificationModel->getNotificationCount(),
-                        'notifications' => $this->notificationModel->viewNotifications()
-                    ];                                
-            
-                    // Load View
-                    $this->view('donor/viewBenefactionRequestAccepted', $viewData, $other_data);
+                    redirect('benefaction/viewPostedBenefactions/'.$doneeID.'/'.$benefactionID);
                 } else {
-                    die('Something went wrong.');
+                    redirect('pages/404');
                 }
             } else {
                 // Load view with errors
