@@ -1,6 +1,6 @@
 <div class="sidenav">
     <div class="container">
-        <div class="logo"><img src="<?php echo URLROOT ?>/img/logo.jpg" alt=""></div>
+        <div class="logo"><img src="<?php echo URLROOT ?>/img/kind heart all white logo.png" alt=""></div>
         <a class="sidenav-close-btn" onclick="navToggle()">X</a>
         <div class="items">
 

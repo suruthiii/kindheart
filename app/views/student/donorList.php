@@ -41,14 +41,14 @@
 
                             <?php foreach($data['donors'] as $item){?>
                                 
-                                <a href="<?php echo URLROOT ?>/Student/viewDonor">
+                                <a href="<?php echo URLROOT ?>/Student/viewDonor/<?php echo $item->donorID?>">
                                
                                     <div class="tile-donor">
                                         <table>
                                             <tr id="myBtn">
                                                 <td width="50%" class="tile-name"><?php echo $item->donorName;?></td>
                                                     
-                                                </td>
+                                                
                                             </tr>
 
                                         </table>

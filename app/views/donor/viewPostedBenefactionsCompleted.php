@@ -85,24 +85,6 @@
                         </div>
                     </div> 
                 </div>
-
-                <div class="view-benefaction-btn-container">
-                    <form action="<?php echo URLROOT ?>/benefaction/editPostedBenefactions" method="get" class="edit-form">
-                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefaction_details']->benefactionID; ?>" />
-                        <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
-                            <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" style="filter: invert(100%); width:15px;">
-                            <h5>Edit</h5>
-                        </button>
-                    </form>
-
-                    <form action="<?php echo URLROOT ?>/benefaction/deleteBenefactions" method="post" class="delete-form" onsubmit="return confirmDelete();">
-                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefaction_details']->benefactionID; ?>"/>
-                        <button type="submit" class="view-benefaction_button" style="cursor: pointer;">
-                            <img src="<?php echo URLROOT ?>/img/trash-solid.svg" style="filter: invert(100%); width:14px;">
-                            <h5>Delete</h5>
-                        </button>
-                    </form>
-                </div>
             </div>
 
             <!-- right side bar for Requests -->
