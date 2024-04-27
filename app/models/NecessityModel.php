@@ -75,28 +75,7 @@ class NecessityModel{
         
         $result = $this->db->execute();
 
-        if($result){
-            $monthlyRequestedAmount = $this->getTheMonthlyAmount($data['necessityID']);
-            //sql statement for Updating monetary necessity, money table
-            $this->db->query('UPDATE money SET duration = :donationduration, requestedAmount = :requestedAmount  WHERE monetaryNecessityID = :monetaryNecessityID');
-
-            // Binding values with array value
-            $this->db->bind(':monetaryNecessityID', $data['necessityID']);
-            $this->db->bind(':donationduration', $data['donationduration']);
-            $this->db->bind(':requestedAmount', $data['donationduration'] * $monthlyRequestedAmount->monthlyAmount);
-
-            $result2 = $this->db->execute();
-
-            if ($result2) {
-                return true;
-            } else {
-                // Print error message for debugging
-                printf("Error: %s\n", $this->db->getError());
-                return false;
-            }
-        }else{
-            return false;
-        }
+        return $result;
     }
 
     public function editonetimemonetarynecessitytodb($data){
@@ -141,6 +120,7 @@ class NecessityModel{
         return $result;
     }
     
+    ///////////////////////////////////////////////////////////////
     public function getaddedMonetaryNecessities(){
         $this->db->query("SELECT necessity.necessityID, necessity.necessityName,necessity.description,money.requestedAmount,money.receivedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
         WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND doneeID = :doneeID;");
@@ -149,6 +129,7 @@ class NecessityModel{
         $result = $this->db->resultSet();
         return $result;
     }
+    ///////////////////////////////////////////////////////////////
 
     public function getaddedCompletedMonetaryNecessities(){
         $this->db->query("SELECT necessity.necessityID,necessity.necessityName,necessity.description,money.requestedAmount,money.receivedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
