@@ -82,6 +82,15 @@ class ScholarshipModel{
         }
     }
 
+    public function getDonorID($scholarship_ID) {
+        $this->db->query('SELECT donorID FROM scholarship WHERE scholarshipID = :scholarshipID;');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+
+        $donorID = $this->db->single()->donorID;
+
+        return $donorID;
+    }
+
 
     // ----------------------Donor Controllers------------------
 

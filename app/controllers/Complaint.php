@@ -72,7 +72,10 @@ class Complaint extends Controller {
 
     public function banComplainee() {
         if($this->userModel->banUser($_POST['complainee_ID'])) {
-            redirect($_SESSION['user_type'].'/complaint');
+            //Change Handling Status
+            if($this->complaintModel->handleComplain($_POST['complaint_ID'])) {
+                redirect($_SESSION['user_type'].'/complaint');
+            }
        }
     }
 
