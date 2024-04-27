@@ -33,14 +33,19 @@
                     <div class="lines">
                         <div class="edit-profile-picture">
                         <img class="profile-picture" src="<?php echo URLROOT ?>/img/woman.jpg" alt="">
+                       
                         </div>
                             
                     </div>
 
                     <div class="lines">
                             <label for="">User Name</label>
-                            <input type="text" value="<?php print_r($_SESSION['user_name']) ?>" name="fName" readonly required>
-                        </div>
+                            <div class="form-field">
+                                <div class="form-field-data">
+                                    <input type="text" value="<?php print_r($_SESSION['user_name']) ?>" name="fName" readonly required>
+                                </div>
+                            </div>
+                    </div>
                  
                         <div class="lines">
                             <label for="">First Name</label>
@@ -49,7 +54,7 @@
                    
                         <div class="lines">
                             <label for="">Last Name</label>
-                            <input type="text" value="<?php print_r($data['studentData']->lName) ?>" name="lName" required>  
+                            <input type="text" value="<?php print_r($data['studentData']->lName) ?>" name="lName" readonly required>  
                         </div>
                         <div class="lines">
                             <label for="">Phone Number</label>
@@ -58,7 +63,7 @@
 
                         <div class="lines">
                             <label for="">Gender</label>
-                            <input type="text" value="<?php print_r($data['studentData']->gender) ?>" name="gender" required>  
+                            <input type="text" value="<?php print_r($data['studentData']->gender) ?>" name="gender" readonly required>  
                         </div>
                
                         <div class="lines">
@@ -68,17 +73,32 @@
            
                         <div class="lines">
                             <label for="">Date Of Birth</label>
-                            <input type="tel" value="<?php print_r($data['studentData']->dateOfBirth)?>" name="dateOfBirth" required>  
+                            <input type="tel" value="<?php print_r($data['studentData']->dateOfBirth)?>" name="dateOfBirth" readonly required>  
                         </div>
                   
                         <div class="lines">
                             <label for="">National Identity Card Number</label>
-                            <input type="text" value="<?php print_r($data['studentData']->nicNumber) ?>" name="nicNumber" required>
+                            <input type="text" value="<?php print_r($data['studentData']->nicNumber) ?>" name="nicNumber" readonly required>
                         </div>
 
                         <div class="lines">
                             <label for="">School Name</label>
-                            <input type="text" value="<?php print_r($data['studentData']->institutionName) ?>" name="institutionName" required>
+                            <div class="form-field">
+                                <div class="form-field-data">
+                                    <input type="text" value="<?php print_r($data['studentData']->institutionName) ?>" name="institutionName" readonly required>
+                                </div>
+
+                                <div class="form-field-visibility">
+                                    <label class="switch">
+                                    <?php if ($data['studentData']->institutionNameVisibility==1): ?>
+                                        <input type="checkbox" name="institutionNameVisibility" checked>
+                                    <?php else: ?>
+                                        <input type="checkbox" name="institutionNameVisibility" >
+                                    <?php endif; ?>
+                                        <span class="slider round"></span>
+                                    </label>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="lines">
@@ -97,7 +117,7 @@
                         </div>
 
                         <div class="lines">
-                            <label for="">Caregiver Type</label>
+                            <label for="" >Caregiver Type</label>
                             <input type="text" value="<?php print_r($data['studentData']->caregiverType) ?>" name="caregiverType" required>  
                         </div>
                         <div class="lines">
@@ -107,7 +127,7 @@
 
                         <div class="lines">
                             <label for="">Caregiver's Occupation</label>
-                            <input type="text" value="<?php print_r($data['studentData']->caregiverOccupation) ?>" name="caregiverOccupation" required>  
+                            <input type="text" value="<?php print_r($data['studentData']->caregiverOccupation) ?>" name="caregiverOccupation" >  
                         </div>
 
                         <div class="lines">
@@ -119,7 +139,7 @@
 
                         <div class="lines">
                             <label for="">Account Holder's Name</label>
-                            <input type="text" value="<?php print_r($data['studentData']->accountHoldersName) ?>" name="accountHoldersName" required>  
+                            <input type="text" value="<?php print_r($data['studentData']->accountHoldersName) ?>" name="accountHoldersName"  required>  
                         </div>
 
                         <div class="lines">

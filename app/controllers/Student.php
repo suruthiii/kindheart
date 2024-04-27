@@ -111,6 +111,7 @@ class Student extends Controller {
                 'dateOfBirth' => trim($_POST['dateOfBirth']),
                 'nicNumber' => trim($_POST['nicNumber']),
                 'institutionName' => trim($_POST['institutionName']),
+                'institutionNameVisibility' => (isset($_POST['institutionNameVisibility'])) ? "1":"0",
                 'studentType' => trim($_POST['studentType']),
                 'caregiverName' => trim($_POST['caregiverName']),
                 'caregiverType' => trim($_POST['caregiverType']),
@@ -126,6 +127,8 @@ class Student extends Controller {
                 'receivingScholarships' => trim($_POST['receivingScholarships']),
                 'err' => ''
             ];
+
+          
 
 
             // Make sure errors are empty
@@ -293,13 +296,7 @@ class Student extends Controller {
             
 
         ];
-        //die(print_r($data['appliedBenefactions']));
-        
-        // die(print_r($data['completedBenefaction']));
-        //die(print_r($data['appliedBenefactions']));
-        
-        // die(print_r($data['completedBenefaction']));
-
+      
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications()
@@ -421,7 +418,7 @@ class Student extends Controller {
             'donorDetailsInd' => $this->userModel->getDonorInd($donorID),
             'donorDetailsOrg' => $this->userModel->getDonorCom($donorID)
         ];
-         //die(print_r($data));
+     
         
 
         $other_data = [
@@ -444,7 +441,7 @@ class Student extends Controller {
                 'err' => ''
             ];
 
-            // die(print_r($data));
+           
 
 
             // Make sure errors are empty
