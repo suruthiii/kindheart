@@ -111,6 +111,7 @@ class Student extends Controller {
                 'dateOfBirth' => trim($_POST['dateOfBirth']),
                 'nicNumber' => trim($_POST['nicNumber']),
                 'institutionName' => trim($_POST['institutionName']),
+                'institutionNameVisibility' => (isset($_POST['institutionNameVisibility'])) ? "1":"0",
                 'studentType' => trim($_POST['studentType']),
                 'caregiverName' => trim($_POST['caregiverName']),
                 'caregiverType' => trim($_POST['caregiverType']),
@@ -126,6 +127,8 @@ class Student extends Controller {
                 'receivingScholarships' => trim($_POST['receivingScholarships']),
                 'err' => ''
             ];
+
+          
 
 
             // Make sure errors are empty
@@ -293,13 +296,7 @@ class Student extends Controller {
             
 
         ];
-        //die(print_r($data['appliedBenefactions']));
-        
-        // die(print_r($data['completedBenefaction']));
-        //die(print_r($data['appliedBenefactions']));
-        
-        // die(print_r($data['completedBenefaction']));
-
+      
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications()
@@ -316,19 +313,16 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
-            'title' => 'Home page',
-            'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
+            
         ];
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications(),
-            
-            'notifications' => $this->notificationModel->viewNotifications(),
+          
             
         ];
 
-        $this->view('student/benefactionview', $data, $other_data);
         $this->view('student/benefactionview', $data, $other_data);
     }
 
@@ -341,7 +335,6 @@ class Student extends Controller {
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
            
-            'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
            
         ];
 
@@ -349,7 +342,6 @@ class Student extends Controller {
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications(),
             
-            'notifications' => $this->notificationModel->viewNotifications(),
             
         ];
 
@@ -365,7 +357,6 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactionID' => $benefactionID,
-            'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
             'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
            
@@ -417,12 +408,18 @@ class Student extends Controller {
 
     }
 
-    public function viewDonor(){
+    public function viewDonor($donorID = null){
+
+        
 
         $data = [
             'title' => 'Home page',
-            'donors' => $this->userModel->viewDonors()
+            'donors' => $this->userModel->viewDonors(),
+            'donorDetailsInd' => $this->userModel->getDonorInd($donorID),
+            'donorDetailsOrg' => $this->userModel->getDonorCom($donorID)
         ];
+     
+        
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -444,7 +441,7 @@ class Student extends Controller {
                 'err' => ''
             ];
 
-            // die(print_r($data));
+           
 
 
             // Make sure errors are empty
