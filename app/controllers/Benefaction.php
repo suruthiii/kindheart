@@ -26,6 +26,10 @@ class Benefaction extends Controller {
         $this->view('donor/index', $data, $other_data);
     }
 
+    /*-------------------------------------Admin and Super Admin ----------------------------------------- */
+
+   
+
     // ------------Donor--------------------
 
     // View all benefactions

@@ -95,6 +95,12 @@ class SuperAdmin extends Controller {
             'title' => 'Home page'
         ];
 
+        $data = [
+            'title' => 'Home page',
+            'pending' => $this->benefactionModel->getAllPendingBenefactions(),
+            'on_progress' => $this->benefactionModel->getAllOnProgressBenefactions()
+        ];
+
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
             'notifications' => $this->notificationModel->viewNotifications()

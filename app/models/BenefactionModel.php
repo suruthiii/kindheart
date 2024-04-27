@@ -502,8 +502,22 @@ public function getBenefactionNotApplied($benefactionID) {
             }
         }
     
-    
+    /* --------------------- Admin and Super Admin ----------------------------- */
 
+    public function getAllPendingBenefactions() {
+        $this->db->query('SELECT benefactionID, itemName, description, itemCategory, (itemQuantity - donatedQuantity) AS quantity FROM benefaction WHERE availabilityStatus = 0;');
+        
+        $result = $this->db->resultSet();
 
+        return $result;
+    }
+
+    public function getAllOnProgressBenefactions() {
+        $this->db->query('SELECT benefactionID, itemName, description, itemCategory, itemQuantity AS quantity FROM benefaction WHERE availabilityStatus = 1;');
+        
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
 
 }
