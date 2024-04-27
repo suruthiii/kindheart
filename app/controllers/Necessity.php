@@ -63,6 +63,7 @@ class Necessity extends Controller {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
+                'stillnotCompleted' => $this->necessityModel->stilnotcompleteNecessities(),
                 'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount()
             ];
 
@@ -506,6 +507,70 @@ class Necessity extends Controller {
 
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    // to view start donations
+    public function ViewdonationstartNecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+    
+                    // Get pending necessity details
+                    $pendingNecessityDetails = $this->necessityModel->getdonationstartNecessity($necessityID);
+    
+                    // Prepare data to pass to the view
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'pendingNecessityDetails' => $pendingNecessityDetails
+                    ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+    
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/viewOrganizationDonationstartMonetarynecessity', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'necessityID' => '',
+                    'pendingNecessityDetails' => [] // this is an array
+                ];
+                
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/viewOrganizationDonationstartMonetarynecessity', $data, $other_data);
                 }else {
                     die('User Type Not Found');
                 }
@@ -985,7 +1050,6 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'necessityMonetary' => isset($_POST['necessityMonetary']) ? trim($_POST['necessityMonetary']) : '',
                         'monetarynecessitydes' => isset($_POST['monetarynecessitydes']) ? trim($_POST['monetarynecessitydes']) : '',
-                        'requestedamount' => isset($_POST['requestedamount']) ? trim($_POST['requestedamount']) : '',
                         'necessityMonetary_err' => '',
                         'monetarynecessitydes_err' => '',
                         'requestedamount_err' => ''
@@ -1003,12 +1067,9 @@ class Necessity extends Controller {
                         $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
                     }
 
-                    if(empty($data['requestedamount'])){
-                        $data['requestedamount_err']='Please enter the Amount of money you need';
-                    }
 
                     //check whether there any errors
-                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err'])){
+                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err'])){
                         if($this->necessityModel->editonetimemonetarynecessitytodb($data)){
                             redirect('necessity/monetary');
                         }else{
