@@ -76,7 +76,8 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>   
+                        </div> 
+
                         <div class="view-benefactionRequest-btn-container">
                             <div class="submit-request" id="submitForm" style="display: none;">
                                 <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
@@ -274,27 +275,31 @@ function showDonationInfo() {
             parentLabel.style.color = 'rgb(255, 0, 0)';
         }
     }
+    function confirmSubmit(event) {
+        event.preventDefault(); // Prevent form submission for now
+        const isValid = validateForm(); // Validate the form fields
+        if (isValid) {
+            // Proceed with form submission
+            const form = event.target.closest('form');
+            form.submit(); // Submit the form
+        }
+    }
 
     function validateForm() {
-        var fileInputs = document.querySelectorAll('input[type="file"]');
-        var errorMessage = '';
+        const donationQuantity = document.querySelector('input[name="donationQuantity"]').value;
+        const deliveryReceipt = document.querySelector('input[name="deliveryReceipt"]').value;
 
-        fileInputs.forEach(function(input) {
-            var fileName = input.value;
-            if (fileName) {
-                var fileExtension = fileName.split('.').pop().toLowerCase();
-                var acceptedExtensions = ['png', 'jpg', 'jpeg'];
-                if (acceptedExtensions.indexOf(fileExtension) === -1) {
-                    errorMessage = 'Please upload a PNG, JPG, or JPEG file.';
-                    return false;
-                }
-            }
-        });
-
-        if (errorMessage) {
-            alert(errorMessage);
+        if (!donationQuantity || donationQuantity < 1) {
+            alert('Please enter a valid donation quantity.');
             return false;
         }
+
+        if (!deliveryReceipt) {
+            alert('Please submit the proof of delivery.');
+            return false;
+        }
+
+        // Perform additional validation for file upload if required
 
         return true;
     }
