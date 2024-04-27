@@ -70,9 +70,16 @@
                                         </td>
 
                                         
-                                        <td width="20%" style="transform: translateX(-40%);">
+                                        <td width="20%" style="transform: translateX(-35%);">
                                             <p>
                                                 <?php echo $benefaction->itemQuantity;?> Items
+                                            </p>
+                                        </td>
+
+                                        <td width="15%"  style="transform: translateX(-55%);" >
+                                            <p>
+                                                <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->donatedQuantity;
+                                                echo $remainingQuantity;?> Remains
                                             </p>
                                         </td>
 
@@ -159,12 +166,12 @@
                                             </p>
                                         </td>
 
-                                        <td width="30%"  style="transform: translateX(-45%);" >
+                                        <!-- <td width="30%"  style="transform: translateX(-45%);" >
                                             <p>
                                                 <?php $remainingQuantity = $benefaction->itemQuantity - $benefaction->donatedQuantity;
-                                                echo $remainingQuantity;?> Items Remains
+                                                echo $remainingQuantity;?> Not Delivered
                                             </p>
-                                        </td>
+                                        </td> -->
                                         <!-- here have to edit with requested quatity of student -->
 
                                         <!-- <td width="10%"style="transform: translateX(15%);"> 

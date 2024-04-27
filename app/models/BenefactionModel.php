@@ -36,20 +36,49 @@ class BenefactionModel{
 
     // Get pending benefactions
     public function getPendingBenefaction() {
-        // Prepare statement
-        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate,
-                            SUM(CASE WHEN br.acceptanceStatus IN (0, 1) THEN br.requestedQuantity ELSE 0 END) AS totalRequestedQuantity
-                            FROM benefaction b
-                            LEFT JOIN benefaction_request br ON b.benefactionID = br.benefactionID
-                            WHERE b.availabilityStatus = 0
-                            GROUP BY b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate;
-                            ');
-
-        // Execute
+        // Prepare statement to select benefactions
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity,
+                                SUM(CASE WHEN br.acceptanceStatus IN (0, 1) THEN br.requestedQuantity ELSE 0 END) AS totalRequestedQuantity,
+                                (b.itemQuantity - b.donatedQuantity) AS remainingQuantity,
+                                db.verificationStatus
+                                FROM benefaction b
+                                LEFT JOIN benefaction_request br ON b.benefactionID = br.benefactionID
+                                LEFT JOIN donee_benefaction db ON b.benefactionID = db.benefactionID
+                                WHERE b.availabilityStatus = 0
+                                GROUP BY b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity');
+    
+        // Execute the query
         $this->db->execute();
-
+    
         // Fetch result set
-        return $this->db->resultSet();
+        $results = $this->db->resultSet();
+    
+        // Update availabilityStatus for each benefaction
+        foreach ($results as $benefaction) {
+            // Check if remainingQuantity is zero
+            if ($benefaction->remainingQuantity === 0) {
+                // Determine the new availabilityStatus based on verificationStatus
+                $newAvailabilityStatus = ($benefaction->verificationStatus === 2) ? 2 : 1;
+    
+                // Update the availabilityStatus in the database
+                $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
+            }
+        }
+    
+        return $results;
+    }
+    
+    // Helper function to update availabilityStatus for a benefaction
+    private function updateBenefactionAvailabilityStatus($benefactionID, $newAvailabilityStatus) {
+        // Prepare statement to update availabilityStatus
+        $this->db->query('UPDATE benefaction SET availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
+    
+        // Bind values
+        $this->db->bind(':availabilityStatus', $newAvailabilityStatus);
+        $this->db->bind(':benefactionID', $benefactionID);
+    
+        // Execute the update query
+        $this->db->execute();
     }
 
     // Get onProgress benefactions
@@ -133,12 +162,11 @@ class BenefactionModel{
     //Edit Benefaction
     public function updateBenefaction($data){
         // Prepare statement
-        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemCategory = :itemCategory, itemQuantity = :itemQuantity, description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
+        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemCategory = :itemCategory, description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
 
         // Bind values
         $this->db->bind(':itemName', $data['itemBenefaction']);
-        $this->db->bind(':itemCategory', $data['benefactionCategory']);
-        $this->db->bind(':itemQuantity', $data['quantityBenfaction']);            
+        $this->db->bind(':itemCategory', $data['benefactionCategory']);         
         $this->db->bind(':description', $data['benefactionDescription']);
         $this->db->bind(':donorID', $_SESSION['user_id']);
         // $this->db->bind(':availabilityStatus', $data['availabilityStatus']);
@@ -177,25 +205,33 @@ class BenefactionModel{
                                 WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
                                 WHEN u.userType = "organization" THEN o.orgName
                             END AS doneeName,
-                            db.reason,
-                            db.requestedQuantity,
-                            db.acceptanceStatus,
-                            db.benefactionID,
-                            b.donatedQuantity
+                            br.reason,
+                            br.requestedQuantity,
+                            br.acceptanceStatus,
+                            br.benefactionID,
+                            b.itemQuantity,
+                            b.donatedQuantity,
+                            db.receivedQuantity,
+                            db.acknowledgement,
+                            db.verificationStatus
+
                         FROM 
-                            benefaction_request db
+                            benefaction_request br
                         JOIN 
-                            user u ON db.doneeID = u.userID
+                            user u ON br.doneeID = u.userID
                         LEFT JOIN 
-                            student s ON u.userType = "student" AND s.studentID = db.doneeID
+                            student s ON u.userType = "student" AND s.studentID = br.doneeID
                         LEFT JOIN 
-                            organization o ON u.userType = "organization" AND o.orgID = db.doneeID
+                            organization o ON u.userType = "organization" AND o.orgID = br.doneeID
                         LEFT JOIN 
-                            benefaction b ON db.benefactionID = b.benefactionID
+                            benefaction b ON br.benefactionID = b.benefactionID
+                        LEFT JOIN 
+                            donee_benefaction db ON br.benefactionID = db.benefactionID
                         WHERE 
                             u.status != 10
-                            AND db.doneeID = :doneeID
-                            AND db.benefactionID = :benefactionID;)');   
+                            AND br.doneeID = :doneeID
+                            AND br.benefactionID = :benefactionID
+                    ');   
 
         $this->db->bind(':doneeID', $doneeID);
         $this->db->bind(':benefactionID', $benefactionID);
@@ -205,8 +241,8 @@ class BenefactionModel{
         return $result;
     }
 
-    public function declineBenefactionRequest($doneeID, $benefactionID) {
-        $this->db->query('UPDATE donee_benefaction SET verificationStatus = 10 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+    public function acceptBenefactionRequest($doneeID, $benefactionID) {
+        $this->db->query('UPDATE benefaction_request SET acceptanceStatus = 1 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
         $this->db->bind(':doneeID', $doneeID);
         $this->db->bind(':benefactionID', $benefactionID);
 
@@ -218,9 +254,107 @@ class BenefactionModel{
         }
     }
 
+    public function declineBenefactionRequest($doneeID, $benefactionID) {
+        $this->db->query('UPDATE benefaction_request SET acceptanceStatus = 10 WHERE doneeID = :doneeID AND benefactionID = :benefactionID;');
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
 
+        // Execute the query
+        if ($this->db->execute()) {
+            return true; // Update successful
+        } else {
+            return false; // Update failed
+        }
+    }
 
+    public function getUserProfile($doneeID, $benefactionID) {
+        $this->db->query('SELECT u.userType AS userType,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentID
+                                WHEN u.userType = "organization" THEN o.orgID
+                            END AS doneeID,
+                            CASE
+                                WHEN u.userType = "student" THEN CONCAT(s.fname, " ", s.lname)
+                                WHEN u.userType = "organization" THEN o.orgName
+                            END AS doneeName,
+                            CASE
+                                WHEN u.userType = "student" THEN s.studentType
+                                WHEN u.userType = "organization" THEN o.orgType
+                            END AS doneeType,
+                            s.gender,
+                            s.dateOfBirth,
+                            s.institutionName,
+                            s.studyingYear,
+                            d.address AS doneeAddress,
+                            d.phoneNumber AS doneePhoneNumber
+                        FROM 
+                            benefaction_request br
+                        JOIN 
+                            user u ON br.doneeID = u.userID
+                        LEFT JOIN 
+                            student s ON u.userType = "student" AND s.studentID = br.doneeID
+                        LEFT JOIN 
+                            organization o ON u.userType = "organization" AND o.orgID = br.doneeID
+                        LEFT JOIN 
+                            donee d ON d.doneeID = br.doneeID
+                        WHERE 
+                            u.status != 10
+                            AND br.doneeID = :doneeID
+                            AND br.benefactionID = :benefactionID
+                    ');   
 
+        $this->db->bind(':doneeID', $doneeID);
+        $this->db->bind(':benefactionID', $benefactionID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function benefactionRequestDonationSubmit($data) {
+        // Prepare statement to insert into donee_benefaction
+        $this->db->query('INSERT INTO donee_benefaction (benefactionID, doneeID, receivedQuantity, deliveryReceipt, verificationStatus) VALUES (:benefactionID, :doneeID, :receivedQuantity, :deliveryReceipt, :verificationStatus)');
+    
+        // Bind parameters for the INSERT query
+        $this->db->bind(':benefactionID', $data['benefactionID']);
+        $this->db->bind(':doneeID', $data['doneeID']);
+        $this->db->bind(':receivedQuantity', $data['donationQuantity']);
+        $this->db->bind(':deliveryReceipt', $data['deliveryReceipt'] ?? null); // Handle the case where deliveryReceipt is not set
+        $this->db->bind(':verificationStatus', 0); // Assuming verificationStatus is always 0 for new entries
+    
+        // Execute the INSERT query
+        if ($this->db->execute()) {
+            // Update donatedQuantity in benefaction table
+            $this->db->query('UPDATE benefaction SET donatedQuantity = donatedQuantity + :donationQuantity WHERE benefactionID = :benefactionID');
+    
+            // Bind parameters for the UPDATE query
+            $this->db->bind(':donationQuantity', $data['donationQuantity']);
+            $this->db->bind(':benefactionID', $data['benefactionID']);
+    
+            // Execute the UPDATE query
+            if ($this->db->execute()) {
+                // Update acceptance state in benefaction-request table
+                $this->db->query('UPDATE benefaction_request SET acceptanceStatus = 2 WHERE benefactionID = :benefactionID AND doneeID = :doneeID');
+    
+                // Bind parameters for the UPDATE query
+                $this->db->bind(':benefactionID', $data['benefactionID']);
+                $this->db->bind(':doneeID', $data['doneeID']);
+    
+                // Execute the UPDATE query
+                if ($this->db->execute()) {
+                    return true; // Insertion, donation quantity update, and acceptance state update successful
+                } else {
+                    return false; // Acceptance state update failed
+                }
+            } else {
+                return false; // Donation quantity update failed
+            }
+        } else {
+            return false; // Insertion failed
+        }
+    }
+    
+    
 // -------------------Stundent----------------------
 
 public function getBenefactionNotApplied($benefactionID) {

@@ -17,20 +17,21 @@
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
                     <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewBenefactionRequestPending'">Go Back</button> -->
-                    <button onclick="goBack()">Go Back</button>
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewPostedBenefactions?benefactionID=<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>'">Go Back</button>
+                    <!-- <button onclick="goBack()">Go Back</button>
 
                     <script>
                         function goBack() {
                             // Use history.back() to navigate to the previous page in history
                             history.back();
                         }
-                    </script>
+                    </script> -->
                 </div>
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Completed Benefaction Request Details</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <div class="benefactionRequest-left-column">
@@ -55,15 +56,68 @@
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Donatated Amount</th>
-                                <td>dfghsgst</td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->donatedQuantity) ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
-                                <th>Donated Date</th>
-                                <td>dfbvsdfb</td>
+                                <th>Admin Verification Status</th>
+                                <?php
+                                
+                                switch ($data['benefactionRequest_details'][0]->verificationStatus) {
+                                    case 0:
+                                        $adminverificationStatus = 'Pending';
+                                        break;
+                                    case 1:
+                                        $adminverificationStatus = 'Verified';
+                                        break;
+                                    case 2:
+                                        $adminverificationStatus = 'Verified';
+                                        break;
+                                    case 3:
+                                        $adminverificationStatus = 'Verified';
+                                        break;
+                                    default:
+                                        $adminverificationStatus = 'Pending';
+                                        break;
+                                    }
+                                ?>
+                                <td><?php print_r($adminverificationStatus) ?></td>
+                            </tr>
+                            <tr class="benefactionRequest-data">
+                                <th>Donee Acknowledgement Status</th>
+                                <?php
+                                
+                                switch ($data['benefactionRequest_details'][0]->verificationStatus) {
+                                    case 2:
+                                        $doneeAcknowledgemntStatus = 'Acknowledged';
+                                        break;
+                                    case 3:
+                                        $doneeAcknowledgemntStatus = 'Not Acknowledged';
+                                        break;
+                                    default:
+                                        $doneeAcknowledgemntStatus = 'Not Acknowledged';
+                                        break;
+                                    }
+                                ?>
+                                <td><?php print_r($doneeAcknowledgemntStatus) ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Acknowledgement</th>
-                                <td>dfbvsdfb</td>
+                                <?php
+                                
+                                switch ($data['benefactionRequest_details'][0]->verificationStatus) {
+                                    case 2:
+                                        $doneeAcknowledgemnt = $data['benefactionRequest_details'][0]->acknowledgement;
+                                        break;
+                                    case 3:
+                                        $doneeAcknowledgemnt = '-';
+                                        break;
+                                    default:
+                                        $doneeAcknowledgemnt = '-';
+                                        break;
+                                    }
+                                ?>
+                                
+                                <td><?php print_r($doneeAcknowledgemnt) ?></td>
                             </tr>                            
                         </table>                    
                     </div>                    

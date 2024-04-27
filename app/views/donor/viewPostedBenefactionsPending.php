@@ -30,7 +30,7 @@
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Posted Benefaction</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <div class="two-column-container">
@@ -118,7 +118,7 @@
                     <div class="request-right-side-bar-all-requests">
                         <?php if (!empty($data['benefaction_requests'])) : ?>
                             <?php foreach($data['benefaction_requests'] as $request): ?>
-                                <?php if ($request->acceptanceStatus == 0 || $request->acceptanceStatus == 1) : ?>
+                                <?php if ($request->acceptanceStatus == 0 || $request->acceptanceStatus == 1 || $request->acceptanceStatus == 2) : ?>
                                     <a href="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $request->doneeID?>/<?php echo $request->benefactionID?>">
                                         <div class="request-right-side-bar-type-requests">
                                             <div class="request-right-side-bar-type-requests-left">
@@ -135,6 +135,9 @@
                                                         break;
                                                     case 1:
                                                         echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                                        break;
+                                                    case 2:
+                                                        echo '<div class="status_completed"><p>Completed</p></div>';
                                                         break;
                                                     default:
                                                         echo '<div class="status_pending"><p> </p></div>';

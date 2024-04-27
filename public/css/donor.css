@@ -418,6 +418,14 @@ span .donor-form-error-details{
     padding: 0px 14px; /* Adjust padding */
 }
 
+.add-benefaction-first-div input:focus,
+.add-benefaction-second-div input:focus,
+.add-benefaction-third-div input:focus,
+.add-benefaction-fourth-div input:focus {
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
 .select-box {
     height: 38px; /* Make the input fields fill the entire height of their parent div */
     width: 300px;
@@ -489,15 +497,91 @@ span .donor-form-error-details{
 .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+
 /* ------------------------------------------------- */
 
-.add-benefaction-first-div input:focus,
-.add-benefaction-second-div input:focus,
-.add-benefaction-third-div input:focus,
-.add-benefaction-fourth-div input:focus {
-    outline: none !important;
-    border: #8E0000 solid;
+.add-benefaction-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 10vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
 }
+
+.add-benefaction-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-benefaction-right-side-bar-topic{
+    margin-bottom: 15px;
+    font-size: 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-benefaction-right-side-bar-grey-line{
+    /* position: fixed; */
+    width: 265px;
+    height: 0.3vh;
+    background-color: #DEDEDE;
+    /* margin-left: -40px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions{
+    height: 75vh;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions-inner-content{
+        min-width: 50%;
+        margin: 0;  
+        margin-left: 15px;     
+
+        margin-bottom: 10px;
+        /* Adjust height to fit content */
+        height: auto; /* This allows the height to expand based on content */
+        width: 85%;
+        padding: 10px;
+
+        display: flex;
+        flex-direction: column;
+
+        background-color: rgb(243, 227, 230);
+        border: 1px solid #707070;
+        border-radius: 6px;
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions-inner-content h3 {
+    margin: 0; /* Remove default margin */
+    margin-bottom: 10px; /* Add margin below h3 for spacing */
+}
+
+.add-benefaction-right-side-bar-all-add-benefactions-inner-content p {
+    margin: 0; /* Remove default margin */
+}
+
+
 
 /* ----------Posted Benefaction ----------- */
 
@@ -590,6 +674,10 @@ span .donor-form-error-details{
 .posted-benefactions-Completed-table table,
 .posted-benefactions-onProgress-table table{
     width: 95%;
+}
+
+.posted-benefactions-pending-table table td p{
+    font-size: 12px;
 }
 
 .posted-benefactions-pending-table table tr,
@@ -904,6 +992,16 @@ span .donor-form-error-details{
     min-width: 40%;
 }
 
+.request-right-side-bar-type-requests-left h4 {
+    margin: 0; /* Remove default margin */
+    margin-bottom: 5px; /* Add margin below h4 for spacing */
+}
+
+.request-right-side-bar-type-requests-left p {
+    margin: 0; /* Remove default margin */
+    margin-top: 5px; /* Add margin above p for spacing */
+}
+
 .request-right-side-bar-type-requests-right .status_pending p{
     background-color: #ffffff;
     color: #000;
@@ -962,27 +1060,6 @@ span .donor-form-error-details{
     display: flex;
     justify-content: center; 
     align-items: center;
-}
-
-/* .request-right-side-bar-type-requests-right .status_button #status_pending{
-    background-color: #ffffff;
-    color: #000;
-}
-
-.request-right-side-bar-type-requests-right .status_button #status_accepted{
-    background-color: #ffffff;
-    color: #000;
-} */
-
-
-.request-right-side-bar-type-requests-left h4 {
-    margin: 0; /* Remove default margin */
-    margin-bottom: 5px; /* Add margin below h4 for spacing */
-}
-
-.request-right-side-bar-type-requests-left p {
-    margin: 0; /* Remove default margin */
-    margin-top: 5px; /* Add margin above p for spacing */
 }
 
 /* ---------------------Choose Benefaction type--------------------------- */
@@ -1456,8 +1533,8 @@ span .donor-form-error-details{
 .benefactionRequest-left-column {   
     flex: 70; 
     min-width: 70%;
-    height: 50vh;
-    max-height: 50vh;
+    height: 55vh;
+    max-height: 55vh;
     margin-top: 150px;
 
     border-collapse: collapse; /* Optional: Ensure borders collapse properly */
@@ -1480,7 +1557,7 @@ span .donor-form-error-details{
 /* css to th */
 .benefactionRequest-data th {
     min-width:100px; 
-    width:200px;
+    width:260px;
 }
 
 .benefactionRequest-data td {
@@ -1488,14 +1565,14 @@ span .donor-form-error-details{
     overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
     white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
     padding: 8px;
-    width:300px;
+    width:400px;
 }
 
 .view-benefactionRequest-btn-container{
     position: fixed;
     width: 25%;
     height: 5vh;
-    margin-top:10vh;
+    margin-top:5vh;
     display: flex;
     justify-content:flex-start;
 }
@@ -1536,7 +1613,219 @@ span .donor-form-error-details{
     font-weight: 400;
 }
 
-/* ----------------View Benefaction Request Details Accepted------------------ */
+
+.user-profile-right-side-bar{
+    position: fixed;
+    width: 25%;
+    height: 10vh;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.user-profile-right-side-bar-inner{
+    position: fixed;
+    width: 20%;
+    height: 85vh;
+    background-color: #F5F5F5;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-right-side-bar-topic{
+    margin-bottom: 15px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-right-side-bar-grey-line{
+    /* position: fixed; */
+    width: 265px;
+    height: 0.3vh;
+    background-color: #DEDEDE;
+    /* margin-left: -40px; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.user-profile-right-side-bar-all-user-profiles{
+    height: 75vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner-image{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 1px solid #707070;
+    background-color: rgb(255, 240, 242);
+    margin-bottom: 15px;
+    
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Ensure the image stays within the circular boundary */
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner-image img {
+    max-width: 100%; /* Ensure the image does not exceed the container width */
+    max-height: 100%; /* Ensure the image does not exceed the container height */
+    border-radius: 50%; /* Maintain circular shape even if image size varies */
+}
+
+.user-profile-right-side-bar-all-user-profiles-inner-details{
+    width: 100%;
+    table-layout: fixed;
+}
+
+.user-profile-data {
+    height: 35px;
+    font-size: 13px;
+}
+
+.user-profile-data th {
+    min-width:100px; 
+    width:300px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.user-profile-data td {
+    word-wrap: break-word; /* Break long words and wrap onto the next line */
+    overflow-wrap: break-word; /* Break words at arbitrary points to prevent overflow */
+    white-space: pre-wrap; /* Preserve whitespace and allow wrapping */
+    padding-left: 10px;
+    width:400px;
+}
+
+/* ----------------View Benefaction Request Deatils Accepted------------------ */
+
+.benefactionRequest-donationinfo{
+    display: flex;
+    margin-top: 30px;
+    height: 80px;
+    width: 400px;
+    background-color: rgb(224, 224, 224);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.benefactionRequest-donationinfo1{
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.benefactionRequest-donationinfo label{
+    color: rgb(0, 0, 0);
+    font-size: 15px;
+}
+
+.benefactionRequest-donationdata input[type="number"]{
+    height: 30px;
+    width: 50px;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+    padding: 0px 14px 0px 14px;
+    margin-top: 10px;
+}
+
+.benefactionRequest-donationdata input[type="number"]:focus{
+    outline: none !important;
+    border: #8E0000 solid;
+}
+
+.benefactionRequest-donationdata-image{
+    height: 30px; /* Make the input fields fill the entire height of their parent div */
+    width: 130px;
+    border-radius: 6px;
+    border: 1px solid #707070;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FCFCFC;
+    box-shadow: 0px 4px 14px 1px rgba(0, 0, 0, 0.04);
+
+    margin-top: 10px;
+    /* margin-bottom: 30px; */
+}
+
+.benefactionRequest-donationdata-image p{
+    color: #707070;
+    font-size: 13px;
+
+}
+
+.view-benefactionRequest-btn-container-cancel{
+    position: fixed;
+    width: 25%;
+    height: 5vh;
+    margin-top:5vh;
+    display: flex;
+    justify-content:flex-start;
+
+    margin-left: 200px;
+}
+
+.view-benefactionRequest-btn-container-cancel button:first-child {
+    margin-right: 10px;
+}
+
+.view-benefactionRequest-btn-container-cancel button{
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    width: 170px;
+    margin-right: 10px;
+    background-color: #8E0000;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-benefactionRequest-btn-container-cancel button:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
+}
+
+.view-benefactionRequest-btn-container-cancel button img{
+    padding-right: 8px;
+}
+
+.view-benefactionRequest-btn-container-cancel button h5{
+    color: #ffffff;
+    font-size: 12px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+
+/* ----------------View Benefaction Request Details Ongoing------------------ */
 
 .benefactionRequestAccepted-left-column{
     height: 70vh;

@@ -30,7 +30,7 @@
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Posted Benefaction</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <div class="two-column-container">

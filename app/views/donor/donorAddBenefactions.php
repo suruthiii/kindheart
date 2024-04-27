@@ -173,8 +173,50 @@
 
             </div>
 
-            <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <!-- right side bar for Requests -->
+            <div class="add-benefaction-right-side-bar">
+                <div class="add-benefaction-right-side-bar-inner">  
+                    <!-- Topic -->
+                    <div class="add-benefaction-right-side-bar-topic">
+                        <h3>Items Included in Benfaction Categories </h3>
+                        <div class="add-benefaction-right-side-bar-grey-line"> </div>
+                    </div>  
+                    
+                    <!-- Display add-benefactions or no add-benefactions message -->
+                    <div class="add-benefaction-right-side-bar-all-add-benefactions">
+                        <div class="add-benefaction-right-side-bar-all-add-benefactions-inner">
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Educational Supplies and Tools</h3>
+                                <p>Pencils, Pens, Notebooks, Textbooks, Calculators, Educational software, Interactive whiteboards, Microscopes, Lab equipment, Robotics kits, Coding software, Coding software, Laptops, 3D printers</p>
+                            </div>
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Clothing and Accessories</h3>
+                                <p>School Uniforms, T-shirts, Pants, Shoes, Backpacks, Hats</p>
+                            </div>
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Recreation and Sports Equipment</h3>
+                                <p>Soccer balls, Basketballs, Gymnastics mats, Tennis rackets, Bicycles, Skateboards</p>
+                            </div>
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Health and Wellness Products</h3>
+                                <p>Hygiene products (e.g., soap, toothpaste), Hand sanitizer, Yoga mats</p>
+                            </div>
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Transportation and Mobility</h3>
+                                <p>Bicycles, Wheelchairs, Scooters, Crutches, Walking canes</p>
+                            </div>
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Literature and Reading Materials</h3>
+                                <p>Fiction books, Non-fiction books, Language learning materials, Dictionaries, E-readers, Audiobooks</p>
+                            </div>
+                            <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
+                                <h3>Other</h3>
+                                <p>Any other items that do not fall into the above categories</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
 
         </div>
     </section>
