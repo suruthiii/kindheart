@@ -30,7 +30,7 @@
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Your Posted Scholarships</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <!-- Pending table -->

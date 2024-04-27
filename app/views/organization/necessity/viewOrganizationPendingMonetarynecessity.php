@@ -41,10 +41,12 @@
                             <td><p>Necessity Type</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->monetaryNecessityType; ?></p></td>
                         </tr>
+                        <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'recurring') {?>
                         <tr>
                             <td><p>Monthly Requested<br>Amount</p></td>
                             <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->monthlyAmount, 2); ?></p></td>
                         </tr>
+                        <?php } ?>
                         <tr>
                             <td><p>Requested Amount</p></td>
                             <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->requestedAmount, 2); ?></p></td>
@@ -57,6 +59,7 @@
                             <td><p>Amount Due</p></td>
                             <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->amount_due, 2); ?></p></td>
                         </tr>
+                        <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'recurring') {?>
                         <tr>
                             <td><p>Donation Starting Date</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->startDate !== null ? date('Y-m-d', strtotime($data['pendingNecessityDetails']->startDate)) : '---'; ?></p></td>
@@ -65,6 +68,7 @@
                             <td><p>Duration</p></td>
                             <td><p><?php echo $data['pendingNecessityDetails']->duration; ?> Months</p></td>
                         </tr>
+                        <?php } ?>
                     </table>
                 </div>
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">

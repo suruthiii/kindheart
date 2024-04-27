@@ -22,7 +22,7 @@
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
                     <h3>Posted Physical Goods Necessities</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <!-- Pending table -->

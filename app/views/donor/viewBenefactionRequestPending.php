@@ -16,21 +16,23 @@
                 <!-- Go Back Button -->
                 <div class="donor-goback-button">
                     <img src="<?php echo URLROOT ?>/img/back-arrow.png">
-                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewBenefactionRequestPending'">Go Back</button> -->
-                    <button onclick="goBack()">Go Back</button>
+                    <!-- <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewPostedBenefactions'">Go Back</button> -->
+                    <button onclick="location.href='<?php echo URLROOT ?>/benefaction/viewPostedBenefactions?benefactionID=<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>'">Go Back</button>
+
+                    <!-- <button onclick="goBack()">Go Back</button>
 
                     <script>
                         function goBack() {
                             // Use history.back() to navigate to the previous page in history
                             history.back();
                         }
-                    </script>
+                    </script> -->
                 </div>
 
                 <!-- main title -->
                 <div class="donor-middle-container-title-typeone">
                     <h3>Pending Benefaction Request Details</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <div class="benefactionRequest-left-column">
@@ -58,17 +60,18 @@
                 </div>
 
                 <div class="view-benefactionRequest-btn-container">
-                    <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
+                    <!-- <form action="<?php echo URLROOT ?>/benefaction/temporyStudentProfile" method="get" class="donee-profile">
                         <input type="hidden" name="doneeID" id="doneeID" value="" />
                         <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
                             <img src="<?php echo URLROOT ?>/img/profile2.png" style="filter: invert(100%); width:15px;">
                             <h5>View Donee Profile</h5>
                         </button>
-                    </form>
+                    </form> -->
 
-                    <form action="<?php echo URLROOT ?>/benefaction/" method="get" class="accept-request">
-                        <input type="hidden" name="doneeID" id="doneeID" value="" />
-                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;">
+                    <form action="<?php echo URLROOT ?>/benefaction/acceptBenefactionRequest" method="post" class="accept-request" id="acceptForm">
+                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                        <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
+                        <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmAccept(event)" >
                             <img src="<?php echo URLROOT ?>/img/check.png" style="filter: invert(100%); width:18px;">
                             <h5>Accept Request</h5>
                         </button>
@@ -85,8 +88,94 @@
                 </div>
             </div>
 
-            <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <!-- right side bar for user-profile -->
+            <div class="user-profile-right-side-bar">
+                <div class="user-profile-right-side-bar-inner">  
+                    <!-- Topic -->
+                    <div class="user-profile-right-side-bar-topic">
+                        <h3>Donee Profile</h3>
+                        <div class="user-profile-right-side-bar-grey-line"> </div>
+                    </div>  
+                    
+                    <!-- Display user-profile or no requests message -->
+                    <div class="user-profile-right-side-bar-all-user-profiles">
+                        <div class="user-profile-right-side-bar-all-user-profiles-inner">
+                            <?php if ($data['user_profile'][0]->userType === 'student'): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Donee Type</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Gender</th>
+                                            <td><?php print_r($data['user_profile'][0]->gender); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Date Of Birth</th>
+                                            <td><?php print_r($data['user_profile'][0]->dateOfBirth); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Institution Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->institutionName); ?></td>
+                                        </tr>
+                                        <?php if ($data['user_profile'][0]->doneeType === 'School Student'): ?>
+                                            <tr class="user-profile-data">
+                                                <th>Grade</th>
+                                                <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                            </tr>
+                                        <?php elseif ($data['user_profile'][0]->doneeType === 'University Student'): ?>
+                                            <tr class="user-profile-data">
+                                                <th>Studying Year</th>
+                                                <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </table>          
+                                </div>
+                            <?php elseif ($data['user_profile'][0]->userType === 'organization'): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Donee Type</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                        </tr>
+                                    </table>          
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div>   
 
         </div>
     </section>
@@ -109,6 +198,26 @@
             if (result.isConfirmed) {
                 // Submit the form programmatically
                 const form = document.getElementById('declineForm');
+                form.submit(); // Submit the form
+            }
+        });
+    }
+
+    function confirmAccept(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        Swal.fire({
+            title: 'Great!',
+            text: 'You are about to accept this request. This action cannot be undone.',
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, Accept it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit the form programmatically
+                const form = document.getElementById('acceptForm');
                 form.submit(); // Submit the form
             }
         });

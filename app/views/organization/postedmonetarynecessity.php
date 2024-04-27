@@ -22,7 +22,7 @@
                 <!-- main title -->
                 <div class="middle-container-title-typeone">
                     <h3>Posted Monetary Necessities</h3>
-                    <p>Last 30 Days</p>
+                     
                 </div>
 
                 <!-- Pending table -->
@@ -46,7 +46,7 @@
                                 <td><h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->necessityName?></h4>
                                     <p class="pending-postednecessitydescription"><?php echo $pendingtablerow->description?></p>
                                 </td>
-                                <td><p>Rs. <?php echo number_format($pendingtablerow->requestedAmount, 2); ?></p></td>
+                                <td><p>Rs. <?php echo number_format($pendingtablerow->requestedAmount-$pendingtablerow->receivedAmount, 2); ?></p></td>
                                 <td>
                                     <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
                                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $pendingtablerow->necessityID; ?>">
