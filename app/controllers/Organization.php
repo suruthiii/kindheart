@@ -9,6 +9,7 @@ class Organization extends Controller {
         $this->middleware->checkAccess(['organization']);
         $this->organizationModel = $this->model('organizationModel');
         $this->notificationModel = $this->model('NotificationModel');
+        $this->successStoryModel = $this->model('SuccessStoryModel');
     }
 
     public function index(){
@@ -93,7 +94,8 @@ class Organization extends Controller {
 
     public function successstory(){
         $data = [
-            'title' => 'Home page'
+            'title' => 'Home page',
+            'successstories' => $this->successStoryModel->getSuccessStories()
         ];
 
         $other_data = [

@@ -75,6 +75,7 @@ class SuccessStory extends Controller {
                             redirect('student/successstory');
                         }
                         else if ($_SESSION['user_type'] == 'organization') {
+                            redirect('organization/successstory');
                         }
                         else {
                             die('User Type Not Found');
@@ -99,7 +100,7 @@ class SuccessStory extends Controller {
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
-
+                $this->view('organization/successstory', $successStories);
             }
 
             else {
@@ -124,7 +125,7 @@ class SuccessStory extends Controller {
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
-
+                $this->view('organization/viewSuccessStory', $data);
             }
 
             else {
@@ -150,6 +151,7 @@ class SuccessStory extends Controller {
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
+                $this->view('organization/viewStory', $data);
 
             }
 
@@ -178,7 +180,7 @@ class SuccessStory extends Controller {
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
-
+                $this->view('organization/editStory', $data);
             }
 
             else {
@@ -211,7 +213,7 @@ class SuccessStory extends Controller {
                     }
                     
                     else if ($_SESSION['user_type'] == 'organization') {
-        
+                        redirect('organization/successstory');
                     }
         
                     else {
@@ -238,7 +240,17 @@ class SuccessStory extends Controller {
                     'err' => $data['err']
                 ];
                 
-                $this->view('student/editStory', $story_data);
+                if ($_SESSION['user_type'] == 'student') {
+                    $this->view('student/editStory', $story_data);
+                }
+                
+                else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/editStory', $story_data);
+                }
+    
+                else {
+                    die('User Type Not Found');
+                }
             }
         }else{
             die('incorrect method!');
@@ -252,7 +264,7 @@ class SuccessStory extends Controller {
         }
         
         else if ($_SESSION['user_type'] == 'organization') {
-
+            $this->view('organization/successstory', $successStories);
         }
 
         else {
@@ -275,7 +287,7 @@ class SuccessStory extends Controller {
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
-    
+                redirect('successstory/viewSuccessStory');
             }
     
             else {
