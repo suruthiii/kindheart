@@ -12,7 +12,7 @@
 
             <!-- Title container -->
             <div class="donor-dashboard-introduction">
-                <h1>Welcome Back <b>....Name.....<b></h1>
+                <h1>Welcome Back <b><?php ?><b></h1>
                 <p>Here's The Latest Updates</p>
             </div>
 

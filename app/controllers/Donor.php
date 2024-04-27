@@ -11,6 +11,7 @@ class Donor extends Controller {
     public function index(){
         $data = [
             'title' => 'Home page'
+            'user_data' => $this->userModel->getUserData()
         ];
 
         $other_data = [
