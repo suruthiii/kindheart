@@ -9,7 +9,6 @@
 
 <main class="page-container">
     <section class="section" id="main">
-    <div class="view-benefactionRequest-btn-container-cancel">
         <div class="donor-right-side-container">
 
             <!-- Middle container -->
@@ -57,17 +56,20 @@
                             </tr>
                         </table>                    
                     </div>
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/benefactionRequestDonationSubmit" method="get">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/benefactionRequestDonationSubmit/<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>/<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" method="post">
                         <div class="benefactionRequest-donationinfo" style="display: none;">
                             <div class="benefactionRequest-donationinfo1">
-                                <label for="donationQunatity">Donating Quantity</label>
+                                <label for="donationQuantity">Donating Quantity</label>
                                 <div class="benefactionRequest-donationdata">
-                                    <input class="benefactionRequest--input" type="number" name="donationQunatity" value="<?php echo isset($data['donationQunatity']) ? $data['donationQunatity'] : ''; ?>" >
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationQunatity_err']) ? $data['donationQunatity_err']: ''; ?> </span>
+                                    <?php 
+                                        $remainingQuantity = $data['benefactionRequest_details'][0]->itemQuantity - $data['benefactionRequest_details'][0]->donatedQuantity; 
+                                        ?>
+                                    <input class="benefactionRequest--input" type="number" name="donationQuantity" min="1" max="<?php echo $remainingQuantity ?>" value="<?php echo isset($data['donationQuantity']) ? $data['donationQuantity'] : ''; ?>" >
+                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationQuantity_err']) ? $data['donationQuantity_err']: ''; ?> </span>
                                 </div>
                             </div>
                             <div class="benefactionRequest-donationinfo1">
-                                <label for="donationQunatity">Delivery Reciept</label>
+                                <label for="donationQuantity">Delivery Reciept</label>
                                 <div class="benefactionRequest-donationdata">
                                     <label for="deliveryReceipt" class="benefactionRequest-donationdata-image">
                                         <p>Upload the Receipt</p>
@@ -87,17 +89,15 @@
                             </div>
                         </div>                       
                     </form>
-                    <form action="<?php echo URLROOT ?>/benefaction/viewBenefactionRequest/<?php echo $data['benefactionRequest_details'][0]->doneeID?>/<?php echo $data['benefactionRequest_details'][0]->benefactionID?>" method="get" class="edit-form">
-                        <div class="view-benefactionRequest-btn-container-cancel">
-                            <div class="cancel-request" id="cancelForm" style="display: none;">
-                                <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
-                                <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
-                                <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="hideDonationInfo()" >
-                                    <h5>Cancel</h5>
-                                </button>
-                            </div>
+                    <div class="view-benefactionRequest-btn-container-cancel">
+                        <div class="cancel-request" id="cancelForm" style="display: none;">
+                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
+                            <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
+                            <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="hideDonationInfo()" >
+                                <h5>Cancel</h5>
+                            </button>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 <div class="view-benefactionRequest-btn-container">
@@ -142,7 +142,22 @@
     }
 
     function hideDonationInfo() {
-        window.location.href = '<?php echo URLROOT ?>/benefaction/viewBenefactionRequest';
+        // Show the donation info div
+        const donationInfoDiv = document.querySelector('.benefactionRequest-donationinfo');
+        donationInfoDiv.style.display = 'none';
+
+        // Disable the Make Donation button
+        const makeDonationButton = document.querySelector('.make-donation .benefactionRequest_button');
+        makeDonationButton.disabled = false;
+        makeDonationButton.style.backgroundColor = '';
+
+        // Show the Submit Request button
+        const submitButtonForm = document.querySelector('.submit-request');
+        submitButtonForm.style.display = 'none';
+
+        // Show the Cancel Request button
+        const cancelButtonForm = document.querySelector('.cancel-request');
+        cancelButtonForm.style.display = 'none';
     }
 
 

@@ -504,6 +504,74 @@ class Benefaction extends Controller {
         $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
     }
 
+    public function benefactionRequestDonationSubmit($doneeID = null, $benefactionID = null){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'donationQuantity' => trim($_POST['donationQuantity']),
+                'deliveryReceipt' => $this->imgUpload('deliveryReceipt'),
+
+                'donationQuantity_err' => '',
+                'deliveryReceipt_err' => ''                              
+            ];   
+
+            die(print_r($data));
+            
+            if (empty($data['donationQuantity'])) {
+                $data['donationQuantity_err'] = 'Please enter the quantity of donation.';
+            }
+            
+            if (empty($data['deliveryReceipt'])) {
+                $data['deliveryReceipt_err'] = 'Please upload the delivery receipt.';
+            }
+
+            if (empty($data['donationQuantity_err']) && empty($data['deliveryReceipt_err'])) {
+                if ($this->benefactionModel->benefactionRequestDonationSubmit($data)) {
+                    // Load the view with data
+                    $data = [
+                        'title' => 'View Benefaction Request',
+                        'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+                    ];         
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];                                
+            
+                    // Load View
+                    $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
+                } else {
+                    die('Something went wrong.');
+                }
+            } else {
+                // Load view with errors
+                $this->view('donor/viewBenefactionRequestAccepted', $data);
+            }
+
+        }else{
+
+            $data = [
+                'donationQuantity' => '',
+
+                'deliveryReceipt' => '',
+    
+                'donationQuantity_err' => '',
+                'deliveryReceipt_err' => '',
+
+                'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
+            ];
+
+
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+
+            $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
+
+        }
+
+    }
+
     public function viewBenefactionRequestCompleted($doneeID = null, $benefactionID = null) {
         if (empty($doneeID || empty($benefactionID))) {
             redirect('pages/404');           
@@ -587,76 +655,6 @@ class Benefaction extends Controller {
             }
         }
     }
-
-    public function benefactionRequestDonationSubmit($doneeID = null, $benefactionID = null) {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $data = [
-                'donationQunatity' => trim($_POST['donationQunatity']),
-
-                'deliveryReceipt' => $this->imgUpload('deliveryReceipt'),
-
-                'donationQunatity_err' => '',
-                'deliveryReceipt_err' => ''
-            ];
-
-            die(print_r($data));
-
-            if(empty($data['donationQunatity'])){
-                $data['donationQunatity_err']='Please enter the donating amount';
-            }elseif($data['donationQunatity'] > itemQuantity){
-                $data['donationQunatity_err']='Please enter a valid amount which is less tahn posted item cound';
-            }elseif($data['donationQunatity'] > itemQuantity-donateQuantity){
-                $data['donationQunatity_err']='Please enter a valid amount considering the remaining maount';
-            }
-
-            if(empty($data['deliveryReceipt'])){
-                $data['deliveryReceipt_err']='Please upload the delivery receipt';
-            }
-
-            if(empty($data['donationQunatity_err']) && empty($data['deliveryReceipt_err'])){
-                if($this->benefactionModel->benefactionRequestDonationSubmit($data)){
-                    $data = [
-                        'title' => 'View Posted Benefactions',
-                        'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($benefactionID, $doneeID)
-                    ];         
-
-                    
-                    $other_data = [
-                        'notification_count' => $this->notificationModel->getNotificationCount(),
-                        'notifications' => $this->notificationModel->viewNotifications()
-                    ];                                
-            
-                    // Load View
-                    $this->view('donor/viewPostedBenefactionsAccepted', $data, $other_data);
-                }else{
-                    die('Something Went Wrong');
-                }
-            }
-        }else{
-
-            $data = [
-                'donationQunatity' => '',
-
-                'deliveryReceipt' => '',
-    
-                'donationQunatity_err' => '',
-                'deliveryReceipt_err' => ''
-            ];
-
-
-            $other_data = [
-                'notification_count' => $this->notificationModel->getNotificationCount(),
-                'notifications' => $this->notificationModel->viewNotifications()
-            ];
-
-            $this->view('donor/viewBenefactionRequestAccepted', $data, $other_data);
-        }
-    }
-
-
 
 
     
