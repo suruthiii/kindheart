@@ -28,7 +28,21 @@ class Benefaction extends Controller {
 
     /*-------------------------------------Admin and Super Admin ----------------------------------------- */
 
-   
+   public function viewBenefaction() {
+        $data = [
+            'title' => 'Home Page',
+            'benefaction_ID' => $_GET['benefaction_ID'],
+            'benefaction_details' => $this->benefactionModel->getBenefactionDetails($_GET['benefaction_ID']),
+            'donations' => $this->benefactionModel->getDonationCardDetails($_GET['benefaction_ID'])
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/benefaction/viewBenefaction', $data, $other_data);
+   }
 
     // ------------Donor--------------------
 
