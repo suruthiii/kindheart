@@ -69,11 +69,11 @@ class Users extends Controller{
             'digit-5' => trim($_GET['digit-5']),
             'digit-6' => trim($_GET['digit-6']),
             'digit-7' => trim($_GET['digit-7']),
-            'err' => ''
+            'otp_err' => ''
         ];
 
         if(empty($data['digit-1']) || empty($data['digit-2']) || empty($data['digit-3']) || empty($data['digit-4']) || empty($data['digit-5']) || empty($data['digit-6']) || empty($data['digit-7'])){
-            $data['err'] = 'Please enter the verification code';
+            $data['otp_err'] = 'Please enter the verification code';
         }
 
         $otp = $data['digit-1'].$data['digit-2'].$data['digit-3'].$data['digit-4'].$data['digit-5'].$data['digit-6'].$data['digit-7'];
@@ -83,7 +83,7 @@ class Users extends Controller{
             redirect('Users/studentAcountCreationPage2');
         }
         else{
-            $data['err'] = 'Invalid OTP';
+            $data['otp_err'] = 'Invalid OTP';
             $this->view('users/studentRegistration/studentAcountCreationPage1', $data);
         }
     }
@@ -176,13 +176,14 @@ class Users extends Controller{
                 'username' => trim($_POST['username']),
                 'password' => trim($_POST['password']),
                 'remember_me' => isset($_POST['remember_me']),
-                'err' => ''
+                'username_err' => '',
+                'password_err' => ''
             ];
 
             // Validate data
             // Validate email
             if (empty($data['username'])){
-                $data['err'] = 'Please enter username';
+                $data['username_err'] = 'Please enter username';
             }
             else{
                 if ($this->userModel->findUserByUsername($data['username'])) {
@@ -197,28 +198,28 @@ class Users extends Controller{
                         }
 
                         else {
-                            $data['err'] = 'You have been banned'; 
+                            $data['username_err'] = 'You have been banned'; 
                         }
                     }
 
                     else if($this->userModel->checkStatus($data['username']) == 10) {
-                        $data['err'] = 'User Not Found'; 
+                        $data['username_err'] = 'User Not Found'; 
                     }
 
                 }
                 else{
                     // User not found
-                    $data['err'] = 'User Not Found'; 
+                    $data['username_err'] = 'User Not Found'; 
                 }
             }
 
             // Validate password
             if (empty($data['password'])){
-                $data['err'] = 'Please enter password';
+                $data['password_err'] = 'Please enter password';
             }
 
             // Check if error is empty
-            if (empty($data['err'])){
+            if (empty($data['username_err']) && empty($data['password_err'])){
                 // log the user
                 $loggedInUser = $this->userModel->login($data['username'], $data['password']);
                 $user_status = $this->userModel->checkStatus($data['username']);
@@ -228,7 +229,7 @@ class Users extends Controller{
                     $this->createUserSession($loggedInUser, $user_status);
                 }
                 else{
-                    $data['err'] = 'Password incorrect';
+                    $data['password_err'] = 'Password incorrect';
 
                     // Load view with errors
                     $this->view('users/login', $data);
@@ -248,7 +249,8 @@ class Users extends Controller{
             $data = [
                 'username' => '',
                 'password' => '',
-                'err' => ''
+                'username_err' => '',
+                'password_err' => ''
             ];
 
             // Load view
@@ -428,7 +430,6 @@ class Users extends Controller{
         $this->view('users/forgetPassword2', $data);
     }
     
-
     public function studentProfileCreation1(){
         $data = [
             'firstName' => '',
@@ -437,7 +438,13 @@ class Users extends Controller{
             'dob' => '',
             'gender' => '',
             'studentType' => '',
-            'err' => '',
+            
+            'firstName_err' => '',
+            'lastName_err' => '',
+            'address_err' => '',
+            'dob_err' => '',
+            'gender_err' => '',
+            'studentType_err' => '',
         ];
 
         if(isset($_SESSION['firstName'])){

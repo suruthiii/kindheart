@@ -22,26 +22,20 @@
                     <span>Login to Kindheart</span> 
                 </div>
 
-                <!-- <?php if (!empty($data['err'])) { ?>
-                    <div class="error-msg">
-                        <span class="form-invalid"><?php echo $data["err"] ?></span>
-                    </div>
-                <?php } ?> -->
-
                 <div class="login-inner-container-form-container">
                     <form action="<?php echo URLROOT ?>/users/login" method="POST">
                         <div class="login-inner-container-form-container-inputfeilds">      
 
                             <label for="email">Username</label>
                             <div class="login-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="text" name="username" id="email" required>
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt" type="text" name="username" id="email">
+                                <p class="error-message" for="username"><?php echo $data['username_err']?></p>
                             </div>
 
                             <label for="email">Password</label>
                             <div class="login-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="password" name="password" id="password" required>
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt" type="password" name="password" id="password">
+                                <p class="error-message" for="password"><?php echo $data['password_err']?></p>
                             </div>
 
                             <div class="login-inner-container-form-container-inputfeilds-forgetpassword">

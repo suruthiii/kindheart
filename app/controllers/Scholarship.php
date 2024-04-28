@@ -505,23 +505,27 @@ class Scholarship extends Controller {
                 }
             }
         }
-    }    
-
-        // $data = [
-        //     'title' => 'View Scholarship Application',
-        //     'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
-        // ];
-
-        // $other_data = [
-        //     'notification_count' => $this->notificationModel->getNotificationCount(),
-        //     'notifications' => $this->notificationModel->viewNotifications()
-        // ];
-
-        // // die(print_r($data['benefactionRequest_details']));
-
-        // $this->view('donor/viewScholarshipApplication', $data, $other_data);
         
+<<<<<<< HEAD
 >>>>>>> 14dfe508d16c262701101bf6106cd1fc7a9da253
+=======
+    }
+
+    //     $data = [
+    //         'title' => 'View Scholarship Application',
+    //         'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
+    //     ];
+
+    //     $other_data = [
+    //         'notification_count' => $this->notificationModel->getNotificationCount(),
+    //         'notifications' => $this->notificationModel->viewNotifications()
+    //     ];
+
+    //     // die(print_r($data['benefactionRequest_details']));
+
+    //     $this->view('donor/viewScholarshipApplication', $data, $other_data);
+    // }    
+>>>>>>> e1475979b038713330fdbb42398978fc55f614f7
   
     public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
         if($_SESSION['user_type'] == 'donor') {
@@ -569,53 +573,57 @@ class Scholarship extends Controller {
     }
 
 
+
+
+
+
+    
     //adding student requestst to the db(add applying scholarships)
 
-    // public function addAppliedScholarship(){  
-    //     // die(print_r($_POST));
+    public function addAppliedScholarship(){  
+        // die(print_r($_POST));
 
-    //     if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
-    //         redirect('pages/404');
-    //     }
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
 
-    //     else {
-    //         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
-    //             $data = [
-    //                 'requestedQuantity' => trim($_POST['requestedQuantity']),
-    //                 'reason' => trim($_POST['reason']),
-    //                 'benefactionID' => trim($_POST['benefactionID']),
-    //                 'err' => ''
-    //             ];
+                $data = [
+                    'reason' => trim($_POST['reason']),
+                    'scholarshipID' => trim($_POST['scholarshipID']),
+                    'err' => ''
+                ];
 
-    //             // Make sure errors are empty
-    //             if (empty($data['err'])) {
+                // Make sure errors are empty
+                if (empty($data['err'])) {
                     
                 
-    //                 // Add Data to DB
-    //                 if ($this->benefactionModel->addAppliedBenefaction($data)) {
-    //                     if($_SESSION['user_type'] == 'student') {
-    //                         redirect('student/benefactions');
-    //                     }
-    //                     else if ($_SESSION['user_type'] == 'organization') {
-    //                     }
-    //                     else {
-    //                         die('User Type Not Found');
-    //                     }
-    //                 } else {
-    //                     die('Something went wrong1');
+                    // Add Data to DB
+                    if ($this->scholarshipModel->addAppliedScholarship($data)) {
+                        if($_SESSION['user_type'] == 'student') {
+                            redirect('student/scholarships');
+                        }
+                        else if ($_SESSION['user_type'] == 'organization') {
+                        }
+                        else {
+                            die('User Type Not Found');
+                        }
+                    } else {
+                        die('Something went wrong1');
 
-    //                 }
-    //             } else {
-    //                 // Load view with errors
-    //                 die(print_r($data));
-    //             }
-    //         }else{
-    //             die('incorrect method!');
-    //         }
+                    }
+                } else {
+                    // Load view with errors
+                    die(print_r($data));
+                }
+            }else{
+                die('incorrect method!');
+            }
 
-    //     }
-    // }
+        }
+    }
 
 
 

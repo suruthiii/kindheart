@@ -41,7 +41,7 @@
                                 <div class="btn">
                                     <form action="<?php echo URLROOT ?>/student/Applyscholarship" method="GET" >
                                         <input type="text" name="scholarshipID" id="scholarshipID" hidden value="<?php echo $item->scholarshipID?>" />
-                                        <!-- <button type="submit"> Apply</button> -->
+                                   
                                         <?php if ($item->studentID == $_SESSION['user_id']){?>
                                             <h4> Already Applied</h4>
                                         <?php } else{?>
@@ -80,7 +80,7 @@
 
                             <h3>Applied Scholarships</h3>
 
-                            <?php foreach ($data['scholarships'] as $item) { ?>
+                            <?php foreach ($data['appliedScholarships'] as $item) { ?>
                                 <a href="<?php echo URLROOT ?>/Student/ViewAppliedScholarship/<?php echo $item->scholarshipID?>">
                             <div class="applied-benefaction-cards">
                                 <div class="left">
