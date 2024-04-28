@@ -81,10 +81,74 @@ class ProjectModel{
         }
     }
 
+    public function updateReceivedAmountAndVerificationStatus() {
+        $this->db->query("SELECT project.projectID, project.budget, SUM(fund.amount) AS totalAmount 
+                      FROM fund 
+                      JOIN project ON fund.projectID = project.projectID 
+                      WHERE fund.verificationStatus = 3 AND fund.acknowledgement = 1 
+                      GROUP BY project.projectID;");
+        $result = $this->db->resultSet();
+    
+        foreach($result as $project){
+            $projectId = $project->projectID;
+            $budget = $project->budget;
+            $totalAmount = $project->totalAmount;
+            $verificationStatus = 3 ;
+    
+            // Get current received amount for the project
+            $this->db->query("SELECT receivedAmount FROM project WHERE projectID = :projectId;");
+            $this->db->bind(':projectId', $projectId);
+            $row = $this->db->single();
+            $receivedAmount = $row->receivedAmount;
+    
+            // Calculate new received amount
+            $newReceivedAmount = $receivedAmount + $totalAmount;
+    
+            // Check if new received amount is greater than or equal to budget
+            if ($newReceivedAmount >= $budget) {
+                // Update receivedAmount to be equal to budget
+                $receivedAmount = $budget;
+                $verificationStatus = 4 ;
+            } else {
+                // Update receivedAmount to newReceivedAmount
+                $receivedAmount = $newReceivedAmount;
+                $verificationStatus = 3 ;
+            }
+    
+            // Update receivedAmount and verificationStatus
+            $this->db->query("UPDATE project SET receivedAmount = :receivedAmount WHERE projectID = :projectId;");
+            $this->db->bind(':receivedAmount', $receivedAmount);
+            // $this->db->bind(':verificationStatus', $verificationStatus);
+            $this->db->bind(':projectId', $projectId);
+            $this->db->execute();
+
+            $this->db->query("UPDATE fund SET verificationStatus = :verificationStatus WHERE projectID = :projectId;");
+            $this->db->bind(':verificationStatus', $verificationStatus);
+            $this->db->bind(':projectId', $projectId);
+            $this->db->execute();
+        }
+    }
+
+    public function Completedstateprojects() {
+        $this->db->query("UPDATE project 
+                          SET status = 2
+                          WHERE projectID IN (
+                              SELECT projectID
+                              FROM project 
+                              JOIN fund ON project.projectID = fund.projectID 
+                              WHERE project.budget <= project.receivedAmount 
+                              AND project.status = 1 
+                              AND fund.verificationStatus = 2
+                          );");
+        
+        $this->db->execute();
+    }
+
     public function getaddedongoingprojects(){
         // state check
         $this->changeStateforProjectasone();
         $this->changeVerificationstateoffunds();
+        $this->updateReceivedAmountAndVerificationStatus();
 
         $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 0; ');
 
@@ -110,18 +174,11 @@ class ProjectModel{
     }
 
     public function getallProjectDetilsstateone($projectID){
-        $this->db->query("SELECT fund.*, project.*, milestone.*, user.username,
-                    fund.amount AS fund_amount,
-                    project.description AS project_description,
-                    milestone.description AS milestone_description
-                    FROM fund 
-                    JOIN project ON fund.projectID = project.projectID 
-                    JOIN milestone ON project.projectID = milestone.projectID 
-                    JOIN donor ON fund.donorID = donor.donorID 
-                    JOIN user ON donor.donorID = user.userID
-                    WHERE project.status = 1 AND project.orgID = :doneeID AND project.projectId = $projectID");
+        $this->db->query("SELECT *
+                    FROM milestone 
+                    WHERE projectId = :projectID");
 
-        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $this->db->bind(':projectID', $projectID); // Bind project ID
         $result = $this->db->resultSet();
 
         return $result;
@@ -136,7 +193,7 @@ class ProjectModel{
     }
 
     public function projectsentacknowlagement($data){
-        $this->db->query('UPDATE fund SET acknowledgement = 1 WHERE fundID = :fundID');
+        $this->db->query('UPDATE fund SET acknowledgement = 1  WHERE fundID = :fundID');
         $this->db->bind(':fundID', $data['fundID']);
 
         if($this->db->execute()){
@@ -147,7 +204,7 @@ class ProjectModel{
     }
 
     public function donorsdonatedtoprojects($projectID){
-        $this->db->query("SELECT u.username, f.amount, f.verificationStatus,f.fundID, f.acknowledgement  
+        $this->db->query("SELECT u.username, f.amount, f.verificationStatus,f.fundID, f.paymentSlip, f.acknowledgement  
                         FROM fund f
                         JOIN donor d ON f.donorID = d.donorID
                         JOIN user u ON d.donorID = u.userID
