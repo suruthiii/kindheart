@@ -814,7 +814,7 @@ class NecessityModel{
     }
 
     public function getRecurringDonationCardDetails($necessity_ID) {
-        $this->db->query('SELECT updatedMonth, donorID, verificationStatus FROM recurringDonation WHERE monetaryNecessityID = :monetaryNecessityID;');
+        $this->db->query('SELECT monetaryNecessityID, updatedMonth, donorID, verificationStatus FROM recurringDonation WHERE monetaryNecessityID = :monetaryNecessityID;');
         $this->db->bind(':monetaryNecessityID', $necessity_ID);
 
         $result = $this->db->resultSet();
@@ -848,7 +848,7 @@ class NecessityModel{
     }
 
     public function getRecurringDonationDetails($monetaryNecessity_ID) {
-        $this->db->query("SELECT r.donorID, r.paymentSlip, r.verificationStatus, r.acknowledgement, m.monthlyAmount AS 'Monthly Amount' FROM recurringDonation r JOIN money m ON r.monetaryNecessityID = m.monetaryNecessityID WHERE monetaryNecessityID = :monetaryNecessityID;");
+        $this->db->query("SELECT r.donorID, r.acknowledgementCount, r.paymentSlip, r.updatedMonth, r.verificationStatus, r.slipCount, r.acknowledgement, m.monthlyAmount FROM recurringDonation r JOIN money m ON r.monetaryNecessityID = m.monetaryNecessityID WHERE r.monetaryNecessityID = :monetaryNecessityID;");
         $this->db->bind(':monetaryNecessityID', $monetaryNecessity_ID);
 
         $donationDetails = $this->db->single();

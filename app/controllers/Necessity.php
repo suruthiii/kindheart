@@ -1306,6 +1306,7 @@ class Necessity extends Controller {
                     'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID']),
                     'donations' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
+
             }
 
             else {
@@ -1352,9 +1353,9 @@ class Necessity extends Controller {
     }
 
     public function viewMonetaryDonationDetails() {
-        $necessity_ID = $this->necessityModel->getMonetaryNecessityID($_GET['oneTimeDonationID']);
-
         if(isset($_GET['oneTimeDonationID'])){
+            $necessity_ID = $this->necessityModel->getMonetaryNecessityID($_GET['oneTimeDonationID']);
+
             $data = [
                 'necessity_ID' => $necessity_ID,
                 'necessity_type' => $this->necessityModel->getMonetaryNecessityType($necessity_ID),
@@ -1364,7 +1365,7 @@ class Necessity extends Controller {
         else if(isset($_GET['monetaryNecessityID'])){
             $data = [
                 'necessity_ID' => $_GET['monetaryNecessityID'],
-                'necessity_type' => $this->necessityModel->getMonetaryNecessityType($_GET['monetaryNecessity_ID']),
+                'necessity_type' => $this->necessityModel->getMonetaryNecessityType($_GET['monetaryNecessityID']),
                 'donation_details' => $this->necessityModel->getRecurringDonationDetails($_GET['monetaryNecessityID'])
             ];
         }

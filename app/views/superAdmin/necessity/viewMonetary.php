@@ -72,7 +72,7 @@
                 <div class="right-content-title-container">
                     <h4 style="text-align:center">Donations</h4>
                 </div>
-                <div class="right-cards">  
+                <div class="right-cards">
                         <?php if($data['necessity_type'] == 'onetime') {?>
                             <?php foreach($data['donations'] as $item) { ?>
                                 <a href="<?php echo URLROOT?>/necessity/viewmonetarydonationdetails?oneTimeDonationID=<?php echo $item->oneTimeDonationID ?>">

@@ -73,6 +73,18 @@
                             <th width="30%">Updated Month</th>
                             <td width="70%"><?php echo $data['donation_details']->updatedMonth ?></td>
                         </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Monthly Amount</th>
+                            <td width="70%">Rs. <?php echo $data['donation_details']->monthlyAmount ?>.00</td>
+                        </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Slip Count</th>
+                            <td width="70%"><?php echo $data['donation_details']->slipCount ?></td>
+                        </tr>
+                        <tr class="necessity-data">
+                            <th width="30%">Acknowledgement Count</th>
+                            <td width="70%"><?php echo $data['donation_details']->acknowledgementCount ?></td>
+                        </tr>
 
                         <?php if($data['donation_details']->verificationStatus == 2) {?>
                             <tr class="necessity-data">
