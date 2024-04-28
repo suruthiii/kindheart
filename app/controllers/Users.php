@@ -302,6 +302,43 @@ class Users extends Controller{
             return false;
         }
     }
+    
+    public function forgetPassword0(){
+        $data = [
+            'username' => '',
+            'username_err' => '',
+        ];
+
+        if(isset($_SESSION['username'])){
+            $data['username'] = $_SESSION['username'];
+        }
+
+        if(isset($_GET['username'])){
+            $data = [
+                'username' => trim($_GET['username']),
+                'username_err' => ''
+            ];
+
+            if(empty($data['username'])){
+                $data['username_err'] = 'Please enter username';
+            }else{
+                if(!($this->userModel->findUserByUsername($data['username']))){
+                    $data['username_err'] = 'This username is not registered';
+                }
+            }
+
+            if(empty($data['username_err'])){
+                $_SESSION['username'] = $data['username'];
+
+                redirect('users/forgetPassword1');
+            }
+            else{
+                $this->view('users/forgetPassword0', $data);
+            }
+        }
+
+        $this->view('users/forgetPassword0', $data);
+    }
 
     public function forgetPassword1(){
         // if(isset($_SESSION['account_status'])){
@@ -310,6 +347,7 @@ class Users extends Controller{
 
         $data = [
             'email' => '',
+            'username' => '',
             'email_err' => '',
             'otp_err' => ''
         ];
@@ -318,34 +356,37 @@ class Users extends Controller{
             $data['email'] = $_SESSION['user_email'];
         }
 
-        if(isset($_GET['email'])){
-            $data = [
-                'email' => trim($_GET['email']),
-                'email_err' => '',
-                'otp_err' => ''
-            ];
+        if(isset($_SESSION['username'])){
+            $data['username'] = $_SESSION['username'];
 
-            if(empty($data['email'])){
-                $data['email_err'] = 'Please enter email';
-            }else{
-                if($this->userModel->findUserByEmail($data['email'])){
-                    $data['email_err'] = 'Email is already taken';
-                }
-            }
+            // Fetch the email associated with the username
+            $userEmail = $this->userModel->getEmailByUsername($data['username']);
 
-            if(empty($data['email_err'])){
-                $_SESSION['user_email'] = $data['email'];
+            if($userEmail){
+                $data['email'] = $userEmail;
+            }            
+        } 
+        $this->view('users/forgetPassword1', $data);
 
-                // $this->userModel->sendOTP($data['email']);
-
-                redirect('users/forgetPassword1');
-            }
-            else{
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Handle form submission when the "Verify" button is pressed
+            $otp = $_POST['digit-1'] . $_POST['digit-2'] . $_POST['digit-3'] . $_POST['digit-4'] . $_POST['digit-5'] . $_POST['digit-6'] . $_POST['digit-7'];
+    
+            die(print_r($otp));
+            if (empty($otp)) {
+                $data['otp_err'] = 'Please enter OTP';
                 $this->view('users/forgetPassword1', $data);
+            } else {
+                // Check the OTP (you may need to implement this logic)
+                // For example, validate the OTP against a stored value or send it for verification
+    
+                // Assuming the OTP is validated or verified successfully
+                $_SESSION['user_email'] = $data['email']; // Set the user_email session
+    
+                redirect('users/forgetPassword2');
             }
         }
 
-        $this->view('users/forgetPassword1', $data);
     }
 
     public function OTPforgetPassword1(){
@@ -415,13 +456,11 @@ class Users extends Controller{
 
             if(empty($data['password_err']) && empty($data['confirmPassword_err'])){
                 $_SESSION['password'] = $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
-                $_SESSION['user_type'] = "student";
+                $_SESSION['user_id'] = $this->userModel->findUserByUsername($data['username']);
 
-                $_SESSION['account_status'] = 0;
-                
-                $this->userModel->accountCreation();
+                $this->userModel->updatePassword($_SESSION['user_id']);
 
-                redirect('users/studentAcountCreationPage3');
+                redirect('users/login');
             }
             else{
                 $this->view('users/forgetPassword2', $data);

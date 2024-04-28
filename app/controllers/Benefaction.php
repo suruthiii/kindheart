@@ -301,7 +301,7 @@ class Benefaction extends Controller {
                         'notifications' => $this->notificationModel->viewNotifications()
                     ];
 
-                    $this->view('donor/postedBenefactions', $data, $other_data);
+                    redirect('benefaction/postedBenefactions');
                 }else{
                     die('Something Went Wrong');
                 }

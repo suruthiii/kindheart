@@ -162,9 +162,20 @@ class UserModel{
     }
 
     // // Update user tables
-    // public function updatePassword($data){
+    public function updatePassword($data){
+         // Prepare statement
+         $this->db->query('UPDATE user SET password = :password WHERE userID = :userID');
+            
+         // Bind values
+         $this->db->bind(':password', $_SESSION['password']);
 
-    // }
+         if ($this->db->execute()){
+             return true;
+         }
+         else {
+             return false;
+         }        
+    }
 
     // Register user
     public function registerUser($data){
@@ -349,6 +360,24 @@ class UserModel{
             return true;
         } else {
             return false;
+        }
+    }
+
+    // Find user
+    public function getEmailByUsername($username){
+        $this->db->query('SELECT u.email FROM user u WHERE username = :username');
+        $this->db->bind(':username', $username);
+
+        // Execute query
+        $this->db->execute();
+
+        // Check if a row is returned
+        if ($this->db->rowCount() > 0) {
+            // Fetch the email from the result set
+            $result = $this->db->single();
+            return $result->email;
+        } else {
+            return null; // Return null if no email is found for the username
         }
     }
 

@@ -61,9 +61,6 @@ class BenefactionModel{
                                 WHERE b.availabilityStatus = 0
                                 GROUP BY b.benefactionID, b.itemName, b.itemCategory, b.itemQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, b.description, b.postedDate, b.donatedQuantity');
     
-        // Execute the query
-        $this->db->execute();
-    
         // Fetch result set
         $results = $this->db->resultSet();
     
@@ -72,14 +69,22 @@ class BenefactionModel{
             // Check if remainingQuantity is zero
             if ($benefaction->remainingQuantity === 0) {
                 // Determine the new availabilityStatus based on verificationStatus
-                if($benefaction->verificationStatus === 1){
+                if($benefaction->verificationStatus === 2){
+                    $newAvailabilityStatus = 2;
+                }else{
                     $newAvailabilityStatus = 1;
                 }
     
                 // Update the availabilityStatus in the database
-                $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
+                $this->db->query('UPDATE benefaction SET availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
+    
+                // Bind values
+                $this->db->bind(':availabilityStatus', $newAvailabilityStatus);
+                $this->db->bind(':benefactionID', $benefactionID);
+            
             }
         }
+        
     
         return $results;
     }

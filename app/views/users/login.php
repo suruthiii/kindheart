@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="login-inner-container-form-container-inputfeilds-forgetpassword">
-                                <p><a style="color: black;" href="<?php echo URLROOT ?>/users/forgetPassword1">Forgot Password?</a></p>
+                                <p><a style="color: black;" href="<?php echo URLROOT ?>/users/forgetPassword0">Forgot Password?</a></p>
                             </div>
 
                             <div class="login-inner-container-form-container-inputfeilds-rememberme">

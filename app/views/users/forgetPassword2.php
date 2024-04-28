@@ -27,13 +27,13 @@
 
                             <label for="password">Enter Password</label>
                             <div class="forgetPassword2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="forgetPassword2-input" type="password" name="password" id="password" value="<?php echo $data['password']?>">
+                                <input class="forgetPassword2-input" type="password" name="password" id="password" value="<?php echo $data['password']?>" required>
                                 <p class="error-message" for="password"><?php echo $data['password_err']?></p>
                             </div>
 
                             <label for="confirmPassword">Confirm Password</label>
                             <div class="forgetPassword2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="forgetPassword2-input" type="password" name="confirmPassword" id="confirmPassword" value="">                                
+                                <input class="forgetPassword2-input" type="password" name="confirmPassword" id="confirmPassword" value="" required>                                
                                 <p class="error-message" for="confirmPassword"><?php echo $data['confirmPassword_err']?></p>
                             </div>
 
