@@ -666,5 +666,16 @@ public function getBenefactionNotApplied($benefactionID) {
         return $donorID;
     }
 
+    public function restrictBenefaction($benefaction_ID) {
+        $this->db->query('UPDATE benefaction SET availabilityStatus = 5 WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefaction_ID);
 
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 }
