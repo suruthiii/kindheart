@@ -69,7 +69,8 @@ class Student extends Controller {
 
         $data = [
             'title' => 'Home page',
-            'scholarships' => $this->ScholarshipModel->getScholarships()
+            'scholarships' => $this->ScholarshipModel->getScholarships(),
+            'appliedScholarships' => $this->ScholarshipModel->getAppliedScholarships()
         ];
 
         $other_data = [
@@ -80,11 +81,12 @@ class Student extends Controller {
         $this->view('student/scholarships', $data, $other_data);
     }
 
-    public function Applyscholarship($scholarshipID = null){
+    public function Applyscholarship(){
+        
 
         $data = [
             'title' => 'Home page',
-            'scholarship_details' => $this->ScholarshipModel->getApplyScholarship($scholarshipID)
+            'scholarship_details' => $this->ScholarshipModel->getScholarshipNotApplied($scholarshipID)
         ];
         die(print_r($data));
 
