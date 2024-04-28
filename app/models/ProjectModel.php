@@ -30,9 +30,41 @@ class ProjectModel{
         return $result;
     }
 
+    public function getallfromprojectandmilestone(){
+        $this->db->query("SELECT project.*, milestone.* FROM project JOIN milestone ON project.projectID = milestone.projectID WHERE (project.status =0 OR project.status=1) AND project.orgID  = :doneeID");
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function dettheeachprojecthaddonationcount($projectID){
+        $this->db->query("SELECT COUNT(*) AS donationCount FROM fund
+            WHERE fund.projectID = :projectID");
+            $this->db->bind(':projectID', $projectID);
+
+        $donationCountResult = $this->db->single();
+
+        return $donationCountResult->donationCount;
+    }
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function getaddedongoingprojects(){
+        $project = $this->getallfromprojectandmilestone();
+
+        foreach($project as $result){
+            $donationCountResult= $this->dettheeachprojecthaddonationcount($result->projectID);
+
+            if($donationCountResult>0){
+                $this->db->query("UPDATE project SET status =1 WHERE projectID = $result->projectID");
+                $this->db->execute();
+            }elseif($donationCountResult == 0){
+                $this->db->query("UPDATE project SET status =0 WHERE projectID = $result->projectID");
+                $this->db->execute();
+            }
+        }
+
         $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 0; ');
 
         $result = $this->db->resultSet();
@@ -41,11 +73,41 @@ class ProjectModel{
     }
 
     public function getaddedcompletedprojects(){
+        $project = $this->getallfromprojectandmilestone();
+
+        foreach($project as $result){
+            $totalAmount= $this->gettotalamountofdonationrecieved($result->projectID);
+
+            $verificationStatus= $this->gettotalamountofdonationrecieved($result->projectID);
+
+            if($totalAmount> $result->budget && $verificationStatus->verificationStatus == 2 && $verificationStatus->paymentSlip !== NULL){
+                $this->db->query("UPDATE project SET status =2 WHERE projectID = $result->projectID");
+                $this->db->execute();
+            }
+        }
+
+
         $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 2; ');
 
         $result = $this->db->resultSet();
 
         return $result;
+    }
+
+    public function gettotalamountofdonationrecieved($projectID){
+        $this->db->query("SELECT SUM(amount) AS totalAMount FROM fund WHERE fund.projectID= :projectID");
+        $this->db->bind(':projectID', $projectID);
+        $totalAmount = $this->db->single();
+
+        return $totalAmount->totalAMount;
+    }
+
+    public function getdetailsBYProjectId($projectID){
+        $this->db->query("SELECT * FROM fund WHERE projectID = :projectID");
+        $this->db->bind(':projectID', $projectID);
+        $verificationStatus = $this->db->single();
+
+        return $verificationStatus;
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
