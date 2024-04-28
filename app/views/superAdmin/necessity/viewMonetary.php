@@ -82,8 +82,11 @@
                                             <div class="value" style="margin-top: 6px;">Rs.&nbsp;<?php echo $item->amount ?>.00</div>
                                         </div>
                                         <div class="right-side-content" style=" width:50%">
-                                            <?php if($item->verificationStatus == 1) {?>
+                                            <?php if($item->verificationStatus == 2) {?>
                                                 <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
+                                            <?php }
+                                            else if($item->verificationStatus == 0) {?> 
+                                                <div class="pending-label" style="background-color: white; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Pending</div>
                                             <?php }
                                             else {?>
                                                 <div class="unverified-label" style="background-color:beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
@@ -103,8 +106,11 @@
                                             <div class="value" style="margin-top: 6px;"><?php echo $item->updatedMonth ?></div>
                                         </div>
                                         <div class="right-side-content" style=" width:50%">
-                                            <?php if($item->verificationStatus == 1) {?>
+                                            <?php if($item->verificationStatus == 2) {?>
                                                 <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
+                                            <?php }
+                                            else if($item->verificationStatus == 0) {?> 
+                                                <div class="pending-label" style="background-color: white; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Pending</div>
                                             <?php }
                                             else {?>
                                                 <div class="unverified-label" style="background-color:beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
