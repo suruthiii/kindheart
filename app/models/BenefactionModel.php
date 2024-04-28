@@ -64,26 +64,26 @@ class BenefactionModel{
         // Fetch result set
         $results = $this->db->resultSet();
     
-        // Update availabilityStatus for each benefaction
-        foreach ($results as $benefaction) {
-            // Check if remainingQuantity is zero
-            if ($benefaction->remainingQuantity === 0) {
-                // Determine the new availabilityStatus based on verificationStatus
-                if($benefaction->verificationStatus === 2){
-                    $newAvailabilityStatus = 2;
-                }else{
-                    $newAvailabilityStatus = 1;
-                }
+        // // Update availabilityStatus for each benefaction
+        // foreach ($results as $benefaction) {
+        //     // Check if remainingQuantity is zero
+        //     if ($benefaction->remainingQuantity === 0) {
+        //         // Determine the new availabilityStatus based on verificationStatus
+        //         if($benefaction->verificationStatus === 2){
+        //             $newAvailabilityStatus = 2;
+        //         }else{
+        //             $newAvailabilityStatus = 1;
+        //         }
     
-                // Update the availabilityStatus in the database
-                $this->db->query('UPDATE benefaction SET availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
+        //         // Update the availabilityStatus in the database
+        //         $this->db->query('UPDATE benefaction SET availabilityStatus = :availabilityStatus WHERE benefactionID = :benefactionID');
     
-                // Bind values
-                $this->db->bind(':availabilityStatus', $newAvailabilityStatus);
-                $this->db->bind(':benefactionID', $benefactionID);
+        //         // Bind values
+        //         $this->db->bind(':availabilityStatus', $newAvailabilityStatus);
+        //         $this->db->bind(':benefactionID', $benefactionID);
             
-            }
-        }
+        //     }
+        // }
         
     
         return $results;

@@ -579,18 +579,22 @@ span .donor-form-error-details{
 
 /* ----------Posted Benefaction ----------- */
 
+.posted-benefaction-container{
+    background-color: #2ca030;
+}
+
 .posted-benefaction-pending-table-caption{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 18vh;
+    margin-top: 14vh;
 }
 
 .posted-benefaction-pending-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 22vh;
+    margin-top: 18vh;
     background-color: #DEDEDE;
 }
 
@@ -598,7 +602,7 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 15vh;
-    margin-top: 24vh;
+    margin-top: 20vh;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -608,14 +612,14 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 45vh;
+    margin-top: 40vh;
 }
 
 .posted-benefaction-onProgress-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 49vh;
+    margin-top: 44vh;
     background-color: #DEDEDE;
 }
 
@@ -623,7 +627,7 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 15vh;
-    margin-top: 51vh;
+    margin-top: 46vh;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -633,14 +637,14 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 72vh;
+    margin-top: 65vh;
 }
 
 .posted-benefaction-Completed-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 76vh;
+    margin-top: 69vh;
     background-color: #DEDEDE;
 }
 
@@ -648,7 +652,7 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 15vh;
-    margin-top: 76vh;
+    margin-top: 70vh;
     overflow: hidden;
     overflow-y: scroll; 
     scrollbar-width: none; 
@@ -795,6 +799,8 @@ span .donor-form-error-details{
     height: 50vh;
     max-height: 50vh;
     margin-top: 150px;
+
+
 
     
     border-collapse: collapse; /* Optional: Ensure borders collapse properly */
@@ -1722,6 +1728,18 @@ span .donor-form-error-details{
     border-radius: 5px;
     align-items: center;
     justify-content: space-between;
+}
+.benefactionRequest-info-caption{
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #262A41;
+    margin-top: 10vh;
+}
+
+.benefactionRequest-info-grey-line{
+    width: 65%;
+    height: 0.3vh;
+    background-color: #DEDEDE;
 }
 
 .benefactionRequest-donationinfo1{
