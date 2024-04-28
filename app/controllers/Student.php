@@ -214,6 +214,7 @@ class Student extends Controller {
             'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
 
         ];
+        // die(print_r($data['appliedBenefactions']));
       
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -292,7 +293,6 @@ class Student extends Controller {
         $data = [
             'title' => 'Home page',
             'benefactions' => $this->benefactionModel->getBenefaction($benefactionID),
-
         ];
      
         $other_data = [
