@@ -35,6 +35,10 @@
                         <td width="70%"><?php echo $data['benefaction_details']->itemCategory ?></td>
                     </tr>
                     <tr class="necessity-data">
+                        <th width="30%">Description</th>
+                        <td width="70%"><?php echo $data['benefaction_details']->description ?></td>
+                    </tr>
+                    <tr class="necessity-data">
                         <th width="30%">Donor Name</th>
                         <td width="70%"><?php echo $data['benefaction_details']->donorName ?></td>
                     </tr>
@@ -46,22 +50,38 @@
                         <th width="30%">Donated Quantity</th>
                         <td width="70%"><?php echo $data['benefaction_details']->donatedQuantity ?></td>
                     </tr>
-                    <!-- <tr class="necessity-data">
-                        <th width="30%">Item Photo 1</th>
-                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto1 ?></td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Item Photo 2</th>
-                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto2 ?></td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Item Photo 3</th>
-                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto3 ?></td>
-                    </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Item Photo 4</th>
-                        <td width="70%"><?php echo $data['benefaction_details']->itemPhoto4 ?></td>
-                    </tr> -->
+                    <?php if($data['benefaction_details']->itemPhoto1 != NULL) {?>
+                        <tr class="necessity-data">
+                            <th width="30%">Item Photo 1</th>
+                            <td width="70%">
+                                <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->itemPhoto1); ?>" class="user-img" alt="">
+                            </td>
+                        </tr>
+                    <?php }?>
+                    <?php if($data['benefaction_details']->itemPhoto2 != NULL) {?>
+                        <tr class="necessity-data">
+                            <th width="30%">Item Photo 2</th>
+                            <td width="70%">
+                                <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->itemPhoto2); ?>" class="user-img" alt="">
+                            </td>
+                        </tr>
+                    <?php }?>
+                    <?php if($data['benefaction_details']->itemPhoto3 != NULL) {?>
+                        <tr class="necessity-data">
+                            <th width="30%">Item Photo 3</th>
+                            <td width="70%">
+                                <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->itemPhoto3); ?>" class="user-img" alt="">
+                            </td>
+                        </tr>
+                    <?php }?>
+                    <?php if($data['benefaction_details']->itemPhoto4 != NULL) {?>
+                        <tr class="necessity-data">
+                            <th width="30%">Item Photo 4</th>
+                            <td width="70%">
+                                <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->itemPhoto3); ?>" class="user-img" alt="">
+                            </td>
+                        </tr>
+                    <?php }?>
                 </table>
             </div>
 
