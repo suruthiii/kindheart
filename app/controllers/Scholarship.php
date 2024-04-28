@@ -538,6 +538,55 @@ class Scholarship extends Controller {
     }
 
 
+    //adding student requestst to the db(add applying scholarships)
+
+    // public function addAppliedScholarship(){  
+    //     // die(print_r($_POST));
+
+    //     if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+    //         redirect('pages/404');
+    //     }
+
+    //     else {
+    //         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+    //             $data = [
+    //                 'requestedQuantity' => trim($_POST['requestedQuantity']),
+    //                 'reason' => trim($_POST['reason']),
+    //                 'benefactionID' => trim($_POST['benefactionID']),
+    //                 'err' => ''
+    //             ];
+
+    //             // Make sure errors are empty
+    //             if (empty($data['err'])) {
+                    
+                
+    //                 // Add Data to DB
+    //                 if ($this->benefactionModel->addAppliedBenefaction($data)) {
+    //                     if($_SESSION['user_type'] == 'student') {
+    //                         redirect('student/benefactions');
+    //                     }
+    //                     else if ($_SESSION['user_type'] == 'organization') {
+    //                     }
+    //                     else {
+    //                         die('User Type Not Found');
+    //                     }
+    //                 } else {
+    //                     die('Something went wrong1');
+
+    //                 }
+    //             } else {
+    //                 // Load view with errors
+    //                 die(print_r($data));
+    //             }
+    //         }else{
+    //             die('incorrect method!');
+    //         }
+
+    //     }
+    // }
+
+
 
 
 
