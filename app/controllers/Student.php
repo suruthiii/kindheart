@@ -69,7 +69,8 @@ class Student extends Controller {
 
         $data = [
             'title' => 'Home page',
-            'scholarships' => $this->ScholarshipModel->getScholarships()
+            'scholarships' => $this->ScholarshipModel->getScholarships(),
+            'appliedScholarships' => $this->ScholarshipModel->getAppliedScholarships()
         ];
 
         $other_data = [
@@ -80,13 +81,16 @@ class Student extends Controller {
         $this->view('student/scholarships', $data, $other_data);
     }
 
-    public function Applyscholarship($scholarshipID = null){
+    public function Applyscholarship(){
+        
+        $scholarshipID = $_GET['scholarshipID'];
 
         $data = [
             'title' => 'Home page',
-            'scholarship_details' => $this->ScholarshipModel->getApplyScholarship($scholarshipID)
+            'scholarshipID' => $scholarshipID,
+            'scholarship_details' => $this->ScholarshipModel->getScholarshipNotApplied($scholarshipID)
         ];
-        die(print_r($data));
+       
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -95,6 +99,28 @@ class Student extends Controller {
 
         $this->view('student/ApplyForScholarship', $data, $other_data);
     }
+
+    public function ViewAppliedScholarship($scholarshipID = null){
+
+        $data = [
+            'title' => 'Home page',
+            
+            'scholarship_details' => $this->ScholarshipModel->getAppliedScholarship($scholarshipID),
+            'appliedScholarships' => $this->ScholarshipModel->getAppliedScholarships()
+
+        ];
+
+       
+     
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/ViewApplyScholarship', $data, $other_data);
+    }
+
+    
 
 
     public function editProfile(){

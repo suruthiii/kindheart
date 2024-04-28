@@ -77,7 +77,7 @@
                                         } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 2 && $Acceptedstatus === 2 && $completedStatus === 2) {
+                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
 
                                         } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 3) {
