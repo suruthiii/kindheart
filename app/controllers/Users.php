@@ -15,9 +15,9 @@ class Users extends Controller{
     //---------------------------------------------
 
     public function studentAcountCreationPage1(){
-        // if(isset($_SESSION['account_status'])){
-        //     redirect('pages/404');
-        // }
+        if(isset($_SESSION['account_status'])){
+            redirect('pages/404');
+        }
 
         $data = [
             'email' => '',
@@ -89,9 +89,9 @@ class Users extends Controller{
     }
 
     public function studentAcountCreationPage2(){
-        // if(isset($_SESSION['account_status'])){
-        //     redirect('pages/404');
-        // }
+        if(isset($_SESSION['account_status'])){
+            redirect('pages/404');
+        }
 
         $data = [
             'username' => '',
@@ -110,11 +110,11 @@ class Users extends Controller{
             $data['password'] = $_SESSION['password'];
         }
 
-        if(isset($_GET['username']) && isset($_GET['password']) && isset($_GET['confirmPassword'])){   
+        if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirmPassword'])){   
             $data = [
-                'username' => trim($_GET['username']),
-                'password' => trim($_GET['password']),
-                'confirmPassword' => trim($_GET['confirmPassword']),
+                'username' => trim($_POST['username']),
+                'password' => trim($_POST['password']),
+                'confirmPassword' => trim($_POST['confirmPassword']),
                 'username_err' => '',
                 'password_err' => '',
                 'confirmPassword_err' => ''
@@ -163,6 +163,7 @@ class Users extends Controller{
     }
 
     public function studentAcountCreationPage3(){
+        session_destroy();
         $this->view('users/studentRegistration/studentAcountCreationPage3');
     }
 
@@ -558,7 +559,9 @@ class Users extends Controller{
             'orgName' => '',
             'acaYear' => '',
             'schol' => '',
-            'err' => ''
+            'orgName_err' => '',
+            'acaYear_err' => '',
+            'schol_err' => '',
         ];
 
         if(isset($_SESSION['orgName'])){
@@ -578,22 +581,28 @@ class Users extends Controller{
                 'orgName' => trim($_GET['orgName']),
                 'acaYear' => trim($_GET['acaYear']),
                 'schol' => trim($_GET['schol']),
-                'err' => ''
+                'orgName_err' => '',
+                'acaYear_err' => '',
+                'schol_err' => ''
             ];
 
             if(empty($data['orgName'])){
-                $data['err'] = 'Please enter name of the university / school';
+                $data['orgName_err'] = 'Please enter name of the university / school';
             }
 
             if(empty($data['acaYear'])){
-                $data['err'] = 'Please enter academic year / grade';
+                $data['acaYear_err'] = 'Please enter academic year / grade';
+            }elseif (!is_numeric($data['acaYear'])) {
+                $data['acaYear_err'] = 'Academic Year should be a valid number';
+            } elseif ($data['acaYear'] <= 0) {
+                $data['acaYear_err'] = 'Academic Year should be a positive number';
             }
 
             if(empty($data['schol'])){
-                $data['err'] = 'Please mention currently receiving scholarships';
+                $data['schol_err'] = 'Please mention currently receiving scholarships';
             }
 
-            if(empty($data['err'])){
+            if(empty($data['orgName_err']) && empty($data['acaYear_err']) && empty($data['schol_err'])){
                 $_SESSION['orgName'] = $data['orgName'];
                 $_SESSION['acaYear'] = $data['acaYear'];
                 $_SESSION['schol'] = $data['schol'];

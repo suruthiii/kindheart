@@ -27,7 +27,7 @@
 
                             <label for="email">Enter your email address </label>
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" ><br>
+                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" required><br>
                                 <span class="error-message" for="verificationCode"><?php echo $data['email_err']?></span>
                             </div>
 
@@ -40,13 +40,13 @@
                         <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds">      
                             <label for="email">Enter the verification code</label>
                             <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2">
-                                <input type="text" name="digit-1" />
-                                <input type="text" name="digit-2" />
-                                <input type="text" name="digit-3" />
-                                <input type="text" name="digit-4" />
-                                <input type="text" name="digit-5" />
-                                <input type="text" name="digit-6" />
-                                <input type="text" name="digit-7" />
+                                <input type="text" name="digit-1" required/>
+                                <input type="text" name="digit-2" required/>
+                                <input type="text" name="digit-3" required/>
+                                <input type="text" name="digit-4" required/>
+                                <input type="text" name="digit-5" required/>
+                                <input type="text" name="digit-6" required/>
+                                <input type="text" name="digit-7" required/>
                             </div>
                             <span class="error-message" for="verificationCode"><?php echo $data['otp_err']?></span>
                         </div>

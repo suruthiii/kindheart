@@ -28,14 +28,14 @@
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                     <label for="firstName">First Name</label>
                                     <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
-                                        <input class="inputt2" type="text" name="firstName" value="<?php echo $data['firstName']?>">
+                                        <input class="inputt2" type="text" name="firstName" value="<?php echo $data['firstName']?>" required>
                                         <p class="error-message" for="password"><?php echo $data['firstName_err']?></p>
                                     </div>
                                 </div>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                     <label for="lastname">Last Name</label>
                                     <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
-                                        <input class="inputt2" type="text" name="lastName" value="<?php echo $data['lastName']?>">
+                                        <input class="inputt2" type="text" name="lastName" value="<?php echo $data['lastName']?>" required>
                                         <p class="error-message" for="password"><?php echo $data['lastName_err']?></p>
                                     </div>
                                 </div>
@@ -43,13 +43,13 @@
 
                             <label for="address">Address</label>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="address" value="<?php echo $data['address']?>" >
+                                <input class="inputt1" type="text" name="address" value="<?php echo $data['address']?>"required>
                                 <p class="error-message" for="password"><?php echo $data['address_err']?></p>
                             </div>
 
                             <label for="dob">Date Of Birth</label>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="date" name="dob" value="<?php echo $data['dob']?>" >
+                                <input class="inputt1" type="date" name="dob" value="<?php echo $data['dob']?>" required>
                                 <p class="error-message" for="password"><?php echo $data['dob_err']?></p>
                             </div>
 

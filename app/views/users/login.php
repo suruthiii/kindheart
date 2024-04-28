@@ -28,13 +28,13 @@
 
                             <label for="email">Username</label>
                             <div class="login-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="text" name="username" id="email">
+                                <input class="inputt" type="text" name="username" id="email" required>
                                 <p class="error-message" for="username"><?php echo $data['username_err']?></p>
                             </div>
 
                             <label for="email">Password</label>
                             <div class="login-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt" type="password" name="password" id="password">
+                                <input class="inputt" type="password" name="password" id="password" required>
                                 <p class="error-message" for="password"><?php echo $data['password_err']?></p>
                             </div>
 
