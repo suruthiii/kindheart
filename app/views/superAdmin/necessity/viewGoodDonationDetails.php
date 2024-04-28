@@ -35,12 +35,14 @@
                         <th width="30%">Donated Quantity</th>
                         <td width="70%"><?php echo $data['donation_details']->quantity ?></td>
                     </tr>
-                    <tr class="necessity-data">
-                        <th width="30%">Delivery Receipt</th>
-                        <td width="70%">
-                            <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->deliveryReceipt); ?>" class="user-img" alt="">
-                        </td>
-                    </tr>
+                    <?php if($data['donation_details']->deliveryReceipt != NULL) {?>
+                        <tr class="necessity-data">
+                            <th width="30%">Delivery Receipt</th>
+                            <td width="70%">
+                                <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->deliveryReceipt); ?>" class="user-img" alt="">
+                            </td>
+                        </tr>
+                    <?php }?>
                     <?php if($data['donation_details']->verificationStatus == 2) {?>
                         <tr class="necessity-data">
                             <th width="30%">Verification Status</th>
@@ -60,6 +62,17 @@
                     <?php } ?>
                 </table>
             </div>
+
+            <?php if($data['donation_details']->verificationStatus == 1) {?>
+                <div class="view-donation-btn-container">
+                    <form action="<?php echo URLROOT ?>/necessity/verifygoodreceipt" method="post" class="delete-form">
+                        <input type="text" name="donation_ID" id="donation_ID" hidden value="<?php echo $_GET['goodDonationID'] ?>" />
+                        <button type="submit" class="view-donation-btn">
+                            Verify Receipt
+                        </button>
+                    </form>
+                </div>
+            <?php }?>
 
         </div>
     </section>
