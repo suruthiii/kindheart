@@ -78,11 +78,11 @@
                                         } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 1) {
-                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1) {
+                                            echo '<div class="status_accepted"><p>completed</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 2) {
-                                            echo '<div class="status_rejected"><p>Completed</p></div>';
+                                        } elseif ($status === 2 && $Acceptedstatus === 2 && $completedStatus === 2) {
+                                            echo '<div class="status_rejected"><p>Acknowleged</p></div>';
 
                                         } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 3) {
                                             echo '<div class="status_rejected"><p>Complainted</p></div>';
