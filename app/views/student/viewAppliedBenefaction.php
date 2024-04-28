@@ -71,16 +71,16 @@
                                         if ($status === 0 && $Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
+                                        } elseif ($status === 0 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 1) {
+                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 2) {
+                                        } elseif ($status === 2 && $Acceptedstatus === 2 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 3) {
+                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 3) {
                                             echo '<div class="status_rejected"><p>Complainted</p></div>';
 
                                         } else {
@@ -101,7 +101,7 @@
 
                                 // Echo different divs based on the status
 
-                                if (($status === 1 && $Acceptedstatus === 1) || ($status === 2 && $Acceptedstatus === 1 && $completedStatus === 1) ) {
+                                if ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1 ) {
                                  
                                     echo '<div class="status_accepted">
                                                 <form action="'.URLROOT.'/student/sendAknowledgement" method="GET" class="btn" >
