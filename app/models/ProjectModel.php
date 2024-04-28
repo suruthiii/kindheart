@@ -158,6 +158,20 @@ class ProjectModel{
         }
     }
 
+    public function editprojectdetailstodb($data){
+        $this->db->query("UPDATE project SET  title = :title ,description = :description WHERE projectID = :projectID");
+        $this->db->bind(':title', $data['projectTitle']);
+        $this->db->bind(':description', $data['projectDescription']);
+        $this->db->bind(':projectID', $data['projectID']);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function getallProjectDetils($projectID){
         $this->db->query("SELECT project.projectID, project.title, project.budget, project.budget, project.receivedAmount, project.status AS project_status, project.description AS project_description
                         FROM project WHERE project.status = 0 AND project.projectID = :projectID");

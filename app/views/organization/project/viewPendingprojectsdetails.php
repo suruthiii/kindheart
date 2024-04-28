@@ -31,7 +31,7 @@
                 <div class="posted-project-accordian-view">
                     <!-- display project name -->
                     <div class="project-name-and-description-to-view-project-name">
-                        <h3><?php echo $data['ongingProjectDetails']->title ; ?></h3>
+                        <h2><?php echo $data['ongingProjectDetails']->title ; ?></h2>
                     </div>
                     <!-- Display project description -->
                     <div class="project-name-and-description-to-view-project-des">
@@ -41,7 +41,7 @@
                     <!-- Display the list of milestone -->
                     <div class="accordian-milestone">
                         <!-- This represent a one milestone -->
-                        <?php foreach($data['ongoingmilestonedetails'] as $index => $milestone): ?>
+                        <!-- <?php foreach($data['ongoingmilestonedetails'] as $index => $milestone): ?>
                             <div>
                                 <input type="radio" name="milestoneSection" id="milestoneIndex<?php echo $index; ?>">
                                 <label for="milestoneIndex<?php echo $index; ?>" class="accordian-milestone-label">
@@ -62,15 +62,17 @@
                                     <p><?php echo $milestone->milestone_description ; ?></p>
                                 </div>
                             </div>
-                            <?php endforeach; ?>
+                            <?php endforeach; ?> -->
+
+                            
                         <!-- This represent a one milestone -->  
                     </div>
                 </div>
 
                 
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-                    <form action="<?php echo URLROOT ?>" method="post">
-                        <input type="hidden" name="projectID" id="projectID"/>
+                    <form action="<?php echo URLROOT ?>/project/editPostedProjects" method="post">
+                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $data['ongingProjectDetails']->projectID; ?>"/>
                         <button type="submit">
                             <img src="<?php echo URLROOT ?>/img/pen-to-square-solid.svg" class="ncessity-view-table-edit-button-img">
                             <p>Edit</p>
