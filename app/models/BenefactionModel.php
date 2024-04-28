@@ -537,30 +537,6 @@ public function getBenefactionNotApplied($benefactionID) {
         return $result;
     }
 
-    public function getBenefactionDetails($benefaction_ID) {
-        $this->db->query('SELECT * FROM benefaction WHERE benefactionID = :benefactionID');
-        $this->db->bind(':benefactionID', $benefaction_ID);
-
-        $benefactionDetails = $this->db->single();
-
-        $benefactionDetails->donorName = $this->getName($benefactionDetails->donorID)->name;
-
-        return $benefactionDetails;
-    }
-
-    public function getDonationCardDetails($benefaction_ID) {
-        $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID');
-        $this->db->bind(':benefactionID', $benefaction_ID);
-
-        $donations = $this->db->resultSet();
-
-        foreach($donations as $item) {
-            $item->doneeName = $this->getName($item->doneeID)->name;
-        }
-        
-        return $donations;
-    }
-
     public function getUserType($user_ID){
         $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
         $this->db->bind(':userID', $user_ID);
@@ -603,6 +579,42 @@ public function getBenefactionNotApplied($benefactionID) {
         $name = $this->db->single();
 
         return $name;
+    }
+
+    public function getBenefactionDetails($benefaction_ID) {
+        $this->db->query('SELECT * FROM benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $benefactionDetails = $this->db->single();
+
+        $benefactionDetails->donorName = $this->getName($benefactionDetails->donorID)->name;
+
+        return $benefactionDetails;
+    }
+
+    public function getDonationCardDetails($benefaction_ID) {
+        $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $donations = $this->db->resultSet();
+
+        foreach($donations as $item) {
+            $item->doneeName = $this->getName($item->doneeID)->name;
+        }
+        
+        return $donations;
+    }
+
+    public function getDonationDetails($benefaction_ID, $donee_ID) {
+        $this->db->query('SELECT * FROM donee_benefaction WHERE benefactionID = :benefactionID AND doneeID = :doneeID');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+        $this->db->bind(':doneeID', $donee_ID);
+
+        $donation = $this->db->single();
+
+        $donation->doneeName = $this->getName($donation->doneeID)->name;
+
+        return $donation;
     }
 
     public function getComBenefactionDetails($benefaction_ID) {
@@ -669,6 +681,34 @@ public function getBenefactionNotApplied($benefactionID) {
     public function restrictBenefaction($benefaction_ID) {
         $this->db->query('UPDATE benefaction SET availabilityStatus = 5 WHERE benefactionID = :benefactionID');
         $this->db->bind(':benefactionID', $benefaction_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function verifyReceipt($benefaction_ID, $donee_ID) {
+        $this->db->query('UPDATE donee_benefaction SET verificationStatus = 1 WHERE benefactionID = :benefactionID AND doneeID = :doneeID;');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+        $this->db->bind(':doneeID', $donee_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function verifyReceiptAgain($benefaction_ID, $donee_ID) {
+        $this->db->query('UPDATE donee_benefaction SET verificationStatus = 1 WHERE benefactionID = :benefactionID AND doneeID = :doneeID;');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+        $this->db->bind(':doneeID', $donee_ID);
 
         if($this->db->execute()) {
             return true;
