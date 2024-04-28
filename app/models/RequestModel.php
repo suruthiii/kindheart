@@ -170,14 +170,19 @@ class RequestModel{
             <p style="color: black">
                 Dear '.$name.',<br><br>
         
-                Your land  is now verified. You can now login to your account and start using it.<br>
-                <br>
+                Exciting news! Your account details have been successfully verified in our charity funding system. <br> 
+                This means you are now all set to begin receiving donations from generous supporters who are <br>
+                eager to contribute to your cause.
+                <br> 
+                To access your account and begin receiving donations, simply log in to our charity funding system <br> 
+                using your username and password.
+                <br> <br>
                 Best regards,<br>
-                eZpark Team
+                KindHeart Team
             </p>
         </div>';
 
-        $this->sendEmail($email, $name, 'Your Account Has Been Verified', $message, 'KindHeart');
+        $this->sendEmail($email, $name, 'Your Account Verification is Complete - Start Receiving Donations Today!', $message, 'KindHeart');
 
         if($this->db->execute()) {
             return true;

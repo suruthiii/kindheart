@@ -1286,7 +1286,7 @@ class Necessity extends Controller {
     public function viewMonetary() {
         $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
         $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
-                
+       
         if ($necessity_type == 'onetime') {
             if($donee_type == 'student') {
                 $data = [
@@ -1367,17 +1367,33 @@ class Necessity extends Controller {
                 'necessity_type' => $this->necessityModel->getMonetaryNecessityType($_GET['monetaryNecessity_ID']),
                 'donation_details' => $this->necessityModel->getRecurringDonationDetails($_GET['monetaryNecessityID'])
             ];
-
-            $other_data = [
-                'notification_count' => $this->notificationModel->getNotificationCount(),
-                'notifications' => $this->notificationModel->viewNotifications()
-            ];
-
-            $this->view($_SESSION['user_type'].'/necessity/viewMonetaryDonationDetails', $data, $other_data);
         }
 
         else{
             die('invalid');
+        }
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/necessity/viewMonetaryDonationDetails', $data, $other_data);
+    }
+
+    public function verifySlip() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(isset($_POST['donation_ID'])) {
+                if($this->necessityModel->verifyOneTimeSlip($_POST['donation_ID'])) {
+                    redirect('necessity/viewmonetarydonationdetails?oneTimeDonationID='.$_POST['donation_ID']);
+                }
+            }
+
+            else if(isset($_POST['necessity_ID'])) {
+                if($this->necessityModel->verifyRecurringSlip($_POST['necessity_ID'])) {
+                    redirect('necessity/viewmonetarydonationdetails?monetaryNecessityID='.$_POST['necessity_ID']);
+                }
+            }
         }
     }
 

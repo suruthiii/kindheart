@@ -526,7 +526,7 @@ public function getBenefactionNotApplied($benefactionID) {
 
         $benefactionDetails = $this->db->single();
 
-        $benefactionDetails->donorName = $this->getName($benefactionDetails->donorID);
+        $benefactionDetails->donorName = $this->getName($benefactionDetails->donorID)->name;
 
         return $benefactionDetails;
     }
@@ -537,8 +537,10 @@ public function getBenefactionNotApplied($benefactionID) {
 
         $donations = $this->db->resultSet();
 
-        $donations->doneeName = $this->getName($donations->doneeID);
-
+        foreach($donations as $item) {
+            $item->doneeName = $this->getName($item->doneeID)->name;
+        }
+        
         return $donations;
     }
 
@@ -585,5 +587,67 @@ public function getBenefactionNotApplied($benefactionID) {
 
         return $name;
     }
+
+    public function getComBenefactionDetails($benefaction_ID) {
+        $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemCategory, b.itemQuantity, b.donatedQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, c.companyID AS donorID, c.companyName AS name FROM benefaction b JOIN company c ON b.donorID = c.companyID WHERE b.benefactionID = :benefactionID;');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getIndBenefactionDetails($benefaction_ID) {
+        $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemCategory, b.itemQuantity, b.donatedQuantity, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3, b.itemPhoto4, i.individualID AS donorID, CONCAT(i.fName, " ", i.lName) AS name FROM benefaction b JOIN individual i ON b.donorID = i.individualID WHERE b.benefactionID = :benefactionID;');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getDonorType($benefaction_ID) {
+        $this->db->query('SELECT donorType FROM donor d JOIN benefaction b ON d.donorID = b.donorID WHERE b.benefactionID = :benefactionID;');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $row = $this->db->single();
+
+        return $row->donorType;
+    }
+
+    public function getAllComments($benefaction_ID) {
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'benefaction' ORDER BY time DESC;");
+        $this->db->bind(':postID', $benefaction_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function addComment($data) {
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'benefaction', :comment);");
+        $this->db->bind(':postID', $data['benefaction_ID']);
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+        $this->db->bind(':time', date("Y-m-d H:i:s"));
+        $this->db->bind(':comment', $data['comment']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function getDonorID($benefaction_ID) {
+        $this->db->query('SELECT donorID FROM benefaction WHERE benefactionID = :benefactionID;');
+        $this->db->bind(':benefactionID', $benefaction_ID);
+
+        $donorID = $this->db->single()->donorID;
+
+        return $donorID;
+    }
+
 
 }
