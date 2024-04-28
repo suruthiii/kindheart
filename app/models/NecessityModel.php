@@ -214,7 +214,7 @@ class NecessityModel{
     ///////////////////////////////////////////////////////////////////////
 
     public function getDonordWhoDonatedForthisNecessity($necessityID){
-        $this->db->query("SELECT necessity.*, money.*, onetimedonation.amount AS totalAmountReceived, onetimedonation.verificationStatus
+        $this->db->query("SELECT necessity.*, money.*, SUM(onetimedonation.amount) AS totalAmountReceived, onetimedonation.verificationStatus
                           FROM necessity 
                           LEFT JOIN money ON necessity.necessityID = money.monetaryNecessityID 
                           LEFT JOIN onetimedonation ON money.monetaryNecessityID = onetimedonation.monetaryNecessityID 

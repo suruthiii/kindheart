@@ -57,7 +57,7 @@
                         </tr>
                         <tr>
                             <td><p>Amount Due</p></td>
-                            <td><p>Rs.<?php echo number_format($data['pendingNecessityDetails']->amount_due, 2); ?></p></td>
+                            <td><p>Rs.<?php echo $data['pendingNecessityDetails']->amount_due < 0 ? number_format(0, 2) : number_format($data['pendingNecessityDetails']->amount_due, 2); ?></p></td>
                         </tr>
                         <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'recurring') {?>
                         <tr>
