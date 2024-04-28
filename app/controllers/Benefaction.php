@@ -5,7 +5,7 @@ class Benefaction extends Controller {
     public function __construct(){
         $this->middleware = new AuthMiddleware();
         // Only organizations are allowed to access organization pages
-        $this->middleware->checkAccess(['student','donor']);
+        $this->middleware->checkAccess(['student','donor', 'superAdmin', 'admin', 'organization']);
 
         $this->donorModel = $this->model('DonorModel');
         $this->benefactionModel = $this->model('BenefactionModel');
@@ -50,6 +50,8 @@ class Benefaction extends Controller {
         else {
             die('Donor Type Not Found');
         }
+
+        // die(print_r($data));
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -130,6 +132,8 @@ class Benefaction extends Controller {
                 if($this->benefactionModel->addComment($data)) {
                     $donorID = $this->benefactionModel->getDonorID($data['benefaction_ID']);
 
+                    $this->benefactionModel->restrictBenefaction($data['benefaction_ID']);
+
                     $this->notificationModel->createNotification('Manage Benefaction', 'manageBenefaction', $_SESSION['user_id'], $donorID, $data['comment'], $data['benefaction_ID']);
 
                     redirect('benefaction/managebenefaction?benefaction_ID='.$data['benefaction_ID']);
@@ -171,7 +175,53 @@ class Benefaction extends Controller {
 
         $this->view($_SESSION['user_type'].'/benefaction/manageBenefaction', $data, $other_data);
         }
-   }
+    }
+
+    public function viewDonorProfile($benefaction_ID = null, $donor_ID = null) {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            $donorType = $this->userModel->getDonorType($donor_ID);
+            
+            if($donorType == 'company'){
+            
+                $data = [
+                    'title' => 'Home Page',
+                    'benefaction_ID' => $benefaction_ID,
+                    'details' => $this->userModel->getDonorCom($donor_ID)
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/benefaction/viewDonorComProfile', $data, $other_data);
+            }
+
+            else if($donorType == 'individual') {
+                $data = [
+                    'title' => 'Home Page',
+                    'benefaction_ID' => $benefaction_ID,
+                    'details' => $this->userModel->getDonorInd($donor_ID)
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/benefaction/viewDonorIndProfile', $data, $other_data);
+            }
+
+            else {
+                die('Donor Type Not Found');
+            }
+        }
+    }
+
 
     // ------------Donor--------------------
 
