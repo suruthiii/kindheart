@@ -109,8 +109,8 @@
                         <h3>Donors Who Donated</h3>
                     </div>
                     <div class="right-side-bar-for-scrolling">
-                    <?php foreach($data['donorsdonated'] as $donorsdonated): ?>
                         <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'onetime') {?>
+                            <?php foreach($data['donorsdonated'] as $donorsdonated): ?>
                                 <div class="donated-donor-details-box">
                                     <div class="donated-donor-name" >
                                         <h4><?php echo $donorsdonated->username; ?></h4>
@@ -122,8 +122,22 @@
                                         <p>Not Verified and not paid</p>
                                     </div>
                                 </div>
+                            <?php endforeach; ?>
+                        <?php }else{ ?>
+                            <?php foreach($data['recurringDonationsdetails'] as $recurringDonationsdetails): ?>
+                                <div class="donated-donor-details-box">
+                                    <div class="donated-donor-name" >
+                                        <h4><?php echo $recurringDonationsdetails->username; ?></h4>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>Rs.<?php echo number_format($recurringDonationsdetails->monthlyAmount, 2); ?></p>
+                                    </div>
+                                    <div class="paid-or-not-or-verified">
+                                        <p style="color: #fff;"><?php echo $recurringDonationsdetails->paymentStatus; ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
                         <?php } ?>
-                        <?php endforeach; ?>
                     </div>
 
                 </div>
