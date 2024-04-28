@@ -39,6 +39,12 @@ a {
     width: 150px;
 }
 
+.error-message{
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+
+}
 
 
 /* ----------------studentAcountCreationPage1------------------ */
@@ -69,6 +75,13 @@ a {
     color: rgb(146, 141, 141);
 }
 
+.studentAcountCreationPage1-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
+}
+
 .studentAcountCreationPage1-inner-container-form-container p{
     font-size: 14px;
 }
@@ -78,7 +91,7 @@ a {
     margin-top: 50px;
 }
 
-.studentAcountCreationPage1-inner-container-form-container form button{
+.studentAcountCreationPage1-inner-container-form-container-buttons button{
     color: #fff;
     font-size: 1rem;
     border: none;
@@ -94,7 +107,15 @@ a {
     box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
 }
 
-.studentAcountCreationPage1-inner-container-form-container form button:hover{
+.studentAcountCreationPage1-inner-container-form-container-inputfeilds-verificationmessage button{
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #9D0000;
+    background: #fff;
+}
+
+.studentAcountCreationPage1-inner-container-form-container-buttons button:hover{
     background: #6e0a0a;
     transform: scale(1.05);
     box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
@@ -117,7 +138,7 @@ a {
 }
 
 .studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -174,6 +195,13 @@ a {
     color: rgb(146, 141, 141);
 }
 
+.studentAcountCreationPage2-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
+}
+
 .studentAcountCreationPage2-inner-container-form-container p{
     font-size: 14px;
 }
@@ -222,7 +250,7 @@ a {
 }
 
 .studentAcountCreationPage2-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -254,6 +282,13 @@ a {
 
 .studentAcountCreationPage3-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+
+.studentAcountCreationPage3-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
 }
 
 .studentAcountCreationPage3-inner-container-form-container p{
@@ -315,6 +350,13 @@ a {
     color: rgb(146, 141, 141);
 }
 
+.login-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
+}
+
 .login-inner-container-form-container p{
     font-size: 14px;
 }
@@ -374,7 +416,7 @@ a {
 }
 
 .login-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -385,6 +427,315 @@ a {
 .login-inner-container-form-container-inputfeilds-rememberme{
     margin-bottom: 30px;
 }
+
+/* ----------------forgetPassword0------------------ */
+
+.forgetPassword0-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.forgetPassword0-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.forgetPassword0-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.forgetPassword0-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.forgetPassword0-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
+}
+
+.forgetPassword0-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: 0px;
+}
+
+.forgetPassword0-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.forgetPassword0-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.forgetPassword0-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.forgetPassword0-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.forgetPassword0-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.forgetPassword0-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.forgetPassword0-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+
+/* ----------------forgetPassword1------------------ */
+
+.forgetPassword1-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.forgetPassword1-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.forgetPassword1-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.forgetPassword1-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.forgetPassword1-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
+}
+
+.forgetPassword1-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.forgetPassword1-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.forgetPassword1-inner-container-form-container-buttons button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds-verificationmessage button{
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    color: #9D0000;
+    background: #fff;
+}
+
+.forgetPassword1-inner-container-form-container-buttons button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds-verificationmessage{
+    margin-bottom: 30px;
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds-feild2 input{
+    margin-bottom: 30px;
+    margin-top: 10px;
+
+    height: 45px;
+    width: 50px;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
+    border: 1px solid #acacac;
+    column-gap: 50px;
+    margin-right: 18px;
+
+}
+
+.forgetPassword1-inner-container-form-container-inputfeilds-feild2 input:focus{
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ----------------forgetPassword2------------------ */
+
+.forgetPassword2-container{
+    margin-left: 85vh;
+    margin-top: 1vh;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: #5e1717; */
+}
+
+.forgetPassword2-inner-container{
+    margin-left: 18vh;
+    margin-top: 8vh;
+    width: 80%;
+    height: 90%;
+
+    /* background-color: #c95a5a; */
+}
+
+.forgetPassword2-inner-container-caption{
+    margin-bottom: 30px;
+}
+
+.forgetPassword2-inner-container-caption span{
+    color: rgb(146, 141, 141);
+}
+
+.forgetPassword2-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
+}
+
+.forgetPassword2-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding-right: 10px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: 0px;
+}
+
+.forgetPassword2-inner-container-form-container p{
+    font-size: 14px;
+}
+
+.forgetPassword2-inner-container-form-container label{
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.forgetPassword2-inner-container-form-container form button{
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    padding: 9px 0;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s ease;
+    width: 180px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 6px;
+    background: #9D0000;
+    box-shadow: 0px 2px 14px 1px rgba(0, 0, 0, 0.18);
+}
+
+.forgetPassword2-inner-container-form-container form button:hover{
+    background: #6e0a0a;
+    transform: scale(1.05);
+    box-shadow: 0px 2px 20px 1px rgba(0, 0, 0, 0.25);
+}
+
+.forgetPassword2-inner-container-form-container-inputfeilds input{
+    height: 45px;
+    width: 500px;
+    margin: 1px 2px 1px 2px;
+    outline: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 5px;
+    border: 1px solid #acacac;
+}
+
+.forgetPassword2-inner-container-form-container-inputfeilds label{
+    color: rgb(146, 141, 141);
+}
+
+.forgetPassword2-inner-container-form-container-inputfeilds-feild1{
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
 
 /* ----------------studentProfileCreation1------------------ */
 
@@ -417,6 +768,13 @@ a {
 
 .studentProfileCreation1-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation1-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
+    scrollbar-width: none;
 }
 
 .studentProfileCreation1-inner-container-form-container p{
@@ -487,7 +845,7 @@ a {
 }
 
 .studentProfileCreation1-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -523,17 +881,25 @@ a {
     border-radius: 6px;
     border: 1px solid #acacac;
     background: #FCFCFC;
+    overflow: hidden; /* Ensure overflow is hidden to contain the arrow */
 }
 
 /* Style the arrow inside the select element */
 .select-selected:after {
     content: "";
-    margin-left: 100px; /* Adjust as needed */
-    right: 0;
+    position: absolute;
+    top: 50%; /* Position vertically centered */
+    right: 10px; /* Adjust this value for desired position */
     width: 0;
     height: 0;
     border: 6px solid transparent;
     border-color: #000000 transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #000000 transparent;    
+    top: 10px; /* Position vertically centered */
 }
 
 /* Style the items (options), including the selected item */
@@ -543,20 +909,23 @@ a {
     font-size: 14px;
     padding: 8px 16px;
     border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.3) transparent;
     cursor: pointer;
     user-select: none;
-    width: 230px; /* Set the width of the dropdown options */
+    width: 220px; /* Set the width of the dropdown options */
+
+    box-sizing: border-box; /* Include padding and border in the width */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
 }
 
 /* Position and visibility of the dropdown items */
 .select-items {
-    position: absolute;
+    position: relative;
     background-color: #FCFCFC;
-    margin-top: 10px;
-    z-index: 99;
-    width: 230px;
+    margin-top: 5px;
+    width: 220px;
     top: 0; /* Position dropdown below the select box */
+    border-color: transparent transparent rgba(0, 0, 0, 0.3) transparent;
 }
 
 /* Hide the items when the select box is closed */
@@ -654,7 +1023,7 @@ a {
 }
 
 .studentProfileCreation2-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -739,7 +1108,7 @@ a {
 }
 
 .studentProfileCreation3-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -979,7 +1348,7 @@ a {
 }
 
 .studentProfileCreation5-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -1065,7 +1434,7 @@ a {
 }
 
 .studentProfileCreation6-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 
@@ -1170,7 +1539,7 @@ a {
 }
 
 .studentProfileCreation7-inner-container-form-container-inputfeilds-feild1{
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-top: 10px;
 }
 

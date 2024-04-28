@@ -107,12 +107,10 @@ span .donor-form-error-details{
 .donor-dashboard-status-bar{
     height: 120px;
     width: 95%;
-    background-color: #efeaea;    
-    border: 1px solid #ccc;
     border-radius: 5px;    
 
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -127,6 +125,11 @@ span .donor-form-error-details{
     border: 1px solid #ddd;        
     background-color: #8e0000;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.donor-dashboard-status:hover{
+    background-color: #6C0000;
+    transform: scale(0.99);
 }
 
 .donor-dashboard-status p{
@@ -161,8 +164,8 @@ span .donor-form-error-details{
 .donor-dashboard-left-container{
     width: 73vh;
     height: 40vh;    
-    background-color: #efeaea;    
-    border: 1px solid #ccc;
+    background-color: #fff6f6;    
+    border: 1px solid #e3d6d6;
     border-radius: 5px;  
 
     display: flex;
@@ -176,8 +179,8 @@ span .donor-form-error-details{
     width: 550px;
     overflow: auto;
     scrollbar-width: none;    
-    background-color: #efeaea;    
-    border: 1px solid #ccc;
+    background-color: #fff6f6;    
+    border: 1px solid #e3d6d6;
     border-radius: 5px;
 }
 
@@ -226,15 +229,6 @@ span .donor-form-error-details{
     max-width: 30%;
     width: 100px;
 }
-
-
-
-
-
-
-
-
-
 
 
 /* ------------------Add Benefaction--------------- */

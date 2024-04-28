@@ -1,48 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Forget Password</title>
+    <title>Student Registration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registration_Login.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="image">
-            <img src="<?php echo URLROOT?>/img/setps.jpg" alt="Set Password" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
         </div>
-        <div class="forgetPsw-formc shared-formc">
-            <div class="forgetPsw-formce shared-formce">
-                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
-            
-                <h1>Forgot Password?</h1>
-                <span style="color: rgb(146, 141, 141);">Reset your password</span>     
-                <div class="forgetPsw-text shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/forgetPassword2" method="GET">
-                        <div class="forgetPsw-input-field1 shared-input shared-margin">
-                            <label for="email" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter your Email address</label><br><br>
-                            <input class="inputt" type="text" name="email" /><br><br>
-                            <label style="color: rgb(172, 34, 34); margin-bottom: 30px;" for="verificationCode"><b>Send OTP</b></label><br><br><br>
-                            <label for="verificationCode" style="color: rgb(146, 141, 141);">Enter the verification code </label><br><br>
-                        </div>
-                        <div class="forgetPsw-input-field2 shared-input2">
-                            <input type="text" />
-                            <input type="text"  />
-                            <input type="text"  />
-                            <input type="text"  />
-                            <input type="text"  />
-                            <input type="text"  />
-                            <input type="text"  />
-                        </div>
-
-                        <button type="submit">Continue</button>
-                        
-                    </form>
+        <div class="forgetPassword1-container">
+            <div class="forgetPassword1-inner-container">
+                <div class="forgetPassword1-inner-container-logo">
+                    <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
                 </div>
-                
-            </div>
-                
-            
+                <div class="forgetPassword1-inner-container-caption">
+                    <h1>Forget Password ?</h1>
+                    <span>Reset Your Password</span> 
+                </div>
+                <div class="forgetPassword1-inner-container-form-container">
+                    <form action="<?php echo URLROOT ?>/users/forgetPassword1" method="POST">
+                        <div class="forgetPassword1-inner-container-form-container-inputfeilds">      
+
+                            <label for="email">Enter your email address </label>
+                            <div class="forgetPassword1-inner-container-form-container-inputfeilds-feild1">
+                                <input class="inputt" type="email" name="email" id="email-field" value="<?php echo $data['email']?>" disabled><br>
+                                <span class="error-message" for="verificationCode"><?php echo $data['email_err']?></span>
+                            </div>
+
+                            <div class="forgetPassword1-inner-container-form-container-inputfeilds-verificationmessage">
+                                <button type="submit">Send Verification Code</button>
+                            </div>
+                    </form>
+
+                    <form action="<?php echo URLROOT ?>/users/OTPforgetPassword1" method="GET">
+                        <div class="forgetPassword1-inner-container-form-container-inputfeilds">      
+                            <label for="email">Enter the verification code</label>
+                            <div class="forgetPassword1-inner-container-form-container-inputfeilds-feild2">
+                                <input type="text" name="digit-1" required/>
+                                <input type="text" name="digit-2" required/>
+                                <input type="text" name="digit-3" required/>
+                                <input type="text" name="digit-4" required/>
+                                <input type="text" name="digit-5" required/>
+                                <input type="text" name="digit-6" required/>
+                                <input type="text" name="digit-7" required/>
+                            </div>
+                            <span class="error-message" for="verificationCode"><?php echo $data['otp_err']?></span>
+                        </div>
+                        <div class="forgetPassword1-inner-container-form-container-buttons">
+                            <button>Verify</button>
+                        </div>
+                    </form>
+                </div>             
+            </div>            
         </div>
     </div>
 </body>

@@ -349,7 +349,7 @@ class Benefaction extends Controller {
                 ];
 
                 $selectedCategoryId = $_POST['benefactionCategory'];
-                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId] ?? ''; // Get corresponding category string
+                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId]; // Get corresponding category string
             }
             // die(print_r($this->imgUpload('photoBenfaction1')));
 
@@ -391,7 +391,7 @@ class Benefaction extends Controller {
                         'notifications' => $this->notificationModel->viewNotifications()
                     ];
 
-                    $this->view('donor/postedBenefactions', $data, $other_data);
+                    redirect('benefaction/postedBenefactions');
                 }else{
                     die('Something Went Wrong');
                 }
@@ -543,7 +543,7 @@ class Benefaction extends Controller {
                 ];
 
                 $selectedCategoryId = $_POST['benefactionCategory'];
-                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId] ?? ''; // Get corresponding category string
+                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId]; // Get corresponding category string
             }
             // die(print_r($this->imgUpload('photoBenfaction1')));
 
