@@ -198,6 +198,26 @@ class NecessityModel{
                 }
             }else{
 
+                $this->db->query("UPDATE necessity n
+                                    JOIN recurringdonation rd ON n.necessityID = rd.monetaryNecessityID
+                                    JOIN money m ON rd.monetaryNecessityID = m.monetaryNecessityID
+                                    SET n.fulfillmentStatus = 2
+                                    WHERE rd.slipCount = rd.acknowledgementCount 
+                                    AND rd.verificationStatus = 2
+                                    AND rd.acknowledgementCount = m.duration AND necessityID = :necessityID");
+                $this->db->bind(':necessityID', $necessity->necessityID);
+                $this->db->execute();
+                
+                $this->db->query("UPDATE money m
+                JOIN recurringdonation rd ON m.monetaryNecessityID = rd.monetaryNecessityID
+                SET m.receivedAmount = m.receivedAmount + m.monthlyAmount,
+                    rd.verificationStatus = 3
+                WHERE rd.verificationStatus = 0
+                AND rd.monetaryNecessityID = :necessityID");
+
+                    $this->db->bind(':necessityID', $necessity->necessityID);
+                    $this->db->execute();
+
             }
         }
 
@@ -246,8 +266,51 @@ class NecessityModel{
             $this->db->execute();
         }
     }
-    
 
+    public function recurringDonationDetails($necessityID){
+        $this->db->query("SELECT 
+                        u.userID,
+                        u.username,
+                        rd.updatedMonth,
+                        m.monthlyAmount,
+                        CASE
+                            WHEN rd.paymentSlip IS NOT NULL AND rd.verificationStatus = 2 AND rd.acknowledgement IS NOT NULL THEN 'paid and confirmed'
+                            WHEN rd.paymentSlip IS NOT NULL AND rd.verificationStatus = 1 THEN 'paid but not verified'
+                            ELSE 'not paid'
+                        END AS paymentStatus
+                    FROM 
+                        user u
+                    INNER JOIN donor d ON u.userID = d.donorID
+                    INNER JOIN recurringdonation rd ON d.donorID = rd.donorID
+                    INNER JOIN money m ON rd.monetaryNecessityID = m.monetaryNecessityID
+                    WHERE m.monetaryNecessityID = $necessityID");
+
+        $this->db->execute();
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+    
+    public function findtheMonthsINTHERECORD($necessityID){
+        $this->db->query("SELECT rd.confirmedDate,
+                        CASE
+                            WHEN DAY(LAST_DAY(rd.confirmedDate)) - DAY(rd.confirmedDate) > 15 THEN MONTH(rd.confirmedDate)
+                            ELSE MONTH(DATE_ADD(rd.confirmedDate, INTERVAL 1 MONTH))
+                        END AS chosenMonth,
+                        CASE
+                            WHEN DAY(LAST_DAY(rd.confirmedDate)) - DAY(rd.confirmedDate) > 15 THEN LAST_DAY(rd.confirmedDate)
+                            ELSE LAST_DAY(DATE_ADD(rd.confirmedDate, INTERVAL 1 MONTH))
+                        END AS endDateOfMonth
+                    FROM 
+                        recurringdonation rd
+                    INNER JOIN money m ON rd.monetaryNecessityID = m.monetaryNecessityID
+                    INNER JOIN necessity n ON m.monetaryNecessityID = n.necessityID
+                    WHERE n.necessityID = :necessityID");
+                    $this->db->bind(':necessityID', $necessityID);
+                    $MonthofDOnation = $this->db->single();
+                    return $MonthofDOnation->chosenMonth;
+    }
 
     //////////////////////////////////////////////////////////////////////
 
