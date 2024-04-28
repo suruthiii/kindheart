@@ -15,9 +15,9 @@ class Users extends Controller{
     //---------------------------------------------
 
     public function studentAcountCreationPage1(){
-        if(isset($_SESSION['account_status'])){
-            redirect('pages/404');
-        }
+        // if(isset($_SESSION['account_status'])){
+        //     redirect('pages/404');
+        // }
 
         $data = [
             'email' => '',
@@ -89,14 +89,17 @@ class Users extends Controller{
     }
 
     public function studentAcountCreationPage2(){
-        if(isset($_SESSION['account_status'])){
-            redirect('pages/404');
-        }
+        // if(isset($_SESSION['account_status'])){
+        //     redirect('pages/404');
+        // }
 
         $data = [
             'username' => '',
             'password' => '',
-            'err' => ''
+            'username_err' => '',
+            'password_err' => '',
+            'confirmPassword_err' => '',
+
         ];    
         
         if(isset($_SESSION['username'])){
@@ -112,32 +115,34 @@ class Users extends Controller{
                 'username' => trim($_GET['username']),
                 'password' => trim($_GET['password']),
                 'confirmPassword' => trim($_GET['confirmPassword']),
-                'err' => ''
+                'username_err' => '',
+                'password_err' => '',
+                'confirmPassword_err' => ''
             ];
 
             if(empty($data['username'])){
-                $data['err'] = 'Please enter username';
+                $data['username_err'] = 'Please enter username';
             }
 
             else{
                 if($this->userModel->findUserByUsername($data['username'])){
-                    $data['err'] = 'Username is already taken';
+                    $data['username_err'] = 'Username is already taken';
                 }
             }
 
             if(empty($data['password'])){
-                $data['err'] = 'Please enter password';
+                $data['password_err'] = 'Please enter password';
             }
 
             else if(strlen($data['password']) < 6){
-                $data['err'] = 'Password must be at least 6 characters';
+                $data['password_err'] = 'Password must be at least 6 characters';
             }
 
             else if($data['password'] != $data['confirmPassword']){
-                $data['err'] = 'Passwords do not match';
+                $data['confirmPassword_err'] = 'Passwords do not match';
             }            
 
-            if(empty($data['err'])){
+            if(empty($data['username_err']) && empty($data['password_err']) && empty($data['confirmPassword_err'])){
                 $_SESSION['username'] = $data['username'];
                 $_SESSION['password'] = $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 $_SESSION['user_type'] = "student";
@@ -146,7 +151,7 @@ class Users extends Controller{
                 
                 $this->userModel->accountCreation();
 
-                redirect('Users/studentAcountCreationPage3');
+                redirect('users/studentAcountCreationPage3');
             }
             else{
                 $this->view('users/studentRegistration/studentAcountCreationPage2', $data);
