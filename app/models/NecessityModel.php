@@ -901,6 +901,17 @@ class NecessityModel{
         return $necessity_ID;
     }
 
+    
+    // Getting Monetary Necessity ID using One Time Donation ID
+    public function getGoodNecessityID($goodDonation_ID) {
+        $this->db->query('SELECT goodNecessityID FROM goodDonation WHERE goodDonationID = :goodDonationID');
+        $this->db->bind(':goodDonationID', $goodDonation_ID);
+
+        $necessity_ID = $this->db->single()->goodNecessityID;
+
+        return $necessity_ID;
+    }
+
     public function getOneTimeDonationDetails($oneTimeDonation_ID) {
         $this->db->query('SELECT donorID, amount, paymentSlip, verificationStatus, acknowledgement FROM oneTimeDonation WHERE oneTimeDonationID = :oneTimeDonationID;');
         $this->db->bind(':oneTimeDonationID', $oneTimeDonation_ID);
@@ -979,5 +990,91 @@ class NecessityModel{
         else {
             return false;
         }
+    }
+
+    public function verifyGoodReceipt($donation_ID) {
+        $this->db->query("UPDATE goodDonation SET verificationStatus = 2 , acknowledgement = 'Pending' WHERE goodDonationID = :goodDonationID;");
+        $this->db->bind(':goodDonationID', $donation_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function restrictNecessity($necessity_ID) {
+        $this->db->query('UPDATE necessity SET fulfillmentStatus = 5 WHERE necessityID = :necessityID');
+        $this->db->bind(':necessityID', $necessity_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    // Get Donee ID By oneTimeDonationID
+    public function getDoneeIDByOneTimeDonation($donation_ID) {
+        $this->db->query('SELECT n.doneeID FROM necessity n JOIN oneTimeDonation o ON n.necessityID = o.monetaryNecessityID WHERE oneTimeDonationID = :oneTimeDonationID;');
+        $this->db->bind(':oneTimeDonationID', $donation_ID);
+
+        $doneeID  = $this->db->single();
+
+        return $doneeID->doneeID;
+    }
+
+    // Get Donee ID By monetary necessity ID of recurring donation table
+    public function getDoneeIDByRecurringMonetaryNecessity($monetaryNecessity_ID) {
+        $this->db->query('SELECT n.doneeID FROM necessity n JOIN recurringDonation r ON n.necessityID = r.monetaryNecessityID WHERE r.monetaryNecessityID = :monetaryNecessityID;');
+        $this->db->bind(':monetaryNecessityID', $monetaryNecessity_ID);
+
+        $doneeID = $this->db->single();
+
+        return $doneeID->doneeID;
+    }
+
+    // Get Donee ID By GoodDonationID
+    public function getDoneeIDByGoodDonation($donation_ID) {
+        $this->db->query('SELECT n.doneeID FROM necessity n JOIN goodDonation g ON n.necessityID = g.goodNecessityID WHERE g.goodDonationID = :goodDonationID');
+        $this->db->bind(':goodDonationID', $donation_ID);
+
+        $doneeID = $this->db->single();
+
+        return $doneeID->doneeID;
+    }
+
+    // Get Donor ID By oneTimeDonationID
+    public function getDonorIDByOneTimeDonation($donation_ID) {
+        $this->db->query('SELECT donorID FROM oneTimeDonation WHERE oneTimeDonationID = :oneTimeDonationID;');
+        $this->db->bind(':oneTimeDonationID', $donation_ID);
+
+        $donorID = $this->db->single();
+
+        return $donorID->donorID;
+    }
+
+    // Get Donor ID By monetary necessity ID of recurring donation table
+    public function getDonorIDByRecurringMonetaryNecessity($monetaryNecessity_ID) {
+        $this->db->query('SELECT donorID FROM recurringDonation WHERE monetaryNecessityID = :monetaryNecessityID;');
+        $this->db->bind(':monetaryNecessityID', $monetaryNecessity_ID);
+
+        $donorID = $this->db->single();
+
+        return $donorID->donorID;
+    }
+
+    // Get Donee ID By GoodDonationID
+    public function getDonorIDByGoodDonation($donation_ID) {
+        $this->db->query('SELECT donorID FROM goodDonation WHERE goodDonationID = :goodDonationID;');
+        $this->db->bind(':goodDonationID', $donation_ID);
+
+        $donorID = $this->db->single();
+
+        return $donorID->donorID;
     }
 }

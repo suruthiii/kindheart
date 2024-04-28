@@ -31,7 +31,7 @@
                         <?php foreach($data['pendingtablerow'] as $pendingtablerow): ?>
                             <tr>
                                 <td>
-                                    
+                                    <img style="height: 55px;  width: 55px" src="<?php echo URLROOT ?>/img/project-management.png" alt="">
                                 </td>
                                 <td>
                                     <h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4>
@@ -77,7 +77,7 @@
                         <?php foreach($data['completetablerow'] as $completetablerow): ?>
                             <tr>
                                 <td>
-                                    
+                                    <img style="height: 55px;  width: 55px" src="<?php echo URLROOT ?>/img/project-management.png" alt="">
                                 </td>
                                 <td>
                                     <h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4>
@@ -128,8 +128,39 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
-                    
+                    <div class="right-side-bar-type-one-detailed-view-boxes-typeone">
+                        <h5>Total Donation You Recieve</h5>
+                        <p>Rs. <?php echo number_format(isset($data['totalReceivedAmount']) ? $data['totalReceivedAmount'] : 0 , 2); ?></p>
+                    </div>
+                    <div class="right-side-bar-type-one-detailed-view-boxes">
+                        <h5>Donation Start Necessities</h5>
+                    </div>
 
+                    <div class="Still-not-completed-necessities">
+                        <table>
+                            <?php foreach($data['stateoneprojects'] as $stateoneprojects): ?>
+                            <tr>
+                                <td>
+                                    <img style="height: 38px;  width: 38px" src="<?php echo URLROOT ?>/img/project-management.png" alt=""> 
+                                </td>
+                                <td>
+                                    <h4 class="pending-postednecessityTitle"><?php echo $stateoneprojects->title?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $stateoneprojects->description?></p>
+                                </td>
+                                <td>
+                                    <form action="<?php echo URLROOT ?>/project/viewdonatedprojects" method="POST">
+                                        <input type="hidden" name="projectID" id="projectID" value="<?php echo $stateoneprojects->projectID; ?>">
+                                        <button  type="submit">
+                                            <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
+                    
+                    
                 </div>
             </div>
 

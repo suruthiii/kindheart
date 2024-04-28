@@ -49,7 +49,7 @@
                                                         </button>
                                                     </form>
                                                     
-                                                    <form action="<?php echo URLROOT ?>/successstory/deleteStory" method="post" class="delete-form-new " onsubmit="return confirmDelete();">
+                                                    <form action="<?php echo URLROOT ?>/successstory/deleteStory" method="post" class="delete-form-new " id="delete">
                                                         <input type="text" name="storyID" id="storyID" hidden value="<?php echo $item->storyID?>" />
                                                         <button type="submit" class="delete">
                                                             <img src="<?php echo URLROOT ?>/img/trash-solid.svg"  alt="">
@@ -166,13 +166,40 @@ adjustCardHeights();
 
 // history.pushState(null, null, '/kindheart/student/viewSuccessStory');
 
-function confirmDelete() {
-        return confirm("Are you sure you want to delete this story?");
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    // Function to handle delete confirmation
+    function confirmDelete(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You are about to delete this Posted Success Story. This action cannot be undone.',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Proceed with form submission
+                const form = event.target.closest('form'); // Find the closest form element
+                if (form) {
+                    form.submit(); // Submit the form
+                }
+            }
+        });
     }
 
-
-    
-
+    // Bind the confirmDelete function to form submission events
+    document.addEventListener('DOMContentLoaded', function() {
+        const deleteForms = document.querySelectorAll('.delete-form-new'); // Select all delete forms
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', confirmDelete); // Attach confirmDelete to form submission
+        });
+    });
 </script>
 
 

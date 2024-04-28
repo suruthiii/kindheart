@@ -30,8 +30,71 @@ class ProjectModel{
         return $result;
     }
 
+
+    public function dettheeachprojecthaddonationcount($projectID){
+        $this->db->query("SELECT COUNT(*) AS donationCount FROM fund
+            WHERE fund.projectID = :projectID");
+            $this->db->bind(':projectID', $projectID);
+
+        $donationCountResult = $this->db->single();
+
+        return $donationCountResult->donationCount;
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //chnage state if the milestone got a donation
+    public function changeStateforProjectasone(){
+        $this->db->query("SELECT project.*, milestone.* FROM project JOIN milestone ON project.projectID = milestone.projectID WHERE project.status = 0 AND project.orgID = :doneeID");
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $result = $this->db->resultSet();
+    
+        foreach($result as $project){
+            $this->db->query("SELECT COUNT(*) AS donationCount FROM fund WHERE fund.projectID = :projectID");
+            $this->db->bind(':projectID', $project->projectID);
+            $donationCountResult = $this->db->single();
+    
+            if($donationCountResult->donationCount > 0){
+                // Use parameterized query to prevent SQL injection
+                $this->db->query("UPDATE project SET status = 1 WHERE projectID = :projectID");
+                $this->db->bind(':projectID', $project->projectID);
+                $this->db->execute();
+            }
+        }
+    }
+
+    //change the verificationstate if the donor submit a bankslip
+    public function changeVerificationstateoffunds(){
+        $this->db->query("SELECT fund.*, project.*, milestone.* FROM fund 
+                      JOIN project ON fund.projectID = project.projectID 
+                      JOIN milestone ON project.projectID = milestone.projectID 
+                      WHERE project.status = 1 AND project.orgID = :doneeID");
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $result = $this->db->resultSet();
+    
+        foreach($result as $project){
+            if ($project->paymentSlip !== NULL) {
+                // Update verification status to 'Verified'
+                $this->db->query("UPDATE fund SET verificationStatus = 3 WHERE fund.paymentSlip IS NOT NULL AND projectID = :projectID");
+                $this->db->bind(':projectID', $project->projectID);
+                $this->db->execute();
+            }
+        }
+    }
+
     public function getaddedongoingprojects(){
+        // state check
+        $this->changeStateforProjectasone();
+        $this->changeVerificationstateoffunds();
+
         $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 0; ');
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getstaeoneprojects(){
+        $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 1; ');
 
         $result = $this->db->resultSet();
 
@@ -45,6 +108,60 @@ class ProjectModel{
 
         return $result;
     }
+
+    public function getallProjectDetilsstateone($projectID){
+        $this->db->query("SELECT fund.*, project.*, milestone.*, user.username,
+                    fund.amount AS fund_amount,
+                    project.description AS project_description,
+                    milestone.description AS milestone_description
+                    FROM fund 
+                    JOIN project ON fund.projectID = project.projectID 
+                    JOIN milestone ON project.projectID = milestone.projectID 
+                    JOIN donor ON fund.donorID = donor.donorID 
+                    JOIN user ON donor.donorID = user.userID
+                    WHERE project.status = 1 AND project.orgID = :doneeID AND project.projectId = $projectID");
+
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getprojectdetailsbyID($projectID){
+        $this->db->query("SELECT * FROM project WHERE projectID = :projectID");
+        $this->db->bind(':projectID', $projectID);
+        $result = $this->db->single(); // Assuming you expect only one result
+    
+        return $result;
+    }
+
+    public function projectsentacknowlagement($data){
+        $this->db->query('UPDATE fund SET acknowledgement = 1 WHERE fundID = :fundID');
+        $this->db->bind(':fundID', $data['fundID']);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function donorsdonatedtoprojects($projectID){
+        $this->db->query("SELECT u.username, f.amount, f.verificationStatus,f.fundID, f.acknowledgement  
+                        FROM fund f
+                        JOIN donor d ON f.donorID = d.donorID
+                        JOIN user u ON d.donorID = u.userID
+                        JOIN project p ON f.projectID = p.projectID
+                        WHERE f.projectID = :projectID AND p.status = 1");
+        $this->db->bind(':projectID', $projectID);
+        $result = $this->db->resultSet(); // Since multiple donors can donate to a project
+    
+        return $result;
+    }
+
+    
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function getProjectDetails($project_ID) {
         $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
@@ -158,6 +275,20 @@ class ProjectModel{
         }
     }
 
+    public function editprojectdetailstodb($data){
+        $this->db->query("UPDATE project SET  title = :title ,description = :description WHERE projectID = :projectID");
+        $this->db->bind(':title', $data['projectTitle']);
+        $this->db->bind(':description', $data['projectDescription']);
+        $this->db->bind(':projectID', $data['projectID']);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function getallProjectDetils($projectID){
         $this->db->query("SELECT project.projectID, project.title, project.budget, project.budget, project.receivedAmount, project.status AS project_status, project.description AS project_description
                         FROM project WHERE project.status = 0 AND project.projectID = :projectID");
@@ -185,6 +316,7 @@ class ProjectModel{
 
         $result = $this->db->resultSet();
         return $result;
+        var_dump($result);
     }
 
     public function getMilestoneCardDetails($project_ID) {

@@ -75,12 +75,12 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
+                                        <!-- <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
                                             <input type="text" id="name" name="necessity_ID" hidden value="<?php echo $item->necessityID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
-                                        </form>
+                                        </form> -->
                                     </td>
                                 </tr>
                             </table>
@@ -107,12 +107,12 @@
                                     </td>
                                     <td width="30%" class="amount">Rs.&nbsp;<?php echo $item->amount; ?>.00</td>
                                     <td width="30%" class="option">
-                                        <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
+                                        <!-- <form action="<?php echo URLROOT ?>/necessity/managemonetary" method="get" class="assign-manage-form">
                                             <input type="text" id="name" name="necessity_ID" hidden value="<?php echo $item->necessityID; ?>" />
                                             <button type="submit" class="assign-manage" onclick="">
                                                 Manage
                                             </button>
-                                        </form>
+                                        </form> -->
                                     </td>
                                 </tr>
                             </table>
