@@ -17,7 +17,8 @@ class Project extends Controller {
         $data = [
             'title' => 'Home Page',
             'pendingtablerow' => $this->projectModel->getaddedongoingprojects(),
-            'completetablerow' => $this->projectModel->getaddedcompletedprojects()
+            'completetablerow' => $this->projectModel->getaddedcompletedprojects(),
+            'stateoneprojects' => $this->projectModel->getstaeoneprojects()
         ];
 
         $other_data = [
@@ -382,6 +383,68 @@ class Project extends Controller {
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/project/viewPendingprojectsdetails', $data, $other_data);
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
+    public function viewdonatedprojects(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
+    
+                    // Get pending necessity details
+                    $projectdetails = $this->projectModel->getprojectdetailsbyID($projectID);
+                    $ongingProjectDetails = $this->projectModel->getallProjectDetilsstateone($projectID);
+                    
+
+                    // Prepare data to pass to the view
+                    $data = [
+                        'projectID' => $projectID,
+                        'projectdetails' => $projectdetails,
+                        'ongingProjectDetails' => $ongingProjectDetails, 
+                    ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+    
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/project/viewdonatedprojectdetails', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'projectID' => '',
+                    'ongingProjectDetails' => [],
+                    'projectdetails' => []
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+                
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/viewdonatedprojectdetails', $data, $other_data);
                     die('User Type Not Found');
                 }
             }
