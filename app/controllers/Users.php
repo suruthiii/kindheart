@@ -621,11 +621,9 @@ class Users extends Controller{
                 $data['err'] = 'Invalid contact number format';
             }
 
-            if (empty($data['nic'])){
+            if (empty($data['nic'])) {
                 $data['err'] = 'Please enter NIC';
-            } 
-            
-            else if(!preg_match('/^[0-9]{9}[vVxX]$/', $data['nic'])) {
+            } elseif (!preg_match('/^(?:[0-9]{9}[vVxX]|[0-9]{12})$/', $data['nic'])) {
                 $data['err'] = 'Invalid NIC format';
             }
 
@@ -633,7 +631,7 @@ class Users extends Controller{
                 $_SESSION['contactNo'] = $data['contactNo'];
                 $_SESSION['nic'] = $data['nic'];
 
-                redirect('Users/studentProfileCreation6');
+                redirect('users/studentProfileCreation6');
             }
             else{
                 $this->view('users/studentRegistration/studentProfileCreation5', $data);

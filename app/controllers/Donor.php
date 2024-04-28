@@ -23,7 +23,7 @@ class Donor extends Controller {
 
         $data = [
             'title' => 'Welcome Back ' . $username,
-            'active_donors' => $this->donorModel->getTotalActiveDonors($userId)
+            // 'active_donors' => $this->donorModel->getTotalActiveDonors($userId)
             // 'total_physical_goods_donations' => $this->donorModel->getTotalPhysicalGoodsDonations($userId),
             // 'total_donated_projects' => $this->donorModel->getTotalDonatedProjects($userId),
             // 'total_helped_students' => $this->donorModel->getTotalHelpedStudents($userId),

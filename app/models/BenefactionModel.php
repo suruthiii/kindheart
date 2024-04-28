@@ -72,7 +72,9 @@ class BenefactionModel{
             // Check if remainingQuantity is zero
             if ($benefaction->remainingQuantity === 0) {
                 // Determine the new availabilityStatus based on verificationStatus
-                $newAvailabilityStatus = ($benefaction->verificationStatus === 2) ? 2 : 1;
+                if($benefaction->verificationStatus === 1){
+                    $newAvailabilityStatus = 1;
+                }
     
                 // Update the availabilityStatus in the database
                 $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
@@ -105,7 +107,15 @@ class BenefactionModel{
             // Check if remainingQuantity is zero
             if ($benefaction->acknowledgedDonatedQuantity == $benefaction->itemQuantity) {
                 // Determine the new availabilityStatus based on verificationStatus
-                $newAvailabilityStatus = ($benefaction->verificationStatus === 2) ? 2 : 1;
+                if($benefaction->verificationStatus === 0){
+                    $newAvailabilityStatus = 1;
+                }elseif($benefaction->verificationStatus === 1){
+                    $newAvailabilityStatus = 1;
+                }elseif($benefaction->verificationStatus === 2){
+                    $newAvailabilityStatus = 2;
+                }elseif($benefaction->verificationStatus === 3){
+                    $newAvailabilityStatus = 1;
+                }
     
                 // Update the availabilityStatus in the database
                 $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
@@ -139,7 +149,9 @@ class BenefactionModel{
             // Check if remainingQuantity is zero
             if ($benefaction->remainingQuantity === 0) {
                 // Determine the new availabilityStatus based on verificationStatus
-                $newAvailabilityStatus = ($benefaction->verificationStatus === 2) ? 2 : 1;
+                if($benefaction->verificationStatus === 2){
+                    $newAvailabilityStatus = 2;
+                }
     
                 // Update the availabilityStatus in the database
                 $this->updateBenefactionAvailabilityStatus($benefaction->benefactionID, $newAvailabilityStatus);
@@ -362,7 +374,7 @@ class BenefactionModel{
         $this->db->bind(':benefactionID', $data['benefactionID']);
         $this->db->bind(':doneeID', $data['doneeID']);
         $this->db->bind(':receivedQuantity', $data['donationQuantity']);
-        $this->db->bind(':deliveryReceipt', $data['deliveryReceipt'] ?? null); // Handle the case where deliveryReceipt is not set
+        $this->db->bind(':deliveryReceipt', $data['deliveryReceipt']); // Handle the case where deliveryReceipt is not set
         $this->db->bind(':verificationStatus', 0); // Assuming verificationStatus is always 0 for new entries
     
         // Execute the INSERT query

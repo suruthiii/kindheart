@@ -109,9 +109,6 @@ class UserModel{
         $result = $result & $this->db->execute();
 
 
-        die(print_r($_SESSION));
-
-
         // Update user status
         $this->db->query('UPDATE user SET status = 0 WHERE userID = :userID');
         $this->db->bind(':userID', $_SESSION['user_id']);

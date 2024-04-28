@@ -112,7 +112,7 @@ class Benefaction extends Controller {
                 ];
 
                 $selectedCategoryId = $_POST['benefactionCategory'];
-                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId] ?? ''; // Get corresponding category string
+                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId]; // Get corresponding category string
             }
             // die(print_r($this->imgUpload('photoBenfaction1')));
 
@@ -306,7 +306,7 @@ class Benefaction extends Controller {
                 ];
 
                 $selectedCategoryId = $_POST['benefactionCategory'];
-                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId] ?? ''; // Get corresponding category string
+                $data['benefactionCategory'] = $categoryMap[$selectedCategoryId]; // Get corresponding category string
             }
             // die(print_r($this->imgUpload('photoBenfaction1')));
 
