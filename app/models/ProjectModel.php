@@ -111,6 +111,7 @@ class ProjectModel{
 
     public function getallProjectDetilsstateone($projectID){
         $this->db->query("SELECT fund.*, project.*, milestone.*, user.username,
+                    fund.amount AS fund_amount,
                     project.description AS project_description,
                     milestone.description AS milestone_description
                     FROM fund 
@@ -118,7 +119,7 @@ class ProjectModel{
                     JOIN milestone ON project.projectID = milestone.projectID 
                     JOIN donor ON fund.donorID = donor.donorID 
                     JOIN user ON donor.donorID = user.userID
-                    WHERE project.status = 1 AND project.orgID = :doneeID");
+                    WHERE project.status = 1 AND project.orgID = :doneeID AND project.projectId = $projectID");
 
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
@@ -130,6 +131,30 @@ class ProjectModel{
         $this->db->query("SELECT * FROM project WHERE projectID = :projectID");
         $this->db->bind(':projectID', $projectID);
         $result = $this->db->single(); // Assuming you expect only one result
+    
+        return $result;
+    }
+
+    public function projectsentacknowlagement($data){
+        $this->db->query('UPDATE fund SET acknowledgement = 1 WHERE fundID = :fundID');
+        $this->db->bind(':fundID', $data['fundID']);
+
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function donorsdonatedtoprojects($projectID){
+        $this->db->query("SELECT u.username, f.amount, f.verificationStatus,f.fundID, f.acknowledgement  
+                        FROM fund f
+                        JOIN donor d ON f.donorID = d.donorID
+                        JOIN user u ON d.donorID = u.userID
+                        JOIN project p ON f.projectID = p.projectID
+                        WHERE f.projectID = :projectID AND p.status = 1");
+        $this->db->bind(':projectID', $projectID);
+        $result = $this->db->resultSet(); // Since multiple donors can donate to a project
     
         return $result;
     }

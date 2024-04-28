@@ -403,13 +403,15 @@ class Project extends Controller {
                     // Get pending necessity details
                     $projectdetails = $this->projectModel->getprojectdetailsbyID($projectID);
                     $ongingProjectDetails = $this->projectModel->getallProjectDetilsstateone($projectID);
+                    $rightsidebar = $this->projectModel->donorsdonatedtoprojects($projectID);
                     
-
                     // Prepare data to pass to the view
                     $data = [
                         'projectID' => $projectID,
                         'projectdetails' => $projectdetails,
-                        'ongingProjectDetails' => $ongingProjectDetails, 
+                        'ongingProjectDetails' => $ongingProjectDetails,
+                        'rightsidebar' => $rightsidebar 
+                        
                     ];
 
                     $other_data = [
@@ -434,7 +436,8 @@ class Project extends Controller {
                 $data = [
                     'projectID' => '',
                     'ongingProjectDetails' => [],
-                    'projectdetails' => []
+                    'projectdetails' => [],
+                    'rightsidebar' => []
                 ];
 
                 $other_data = [
@@ -448,6 +451,71 @@ class Project extends Controller {
                     die('User Type Not Found');
                 }
             }
+        }
+    }
+
+    public function sentAcknowlagement(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+                var_dump($_POST);
+                if(isset($_POST['fundID']) && !empty($_POST['fundID'])) {
+                    // Get 'necessityID' from POST data
+                    $fundID = trim($_POST['fundID']);
+
+                    $data = [
+                        'fundID' => $fundID,
+                        'err' => null
+                    ];
+
+                    if($data['err'] === null){
+                        if($this->projectModel->projectsentacknowlagement($data)){
+                            redirect('project/postedprojects');
+                        }else{
+                            error_log('Error: Failed to insert data into the database.');
+                            die('something went wrong');
+                        }
+                    }else{
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
+                        if ($_SESSION['user_type'] == 'organization') {
+                            $this->view('organization/project/viewdonatedprojectdetails', $data, $other_data);
+                        }else {
+                            die('User Type Not Found');
+                        }
+                        
+                    }
+                }else{
+                    die('projects is not found');
+                }
+
+            }else{
+
+                $data = [
+                    'fundID' => '',
+                    'err' => ''
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/viewdonatedprojectdetails', $data, $other_data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+
         }
     }
 
