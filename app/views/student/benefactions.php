@@ -85,7 +85,7 @@
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
                                         } elseif ($Acceptedstatus === 2 && $completedStatus === 1) {
-                                            echo '<div class="status_accepted"><p>Donated</p></div>';
+                                            echo '<div class="status_rejected"><p>Donated</p></div>';
 
                                         } elseif ($Acceptedstatus === 2 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Acknowleged</p></div>';
