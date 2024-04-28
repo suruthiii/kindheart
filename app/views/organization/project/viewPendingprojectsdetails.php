@@ -28,7 +28,7 @@
                 <!-- <p style="margin-top: 30%;">Necessity ID: <?php echo $data['pendingNecessityDetails']->necessityID; ?></p> -->
                 <!-- value="<?php echo $data['ongingProjectDetails']->projectID ; ?>" -->
 
-                <div class="posted-project-accordian-view">
+                <div class="posted-project-detail-view">
                     <!-- display project name -->
                     <div class="project-name-and-description-to-view-project-name">
                         <h2><?php echo $data['ongingProjectDetails']->title ; ?></h2>
@@ -37,6 +37,40 @@
                     <div class="project-name-and-description-to-view-project-des">
                         <p><?php echo $data['ongingProjectDetails']->project_description ; ?></p>
                     </div>
+
+                    <div class="project-overall-budget">
+                        <p>FULL BUDGET : Rs.<?php echo number_format($data['ongingProjectDetails']->budget, 2) ; ?></p>
+                    </div>
+                    
+                    <?php foreach($data['ongoingmilestonedetails'] as $milestone): ?>
+                    <div class="project-milestone-block">
+                        <div class="project-milestone-block-first-div">
+                            <div class="project-milestone-title">
+                                <h3><?php echo $milestone->milestoneName ; ?></h3>
+                            </div>
+                            <div class="project-mile-stone-description">
+                                <p><?php echo $milestone->milestone_description ; ?></p>
+                            </div>
+                        </div>
+                        <div class="project-milestone-block-second-div">
+                            <div class="project-milestone-budget">
+                                <p>Rs.<?php echo number_format($milestone->amount, 2) ; ?><p>
+                            </div>
+                            <div class="project-milestone-images">
+                                <div class="project-milestone-first-image">
+                                    <img src="<?php echo URLROOT ?>/projectmilestoneuploadedimages/<?php echo $milestone->img1 ; ?>">
+                                </div>
+                                <div class="project-milestone-second-image">
+                                    <img src="<?php echo URLROOT ?>/projectmilestoneuploadedimages/<?php echo $milestone->img2 ; ?>">
+                                </div>
+                            </div>
+                            <div class="project-milestone-acknowladgementbutton">
+
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
 
                     <!-- Display the list of milestone -->
                     <div class="accordian-milestone">

@@ -341,7 +341,7 @@ class Project extends Controller {
                     // Get pending necessity details
                     $ongingProjectDetails = $this->projectModel->getallProjectDetils($projectID);
                     $ongoingmilestonedetails = $this->projectModel->getAllMilestoneDetails($projectID);
-    
+
                     // Prepare data to pass to the view
                     $data = [
                         'projectID' => $projectID,

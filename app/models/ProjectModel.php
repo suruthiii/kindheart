@@ -203,6 +203,7 @@ class ProjectModel{
 
         $result = $this->db->resultSet();
         return $result;
+        var_dump($result);
     }
 
     public function getMilestoneCardDetails($project_ID) {
