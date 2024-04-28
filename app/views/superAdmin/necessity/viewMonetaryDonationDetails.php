@@ -36,12 +36,14 @@
                             <th width="30%">Donated Amount</th>
                             <td width="70%">Rs.&nbsp;<?php echo $data['donation_details']->amount ?>.00</td>
                         </tr>
+                        <?php if($data['donation_details']->paymentSlip != NULL) {?>
                         <tr class="necessity-data">
                             <th width="30%">Payment Slip</th>
                             <td width="70%">
                                 <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['donation_details']->paymentSlip); ?>" class="user-img" alt="">
                             </td>
                         </tr>
+                        <?php }?>
                         <?php if($data['donation_details']->verificationStatus == 2) {?>
                             <tr class="necessity-data">
                                 <th width="30%">Verification Status</th>
@@ -93,6 +95,22 @@
                     
                 </table>
             </div>
+
+            <?php if($data['donation_details']->verificationStatus == 1) {?>
+                <div class="view-donation-btn-container">
+                    <form action="<?php echo URLROOT ?>/necessity/verifyslip" method="post" class="delete-form">
+                        <?php if($data['necessity_type'] == 'onetime') {?>
+                            <input type="text" name="donation_ID" id="donation_ID" hidden value="<?php echo $_GET['oneTimeDonationID'] ?>" />
+                        <?php }
+                        else if($data['necessity_type'] == 'recurring') {?>
+                            <input type="text" name="necessity_ID" id="necessity_ID" hidden value="<?php echo $_GET['monetaryNecessityID']; ?>" />
+                        <?php }?>
+                        <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
+                            Verify Slip
+                        </button>
+                    </form>
+                </div>
+            <?php }?>
 
         </div>
     </section>

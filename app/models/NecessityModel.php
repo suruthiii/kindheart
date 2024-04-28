@@ -806,4 +806,29 @@ class NecessityModel{
 
         return $doneeID;
     }
+
+    public function verifyOneTimeSlip($donation_ID) {
+        $this->db->query("UPDATE oneTimeDonation SET verificationStatus = 2, acknowledgement = 'Pending' WHERE oneTimeDonationID = :oneTimeDonationID;");
+        $this->db->bind(':oneTimeDonationID', $donation_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public function verifyRecurringSlip($necessity_ID) {
+        $this->db->query("UPDATE recurringDonation SET verificationStatus = 2 , acknowledgement = 'Pending' WHERE monetaryNecessityID = :monetaryNecessityID;");
+        $this->db->bind(':monetaryNecessityID', $necessity_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 }
