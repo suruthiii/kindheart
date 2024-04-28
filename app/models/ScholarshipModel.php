@@ -239,28 +239,31 @@ class ScholarshipModel{
 
  // ----------------------Student/organization Controllers(scolaship data retriev)------------------
 
- public function getScholarships() {
-    // Prepare statement
-    $this->db->query('SELECT s.scholarshipID, s.title, s.amount, s.duration, s.donorID, s.postedDate, s.availabilityStatus, sr.studentID FROM scholarship s JOIN user u  ON u.userID = s.donorID LEFT JOIN scholarship_request sr ON sr.scholarshipID = s.scholarshipID WHERE availabilityStatus = 0');
+
+
+public function getAppliedScholarships() { 
+        
+    $this->db->query('SELECT  s.scholarshipID, s.title, s.amount, s.startDate, s.duration, s.description, s.donorID , s.postedDate, s.availabilityStatus FROM scholarship s JOIN scholarship_request sr ON sr.scholarshipID = s.scholarshipID AND studentID = :studentID LEFT JOIN student_scholarship ss ON sr.scholarshipID = ss.scholarshipID ');
+    $this->db->bind(':studentID', $_SESSION['user_id']);
+    $result = $this->db->resultSet();
+    // die(print_r($result));
+    // Return an array of story data
+    return array_reverse($result); 
+  
+    }
+
+
+    public function getScholarships() { 
     
-    // Execute
-    $this->db->execute();
+        $this->db->query('SELECT s.scholarshipID, s.title, s.amount, s.startDate, s.duration, s.description, s.donorID , s.postedDate, s.deadline, s.availabilityStatus, u.username, sr.studentID FROM scholarship s JOIN user u ON u.userID = s.donorID LEFT JOIN scholarship_request sr ON sr.scholarshipID = s.scholarshipID WHERE availabilityStatus = 0;');
+        $result = $this->db->resultSet();
+        // Return an array of applied benefaction data
+        return array_reverse($result); 
+      
+    }
 
-    // Fetch result set
-    return $this->db->resultSet();
-}
 
-public function getApplyScholarship($scholarshipID) {
-    // Prepare statement
-    $this->db->query('SELECT s.scholarshipID, s.title, s.amount, s.startDate, s.description, s.duration, s.donorID, s.postedDate, s.availabilityStatus, s.deadline, u.username FROM scholarship s JOIN user u  ON u.userID = s.donorID WHERE scholarshipID = :scholarshipID');
-    $this->db->bind(':scholarshipID', $scholarshipID);
-    
-    // Execute
-    $row = $this->db->single();
 
-    // Fetch result set
-    return $row;
-}
 
 
 public function addAppliedScholarship($data){
@@ -282,6 +285,40 @@ public function addAppliedScholarship($data){
         return false;
     }
 }
+
+
+
+public function getScholarshipNotApplied($scholarshipID) {
+    // Prepare statement
+    $this->db->query('SELECT * FROM scholarship s JOIN user u WHERE scholarshipID = :scholarshipID');
+    $this->db->bind(':scholarshipID', $scholarshipID);
+
+    
+    // Execute
+    $row = $this->db->single();
+
+    // Fetch result set
+    return $row;
+}
+
+    public function getAppliedScholarship($scholarshipID) {
+        // Prepare statement
+        $this->db->query('SELECT * 
+        FROM scholarship s
+        JOIN scholarship_request sr ON sr.scholarshipID = s.scholarshipID 
+        LEFT JOIN student_scholarship ss ON sr.scholarshipID= ss.scholarshipID 
+        JOIN user u ON u.userID = :userID
+        WHERE u.userID = :userID AND s.scholarshipID = :scholarshipID;
+        ');
+        $this->db->bind(':scholarshipID', $scholarshipID);
+        $this->db->bind(':userID', $_SESSION['user_id']);
+        
+        // Execute
+        $row = $this->db->single();
+
+        // Fetch result set
+        return $row;
+    }
 
 
 }

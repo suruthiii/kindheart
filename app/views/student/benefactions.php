@@ -78,19 +78,19 @@
                                         
 
                                         // Echo different divs based on the status
-                                        if ($status === 0 && $Acceptedstatus === 0) {
+                                        if ($Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
+                                        } elseif ($Acceptedstatus === 1 && $completedStatus === 0 ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1) {
-                                            echo '<div class="status_accepted"><p>completed</p></div>';
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 1) {
+                                            echo '<div class="status_rejected"><p>Donated</p></div>';
 
-                                        } elseif ($status === 2 && $Acceptedstatus === 2 && $completedStatus === 2) {
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Acknowleged</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 1 && $completedStatus === 3) {
+                                        } elseif ($Acceptedstatus === 1 && $completedStatus === 3) {
                                             echo '<div class="status_rejected"><p>Complainted</p></div>';
 
                                         } else {
