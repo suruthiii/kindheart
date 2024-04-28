@@ -341,7 +341,7 @@ class Project extends Controller {
                     // Get pending necessity details
                     $ongingProjectDetails = $this->projectModel->getallProjectDetils($projectID);
                     $ongoingmilestonedetails = $this->projectModel->getAllMilestoneDetails($projectID);
-    
+
                     // Prepare data to pass to the view
                     $data = [
                         'projectID' => $projectID,
@@ -465,12 +465,13 @@ class Project extends Controller {
                     // Get 'necessityID' from POST data
                     $projectID = trim($_POST['projectID']);
 
-                    // $existingData = $this->projectModel->getALLthedetailsofNecessityByID($projectID);
+                    $existingData = $this->projectModel->getallProjectDetils($projectID);
                     
 
                     $data = [
                         'projectID' => $projectID,
-                        
+                        'projectTitle' => $existingData->title,
+                        'projectDescription' => $existingData->project_description   
                     ];
 
                     $other_data = [
@@ -487,6 +488,91 @@ class Project extends Controller {
                     
                 }
             }
+        }
+    }
+
+    public function updatepostedprojects(){
+        if($_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST'){
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+
+                if(isset($_POST['projectID']) && !empty($_POST['projectID'])) {
+                    // Get 'necessityID' from POST data
+                    $projectID = trim($_POST['projectID']);
+
+
+                    $data = [
+                        'projectID' => $projectID,
+                        'projectTitle' => isset($_POST['projectTitle']) ? trim($_POST['projectTitle']) : '',
+                        'projectDescription' => isset($_POST['projectDescription']) ? trim($_POST['projectDescription']) : '',
+                        'projectTitle_err' => '',
+                        'projectDescription_err' => '',
+                    ];
+
+                    //check wheather field are empty or not
+
+                    //necessity field
+                    if(empty($data['projectTitle'])){
+                        $data['projectTitle_err']='Please enter the Project Title';
+                    }
+
+                    //necessity description field
+                    if(empty($data['projectDescription'])){
+                        $data['projectDescription_err']='Please enter the Description about posted overall project';
+                    }
+
+                    //check whether there any errors
+                    if(empty($data['projectTitle_err']) && empty($data['projectDescription_err'])){
+                        if($this->projectModel->editprojectdetailstodb($data)){
+                            redirect('project/postedprojects');
+                        }else{
+                            error_log('Error: Failed to insert data into the database.');
+                            die('something went wrong');
+                        }
+                    }else{
+                        $other_data = [
+                            'notification_count' => $this->notificationModel->getNotificationCount(),
+                            'notifications' => $this->notificationModel->viewNotifications()
+                        ];
+
+                        if ($_SESSION['user_type'] == 'organization') {
+                            $this->view('organization/project/editpostedProjectsInterface', $data, $other_data);
+                        }else {
+                            die('User Type Not Found');
+                        }
+                        
+                    }
+                }else{
+                    die('projects is not found');
+                }
+
+            }else{
+
+                $data = [
+                    'projectID' => '',
+                    'projectTitle' => '',
+                    'projectDescription' => '',
+                    'projectTitle_err' => '',
+                    'projectDescription_err' => ''
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/project/editpostedProjectsInterface', $data, $other_data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+
         }
     }
 

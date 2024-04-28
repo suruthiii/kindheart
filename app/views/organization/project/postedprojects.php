@@ -31,7 +31,7 @@
                         <?php foreach($data['pendingtablerow'] as $pendingtablerow): ?>
                             <tr>
                                 <td>
-                                    
+                                    <img style="height: 55px;  width: 55px" src="<?php echo URLROOT ?>/img/project-management.png" alt="">
                                 </td>
                                 <td>
                                     <h4 class="pending-postednecessityTitle"><?php echo $pendingtablerow->title?></h4>
@@ -77,7 +77,7 @@
                         <?php foreach($data['completetablerow'] as $completetablerow): ?>
                             <tr>
                                 <td>
-                                    
+                                    <img style="height: 55px;  width: 55px" src="<?php echo URLROOT ?>/img/project-management.png" alt="">
                                 </td>
                                 <td>
                                     <h4 class="pending-postednecessityTitle"><?php echo $completetablerow->title?></h4>

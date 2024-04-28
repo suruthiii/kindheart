@@ -30,6 +30,8 @@ class ProjectModel{
         return $result;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function getaddedongoingprojects(){
         $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 0; ');
 
@@ -45,6 +47,8 @@ class ProjectModel{
 
         return $result;
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function getProjectDetails($project_ID) {
         $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
@@ -158,6 +162,20 @@ class ProjectModel{
         }
     }
 
+    public function editprojectdetailstodb($data){
+        $this->db->query("UPDATE project SET  title = :title ,description = :description WHERE projectID = :projectID");
+        $this->db->bind(':title', $data['projectTitle']);
+        $this->db->bind(':description', $data['projectDescription']);
+        $this->db->bind(':projectID', $data['projectID']);
+
+        // Execute
+        if($this->db->execute()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     public function getallProjectDetils($projectID){
         $this->db->query("SELECT project.projectID, project.title, project.budget, project.budget, project.receivedAmount, project.status AS project_status, project.description AS project_description
                         FROM project WHERE project.status = 0 AND project.projectID = :projectID");
@@ -185,6 +203,7 @@ class ProjectModel{
 
         $result = $this->db->resultSet();
         return $result;
+        var_dump($result);
     }
 
     public function getMilestoneCardDetails($project_ID) {
