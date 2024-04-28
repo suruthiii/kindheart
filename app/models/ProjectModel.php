@@ -30,6 +30,8 @@ class ProjectModel{
         return $result;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public function getaddedongoingprojects(){
         $this->db->query('SELECT projectID, title, budget, description FROM project WHERE status = 0; ');
 
@@ -45,6 +47,8 @@ class ProjectModel{
 
         return $result;
     }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function getProjectDetails($project_ID) {
         $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
