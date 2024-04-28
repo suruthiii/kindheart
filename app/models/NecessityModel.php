@@ -198,6 +198,16 @@ class NecessityModel{
                 }
             }else{
 
+                $this->db->query("UPDATE money m
+                JOIN recurringdonation rd ON m.monetaryNecessityID = rd.monetaryNecessityID
+                SET m.receivedAmount = m.receivedAmount + m.monthlyAmount,
+                    rd.verificationStatus = 3
+                WHERE rd.verificationStatus = 0
+                AND rd.monetaryNecessityID = :necessityID");
+
+                    $this->db->bind(':necessityID', $necessity->necessityID);
+                    $this->db->execute();
+
                 $this->db->query("UPDATE necessity n
                                     JOIN recurringdonation rd ON n.necessityID = rd.monetaryNecessityID
                                     JOIN money m ON rd.monetaryNecessityID = m.monetaryNecessityID
@@ -208,15 +218,7 @@ class NecessityModel{
                 $this->db->bind(':necessityID', $necessity->necessityID);
                 $this->db->execute();
                 
-                $this->db->query("UPDATE money m
-                JOIN recurringdonation rd ON m.monetaryNecessityID = rd.monetaryNecessityID
-                SET m.receivedAmount = m.receivedAmount + m.monthlyAmount,
-                    rd.verificationStatus = 3
-                WHERE rd.verificationStatus = 0
-                AND rd.monetaryNecessityID = :necessityID");
-
-                    $this->db->bind(':necessityID', $necessity->necessityID);
-                    $this->db->execute();
+                
 
             }
         }

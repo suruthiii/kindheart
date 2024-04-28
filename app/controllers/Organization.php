@@ -10,6 +10,7 @@ class Organization extends Controller {
         $this->organizationModel = $this->model('organizationModel');
         $this->notificationModel = $this->model('NotificationModel');
         $this->successStoryModel = $this->model('SuccessStoryModel');
+        $this->userModel= $this->model('userModel');
     }
 
     public function index(){
@@ -104,6 +105,39 @@ class Organization extends Controller {
         ];
 
         $this->view('organization/successstory', $data, $other_data);
+    }
+
+    public function donors(){
+
+        $data = [
+            'title' => 'Home page',
+            'donors' => $this->userModel->viewDonors()
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('organization/donorList', $data, $other_data);
+
+    }
+
+    public function viewDonor($donorID = null){
+        $data = [
+            'title' => 'Home page',
+            'donors' => $this->userModel->viewDonors(),
+            'donorDetailsInd' => $this->userModel->getDonorInd($donorID),
+            'donorDetailsOrg' => $this->userModel->getDonorCom($donorID)
+        ];
+     
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('organization/donorView', $data, $other_data);
+
     }
 
     public function complaint(){
