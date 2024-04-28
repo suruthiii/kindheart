@@ -67,12 +67,12 @@
                                         </td>
                                         <td width="30%" class="amount"><?php echo $item->quantity; ?>&nbsp;items</td>
                                         <td width="30%" class="option">
-                                            <form action="<?php echo URLROOT ?>/benefaction/managebenefaction" method="get" class="assign-manage-form">
+                                            <!-- <form action="<?php echo URLROOT ?>/benefaction/managebenefaction" method="get" class="assign-manage-form">
                                                 <input type="text" id="name" name="benefaction_ID" hidden value="<?php echo $item->benefactionID; ?>" />
                                                 <button type="submit" class="assign-manage" onclick="">
                                                     Manage
                                                 </button>
-                                            </form>
+                                            </form> -->
                                         </td>
                                     </tr>
                                 </table>
