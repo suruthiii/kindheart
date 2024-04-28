@@ -39,7 +39,7 @@
                                     <h2><?php echo $item->title; ?></h2>
                                 </div>
                                 <div class="btn">
-                                    <form action="<?php echo URLROOT ?>/student/ApplyForScholarship" method="GET" >
+                                    <form action="<?php echo URLROOT ?>/student/Applyscholarship" method="GET" >
                                         <input type="text" name="scholarshipID" id="scholarshipID" hidden value="<?php echo $item->scholarshipID?>" />
                                         <!-- <button type="submit"> Apply</button> -->
                                         <?php if ($item->studentID == $_SESSION['user_id']){?>
