@@ -750,8 +750,9 @@ class Benefaction extends Controller {
                     $viewData  = [
                         'title' => 'View Benefaction Request',
                         'benefactionRequest_details' => $this->benefactionModel->getBenefactionRequestDetails($data['benefactionID'], $data['doneeID']),
-                        'user_profile' => $this->benefactionModel->getUserProfile($data['benefactionID'], $data['doneeID'])
-                    ];    
+                        'user_profile' => $this->benefactionModel->getUserProfile($data['doneeID'], $data['benefactionID'])
+                    ];  
+                
                 
                     $other_data = [
                         'notification_count' => $this->notificationModel->getNotificationCount(),
