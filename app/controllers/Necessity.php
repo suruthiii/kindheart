@@ -1532,6 +1532,8 @@ class Necessity extends Controller {
                     if($this->necessityModel->addComment($data)) {
                         $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
 
+                        $this->necessityModel->restrictNecessity($data['necessity_ID']);
+
                         $this->notificationModel->createNotification('Manage Necessity', 'manageMonetaryNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
 
                         $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);

@@ -915,4 +915,17 @@ class NecessityModel{
             return false;
         }
     }
+
+    public function restrictNecessity($necessity_ID) {
+        $this->db->query('UPDATE necessity SET fulfillmentStatus = 5 WHERE necessityID = :necessityID');
+        $this->db->bind(':necessityID', $necessity_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 }
