@@ -226,9 +226,9 @@ class NecessityModel{
         $result = $this->db->single();
     
         if ($result->requestedAmount > $result->receivedAmount && $result->verificationStatus == 0) {
-            // Update verification status to 1
+            // Update verification status to 3 as for commenting (read the necessity)
             $this->db->query("UPDATE onetimedonation 
-                              SET verificationStatus = 1 
+                              SET verificationStatus = 3 
                               WHERE monetaryNecessityID = :necessityID 
                               AND verificationStatus = 0");
     
@@ -236,13 +236,13 @@ class NecessityModel{
             $this->db->execute();
     
             // Update received amount in the money table
-            $receivedAmount = $result->receivedAmount + $result->totalAmountReceived;
+            $result->receivedAmount += $result->totalAmountReceived;
             $this->db->query("UPDATE money 
                               SET receivedAmount = :receivedAmount 
                               WHERE monetaryNecessityID = :necessityID");
     
             $this->db->bind(':necessityID', $necessityID);
-            $this->db->bind(':receivedAmount', $receivedAmount);
+            $this->db->bind(':receivedAmount', $result->receivedAmount);
             $this->db->execute();
         }
     }
@@ -306,7 +306,15 @@ class NecessityModel{
     }
 
     public function getdonateddonordetails($necessity){
-        
+        $this->db->query("SELECT user.username, onetimedonation.* FROM user
+            INNER JOIN donor ON user.UserID = donor.donorID
+            INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+            WHERE onetimedonation.verificationStatus=3 AND onetimedonation.monetaryNecessityID = $necessity");
+
+        $result = $this->db->resultSet();
+
+        return $result;
+
     }
 ///////////////////////////////////////////////////////////////////
 

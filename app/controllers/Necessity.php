@@ -528,11 +528,14 @@ class Necessity extends Controller {
     
                     // Get pending necessity details
                     $pendingNecessityDetails = $this->necessityModel->getdonationstartNecessity($necessityID);
+
+                    $donorsdonated = $this->necessityModel->getdonateddonordetails($necessityID);
     
                     // Prepare data to pass to the view
                     $data = [
                         'necessityID' => $necessityID,
-                        'pendingNecessityDetails' => $pendingNecessityDetails
+                        'pendingNecessityDetails' => $pendingNecessityDetails,
+                        'donorsdonated' => $donorsdonated
                     ];
 
                     $other_data = [

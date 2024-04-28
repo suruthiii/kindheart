@@ -109,20 +109,21 @@
                         <h3>Donors Who Donated</h3>
                     </div>
                     <div class="right-side-bar-for-scrolling">
+                    <?php foreach($data['donorsdonated'] as $donorsdonated): ?>
                         <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'onetime') {?>
                                 <div class="donated-donor-details-box">
                                     <div class="donated-donor-name" >
-                                        <h4>DONOR NAME</h4>
+                                        <h4><?php echo $donorsdonated->username; ?></h4>
                                     </div>
                                     <div class="donated-amount">
-                                        <p>Rs.amount</p>
+                                        <p>Rs.<?php echo number_format($donorsdonated->amount, 2); ?></p>
                                     </div>
                                     <div class="paid-or-not-or-verified">
                                         <p>Not Verified and not paid</p>
                                     </div>
                                 </div>
                         <?php } ?>
-                        
+                        <?php endforeach; ?>
                     </div>
 
                 </div>
