@@ -1388,12 +1388,28 @@ class Necessity extends Controller {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             if(isset($_POST['donation_ID'])) {
                 if($this->necessityModel->verifyOneTimeSlip($_POST['donation_ID'])) {
+                    $doneeID = $this->necessityModel->getDoneeIDByOneTimeDonation($_POST['donation_ID']);
+
+                    $donorID = $this->necessityModel->getDonorIDByOneTimeDonation($_POST['donation_ID']);
+
+                    $this->notificationModel->createNotification('One Time Donation Received', 'receivedOneTimeDonation', $_SESSION['user_id'], $doneeID, 'You have received a one time donation', $_POST['donation_ID']);
+
+                    $this->notificationModel->createNotification('Verified Slip For One Time Donation', 'verifyOneTimeDonation', $_SESSION['user_id'], $donorID, 'Your payment slip for one time donation is verified', $_POST['donation_ID']);
+
                     redirect('necessity/viewmonetarydonationdetails?oneTimeDonationID='.$_POST['donation_ID']);
                 }
             }
 
             else if(isset($_POST['necessity_ID'])) {
                 if($this->necessityModel->verifyRecurringSlip($_POST['necessity_ID'])) {
+                    $doneeID = $this->necessityModel->getDoneeIDByRecurringMonetaryNecessity($_POST['necessity_ID']);
+
+                    $donorID = $this->necessityModel->getDonorIDByRecurringMonetaryNecessity($_POST['necessity_ID']);
+
+                    $this->notificationModel->createNotification('Recurring Donation Received', 'receivedRecurringDonation', $_SESSION['user_id'], $doneeID, 'You have received a recurring donation', $_POST['necessity_ID']);
+
+                    $this->notificationModel->createNotification('Verified Slip For Recurring Donation', 'verifyRecurringDonation', $_SESSION['user_id'], $donorID, 'Your payment slip for recurring donation is verified', $_POST['necessity_ID']);
+    
                     redirect('necessity/viewmonetarydonationdetails?monetaryNecessityID='.$_POST['necessity_ID']);
                 }
             }
@@ -1446,7 +1462,24 @@ class Necessity extends Controller {
             'notifications' => $this->notificationModel->viewNotifications()
         ];
 
-        $this->view($_SESSION['user_type'].'/necessity/viewgooddonation', $data, $other_data);
+        $this->view($_SESSION['user_type'].'/necessity/viewgooddonationdetails', $data, $other_data);
+    }
+
+    public function verifyGoodReceipt() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if($this->necessityModel->verifyGoodReceipt($_POST['donation_ID'])) {
+                $doneeID = $this->necessityModel->getDoneeIDByGoodDonation($_POST['donation_ID']);
+
+                $donorID = $this->necessityModel->getDonorIDByGoodDonation($_POST['donation_ID']);
+
+                $this->notificationModel->createNotification('Good Donation Received', 'receivedGoodDonation', $_SESSION['user_id'], $doneeID, 'You have received a good donation', $_POST['donation_ID']);
+
+                $this->notificationModel->createNotification('Verified Delivery Receipt For Good Donation', 'verifyGoodDonation', $_SESSION['user_id'], $donorID, 'Your delivery receipt for good donation is verified', $_POST['donation_ID']);
+
+
+                redirect('necessity/viewgooddonationdetails?goodDonationID='.$_POST['donation_ID']);
+            }
+        }
     }
 
     public function manageMonetary() {
@@ -1533,6 +1566,8 @@ class Necessity extends Controller {
                 else {
                     if($this->necessityModel->addComment($data)) {
                         $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
+
+                        $this->necessityModel->restrictNecessity($data['necessity_ID']);
 
                         $this->notificationModel->createNotification('Manage Necessity', 'manageMonetaryNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
 
@@ -1671,6 +1706,8 @@ class Necessity extends Controller {
                 else {
                     if($this->necessityModel->addComment($data)) {
                         $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
+
+                        $this->necessityModel->restrictNecessity($data['necessity_ID']);
 
                         $this->notificationModel->createNotification('Manage Necessity', 'manageGoodNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
 

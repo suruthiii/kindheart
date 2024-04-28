@@ -50,15 +50,6 @@
                 </form>
             </div>
 
-            <div class="view-donation-btn-container">
-                <form action="<?php echo URLROOT ?>/necessity/deletenecessities" method="post" class="delete-form">
-                    <input type="text" name="necessity_ID" hidden value=<?php echo $data['necessity_ID'] ?>>
-                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Delete Necessity
-                    </button>
-                </form>
-            </div>
-
             <div class="right-content" style="overflow-y:scroll;">
                 <div class="right-content-title-container">
                     <h4 style="text-align:center">Comments</h4>
