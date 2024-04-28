@@ -63,7 +63,7 @@ class Necessity extends Controller {
             $data = [
                 'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
                 'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
-                'getstillnotcompletedrow' => $this->necessityModel->getstillnotCompleteNecessities(),
+                'stillnotCompleted' => $this->necessityModel->stilnotcompleteNecessities(),
                 'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount()
             ];
 
@@ -514,6 +514,73 @@ class Necessity extends Controller {
         }
     }
 
+    // to view start donations
+    public function ViewdonationstartNecessity(){
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
+            redirect('pages/404');
+        } else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+                
+                if(isset($_POST['necessityID']) && !empty($_POST['necessityID'])) {
+                    // Get 'necessityID' from POST data
+                    $necessityID = trim($_POST['necessityID']);
+    
+                    // Get pending necessity details
+                    $pendingNecessityDetails = $this->necessityModel->getdonationstartNecessity($necessityID);
+
+                    $donorsdonated = $this->necessityModel->getdonateddonordetails($necessityID);
+    
+                    // Prepare data to pass to the view
+                    $data = [
+                        'necessityID' => $necessityID,
+                        'pendingNecessityDetails' => $pendingNecessityDetails,
+                        'donorsdonated' => $donorsdonated
+                    ];
+
+                    $other_data = [
+                        'notification_count' => $this->notificationModel->getNotificationCount(),
+                        'notifications' => $this->notificationModel->viewNotifications()
+                    ];
+    
+                    // Pass data to the view
+                    if ($_SESSION['user_type'] == 'student') {
+
+                    }else if ($_SESSION['user_type'] == 'organization') {
+                        $this->view('organization/necessity/viewOrganizationDonationstartMonetarynecessity', $data, $other_data);
+                    }else {
+                        die('User Type Not Found');
+                    }
+    
+                } else {
+                    // display an error message here
+                    die('User Necessity is Not Found');
+                }
+    
+            } else {
+                // If it's not a POST request, then empty data pass to the view
+                $data = [
+                    'necessityID' => '',
+                    'pendingNecessityDetails' => [] // this is an array
+                ];
+                
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                // Pass data to the view
+                if ($_SESSION['user_type'] == 'student') {
+
+                }else if ($_SESSION['user_type'] == 'organization') {
+                    $this->view('organization/necessity/viewOrganizationDonationstartMonetarynecessity', $data, $other_data);
+                }else {
+                    die('User Type Not Found');
+                }
+            }
+        }
+    }
+
     //view pending Physical Goods necessity's further information
     public function viewPendingPhysicalGoodsnecessity(){
         if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization' && $_SESSION['user_type'] != 'donor') {
@@ -853,7 +920,6 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'necessityMonetary' => isset($_POST['necessityMonetary']) ? trim($_POST['necessityMonetary']) : '',
                         'monetarynecessitydes' => isset($_POST['monetarynecessitydes']) ? trim($_POST['monetarynecessitydes']) : '',
-                        'donationduration' => isset($_POST['donationduration']) ? trim($_POST['donationduration']) : '',
                         'necessityMonetary_err' => '',
                         'monetarynecessitydes_err' => '',
                     ];
@@ -870,12 +936,8 @@ class Necessity extends Controller {
                         $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
                     }
 
-                    if(empty($data['donationduration'])){
-                        $data['donationduration_err']='Please enter the time duration';
-                    }
-
                     //check whether there any errors
-                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['donationduration_err'])){
+                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err'])){
                         if($this->necessityModel->editrecurringmonetarynecessitytodb($data)){
                             redirect('necessity/monetary');
                         }else{
@@ -907,7 +969,6 @@ class Necessity extends Controller {
                     'necessityID' => '',
                     'necessityMonetary' => '',
                     'monetarynecessitydes' => '',
-                    'donationduration' => '',
                     'necessityMonetary_err' => '',
                     'monetarynecessitydes_err' => '',
                 ];
@@ -992,7 +1053,6 @@ class Necessity extends Controller {
                         'necessityID' => $necessityID,
                         'necessityMonetary' => isset($_POST['necessityMonetary']) ? trim($_POST['necessityMonetary']) : '',
                         'monetarynecessitydes' => isset($_POST['monetarynecessitydes']) ? trim($_POST['monetarynecessitydes']) : '',
-                        'requestedamount' => isset($_POST['requestedamount']) ? trim($_POST['requestedamount']) : '',
                         'necessityMonetary_err' => '',
                         'monetarynecessitydes_err' => '',
                         'requestedamount_err' => ''
@@ -1010,12 +1070,9 @@ class Necessity extends Controller {
                         $data['monetarynecessitydes_err']='Please enter the Description about Requested Necessity';
                     }
 
-                    if(empty($data['requestedamount'])){
-                        $data['requestedamount_err']='Please enter the Amount of money you need';
-                    }
 
                     //check whether there any errors
-                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err']) && empty($data['requestedamount_err'])){
+                    if(empty($data['necessityMonetary_err']) && empty($data['monetarynecessitydes_err'])){
                         if($this->necessityModel->editonetimemonetarynecessitytodb($data)){
                             redirect('necessity/monetary');
                         }else{
@@ -1229,7 +1286,7 @@ class Necessity extends Controller {
     public function viewMonetary() {
         $necessity_type = $this->necessityModel->getMonetaryNecessityType($_GET['necessity_ID']);
         $donee_type = $this->necessityModel->getDoneeType($_GET['necessity_ID']);
-                
+       
         if ($necessity_type == 'onetime') {
             if($donee_type == 'student') {
                 $data = [
@@ -1237,7 +1294,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getStudentOnetimeMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1247,8 +1304,9 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getOrganizationOnetimeMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getOneTimeDonationCardDetails($_GET['necessity_ID'])
                 ];
+
             }
 
             else {
@@ -1263,7 +1321,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getStudentRecurringMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1273,7 +1331,7 @@ class Necessity extends Controller {
                     'necessity_ID' => $_GET['necessity_ID'],
                     'necessity_type' => $necessity_type,
                     'necessity_details' => $this->necessityModel->getOrganizationRecurringMonetaryDetails($_GET['necessity_ID']),
-                    'donation_details' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
+                    'donations' => $this->necessityModel->getRecurringDonationCardDetails($_GET['necessity_ID'])
                 ];
             }
 
@@ -1294,15 +1352,49 @@ class Necessity extends Controller {
         $this->view($_SESSION['user_type'].'/necessity/viewmonetary', $data, $other_data);
     }
 
-    public function viewDonationDetails() {
+    public function viewMonetaryDonationDetails() {
         if(isset($_GET['oneTimeDonationID'])){
+            $necessity_ID = $this->necessityModel->getMonetaryNecessityID($_GET['oneTimeDonationID']);
 
+            $data = [
+                'necessity_ID' => $necessity_ID,
+                'necessity_type' => $this->necessityModel->getMonetaryNecessityType($necessity_ID),
+                'donation_details' => $this->necessityModel->getOneTimeDonationDetails($_GET['oneTimeDonationID'])
+            ];
         }
         else if(isset($_GET['monetaryNecessityID'])){
-            
+            $data = [
+                'necessity_ID' => $_GET['monetaryNecessityID'],
+                'necessity_type' => $this->necessityModel->getMonetaryNecessityType($_GET['monetaryNecessityID']),
+                'donation_details' => $this->necessityModel->getRecurringDonationDetails($_GET['monetaryNecessityID'])
+            ];
         }
+
         else{
             die('invalid');
+        }
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/necessity/viewMonetaryDonationDetails', $data, $other_data);
+    }
+
+    public function verifySlip() {
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            if(isset($_POST['donation_ID'])) {
+                if($this->necessityModel->verifyOneTimeSlip($_POST['donation_ID'])) {
+                    redirect('necessity/viewmonetarydonationdetails?oneTimeDonationID='.$_POST['donation_ID']);
+                }
+            }
+
+            else if(isset($_POST['necessity_ID'])) {
+                if($this->necessityModel->verifyRecurringSlip($_POST['necessity_ID'])) {
+                    redirect('necessity/viewmonetarydonationdetails?monetaryNecessityID='.$_POST['necessity_ID']);
+                }
+            }
         }
     }
 
@@ -1313,7 +1405,8 @@ class Necessity extends Controller {
             $data = [
                 'title' => 'Home Page',
                 'necessity_ID' => $_GET['necessity_ID'],
-                'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID'])
+                'necessity_details' => $this->necessityModel->getStudentGoodDetails($_GET['necessity_ID']),
+                'donations' => $this->necessityModel->getGoodDonationCardDetails($_GET['necessity_ID'])
             ];
         }
 
@@ -1321,7 +1414,8 @@ class Necessity extends Controller {
             $data = [
                 'title' => 'Home Page',
                 'necessity_ID' => $_GET['necessity_ID'],
-                'necessity_details' => $this->necessityModel->getOrganizationGoodDetails($_GET['necessity_ID'])
+                'necessity_details' => $this->necessityModel->getOrganizationGoodDetails($_GET['necessity_ID']),
+                'donations' => $this->necessityModel->getGoodDonationCardDetails($_GET['necessity_ID'])
             ];
         }
 
@@ -1335,6 +1429,22 @@ class Necessity extends Controller {
         ];
     
         $this->view($_SESSION['user_type'].'/necessity/viewgood', $data, $other_data);
+    }
+
+    public function viewGoodDonationDetails() {
+        $necessity_ID = $this->necessityModel->getGoodNecessityID($_GET['goodDonationID']);
+
+        $data = [
+            'necessity_ID' => $necessity_ID,
+            'donation_details' => $this->necessityModel->getGoodDonationDetails($_GET['goodDonationID'])
+        ];
+       
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/necessity/viewgooddonation', $data, $other_data);
     }
 
     public function manageMonetary() {
@@ -1420,6 +1530,10 @@ class Necessity extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->necessityModel->addComment($data)) {
+                        $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
+
+                        $this->notificationModel->createNotification('Manage Necessity', 'manageMonetaryNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
+
                         $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);
 
                         if($necessityType == 'Monetary Funding') {
@@ -1554,6 +1668,10 @@ class Necessity extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->necessityModel->addComment($data)) {
+                        $doneeID = $this->necessityModel->getDoneeID($data['necessity_ID']);
+
+                        $this->notificationModel->createNotification('Manage Necessity', 'manageGoodNecessity', $_SESSION['user_id'], $doneeID, $data['comment'], $data['necessity_ID']);
+
                         $necessityType = $this->necessityModel->getNecessityType($data['necessity_ID']);
 
                         if($necessityType == 'Physical Goods') {

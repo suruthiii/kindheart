@@ -47,7 +47,7 @@
                             </div>
                             <div class="necessity-fourth-div">
                                 <label for="donationduration">Durations (Monthly)</label>
-                                <input type="number" id="donationduration" name="donationduration" value="<?php echo isset($data['donationduration']) ? $data['donationduration'] : ''; ?>" min="1">
+                                <input type="number" id="donationduration" name="donationduration" style="background: #cfcece;" value="<?php echo isset($data['donationduration']) ? $data['donationduration'] : ''; ?>" min="1">
                                 <!-- Recurring End date error display -->
                                 <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationduration_err']) ? $data['donationduration_err']: ''; ?></span>
                             </div>
@@ -120,10 +120,12 @@
                         var recurringStartDateInput = document.getElementById('recurringstartdate');
                         var monthlyrequestedamount = document.getElementById('monthlyrequestedamount');
                         var requestedamount = document.getElementById('requestedamount');
+                        var donationduration = document.getElementById('donationduration');
 
                         recurringStartDateInput.disabled = true;
                         monthlyrequestedamount.disabled = true;
                         requestedamount.disabled = true;
+                        donationduration.disabled = true;
                     }
 
                     // Call toggleRecurringFields initially to set initial state

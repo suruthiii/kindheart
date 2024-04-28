@@ -24,7 +24,7 @@ class ComplaintModel{
 
     // Complaints Assigned to Admin himself
     public function getAssignedComplaints() {
-        $this->db->query('SELECT c.complaintID, u.username FROM complaint c JOIN user u ON c.complainerID = u.userID WHERE c.adminID = :adminID;');
+        $this->db->query('SELECT c.complaintID, u.username FROM complaint c JOIN user u ON c.complainerID = u.userID WHERE c.adminID = :adminID AND handlingStatus = 0;');
         $this->db->bind(':adminID', $_SESSION['user_id']);
         
         $result = $this->db->resultSet();
@@ -175,6 +175,19 @@ class ComplaintModel{
         }
 
         return $result;
+    }
+
+    public function handleComplain($complaint_ID) {
+        $this->db->query('UPDATE complaint SET handlingStatus = 1 WHERE complaintID = :complaintID');
+        $this->db->bind(':complaintID', $complaint_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }    
 

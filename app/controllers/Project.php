@@ -186,6 +186,10 @@ class Project extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->projectModel->addComment($data)) {
+                        $orgID = $this->projectModel->getOrganizationID($data['project_ID']);
+
+                        $this->notificationModel->createNotification('Manage Project', 'manageProject', $_SESSION['user_id'], $orgID, $data['comment'], $data['project_ID']);
+
                         redirect('project/manageproject?project_ID='.$data['project_ID']);
                     }
                 }
@@ -214,7 +218,7 @@ class Project extends Controller {
             'title' => 'Home Page',
             'project_ID' => $_GET['project_ID'],
             'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
-            'milestone_details' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
+            'milestones' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
         ];
 
         $other_data = [
@@ -235,6 +239,10 @@ class Project extends Controller {
         else {
             die('User Type Not Found');
         }
+    }
+
+    public function viewMilestoneDetails() {
+        
     }
 
     public function deleteProject() {

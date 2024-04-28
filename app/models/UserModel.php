@@ -161,6 +161,11 @@ class UserModel{
         }
     }
 
+    // // Update user tables
+    // public function updatePassword($data){
+
+    // }
+
     // Register user
     public function registerUser($data){
         // Prepare statement

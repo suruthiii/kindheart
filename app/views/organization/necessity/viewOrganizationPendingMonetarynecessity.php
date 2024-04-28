@@ -110,19 +110,20 @@
                     </div>
                     <div class="right-side-bar-for-scrolling">
                         <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'onetime') {?>
-                            <?php foreach($data['donorswhodonated'] as $donorswhodonated): ?>
-                                <div class="donated-donor-details-box">
-                                    <div class="donated-donor-name">
-                                        <h4><?php echo $donorswhodonated->username ; ?></h4>
+                                <div class="donated-donor-details-box" style="display: flex; justify-content: center; align-items: center;">
+                                    <h3 style="color: #fff;">You still did not Recieve Donation</h3>
+
+                                    
+                                    <!-- <div class="donated-donor-name" >
+                                        
                                     </div>
                                     <div class="donated-amount">
-                                        <p>Rs.<?php echo number_format($donorswhodonated->amount, 2) ; ?></p>
+                                        <p>Rs.amount</p>
                                     </div>
-                                    <div class="sendacknowladgement-button">
-                                        <button type="submit">Accept</button>
-                                    </div>
+                                    <div class="paid-or-not-or-verified">
+                                        <p>Not Verified and not paid</p>
+                                    </div> -->
                                 </div>
-                            <?php endforeach; ?> 
                         <?php } ?>
                         
                     </div>

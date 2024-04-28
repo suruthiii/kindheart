@@ -26,6 +26,153 @@ class Benefaction extends Controller {
         $this->view('donor/index', $data, $other_data);
     }
 
+    /*-------------------------------------Admin and Super Admin ----------------------------------------- */
+
+   public function viewBenefaction() {
+        $donor_type = $this->benefactionModel->getDonorType($_GET['benefaction_ID']);
+                
+        if($donor_type == 'company') {
+            $data = [
+                'title' => 'Home Page',
+                'benefaction_ID' => $_GET['benefaction_ID'],
+                'benefaction_details' => $this->benefactionModel->getComBenefactionDetails($_GET['benefaction_ID'])
+            ];
+        }
+
+        else if($donor_type == 'individual') {
+            $data = [
+                'title' => 'Home Page',
+                'benefaction_ID' => $_GET['benefaction_ID'],
+                'benefaction_details' => $this->benefactionModel->getIndBenefactionDetails($_GET['benefaction_ID'])
+            ];
+        }
+
+        else {
+            die('Donor Type Not Found');
+        }
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/benefaction/viewbenefaction', $data, $other_data);
+
+
+        // $data = [
+        //     'title' => 'Home Page',
+        //     'benefaction_ID' => $_GET['benefaction_ID'],
+        //     'benefaction_details' => $this->benefactionModel->getBenefactionDetails($_GET['benefaction_ID']),
+        //     'donations' => $this->benefactionModel->getDonationCardDetails($_GET['benefaction_ID'])
+        // ];
+
+        // $other_data = [
+        //     'notification_count' => $this->notificationModel->getNotificationCount(),
+        //     'notifications' => $this->notificationModel->viewNotifications()
+        // ];
+
+        // $this->view($_SESSION['user_type'].'/benefaction/viewBenefaction', $data, $other_data);
+   }
+
+   public function manageBenefaction() {
+    if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') || empty($_GET['benefaction_ID']) && empty($_POST['benefaction_ID'])) {
+        redirect('pages/404');
+    }
+
+    else {
+        // When we submit comments
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'comment' => trim($_POST['comment']),
+                'benefaction_ID' => trim($_POST['benefaction_ID']),
+                'err' => ''
+            ];
+
+
+            // If the comment is empty load view with errors
+            if(empty($data['comment'])) {
+                $donor_type = $this->benefactionModel->getDonorType($_POST['benefaction_ID']);
+                
+                if($donor_type == 'company') {
+                    $data = [
+                        'title' => 'Home Page',
+                        'benefaction_ID' => $_POST['benefaction_ID'],
+                        'benefaction_details' => $this->benefactionModel->getComBenefactionDetails($_POST['benefaction_ID'])
+                    ];
+                }
+
+                else if($donor_type == 'individual') {
+                    $data = [
+                        'title' => 'Home Page',
+                        'benefaction_ID' => $_POST['benefaction_ID'],
+                        'benefaction_details' => $this->benefactionModel->getIndBenefactionDetails($_POST['benefaction_ID'])
+                    ];
+                }
+    
+                else {
+                    die('Donor Type Not Found');
+                }
+
+                $data['comments'] = $this->benefactionModel->getAllComments($_POST['benefaction_ID']);
+
+                $data['err'] = 'Please enter your comment';
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/benefaction/manageBenefaction', $data, $other_data);
+            }
+
+            // If the comment is not empty insert comment to the database and redirect to Manage Montary view
+            else {
+                if($this->benefactionModel->addComment($data)) {
+                    $donorID = $this->benefactionModel->getDonorID($data['benefaction_ID']);
+
+                    $this->notificationModel->createNotification('Manage Benefaction', 'manageBenefaction', $_SESSION['user_id'], $donorID, $data['comment'], $data['benefaction_ID']);
+
+                    redirect('benefaction/managebenefaction?benefaction_ID='.$data['benefaction_ID']);
+                }
+            }
+        }    
+        
+        // Loading normal view when called with GET method
+        else {
+            $donor_type = $this->benefactionModel->getDonorType($_GET['benefaction_ID']);
+            
+            if($donor_type == 'company') {
+                $data = [
+                    'title' => 'Home Page',
+                    'benefaction_ID' => $_GET['benefaction_ID'],
+                    'benefaction_details' => $this->benefactionModel->getComBenefactionDetails($_GET['benefaction_ID'])
+                ];
+            }
+
+            else if($donor_type == 'individual') {
+                $data = [
+                    'title' => 'Home Page',
+                    'benefaction_ID' => $_GET['benefaction_ID'],
+                    'benefaction_details' => $this->benefactionModel->getIndBenefactionDetails($_GET['benefaction_ID'])
+                ];
+            }
+
+            else {
+                die('Donor Type Not Found');
+            }
+        }
+
+        $data['comments'] = $this->benefactionModel->getAllComments($data['benefaction_ID']);
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/benefaction/manageBenefaction', $data, $other_data);
+        }
+   }
+
     // ------------Donor--------------------
 
     // View all benefactions

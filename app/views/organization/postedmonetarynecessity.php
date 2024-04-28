@@ -105,8 +105,9 @@
                                         }
                                     ?>
                                 </td>
-                                <td><h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
-                                <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
+                                <td>
+                                    <h4 class="pending-postednecessityTitle"><?php echo $completetablerow->necessityName?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $completetablerow->description?></p>
                                 </td>
                                 <td><p>Rs. <?php echo number_format($completetablerow->requestedAmount, 2); ?></p></td>
                                 <td>
@@ -148,36 +149,36 @@
                         <p>Rs. <?php echo number_format(isset($data['totalReceivedAmount']) ? $data['totalReceivedAmount'] : 0 , 2); ?></p>
                     </div>
                     <div class="right-side-bar-type-one-detailed-view-boxes">
-                        <h5>Total number of donors who donated</h5>
-                        <p>Number of Donors</p>
+                        <h5>Donation Start Necessities</h5>
                     </div>
+
                     <div class="Still-not-completed-necessities">
                         <table>
-                        <?php foreach($data['getstillnotcompletedrow'] as $getstillnotcompletedrow): ?>
+                            <?php foreach($data['stillnotCompleted'] as $stillnotCompleted): ?>
                             <tr>
                                 <td>
-                                    <?php
-                                        if ($getstillnotcompletedrow->monetaryNecessityType == "recurring"){
-                                            echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="40" height="40">'; 
-                                        }elseif($getstillnotcompletedrow->monetaryNecessityType == "onetime"){
-                                            echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="40" height="40">';
-                                        }
-                                    ?>
+                                        <?php
+                                            if ($stillnotCompleted->monetaryNecessityType == "recurring"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/recurring.png" width="38" height="38">'; 
+                                            }elseif($stillnotCompleted->monetaryNecessityType == "onetime"){
+                                                echo '<img src="' . URLROOT . '/img/necessity-icons/one time.png" width="38" height="38">';
+                                            }
+                                        ?>
                                 </td>
                                 <td>
-                                    <h4 class="pending-postednecessityTitle"><?php echo $getstillnotcompletedrow->necessityName?></h4>
-                                    <p class="pending-postednecessitydescription"><?php echo $getstillnotcompletedrow->description?></p>
+                                    <h4 class="pending-postednecessityTitle"><?php echo $stillnotCompleted->necessityName?></h4>
+                                    <p class="pending-postednecessitydescription"><?php echo $stillnotCompleted->description?></p>
                                 </td>
                                 <td>
-                                    <!-- <form action="<?php echo URLROOT ?>/necessity/viewPendingMonetarynecessity" method="POST">
-                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $getstillnotcompletedrow->necessityID; ?>">
+                                    <form action="<?php echo URLROOT ?>/necessity/ViewdonationstartNecessity" method="POST">
+                                        <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $stillnotCompleted->necessityID; ?>">
                                         <button  type="submit">
                                             <img src="<?php echo URLROOT ?>/img/eye-solid.svg">
                                         </button>
-                                    </form> -->
+                                    </form>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
+                            <?php endforeach; ?>
                         </table>
                     </div>
                     

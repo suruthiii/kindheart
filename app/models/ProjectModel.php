@@ -195,4 +195,17 @@ class ProjectModel{
 
         return $result;
     }
+
+    public function getMilestoneDetails($project_ID) {
+        $this->db->query('SELECT milestoneName, description, amount, receivedAmount,  ');
+    }
+
+    public function getOrganizationID($project_ID) {
+        $this->db->query('SELECT orgID FROM project WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $project_ID);
+
+        $orgID = $this->db->single()->orgID;
+
+        return $orgID;
+    }
 }    

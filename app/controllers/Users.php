@@ -299,6 +299,134 @@ class Users extends Controller{
             return false;
         }
     }
+
+    public function forgetPassword1(){
+        // if(isset($_SESSION['account_status'])){
+        //     redirect('pages/404');
+        // }
+
+        $data = [
+            'email' => '',
+            'email_err' => '',
+            'otp_err' => ''
+        ];
+
+        if(isset($_SESSION['user_email'])){
+            $data['email'] = $_SESSION['user_email'];
+        }
+
+        if(isset($_GET['email'])){
+            $data = [
+                'email' => trim($_GET['email']),
+                'email_err' => '',
+                'otp_err' => ''
+            ];
+
+            if(empty($data['email'])){
+                $data['email_err'] = 'Please enter email';
+            }else{
+                if($this->userModel->findUserByEmail($data['email'])){
+                    $data['email_err'] = 'Email is already taken';
+                }
+            }
+
+            if(empty($data['email_err'])){
+                $_SESSION['user_email'] = $data['email'];
+
+                // $this->userModel->sendOTP($data['email']);
+
+                redirect('users/forgetPassword1');
+            }
+            else{
+                $this->view('users/forgetPassword1', $data);
+            }
+        }
+
+        $this->view('users/forgetPassword1', $data);
+    }
+
+    public function OTPforgetPassword1(){
+        $data = [
+            'digit-1' => trim($_GET['digit-1']),
+            'digit-2' => trim($_GET['digit-2']),
+            'digit-3' => trim($_GET['digit-3']),
+            'digit-4' => trim($_GET['digit-4']),
+            'digit-5' => trim($_GET['digit-5']),
+            'digit-6' => trim($_GET['digit-6']),
+            'digit-7' => trim($_GET['digit-7']),
+            'otp_err' => ''
+        ];
+
+        if(empty($data['digit-1']) || empty($data['digit-2']) || empty($data['digit-3']) || empty($data['digit-4']) || empty($data['digit-5']) || empty($data['digit-6']) || empty($data['digit-7'])){
+            $data['otp_err'] = 'Please enter the verification code';
+        }
+
+        $otp = $data['digit-1'].$data['digit-2'].$data['digit-3'].$data['digit-4'].$data['digit-5'].$data['digit-6'].$data['digit-7'];
+
+        //if($this->userModel->verifyOTP($otp)){
+        if($otp == '1234567'){
+            redirect('users/forgetPassword2');
+        }
+        else{
+            $data['otp_err'] = 'Invalid OTP';
+            $this->view('users/forgetPassword1', $data);
+        }
+    }
+
+
+    public function forgetPassword2(){
+        // if(isset($_SESSION['account_status'])){
+        //     redirect('pages/404');
+        // }
+
+        $data = [
+            'password' => '',
+            'password_err' => '',
+            'confirmPassword_err' => '',
+
+        ]; 
+
+        if(isset($_SESSION['password'])){
+            $data['password'] = $_SESSION['password'];
+        }
+
+        if(isset($_GET['password']) && isset($_GET['confirmPassword'])){   
+            $data = [
+                'password' => trim($_GET['password']),
+                'confirmPassword' => trim($_GET['confirmPassword']),
+                'password_err' => '',
+                'confirmPassword_err' => ''
+            ];
+
+            if(empty($data['password'])){
+                $data['password_err'] = 'Please enter password';
+            }
+
+            else if(strlen($data['password']) < 6){
+                $data['password_err'] = 'Password must be at least 6 characters';
+            }
+
+            else if($data['password'] != $data['confirmPassword']){
+                $data['confirmPassword_err'] = 'Passwords do not match';
+            }            
+
+            if(empty($data['password_err']) && empty($data['confirmPassword_err'])){
+                $_SESSION['password'] = $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                $_SESSION['user_type'] = "student";
+
+                $_SESSION['account_status'] = 0;
+                
+                $this->userModel->accountCreation();
+
+                redirect('users/studentAcountCreationPage3');
+            }
+            else{
+                $this->view('users/forgetPassword2', $data);
+            }
+        }
+
+        $this->view('users/forgetPassword2', $data);
+    }
     
 
     public function studentProfileCreation1(){
@@ -787,16 +915,8 @@ class Users extends Controller{
 
         $this->view('users/studentRegistration/studentProfileCreation4', $data);
     }
+
     //------------------------------------------------
-
-    public function forgetPassword1(){
-        $this->view('users/forgetPassword1');
-    }
-
-    public function forgetPassword2(){
-        $this->view('users/forgetPassword2');
-    }
-
     public function passwordResetSuccessful(){
         $this->view('users/passwordResetSuccessful');
     }

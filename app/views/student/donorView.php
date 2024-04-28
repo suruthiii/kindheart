@@ -49,7 +49,7 @@
 
                             <?php foreach($data['donors'] as $item){?>
                                 
-                                <!-- <a href="<?php echo URLROOT ?>/SuccessStory/viewOwnSuccessStory/<?php echo $item->storyID?>"> -->
+                                <a href="<?php echo URLROOT ?>/Student/viewDonor/<?php echo $item->donorID?>">
                                
                                     <div class="tile-donor">
                                         <table>
@@ -61,6 +61,7 @@
 
                                         </table>
                                     </div>
+                            </a>
                                
 
 
@@ -73,32 +74,85 @@
             </div> 
              <!-- right side bar for success story -->
               <!-- right side bar for success story -->
-            <div class="rightside-bar-type-one">
-                <div class="right-side-bar">
-                    <!-- title for rightside bar -->
-                    <div class="rightside-bar-title">
+              <div class="user-profile-right-side-bar">
+                <div class="user-profile-right-side-bar-inner">  
+                    <!-- Topic -->
+                    <div class="user-profile-right-side-bar-topic">
                         <h3>Donor Profile</h3>
-                    </div>
-                    <div class="details-Container">
-
-                        <table>
-                            <tr>
-                                <td width="50%" class="detail-name">Nameeeeeeeeeeeeeeeeeeeeeeeeee</td>
-                                <td width="50%" class="detail-value">hellowfghvjhvbjjkhytyrewaszxcfgvhbjkiolk,mnbhgfdrx</td>
-                            </tr>
-
-                        </table>
-                        
+                        <div class="user-profile-right-side-bar-grey-line"> </div>
+                    </div>  
                     
+                    <!-- Display user-profile or no requests message -->
+                    <div class="user-profile-right-side-bar-all-user-profiles">
+                        <div class="user-profile-right-side-bar-all-user-profiles-inner">
+                           
+
+                               <?php if (empty($data['donorDetailsInd'])): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/companyDP.jpg" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>User Name</th>
+                                            <td><?php print_r($data['donorDetailsOrg']->username); ?></td>
+                                        </tr>
+
+                                        <tr class="user-profile-data">
+                                            <th>Company Name</th>
+                                            <td><?php print_r($data['donorDetailsOrg']->companyName); ?></td>
+                                        </tr>
+                                       
+                                        <tr class="user-profile-data">
+                                            <th>Donor Type</th>
+                                            <td><?php print_r($data['donorDetailsOrg']-> donorType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Email Address</th>
+                                            <td><?php print_r($data['donorDetailsOrg']->email); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['donorDetailsOrg']->phoneNumber); ?></td>
+                                        </tr>
+
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['donorDetailsOrg']->address); ?></td>
+                                        </tr>
+  
+                                    </table>          
+                                </div>
+                            <?php else:  ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/IdividualDP.jpg" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>User Name</th>
+                                            <td><?php print_r($data['donorDetailsInd']->username); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['donorDetailsInd']->fName);print_r($data['donorDetailsInd']->lName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Email Address</th>
+                                            <td><?php print_r($data['donorDetailsInd']->email); ?> </td>
+                                        </tr>
+
+                                        
+                                  
+                
+                                    </table>          
+                                </div>
+                            <?php endif; ?>
+                            
+                        </div>
                     </div>
-
-
-                    <!-- Display donor details -->
-                    
-                   
-
                 </div>
-            </div> 
+            </div>  
 
 
 
