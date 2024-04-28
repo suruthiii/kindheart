@@ -56,10 +56,7 @@
                                     <th>Requested Amount</th>
                                     <td><?php print_r($data['benefactions']->requestedQuantity) ?></td>
                                 </tr>
-                                <tr class="benefaction-data">
-                                    <th>Recieved Amount</th>
-                                    <td><?php print_r($data['benefactions']->receivedQuantity) ?></td>
-                                </tr>
+                                
                                 <tr class="benefaction-data">
                                     <th>status</th>
                                     <td><?php 
@@ -68,20 +65,24 @@
                                         $completedStatus = $data['benefactions']->verificationStatus;
 
                                         // Echo different divs based on the status
-                                        if ($status === 0 && $Acceptedstatus === 0) {
+                                        
+                                        if ($Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
 
-                                        } elseif ($status === 0 && $Acceptedstatus === 1 && $completedStatus === 0 ) {
+                                        } elseif ($Acceptedstatus === 1  ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1) {
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 0) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 2) {
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 1) {
+                                            echo '<div class="status_rejected"><p>Donated</p></div>';
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
 
-                                        } elseif ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 3) {
-                                            echo '<div class="status_rejected"><p>Complainted</p></div>';
+                                        } elseif ($Acceptedstatus === 1 && $completedStatus === 3) {
+                                            echo '<div class="status_rejected"><p>Complained</p></div>';
 
                                         } else {
                                             echo '<div class="status_unknown"><p>Rejected</p></div>';
@@ -89,11 +90,10 @@
                                       
                                         ?></td>
                                 </tr>
+                                </table>
 
                                 
-                                <tr class="benefaction-data">
-                                  
-                                    <td><?php 
+                                <?php 
 
                                 $status = $data['benefactions']->availabilityStatus;
                                 $Acceptedstatus = $data['benefactions']->acceptanceStatus;
@@ -101,31 +101,28 @@
 
                                 // Echo different divs based on the status
 
-                                if ($status === 1 && $Acceptedstatus === 2 && $completedStatus === 1 ) {
+                                if ($Acceptedstatus === 2 && $completedStatus === 1) {
                                  
-                                    echo '<div class="status_accepted">
-                                                <form action="'.URLROOT.'/student/sendAknowledgement" method="GET" class="btn" >
+                                    echo '<div class="ack-buttons">
+                                                <form style="padding-right:10px;" action="'.URLROOT.'/student/sendAknowledgement" method="GET" class="btn" >
                                                     <input type="text" name="benefactionID" id="benefactionID" hidden value="' . $data["benefactions"]->benefactionID . '" />
                                                     <input type="text" name="doneeID" id="doneeID" hidden value="' . $data["benefactions"]->doneeID . '" />
-                                                    <button type="submit" class="button-container" > send acknowledgement</button>
+                                                    <div class = "my-button"> <input type="submit" class="button-container" value="Recieved"> </div>
                                                 </form>
 
                                                 <form action="'.URLROOT.'/student/sendBenefactionComplain" method="GET" class="btn" >
                                                 <input type="text" name="benefactionID" id="benefactionID" hidden value="' . $data["benefactions"]->benefactionID . '" />
                                                 <input type="text" name="doneeID" id="doneeID" hidden value="' . $data["benefactions"]->doneeID . '" />
-                                                <button type="submit" class="button-container" > did not received</button>
+                                                <div class = "my-button"> <input type="submit" class="button-container" value="Not Recieved"> </div>
                                             </form>
                                             </div>';
                                 } else {
                                     echo '<div class="status_rejected"></div>';
                                 }
-                                ?></td>
-
-                                       
-                                </tr>
+                                ?>
 
                                 
-                            </table>
+                            
                         </div>
                     </div>
                     

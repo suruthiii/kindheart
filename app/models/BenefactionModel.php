@@ -418,15 +418,19 @@ public function getBenefactionNotApplied($benefactionID) {
         $this->db->query('SELECT * 
         FROM benefaction b 
         JOIN benefaction_request br ON br.benefactionID = b.benefactionID 
-        LEFT JOIN donee_benefaction db ON br.benefactionID = db.benefactionID 
-        JOIN user u ON u.userID = :userID
-        WHERE u.userID = :userID AND b.benefactionID = :benefactionID;
+        LEFT JOIN donee_benefaction db ON db.benefactionID = b.benefactionID
+        JOIN user u ON u.userID = b.donorID
+        WHERE b.benefactionID = :benefactionID 
+        AND br.doneeID = :doneeID 
+        AND (db.doneeID = :doneeID OR db.doneeID IS NULL);
         ');
+
         $this->db->bind(':benefactionID', $benefactionID);
-        $this->db->bind(':userID', $_SESSION['user_id']);
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
         
         // Execute
         $row = $this->db->single();
+        //(print_r($row));
 
         // Fetch result set
         return $row;
@@ -434,7 +438,7 @@ public function getBenefactionNotApplied($benefactionID) {
 
    
 
-            //add application details to benefaction-request table
+    //add application details to benefaction-request table
     public function addAppliedBenefaction($data){
         // Prepare statement
         $this->db->query('INSERT INTO benefaction_request (benefactionID, doneeID, reason, requestedQuantity, acceptanceStatus) VALUES (:benefactionID, :doneeID, :reason, :requestedQuantity,  :acceptanceStatus)');
@@ -457,9 +461,15 @@ public function getBenefactionNotApplied($benefactionID) {
 
     public function getAppliedBenefactions($criteria = null) { 
         
-        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemQuantity, br.requestedQuantity, br.acceptanceStatus, b.availabilityStatus, db.verificationStatus, db.receivedQuantity FROM benefaction b JOIN benefaction_request br ON br.benefactionID = b.benefactionID AND doneeID = :doneeID LEFT JOIN donee_benefaction db ON br.benefactionID = db.benefactionID ');
+        $this->db->query('SELECT b.benefactionID, b.itemName, b.itemQuantity, br.requestedQuantity, br.acceptanceStatus, b.availabilityStatus, db.verificationStatus, db.receivedQuantity 
+        FROM benefaction_request br
+        LEFT JOIN donee_benefaction db ON br.benefactionID = db.benefactionID AND br.doneeID = db.doneeID
+        LEFT JOIN benefaction b ON br.benefactionID = b.benefactionID
+        WHERE br.doneeID = :doneeID ;');
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         $result = $this->db->resultSet();
+
+        // die(print_r($result));
         // die(print_r($result));
         // Return an array of story data
         return array_reverse($result); 
@@ -467,9 +477,16 @@ public function getBenefactionNotApplied($benefactionID) {
         }
 
 
+
         public function getBenefactions($criteria = null) { 
         
-            $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemCategory, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3 , b.itemPhoto4, b.donorID, b.postedDate, b.availabilityStatus, u.username, br.requestedQuantity, br.acceptanceStatus, br.doneeID FROM benefaction b JOIN user u ON u.userID = b.donorID LEFT JOIN benefaction_request br ON br.benefactionID = b.benefactionID WHERE availabilityStatus = 0;');
+            $this->db->query('SELECT b.benefactionID, b.description, b.itemName, b.itemCategory, b.itemPhoto1, b.itemPhoto2, b.itemPhoto3 , b.itemPhoto4, b.donorID, b.postedDate, b.availabilityStatus, u.username, br.requestedQuantity, br.acceptanceStatus, br.doneeID 
+            FROM benefaction b 
+            JOIN user u ON u.userID = b.donorID 
+            LEFT JOIN benefaction_request br ON br.benefactionID = b.benefactionID AND br.doneeID = :userID 
+            WHERE b.availabilityStatus = 0 ');
+
+            $this->db->bind(':userID',$_SESSION['user_id'] );
             $result = $this->db->resultSet();
             // Return an array of applied benefaction data
             return array_reverse($result); 

@@ -27,7 +27,7 @@
 
                 <!-- Add Monetary Neceessity Form -->
                 <div class="add-necessity-form">
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/addprojects" method="POST">
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/project/updatepostedprojects" method="POST">
                         <!-- Project title -->
                         <div class="add-necessity-one-line-input">
                             <label for="projectTitle">Project Title</label>
@@ -44,17 +44,10 @@
                             <span class="form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['projectDescription_err']) ? $data['projectDescription_err']: ''; ?></span>
                         </div>
 
-                        <table>
-                            <td>Title</td>
-                            <td>Description</td>
-                            <td>Budget</td>
-                            
-                        </table>
-
 
                         <!-- Add Button for necessity -->
                         <div class="add-necessity-add-button">
-                            <!-- <input type="hidden" name="projectID" id="projectID" value="<?php echo $data['ongingProjectDetails']->projectID; ?>"/> -->
+                            <input type="hidden" name="projectID" id="projectID" value="<?php echo $data['projectID']; ?>"/>
                             <input type="submit" value="Update">
                         </div>
                     </form>
