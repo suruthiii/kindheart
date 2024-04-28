@@ -71,8 +71,8 @@
                                             Other
                                         </option>
                                     </select>  
-                                    <p class="error-message" for="password"><?php echo $data['gender_err']?></p>
                                 </div>
+                                <p class="error-message" for="password"><?php echo $data['gender_err']?></p>
                             </div>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                 <label for="studentType">Student Type</label>
@@ -88,9 +88,8 @@
                                             University Student
                                         </option>
                                     </select>  
-                                    <p class="error-message" for="password"><?php echo $data['studentType_err']?></p>
-                            </div>
-
+                                </div>                                
+                                <p class="error-message" for="password"><?php echo $data['studentType_err']?></p>
                             </div>
 
                         </div>

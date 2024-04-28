@@ -479,31 +479,37 @@ class Users extends Controller{
                 'dob' => trim($_GET['dob']),
                 'gender' => trim($_GET['gender']),
                 'studentType' => trim($_GET['studentType']),
-                'err' => ''
+
+                'firstName_err' => '',
+                'lastName_err' => '',
+                'address_err' => '',
+                'dob_err' => '',
+                'gender_err' => '',
+                'studentType_err' => ''
             ];
 
             if(empty($data['firstName'])){
-                $data['err'] = 'Please enter first name';
+                $data['firstName_err'] = 'Please enter first name';
             }
 
             else if(!preg_match("/^[a-zA-Z]+$/", $data['firstName'])){
-                $data['err'] = 'Only letters are allowed';
+                $data['firstName_err'] = 'Only letters are allowed';
             }
 
             if(empty($data['lastName'])){
-                $data['err'] = 'Please enter last name';
+                $data['lastName_err'] = 'Please enter last name';
             }
 
             else if(!preg_match("/^[a-zA-Z]+$/", $data['lastName'])){
-                $data['err'] = 'Only letters are allowed';
+                $data['lastName_err'] = 'Only letters are allowed';
             }
 
             if(empty($data['address'])){
-                $data['err'] = 'Please enter address';
+                $data['address_err'] = 'Please enter address';
             }
 
             if(empty($data['dob'])){
-                $data['err'] = 'Please select date of birth';
+                $data['dob_err'] = 'Please select date of birth';
             }
 
             else{
@@ -511,21 +517,21 @@ class Users extends Controller{
                 $presentDate = new DateTime();
 
                 if($dob > $presentDate){
-                    $data['err'] = 'Date of birth cannot be after the present date';
+                    $data['dob_err'] = 'Date of birth cannot be after the present date';
                 }
             }
 
             if(empty($data['gender'])){
-                $data['err'] = 'Please select gender';
+                $data['gender_err'] = 'Please select gender';
             }
 
             if(empty($data['studentType'])){
-                $data['err'] = 'Please select student type';
+                $data['studentType_err'] = 'Please select student type';
             }
 
             
 
-            if(empty($data['err'])){
+            if(empty($data['firstName_err']) && empty($data['lastName_err']) && empty($data['address_err']) && empty($data['dob_err']) && empty($data['gender_err']) && empty($data['studentType_err'])){
                 $_SESSION['firstName'] = $data['firstName'];
                 $_SESSION['lastName'] = $data['lastName'];
                 $_SESSION['address'] = $data['address'];
