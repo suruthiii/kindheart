@@ -90,26 +90,7 @@ class NecessityModel{
         
         $result = $this->db->execute();
 
-        if($result){
-            //sql statement for Updating monetary necessity, money table
-            $this->db->query('UPDATE money SET requestedAmount = :requestedAmount  WHERE monetaryNecessityID = :monetaryNecessityID');
-
-            // Binding values with array value
-            $this->db->bind(':monetaryNecessityID', $data['necessityID']);
-            $this->db->bind(':requestedAmount', $data['requestedamount']);
-
-            $result2 = $this->db->execute();
-
-            if ($result2) {
-                return true;
-            } else {
-                // Print error message for debugging
-                printf("Error: %s\n", $this->db->getError());
-                return false;
-            }
-        }else{
-            return false;
-        }
+        return $result;
     }
 
     //get the monthlyAmount for update necessity
@@ -132,8 +113,8 @@ class NecessityModel{
             if($necessity->monetaryNecessityType == "onetime"){
 
                 // DELETE the rows that donation where current date is over
-                $this->db->query("DELETE FROM `onetimedonation` 
-                    WHERE onetimedonation.confirmedDate < CURDATE() AND onetimedonation.paymentSlip IS NULL AND
+                $this->db->query("UPDATE onetimedonation SET verificationStatus = 10 
+                    WHERE DATEDIFF(CURDATE(), onetimedonation.confirmedDate) > 2 AND onetimedonation.paymentSlip IS NULL AND
                      onetimedonation.monetaryNecessityID = :necessityID;");
                 $this->db->bind(':necessityID', $necessity->necessityID);
                 $this->db->execute();
@@ -157,6 +138,8 @@ class NecessityModel{
                     $this->db->execute();
                 }
 
+                
+
             } else {
                 $this->db->query("SELECT COUNT(*) AS donationCount FROM recurringdonation
                     WHERE recurringdonation.monetaryNecessityID = :necessityID");
@@ -174,7 +157,8 @@ class NecessityModel{
     
         }
 
-        $this->db->query("SELECT necessity.*, money.* FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
+            FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
             WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 0 AND doneeID = :doneeID");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
@@ -185,13 +169,87 @@ class NecessityModel{
     ///////////////////////////////////////////////////////////////
 
     public function getaddedCompletedMonetaryNecessities(){
-        $this->db->query("SELECT necessity.necessityID,necessity.necessityName,necessity.description,money.requestedAmount,money.receivedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
-        WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND doneeID = :doneeID;");
+
+        $this->db->query("SELECT necessity.*, money.* FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+            WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 1 AND doneeID = :doneeID");
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        
+
+        $necessities = $this->db->resultSet();
+
+        foreach ($necessities as $necessity) {
+            if($necessity->monetaryNecessityType == "onetime"){
+                $this->getDonordWhoDonatedForthisNecessity($necessity->necessityID);
+
+                //find the if the total donation that done to necessities is fill the requested amount
+                $this->db->query("SELECT SUM(amount) AS totalAmount FROM onetimedonation WHERE monetaryNecessityID = :necessityID");
+                $this->db->bind(':necessityID', $necessity->necessityID);
+                $onetimedonations = $this->db->single();
+                $totalAmount = $onetimedonations->totalAmount;
+
+                $this->db->query("SELECT * FROM onetimedonation WHERE monetaryNecessityID = :necessityID");
+                $this->db->bind(':necessityID', $necessity->necessityID);
+                $verificationStatus = $this->db->single();
+
+                if($totalAmount >= $necessity->requestedAmount && $verificationStatus->verificationStatus == 2 && $verificationStatus->paymentSlip !== NULL){
+                    $this->db->query("UPDATE necessity SET fulfillmentStatus = 2 WHERE necessityID = :necessityID");
+                    $this->db->bind(':necessityID', $necessity->necessityID);
+                    $this->db->execute();
+                }
+            }else{
+
+            }
+        }
+
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus
+            FROM necessity n JOIN money m ON n.necessityID = m.monetaryNecessityID 
+            WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 2 AND doneeID = :doneeID");
         $this->db->bind(':doneeID', $_SESSION['user_id']);
         
         $result = $this->db->resultSet();
+    
         return $result;
     }
+
+    ///////////////////////////////////////////////////////////////////////
+
+    public function getDonordWhoDonatedForthisNecessity($necessityID){
+        $this->db->query("SELECT necessity.*, money.*, SUM(onetimedonation.amount) AS totalAmountReceived, onetimedonation.verificationStatus
+                          FROM necessity 
+                          LEFT JOIN money ON necessity.necessityID = money.monetaryNecessityID 
+                          LEFT JOIN onetimedonation ON money.monetaryNecessityID = onetimedonation.monetaryNecessityID 
+                          WHERE necessity.necessityID = :necessityID
+                          GROUP BY necessity.necessityID");
+    
+        $this->db->bind(':necessityID', $necessityID);
+    
+        $result = $this->db->single();
+    
+        if ($result->requestedAmount > $result->receivedAmount && $result->verificationStatus == 0) {
+            // Update verification status to 3 as for commenting (read the necessity)
+            $this->db->query("UPDATE onetimedonation 
+                              SET verificationStatus = 3 
+                              WHERE monetaryNecessityID = :necessityID 
+                              AND verificationStatus = 0");
+    
+            $this->db->bind(':necessityID', $necessityID);
+            $this->db->execute();
+    
+            // Update received amount in the money table
+            $result->receivedAmount += $result->totalAmountReceived;
+            $this->db->query("UPDATE money 
+                              SET receivedAmount = :receivedAmount 
+                              WHERE monetaryNecessityID = :necessityID");
+    
+            $this->db->bind(':necessityID', $necessityID);
+            $this->db->bind(':receivedAmount', $result->receivedAmount);
+            $this->db->execute();
+        }
+    }
+    
+
+
+    //////////////////////////////////////////////////////////////////////
 
     public function getstillnotCompleteNecessities(){
         $this->db->query("SELECT necessity.necessityID,necessity.necessityName,necessity.description,money.requestedAmount,money.receivedAmount,money.monetaryNecessityType FROM necessity JOIN money ON necessity.necessityID = money.monetaryNecessityID 
@@ -222,7 +280,20 @@ class NecessityModel{
         return $result;
     }
 
-    public function stilnotcompleteNecessities($necessityID){
+    //this is the necessities that donors start to donate
+    public function stilnotcompleteNecessities(){
+        $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
+            FROM necessity n 
+            JOIN money m ON n.necessityID = m.monetaryNecessityID 
+            WHERE necessityType = 'Monetary Funding' AND fulfillmentStatus = 1 AND doneeID = :doneeID");
+            
+            $this->db->bind(':doneeID', $_SESSION['user_id']);
+
+            $result = $this->db->resultSet();
+            return $result;
+    }
+
+    public function getdonationstartNecessity($necessityID){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
             FROM necessity n 
             JOIN money m ON n.necessityID = m.monetaryNecessityID 
@@ -233,6 +304,19 @@ class NecessityModel{
         $result = $this->db->single();
         return $result;
     }
+
+    public function getdonateddonordetails($necessity){
+        $this->db->query("SELECT user.username, onetimedonation.* FROM user
+            INNER JOIN donor ON user.UserID = donor.donorID
+            INNER JOIN onetimedonation ON donor.donorID = onetimedonation.donorId
+            WHERE onetimedonation.verificationStatus=3 AND onetimedonation.monetaryNecessityID = $necessity");
+
+        $result = $this->db->resultSet();
+
+        return $result;
+
+    }
+///////////////////////////////////////////////////////////////////
 
     public function getCompletedMonetaryNecessities($necessityID){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, m.requestedAmount, m.receivedAmount, (m.requestedAmount - m.receivedAmount) AS amount_due, m.startDate, m.monetaryNecessityType, m.monthlyAmount, m.duration , n.fulfillmentStatus 
