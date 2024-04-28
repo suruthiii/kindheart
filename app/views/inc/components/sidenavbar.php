@@ -346,14 +346,14 @@
                     <?php } ?>
                 </a>
                 
-                <a href="<?php echo URLROOT ?>/organization/editprofile">
+                <!-- <a href="<?php echo URLROOT ?>/organization/editprofile">
                     <?php if ($section == 'editprofile'){?>
                         <div class="selected-item">Edit Profile</div>
                     <?php }
                     else{ ?>
                         <div class="item">Edit Profile</div>
                     <?php } ?>
-                </a>
+                </a> -->
 
                 
                 <div class="item">
