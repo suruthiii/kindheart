@@ -72,7 +72,7 @@
                     </table>
                 </div>
                 <div class="posted-necessity-view-table-edit-and-delete-buttons-row">
-                <?php if($data['pendingNecessityDetails']->monetaryNecessityType == "recurring") { ?>
+                <!-- <?php if($data['pendingNecessityDetails']->monetaryNecessityType == "recurring") { ?>
                     <form action="<?php echo URLROOT ?>/necessity/editRecuringMonetaryNecessity" method="post">
                         <input type="hidden" name="necessityID" id="necessityID" value="<?php echo $data['pendingNecessityDetails']->necessityID ; ?>" />
                         <button type="submit">
@@ -88,7 +88,7 @@
                             <p>Edit</p>
                         </button>
                     </form>
-                <?php } ?>
+                <?php } ?> -->
                     
 
                     <!-- <form action="<?php echo URLROOT ?>/necessity/deleteNecessity" method="post" class="delete-form" id="delete">
@@ -110,19 +110,16 @@
                     </div>
                     <div class="right-side-bar-for-scrolling">
                         <?php if($data['pendingNecessityDetails']->monetaryNecessityType == 'onetime') {?>
-                                <div class="donated-donor-details-box" style="display: flex; justify-content: center; align-items: center;">
-                                    <h3 style="color: #fff;">You still did not Recieve Donation</h3>
-
-                                    
-                                    <!-- <div class="donated-donor-name" >
-                                        
+                                <div class="donated-donor-details-box">
+                                    <div class="donated-donor-name" >
+                                        <h4>DONOR NAME</h4>
                                     </div>
                                     <div class="donated-amount">
                                         <p>Rs.amount</p>
                                     </div>
                                     <div class="paid-or-not-or-verified">
                                         <p>Not Verified and not paid</p>
-                                    </div> -->
+                                    </div>
                                 </div>
                         <?php } ?>
                         
