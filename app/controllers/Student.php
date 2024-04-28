@@ -83,12 +83,14 @@ class Student extends Controller {
 
     public function Applyscholarship(){
         
+        $scholarshipID = $_GET['scholarshipID'];
 
         $data = [
             'title' => 'Home page',
+            'scholarshipID' => $scholarshipID,
             'scholarship_details' => $this->ScholarshipModel->getScholarshipNotApplied($scholarshipID)
         ];
-        die(print_r($data));
+       
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -97,6 +99,28 @@ class Student extends Controller {
 
         $this->view('student/ApplyForScholarship', $data, $other_data);
     }
+
+    public function ViewAppliedScholarship($scholarshipID = null){
+
+        $data = [
+            'title' => 'Home page',
+            
+            'scholarship_details' => $this->ScholarshipModel->getAppliedScholarship($scholarshipID),
+            'appliedScholarships' => $this->ScholarshipModel->getAppliedScholarships()
+
+        ];
+
+       
+     
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/ViewApplyScholarship', $data, $other_data);
+    }
+
+    
 
 
     public function editProfile(){

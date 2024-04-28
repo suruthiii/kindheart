@@ -292,16 +292,16 @@ public function getScholarshipNotApplied($scholarshipID) {
     return $row;
 }
 
-    public function getBenefaction($benefactionID) {
+    public function getAppliedScholarship($scholarshipID) {
         // Prepare statement
         $this->db->query('SELECT * 
-        FROM benefaction b 
-        JOIN benefaction_request br ON br.benefactionID = b.benefactionID 
-        LEFT JOIN donee_benefaction db ON br.benefactionID = db.benefactionID 
+        FROM scholarship s
+        JOIN scholarship_request sr ON sr.scholarshipID = s.scholarshipID 
+        LEFT JOIN student_scholarship ss ON sr.scholarshipID= ss.scholarshipID 
         JOIN user u ON u.userID = :userID
-        WHERE u.userID = :userID AND b.benefactionID = :benefactionID;
+        WHERE u.userID = :userID AND s.scholarshipID = :scholarshipID;
         ');
-        $this->db->bind(':benefactionID', $benefactionID);
+        $this->db->bind(':scholarshipID', $scholarshipID);
         $this->db->bind(':userID', $_SESSION['user_id']);
         
         // Execute

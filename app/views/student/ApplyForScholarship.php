@@ -45,7 +45,7 @@
                             <td><?php print_r($data['scholarship_details']->username) ?></td>
                         </tr>
                         <tr class="scholarship-data">
-                            <th>Scholarship Starting Date</th>
+                            <th>Starting Date</th>
                             <td><?php print_r($data['scholarship_details']->startDate) ?></td>
                         </tr>
                         <tr class="scholarship-data">

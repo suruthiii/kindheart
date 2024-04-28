@@ -113,15 +113,15 @@
 
                         <h3>Applied Scholarships</h3>
 
-                            <?php foreach ($data['scholarships'] as $item) { ?>
-                            <a href="<?php echo URLROOT ?>/Student/ViewAppliedScholarship/<?php echo $item->scholarshipID?>">
-                                <div class="applied-benefaction-cards">
-                                    <div class="left">
-                                        <h3><?php echo $item->title; ?><h3>
-                                        <p><?php echo $item->amount; ?> LKR</p>
+                        <?php foreach ($data['appliedScholarships'] as $item) { ?>
+                                <a href="<?php echo URLROOT ?>/Student/ViewAppliedScholarship/<?php echo $item->scholarshipID?>">
+                            <div class="applied-benefaction-cards">
+                                <div class="left">
+                                    <h3><?php echo $item->title; ?><h3>
+                                    <p><?php echo $item->amount; ?> LKR</p>
                                 
-                                    </div>
-                                    <div class="right">
+                                </div>
+                                <div class="right">
                                     
                                         <p><?php 
                                         $status = $item->availabilityStatus;
@@ -137,11 +137,10 @@
                                             echo '<div class="status_unknown"><p>Unknown status</p></div>';
                                         }
                                         ?></p>
-                                                                
-                                    </div>
+                                                                  
                                 </div>
+                            </div>
                             <?php } ?> 
-
                         </div>
 
                         
