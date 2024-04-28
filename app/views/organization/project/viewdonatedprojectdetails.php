@@ -96,7 +96,59 @@
             <!-- right side bar for success story/ choose or add necessity -->
             <div class="rightside-bar-type-one">
                 <div class="right-side-bar">
-                    
+                    <div class="right-side-bar-for-display-title">
+                        <h3>Donors Who Donated</h3>
+                    </div>
+                    <div class="right-side-bar-for-scrolling">
+                            <?php foreach($data['rightsidebar'] as $rightsidebar): ?>
+                                <?php if($rightsidebar->verificationStatus == 3 && $rightsidebar->acknowledgement == NULL){ ?>
+                                <div class="donated-donor-details-box">
+                                    <div class="donated-donor-name" >
+                                        <h4><?php echo $rightsidebar->username; ?></h4>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>Rs.<?php echo number_format($rightsidebar->amount, 2); ?></p>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>paid Not Verified</p>
+                                    </div>
+                                    <form action="<?php echo URLROOT ?>/project/sentAcknowlagement" method="post">
+                                        <input type="hidden" name="fundID" id="fundID" value="<?php echo $rightsidebar->fundID;?>">
+                                        <button type="submit"> jnjsbw</button>
+                                    </form>
+                                </div>
+                                <?php } elseif ($rightsidebar->verificationStatus == 0) {?>
+                                    <div class="donated-donor-details-box">
+                                    <div class="donated-donor-name" >
+                                        <h4><?php echo $rightsidebar->username; ?></h4>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>Rs.<?php echo number_format($rightsidebar->amount, 2); ?></p>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>NOT paid</p>
+                                    </div>
+                                </div>
+
+                                <?php } elseif ($rightsidebar->verificationStatus == 3 && $rightsidebar->acknowledgement !== NULL)  {?>
+                                    <div class="donated-donor-details-box">
+                                    <div class="donated-donor-name" >
+                                        <h4><?php echo $rightsidebar->username; ?></h4>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>Rs.<?php echo number_format($rightsidebar->amount, 2); ?></p>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>NOT paid</p>
+                                    </div>
+                                    <div class="donated-amount">
+                                        <p>Sent Acknowlagement</p>
+                                    </div>
+                                </div>
+
+                                <?php } ?>
+                            <?php endforeach; ?>
+                    </div>
 
                 </div>
             </div>
