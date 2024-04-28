@@ -6,8 +6,24 @@ class NotificationModel {
         $this->db = new Database();
     }
 
-    public function createNotification() {
-        
+    public function createNotification($title, $notificationType, $senderID, $receiverID, $description, $data = '') {
+        $this->db->query("INSERT INTO notification (title, notificationType, senderID, receiverID, description, time, data) VALUES(:title, :notificationType, :senderID, :receiverID, :description, :time, :data)");
+        $this->db->bind(':title', $title);
+        $this->db->bind(':notificationType', $notificationType);
+        $this->db->bind(':senderID', $senderID);
+        $this->db->bind(':receiverID', $receiverID);
+        $this->db->bind(':description', $description);
+        $this->db->bind(':time', date("Y-m-d H:i:s"));
+        $this->db->bind(':data', $data);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    
     }
 
     public function getUserType($user_ID){
@@ -47,6 +63,16 @@ class NotificationModel {
         else if ($userType == 'student'){
             $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM student WHERE studentID = :studentID;');
             $this->db->bind(':studentID', $user_ID); 
+        }
+
+        else if($userType == 'admin') {
+            $this->db->query('SELECT adminName AS name FROM admin WHERE adminID = :adminID;');
+            $this->db->bind(':adminID', $user_ID);
+        }
+
+        else if($userType == 'superAdmin') {
+            $this->db->query('SELECT adminName AS name FROM admin WHERE adminID = :adminID;');
+            $this->db->bind(':adminID', $user_ID);
         }
 
         $name = $this->db->single();
@@ -119,4 +145,6 @@ class NotificationModel {
             return false;
         }    
     }
+
+
 }

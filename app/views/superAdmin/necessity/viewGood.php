@@ -43,6 +43,34 @@
                         View Donee Profile
                 </a>
             </div>
+
+            <div class="right-content" style="overflow-y:scroll;">
+                <div class="right-content-title-container">
+                    <h4 style="text-align:center">Donations</h4>
+                </div>
+                <div class="right-cards"> 
+
+                    <?php foreach($data['donations'] as $item) { ?>
+                        <a href="<?php echo URLROOT?>/necessity/viewgooddonationdetails?goodDonationID=<?php echo $item->goodDonationID ?>">
+                            <div class="right-card" style="display:flex;">
+                                <div class="left-side-content" style="width:50%; padding-left:5px">
+                                    <div class="title" style=""><?php echo $item->donorName ?></div>
+                                    <div class="value" style="margin-top: 6px;"><?php echo $item->quantity ?></div>
+                                </div>
+                                <div class="right-side-content" style=" width:50%">
+                                    <?php if($item->verificationStatus == 1) {?>
+                                        <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
+                                    <?php }
+                                    else {?>
+                                        <div class="unverified-label" style="background-color:beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
+                                    <?php }?> 
+                                </div>
+                            </div>
+                        </a>
+                    <?php }?>
+                    </a>
+                </div>
+            </div>
             
         </div>
     </section>

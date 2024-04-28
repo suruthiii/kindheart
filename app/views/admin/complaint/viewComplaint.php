@@ -63,6 +63,7 @@
 
                     <form action="<?php echo URLROOT ?>/complaint/bancomplainee" method="post" class="delete-form" style="margin-left: 20px;">
                         <input type="text" name="complainee_ID" id="complainee_ID" hidden value="<?php echo $data['complainee_ID']; ?>" />
+                        <input type="text" name="complaint_ID" id="complaint_ID" hidden value="<?php echo $data['complaint_ID']; ?>" />
                         <button type="submit" class="view-donation-btn" onclick="">
                             Ban Complainee
                         </button>

@@ -33,8 +33,30 @@
                         }?>
                         
                         <tr class="necessity-data">
-                            <th width="30%"><?php echo $key?></th>
-                            <td width="70%"><?php echo $value?></td>
+                            <?php if ($key == 'Requested Amount'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%">Rs. <?php echo $value?>.00</td>
+                            <?php  }
+
+                            else if ($key == 'Received Amount'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%">Rs. <?php echo $value?>.00</td>
+                            <?php  }
+
+                            else if ($key == 'Monthly Amount'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%">Rs. <?php echo $value?>.00</td>
+                            <?php  }
+
+                            else if ($key == 'Duration'){ ?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%"><?php echo $value?> Months</td>
+                            <?php  }
+
+                            else {?>
+                                <th width="30%"><?php echo $key?></th>
+                                <td width="70%"><?php echo $value?></td>
+                            <?php }?>
                         </tr>
                     <?php }?>
                 </table>
@@ -50,10 +72,10 @@
                 <div class="right-content-title-container">
                     <h4 style="text-align:center">Donations</h4>
                 </div>
-                <div class="right-cards">  
+                <div class="right-cards">
                         <?php if($data['necessity_type'] == 'onetime') {?>
-                            <?php foreach($data['donation_details'] as $item) { ?>
-                                <a href="<?php echo URLROOT?>/necessity/viewdonationdetails?oneTimeDonationID=<?php echo $item->oneTimeDonationID ?>">
+                            <?php foreach($data['donations'] as $item) { ?>
+                                <a href="<?php echo URLROOT?>/necessity/viewmonetarydonationdetails?oneTimeDonationID=<?php echo $item->oneTimeDonationID ?>">
                                     <div class="right-card" style="display:flex;">
                                         <div class="left-side-content" style="width:50%; padding-left:5px">
                                             <div class="title" style=""><?php echo $item->donorName ?></div>
@@ -73,8 +95,8 @@
                         <?php }
 
                         else if($data['necessity_type'] == 'recurring') {?>
-                            <?php foreach($data['donation_details'] as $item) { ?>
-                                <a href="<?php echo URLROOT?>/necessity/viewdonationdetails?monetaryNecessityID=<?php echo $item->monetaryNecessityID ?>">
+                            <?php foreach($data['donations'] as $item) { ?>
+                                <a href="<?php echo URLROOT?>/necessity/viewmonetarydonationdetails?monetaryNecessityID=<?php echo $item->monetaryNecessityID ?>">
                                     <div class="right-card" style="display:flex;">
                                         <div class="left-side-content" style="width:50%; padding-left:5px">
                                             <div class="title" style=""><?php echo $item->donorName ?></div>

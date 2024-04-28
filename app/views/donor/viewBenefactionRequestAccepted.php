@@ -43,10 +43,6 @@
                                 <td><?php print_r($data['benefactionRequest_details'][0]->doneeName); ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
-                                <th>Donee Type</th>
-                                <td><?php print_r($data['benefactionRequest_details'][0]->userType); ?></td>
-                            </tr>
-                            <tr class="benefactionRequest-data">
                                 <th>Requested Amount</th>
                                 <td><?php print_r($data['benefactionRequest_details'][0]->requestedQuantity); ?></td>
                             </tr>
@@ -61,11 +57,14 @@
                             <div class="benefactionRequest-donationinfo1">
                                 <label for="donationQuantity">Donating Quantity</label>
                                 <div class="benefactionRequest-donationdata">
-                                    <?php 
-                                        $remainingQuantity = $data['benefactionRequest_details'][0]->itemQuantity - $data['benefactionRequest_details'][0]->donatedQuantity; 
-                                        ?>
-                                    <input class="benefactionRequest--input" type="number" name="donationQuantity" min="1" max="<?php echo $remainingQuantity ?>" value="<?php echo isset($data['donationQuantity']) ? $data['donationQuantity'] : ''; ?>" >
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['donationQuantity_err']) ? $data['donationQuantity_err']: ''; ?> </span>
+                                <?php 
+                                    $remainingQuantity = $data['benefactionRequest_details'][0]->itemQuantity - $data['benefactionRequest_details'][0]->donatedQuantity;
+                                    $requestedQuantity = $data['benefactionRequest_details'][0]->requestedQuantity;
+                                    
+                                    // Determine the maximum allowed value based on remaining and requested quantities
+                                    $maxValue = min($remainingQuantity, $requestedQuantity);
+                                ?>
+                                    <input class="benefactionRequest-input" type="number" name="donationQuantity" min="1" max="<?php echo $maxValue; ?>" >
                                 </div>
                             </div>
                             <div class="benefactionRequest-donationinfo1">
@@ -77,8 +76,8 @@
                                     </label>
                                 </div>
                             </div>
-                            <span class="donor-form-error-details" id="deliveryReceipt_err" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['deliveryReceipt_err']) ? $data['deliveryReceipt_err']: ''; ?></span>
-                        </div>   
+                        </div> 
+
                         <div class="view-benefactionRequest-btn-container">
                             <div class="submit-request" id="submitForm" style="display: none;">
                                 <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
@@ -112,8 +111,94 @@
                 </div>
             </div>
 
-            <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <!-- right side bar for user-profile -->
+            <div class="user-profile-right-side-bar">
+                <div class="user-profile-right-side-bar-inner">  
+                    <!-- Topic -->
+                    <div class="user-profile-right-side-bar-topic">
+                        <h3>Donee Profile</h3>
+                        <div class="user-profile-right-side-bar-grey-line"> </div>
+                    </div>  
+                    
+                    <!-- Display user-profile or no requests message -->
+                    <div class="user-profile-right-side-bar-all-user-profiles">
+                        <div class="user-profile-right-side-bar-all-user-profiles-inner">
+                            <?php if ($data['user_profile'][0]->userType === 'student'): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Donee Type</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Gender</th>
+                                            <td><?php print_r($data['user_profile'][0]->gender); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Date Of Birth</th>
+                                            <td><?php print_r($data['user_profile'][0]->dateOfBirth); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Institution Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->institutionName); ?></td>
+                                        </tr>
+                                        <?php if ($data['user_profile'][0]->doneeType === 'School Student'): ?>
+                                            <tr class="user-profile-data">
+                                                <th>Grade</th>
+                                                <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                            </tr>
+                                        <?php elseif ($data['user_profile'][0]->doneeType === 'University Student'): ?>
+                                            <tr class="user-profile-data">
+                                                <th>Studying Year</th>
+                                                <td><?php print_r($data['user_profile'][0]->studyingYear); ?></td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </table>          
+                                </div>
+                            <?php elseif ($data['user_profile'][0]->userType === 'organization'): ?>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
+                                    <img src="<?php echo URLROOT ?>/img/profile2.png" alt="Profile Image">
+                                </div>
+                                <div class="user-profile-right-side-bar-all-user-profiles-inner-details">
+                                    <table>
+                                        <tr class="user-profile-data">
+                                            <th>Name</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeName); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Donee Type</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeType); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Address</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneeAddress); ?></td>
+                                        </tr>
+                                        <tr class="user-profile-data">
+                                            <th>Phone Number</th>
+                                            <td><?php print_r($data['user_profile'][0]->doneePhoneNumber); ?></td>
+                                        </tr>
+                                    </table>          
+                                </div>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
+            </div> 
 
         </div>
     </section>
@@ -122,7 +207,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-    function showDonationInfo() {
+function showDonationInfo() {
+    const remainingQuantity = <?php echo $remainingQuantity; ?>;
+
+    if (remainingQuantity > 0) {
         // Show the donation info div
         const donationInfoDiv = document.querySelector('.benefactionRequest-donationinfo');
         donationInfoDiv.style.display = 'flex';
@@ -139,7 +227,13 @@
         // Show the Cancel Request button
         const cancelButtonForm = document.querySelector('.cancel-request');
         cancelButtonForm.style.display = 'block';
+    } else {
+        // Hide the Make Donation button
+        const makeDonationButton = document.querySelector('.make-donation');
+        makeDonationButton.style.display = 'none';
     }
+}
+
 
     function hideDonationInfo() {
         // Show the donation info div
@@ -181,27 +275,31 @@
             parentLabel.style.color = 'rgb(255, 0, 0)';
         }
     }
+    function confirmSubmit(event) {
+        event.preventDefault(); // Prevent form submission for now
+        const isValid = validateForm(); // Validate the form fields
+        if (isValid) {
+            // Proceed with form submission
+            const form = event.target.closest('form');
+            form.submit(); // Submit the form
+        }
+    }
 
     function validateForm() {
-        var fileInputs = document.querySelectorAll('input[type="file"]');
-        var errorMessage = '';
+        const donationQuantity = document.querySelector('input[name="donationQuantity"]').value;
+        const deliveryReceipt = document.querySelector('input[name="deliveryReceipt"]').value;
 
-        fileInputs.forEach(function(input) {
-            var fileName = input.value;
-            if (fileName) {
-                var fileExtension = fileName.split('.').pop().toLowerCase();
-                var acceptedExtensions = ['png', 'jpg', 'jpeg'];
-                if (acceptedExtensions.indexOf(fileExtension) === -1) {
-                    errorMessage = 'Please upload a PNG, JPG, or JPEG file.';
-                    return false;
-                }
-            }
-        });
-
-        if (errorMessage) {
-            alert(errorMessage);
+        if (!donationQuantity || donationQuantity < 1) {
+            alert('Please enter a valid donation quantity.');
             return false;
         }
+
+        if (!deliveryReceipt) {
+            alert('Please submit the proof of delivery.');
+            return false;
+        }
+
+        // Perform additional validation for file upload if required
 
         return true;
     }

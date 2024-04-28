@@ -64,6 +64,10 @@ class Scholarship extends Controller {
                 // If the comment is not empty insert comment to the database and redirect to Manage Montary view
                 else {
                     if($this->scholarshipModel->addComment($data)) {
+                        $donorID = $this->scholarshipModel->getDonorID($data['scholarship_ID']);
+
+                        $this->notificationModel->createNotification('Manage Scholarship', 'manageScholarship', $_SESSION['user_id'], $donorID, $data['comment'], $data['scholarship_ID']);
+
                         redirect('scholarship/managescholarship?scholarship_ID='.$data['scholarship_ID']);
                     }
                 }

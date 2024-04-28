@@ -58,11 +58,13 @@
 
             <div class="right-content" style="overflow-y:scroll;">
                 <div class="right-content-title-container">
-                    <h4 style="text-align:center">Donations</h4>
+                    <h4 style="text-align:center">Milestones</h4>
                 </div>
-                <div class="right-cards">  
-                    <!-- <a href="<?php echo URLROOT?>/project/viewmilestonedetails?milestoneID=<?php echo $data['milestone_details']->milestoneID ?>">
-                        <?php foreach($data['milestone_details'] as $item) { ?>
+                <div class="right-cards"> 
+
+                    <?php foreach($data['milestones'] as $item) { ?>
+                        <a href="<?php echo URLROOT?>/project/viewmilestonedetails?milestoneID=<?php echo $data['milestones']->milestoneID ?>">
+                        
                             <div class="right-card" style="display:flex;">
                                 <div class="left-side-content" style="width:50%; padding-left:5px">
                                     <div class="title" style=""><?php echo $item->milestoneName ?></div>
@@ -77,8 +79,9 @@
                                     <?php }?> 
                                 </div>
                             </div>
-                        <?php }?>
-                    </a> -->
+                        </a>
+                    <?php }?>
+
                 </div>
 
             </div>
