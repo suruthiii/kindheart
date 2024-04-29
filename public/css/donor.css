@@ -192,11 +192,12 @@ span .donor-form-error-details{
 }
 
 .donor-dashboard-right-container th{
-    background-color: #909090;
+    background-color: #ffcfb6;
     position: sticky;
     top: 0px;
     z-index: 1;
     padding: 8px 12px;
+    text-align: left;  
 }
 
 .donor-dashboard-right-container tbody {

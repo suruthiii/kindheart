@@ -157,108 +157,6 @@ class Project extends Controller {
  
     }
 
-    public function manageProject($project_ID = null) {
-        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') ||  empty($_GET['project_ID']) && empty($_POST['project_ID'])) {
-            redirect('pages/404');
-        }
-
-        else {
-            // When we submit comments
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $data = [
-                    'comment' => trim($_POST['comment']),
-                    'project_ID' => trim($_POST['project_ID']),
-                    'err' => ''
-                ];
-
-                $other_data = [
-                    'notification_count' => $this->notificationModel->getNotificationCount(),
-                    'notifications' => $this->notificationModel->viewNotifications()
-                ];
-
-                // If the comment is empty load view with errors
-                if(empty($data['comment'])) {
-                    $data['err'] = 'Please Enter Your Comment';
-                    $data['comments'] = $this->projectModel->getAllComments($data['project_ID']);
-
-                    $this->view($_SESSION['user_type'].'/project/manageproject', $data, $other_data);
-                }
-
-                // If the comment is not empty insert comment to the database and redirect to Manage Montary view
-                else {
-                    if($this->projectModel->addComment($data)) {
-                        $orgID = $this->projectModel->getOrganizationID($data['project_ID']);
-
-                        $this->notificationModel->createNotification('Manage Project', 'manageProject', $_SESSION['user_id'], $orgID, $data['comment'], $data['project_ID']);
-
-                        redirect('project/manageproject?project_ID='.$data['project_ID']);
-                    }
-                }
-            }
-            
-            // Loading normal view when called with GET method
-            else {
-                $data = [
-                    'project_ID' => $_GET['project_ID'],
-                    'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
-                    'comments' => $this->projectModel->getAllComments($_GET['project_ID'])
-                ];
-    
-                $other_data = [
-                    'notification_count' => $this->notificationModel->getNotificationCount(),
-                    'notifications' => $this->notificationModel->viewNotifications()
-                ];
-
-                $this->view($_SESSION['user_type'].'/project/manageproject', $data, $other_data);
-            }
-        }
-    }
-
-    public function viewProject() {
-        $data = [
-            'title' => 'Home Page',
-            'project_ID' => $_GET['project_ID'],
-            'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
-            'milestones' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
-        ];
-
-        $other_data = [
-            'notification_count' => $this->notificationModel->getNotificationCount(),
-            'notifications' => $this->notificationModel->viewNotifications()
-        ];
-
-        $userType = $this->projectModel->getUserType($_SESSION['user_id']);
-
-        if($userType == 'admin') {
-            $this->view('admin/project/viewProject', $data, $other_data);
-        }
-
-        else if($userType == 'superAdmin') {
-            $this->view('superAdmin/project/viewProject', $data, $other_data);
-        }
-
-        else {
-            die('User Type Not Found');
-        }
-    }
-
-    public function viewMilestoneDetails() {
-        
-    }
-
-    public function deleteProject() {
-        if($_SESSION['user_type'] == 'donor') {
-            redirect('pages/404');
-        }
-
-        else {
-            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-                if($this->projectModel->deleteProjects($_POST['project_ID'])) {
-                    redirect($_SESSION['user_type'].'/project');
-                }
-            }
-        }
-    }
 
     //Delete  ongoing and completed projects 
     public function deleteOngoingandCompleteProjects(){
@@ -708,6 +606,113 @@ class Project extends Controller {
     }
 
     // viewCompletedProjectDetails
+
+    /* ----------------------------------------- Admin and Super Admin ----------------------------------------- */
+
+    public function manageProject($project_ID = null) {
+        if(($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') ||  empty($_GET['project_ID']) && empty($_POST['project_ID'])) {
+            redirect('pages/404');
+        }
+
+        else {
+            // When we submit comments
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $data = [
+                    'comment' => trim($_POST['comment']),
+                    'project_ID' => trim($_POST['project_ID']),
+                    'err' => ''
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                // If the comment is empty load view with errors
+                if(empty($data['comment'])) {
+                    $data['err'] = 'Please Enter Your Comment';
+                    $data['comments'] = $this->projectModel->getAllComments($data['project_ID']);
+
+                    $this->view($_SESSION['user_type'].'/project/manageproject', $data, $other_data);
+                }
+
+                // If the comment is not empty insert comment to the database and redirect to Manage Montary view
+                else {
+                    if($this->projectModel->addComment($data)) {
+                        $orgID = $this->projectModel->getOrganizationID($data['project_ID']);
+
+                        $this->projectModel->restrictProject($data['project_ID']);
+
+                        $this->notificationModel->createNotification('Manage Project', 'manageProject', $_SESSION['user_id'], $orgID, $data['comment'], $data['project_ID']);
+
+                        redirect('project/manageproject?project_ID='.$data['project_ID']);
+                    }
+                }
+            }
+            
+            // Loading normal view when called with GET method
+            else {
+                $data = [
+                    'project_ID' => $_GET['project_ID'],
+                    'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
+                    'comments' => $this->projectModel->getAllComments($_GET['project_ID'])
+                ];
+    
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/project/manageproject', $data, $other_data);
+            }
+        }
+    }
+
+    public function viewProject() {
+        $data = [
+            'title' => 'Home Page',
+            'project_ID' => $_GET['project_ID'],
+            'project_details' => $this->projectModel->getProjectDetails($_GET['project_ID']),
+            'milestones' => $this->projectModel->getMilestoneCardDetails($_GET['project_ID'])
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $userType = $this->projectModel->getUserType($_SESSION['user_id']);
+
+        if($userType == 'admin') {
+            $this->view('admin/project/viewProject', $data, $other_data);
+        }
+
+        else if($userType == 'superAdmin') {
+            $this->view('superAdmin/project/viewProject', $data, $other_data);
+        }
+
+        else {
+            die('User Type Not Found');
+        }
+    }
+
+    public function viewMilestoneDetails() {
+        
+    }
+
+    public function deleteProject() {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->projectModel->deleteProjects($_POST['project_ID'])) {
+                    redirect($_SESSION['user_type'].'/project');
+                }
+            }
+        }
+    }
 
     public function viewDoneeProfile($project_ID = null, $org_ID = null) {
         if($_SESSION['user_type'] == 'organization') {

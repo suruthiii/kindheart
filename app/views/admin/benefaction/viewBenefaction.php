@@ -54,7 +54,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 1</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto1); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto1); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -62,7 +62,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 2</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto2); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto2); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -70,7 +70,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 3</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto3); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto3); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -78,7 +78,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 4</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto3); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto3); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -104,18 +104,18 @@
                                     <div class="value" style="margin-top: 6px;"><?php echo $item->receivedQuantity ?></div>
                                 </div>
                                 <div class="right-side-content" style=" width:50%">
-                                <?php if($item->verificationStatus == 1) {?>
-                                    <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
-                                <?php }
-                                else if($item->verificationStatus == 0) {?> 
-                                    <div class="pending-label" style="background-color: white; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
-                                <?php }
-                                else if($item->verificationStatus == 2) {?> 
-                                    <div class="received-label" style="background-color: beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Received</div>
-                                <?php }
-                                else {?>
-                                    <div class="not-received-label" style="background-color:red; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Not Received</div>
-                                <?php }?> 
+                                    <?php if($item->verificationStatus == 1) {?>
+                                        <div class="verified-label" style="background-color: rgb(235, 194, 194); margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Verified</div>
+                                    <?php }
+                                    else if($item->verificationStatus == 0) {?> 
+                                        <div class="pending-label" style="background-color: white; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Unverified</div>
+                                    <?php }
+                                    else if($item->verificationStatus == 2) {?> 
+                                        <div class="received-label" style="background-color: beige; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Received</div>
+                                    <?php }
+                                    else {?>
+                                        <div class="not-received-label" style="background-color:red; margin:12px; width:80px; padding:5px; text-align:center; border-radius:8px; color:black;">Not Received</div>
+                                    <?php }?> 
                                 </div>
                             </div>
                         </a>

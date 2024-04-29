@@ -1850,5 +1850,58 @@ class Necessity extends Controller {
             }
         }
     }
+
+
+    // ----------------------Donor------------------
+
+    // public function postedMonetaryNecessities(){   
+
+    //     $data = [
+    //         'title' => 'Posted Necessities',
+    //         'monetary_necessities' => $this->necessityModel->getMonetaryNecessitiesForDonor()
+    //         // 'applied_necessities' => $this->necessityModel->getAppliedNecessities()
+    //     ];
+
+    //     $other_data = [
+    //         'notification_count' => $this->notificationModel->getNotificationCount(),
+    //         'notifications' => $this->notificationModel->viewNotifications()
+    //     ];
+
+    //     $this->view('donor/nessessities/postedNessities', $data , $other_data);
+    // }
+
+    public function postedMonetaryNecessities(){
+
+        $data = [
+            'title' => 'Posted Necessities',
+            // 'monetary_necessities' => $this->necessityModel->getMonetaryNecessitiesForDonor()
+            // 'applied_necessities' => $this->necessityModel->getAppliedNecessities()
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('donor/necessities/postedMonetaryNecessities', $data , $other_data);
+        
+    }
+
+    public function postedPhysicalGoodsNecessities(){
+
+        $data = [
+            'title' => 'Posted Necessities',
+            // 'monetary_necessities' => $this->necessityModel->getMonetaryNecessitiesForDonor()
+            // 'applied_necessities' => $this->necessityModel->getAppliedNecessities()
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('donor/necessities/postedPhysicalGoodsNecessities', $data , $other_data);
+        
+    }
 }
 

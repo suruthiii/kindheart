@@ -31,16 +31,12 @@
                         <h1><?php echo $data['active_donees']?></h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Total Donations</p>
-                        <h1>12 300</h1>
+                        <p>Total Goods Donations</p>
+                        <h1><?php echo $data['total_goods_quantity']?></h1>
                     </div>
                     <div class="donor-dashboard-status">
-                        <p>Total Helped Students</p>
-                        <h1>12 300</h1>
-                    </div>
-                    <div class="donor-dashboard-status">
-                        <p>Total Helped Organizations</p>
-                        <h1>12 300</h1>
+                        <p>Total Monetary Donations</p>
+                        <h1><?php echo $data['total_monetary_quantity']?></h1>
                     </div>
                 </div>
             </div>
@@ -83,6 +79,85 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<!-- <script>
+    // Function to fetch data from the backend
+    async function fetchDataAndUpdateChart() {
+        try {
+            const response = await fetch('/api/data'); // Replace '/api/data' with your actual backend endpoint
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const responseData = await response.json();
+
+            // Extract data from the response
+            const labels = responseData.labels; // Array of label names
+            const values = responseData.values; // Array of numeric values
+
+            // Update chart data
+            config.data.labels = labels;
+            config.data.datasets[0].data = values;
+
+            // Redraw the chart
+            myChart.update();
+        } catch (error) {
+            console.error('Error fetching or updating data:', error);
+        }
+    }
+
+    // Chart configuration
+    const config = {
+        type: 'doughnut',
+        data: {
+            labels: [], // Initialize empty labels array
+            datasets: [{
+                label: 'Dataset 1',
+                data: [], // Initialize empty data array
+                backgroundColor: [
+                    '#8e0000',
+                    '#bf644f',
+                    '#d38a78',
+                    '#f3d7d0'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    align: 'start',
+                    labels: {
+                        usePointStyle: true,
+                        boxWidth: 10,
+                        padding: 20
+                    }
+                }
+            },
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 50,
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            aspectRatio: 2, // Aspect ratio of width to height
+            maintainAspectRatio: false // Allow chart to resize based on container
+        }
+    };
+
+    // Get the canvas element
+    const canvas = document.getElementById('donutChartContainer');
+
+    // Create the doughnut chart
+    const ctx = canvas.getContext('2d');
+    const myChart = new Chart(ctx, config);
+
+    // Call the function to fetch data and update the chart
+    fetchDataAndUpdateChart();
+</script> -->
+
+
 <script>
         const DATA_COUNT = 4;
 
@@ -101,22 +176,33 @@
         };
 
         const config = {
-            type: 'doughnut',
-            data: data,
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            usePointStyle: true, // Use round legend markers
-                            boxWidth: 10, // Set legend box width
-                            padding: 20 // Padding between legend items
-                        }
+        type: 'doughnut',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    align: 'start',
+                    labels: {
+                        usePointStyle: true,
+                        boxWidth: 10,
+                        padding: 20
                     }
                 }
             },
-        };
+            layout: {
+                padding: {
+                    left: 50,
+                    right: 50,
+                    top: 10,
+                    bottom: 10
+                }
+            },
+            aspectRatio: 2, // Aspect ratio of width to height
+            maintainAspectRatio: false // Allow chart to resize based on container
+        },
+    };
 
         // Get the canvas element
         const canvas = document.getElementById('donutChartContainer');
