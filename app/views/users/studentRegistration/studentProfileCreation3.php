@@ -27,7 +27,7 @@
 
                             <label for="careType">Select Parent/Guardian</label>
                             <div class="studentProfileCreation3-inner-container-form-container-inputfeilds-selectbox">
-                                <select id="careType" name="careType" value="<?php echo $data['careType']?>">
+                                <select id="careType" name="careType" value="<?php echo $data['careType']?>" required>
                                     <option value="0" >
                                         Select Parent / Guardian
                                     </option>
@@ -41,25 +41,25 @@
                                         Guardian
                                     </option>
                                 </select>  
-                                <span class="error-message" for="verificationCode"></span>
-                            </div>
+                            </div>                            
+                            <p class="error-message" for="careType"><?php echo $data['careType_err']?></p>
 
                             <label for="careName">Parent/Guardian Name</label>
                             <div class="studentProfileCreation3-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="careName" value="<?php echo $data['careName']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="careName" value="<?php echo $data['careName']?>" required>
+                                <p class="error-message" for="careName"><?php echo $data['careName_err']?></p>
                             </div>
 
                             <label for="careOccu">Parent/Guardian Occupation</label>
                             <div class="studentProfileCreation3-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="careOccu" value="<?php echo $data['careOccu']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="careOccu" value="<?php echo $data['careOccu']?>" required>
+                                <p class="error-message" for="careOccu"><?php echo $data['careOccu_err']?></p>
                             </div>
 
                             <label for="careRealat">Relationship to the Student</label>
                             <div class="studentProfileCreation3-inner-container-form-container-inputfeilds-feild1">
                                 <input class="inputt1" type="text" name="careRealat" id="careRealat" value="<?php echo $data['careRealat']?>">
-                                <span class="error-message" for="verificationCode"></span>
+                                <p class="error-message" for="careRealat"><?php echo $data['careRealat_err']?></p>
                             </div>
 
                         </div>
@@ -116,6 +116,15 @@
                         y[k].removeAttribute("class");
                         }
                         this.setAttribute("class", "same-as-selected");
+                        
+                        // Check if "Guardian" is selected
+                        if (this.innerHTML.trim() === "Guardian") {
+                            // Disable the "Relationship to the Student" input field
+                            document.getElementById("careRealat").disabled = false;
+                        } else {
+                            // Enable the "Relationship to the Student" input field
+                            document.getElementById("careRealat").disabled = true;
+                        }
                         break;
                     }
                 }

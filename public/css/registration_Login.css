@@ -78,8 +78,32 @@ a {
 .studentAcountCreationPage1-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
 }
 
 .studentAcountCreationPage1-inner-container-form-container p{
@@ -198,8 +222,31 @@ a {
 .studentAcountCreationPage2-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
 }
 
 .studentAcountCreationPage2-inner-container-form-container p{
@@ -287,8 +334,31 @@ a {
 .studentAcountCreationPage3-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
 }
 
 .studentAcountCreationPage3-inner-container-form-container p{
@@ -353,8 +423,31 @@ a {
 .login-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
 }
 
 .login-inner-container-form-container p{
@@ -459,16 +552,33 @@ a {
 .forgetPassword0-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
 }
 
-.forgetPassword0-inner-container-form-container{
-    max-height: 400px; /* Set a fixed maximum height for the container */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 10px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: 0px;
-}
 
 .forgetPassword0-inner-container-form-container p{
     font-size: 14px;
@@ -554,8 +664,31 @@ a {
 .forgetPassword1-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
 }
 
 .forgetPassword1-inner-container-form-container p{
@@ -673,15 +806,31 @@ a {
 .forgetPassword2-inner-container-form-container{
     max-height: 400px; /* Set a fixed maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
-}
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
 
-.forgetPassword2-inner-container-form-container{
-    max-height: 400px; /* Set a fixed maximum height for the container */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding-right: 10px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: 0px;
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
 }
 
 .forgetPassword2-inner-container-form-container p{
@@ -771,10 +920,34 @@ a {
 }
 
 .studentProfileCreation1-inner-container-form-container{
-    max-height: 400px; /* Set a fixed maximum height for the container */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 5px; /* Add padding to prevent content from overlapping scrollbar */
-    scrollbar-width: none;
+        max-height: 400px; /* Set a fixed maximum height for the container */
+        overflow-y: auto; /* Enable vertical scrolling */
+        scrollbar-width: thin; /* Set the width of the scrollbar */
+        scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+    
+        /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+        /* Customize the scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px; /* Width of the scrollbar */
+        }
+    
+        /* Customize the scrollbar handle (thumb) */
+        ::-webkit-scrollbar-thumb {
+            background-color: #fecece; /* Color of the scrollbar handle */
+            border-radius: 5px; /* Rounded corners for the scrollbar handle */
+        }
+    
+        /* Customize the scrollbar track (background) */
+        ::-webkit-scrollbar-track {
+            background-color: #f1f1f1; /* Color of the scrollbar track */
+            border-radius: 5px; /* Rounded corners for the scrollbar track */
+        }
+    
+        /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+        ::-webkit-scrollbar-corner {
+            background-color: transparent; /* Color of the scrollbar corner */
+        }
+    
 }
 
 .studentProfileCreation1-inner-container-form-container p{
@@ -975,6 +1148,37 @@ a {
     color: rgb(146, 141, 141);
 }
 
+.studentProfileCreation2-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
+}
+
 .studentProfileCreation2-inner-container-form-container p{
     font-size: 14px;
 }
@@ -1058,6 +1262,36 @@ a {
 
 .studentProfileCreation3-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+.studentProfileCreation3-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
 }
 
 .studentProfileCreation3-inner-container-form-container p{
@@ -1161,6 +1395,37 @@ a {
 
 .studentProfileCreation4-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation4-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
 }
 
 .studentProfileCreation4-inner-container-form-container p{
@@ -1300,6 +1565,37 @@ a {
     color: rgb(146, 141, 141);
 }
 
+.studentProfileCreation5-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
+}
+
 .studentProfileCreation5-inner-container-form-container p{
     font-size: 14px;
 }
@@ -1384,6 +1680,37 @@ a {
 
 .studentProfileCreation6-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation6-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
 }
 
 .studentProfileCreation6-inner-container-form-container p{
@@ -1495,6 +1822,37 @@ a {
     color: rgb(146, 141, 141);
 }
 
+.studentProfileCreation7-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
+}
+
 .studentProfileCreation7-inner-container-form-container p{
     font-size: 14px;
 }
@@ -1575,6 +1933,37 @@ a {
 
 .studentProfileCreation8-inner-container-caption span{
     color: rgb(146, 141, 141);
+}
+
+.studentProfileCreation8-inner-container-form-container{
+    max-height: 400px; /* Set a fixed maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    scrollbar-width: thin; /* Set the width of the scrollbar */
+    scrollbar-color: #fecece #f1f1f1; /* Color of the scrollbar thumb and track */
+
+    /* WebKit-based browsers (Chrome, Safari) scrollbar styling */
+    /* Customize the scrollbar */
+    ::-webkit-scrollbar {
+        width: 10px; /* Width of the scrollbar */
+    }
+
+    /* Customize the scrollbar handle (thumb) */
+    ::-webkit-scrollbar-thumb {
+        background-color: #fecece; /* Color of the scrollbar handle */
+        border-radius: 5px; /* Rounded corners for the scrollbar handle */
+    }
+
+    /* Customize the scrollbar track (background) */
+    ::-webkit-scrollbar-track {
+        background-color: #f1f1f1; /* Color of the scrollbar track */
+        border-radius: 5px; /* Rounded corners for the scrollbar track */
+    }
+
+    /* Customize the scrollbar corner (between vertical and horizontal scrollbar) */
+    ::-webkit-scrollbar-corner {
+        background-color: transparent; /* Color of the scrollbar corner */
+    }
+
 }
 
 .studentProfileCreation8-inner-container-form-container p{

@@ -130,12 +130,18 @@ class Users extends Controller{
                 }
             }
 
-            if(empty($data['password'])){
-                $data['password_err'] = 'Please enter password';
-            }
-
-            else if(strlen($data['password']) < 6){
-                $data['password_err'] = 'Password must be at least 6 characters';
+            if (empty($data['password'])) {
+                $data['password_err'] = 'Please enter a password';
+            } else if (strlen($data['password']) < 8) {
+                $data['password_err'] = 'Password must be at least 8 characters';
+            } else if (!preg_match('/[a-z]/', $data['password']) || !preg_match('/[A-Z]/', $data['password'])) {
+                $data['password_err'] = 'Password must include both lowercase and uppercase letters';
+            } else if (!preg_match('/\d/', $data['password'])) {
+                $data['password_err'] = 'Password must include at least one digit';
+            } else if (!preg_match('/[!@#?]/', $data['password'])) {
+                $data['password_err'] = 'Password must include at least one special character (@, #, ?, !)';
+            } else if (strpos($data['password'], '<') !== false || strpos($data['password'], '>') !== false) {
+                $data['password_err'] = 'Password must not include < or >';
             }
 
             else if($data['password'] != $data['confirmPassword']){
@@ -446,8 +452,18 @@ class Users extends Controller{
                 $data['password_err'] = 'Please enter password';
             }
 
-            else if(strlen($data['password']) < 6){
-                $data['password_err'] = 'Password must be at least 6 characters';
+            if(empty($data['password'])){
+                $data['password_err'] = 'Please enter password';
+            }else if ( strlen($data['password']) < 8 ){
+                $data['password_err'] = 'Password must be at least 8 characters';            
+            } else if ( preg_match('/[a-z]/', ($data['password'])) || preg_match('/[A-Z]/', ($data['password'])) ) {
+                $data['password_err'] = 'Password must include both lowercase and uppercase letters';
+            } else if ( preg_match('/[a-zA-Z]/', ($data['password'])) || preg_match('/\d/', ($data['password'])) ) {
+                $data['password_err'] = 'Password must include both numbers and letters';
+            } else if ( preg_match('/[!@#?]/', ($data['password'])) ) {
+                $data['password_err'] = 'Password must include at least one special charater (@, #, ?, !)';
+            } else if ( strpos(($data['password']), '<') == false || strpos(($data['password']), '>') == false ) {
+                $data['password_err'] = 'Password must not include < or >';
             }
 
             else if($data['password'] != $data['confirmPassword']){
@@ -662,7 +678,10 @@ class Users extends Controller{
             'careName' => '',
             'careOccu' => '',
             'careRealat' => '',
-            'err' => ''
+            'careType_err' => '',
+            'careName_err' => '',
+            'careOccu_err' => '',
+            'careRealat_err' => ''
         ];
 
         if(isset($_SESSION['careType'])){
@@ -687,26 +706,29 @@ class Users extends Controller{
                 'careName' => trim($_GET['careName']),
                 'careOccu' => trim($_GET['careOccu']),
                 'careRealat' => trim($_GET['careRealat']),
-                'err' => ''
+                'careType_err' => '',
+                'careName_err' => '',
+                'careOccu_err' => '',
+                'careRealat_err' => ''
             ];
 
             if(empty($data['careType'])){
-                $data['err'] = 'Please select caregiver type';
+                $data['careType_err'] = 'Please select caregiver type';
             }
 
             if(empty($data['careName'])){
-                $data['err'] = 'Please enter caregiver name';
+                $data['careName_err'] = 'Please enter caregiver name';
             }
 
             if(empty($data['careOccu'])){
-                $data['err'] = 'Please enter caregiver occupation';
+                $data['careOccu_err'] = 'Please enter caregiver occupation';
             }
 
             if(empty($data['careRealat'])){
-                $data['err'] = 'Please enter relationship to the student';
+                $data['careRealat_err'] = 'Please enter relationship to the student';
             }
 
-            if(empty($data['err'])){
+            if(empty($data['careType_err']) && empty($data['careName_err']) && empty($data['careOccu_err']) && empty($data['careRealat_err'])){
                 $_SESSION['careType'] = $data['careType'];
                 $_SESSION['careName'] = $data['careName'];
                 $_SESSION['careOccu'] = $data['careOccu'];
