@@ -97,7 +97,7 @@
                             <?php }
 
                             else if($item->notificationType == "MonetarySlipUpload"){?> 
-                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                <a href="<?php echo URLROOT?>/necessity/viewmonetarydonationdetails?oneTimeDonationID=<?php echo $item->data?>">
                                     <div class="notification" >
                                         <div class="notification-content">
                                             <div class="notification-name"><?php echo $item->name ?></div>
@@ -123,7 +123,7 @@
                             <?php } 
 
                             else if($item->notificationType == "GoodReceiptUpload"){?> 
-                                <a href="<?php echo URLROOT?>/request/vieworganizationrequest/<?php echo $item->data?>">
+                                <a href="<?php echo URLROOT?>/necessity/viewgooddonationdetails?goodDonationID=<?php echo $item->data?>">
                                     <div class="notification" >
                                         <div class="notification-content">
                                             <div class="notification-name"><?php echo $item->name ?></div>
