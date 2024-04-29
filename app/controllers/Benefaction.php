@@ -517,7 +517,6 @@ class Benefaction extends Controller {
                 'benefactionID' => $_POST['benefactionID'],
                 'itemBenefaction' => trim($_POST['itemBenefaction']),
                 'benefactionCategory' => trim($_POST['benefactionCategory']),
-                'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
 
                 'availabilityStatus' => '0',
@@ -525,7 +524,6 @@ class Benefaction extends Controller {
 
                 'itemBenefaction_err' => '',
                 'benefactionCategory_err' => '',
-                'quantityBenfaction_err' => '',
                 'benefactionDescription_err' => ''
             ];
             
@@ -556,15 +554,11 @@ class Benefaction extends Controller {
                 $data['benefactionCategory_err'] = 'Please select a category.';
             }
 
-            if(empty($data['quantityBenfaction'])){
-                $data['quantityBenfaction_err']='Please enter the Quantity';
-            }
-
             if(empty($data['benefactionDescription'])){
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if (empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['benefactionCategory_err'])) {
+            if (empty($data['itemBenefaction_err']) && empty($data['benefactionDescription_err']) && empty($data['benefactionCategory_err'])) {
                 if ($this->benefactionModel->updateBenefaction($data)) {
                     $data = [
                         'title' => 'Edit Posted Benefactions',

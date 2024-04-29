@@ -117,16 +117,18 @@ class donorModel{
 
     public function getTotalHelpedDonees($userId) {
         // Prepare statement to get total donated quantity
-        $this->db->query(' ');
+        $this->db->query('SELECT benefaction.itemName,benefaction.itemQuantity FROM benefaction WHERE donorID:donorID AND status = :status ');
     
         // Bind parameter
         $this->db->bind(':donorID', $userId);
+        $this->db->bind(':status', 2);
     
         // Execute the query
         $this->db->execute();
     
         // Fetch the result
-        $result = $this->db->single();
+        $result = $this->db->resultSet();
+        die(print_r($result));
     
         if ($result) {
             // Return the total donated quantity

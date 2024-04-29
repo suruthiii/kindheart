@@ -50,7 +50,7 @@ class Users extends Controller{
 
                 // $this->userModel->sendOTP($data['email']);
 
-                redirect('Users/studentAcountCreationPage1');
+                redirect('users/studentAcountCreationPage1');
             }
             else{
                 $this->view('users/studentRegistration/studentAcountCreationPage1', $data);
@@ -62,21 +62,15 @@ class Users extends Controller{
 
     public function OTPstudentAcountCreationPage1(){
         $data = [
-            'digit-1' => trim($_GET['digit-1']),
-            'digit-2' => trim($_GET['digit-2']),
-            'digit-3' => trim($_GET['digit-3']),
-            'digit-4' => trim($_GET['digit-4']),
-            'digit-5' => trim($_GET['digit-5']),
-            'digit-6' => trim($_GET['digit-6']),
-            'digit-7' => trim($_GET['digit-7']),
+            'digit' => trim($_GET['digit']),
             'otp_err' => ''
         ];
 
-        if(empty($data['digit-1']) || empty($data['digit-2']) || empty($data['digit-3']) || empty($data['digit-4']) || empty($data['digit-5']) || empty($data['digit-6']) || empty($data['digit-7'])){
+        if(empty($data['digit'])){
             $data['otp_err'] = 'Please enter the verification code';
         }
 
-        $otp = $data['digit-1'].$data['digit-2'].$data['digit-3'].$data['digit-4'].$data['digit-5'].$data['digit-6'].$data['digit-7'];
+        $otp = $data['digit'];
 
         //if($this->userModel->verifyOTP($otp)){
         if($otp == '1234567'){
@@ -251,6 +245,8 @@ class Users extends Controller{
             unset($_SESSION['username']);
             unset($_SESSION['password']);
             unset($_SESSION['user_email']);
+
+            session_destroy();
             
             // Initial form load
             $data = [
@@ -421,7 +417,6 @@ class Users extends Controller{
             $this->view('users/forgetPassword1', $data);
         }
     }
-
 
     public function forgetPassword2(){
         // if(isset($_SESSION['account_status'])){
@@ -744,7 +739,6 @@ class Users extends Controller{
         $this->view('users/studentRegistration/studentProfileCreation3', $data);
     }
 
-
     public function studentProfileCreation4(){
         $data = [
             'accHolderName' => '',
@@ -972,7 +966,10 @@ class Users extends Controller{
             'letterimage2' => '',
             'letterimage3' => '',
             'letterimage4' => '',
-            'err' => ''
+            'letterimage1_err' => '',
+            'letterimage2_err' => '',
+            'letterimage3_err' => '',
+            'letterimage4_err' => '',
         ];
 
         if(isset($_FILES['letterimage1']['name']) && isset($_FILES['letterimage2']['name']) && isset($_FILES['letterimage3']['name']) && isset($_FILES['letterimage4']['name'])){
@@ -981,23 +978,27 @@ class Users extends Controller{
                 'letterimage2' => $this->imgUpload('letterimage2'),
                 'letterimage3' => $this->imgUpload('letterimage3'),
                 'letterimage4' => $this->imgUpload('letterimage4'),
-                'err' => ''
+
+                'letterimage1_err' => '',
+                'letterimage2_err' => '',
+                'letterimage3_err' => '',
+                'letterimage4_err' => ''
             ];
 
             if(empty($data['letterimage1'])){
-                $data['err'] = 'Please upload GS Certificate';
+                $data['letterimage1_err'] = 'Please upload GS Certificate';
             }
 
             if(empty($data['letterimage2'])){
-                $data['err'] = 'Please upload GS Certificate';
+                $data['letterimage2_err'] = 'Please upload GS Certificate';
             }
 
             if(empty($data['letterimage3'])){
-                $data['err'] = 'Please upload NIC - front';
+                $data['letterimage3_err'] = 'Please upload NIC - front';
             }
 
             if(empty($data['letterimage4'])){
-                $data['err'] = 'Please upload NIC - back';
+                $data['letterimage4_err'] = 'Please upload NIC - back';
             } 
 
             if(empty($data['err'])){
@@ -1014,7 +1015,6 @@ class Users extends Controller{
                 $this->view('users/studentRegistration/studentProfileCreation4', $data);
             }
         }
-
 
         $this->view('users/studentRegistration/studentProfileCreation4', $data);
     }
