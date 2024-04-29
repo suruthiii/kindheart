@@ -98,7 +98,7 @@
             </div>
 
             <!-- right side bar for success story/ choose or add necessity -->
-            <?php require APPROOT.'/views/inc/components/askonluforneedbar.php'; ?>
+            <?php require APPROOT.'/views/inc/components/giveonluforneedbar.php'; ?>
 
         </div>
     </section>
