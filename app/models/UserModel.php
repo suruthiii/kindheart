@@ -37,6 +37,26 @@ class UserModel{
         $this->mail->send();
     }
 
+    // Admin registration
+    public function register($data){
+        // Prepare statement
+        $this->db->query('INSERT INTO user (username, email, password, userType, status) VALUES (:username, :email, :password, :userType, 1)');
+
+        // Bind values
+        $this->db->bind(':username', $data['username']);
+        $this->db->bind(':email', $data['email']);
+        $this->db->bind(':password', $data['password']);
+        $this->db->bind(':userType', $data['userType']);
+
+        // Execute
+        if ($this->db->execute() && $this->updateUserTable($data)){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     // Account creation
     public function accountCreation(){
         $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, 2, 0)');
@@ -428,7 +448,7 @@ class UserModel{
 
     // View admins
     public function viewAdmins(){
-        $this->db->query("SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 AND admin.adminName != 'Super Admin' ORDER BY adminName");
+        $this->db->query("SELECT admin.* FROM admin JOIN user ON user.userid = admin.adminid WHERE user.status != 10 AND admin.adminName != 'Super Admin' ORDER BY user.userid DESC;");
 
         $result =  $this->db->resultSet();
 

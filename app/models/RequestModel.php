@@ -157,9 +157,65 @@ class RequestModel{
         }
     }
 
+    public function getUserType($user_ID){
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $userType = $this->db->single()->userType;
+    
+        if ($userType == 'donor') {
+            $this->db->query('SELECT donorType FROM donor WHERE donorID = :donorID;');
+            $this->db->bind(':donorID', $user_ID);
+
+            $userType =  $this->db->single()->donorType;
+        }
+
+        return $userType;
+    }
+
+    public function getName($user_ID){
+        $userType = $this->getUserType($user_ID);
+
+        if ($userType == 'company'){
+            $this->db->query('SELECT companyName AS name FROM company WHERE companyID = :companyID;');
+            $this->db->bind(':companyID', $user_ID);
+        }
+
+        else if ($userType == 'individual'){
+            $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM individual WHERE individualID = :individualID;');
+            $this->db->bind(':individualID', $user_ID);
+        }
+
+        else if ($userType == 'organization'){
+            $this->db->query('SELECT orgName AS name FROM organization WHERE orgID = :orgID;');
+            $this->db->bind(':orgID', $user_ID);
+        }
+
+        else if ($userType == 'student'){
+            $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM student WHERE studentID = :studentID;');
+            $this->db->bind(':studentID', $user_ID); 
+        }
+
+        $name = $this->db->single();
+
+        return $name;
+    }
+
+    public function getEmail($user_ID){
+        $this->db->query('SELECT email FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $email = $this->db->single();
+
+        return $email;
+    }
+
     public function acceptDonee($donee_ID) {
         $this->db->query('UPDATE user SET status = 1 WHERE userID = :userID');
         $this->db->bind(':userID', $donee_ID);
+
+        // $name = $this->getName($donee_ID)->name;
+        // $email = $this->getEmail($donee_ID)->email;
 
         $name = 'Suruthi';
         $email = 'suruthi0611@gmail.com';
