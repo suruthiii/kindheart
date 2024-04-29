@@ -849,7 +849,7 @@ class Users extends Controller{
                 $data['contactNo_err'] = 'Please enter contactNo';
             } 
             
-            else if(!preg_match('/^(0\d{9}|[1-9]\d{8}|\+94\d{7})$/', $data['contactNo'])) {
+            else if(!preg_match('/^(0\d{9}|[0-9]\d{8}|\+94\d{7})$/', $data['contactNo'])) {
                 $data['contactNo_err'] = 'Invalid contact number format';
             }
 

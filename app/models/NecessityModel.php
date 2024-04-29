@@ -441,6 +441,7 @@ class NecessityModel{
         return $result;
     }
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public function getPendingGoodsNecessities($necessityID){
         $this->db->query("SELECT n.necessityID, n.necessityName,n.necessityType, n.description, n.fulfillmentStatus,(p.requestedQuantity - p.receivedQuantity) AS quantity_due,p.requestedQuantity,p.receivedQuantity,p.itemCategory
             FROM necessity n 
@@ -464,6 +465,25 @@ class NecessityModel{
         $result = $this->db->single();
         return $result;
     }
+
+    public function compairrequestedAmountandrecievedAmount(){
+        $this->db->query("SELECT necessity.*, physicalgood.* FROM necessity JOIN physicalgood ON necessity.necessityID = physicalgood.goodNecessityID;");
+
+        $result = $this->db->resultSet();
+
+        foreach($result as $necessity){
+            $this->db->query("SELECT COUNT(*) as donationcount FROM gooddonation WHERE gooddonation.goodDonationID = :goodNecessityID");
+            $this->db->bind(':goodNecessityID', $necessity->goodNecessityID);
+            $donationCount = $this->db->single();
+
+
+            if($donationCount->donationcount >0){
+
+            }
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public function getAllPendingPhysicalGoods(){
         $this->db->query("SELECT n.necessityID, n.necessityName, n.description, (p.requestedQuantity - p.receivedQuantity) AS quantity FROM necessity n JOIN physicalgood p ON n.necessityID = p.goodNecessityID 
