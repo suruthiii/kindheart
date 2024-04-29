@@ -45,32 +45,99 @@ class donorModel{
         }
     }
 
-    public function getTotalDonationCount($user_id) {
-        // Prepare statement
-        $this->db->query('SELECT COUNT(*) AS total_donations FROM benefaction WHERE availabilityStatus = 2 AND user_id = :user_id
-                            UNION 
-                            SELECT COUNT(*) AS total_donations FROM gooddonation WHERE verificationStatus = 2 AND donorID = :donorID
-                            UNION 
-                            SELECT COUNT(*) AS total_donations FROM onetimedonation WHERE verificationStatus = 1 AND donorID = :donorID
-                            UNION 
-                            SELECT COUNT(*) AS total_donations FROM onetimedonation WHERE verificationStatus = 1 AND donorID = :donorID
-                            ');
+    public function getTotalGoodsDonationQuantity($userId) {
+        // Prepare statement to get total donated quantity
+        $this->db->query('SELECT SUM(total_quantity) AS total_goods_quantity
+            FROM (
+                SELECT SUM(donatedQuantity) AS total_quantity 
+                FROM benefaction
+                WHERE availabilityStatus = 2 AND donorID = :donorID
+                UNION ALL
+                SELECT SUM(quantity) AS total_quantity 
+                FROM gooddonation
+                WHERE verificationStatus = 2 AND donorID = :donorID
+            ) AS combined_quantities ');
     
         // Bind parameter
-        $this->db->bind(':userType', 'organization');
-        $this->db->bind(':userType', 'student');
+        $this->db->bind(':donorID', $userId);
+    
+        // Execute the query
+        $this->db->execute();
     
         // Fetch the result
         $result = $this->db->single();
     
         if ($result) {
-            // Return the total count of active donors
-            return $result->total_active_donees;
+            // Return the total donated quantity
+            return $result->total_goods_quantity;
         } else {
             // Return 0 or handle the error based on your application's requirements
             return 0;
         }
     }
+
+    public function getTotalMonetaryDonationQuantity($userId) {
+        // Prepare statement to get total donated quantity
+        $this->db->query('SELECT SUM(total_quantity) AS total_monetary_quantity
+            FROM (
+                SELECT SUM(amount) AS total_quantity 
+                FROM fund
+                WHERE verificationStatus = 2 AND donorID = :donorID
+                UNION ALL
+                SELECT SUM(amount) AS total_quantity 
+                FROM onetimedonation
+                WHERE verificationStatus = 2 AND donorID = :donorID  
+                -- UNION ALL
+                -- SELECT amount.slipCount  AS total_quantity 
+                -- FROM recurringdonation
+                -- WHERE verificationStatus = 2 AND donorID = :donorID 
+                -- UNION ALL
+                -- SELECT amount.slipCount  AS total_quantity 
+                -- FROM recurringdonation
+                -- WHERE verificationStatus = 2 AND donorID = :donorID 
+            ) AS combined_quantities ');
+    
+        // Bind parameter
+        $this->db->bind(':donorID', $userId);
+    
+        // Execute the query
+        $this->db->execute();
+    
+        // Fetch the result
+        $result = $this->db->single();
+    
+        if ($result) {
+            // Return the total donated quantity
+            return $result->total_monetary_quantity;
+        } else {
+            // Return 0 or handle the error based on your application's requirements
+            return 0;
+        }
+    }
+
+    public function getTotalHelpedDonees($userId) {
+        // Prepare statement to get total donated quantity
+        $this->db->query(' ');
+    
+        // Bind parameter
+        $this->db->bind(':donorID', $userId);
+    
+        // Execute the query
+        $this->db->execute();
+    
+        // Fetch the result
+        $result = $this->db->single();
+    
+        if ($result) {
+            // Return the total donated quantity
+            return $result->total_goods_quantity;
+        } else {
+            // Return 0 or handle the error based on your application's requirements
+            return 0;
+        }
+    }
+    
+    
     
 
     // public function getTotalMonetaryDonations($userId) {

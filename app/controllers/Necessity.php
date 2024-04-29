@@ -1847,5 +1847,30 @@ class Necessity extends Controller {
             }
         }
     }
+
+
+    // ----------------------Donor------------------
+
+    public function postedNessities(){
+   
+
+        // $benefactionID = $_GET['benefactionID'];
+
+        // $data = [
+        //     'title' => 'Home page',
+        //     'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
+           
+           
+        // ];
+
+        // $other_data = [
+        //     'notification_count' => $this->notificationModel->getNotificationCount(),
+        //     'notifications' => $this->notificationModel->viewNotifications(),
+ 
+        // ];
+
+        // $this->view('donor/postedNessities', $data, $other_data);
+        $this->view('donor/nessessities/postedNessities');
+    }
 }
 
