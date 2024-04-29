@@ -25,7 +25,7 @@ class Donor extends Controller {
             'title' => 'Welcome Back ' . $username,
             'active_donors' => $this->donorModel->getTotalActiveDonors(),
             'active_donees' => $this->donorModel->getTotalActiveDonees(),
-            'total_donations' => $this->donorModel->getTotalDonationCount(user_id),
+            'total_donations' => $this->donorModel->getTotalDonationCount($user_id),
             // 'total_physical_goods_donations' => $this->donorModel->getTotalPhysicalGoodsDonations($userId),
             // 'total_donated_projects' => $this->donorModel->getTotalDonatedProjects($userId),
             // 'total_helped_students' => $this->donorModel->getTotalHelpedStudents($userId),
