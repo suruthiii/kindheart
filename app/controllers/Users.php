@@ -284,7 +284,6 @@ class Users extends Controller{
             redirect('users/studentProfileCreation1');
         }
     }
-
     
     // Logout function
     public function logout(){
