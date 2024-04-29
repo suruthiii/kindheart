@@ -39,10 +39,6 @@
                             <td width="70%"><?php echo $data['scholarship_details']->amount ?></td>
                         </tr>
                         <tr class="necessity-data">
-                            <th width="30%">Start Date</th>
-                            <td width="70%"><?php echo $data['scholarship_details']->startDate ?></td>
-                        </tr>
-                        <tr class="necessity-data">
                             <th width="30%">Description</th>
                             <td width="70%"><?php echo $data['scholarship_details']->description ?></td>
                         </tr>

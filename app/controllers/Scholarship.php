@@ -443,6 +443,108 @@ class Scholarship extends Controller {
         }
 
     }
+  
+    public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
+        if($_SESSION['user_type'] == 'donor') {
+            redirect('pages/404');
+        }
+
+        else {
+            $donorType = $this->userModel->getDonorType($donor_ID);
+            
+            if($donorType == 'company'){
+            
+                $data = [
+                    'title' => 'Home Page',
+                    'scholarship_ID' => $scholarship_ID,
+                    'details' => $this->userModel->getDonorCom($donor_ID)
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/scholarship/viewDonorComProfile', $data, $other_data);
+            }
+
+            else if($donorType == 'individual') {
+                $data = [
+                    'title' => 'Home Page',
+                    'scholarship_ID' => $scholarship_ID,
+                    'details' => $this->userModel->getDonorInd($donor_ID)
+                ];
+
+                $other_data = [
+                    'notification_count' => $this->notificationModel->getNotificationCount(),
+                    'notifications' => $this->notificationModel->viewNotifications()
+                ];
+
+                $this->view($_SESSION['user_type'].'/scholarship/viewDonorIndProfile', $data, $other_data);
+            }
+
+            else {
+                die('Donor Type Not Found');
+            }
+        }
+    }
+
+
+
+
+
+
+    
+    //adding student requestst to the db(add applying scholarships)
+
+    public function addAppliedScholarship(){  
+        // die(print_r($_POST));
+
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+                $data = [
+                    'reason' => trim($_POST['reason']),
+                    'scholarshipID' => trim($_POST['scholarshipID']),
+                    'err' => ''
+                ];
+
+                // Make sure errors are empty
+                if (empty($data['err'])) {
+                    
+                
+                    // Add Data to DB
+                    if ($this->scholarshipModel->addAppliedScholarship($data)) {
+                        if($_SESSION['user_type'] == 'student') {
+                            redirect('student/scholarships');
+                        }
+                        else if ($_SESSION['user_type'] == 'organization') {
+                        }
+                        else {
+                            die('User Type Not Found');
+                        }
+                    } else {
+                        die('Something went wrong1');
+
+                    }
+                } else {
+                    // Load view with errors
+                    die(print_r($data));
+                }
+            }else{
+                die('incorrect method!');
+            }
+
+        }
+    }
+
+
+
+
 
 }
 
