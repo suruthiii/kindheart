@@ -825,6 +825,8 @@ class Users extends Controller{
         $data = [
             'contactNo' => '',
             'nic' => '',
+            'contactNo_err' => '',
+            'nic_err' => '',
         ];
 
         if(isset($_SESSION['contactNo'])){
@@ -839,30 +841,33 @@ class Users extends Controller{
             $data = [
                 'contactNo' => trim($_GET['contactNo']),
                 'nic' => trim($_GET['nic']),
+
+                'contactNo_err' => '',
+                'nic_err' => '',
             ];
 
             if (empty($data['contactNo'])){
-                $data['err'] = 'Please enter contactNo';
+                $data['contactNo_err'] = 'Please enter contactNo';
             } 
             
             else if(!preg_match('/^(0\d{9}|[1-9]\d{8}|\+94\d{7})$/', $data['contactNo'])) {
-                $data['err'] = 'Invalid contact number format';
+                $data['contactNo_err'] = 'Invalid contact number format';
             }
 
             if (empty($data['nic'])) {
-                $data['err'] = 'Please enter NIC';
+                $data['nic_err'] = 'Please enter NIC';
             } elseif (!preg_match('/^(?:[0-9]{9}[vVxX]|[0-9]{12})$/', $data['nic'])) {
-                $data['err'] = 'Invalid NIC format';
+                $data['nic_err'] = 'Invalid NIC format';
             }
 
-            if(empty($data['err'])){
+            if(empty($data['contactNo_err']) && empty($data['nic_err'])){
                 $_SESSION['contactNo'] = $data['contactNo'];
                 $_SESSION['nic'] = $data['nic'];
 
                 redirect('users/studentProfileCreation6');
             }
             else{
-                $this->view('users/studentRegistration/studentProfileCreation5', $data);
+                $this->view('users/studentRegistration/studentProfileCreation6', $data);
             }
         }
         $this->view('users/studentRegistration/studentProfileCreation6', $data);
