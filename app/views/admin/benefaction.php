@@ -12,7 +12,7 @@
         <div class="container">
             <h3>Benefactions</h3>
             <p style="margin-left: 10px">Last 30 days</p>
-            
+
             <div class="list">
                 <div class="list-title">
                     <h4>Pending</h4>
@@ -79,7 +79,9 @@
                             </div>
                         </a>
                     <?php }?>
-                </div>  
+                </div> 
+            
+            </div>    
 
             <div class="right-content">
                 <div class="right-cards">
