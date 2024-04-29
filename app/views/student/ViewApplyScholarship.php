@@ -30,75 +30,102 @@
                     <p>View the information about the scholarship</p>
                 </div>
 
-                <div class="scholarship-info">
-                    <table>
-                        <tr class="scholarship-data">
-                            <th>Title</th>
-                            <td><?php print_r($data['scholarship_details']->title); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Scholarship Amount</th>
-                            <td>LKR <?php print_r($data['scholarship_details']->amount); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Posted by</th>
-                            <td><?php print_r($data['scholarship_details']->username) ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Scholarship Starting Date</th>
-                            <td><?php print_r($data['scholarship_details']->startDate) ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Duration</th>
-                            <td><?php print_r($data['scholarship_details']->duration) ?> Month</td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Description</th>
-                            <td><?php print_r($data['scholarship_details']->description); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
-                            <th>Deadline</th>
-                            <td><?php print_r($data['scholarship_details']->deadline); ?></td>
-                        </tr>
-                        <tr class="scholarship-data">
+                <div class="scholarship-left-column">
+                    <div class="scholarship-info">
+                        <table>
+                            <tr class="scholarship-data">
+                                <th>Title</th>
+                                <td><?php print_r($data['scholarship_details']->title); ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Scholarship Amount</th>
+                                <td>LKR <?php print_r($data['scholarship_details']->amount); ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Posted by</th>
+                                <td><?php print_r($data['scholarship_details']->username) ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Scholarship Starting Date</th>
+                                <td><?php print_r($data['scholarship_details']->startDate) ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Duration</th>
+                                <td><?php print_r($data['scholarship_details']->duration) ?> Month</td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Description</th>
+                                <td><?php print_r($data['scholarship_details']->description); ?></td>
+                            </tr>
+                            <tr class="scholarship-data">
+                                <th>Deadline</th>
+                                <td><?php print_r($data['scholarship_details']->deadline); ?></td>
+                            </tr>
+                            <tr class="benefaction-data">
                                     <th>status</th>
                                     <td><?php 
                                         $status = $data['scholarship_details']->availabilityStatus;
+                                        $Acceptedstatus = $data['scholarship_details']->acceptanceStatus;
+                                        $completedStatus = $data['scholarship_details']->verificationStatus;
 
                                         // Echo different divs based on the status
-                                        if ($status === 0) {
+                                        
+                                        if ($Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
-                                        } elseif ($status === 1) {
-                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
-                                        } elseif ($status === 2) {
-                                            echo '<div class="status_rejected"><p>Completed</p></div>';
-                                        } else {
-                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
-                                        }
-                                        ?></td>
-                                </tr>
-                        <tr class="scholarship-data">
-                                  
-                                    <td><?php 
-                                        $status = $data['scholarship_details']->availabilityStatus;
 
-                                        // Echo different divs based on the status
-                                        
-                                        if ($status === 1) {
-                                            echo '<div class="status_accepted">
-                                                        <div class="button-container">
-                                                            <button>send acknowledgement</button>
-                                                            <button>did not recieved</button>
-                                                        </div>
-                                                    </div>';
+                                        } elseif ($Acceptedstatus === 1  ) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 0) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 1) {
+                                            echo '<div class="status_rejected"><p>Donated</p></div>';
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 2) {
+                                            echo '<div class="status_rejected"><p>Completed</p></div>';
+
+                                        } elseif ($Acceptedstatus === 1 && $completedStatus === 3) {
+                                            echo '<div class="status_rejected"><p>Complained</p></div>';
+
                                         } else {
-                                            echo '<div class="status_rejected"></div>';
+                                            echo '<div class="status_unknown"><p>Rejected</p></div>';
                                         }
-                                        
+                                      
                                         ?></td>
                                 </tr>
-                       
-                    </table>
+                                </table>
+
+                                <?php 
+
+                                    $status = $data['scholarship_details']->availabilityStatus;
+                                    $Acceptedstatus = $data['scholarship_details']->acceptanceStatus;
+                                    $completedStatus = $data['scholarship_details']->verificationStatus;
+
+                                    // Echo different divs based on the status
+
+                                    if ($Acceptedstatus === 2 && $completedStatus === 1) {
+                                    
+                                        echo '<div class="ack-buttons">
+                                                    <form style="padding-right:10px;" action="'.URLROOT.'/student/sendAknowledgement" method="GET" class="btn" >
+                                                        <input type="text" name="scholarshipID" id="scholarshipID" hidden value="' . $data["scholarship_details"]->scholarshipID . '" />
+                                                        <input type="text" name="doneeID" id="doneeID" hidden value="' . $data["scholarship_details"]->studentID . '" />
+                                                        <div class = "my-button"> <input type="submit" class="button-container" value="Recieved"> </div>
+                                                    </form>
+
+                                                    <form action="'.URLROOT.'/student/sendBenefactionComplain" method="GET" class="btn" >
+                                                    <input type="text" name="scholarshipID" id="scholarshipID" hidden value="' . $data["scholarship_details"]->scholarshipID. '" />
+                                                    <input type="text" name="doneeID" id="doneeID" hidden value="' . $data["scholarship_details"]->studentID . '" />
+                                                    <div class = "my-button"> <input type="submit" class="button-container" value="Not Recieved"> </div>
+                                                </form>
+                                                </div>';
+                                    } else {
+                                        echo '<div class="status_rejected"></div>';
+                                    }
+                                    ?>
+                        
+                      
+                    </div>
                 </div>
 
 
@@ -123,18 +150,33 @@
                                 </div>
                                 <div class="right">
                                     
-                                        <p><?php 
-                                        $status = $item->availabilityStatus;
+                                <p><?php 
+                                        $status = $item->availabilityStatus ;
+                                        $Acceptedstatus = $item->acceptanceStatus  ;
+                                        $completedStatus = $item->verificationStatus  ;
+    
 
                                         // Echo different divs based on the status
-                                        if ($status === 0) {
+                                        if ($Acceptedstatus === 0) {
                                             echo '<div class="status_pending"><p>Pending</p></div>';
-                                        } elseif ($status === 1) {
+
+                                        } elseif ($Acceptedstatus === 1  ) {
                                             echo '<div class="status_accepted"><p>Accepted</p></div>';
-                                        } elseif ($status === 2) {
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 0) {
+                                            echo '<div class="status_accepted"><p>Accepted</p></div>';
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 1) {
+                                            echo '<div class="status_rejected"><p>Donated</p></div>';
+
+                                        } elseif ($Acceptedstatus === 2 && $completedStatus === 2) {
                                             echo '<div class="status_rejected"><p>Completed</p></div>';
+
+                                        } elseif ($Acceptedstatus === 1 && $completedStatus === 3) {
+                                            echo '<div class="status_rejected"><p>Complained</p></div>';
+
                                         } else {
-                                            echo '<div class="status_unknown"><p>Unknown status</p></div>';
+                                            echo '<div class="status_unknown"><p>Rejected</p></div>';
                                         }
                                         ?></p>
                                                                   
