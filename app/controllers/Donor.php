@@ -15,14 +15,18 @@ class Donor extends Controller {
             redirect('users/login'); // Redirect to login page if not logged in
         }
 
+
         // Get donor-specific data from the model
-        // $userId = $_SESSION['user_id'];
-        $userId = '5';
-        // $username = $_SESSION['username'];
-        $username = 'donor1';
+        $userId = $_SESSION['user_id'];
+        // $userId = '5';
+        // die(print_r($userId));
+        $userName = $_SESSION['user_name'];
+                // die(print_r($userName));
+        // $username = 'donor1';
+        // $tableData = $this->donorModel->getTotalHelpedDonees($userId);
 
         $data = [
-            'title' => 'Welcome Back ' . $username,
+            'title' => 'Welcome Back ' . $userName,
             'active_donors' => $this->donorModel->getTotalActiveDonors(),
             'active_donees' => $this->donorModel->getTotalActiveDonees(),
             'total_goods_quantity' => $this->donorModel->getTotalGoodsDonationQuantity($userId),
@@ -37,6 +41,7 @@ class Donor extends Controller {
             'notifications' => $this->notificationModel->viewNotifications()
         ];
     
+        // die(print_r($data));
         // Load the view with data
         $this->view('donor/index', $data, $other_data);
     }
