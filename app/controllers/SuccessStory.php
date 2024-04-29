@@ -119,9 +119,13 @@ class SuccessStory extends Controller {
                 'title' => 'Home page',
                 'stories' => $this->successStoryModel->getUserSuccessStories()
             ];
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
 
             if ($_SESSION['user_type'] == 'student') {
-                $this->view('student/viewSuccessStory', $data);
+                $this->view('student/viewSuccessStory', $data,$other_data );
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
@@ -145,9 +149,13 @@ class SuccessStory extends Controller {
                 'title' => 'Home page',
                 'stories' => $this->successStoryModel->getStoryEditData($storyID)
             ];
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
 
             if ($_SESSION['user_type'] == 'student') {
-                $this->view('student/viewStory', $data);
+                $this->view('student/viewStory', $data, $other_data );
             }
             
             else if ($_SESSION['user_type'] == 'organization') {
@@ -174,9 +182,14 @@ class SuccessStory extends Controller {
                 'title' => 'Home page',
                 'storyData' => $this->successStoryModel->getStoryEditData($storyID)
             ];
+            $other_data = [
+                'notification_count' => $this->notificationModel->getNotificationCount(),
+                'notifications' => $this->notificationModel->viewNotifications()
+            ];
+          
             
             if ($_SESSION['user_type'] == 'student') {
-                $this->view('student/editStory', $data);
+                $this->view('student/editStory', $data, $other_data);
             }
             
             else if ($_SESSION['user_type'] == 'organization') {

@@ -121,7 +121,17 @@
                                             <td><?php print_r($data['donorDetailsOrg']->address); ?></td>
                                         </tr>
   
-                                    </table>          
+                                    </table>  
+                                    <div class="btn-container">
+
+                                    <div class = "application-form-data">
+
+                                            <form class="add-form" action="<?php echo URLROOT ?>/student/complainDonor" method="POST" class="btn" >
+                                                <input type="donorID" name="donorID" id="donorID" hidden value="<?php echo $data['donorDetailsOrg']->donorID?>" />
+                                                <input type="submit" class="btn1" value="Complain"> 
+                                            </form>
+                               </div>
+                                    </div>        
                                 </div>
                             <?php else:  ?>
                                 <div class="user-profile-right-side-bar-all-user-profiles-inner-image">
@@ -142,10 +152,20 @@
                                             <td><?php print_r($data['donorDetailsInd']->email); ?> </td>
                                         </tr>
 
-                                        
-                                  
                 
-                                    </table>          
+                                    </table> 
+                                    <div class="btn-container">
+
+                                    <div class = "application-form-data">
+
+                                        <form class="add-form" action="<?php echo URLROOT ?>/student/complainDonor" method="POST" class="btn" >
+                                            <input type="donorID" name="donorID" id="donorID" hidden value="<?php echo $data['donorDetailsInd']->donorID?>" />
+                                            <input type="submit" class="btn1" value="Complain"> 
+                                        </form>
+
+                                    </div>
+
+                                    </div>             
                                 </div>
                             <?php endif; ?>
                             
