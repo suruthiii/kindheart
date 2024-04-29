@@ -22,7 +22,31 @@
 
                 <div class="posted-nessesity-container">    
                 <?php foreach ($data['necessities'] as $item) { ?>
-                    <div class="card">
+                    <div class="posted-nessesity-container-card">
+
+                        <div class="posted-nessesity-container-card-inner"> 
+                            <div class="posted-nessesity-container-card-inner-left">
+                                <!-- <h6><?php echo $item->duration; ?> months</h6> -->
+                                <h2><?php echo $item->amount; ?> LKR</h2>
+                            </div>
+                            <div class="posted-nessesity-container-card-inner-right"> 
+                                <div class="posted-nessesity-container-card-inner-right-text">
+                                    <!-- <h6><?php echo $item->postedDate; ?></h6> -->
+                                    <h2><?php echo $item->title; ?></h2>
+                                </div>
+                                <div class="posted-nessesity-container-card-inner-right-button">
+                                    <form action="<?php echo URLROOT ?>/necessity/postedNessities" method="GET" >
+                                        <input type="text" name="necessityID" id="necessityID" hidden value="<?php echo $item->scholarshipID?>" />
+                                
+                                        <?php if ($item->studentID == $_SESSION['user_id']){?>
+                                            <h4> Already Applied</h4>
+                                        <?php } else{?>
+                                            <button type="submit" > Apply</button>
+                                        <?php }?>
+                                    </form>
+                                </div>     
+                            </div>
+                        </div>
 
                         <div class="course"> 
                             <div class="preview">
@@ -45,7 +69,6 @@
                                             <button type="submit" > Apply</button>
                                         <?php }?>
                                     </form>
-
                                 </div>     
                             </div>
                         </div>
