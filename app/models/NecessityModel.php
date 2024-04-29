@@ -1077,4 +1077,35 @@ class NecessityModel{
 
         return $donorID->donorID;
     }
+
+
+
+    // -----------------------Donor---------------------------
+    public function getNecessitiesForDonor(){
+        // Prepare statement
+        $this->db->query('SELECT n.necessityID , n.necessityName, n.necessityType, n.fulfillmentStatus, n.description, n.doneeID  
+                            FROM necessity n
+                            JOIN user u ON u.userID = n.doneeID 
+                            WHERE availabilityStatus = 0;');
+
+        $result = $this->db->resultSet();
+        
+        return array_reverse($result); 
+    }
+
+
+
+    // public function getNecessitiesForDonor($necessityID) {
+    //     // Prepare statement
+    //     $this->db->query('SELECT * FROM necessity WHERE necessityID = :necessityID');
+
+    //     //Bind
+    //     $this->db->bind(':necessityID', $necessityID);
+    
+    //     // Execute
+    //     $row = $this->db->single();
+    
+    //     // Fetch result set
+    //     return $row;
+    // }
 }
