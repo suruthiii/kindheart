@@ -680,8 +680,8 @@ class Users extends Controller{
             'careRealat' => '',
             'careType_err' => '',
             'careName_err' => '',
-            'careOccu_err' => '',
-            'careRealat_err' => ''
+            'careOccu_err' => ''
+            // 'careRealat_err' => ''
         ];
 
         if(isset($_SESSION['careType'])){
@@ -700,17 +700,19 @@ class Users extends Controller{
             $data['careRealat'] = $_SESSION['careRealat'];
         }
 
-        if(isset($_GET['careType']) && isset($_GET['careName']) && isset($_GET['careOccu']) && isset($_GET['careRealat'])){
+        if(isset($_GET['careType']) && isset($_GET['careName']) && isset($_GET['careOccu'])){
             $data = [
                 'careType' => trim($_GET['careType']),
                 'careName' => trim($_GET['careName']),
                 'careOccu' => trim($_GET['careOccu']),
-                'careRealat' => trim($_GET['careRealat']),
                 'careType_err' => '',
                 'careName_err' => '',
-                'careOccu_err' => '',
-                'careRealat_err' => ''
+                'careOccu_err' => ''
+                // 'careRealat_err' => ''
             ];
+
+            // Check if careRealat is provided, otherwise set it to null
+            $data['careRealat'] = isset($_GET['careRealat']) ? trim($_GET['careRealat']) : null;
 
             if(empty($data['careType'])){
                 $data['careType_err'] = 'Please select caregiver type';
@@ -724,11 +726,11 @@ class Users extends Controller{
                 $data['careOccu_err'] = 'Please enter caregiver occupation';
             }
 
-            if(empty($data['careRealat'])){
-                $data['careRealat_err'] = 'Please enter relationship to the student';
-            }
+            // if(empty($data['careRealat'])){
+            //     $data['careRealat_err'] = 'Please enter relationship to the student';
+            // }
 
-            if(empty($data['careType_err']) && empty($data['careName_err']) && empty($data['careOccu_err']) && empty($data['careRealat_err'])){
+            if(empty($data['careType_err']) && empty($data['careName_err']) && empty($data['careOccu_err'])){
                 $_SESSION['careType'] = $data['careType'];
                 $_SESSION['careName'] = $data['careName'];
                 $_SESSION['careOccu'] = $data['careOccu'];

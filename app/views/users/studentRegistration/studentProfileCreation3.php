@@ -59,7 +59,7 @@
                             <label for="careRealat">Relationship to the Student</label>
                             <div class="studentProfileCreation3-inner-container-form-container-inputfeilds-feild1">
                                 <input class="inputt1" type="text" name="careRealat" id="careRealat" value="<?php echo $data['careRealat']?>">
-                                <p class="error-message" for="careRealat"><?php echo $data['careRealat_err']?></p>
+                                <!-- <p class="error-message" for="careRealat"><?php echo $data['careRealat_err']?></p> -->
                             </div>
 
                         </div>
