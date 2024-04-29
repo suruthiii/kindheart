@@ -6,6 +6,7 @@ class ScholarshipModel{
         $this->db = new Database();
     }
 
+    /*----------------------Admin and Super Admin-----------------------------*/
     public function getAllPendingScholarships() {
         $this->db->query('SELECT scholarshipID, title, amount, description FROM scholarship WHERE availabilityStatus = 0;');
 
@@ -91,6 +92,101 @@ class ScholarshipModel{
         return $donorID;
     }
 
+    public function restrictScholarship($scholarship_ID) {
+        $this->db->query('UPDATE scholarship SET availabilityStatus = 5 WHERE scholarshipID = :scholarshipID;');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function getUserType($user_ID){
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $userType = $this->db->single()->userType;
+    
+        if ($userType == 'donor') {
+            $this->db->query('SELECT donorType FROM donor WHERE donorID = :donorID;');
+            $this->db->bind(':donorID', $user_ID);
+
+            $userType =  $this->db->single()->donorType;
+        }
+
+        return $userType;
+    }
+
+    public function getName($user_ID){
+        $userType = $this->getUserType($user_ID);
+
+        if ($userType == 'company'){
+            $this->db->query('SELECT companyName AS name FROM company WHERE companyID = :companyID;');
+            $this->db->bind(':companyID', $user_ID);
+        }
+
+        else if ($userType == 'individual'){
+            $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM individual WHERE individualID = :individualID;');
+            $this->db->bind(':individualID', $user_ID);
+        }
+
+        else if ($userType == 'organization'){
+            $this->db->query('SELECT orgName AS name FROM organization WHERE orgID = :orgID;');
+            $this->db->bind(':orgID', $user_ID);
+        }
+
+        else if ($userType == 'student'){
+            $this->db->query('SELECT CONCAT(fName, " ", lName) AS name FROM student WHERE studentID = :studentID;');
+            $this->db->bind(':studentID', $user_ID); 
+        }
+
+        $name = $this->db->single();
+
+        return $name;
+    }
+
+    public function getDonationCardDetails($scholarship_ID) {
+        $this->db->query('SELECT * FROM student_scholarship st LEFT JOIN scholarship s ON st.scholarshipID = s.scholarshipID WHERE st.scholarshipID = :scholarshipID');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+
+        $donations = $this->db->resultSet();
+
+        foreach($donations as $item) {
+            $item->studentName = $this->getName($item->studentID)->name;
+        }
+        
+        return $donations;
+    }
+
+    public function getDonationDetails($scholarship_ID, $student_ID) {
+        $this->db->query('SELECT * FROM student_scholarship WHERE scholarshipID = :scholarshipID AND studentID = :studentID');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+        $this->db->bind(':studentID', $student_ID);
+
+        $donation = $this->db->single();
+
+        $donation->studentName = $this->getName($donation->studentID)->name;
+
+        return $donation;
+    }
+
+    public function verifySlip($scholarship_ID, $student_ID) {
+        $this->db->query('UPDATE student_scholarship SET verificationStatus = 2 WHERE scholarshipID = :scholarshipID AND studentID = :studentID;');
+        $this->db->bind(':scholarshipID', $scholarship_ID);
+        $this->db->bind(':studentID', $student_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 
     // ----------------------Donor Controllers------------------
 
