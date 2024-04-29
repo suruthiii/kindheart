@@ -73,7 +73,7 @@
                     <tr class="necessity-data">
                         <th width="30%">School/ University Letter</th>
                         <td width="70%">
-                            <img src="<?php echo URLROOT ?>/nic/<?php print_r($data['organization_details']->letterImage); ?>" class="user-img" alt="">
+                            <img src="<?php echo URLROOT ?>/registrationPhotos/<?php print_r($data['organization_details']->letterImage); ?>" class="user-img" alt="">
                         </td>
                     </tr>
                     <tr class="necessity-data">
