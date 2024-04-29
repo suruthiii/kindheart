@@ -19,45 +19,45 @@
                 </div>
                 <div class="studentProfileCreation1-inner-container-caption">
                     <h1>Creating Profile</h1>
-                    <span>1 of 6</span> 
+                    <span>1 of 7</span> 
                 </div>
                 <div class="studentProfileCreation1-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation2" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation1" method="GET">
                         <div class="studentProfileCreation1-inner-container-form-container-inputfeilds">   
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal">
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                     <label for="firstName">First Name</label>
                                     <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
-                                        <input class="inputt2" type="text" name="firstName" value="">
-                                        <span class="error-message"></span>
+                                        <input class="inputt2" type="text" name="firstName" value="<?php echo $data['firstName']?>" required>
+                                        <p class="error-message" for="password"><?php echo $data['firstName_err']?></p>
                                     </div>
                                 </div>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                     <label for="lastname">Last Name</label>
                                     <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
-                                        <input class="inputt2" type="text" name="lastName" value="">
-                                        <span class="error-message"></span>
+                                        <input class="inputt2" type="text" name="lastName" value="<?php echo $data['lastName']?>" required>
+                                        <p class="error-message" for="password"><?php echo $data['lastName_err']?></p>
                                     </div>
                                 </div>
                             </div>   
 
                             <label for="address">Address</label>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="address" value="" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="address" value="<?php echo $data['address']?>"required>
+                                <p class="error-message" for="password"><?php echo $data['address_err']?></p>
                             </div>
 
                             <label for="dob">Date Of Birth</label>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="date" name="dob" value="" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="date" name="dob" value="<?php echo $data['dob']?>" required>
+                                <p class="error-message" for="password"><?php echo $data['dob_err']?></p>
                             </div>
 
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal">
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                 <label for="gender">Gender</label>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox">
-                                    <select id="gender" name="gender" value="">
+                                    <select id="gender" name="gender" value="<?php echo $data['gender']?>">
                                         <option value="0" >
                                             Select Gender
                                         </option>
@@ -71,13 +71,13 @@
                                             Other
                                         </option>
                                     </select>  
-                                    <span class="error-message" for="verificationCode"></span>
                                 </div>
+                                <p class="error-message" for="password"><?php echo $data['gender_err']?></p>
                             </div>
                             <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-inputgroup">
                                 <label for="studentType">Student Type</label>
                                 <div class="studentProfileCreation1-inner-container-form-container-inputfeilds-2-input-horizontal-selectbox">
-                                    <select id="studentType" name="studentType" value="">
+                                    <select id="studentType" name="studentType" value="<?php echo $data['studentType']?>">
                                         <option value="0" >
                                             Select Student Type
                                         </option>
@@ -88,9 +88,8 @@
                                             University Student
                                         </option>
                                     </select>  
-                                    <span class="error-message" for="verificationCode"></span>
-                            </div>
-
+                                </div>                                
+                                <p class="error-message" for="password"><?php echo $data['studentType_err']?></p>
                             </div>
 
                         </div>

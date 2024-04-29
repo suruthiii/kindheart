@@ -443,56 +443,6 @@ class Scholarship extends Controller {
         }
 
     }
-
-    public function deleteScholarships() {
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['scholarshipID'])) {
-                $scholarshipID = $_POST['scholarshipID'];
-                
-                // Call model method to delete scholarship
-                if ($this->scholarshipModel->deleteScholarship($scholarshipID)) {
-                    // Deletion successful, redirect or reload data
-
-                    // Fetch updated scholarships data
-                    $data = [
-                        'pendingScholarship' => $this->scholarshipModel->getPendingScholarship(),
-
-                        'onProgressScholarship' => $this->scholarshipModel->getOnProgressScholarship(),
-                        
-                        'completedScholarship' => $this->scholarshipModel->getCompletedScholarship()
-                    ];
-
-                    $other_data = [
-                        'notification_count' => $this->notificationModel->getNotificationCount(),
-                        'notifications' => $this->notificationModel->viewNotifications()
-                    ];
-
-                    // Pass the updated data to the view
-                    $this->view('donor/postedScholarships', $data, $other_data);
-                } else {
-                    // Handle deletion failure (e.g., show error message)
-                    die('Failed to delete Scholarship.');
-                }
-            }
-        }
-        
-    }
-
-    //     $data = [
-    //         'title' => 'View Scholarship Application',
-    //         'ScholarshipApplication_details' => $this->scholarshipModel->getScholarshipApplicationDetails($scholarshipID, $doneeID)
-    //     ];
-
-    //     $other_data = [
-    //         'notification_count' => $this->notificationModel->getNotificationCount(),
-    //         'notifications' => $this->notificationModel->viewNotifications()
-    //     ];
-
-    //     // die(print_r($data['benefactionRequest_details']));
-
-    //     $this->view('donor/viewScholarshipApplication', $data, $other_data);
-    // }    
   
     public function viewDonorProfile($scholarship_ID = null, $donor_ID = null) {
         if($_SESSION['user_type'] == 'donor') {
@@ -591,10 +541,6 @@ class Scholarship extends Controller {
 
         }
     }
-
-
-
-
 
 }
 

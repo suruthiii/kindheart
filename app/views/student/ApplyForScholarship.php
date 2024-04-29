@@ -29,7 +29,7 @@
                     <h3>View Scholarship</h3>
                     <p>View the information about the scholarship</p>
                 </div>
-
+                <div class="scholarship-left-column">
                 <div class="scholarship-info">
                     <table>
                         <tr class="scholarship-data">
@@ -63,6 +63,7 @@
                        
                     </table>
                 </div>
+</div>
 
 
             </div>

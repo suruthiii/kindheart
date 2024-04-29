@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Forget Password</title>
+    <title>Student Registration</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registerAndLogin.css" />
+    <link rel="stylesheet" href="<?php echo URLROOT?>/css/registration_Login.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="image">
-            <img src="<?php echo URLROOT?>/img/setps.jpg" alt="Set Password" id="registerAndLogin">
+            <img src="<?php echo URLROOT?>/img/welcom.jpg" alt="Welcome_Image" id="registerAndLogin">
         </div>
-        <div class="forgetPsw-formc shared-formc">
-            <div class="forgetPsw-formce shared-formce">
-                <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
-            
-                <h1>Forgot Password?</h1>
-                <span style="color: rgb(146, 141, 141);">Reset your password</span>     
-                <div class="forgetPsw-text2 shared-text shared-label shared-button">
-                    <form action="<?php echo URLROOT ?>/users/passwordResetSuccessful" method="GET">
-                        <div class="forgetPsw-input-field shared-input shared-margin">
-                            <label for="psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Enter Password</label><br><br>
-                            <input class="inputt" spellcheck="false" type="password" name="psw" id="password" ><br><br>
-                            <span id="spassword-error"></span><br>
+        <div class="forgetPassword2-container">
+            <div class="forgetPassword2-inner-container">
+                <div class="forgetPassword2-inner-container-logo">
+                    <img src="<?php echo URLROOT?>/img/logo.jpg" alt="Logo_Image" id="logo">
+                </div>
+                <div class="forgetPassword2-inner-container-caption">
+                    <h1>Forget Password ?</h1>
+                    <span>Setting up new password</span> 
+                </div>
+                <div class="forgetPassword2-inner-container-form-container">
+                    <form action="<?php echo URLROOT ?>/users/forgetPassword2" method="GET">
+                        <div class="forgetPassword2-inner-container-form-container-inputfeilds">
 
-                            <label for="conf-psw" style="color: rgb(146, 141, 141); margin-top: 30px !important;">Confirm New Password</label><br><br>
-                            <input class="inputt" spellcheck="false"  type="password" name="conf-psw" id="cpassword" ><br><br>
-                            <span id="password-error"></span><br>
+                            <label for="password">Enter Password</label>
+                            <div class="forgetPassword2-inner-container-form-container-inputfeilds-feild1">
+                                <input class="forgetPassword2-input" type="password" name="password" id="password" value="<?php echo $data['password']?>" required>
+                                <p class="error-message" for="password"><?php echo $data['password_err']?></p>
+                            </div>
+
+                            <label for="confirmPassword">Confirm Password</label>
+                            <div class="forgetPassword2-inner-container-form-container-inputfeilds-feild1">
+                                <input class="forgetPassword2-input" type="password" name="confirmPassword" id="confirmPassword" value="" required>                                
+                                <p class="error-message" for="confirmPassword"><?php echo $data['confirmPassword_err']?></p>
+                            </div>
+
                         </div>
-                            <button type="submit" id="setPassword">Reset Password</button>
+
+                        <div class="forgetPassword2-inner-container-form-container-buttons">
+                            <button>Set Password</button>
+                        </div>
                     </form>
-                </div>               
-            </div>  
+                </div>             
+            </div>            
         </div>
     </div>
 </body>

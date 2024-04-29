@@ -52,7 +52,7 @@
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Donatated Amount</th>
-                                <td><?php print_r($data['benefactionRequest_details'][0]->donatedQuantity) ?></td>
+                                <td><?php print_r($data['benefactionRequest_details'][0]->receivedQuantity) ?></td>
                             </tr>
                             <tr class="benefactionRequest-data">
                                 <th>Admin Verification Status</th>

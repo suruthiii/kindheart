@@ -19,10 +19,10 @@
                 </div>
                 <div class="studentProfileCreation4-inner-container-caption">
                     <h1>Creating Profile</h1>
-                    <span>4 of 6</span> 
+                    <span>7 of 7</span> 
                 </div>
                 <div class="studentProfileCreation4-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation5" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation7" method="POST" enctype="multipart/form-data">
                         <div class="studentProfileCreation4-inner-container-form-container-inputfeilds">   
                             <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal">
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1">
@@ -31,13 +31,15 @@
                                         <p>Upload a Photo</p>
                                         <input type="file" id="letterimage1" name="letterimage1" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                     </label> 
+                                    <span>Upload GS Certificate</span>
                                 </div>
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input2">
-                                    <label>GS Certificate</label>
+                                    <label>University/School Letter</label>
                                     <label class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1-letterbox">
                                         <p>Upload a Photo</p>
                                         <input type="file" id="letterimage2" name="letterimage2" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                     </label> 
+                                    <span>Upload a letter confirming your enrolment from your University/ school.</span>
                                 </div>
                             </div>  
 
@@ -48,13 +50,14 @@
                                         <p>Upload a Photo</p>
                                         <input type="file" id="letterimage3" name="letterimage3" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
                                     </label> 
+                                    
                                 </div>
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input4">
                                     <label>NIC - back</label>
                                     <label class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1-letterbox">
                                         <p>Upload a Photo</p>
                                         <input type="file" id="letterimage4" name="letterimage4" accept="image/png, image/jpeg, image/jpg" onchange="handleImageType(this)" style="display:none;" />
-                                    </label> 
+                                    </label>
                                 </div>
                             </div>  
                             <div class="studentProfileCreation4-inner-container-form-container-buttons">

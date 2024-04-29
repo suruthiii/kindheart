@@ -19,28 +19,28 @@
                 </div>
                 <div class="studentProfileCreation2-inner-container-caption">
                     <h1>Creating Profile</h1>
-                    <span>2 of 6</span> 
+                    <span>2 of 7</span> 
                 </div>
                 <div class="studentProfileCreation2-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation3" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation2" method="GET">
                         <div class="studentProfileCreation2-inner-container-form-container-inputfeilds">   
 
                             <label for="orgName">Name of the University / School</label>
                             <div class="studentProfileCreation2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="orgName" value="" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="orgName" value="<?php echo $data['orgName']?>" required>
+                                <p class="error-message" for="orgName"><?php echo $data['orgName_err']?></p>
                             </div>
 
                             <label for="acaYear">Acadamic year/ Grade</label>
                             <div class="studentProfileCreation2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="acaYear" value="" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="acaYear" value="<?php echo $data['acaYear']?>" required>
+                                <p class="error-message" for="acaYear"><?php echo $data['acaYear_err']?></p>
                             </div>
 
                             <label for="schol">Mention Currently receiving scholarships(Use Commas to break)</label>
                             <div class="studentProfileCreation2-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="schol" value="" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="schol" value="<?php echo $data['schol']?>" required>
+                                <p class="error-message" for="schol"><?php echo $data['schol_err']?></p>
                             </div>
 
                         </div>

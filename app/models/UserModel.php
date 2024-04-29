@@ -13,9 +13,10 @@ class UserModel{
 
     public function __construct(){
         $this->db = new Database();
+        $this->mail = new PHPMailer(true);
     }
 
-    public function sendEmail($email, $name, $subject, $message){
+    public function sendEmail($email, $receiverName, $subject, $message, $senderName){
         $this->mail->isSMTP();                             //Send using SMTP
         $this->mail->Host = 'smtp.gmail.com';              //Set the SMTP server to send through
         $this->mail->SMTPAuth = true;                      //Enable SMTP authentication
@@ -24,12 +25,12 @@ class UserModel{
         $this->mail->Port = 587;                           //TCP port to connect to; use 587 if you have set SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS
 
         //Recipients
-        $this->mail->setFrom('kindheart.donations.help@gmail.com', $subject);
-        $this->mail->addAddress($email, $name);            //Add a recipient
+        $this->mail->setFrom('kindheart.donations.help@gmail.com', $senderName); // Sender 
+        $this->mail->addAddress($email, $receiverName);            //Add a recipient
 
         //Content
         $this->mail->isHTML(true);                     //Set email format to HTML
-        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+        $this->mail->Subject = $subject;
         $this->mail->Body = $message;
         $this->mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
@@ -38,7 +39,7 @@ class UserModel{
 
     // Account creation
     public function accountCreation(){
-        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, 0, 0)');
+        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, 2, 0)');
 
         // Bind values
         $this->db->bind(':username', $_SESSION['username']);
@@ -56,25 +57,67 @@ class UserModel{
     }
 
     // Register user
-    public function register($data){
+    public function studentRegister(){
+        $result = true;
         // Prepare statement
-        $this->db->query('INSERT INTO user (username, email, password, userType, status, banCount) VALUES (:username, :email, :password, :userType, :status, 0)');
+        $this->db->query('INSERT INTO donee (doneeID, phoneNumber, phoneNumberVisibility, doneeType, branchName, bankName, accNumber, accountHoldersName, letterImage, address, addressVisibility, adminID) VALUES (:doneeID, :phoneNumber, :phoneNumberVisibility, :doneeType, :branchName, :bankName, :accNumber, :accountHoldersName, :letterImage, :address, :addressVisibility, 0)');
 
         // Bind values
-        $this->db->bind(':username', $data['username']);
-        $this->db->bind(':email', $data['email']);
-        $this->db->bind(':password', $data['password']);
-        $this->db->bind(':userType', $data['userType']);
+        $this->db->bind(':doneeID', $_SESSION['user_id']);
+        $this->db->bind(':phoneNumber', $_SESSION['contactNo']);
+        $this->db->bind(':phoneNumberVisibility', $_SESSION['remember4']);
+        $this->db->bind(':doneeType', "student");
+        $this->db->bind(':branchName', $_SESSION['branchName']);
+        $this->db->bind(':bankName', $_SESSION['bankName']);
+        $this->db->bind(':accNumber', $_SESSION['accNumber']);
+        $this->db->bind(':accountHoldersName', $_SESSION['accHolderName']);
+        $this->db->bind(':letterImage', $_SESSION['letterimage2']);
+        $this->db->bind(':address', $_SESSION['address']);
+        $this->db->bind(':addressVisibility', $_SESSION['remember3']);
 
-        if($data['userType'] == 'admin'){
-            $this->db->bind(':status', 1);
-        }
-        else{
-            $this->db->bind(':status', 0);
-        }
+        $result = $result & $this->db->execute();
+
+        // Prepare statement
+        $this->db->query('INSERT INTO student (studentID, fName, lName, gender, dateOfBirth, nicNumber, institutionName, institutionNameVisibility, studentType, caregiverName, caregiverNameVisibility, caregiverType, caregiverTypeVisibility, caregiverRelationship, caregiverRelationshipVisibility, caregiverOccupation, caregiverOccupationVisibility, nicFrontImage, nicBackImage, gsCertificateImage, receivingScholarships, studyingYear, studyingYearVisibility) VALUES (:studentID , :fName, :lName, :gender, :dateOfBirth, :nicNumber, :institutionName, :institutionNameVisibility, :studentType, :caregiverName, :caregiverNameVisibility, :caregiverType, :caregiverTypeVisibility, :caregiverRelationship, :caregiverRelationshipVisibility, :caregiverOccupation, :caregiverOccupationVisibility, :nicFrontImage, :nicBackImage, :gsCertificateImage, :receivingScholarships, :studyingYear, :studyingYearVisibility)');
+
+        // Bind values
+        $this->db->bind(':studentID', $_SESSION['user_id']);
+        $this->db->bind(':fName', $_SESSION['firstName']);
+        $this->db->bind(':lName', $_SESSION['lastName']);
+        $this->db->bind(':gender', $_SESSION['gender']);
+        $this->db->bind(':dateOfBirth', $_SESSION['dob']);
+        $this->db->bind(':nicNumber', $_SESSION['nic']);
+        $this->db->bind(':institutionName', $_SESSION['orgName']);
+        $this->db->bind(':institutionNameVisibility', $_SESSION['remember1']);
+        $this->db->bind(':studentType', $_SESSION['studentType']);
+        $this->db->bind(':caregiverName', $_SESSION['careName']);
+        $this->db->bind(':caregiverNameVisibility', $_SESSION['remember5']);
+        $this->db->bind(':caregiverType', $_SESSION['careType']);
+        $this->db->bind(':caregiverTypeVisibility', $_SESSION['remember5']);
+        $this->db->bind(':caregiverRelationship', $_SESSION['lastName']);
+        $this->db->bind(':caregiverRelationshipVisibility', $_SESSION['remember5']);
+        $this->db->bind(':caregiverOccupation', $_SESSION['careOccu']);
+        $this->db->bind(':caregiverOccupationVisibility', $_SESSION['remember5']);
+        $this->db->bind(':nicFrontImage', $_SESSION['letterimage3']);
+        $this->db->bind(':nicBackImage', $_SESSION['letterimage4']);
+        $this->db->bind(':gsCertificateImage', $_SESSION['letterimage1']);
+        $this->db->bind(':receivingScholarships', $_SESSION['schol']);
+        $this->db->bind(':studyingYear', $_SESSION['acaYear']);
+        $this->db->bind(':studyingYearVisibility', $_SESSION['remember2']);
+
+
+        $result = $result & $this->db->execute();
+
+
+        // Update user status
+        $this->db->query('UPDATE user SET status = 0 WHERE userID = :userID');
+        $this->db->bind(':userID', $_SESSION['user_id']);
+
+        $result = $result & $this->db->execute();
+
 
         // Execute
-        if ($this->db->execute() && $this->updateUserTable($data)){
+        if ($result){
             return true;
         }
         else {
@@ -116,6 +159,22 @@ class UserModel{
         else {
             return false;
         }
+    }
+
+    // // Update user tables
+    public function updatePassword($data){
+         // Prepare statement
+         $this->db->query('UPDATE user SET password = :password WHERE userID = :userID');
+            
+         // Bind values
+         $this->db->bind(':password', $_SESSION['password']);
+
+         if ($this->db->execute()){
+             return true;
+         }
+         else {
+             return false;
+         }        
     }
 
     // Register user
@@ -305,6 +364,24 @@ class UserModel{
     }
 
     // Find user
+    public function getEmailByUsername($username){
+        $this->db->query('SELECT u.email FROM user u WHERE username = :username');
+        $this->db->bind(':username', $username);
+
+        // Execute query
+        $this->db->execute();
+
+        // Check if a row is returned
+        if ($this->db->rowCount() > 0) {
+            // Fetch the email from the result set
+            $result = $this->db->single();
+            return $result->email;
+        } else {
+            return null; // Return null if no email is found for the username
+        }
+    }
+
+    // Find user
     public function getUserIDByEmail($email){
         $this->db->query('SELECT * FROM user WHERE email = :email');
         $this->db->bind(':email', $email);
@@ -317,7 +394,7 @@ class UserModel{
     // Login user
     public function login($email, $password)
     {
-        $this->db->query('SELECT * FROM user WHERE (email = :email OR username = :username) AND status = 1;');
+        $this->db->query('SELECT * FROM user WHERE (email = :email OR username = :username) AND (status = 1 OR status = 2);');
         $this->db->bind(':email', $email);
         $this->db->bind(':username', $email);
 
@@ -591,5 +668,35 @@ class UserModel{
         $row = $this->db->single();
 
         return $row->complaintCount;
+    }
+
+    public function sendOTP($email){
+        $verification_code = substr(number_format(time() * rand(), 0, '', ''), 0, 6);
+        $_SESSION['verification_code'] = $verification_code;
+        $message = '<div id="overview" style="margin: auto; width: 80%; font-size: 13px">
+        <p style="color: black">
+            Dear User,<br><br>
+    
+            Thank you for choosing eZpark! We\'re excited to have you on board. To ensure the security of your account, we require you to verify your registration by entering the One-Time Password (OTP) provided below.
+            <br><br>
+            Please enter this code on the registration page to complete the verification process. Please note that this OTP is valid for a limited time, so make sure to use it promptly. Your account security is important to us, and we recommend not sharing this OTP with anyone.
+            <br>
+        </p>
+        <p style="font-size: 18px; text-align: center;"><span style=" background-color: #EAEAEAFF; padding:8px; border-radius: 10px;">'.$verification_code.'</span></p>
+        <p>
+            Best regards,<br>
+            eZpark Team
+        </p>
+        </div>';
+
+        $this->sendEmail('', '', 'Your Account Has Been Verified', $message, 'KindHeart');
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
     }
 }

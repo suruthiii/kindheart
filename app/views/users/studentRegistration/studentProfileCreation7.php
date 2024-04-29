@@ -19,42 +19,44 @@
                 </div>
                 <div class="studentProfileCreation7-inner-container-caption">
                     <h1>Privacy Preferences</h1>
+                    <span>6 of 7</span> 
                     <span>Select the details you want to show in your profile</span> 
                 </div>
                 <div class="studentProfileCreation7-inner-container-form-container">
-                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation8" method="POST">
+                    <form action="<?php echo URLROOT ?>/users/studentProfileCreation6" method="GET">
                         <div class="studentProfileCreation7-inner-container-form-container-inputfeilds">   
 
                             <div class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1">
                                 <label class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels">
-                                    <input class="inputt" type="checkbox" checked="checked" name="remember"> School/University Name
+                                    <input class="inputt" type="checkbox"  name="remember1"> School/University Name
                                 </label>
                             </div>
 
                             <div class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1">
                                 <label class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels">
-                                    <input class="inputt" type="checkbox" checked="checked" name="remember"> Academic Year
+                                    <input class="inputt" type="checkbox"  name="remember2"> Academic Year
                                 </label>
                             </div>
 
                             <div class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1">
                                 <label class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels">
-                                    <input class="inputt" type="checkbox" checked="checked" name="remember"> Address
+                                    <input class="inputt" type="checkbox"  name="remember3"> Address
                                 </label>
                             </div>
 
                             <div class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1">
                                 <label class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels">
-                                    <input class="inputt" type="checkbox" checked="checked" name="remember"> Mobile Number
+                                    <input class="inputt" type="checkbox"  name="remember4"> Mobile Number
                                 </label>
                             </div>
 
                             <div class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1">
                                 <label class="studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels">
-                                    <input class="inputt" type="checkbox" checked="checked" name="remember"> Parent/Guardian Details
+                                    <input class="inputt" type="checkbox"  name="remember5"> Parent/Guardian Details
                                 </label>
                             </div>
                         </div>
+                        <p class="error-message" for="err"><?php echo $data['err']?></p>
                         <div class="studentProfileCreation7-inner-container-form-container-buttons">
                             <button>Next</button>
                         </div>
