@@ -1435,7 +1435,7 @@ a {
 
 .studentProfileCreation4-inner-container-form-container label{
     font-size: 14px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .studentProfileCreation4-inner-container-form-container form button{
@@ -1494,6 +1494,12 @@ a {
 .studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input4{
 
     margin-right: 20px;
+    margin-bottom: 30px;
+}
+
+.studentProfileCreation4-inner-container-form-container-inputfeilds span{
+    font-size: 10px;
+    color:rgb(146, 141, 141);
 }
 
 /* .studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input1 input,
