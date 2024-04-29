@@ -48,7 +48,10 @@ class Necessity extends Controller {
 
         else if ($_SESSION['user_type'] == 'student') {
             $data = [
-                'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities()
+                'pendingtablerow' => $this->necessityModel->getaddedMonetaryNecessities(),
+                'completetablerow' => $this->necessityModel->getaddedCompletedMonetaryNecessities(),
+                'stillnotCompleted' => $this->necessityModel->stilnotcompleteNecessities(),
+                'totalReceivedAmount' => $this->necessityModel->getTotalReceivedAmount()
             ];
 
             $other_data = [
@@ -414,7 +417,7 @@ class Necessity extends Controller {
     
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'student') {
-
+                        $this->view('student/necessity/viewOrganizationPendingMonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
                         $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data, $other_data);
                     }else {
@@ -440,7 +443,7 @@ class Necessity extends Controller {
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/viewOrganizationPendingMonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/necessity/viewOrganizationPendingMonetarynecessity', $data, $other_data);
                 }else {
