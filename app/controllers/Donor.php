@@ -17,7 +17,7 @@ class Donor extends Controller {
 
         // Get donor-specific data from the model
         // $userId = $_SESSION['user_id'];
-        $userId = '4';
+        $userId = '5';
         // $username = $_SESSION['username'];
         $username = 'donor1';
 
@@ -25,11 +25,9 @@ class Donor extends Controller {
             'title' => 'Welcome Back ' . $username,
             'active_donors' => $this->donorModel->getTotalActiveDonors(),
             'active_donees' => $this->donorModel->getTotalActiveDonees(),
-            'total_donations' => $this->donorModel->getTotalDonationCount(user_id),
-            // 'total_physical_goods_donations' => $this->donorModel->getTotalPhysicalGoodsDonations($userId),
-            // 'total_donated_projects' => $this->donorModel->getTotalDonatedProjects($userId),
-            // 'total_helped_students' => $this->donorModel->getTotalHelpedStudents($userId),
-            // 'total_helped_organizations' => $this->donorModel->getTotalHelpedOrganizations($userId)
+            'total_goods_quantity' => $this->donorModel->getTotalGoodsDonationQuantity($userId),
+            'total_monetary_quantity' => $this->donorModel->getTotalMonetaryDonationQuantity($userId),
+            // 'total_helped_donees' => $this->donorModel->getTotalHelpedDonees($userId),
         ];
 
         // die(print_r($data['total_monetary_donations']));
@@ -55,6 +53,19 @@ class Donor extends Controller {
         ];
 
         $this->view('donor/donorSelectDonation', $data, $other_data);
+    }
+
+    public function donorSelectNecessity(){
+        $data = [
+            'title' => 'Donation Selection Page'
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('donor/necessities/donorSelectNecessity', $data, $other_data);
     }
     
 }

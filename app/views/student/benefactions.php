@@ -24,40 +24,40 @@
                 <div class="benefaction-card-container">
                     <!-- added story cards -->
                     <?php 
-                    $benefactionDataArray = array();
-                    foreach (array_reverse($data['benefactions']) as $item) { 
-                        if (!in_array($item->benefactionID, $benefactionDataArray)) { ?>
+                        $benefactionDataArray = array();
+                        foreach (array_reverse($data['benefactions']) as $item) { 
+                            if (!in_array($item->benefactionID, $benefactionDataArray)) { ?>
 
-                            <div class="card">
-                            <img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $item->itemPhoto1; ?>" alt="<?php echo $item->description; ?>">
-                            <div class="card-content">
-                                <h3><?php echo $item->itemName; ?></h3>
-                                <p>posted by <?php echo $item->username; ?></p>
-                                <div class="btn-container">
-                                <form action="<?php echo URLROOT ?>/student/benefactionviewNotApplied" method="GET" class="btn" >
-                                    <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
-                                    <button type="submit" class="btn1" > View </button>
-                                </form>
-                                <form action="<?php echo URLROOT ?>/student/ApplyForBenefaction" method="GET" class="btn" >
-                                    <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
-                                    <?php if ($item->doneeID == $_SESSION['user_id']){?>
-                                        <p> Already Applied</p>
-                                    <?php } else{?>
-                                        <button type="submit" class="btn1" > Apply</button>
-                                    <?php }?>
-                                </form>
-                            </div>
-                        </div> 
-                        </div> 
-                        <?php 
-                        array_push($benefactionDataArray,$item->benefactionID);
-                        }
-                    
-                    
-                     } ?>
+                                <div class="card">
+                                    <img src="<?php echo URLROOT ?>/benefactionUploads/<?php echo $item->itemPhoto1; ?>" alt="<?php echo $item->description; ?>">
+                                    <div class="card-content">
+                                        <h3><?php echo $item->itemName; ?></h3>
+                                        <p>posted by <?php echo $item->username; ?></p>
 
-                </div>
-               
+                                        <div class="btn-container">
+
+                                            <form action="<?php echo URLROOT ?>/student/benefactionviewNotApplied" method="GET" class="btn" >
+                                                <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
+                                                <button type="submit" class="btn1" > View </button>
+                                            </form>
+                                            <form action="<?php echo URLROOT ?>/student/ApplyForBenefaction" method="GET" class="btn" >
+                                                <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $item->benefactionID?>" />
+                                                
+                                                <?php if ($item->doneeID == $_SESSION['user_id']){?>
+                                                    <p> Already Applied</p>
+                                                <?php } else{?>
+                                                    <button type="submit" class="btn1" > Apply</button>
+                                                <?php }?>
+
+                                            </form>
+                                        </div>
+                                    </div> 
+                                </div> 
+                                <?php array_push($benefactionDataArray,$item->benefactionID);
+                            }
+                        } 
+                    ?>
+                </div>               
             </div>
             
 

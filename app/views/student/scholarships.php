@@ -23,52 +23,38 @@
                 </div>
 
                 <div class ="scholarship-card-container">
-                <?php foreach ($data['scholarships'] as $item) { ?>
+                    <?php foreach ($data['scholarships'] as $item) { ?>
 
-                    <div class="card">
-                
-                        <div class="course"> 
-                            <div class="preview">
-                                <h6><?php echo $item->duration; ?> months</h6>
-                                <h2><?php echo $item->amount; ?> LKR</h2>
-
-                            </div>
-                            <div class="info"> 
-                                <div class="info_text">
-                                    <h6><?php echo $item->postedDate; ?></h6>
-                                    <h2><?php echo $item->title; ?></h2>
-                                </div>
-                                <div class="btn">
-                                    <form action="<?php echo URLROOT ?>/student/Applyscholarship" method="GET" >
-                                        <input type="text" name="scholarshipID" id="scholarshipID" hidden value="<?php echo $item->scholarshipID?>" />
-                                   
-                                        <?php if ($item->studentID == $_SESSION['user_id']){?>
-                                            <h4> Already Applied</h4>
-                                        <?php } else{?>
-                                            <button type="submit" > Apply</button>
-                                        <?php }?>
-                                    </form>
+                        <div class="card">
+                    
+                            <div class="course"> 
+                                <div class="preview">
+                                    <h6><?php echo $item->duration; ?> months</h6>
+                                    <h2><?php echo $item->amount; ?> LKR</h2>
 
                                 </div>
+                                <div class="info"> 
+                                    <div class="info_text">
+                                        <h6><?php echo $item->postedDate; ?></h6>
+                                        <h2><?php echo $item->title; ?></h2>
+                                    </div>
+                                    <div class="btn">
+                                        <form action="<?php echo URLROOT ?>/student/Applyscholarship" method="GET" >
+                                            <input type="text" name="scholarshipID" id="scholarshipID" hidden value="<?php echo $item->scholarshipID?>" />
+                                    
+                                            <?php if ($item->studentID == $_SESSION['user_id']){?>
+                                                <h4> Already Applied</h4>
+                                            <?php } else{?>
+                                                <button type="submit" > Apply</button>
+                                            <?php }?>
+                                        </form>
 
-                               
-
-                                
-
+                                    </div>     
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php } ?>
-
-
-
-                   
-                     
-
-                        
+                    <?php } ?>                        
                 </div>
-
-
             </div>
             
 
