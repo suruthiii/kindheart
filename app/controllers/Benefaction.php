@@ -403,7 +403,7 @@ class Benefaction extends Controller {
             'completedBenefaction' => $this->benefactionModel->getCompletedBenefaction()
         ];
 
-        // die(print_r($data['onProgressBenefaction'][0]->acknowledgedDonatedQuantity));
+        // die(print_r($data['pendingBenefaction']));
 
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),

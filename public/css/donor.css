@@ -612,14 +612,14 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 40vh;
+    margin-top: 38vh;
 }
 
 .posted-benefaction-onProgress-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 44vh;
+    margin-top: 42vh;
     background-color: #DEDEDE;
 }
 
@@ -627,7 +627,7 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 15vh;
-    margin-top: 46vh;
+    margin-top: 44vh;
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -637,14 +637,14 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 3vh;
-    margin-top: 65vh;
+    margin-top: 62vh;
 }
 
 .posted-benefaction-Completed-table-grey-line{
     position: fixed;
     width: 45%;
     height: 0.3vh;
-    margin-top: 69vh;
+    margin-top: 66vh;
     background-color: #DEDEDE;
 }
 
@@ -652,7 +652,7 @@ span .donor-form-error-details{
     position: fixed;
     width: 45%;
     height: 15vh;
-    margin-top: 70vh;
+    margin-top: 67vh;
     overflow: hidden;
     overflow-y: scroll; 
     scrollbar-width: none; 
