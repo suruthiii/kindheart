@@ -37,7 +37,7 @@
                         </tr>
                         <tr class="necessity-data">
                             <th width="30%">Budget</th>
-                            <td width="70%"><?php echo $data['project_details']->budget ?></td>
+                            <td width="70%">Rs. <?php echo $data['project_details']->budget ?>.00</td>
                         </tr>
                         <tr class="necessity-data">
                             <th width="30%">Received Amount</th>
