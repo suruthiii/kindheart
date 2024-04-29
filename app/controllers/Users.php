@@ -752,7 +752,10 @@ class Users extends Controller{
             'accNumber' => '',
             'bankName' => '',
             'branchName' => '',
-            'err' => ''
+            'accHolderName_err' => '',
+            'accNumber_err' => '',
+            'bankName_err' => '',
+            'branchName_err' => ''
         ];
 
         if(isset($_SESSION['accHolderName'])){
@@ -777,26 +780,33 @@ class Users extends Controller{
                 'accNumber' => trim($_GET['accNumber']),
                 'bankName' => trim($_GET['bankName']),
                 'branchName' => trim($_GET['branchName']),
-                'err' => ''
+                'accHolderName_err' => '',
+                'accNumber_err' => '',
+                'bankName_err' => '',
+                'branchName_err' => ''
             ];
 
             if(empty($data['accHolderName'])){
-                $data['err'] = 'Please enter account holder name';
+                $data['accHolderName_err'] = 'Please enter account holder name';
             }
 
             if(empty($data['accNumber'])){
-                $data['err'] = 'Please enter account number';
+                $data['accNumber_err'] = 'Please enter account number';
+            }elseif (!is_numeric($data['accNumber'])) {
+                $data['accNumber_err'] = 'Account Number should be a valid number';
+            } elseif ($data['accNumber'] <= 0) {
+                $data['accNumber_err'] = 'Account Number should be a positive number';
             }
 
             if(empty($data['bankName'])){
-                $data['err'] = 'Please enter name of the bank';
+                $data['bankName_err'] = 'Please enter name of the bank';
             }
 
             if(empty($data['branchName'])){
-                $data['err'] = 'Please enter branch name';
+                $data['branchName_err'] = 'Please enter branch name';
             }
 
-            if(empty($data['err'])){
+            if(empty($data['accHolderName_err']) && empty($data['accNumber_err']) && empty($data['bankName_err']) && empty($data['branchName_err'])){
                 $_SESSION['accHolderName'] = $data['accHolderName'];
                 $_SESSION['accNumber'] = $data['accNumber'];
                 $_SESSION['bankName'] = $data['bankName'];
