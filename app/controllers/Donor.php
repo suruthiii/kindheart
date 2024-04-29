@@ -23,7 +23,9 @@ class Donor extends Controller {
 
         $data = [
             'title' => 'Welcome Back ' . $username,
-            // 'active_donors' => $this->donorModel->getTotalActiveDonors($userId)
+            'active_donors' => $this->donorModel->getTotalActiveDonors(),
+            'active_donees' => $this->donorModel->getTotalActiveDonees(),
+            'total_donations' => $this->donorModel->getTotalDonationCount(user_id),
             // 'total_physical_goods_donations' => $this->donorModel->getTotalPhysicalGoodsDonations($userId),
             // 'total_donated_projects' => $this->donorModel->getTotalDonatedProjects($userId),
             // 'total_helped_students' => $this->donorModel->getTotalHelpedStudents($userId),
@@ -54,14 +56,5 @@ class Donor extends Controller {
 
         $this->view('donor/donorSelectDonation', $data, $other_data);
     }
-
-    // public function getDonorDashboard(){
-    //     $data = [
-    //         'graph' => $this->donor->getGraphData()
-    //     ];
-
-    //     $this->view('index', $data);
-    // }
-
     
 }

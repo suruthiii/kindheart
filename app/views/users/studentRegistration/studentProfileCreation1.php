@@ -19,7 +19,7 @@
                 </div>
                 <div class="studentProfileCreation1-inner-container-caption">
                     <h1>Creating Profile</h1>
-                    <span>1 of 6</span> 
+                    <span>1 of 7</span> 
                 </div>
                 <div class="studentProfileCreation1-inner-container-form-container">
                     <form action="<?php echo URLROOT ?>/users/studentProfileCreation1" method="GET">

@@ -19,6 +19,7 @@
                 </div>
                 <div class="studentProfileCreation7-inner-container-caption">
                     <h1>Privacy Preferences</h1>
+                    <span>6 of 7</span> 
                     <span>Select the details you want to show in your profile</span> 
                 </div>
                 <div class="studentProfileCreation7-inner-container-form-container">
@@ -55,6 +56,7 @@
                                 </label>
                             </div>
                         </div>
+                        <p class="error-message" for="err"><?php echo $data['err']?></p>
                         <div class="studentProfileCreation7-inner-container-form-container-buttons">
                             <button>Next</button>
                         </div>

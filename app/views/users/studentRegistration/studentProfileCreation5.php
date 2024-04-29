@@ -19,7 +19,7 @@
                 </div>
                 <div class="studentProfileCreation5-inner-container-caption">
                     <h1>Creating Profile</h1>
-                    <span>5 of 6</span> 
+                    <span>4 of 7</span> 
                 </div>
                 <div class="studentProfileCreation5-inner-container-form-container">
                     <form action="<?php echo URLROOT ?>/users/studentProfileCreation4" method="GET">
@@ -27,26 +27,26 @@
 
                             <label for="accHolderName">Account Holder's Name</label>
                             <div class="studentProfileCreation5-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="accHolderName" value="<?php echo $data['accHolderName']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="accHolderName" value="<?php echo $data['accHolderName']?>" required>
+                                <p class="error-message" for="accHolderName"><?php echo $data['accHolderName_err']?></p>
                             </div>
 
                             <label for="accNumber">Account Number</label>
                             <div class="studentProfileCreation5-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="accNumber" value="<?php echo $data['accNumber']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="accNumber" value="<?php echo $data['accNumber']?>" required>
+                                <p class="error-message" for="accNumber"><?php echo $data['accNumber_err']?></p>
                             </div>
 
                             <label for="bankName">Name of the Bank</label>
                             <div class="studentProfileCreation5-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="bankName" value="<?php echo $data['bankName']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="bankName" value="<?php echo $data['bankName']?>" required>
+                                <p class="error-message" for="bankName"><?php echo $data['bankName_err']?></p>
                             </div>
 
                             <label for="branchName">Branch Name</label>
                             <div class="studentProfileCreation5-inner-container-form-container-inputfeilds-feild1">
-                                <input class="inputt1" type="text" name="branchName" value="<?php echo $data['branchName']?>" >
-                                <span class="error-message" for="verificationCode"></span>
+                                <input class="inputt1" type="text" name="branchName" value="<?php echo $data['branchName']?>" required>
+                                <p class="error-message" for="branchName"><?php echo $data['branchName_err']?></p>
                             </div>
 
                         </div>
