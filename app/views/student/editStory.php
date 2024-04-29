@@ -29,11 +29,7 @@
                     </div>
 
                     <div class="edit-story">
-                    <?php if (!empty($other_data)){?>
-                    <div class="error-msg">
-                        <span class="form-invalid"><?php echo $other_data["err"] ?></span>
-                    </div>
-                <?php } else { ?>
+                    
                         <form class="add-form" method="POST" enctype="multipart/form-data" action="<?php echo URLROOT ?>/successstory/editSuccessStory" >
 
                             <!-- add description and title box -->
@@ -50,7 +46,7 @@
 
                             </div>                  
                         </form>
-                        <?php }?>
+                    
 
                     </div>
             

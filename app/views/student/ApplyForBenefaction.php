@@ -39,7 +39,7 @@
                             <input type="textarea" id="reason" name="reason" required><br><br>
 
                             <input type="text" name="benefactionID" id="benefactionID" hidden value="<?php echo $data["benefactionID"]?>" />
-
+                            <input type="text" name="doneeID" id="doneeID" hidden value="<?php echo $data["doneeID"]?>" />
 
                             <input type="submit" value="Apply">
                         </form>

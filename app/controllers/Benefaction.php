@@ -931,7 +931,12 @@ class Benefaction extends Controller {
                 
                     // Add Data to DB
                     if ($this->benefactionModel->addAppliedBenefaction($data)) {
+                        $this->notificationModel->createNotification('Apply for Benefaction', 'applyforbenefaction', $_SESSION['user_id'], $doneeID, $data['reason'], $data['benefactionID']);
+
+
                         if($_SESSION['user_type'] == 'student') {
+                            
+
                             redirect('student/benefactions');
                         }
                         else if ($_SESSION['user_type'] == 'organization') {
