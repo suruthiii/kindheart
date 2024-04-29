@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="studentProfileCreation8-inner-container-buttons">
-                    <a href="<?php echo URLROOT ?>/users/registerLanding">
+                    <a href="<?php echo URLROOT ?>/pages/index">
                         <button>Continue</button>
                     </a>
                 </div>            

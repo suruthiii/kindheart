@@ -19,7 +19,7 @@
                 </div>
                 <div class="studentProfileCreation6-inner-container-caption">
                     <h1>Creating Profile</h1>
-                    <span>6 of 6</span> 
+                    <span>5 of 7</span> 
                 </div>
                 <div class="studentProfileCreation6-inner-container-form-container">
                     <form action="<?php echo URLROOT ?>/users/studentProfileCreation5" method="GET">
@@ -28,13 +28,13 @@
                             <label for="mobileNumber">Mobile Number </label>
                             <div class="studentProfileCreation6-inner-container-form-container-inputfeilds-feild1">
                                 <input class="inputt" type="text" name="contactNo" id="email-field" value="<?php echo $data['contactNo']?>"  required >
-                                <span class="error-message" for="verificationCode"></span>
+                                <p class="error-message" for="contactNo"><?php echo $data['contactNo_err']?></p>
                             </div>
 
                             <label for="mobileNumber">NIC </label>
                             <div class="studentProfileCreation6-inner-container-form-container-inputfeilds-feild1">
                                 <input class="inputt" type="text" name="nic" id="email-field" value="<?php echo $data['nic']?>"  required >
-                                <span class="error-message" for="verificationCode"></span>
+                                <p class="error-message" for="nic"><?php echo $data['nic_err']?></p>
                             </div>
 
                             <!-- <div class="studentProfileCreation6-inner-container-form-container-inputfeilds-verificationmessage">

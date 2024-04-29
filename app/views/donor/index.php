@@ -24,11 +24,11 @@
                 <div class="donor-dashboard-status-bar">
                     <div class="donor-dashboard-status">
                         <p>Active Donors</p>
-                        <h1>12 300</h1>
+                        <h1><?php echo $data['active_donors']?></h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Active Donees</p>
-                        <h1>12 300</h1>
+                        <h1><?php echo $data['active_donees']?></h1>
                     </div>
                     <div class="donor-dashboard-status">
                         <p>Total Donations</p>

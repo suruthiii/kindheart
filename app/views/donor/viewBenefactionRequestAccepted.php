@@ -52,8 +52,10 @@
                             </tr>
                         </table>                    
                     </div>
-                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/benefactionRequestDonationSubmit/<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>/<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" method="post">
-                        <div class="benefactionRequest-donationinfo" style="display: none;">
+                    <div class="benefactionRequest-info-caption">Make A Donation</div>
+                    <div class="benefactionRequest-info-grey-line"> </div>
+                    <form enctype="multipart/form-data" action="<?php echo URLROOT ?>/benefaction/benefactionRequestDonationSubmit" method="post">
+                        <div class="benefactionRequest-donationinfo">
                             <div class="benefactionRequest-donationinfo1">
                                 <label for="donationQuantity">Donating Quantity</label>
                                 <div class="benefactionRequest-donationdata">
@@ -79,7 +81,7 @@
                         </div> 
 
                         <div class="view-benefactionRequest-btn-container">
-                            <div class="submit-request" id="submitForm" style="display: none;">
+                            <div class="submit-request" id="submitForm">
                                 <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
                                 <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
                                 <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="confirmSubmit(event)" >
@@ -87,26 +89,6 @@
                                 </button>
                             </div>
                         </div>                       
-                    </form>
-                    <div class="view-benefactionRequest-btn-container-cancel">
-                        <div class="cancel-request" id="cancelForm" style="display: none;">
-                            <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
-                            <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
-                            <button type="submit" class="benefactionRequest_button" style="cursor: pointer;"onclick="hideDonationInfo()" >
-                                <h5>Cancel</h5>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="view-benefactionRequest-btn-container">
-                    <form class="make-donation" id="acceptForm">
-                        <input type="hidden" name="benefactionID" id="benefactionID" value="<?php echo $data['benefactionRequest_details'][0]->benefactionID; ?>" />
-                        <input type="hidden" name="doneeID" id="doneeID" value="<?php echo $data['benefactionRequest_details'][0]->doneeID; ?>" />
-                        <button type="botton" class="benefactionRequest_button" style="cursor: pointer;"onclick="showDonationInfo()" >
-                            <img src="<?php echo URLROOT ?>/img/check.png" style="filter: invert(100%); width:18px;">
-                            <h5>Make the Donation</h5>
-                        </button>
                     </form>
                 </div>
             </div>
@@ -207,54 +189,6 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
 
-function showDonationInfo() {
-    const remainingQuantity = <?php echo $remainingQuantity; ?>;
-
-    if (remainingQuantity > 0) {
-        // Show the donation info div
-        const donationInfoDiv = document.querySelector('.benefactionRequest-donationinfo');
-        donationInfoDiv.style.display = 'flex';
-
-        // Disable the Make Donation button
-        const makeDonationButton = document.querySelector('.make-donation .benefactionRequest_button');
-        makeDonationButton.disabled = true;
-        makeDonationButton.style.backgroundColor = 'rgb(211, 211, 211)';
-
-        // Show the Submit Request button
-        const submitButtonForm = document.querySelector('.submit-request');
-        submitButtonForm.style.display = 'block';
-
-        // Show the Cancel Request button
-        const cancelButtonForm = document.querySelector('.cancel-request');
-        cancelButtonForm.style.display = 'block';
-    } else {
-        // Hide the Make Donation button
-        const makeDonationButton = document.querySelector('.make-donation');
-        makeDonationButton.style.display = 'none';
-    }
-}
-
-
-    function hideDonationInfo() {
-        // Show the donation info div
-        const donationInfoDiv = document.querySelector('.benefactionRequest-donationinfo');
-        donationInfoDiv.style.display = 'none';
-
-        // Disable the Make Donation button
-        const makeDonationButton = document.querySelector('.make-donation .benefactionRequest_button');
-        makeDonationButton.disabled = false;
-        makeDonationButton.style.backgroundColor = '';
-
-        // Show the Submit Request button
-        const submitButtonForm = document.querySelector('.submit-request');
-        submitButtonForm.style.display = 'none';
-
-        // Show the Cancel Request button
-        const cancelButtonForm = document.querySelector('.cancel-request');
-        cancelButtonForm.style.display = 'none';
-    }
-
-
     function handleImageType(input) {
         const parentLabel = input.parentElement;
         const parentDiv = parentLabel.parentElement;
@@ -275,6 +209,7 @@ function showDonationInfo() {
             parentLabel.style.color = 'rgb(255, 0, 0)';
         }
     }
+
     function confirmSubmit(event) {
         event.preventDefault(); // Prevent form submission for now
         const isValid = validateForm(); // Validate the form fields
