@@ -6,6 +6,7 @@ class ProjectModel{
         $this->db = new Database();
     }
 
+    /*-------------------------------Admin and Super Admin---------------------------------*/
     public function getAllPendingProjects() {
         $this->db->query('SELECT projectID, title, (budget - receivedAmount) AS amount, description FROM project WHERE status = 0; ');
         
@@ -30,6 +31,85 @@ class ProjectModel{
         return $result;
     }
 
+    public function getProjectDetails($project_ID) {
+        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
+        $this->db->bind(':projectID', $project_ID);
+
+        $row = $this->db->single();
+
+        return $row;
+    }
+
+    public function getAllComments($project_ID) {
+        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'project' ORDER BY time DESC;");
+        $this->db->bind(':postID', $project_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function addComment($data) {
+        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'project', :comment);");
+        $this->db->bind(':postID', $data['project_ID']);
+        $this->db->bind(':adminID', $_SESSION['user_id']);
+        $this->db->bind(':time', date("Y-m-d H:i:s"));
+        $this->db->bind(':comment', $data['comment']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function getUserType($user_ID) {
+        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
+        $this->db->bind(':userID', $user_ID);
+
+        $row = $this->db->single();
+
+        return $row->userType;
+    }
+
+    public function restrictProject($project_ID) {
+        $this->db->query('UPDATE project SET status = 5 WHERE projectID = :projectID;');
+        $this->db->bind(':projectID', $project_ID);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
+
+    public function getMilestoneCardDetails($project_ID) {
+        $this->db->query('SELECT milestoneID, milestoneName, amount, status FROM milestone WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $project_ID);
+
+        $result = $this->db->resultSet();
+
+        return $result;
+    }
+
+    public function getMilestoneDetails($project_ID) {
+        $this->db->query('SELECT milestoneName, description, amount, receivedAmount,  ');
+    }
+
+    public function getOrganizationID($project_ID) {
+        $this->db->query('SELECT orgID FROM project WHERE projectID = :projectID');
+        $this->db->bind(':projectID', $project_ID);
+
+        $orgID = $this->db->single()->orgID;
+
+        return $orgID;
+    }
+
+    /*---------------------------------------------------------------------------------*/
 
     public function dettheeachprojecthaddonationcount($projectID){
         $this->db->query("SELECT COUNT(*) AS donationCount FROM fund
@@ -163,48 +243,7 @@ class ProjectModel{
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public function getProjectDetails($project_ID) {
-        $this->db->query('SELECT p.title, p.budget, p.receivedAmount, p.description, o.orgID, o.orgName FROM project p JOIN organization o ON p.orgID = o.orgID WHERE p.projectID = :projectID;');
-        $this->db->bind(':projectID', $project_ID);
-
-        $row = $this->db->single();
-
-        return $row;
-    }
-
-    public function getAllComments($project_ID) {
-        $this->db->query("SELECT c.postID, c.comment, a.adminName FROM comment c JOIN admin a ON c.adminID = a.adminID WHERE c.postID = :postID AND c.postType = 'project' ORDER BY time DESC;");
-        $this->db->bind(':postID', $project_ID);
-
-        $result = $this->db->resultSet();
-
-        return $result;
-    }
-
-    public function addComment($data) {
-        $this->db->query("INSERT INTO comment (postID, adminID, time, postType, comment) VALUES (:postID, :adminID, :time, 'project', :comment);");
-        $this->db->bind(':postID', $data['project_ID']);
-        $this->db->bind(':adminID', $_SESSION['user_id']);
-        $this->db->bind(':time', date("Y-m-d H:i:s"));
-        $this->db->bind(':comment', $data['comment']);
-
-        if($this->db->execute()) {
-            return true;
-        }
-
-        else {
-            return false;
-        }
-    }
-
-    public function getUserType($user_ID) {
-        $this->db->query('SELECT userType FROM user WHERE userID = :userID;');
-        $this->db->bind(':userID', $user_ID);
-
-        $row = $this->db->single();
-
-        return $row->userType;
-    }
+    
 
     public function addprojectstodb($data){
         //sql statement for adding projects to projects table
@@ -319,25 +358,5 @@ class ProjectModel{
         var_dump($result);
     }
 
-    public function getMilestoneCardDetails($project_ID) {
-        $this->db->query('SELECT milestoneID, milestoneName, amount, status FROM milestone WHERE projectID = :projectID');
-        $this->db->bind(':projectID', $project_ID);
-
-        $result = $this->db->resultSet();
-
-        return $result;
-    }
-
-    public function getMilestoneDetails($project_ID) {
-        $this->db->query('SELECT milestoneName, description, amount, receivedAmount,  ');
-    }
-
-    public function getOrganizationID($project_ID) {
-        $this->db->query('SELECT orgID FROM project WHERE projectID = :projectID');
-        $this->db->bind(':projectID', $project_ID);
-
-        $orgID = $this->db->single()->orgID;
-
-        return $orgID;
-    }
+    
 }    

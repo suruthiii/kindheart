@@ -54,7 +54,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 1</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto1); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto1); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -62,7 +62,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 2</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto2); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto2); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -70,7 +70,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 3</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto3); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto3); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
@@ -78,7 +78,7 @@
                         <tr class="necessity-data">
                             <th width="30%">Item Photo 4</th>
                             <td width="70%">
-                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['donation_details']->itemPhoto3); ?>" class="user-img" alt="">
+                                <img src="<?php echo URLROOT ?>/benefactionUploads/<?php print_r($data['benefaction_details']->itemPhoto3); ?>" class="user-img" alt="">
                             </td>
                         </tr>
                     <?php }?>
