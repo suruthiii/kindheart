@@ -45,60 +45,11 @@
                                 <!-- Item -->
                                 <div class="benefaction-first-div">
                                     <label for="itemBenefaction">Item</label>
-                                    <input type="text" id="itemBenefaction" name="itemBenefaction" value="<?php print_r($data['benefaction_details']->itemName); ?>">
+                                    <input type="text" id="itemBenefaction" name="itemBenefaction" value="<?php print_r($data['benefaction_details']->itemName); ?>" disabled>
 
                                     <!-- Monetary necessity Error display -->
                                     <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['itemBenefaction_err']) ? $data['itemBenefaction_err']: ''; ?></span>
-                                </div>
-                                
-                                <!-- Category -->
-                                <div class="benefaction-forth-div">
-                                    <label for="benefactionCategory">Category </label>
-                                    <div class="select-box">
-                                        <select id="benefactionCategory" name="benefactionCategory" value="<?php print_r($data['benefaction_details']->itemCategory); ?>">
-                                            <option value="0" >
-                                                Select Category
-                                            </option>
-                                            <!-- Add selected attribute to the correct category -->
-                                            <option value="1" <?php echo ($data['benefaction_details']->itemCategory == 'Educational Supplies and Tools') ? 'selected' : ''; ?>>
-                                                Educational Supplies and Tools
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="1" <?php echo ($data['benefaction_details']->itemCategory == 'Educational Supplies and Tools') ? 'selected' : ''; ?>>
-                                                Educational Supplies and Tools
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="2" <?php echo ($data['benefaction_details']->itemCategory == 'Clothing and Accessories') ? 'selected' : ''; ?>>
-                                                Clothing and Accessories
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="3" <?php echo ($data['benefaction_details']->itemCategory == 'Recreation and Sports Equipment') ? 'selected' : ''; ?>>
-                                                Recreation and Sports Equipment
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="4" <?php echo ($data['benefaction_details']->itemCategory == 'Health and Wellness Products') ? 'selected' : ''; ?>>
-                                                Health and Wellness Products
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="5" <?php echo ($data['benefaction_details']->itemCategory == 'Transportation and Mobility') ? 'selected' : ''; ?>>
-                                                Transportation and Mobility
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="6" <?php echo ($data['benefaction_details']->itemCategory == 'Literature and Reading Materials') ? 'selected' : ''; ?>>
-                                                Literature and Reading Materials
-                                            </option>
-                                            <!-- &#13 -> use for break the content of title attribute -->
-                                            <option value="other" <?php echo ($data['benefaction_details']->itemCategory == 'Other') ? 'selected' : ''; ?>>
-                                                Other
-                                            </option>
-                                        </select>                                        
-                                    </div>
- 
-                                    <!-- Requested Amount Error Display -->
-                                    <span class="donor-form-error-details" style="color: #8E0000; font-family: 'Inter', sans-serif;"><?php echo isset($data['benefactionCategory_err']) ? $data['benefactionCategory_err']: ''; ?> </span>
-                                </div>                                
-
-
+                                </div>                           
 
                                 <!-- Description about requested necessity -->
                                 <div class="add-benefaction-text-area-input-to-oneline">
