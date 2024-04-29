@@ -46,7 +46,7 @@
                                 <h3><?php echo $milestone->milestoneName ; ?></h3>
                             </div>
                             <div class="project-mile-stone-description">
-                                <p><?php echo $milestone->milestone_description ; ?></p>
+                                <p><?php echo $milestone->description ; ?></p>
                             </div>
                         </div>
                         <div class="project-milestone-block-second-div">
@@ -101,7 +101,7 @@
                     </div>
                     <div class="right-side-bar-for-scrolling">
                             <?php foreach($data['rightsidebar'] as $rightsidebar): ?>
-                                <?php if($rightsidebar->verificationStatus == 3 && $rightsidebar->acknowledgement == NULL){ ?>
+                                <?php if($rightsidebar->verificationStatus == 3 && $rightsidebar->paymentSlip !== NULL && $rightsidebar->acknowledgement == NULL){ ?>
                                 <div class="donated-donor-details-box">
                                     <div class="donated-donor-name" >
                                         <h4><?php echo $rightsidebar->username; ?></h4>
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
 
-                                <?php } elseif ($rightsidebar->verificationStatus == 3 && $rightsidebar->acknowledgement !== NULL)  {?>
+                                <?php } elseif ($rightsidebar->verificationStatus == 3 && $rightsidebar->paymentSlip !== NULL && $rightsidebar->acknowledgement !== NULL)  {?>
                                     <div class="donated-donor-details-box">
                                     <div class="donated-donor-name" >
                                         <h4><?php echo $rightsidebar->username; ?></h4>
@@ -139,10 +139,7 @@
                                         <p>Rs.<?php echo number_format($rightsidebar->amount, 2); ?></p>
                                     </div>
                                     <div class="donated-amount">
-                                        <p>NOT paid</p>
-                                    </div>
-                                    <div class="donated-amount">
-                                        <p>Sent Acknowlagement</p>
+                                        <p>paid </p>
                                     </div>
                                 </div>
 
