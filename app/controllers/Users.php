@@ -879,7 +879,8 @@ class Users extends Controller{
             'remember2' => '',
             'remember3' => '',  
             'remember4' => '',
-            'remember5' => ''
+            'remember5' => '',
+            'err' => '',
         ];
 
         if(isset($_SESSION['remember1'])){
@@ -931,7 +932,10 @@ class Users extends Controller{
             $_SESSION['remember5'] = $data['remember5'];
 
             redirect('Users/studentProfileCreation7');
+        }else{
+            $data['err'] = 'One of the above must be chosen';
         }
+        
         $this->view('users/studentRegistration/studentProfileCreation7', $data);
     }
 

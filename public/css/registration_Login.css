@@ -1859,7 +1859,7 @@ a {
 
 .studentProfileCreation7-inner-container-form-container label{
     font-size: 14px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .studentProfileCreation7-inner-container-form-container form button{
@@ -1885,20 +1885,34 @@ a {
 }
 
 .studentProfileCreation7-inner-container-form-container-inputfeilds input{
-    height: 45px;
-    width: 500px;
-    margin: 1px 2px 1px 2px;
-    outline: none;
+    height: 30px;
+    width: 30px;
     border-radius: 6px;
-    font-size: 0.8rem;
-    text-align: left;
-    padding-left: 5px;
+    outline: none;
+    font-size: 1.125rem;
+    text-align: center;
     border: 1px solid #acacac;
+    column-gap: 50px;
+    margin-right: 18px;
+
+    background-color: #707070;
 }
 
 .studentProfileCreation7-inner-container-form-container-inputfeilds-feild1{
     margin-bottom: 20px;
     margin-top: 10px;
+}
+
+.studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin: 0;
+}
+
+.studentProfileCreation7-inner-container-form-container-inputfeilds-feild1-labels .inputt {
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 /* ----------------studentProfileCreation8------------------ */
