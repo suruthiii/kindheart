@@ -374,7 +374,7 @@
                     <?php } ?>
                 </a>
 
-                <a href="<?php echo URLROOT ?>/donor/nessessities/postedNessities">
+                <a href="<?php echo URLROOT ?>/donor/donorSelectNecessity">
                     <?php if ($section == 'necessities'){?>
                         <div class="selected-item">Necessities</div>
                     <?php }

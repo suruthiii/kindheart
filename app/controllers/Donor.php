@@ -54,5 +54,18 @@ class Donor extends Controller {
 
         $this->view('donor/donorSelectDonation', $data, $other_data);
     }
+
+    public function donorSelectNecessity(){
+        $data = [
+            'title' => 'Donation Selection Page'
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('donor/necessities/donorSelectNecessity', $data, $other_data);
+    }
     
 }

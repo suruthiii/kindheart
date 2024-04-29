@@ -1851,26 +1851,20 @@ class Necessity extends Controller {
 
     // ----------------------Donor------------------
 
-    public function postedNessities(){
-   
+    public function postedMonetaryNecessities(){   
 
-        // $benefactionID = $_GET['benefactionID'];
+        $data = [
+            'title' => 'Posted Necessities',
+            'monetary_necessities' => $this->necessityModel->getMonetaryNecessitiesForDonor()
+            // 'applied_necessities' => $this->necessityModel->getAppliedNecessities()
+        ];
 
-        // $data = [
-        //     'title' => 'Home page',
-        //     'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
-           
-           
-        // ];
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
 
-        // $other_data = [
-        //     'notification_count' => $this->notificationModel->getNotificationCount(),
-        //     'notifications' => $this->notificationModel->viewNotifications(),
- 
-        // ];
-
-        // $this->view('donor/postedNessities', $data, $other_data);
-        $this->view('donor/nessessities/postedNessities');
+        $this->view('donor/nessessities/postedNessities', $data , $other_data);
     }
 }
 
