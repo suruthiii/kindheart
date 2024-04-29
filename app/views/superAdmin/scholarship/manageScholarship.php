@@ -39,10 +39,6 @@
                             <td width="70%"><?php echo $data['scholarship_details']->amount ?></td>
                         </tr>
                         <tr class="necessity-data">
-                            <th width="30%">Start Date</th>
-                            <td width="70%"><?php echo $data['scholarship_details']->startDate ?></td>
-                        </tr>
-                        <tr class="necessity-data">
                             <th width="30%">Description</th>
                             <td width="70%"><?php echo $data['scholarship_details']->description ?></td>
                         </tr>
@@ -58,15 +54,6 @@
                     <textarea class="comment-textarea" required name="comment" ></textarea>
                     <input type="text" name="scholarship_ID" hidden value="<?php echo $data['scholarship_ID'] ?>">
                     <input type="submit" value="Add">
-                </form>
-            </div>
-
-            <div class="view-donation-btn-container">
-                <form action="<?php echo URLROOT ?>/scholarship/deletescholarship" method="post" class="delete-form">
-                    <input type="text" name="scholarship_ID" hidden value=<?php echo $data['scholarship_ID'] ?>>
-                    <button type="submit" class="view-donation-btn" onclick="return confirmSubmit();">
-                        Delete Scholarship
-                    </button>
                 </form>
             </div>
 

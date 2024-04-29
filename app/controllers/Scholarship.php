@@ -66,6 +66,8 @@ class Scholarship extends Controller {
                     if($this->scholarshipModel->addComment($data)) {
                         $donorID = $this->scholarshipModel->getDonorID($data['scholarship_ID']);
 
+                        $this->scholarshipModel->restrictScholarship($data['scholarship_ID']);
+
                         $this->notificationModel->createNotification('Manage Scholarship', 'manageScholarship', $_SESSION['user_id'], $donorID, $data['comment'], $data['scholarship_ID']);
 
                         redirect('scholarship/managescholarship?scholarship_ID='.$data['scholarship_ID']);
@@ -81,7 +83,7 @@ class Scholarship extends Controller {
                     $data = [
                         'title' => 'Home Page',
                         'scholarship_ID' => $_GET['scholarship_ID'],
-                        'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
+                        'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID']),
                     ];
                 }
 
@@ -89,7 +91,7 @@ class Scholarship extends Controller {
                     $data = [
                         'title' => 'Home Page',
                         'scholarship_ID' => $_GET['scholarship_ID'],
-                        'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
+                        'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID']),
                     ];
                 }
 
@@ -117,7 +119,8 @@ class Scholarship extends Controller {
             $data = [
                 'title' => 'Home Page',
                 'scholarship_ID' => $_GET['scholarship_ID'],
-                'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID'])
+                'scholarship_details' => $this->scholarshipModel->getComScholarshipDetails($_GET['scholarship_ID']),
+                'donations' => $this->scholarshipModel->getDonationCardDetails($_GET['scholarship_ID'])
             ];
         }
 
@@ -125,7 +128,8 @@ class Scholarship extends Controller {
             $data = [
                 'title' => 'Home Page',
                 'scholarship_ID' => $_GET['scholarship_ID'],
-                'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID'])
+                'scholarship_details' => $this->scholarshipModel->getIndScholarshipDetails($_GET['scholarship_ID']),
+                'donations' => $this->scholarshipModel->getDonationCardDetails($_GET['scholarship_ID'])
             ];
         }
 
@@ -141,6 +145,41 @@ class Scholarship extends Controller {
         $this->view($_SESSION['user_type'].'/scholarship/viewscholarship', $data, $other_data);
     }
 
+    public function viewDonationDetails() {
+        $data = [
+            'title' => 'Home Page',
+            'scholarship_ID' => $_GET['scholarship_ID'],
+            'donation_details' => $this->scholarshipModel->getDonationDetails($_GET['scholarship_ID'], $_GET['student_ID'])
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view($_SESSION['user_type'].'/scholarship/viewdonationdetails', $data, $other_data);
+    }
+
+    public function verifySlip() {
+        if($_SESSION['user_type'] != 'admin' && $_SESSION['user_type'] != 'superAdmin') {
+            redirect('pages/404');
+        }
+
+        else {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+                if($this->scholarshipModel->verifySlip($_POST['scholarship_ID'], $_POST['student_ID'])) {
+                    
+                    $donorID = $this->scholarshipModel->getDonorID($_POST['scholarship_ID']);
+
+                    $this->notificationModel->createNotification('Verified Slip for Scholarship', 'verifyScholarship', $_SESSION['user_id'], $donorID, 'Your Payment Slip has been verified', $_POST['scholarship_ID']);
+                    
+                    $this->notificationModel->createNotification('Scholarship Received', 'receivedScholarship', $_SESSION['user_id'], $_POST['student_ID'], 'You have received a scholarship donation', $_POST['scholarship_ID']);
+
+                    redirect('scholarship/viewdonationdetails?scholarship_ID='.$_POST['scholarship_ID'].'&student_ID='.$_POST['student_ID']);
+                }
+            }
+        }
+    }
     public function deleteScholarship() {
         if($_SESSION['user_type'] == 'student') {
             redirect('pages/404');
