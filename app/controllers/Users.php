@@ -215,9 +215,20 @@ class Users extends Controller{
             }
 
             // Validate password
-            if (empty($data['password'])){
-                $data['password_err'] = 'Please enter password';
+            if (empty($data['password'])) {
+                $data['password_err'] = 'Please enter a password';
             }
+            //  else if (strlen($data['password']) < 8) {
+            //     $data['password_err'] = 'Password must be at least 8 characters';
+            // } else if (!preg_match('/[a-z]/', $data['password']) || !preg_match('/[A-Z]/', $data['password'])) {
+            //     $data['password_err'] = 'Password must include both lowercase and uppercase letters';
+            // } else if (!preg_match('/\d/', $data['password'])) {
+            //     $data['password_err'] = 'Password must include at least one digit';
+            // } else if (!preg_match('/[!@#?]/', $data['password'])) {
+            //     $data['password_err'] = 'Password must include at least one special character (@, #, ?, !)';
+            // } else if (strpos($data['password'], '<') !== false || strpos($data['password'], '>') !== false) {
+            //     $data['password_err'] = 'Password must not include < or >';
+            // }
 
             // Check if error is empty
             if (empty($data['username_err']) && empty($data['password_err'])){

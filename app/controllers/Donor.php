@@ -7,6 +7,7 @@ class Donor extends Controller {
         $this->userModel = $this->model('UserModel');
         $this->donorModel = $this->model('DonorModel');
         $this->notificationModel = $this->model('NotificationModel');
+        $this->successStoryModel = $this->model('SuccessStoryModel');
     }
 
     public function index(){
@@ -72,5 +73,21 @@ class Donor extends Controller {
 
         $this->view('donor/necessities/donorSelectNecessity', $data, $other_data);
     }
+
+    public function successStory(){
+        $data = [
+            'title' => 'Home page',
+            'successstories' => $this->successStoryModel->getSuccessStories()
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+        
+        $this->view('donor/viewSuccessStory', $data, $other_data);
+
+    }
+    
     
 }

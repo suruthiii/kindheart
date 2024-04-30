@@ -96,7 +96,7 @@
                                 ?>
                                 <td><?php print_r($doneeAcknowledgemntStatus) ?></td>
                             </tr>
-                            <tr class="benefactionRequest-data">
+                            <!-- <tr class="benefactionRequest-data">
                                 <th>Acknowledgement</th>
                                 <?php
                                 
@@ -114,7 +114,7 @@
                                 ?>
                                 
                                 <td><?php print_r($doneeAcknowledgemnt) ?></td>
-                            </tr>                            
+                            </tr>                             -->
                         </table>                    
                     </div>                    
                 </div>
