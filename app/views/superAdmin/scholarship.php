@@ -11,7 +11,7 @@
     <section class="section" id="main">
         <div class="container">
             <h3>Scholarships</h3>
-            <p style="margin-left: 10px">Last 30 days</p>
+            <p style="margin-left: 10px"> </p>
             
             <div class="list">
                 <div class="list-title">
@@ -112,34 +112,34 @@
                 </div>
             </div>
 
-            <div class="right-content">
+            <!-- <div class="right-content">
                 <div class="right-cards">
 
-                    <!-- Card 1 -->
+                   
                     <div class="right-card">
                         <div class="title">Posted Scholarships</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 2 -->
+                    
                     <div class="right-card">
                         <div class="title">Scholarship Applications</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 3 -->
+                    
                     <div class="right-card">
                         <div class="title">Confirmed Scholarships</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 4 -->
+                    
                     <div class="right-card">
                         <div class="title">Received Scholarships</div>
                         <div class="value">58,977</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
         </div>
     </section>

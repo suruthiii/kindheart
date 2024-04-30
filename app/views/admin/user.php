@@ -36,35 +36,35 @@
                 </a>
 
             </div>
-            <div class="right-content">
+            <!-- <div class="right-content">
                 <div class="right-cards">
 
-                    <!-- Card 1 -->
+                    
                     <div class="right-card">
                         <div class="title">All users</div>
                         <div class="value">10,000</div>
                     </div>
 
-                    <!-- Card 2 -->
+                    
                     <div class="right-card">
                         <div class="title">Students</div>
                         <div class="value">10,000</div>
                     </div>
 
-                    <!-- Card 3 -->
+                    
                     <div class="right-card">
                         <div class="title">Organizations</div>
                         <div class="value">10,000</div>
                     </div>
 
-                    <!-- Card 4 -->
+                    
                     <div class="right-card">
                         <div class="title">Donors</div>
                         <div class="value">10,000</div>
                     </div>
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </main>

@@ -23,11 +23,6 @@
 
             <h3 style="margin-top: 25px">Monetary Necessities</h3>
 
-            <!-- search bar -->
-            <div class="search-bar-for-view-donors" style="position:absolute; top: -30px; margin-left:5px; transform:translateY(); width:250px;">
-                    <img src="<?php echo URLROOT ?>/img/Vector.png" alt="search">
-                    <input type="search" placeholder="Search" style="">
-            </div>
 
             <div class="list">
                 <div class="list-title" style="margin-top:65px;">
@@ -128,34 +123,7 @@
                 </div>
             </div>
 
-            <div class="right-content">
-                <div class="right-cards">
-
-                    <!-- Card 1 -->
-                    <div class="right-card">
-                        <div class="title">Posted Necessities</div>
-                        <div class="value">58,977</div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div class="right-card">
-                        <div class="title">Fulfilled Necessities</div>
-                        <div class="value">58,977</div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div class="right-card">
-                        <div class="title">Monthly Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div class="right-card">
-                        <div class="title">Total Donations</div>
-                        <div class="value">Rs. 58,977.00</div>
-                    </div>
-                </div>
-            </div>
+            
             
         </div>
     </section>
