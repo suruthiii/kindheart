@@ -10,6 +10,7 @@ class Organization extends Controller {
         $this->organizationModel = $this->model('organizationModel');
         $this->notificationModel = $this->model('NotificationModel');
         $this->successStoryModel = $this->model('SuccessStoryModel');
+        $this->benefactionModel = $this->model('BenefactionModel');
         $this->userModel= $this->model('userModel');
     }
 
@@ -92,6 +93,24 @@ class Organization extends Controller {
         ];
 
         $this->view('organization/successstory', $data, $other_data);
+    }
+
+    public function benefactions(){
+
+        $data = [
+            'title' => 'Home page',
+            'benefactions' => $this->benefactionModel->getBenefactions(),
+            'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(),
+
+        ];
+        // die(print_r($data['appliedBenefactions']));
+      
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('organization/benefactions', $data, $other_data);
     }
 
     public function donors(){
