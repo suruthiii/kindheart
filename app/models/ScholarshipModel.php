@@ -12,6 +12,20 @@ class ScholarshipModel{
 
         $result = $this->db->resultSet();
 
+        foreach($result as $item) {
+            $this->autoRestrict($item->scholarshipID, $item->title, $item->description);
+        }
+
+        $result1 = $this->getScholarshipsAfterRestriction();
+
+        return $result1;
+    }
+
+    public function getScholarshipsAfterRestriction() {
+        $this->db->query('SELECT scholarshipID, title, amount, description FROM scholarship WHERE availabilityStatus = 0;');
+
+        $result = $this->db->resultSet();
+
         return $result;
     }
 
@@ -29,6 +43,28 @@ class ScholarshipModel{
         $result = $this->db->resultSet();
 
         return $result;
+    }
+
+    public function autoRestrict($scholarship_ID, $title, $description) {
+        $restricted_words = $this->getAllRestrictedWords();
+
+        foreach($restricted_words as $item) {
+            if($title == $item->word) {
+                $this->restrictScholarship($scholarship_ID);
+            }
+
+            else if($description == $item->word) {
+                $this->restrictScholarship($scholarship_ID);
+            }
+        }
+    }
+
+    public function getAllRestrictedWords() {
+        $this->db->query('SELECT word FROM restrict_words;');
+
+        $restricted_words = $this->db->resultSet();
+
+        return $restricted_words;
     }
 
     public function getComScholarshipDetails($scholarship_ID) {
@@ -214,6 +250,7 @@ class ScholarshipModel{
         }
     }
 
+    
     // Get pending Scholarships
     public function getPendingScholarship() {
         // Prepare statement
