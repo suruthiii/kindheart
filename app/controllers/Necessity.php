@@ -481,7 +481,7 @@ class Necessity extends Controller {
     
                     // Pass data to the view
                     if ($_SESSION['user_type'] == 'student') {
-
+                        $this->view('student/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
                         $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
                     }else {
@@ -507,7 +507,7 @@ class Necessity extends Controller {
 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/necessity/viewOrganizationCompletedMonetarynecessity', $data, $other_data);
                 }else {
@@ -744,7 +744,7 @@ class Necessity extends Controller {
 
                         // Pass data to the view
                         if ($_SESSION['user_type'] == 'student') {
-
+                            $this->view('student/necessity/postedmonetarynecessity', $data, $other_data);
                         }else if ($_SESSION['user_type'] == 'organization') {
                             $this->view('organization/postedmonetarynecessity', $data, $other_data);
                         }else {
@@ -776,7 +776,7 @@ class Necessity extends Controller {
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/postedmonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/postedmonetarynecessity', $data, $other_data);
                 }else {
@@ -816,7 +816,7 @@ class Necessity extends Controller {
 
                         // Pass data to the view
                         if ($_SESSION['user_type'] == 'student') {
-
+                            $this->view('student/necessity/postedphysicalgoodsnecessity', $data, $other_data);
                         }else if ($_SESSION['user_type'] == 'organization') {
                             $this->view('organization/postedphysicalgoodsnecessity', $data, $other_data);
                         }else {
@@ -848,7 +848,7 @@ class Necessity extends Controller {
                 
                 // Pass data to the view
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/postedphysicalgoodsnecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/postedphysicalgoodsnecessity', $data, $other_data);
                 }else {
