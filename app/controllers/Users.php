@@ -126,8 +126,8 @@ class Users extends Controller{
 
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter a password';
-            } else if (strlen($data['password']) < 8) {
-                $data['password_err'] = 'Password must be at least 8 characters';
+            } else if (strlen($data['password']) < 6) {
+                $data['password_err'] = 'Password must be at least 6 characters';
             } else if (!preg_match('/[a-z]/', $data['password']) || !preg_match('/[A-Z]/', $data['password'])) {
                 $data['password_err'] = 'Password must include both lowercase and uppercase letters';
             } else if (!preg_match('/\d/', $data['password'])) {
@@ -218,8 +218,8 @@ class Users extends Controller{
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter a password';
             }
-            //  else if (strlen($data['password']) < 8) {
-            //     $data['password_err'] = 'Password must be at least 8 characters';
+            //  else if (strlen($data['password']) < 6) {
+            //     $data['password_err'] = 'Password must be at least 6 characters';
             // } else if (!preg_match('/[a-z]/', $data['password']) || !preg_match('/[A-Z]/', $data['password'])) {
             //     $data['password_err'] = 'Password must include both lowercase and uppercase letters';
             // } else if (!preg_match('/\d/', $data['password'])) {

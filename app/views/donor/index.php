@@ -65,9 +65,9 @@
                                 <th>Status</th>
                             </tr>
                             <tr>
-                                <td>Donation 1</td>
-                                <td>Date 1</td>
-                                <td>Status 1</td>
+                                <td>Books</td>
+                                <td>5</td>
+                                <td>Pending</td>
                             </tr>
                         </table>
                     </div>
