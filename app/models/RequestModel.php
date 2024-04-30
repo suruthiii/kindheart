@@ -214,11 +214,15 @@ class RequestModel{
         $this->db->query('UPDATE user SET status = 1 WHERE userID = :userID');
         $this->db->bind(':userID', $donee_ID);
 
-        // $name = $this->getName($donee_ID)->name;
-        // $email = $this->getEmail($donee_ID)->email;
+        $result = $this->db->execute();
 
-        $name = 'Suruthi';
-        $email = 'suruthi0611@gmail.com';
+        $this->db->query("SELECT * FROM user WHERE userID = :userID;");
+        $this->db->bind(':userID', $donee_ID);
+
+        $user = $this->db->single();
+
+        $name = $user->username;
+        $email = $user->email;
 
         $message = '
         <div id="overview" style="margin: auto; width: 80%; font-size: 13px">
@@ -239,13 +243,7 @@ class RequestModel{
 
         $this->sendEmail($email, $name, 'Your Account Verification is Complete - Start Receiving Donations Today!', $message, 'KindHeart');
 
-        if($this->db->execute()) {
-            return true;
-        }
-
-        else {
-            return false;
-        }
+        return $result;
     }
 
     public function rejectDonee($donee_ID) {

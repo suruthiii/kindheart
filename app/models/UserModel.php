@@ -505,11 +505,31 @@ class UserModel{
         $this->db->bind(':userID', $user_ID);
         $this->db->bind(':bannedTime', date("Y-m-d H:i:s"));
 
-        if($this->db->execute()){
-            return true;
-        }else
-            return false;
+        $result = $this->db->execute();
+
+        $this->db->query("SELECT * FROM user WHERE userID = :userID;");
+        $this->db->bind(':userID', $user_ID);
+
+        $user = $this->db->single();
+
+        $name = $user->username;
+        $email = $user->email;
+
+        $message = '
+        <div id="overview" style="margin: auto; width: 80%; font-size: 13px">
+            <p style="color: black">
+                Dear '.$name.',<br><br>
+        
+                Your account has been banned due to multiple violations of our terms and conditions. You will not be able to access your account for a certain period of time. If you have any queries, please contact us at
+                <br> <br>
+                Best regards,<br>
+                KindHeart Team
+            </p>
+        </div>';
+
+        $this->sendEmail($email, $name, 'Your Account has been banned', $message, 'KindHeart');
             
+        return $result;
     }
 
     public function getUserType($user_ID) {

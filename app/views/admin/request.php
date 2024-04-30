@@ -29,35 +29,35 @@
                 </a>
 
             </div>
-            <div class="right-content">
+            <!-- <div class="right-content">
                 <div class="right-cards">
 
-                    <!-- Card 1 -->
+                    
                     <div class="right-card">
                         <div class="title">Posted Necessities</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 2 -->
+                    
                     <div class="right-card">
                         <div class="title">Fulfilled Necessities</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 3 -->
+                   
                     <div class="right-card">
                         <div class="title">Monthly Donations</div>
                         <div class="value">Rs. 58,977.00</div>
                     </div>
 
-                    <!-- Card 4 -->
+                    
                     <div class="right-card">
                         <div class="title">Total Donations</div>
                         <div class="value">Rs. 58,977.00</div>
                     </div>
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 </main>

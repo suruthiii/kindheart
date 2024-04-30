@@ -37,20 +37,20 @@
                 </a>
 
                 <!-- Card 3 -->
-                <a class="card-link" href="">
+                <!-- <a class="card-link" href="">
                     <div class="card">
                         <div class="title">Monthly Donations</div>
                         <div class="value">Rs. 58,977.00</div>
                     </div>
-                </a>
+                </a> -->
 
                 <!-- Card 4 -->
-                <a class="card-link" href="">
+                <!-- <a class="card-link" href="">
                     <div class="card">
                         <div class="title">Monthly Donations</div>
                         <div class="value">Rs. 58,977.00</div>
                     </div>
-                </a>
+                </a> -->
                 
             </div>
         </div>

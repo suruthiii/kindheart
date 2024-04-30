@@ -47,34 +47,34 @@
                 <?php }?>       
             </div>
 
-            <div class="right-content">
+            <!-- <div class="right-content">
                 <div class="right-cards">
 
-                    <!-- Card 1 -->
+                    
                     <div class="right-card">
                         <div class="title">Posted Success Stories</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 2 -->
+                   
                     <div class="right-card">
                         <div class="title">Success Stories Per Year</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 3 -->
+                    
                     <div class="right-card">
                         <div class="title">Success Stories Per Month</div>
                         <div class="value">58,977</div>
                     </div>
 
-                    <!-- Card 4 -->
+                    
                     <div class="right-card">
                         <div class="title">Success Stories Per Day</div>
                         <div class="value">58,977</div>
                     </div>
                 </div>
-        </div>
+            </div> -->
         </div>
     </section>
 </main>

@@ -278,7 +278,7 @@ class Student extends Controller {
             'benefactionID' => $benefactionID,
             'benefactions' => $this->benefactionModel->getBenefactionNotApplied($benefactionID),
             'appliedBenefactions' => $this->benefactionModel->getAppliedBenefactions(), 
-           
+            'doneeID' => $_SESSION['user_id']
         ];
 
         $other_data = [
