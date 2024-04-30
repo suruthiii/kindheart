@@ -111,6 +111,7 @@ class Scholarship extends Controller {
         }
     }    
 
+    
 
     public function viewScholarship() {
         $donor_type = $this->scholarshipModel->getDonorType($_GET['scholarship_ID']);
