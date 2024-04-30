@@ -892,7 +892,7 @@ class Necessity extends Controller {
                     ];
 
                     if ($_SESSION['user_type'] == 'student') {
-
+                        $this->view('student/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
                         $this->view('organization/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
                     }else {
@@ -956,7 +956,7 @@ class Necessity extends Controller {
                         ];
 
                         if ($_SESSION['user_type'] == 'student') {
-
+                            $this->view('student/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
                         }else if ($_SESSION['user_type'] == 'organization') {
                             $this->view('organization/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
                         }else {
@@ -984,7 +984,7 @@ class Necessity extends Controller {
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/necessity/editpostedrecurringmonetarynecessity', $data, $other_data);
                 }else {
@@ -1025,7 +1025,7 @@ class Necessity extends Controller {
                     ];
 
                     if ($_SESSION['user_type'] == 'student') {
-
+                        $this->view('student/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
                     }else if ($_SESSION['user_type'] == 'organization') {
                         $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
                     }else {
@@ -1091,7 +1091,7 @@ class Necessity extends Controller {
                         ];
 
                         if ($_SESSION['user_type'] == 'student') {
-
+                            $this->view('student/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
                         }else if ($_SESSION['user_type'] == 'organization') {
                             $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
                         }else {
@@ -1120,7 +1120,7 @@ class Necessity extends Controller {
                 ];
 
                 if ($_SESSION['user_type'] == 'student') {
-
+                    $this->view('student/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
                 }else if ($_SESSION['user_type'] == 'organization') {
                     $this->view('organization/necessity/editpostedonetimemonetarynecessity', $data, $other_data);
                 }else {
