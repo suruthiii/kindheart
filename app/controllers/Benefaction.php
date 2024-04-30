@@ -515,9 +515,9 @@ class Benefaction extends Controller {
 
             $data = [
                 'benefactionID' => $_POST['benefactionID'],
-                'itemBenefaction' => trim($_POST['itemBenefaction']),
-                'benefactionCategory' => trim($_POST['benefactionCategory']),
-                'quantityBenfaction' => trim($_POST['quantityBenfaction']),
+                // 'itemBenefaction' => trim($_POST['itemBenefaction']),
+                // 'benefactionCategory' => trim($_POST['benefactionCategory']),
+                // 'quantityBenfaction' => trim($_POST['quantityBenfaction']),
                 'benefactionDescription' => trim($_POST['benefactionDescription']),
 
                 'availabilityStatus' => '0',
@@ -548,23 +548,23 @@ class Benefaction extends Controller {
             // die(print_r($this->imgUpload('photoBenfaction1')));
 
             //validate the input fields seperately
-            if(empty($data['itemBenefaction'])){
-                $data['itemBenefaction_err']='Please enter the Item';
-            }
+            // if(empty($data['itemBenefaction'])){
+            //     $data['itemBenefaction_err']='Please enter the Item';
+            // }
 
-            if (empty($_POST['benefactionCategory']) || $_POST['benefactionCategory'] == '0') {
-                $data['benefactionCategory_err'] = 'Please select a category.';
-            }
+            // if (empty($_POST['benefactionCategory']) || $_POST['benefactionCategory'] == '0') {
+            //     $data['benefactionCategory_err'] = 'Please select a category.';
+            // }
 
-            if(empty($data['quantityBenfaction'])){
-                $data['quantityBenfaction_err']='Please enter the Quantity';
-            }
+            // if(empty($data['quantityBenfaction'])){
+            //     $data['quantityBenfaction_err']='Please enter the Quantity';
+            // }
 
             if(empty($data['benefactionDescription'])){
                 $data['benefactionDescription_err']='Please enter a small description about the item explaing it\'s condition and other details';
             }
 
-            if (empty($data['itemBenefaction_err']) && empty($data['quantityBenfaction_err']) && empty($data['benefactionDescription_err']) && empty($data['benefactionCategory_err'])) {
+            if (empty($data['benefactionDescription_err'])) {
                 if ($this->benefactionModel->updateBenefaction($data)) {
                     $data = [
                         'title' => 'Edit Posted Benefactions',
@@ -937,7 +937,12 @@ class Benefaction extends Controller {
                 
                     // Add Data to DB
                     if ($this->benefactionModel->addAppliedBenefaction($data)) {
+                        $this->notificationModel->createNotification('Apply for Benefaction', 'applyforbenefaction', $_SESSION['user_id'], $doneeID, $data['reason'], $data['benefactionID']);
+
+
                         if($_SESSION['user_type'] == 'student') {
+                            
+
                             redirect('student/benefactions');
                         }
                         else if ($_SESSION['user_type'] == 'organization') {

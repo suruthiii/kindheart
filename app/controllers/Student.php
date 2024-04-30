@@ -15,6 +15,7 @@ class Student extends Controller {
         $this->ScholarshipModel= $this->model('ScholarshipModel');
         $this->userModel= $this->model('userModel');
         $this->ScholarshipModel= $this->model('ScholarshipModel');
+        $this->complaintModel = $this->model('ComplaintModel');
     }
 
     public function index(){
@@ -285,7 +286,10 @@ class Student extends Controller {
             'notifications' => $this->notificationModel->viewNotifications()
         ];
 
+        
+
         $this->view('student/ApplyForBenefaction', $data, $other_data);
+        
         
     }
 
@@ -328,6 +332,8 @@ class Student extends Controller {
             'donorDetailsInd' => $this->userModel->getDonorInd($donorID),
             'donorDetailsOrg' => $this->userModel->getDonorCom($donorID)
         ];
+
+        
      
         $other_data = [
             'notification_count' => $this->notificationModel->getNotificationCount(),
@@ -449,6 +455,97 @@ class Student extends Controller {
         $this->view('student/AknowledgementComplain', $data, $other_data);
 
     }
+
+
+    public function ComplainDonor(){
+
+        $donorID = $_POST['donorID'];
+
+        $data = [
+            'title' => 'Home page',
+            'donors' => $this->userModel->viewDonors(),
+            'donorID' => $donorID
+          
+           
+        ];
+
+        $other_data = [
+            'notification_count' => $this->notificationModel->getNotificationCount(),
+            'notifications' => $this->notificationModel->viewNotifications()
+        ];
+
+        $this->view('student/complain', $data, $other_data);
+        
+    }
+
+    // public function addComplain(){
+
+    //     $data = [
+    //         'donorID' => $_POST['donorID'],
+    //         'complainReason' => $_POST['reason'],
+    //         'userID' => $_SESSION['user_id'],
+    //         $this->complaintModel->addComplaint($data)
+    //     ];
+
+        
+
+    //     $this->view('student/ApplyForBenefaction', $data, $other_data);
+   
+    // }
+
+
+    public function addComplain(){  
+        // die(print_r($_POST));
+
+        if($_SESSION['user_type'] != 'student' && $_SESSION['user_type'] != 'organization') {
+            redirect('pages/404');
+        }
+
+        else {
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+                $data = [
+                    'donorID' => $_POST['donorID'],
+                    'complainReason' => $_POST['reason'],
+                    'userID' => $_SESSION['user_id'],
+                    'err' => ''
+                ];
+
+                // Make sure errors are empty
+                if (empty($data['err'])) {
+                    
+                
+                    // Add Data to DB
+                    if ($this->complaintModel->addComplaint($data)) {
+
+                        if($_SESSION['user_type'] == 'student') {
+                            
+
+                            redirect('student/donors');
+                        }
+                        else if ($_SESSION['user_type'] == 'organization') {
+                        }
+                        else {
+                            die('User Type Not Found');
+                        }
+                    } else {
+                        die('Something went wrong1');
+
+                    }
+                } else {
+                    // Load view with errors
+                    die(print_r($data));
+                }
+            }else{
+                die('incorrect method!');
+            }
+
+        }
+    }
+
+
+
+
 
 
 

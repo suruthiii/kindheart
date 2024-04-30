@@ -39,14 +39,8 @@
                     <form action="<?php echo URLROOT ?>/users/OTPstudentAcountCreationPage1" method="GET">
                         <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds">      
                             <label for="email">Enter the verification code</label>
-                            <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild2">
-                                <input type="text" name="digit-1" required/>
-                                <input type="text" name="digit-2" required/>
-                                <input type="text" name="digit-3" required/>
-                                <input type="text" name="digit-4" required/>
-                                <input type="text" name="digit-5" required/>
-                                <input type="text" name="digit-6" required/>
-                                <input type="text" name="digit-7" required/>
+                            <div class="studentAcountCreationPage1-inner-container-form-container-inputfeilds-feild1">
+                                <input type="text" name="digit" required/>
                             </div>
                             <span class="error-message" for="verificationCode"><?php echo $data['otp_err']?></span>
                         </div>

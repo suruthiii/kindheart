@@ -41,7 +41,9 @@
                                     </label> 
                                     <span>Upload a letter confirming your enrolment from your University/ school.</span>
                                 </div>
-                            </div>  
+                            </div>
+                            <p class="error-message" for="letterimage1"><?php echo $data['letterimage1_err']?></p>  
+                            <p class="error-message" for="letterimage2"><?php echo $data['letterimage2_err']?></p> 
 
                             <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal">
                                 <div class="studentProfileCreation4-inner-container-form-container-inputfeilds-2-input-horizontal-input3">
@@ -60,6 +62,8 @@
                                     </label>
                                 </div>
                             </div>  
+                            <p class="error-message" for="letterimage1"><?php echo $data['letterimage3_err']?></p>  
+                            <p class="error-message" for="letterimage2"><?php echo $data['letterimage4_err']?></p>
                             <div class="studentProfileCreation4-inner-container-form-container-buttons">
                                 <button>Next</button>
                             </div>

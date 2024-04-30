@@ -174,11 +174,9 @@ class BenefactionModel{
     //Edit Benefaction
     public function updateBenefaction($data){
         // Prepare statement
-        $this->db->query('UPDATE benefaction SET itemName = :itemName, itemCategory = :itemCategory, description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
+        $this->db->query('UPDATE benefaction SET description = :description, donorID = :donorID WHERE benefactionID = :benefactionID');
 
-        // Bind values
-        $this->db->bind(':itemName', $data['itemBenefaction']);
-        $this->db->bind(':itemCategory', $data['benefactionCategory']);         
+        // Bind values       
         $this->db->bind(':description', $data['benefactionDescription']);
         $this->db->bind(':donorID', $_SESSION['user_id']);
         // $this->db->bind(':availabilityStatus', $data['availabilityStatus']);

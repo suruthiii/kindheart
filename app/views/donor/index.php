@@ -61,7 +61,7 @@
                         <table>
                             <tr>
                                 <th>Donation</th>
-                                <th>Date</th>
+                                <th>Quantity</th>
                                 <th>Status</th>
                             </tr>
                             <tr>
@@ -159,10 +159,10 @@
 
 
 <script>
-        const DATA_COUNT = 4;
+        const DATA_COUNT = 5;
 
         const data = {
-            labels: ['Monetary', 'Physical Goods', 'Benefaction', 'Scholarship'],
+            labels: ['Monetary', 'Physical Goods', 'Benefaction', 'Scholarship', 'Project'],
             datasets: [{
                 label: 'Dataset 1',
                 data: Array.from({ length: DATA_COUNT }, () => Math.floor(Math.random() * 100)),
@@ -170,7 +170,8 @@
                     '#8e0000',
                     '#bf644f',
                     '#d38a78',
-                    '#f3d7d0'
+                    '#f3d7d0',
+                    '#g3d8d1'
                 ]
             }]
         };

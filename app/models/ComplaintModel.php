@@ -189,5 +189,21 @@ class ComplaintModel{
             return false;
         }
     }
+
+
+    public function addComplaint($data) {
+        $this->db->query('INSERT into complaint (complainerID, complaineeID, description) VALUES (:complainerID, :complaineeID, :description)');
+        $this->db->bind(':complainerID', $_SESSION['user_id']);
+        $this->db->bind(':complaineeID', $data['donorID']);
+        $this->db->bind(':description', $data['complainReason']);
+
+        if($this->db->execute()) {
+            return true;
+        }
+
+        else {
+            return false;
+        }
+    }
 }    
 
