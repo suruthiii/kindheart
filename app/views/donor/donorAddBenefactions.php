@@ -187,7 +187,7 @@
                         <div class="add-benefaction-right-side-bar-all-add-benefactions-inner">
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Educational Supplies and Tools</h3>
-                                <p>Pencils, Pens, Notebooks, Textbooks, Calculators, Educational software, Interactive whiteboards, Microscopes, Lab equipment, Robotics kits, Coding software, Coding software, Laptops, 3D printers</p>
+                                <p>Pencils, Pens, Notebooks, Textbooks, Calculators, Interactive whiteboards, Microscopes, Lab equipment, Robotics kits, Laptops, 3D printers</p>
                             </div>
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Clothing and Accessories</h3>
@@ -195,7 +195,7 @@
                             </div>
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Recreation and Sports Equipment</h3>
-                                <p>Soccer balls, Basketballs, Gymnastics mats, Tennis rackets, Bicycles, Skateboards</p>
+                                <p>Soccer balls, Basketballs, Gymnastics mats, Tennis rackets</p>
                             </div>
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Health and Wellness Products</h3>
@@ -203,11 +203,11 @@
                             </div>
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Transportation and Mobility</h3>
-                                <p>Bicycles, Wheelchairs, Scooters, Crutches, Walking canes</p>
+                                <p>Bicycles, Wheelchairs, Scooters, Crutches, Walking canes, Skateboards</p>
                             </div>
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Literature and Reading Materials</h3>
-                                <p>Fiction books, Non-fiction books, Language learning materials, Dictionaries, E-readers, Audiobooks</p>
+                                <p>Fiction books, Non-fiction books, Language learning materials, Dictionaries</p>
                             </div>
                             <div class="add-benefaction-right-side-bar-all-add-benefactions-inner-content">
                                 <h3>Other</h3>
